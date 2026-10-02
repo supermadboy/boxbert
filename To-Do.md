@@ -2,18 +2,24 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Etappe 2:** SD-Karte FAT32 formatieren (am PC!), ein paar kurze
-  mp3s drauf, dann nach Fahrplan verkabeln (CS→IO10, SCK→IO36, MOSI→IO35,
-  MISO→IO37, VCC→USB-5V — Modul hat Onboard-3,3-V-Regler). Test: Dateiliste
-  lesen, danach erste mp3 über I2S abspielen — das erste echte Pups!
-- [ ] Danach Etappen 3–6 nach Fahrplan, je Etappe ein Testprotokoll in
-  `docs/` (Werte mit Datum, nicht nur „lief").
+- [ ] **Etappe 3:** Buttons direkt an den Feather (IO5/IO6/IO11,
+  INPUT_PULLUP, andere Seite GND — bei den 44-mm-Wechselschaltern
+  COM/NO mit dem Durchgangsprüfer identifizieren). Test: Button drücken
+  → Pups von der SD. Danach Etappen 4–6 nach Fahrplan, je Etappe ein
+  Testprotokoll in `docs/`.
 - [ ] Framework-Entscheidung (Arduino vs. ESP-IDF) — erst relevant für
   Sprint 4 (Firmware-Skelett), nicht für die Breadboard-Etappen.
 
 ## Erledigt
 
-- [x] 02.10.2026: **Etappe 1 BESTANDEN** — MAX98357A + Lautsprecher am
+- [x] 02.10.2026: **Etappe 2 BESTANDEN** — SD-Karte (FAT32) am SPI-Bus
+  (CS=IO10, SCK=IO36, MOSI=IO35, MISO=IO37, VCC=USB-5V), Dateiliste ok,
+  mp3-Wiedergabe über ESP32-audioI2S v4 (PSRAM=QSPI Board-Default!) über
+  I2S zum MAX98357A. Volume vermessen: 6 = leise-schoen, 21 = max.
+  Lehrstück: PSRAM-Modus nicht manuell auf opi drehen. Protokoll:
+  `docs/testprotokoll-etappe2.md`.
+
+- [x] 02.10.2026: **Etappe 1 BESTANDEN**
   I2S (DOUT=IO16, BCLK=IO17, LRC=IO18, VIN→USB-5V, SD→3V3, GAIN offen).
   Testtoene 440/880 Hz hörbar und verzerrungsfrei, Dynamik AMP 10–32000
   vermessen. Unterm Strich drei Lehrstücke: Klon-Pinout am Silkscreen
