@@ -83,6 +83,11 @@ Karte max. 32 GB (SDHC) — die Verbatim 32 GB passt exakt.
 Test: SD-Beispiel → Dateiliste lesen. Danach erste mp3 von SD über I2S
 abspielen (**Pups-Geräusch aus der Box**).
 
+**BESTANDEN am 02.10.2026** — Dateiliste ✔, mp3-Wiedergabe ✔, Volume-Skala
+vermessen (6 = leise-schön, 21 = max). Protokoll:
+`docs/testprotokoll-etappe2.md`. Lehrstück: QSPI-PSRAM nicht auf opi
+zwingen — kompiliert grün, läuft aber nicht.
+
 ## Etappe 3 — Buttons: „Button drückt, Pups kommt raus"
 
 Der Meilenstein braucht **keinen** AW9523 — Buttons direkt an den Feather:
@@ -97,6 +102,12 @@ Der Meilenstein braucht **keinen** AW9523 — Buttons direkt an den Feather:
 - Button-LEDs noch nicht anschließen
 
 Test-Sketch: Button-Druck → spielt ein hinterlegtes „Pups"-mp3 von der SD.
+
+**BESTANDEN am 02.10.2026** — Button an IO5 (INPUT_PULLUP) unterbricht
+Boot-Loop und spielt `subbasesoft.mp3` ✔. 20-ms-Entprellen reicht, Volume
+per Hörtest 6 → 12. Protokoll: `docs/testprotokoll-etappe3.md`.
+IO6/IO11 und die 44-mm-Wechselschalter sind elektrisch identisch, kein
+Eigentest nötig.
 
 ## Etappe 4 — PN532 (NFC)
 

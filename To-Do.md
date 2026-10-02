@@ -2,15 +2,19 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Etappe 3:** Buttons direkt an den Feather (IO5/IO6/IO11,
-  INPUT_PULLUP, andere Seite GND — bei den 44-mm-Wechselschaltern
-  COM/NO mit dem Durchgangsprüfer identifizieren). Test: Button drücken
-  → Pups von der SD. Danach Etappen 4–6 nach Fahrplan, je Etappe ein
-  Testprotokoll in `docs/`.
+- [ ] **Etappe 4:** PN532 (NFC) am geteilten SPI-Bus (SS=IO9) — DIP auf
+  SPI, VCC an 3V3. Test: Tag auflegen → UID. Danach Etappen 5–6 nach
+  Fahrplan, je Etappe ein Testprotokoll in `docs/`.
 - [ ] Framework-Entscheidung (Arduino vs. ESP-IDF) — erst relevant für
   Sprint 4 (Firmware-Skelett), nicht für die Breadboard-Etappen.
 
 ## Erledigt
+
+- [x] 02.10.2026: **Etappe 3 BESTANDEN** — Button (AB24OL, Terminal A
+  → IO5, B → GND, INPUT_PULLUP) unterbricht Boot-Loop und spielt
+  `subbasesoft.mp3` (2,9 s). 20-ms-Entprellen reicht, kein
+  Doppel-Trigger. Volume per Hörtest 6 → 12. Protokoll:
+  `docs/testprotokoll-etappe3.md`.
 
 - [x] 02.10.2026: **Etappe 2 BESTANDEN** — SD-Karte (FAT32) am SPI-Bus
   (CS=IO10, SCK=IO36, MOSI=IO35, MISO=IO37, VCC=USB-5V), Dateiliste ok,
