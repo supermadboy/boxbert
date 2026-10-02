@@ -32,6 +32,13 @@ ist (Ø44-Button-Bohrmaß, Feather-Pinmap), steht es im Abschnitt "Offene Punkte
   `LRC, BCLK, DIN, GAIN, SD, VIN, GND` (+/− Lautsprecher). Gain default 9 dB,
   per GAIN-Pin 3/6/9/12/15 dB. SD/Mode-Pin: default (L+R)/2-Mix; zum
   Abschalten auf Low (Shutdown) — nützlich für Deep Sleep.
+  ⚠️ **Unser bestelltes Modul ist ein Klon** mit abweichender Pinreihenfolge
+  `VIN, GND, SD, GAIN, DIN, BCLK, LRC` und Schraubklemme statt JST —
+  Verkabelung und Details: `docs/testprotokoll-etappe1.md`.
+  **Datenblatt-Zahlen (Rev 7):** 3,2 W @ 4 Ω/5 V (10 % THD), 2,5 W @ 1 % THD;
+  3,7 V (Akku): 0,93 W @ 10 % THD. GAIN: offen = 9 dB; GND = 12 dB;
+  VDD = 6 dB. SD-Pin-Modi (Analogschwellwerte): < 0,16 V Shutdown ·
+  0,16–0,77 V nur rechts · 0,77–1,4 V nur links · > 1,4 V Mono (L+R)/2.
 - **AW9523 (ADA4886):** I2C-Expander, 16 I/O. Pins: `VIN, GND, SCL, SDA, INT, RST`
   + P0/P1-Ports. Vier I2C-Adressen (A0/A1-Pads) → bis 4 Stück am Bus. **Keine
   internen Pull-ups** (externe nötig für Taster). P0 kann als Gruppe Open-Drain.

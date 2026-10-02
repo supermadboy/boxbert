@@ -37,9 +37,9 @@ Die 5-V-Button-LEDs (AB30L5) haben den Vorwiderstand eingebaut.
 Nichts anschließen. Test: `File > Examples > WiFi > WiFiScan` + Display-
 Beispiel aus der Adafruit-Board-Bibliothek.
 
-- [ ] Board erkennt COM-Port, lässt sich flashen
-- [ ] TFT zeigt etwas
-- [ ] WLAN-Scan findet Netze
+- [x] Board erkennt COM-Port, lässt sich flashen (01.10.2026, /dev/ttyACM0, native USB-CDC)
+- [x] TFT zeigt etwas (01.10.2026, Sketch firmware/tests/etappe0_tft)
+- [x] WLAN-Scan findet Netze (01.10.2026, 4 Netze; Details in docs/dev-setup.md)
 
 ## Etappe 1 — I2S + Speaker
 
@@ -59,6 +59,11 @@ Akkuspannung oder Boost (Entscheidung nach Hörtest).
 
 Test: Tone- oder WebRadio-Beispiel; prüfen, ob der Lautsprecher laut und
 verzerrungsfrei klingt.
+
+**BESTANDEN am 02.10.2026** — Protokoll mit Messwerten und der ganzen
+Fehlersuche (setPins-Falle, Klon-Pinout, SD-Schwellwerte):
+`docs/testprotokoll-etappe1.md`. Erkenntnis: Amp läuft, Software-Lautstärke
+muss kindersicher begrenzt werden (MAX_AMP ~6000–8000 geplant).
 
 ## Etappe 2 — SD-Karte
 
