@@ -42,10 +42,13 @@ VCC=USB-5V), MAX98357A (DOUT=IO16, BCLK=IO17, LRC=IO18, SD-Pin an 3V3).
 - [x] **Etappe 3 BESTANDEN:** GPIO-Button mit INPUT_PULLUP getestet,
       Wiedergabe per Button-Druck ausgelöst.
 - Volume-Stand im Sketch: **12** (Hörtest — zwischen „leise-schön" (6)
-  und max (21)). Endgültiger Deckel für `Config.h` bleibt Sprint-4-Thema
-  (EN 71-1: 85 dB(A)).
-- IO6/IO11 (weitere Wake-GPIOs) und die 44-mm-Wechselschalter (COM/NO)
-  brauchen keinen eigenen Testlauf — elektrisch identisch zu IO5,
-  Verdrahtung wie im Fahrplan.
-- Nächste Etappe: **4 — PN532 (NFC)** am geteilten SPI-Bus (SS=IO9),
-  DIP-Schalter auf SPI, VCC an 3V3.
+  und max (21)). **Klarstellung 04.10.2026:** kein gemessener dB(A)-Wert,
+  kein Normnachweis; späteres akustisches Limit nach `docs/audio-safety.md`
+  bestimmen. Historischer Volume-12-Sketch ersetzt nicht Volume-6-
+  Referenz des Etappe-4-Players.
+- IO6/IO11 und 44-mm-Wechselschalter (COM/NO) waren hier **nicht getestet**.
+  Vor Nutzung eigene Anschluss-/Durchgangs- und Funktionstests durchführen;
+  elektrische Ähnlichkeit ist keine Abnahme.
+- Damaliger nächster Plan war NFC auf geteiltem SPI. **Inzwischen
+  überholt:** Etappe 4 mit PN532-I2C bestanden, keine Wiederaufnahme der
+  alten SS-IO9-/SPI-Anleitung (`hardware/pinout.md`).

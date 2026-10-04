@@ -41,27 +41,38 @@ Lautsprecher ADA3351 (4 Ω / 3 W) über JST-PH an OUT.
 
 ## Messwerte / Hörtest (Ohr von Daddelbert, 02.10.2026)
 
-| AMP (of 32767) | rel. Pegel | Ausgangsleistung ≈ (4 Ω, 1 % THD) | Höreindruck |
+**Klarstellung 04.10.2026:** Höreindrücke bleiben als Beobachtungen
+bestehen. Relative digitale Pegel und elektrische Leistungsschätzungen
+sind keine gemessenen dB(A)-Werte. Es wurde keine kalibrierte akustische
+Messung oder Normprüfung dokumentiert (`docs/audio-safety.md`).
+
+| AMP (of 32767) | relativer digitaler Pegel | idealisierte Leistungsschätzung, NICHT gemessen | Höreindruck |
 |---|---|---|---|
-| 10 | −70 dB | ~23 µW | **noch gut hörbar** (Zirpen) |
+| 10 | −70 dB | ~0,23 µW | **noch gut hörbar** (Zirpen) |
 | 100 | −50 dB | ~23 µW | leise, gut hörbar |
 | 500–3000 | −36…−21 dB | mW-Bereich | angenehm leise |
-| 12000 | −8,5 dB | ~0,4 W | laut, klar |
+| 12000 | ~−8,7 dB | ~0,34 W | laut, klar |
 | 32000 | ~0 dB | ~2,4 W | **„extrem laut"** (Kind im Raum — Test abgebrochen) |
 
-- Rechenweg: P = 2,5 W (1 % THD @ 5 V/4 Ω lt. Datenblatt) × (AMP/32767)².
+- Damaliges idealisiertes Rechenmodell: P = 2,5 W (Datenblattwert)
+  × (AMP/32767)², ohne Ausgangsmessung/Kalibrierung. **Nachtrag 04.10.2026:**
+  Rechenfehler bei AMP 10 korrigiert (0,23 statt 23 µW), AMP-12000-Wert
+  präzisiert. Modellannahmen beweisen weder reale Leistung noch Schalldruck.
 - Verzerrungen: bei AMP ≤ 12000 keine hörbar.
-- Bezug max.: EN 71-1 (nah am Ohr) verlangt 65 dB(A), Hand-/Tischspielzeug
-  85 dB(A) — 3,2 W@4 Ω (10 % THD) wären weit darüber, daher
-  **Software-Limit nötig** (siehe Empfehlung unten).
+- Frühere pauschale Zuordnung 65/85 dB(A) und Ableitung aus 3,2 W
+  **nicht als Normvorgabe oder Sicherheitsnachweis verwenden**. Kategorien,
+  Messbedingungen und Grenzwerte noch anhand anwendbarer Norm prüfen;
+  aus Watt/AMP allein folgt kein Schalldruckwert.
 
 ## Fazit / Konsequenzen
 
 - [x] **Etappe 1 BESTANDEN:** I2S läuft, beide Testfrequenzen hörbar,
       verzerrungsfrei im getesteten Bereich.
-- **Software-Lautstärkedekel:** MAX_AMP in `firmware/Config.h` auf
-  ~6000–8000 begrenzen (≈ 80 dB @ 0,5 m Region, Spielzeugnorm-nah).
-  AMP 10–32000 ist technisch möglich, aber 32000 + Kind = nein.
+- **Software-Limit weiter erforderlich, konkreter Wert offen.** Frühere
+  Idee MAX_AMP 6000–8000 und „≈80 dB @0,5 m“ ist nicht akustisch
+  verifiziert und keine kindersichere Grenzwertfreigabe. AMP 32000 war
+  subjektiv extrem laut; keine Wiederholung mit Kind. Messplan in
+  `docs/audio-safety.md`, Hörtest nicht in Normmessung umdeuten.
 - **Fade-in/out** bei Play/Pause später einbauen (Pop-Prävention,
   siehe `docs/findings.md`).
 - **Klon-Modul dokumentiert** — bei Ersatz/Ergänzung gilt:

@@ -24,10 +24,11 @@ statt sie in einem Kabelberg zu suchen.
 - Breadboard, Jumperkabel
 - Widerstände: 330 Ω (NeoPixel-Datenleitung), **6–8 × 10 kΩ** (Pull-ups für
   Taster am AW9523 — der hat **keine internen Pull-ups**, siehe kernwerte.md)
-- 1000-µF-Elko (NeoPixel), 1× 1N4148-Diode (falls NeoPixel-Pegel zickt)
+- 1000-µF-Elko (NeoPixel); geeignete Pegelwandlung bei Bedarf planen,
+  keine ungeprüfte 1N4148 als Last-Diode für den gesamten Stick
 - Multimeter (PN532-Pegel am Modul, Akku-Polung, Button-Terminal-Durchgang)
-- Arduino IDE oder PlatformIO mit ESP32-S3-Support (entscheiden wir im
-  Sprint 4; für die ersten Etappen reicht Arduino IDE)
+- arduino-cli mit ESP32-Core 3.3.12, eingerichtet in `docs/dev-setup.md`;
+  IDE/PlatformIO optional, langfristige Frameworkwahl separat
 
 Buttons selbst brauchen **keine** Widerstände, wenn sie direkt am Feather
 hängen (`INPUT_PULLUP`) — nur am AW9523 brauchen sie externe 10 kΩ.
@@ -55,16 +56,18 @@ Akkuspannung oder Boost (Entscheidung nach Hörtest).
 | BCLK | IO17 (A1) | |
 | LRC | IO18 (A0) | |
 | GAIN | **offen** | offen = 9 dB; leiser geht per Firmware oder 100 kΩ nach GND |
-| SD | **offen lassen** | Adafruit-Board macht dann Mono (L+R)/2. Low = Shutdown, später für Deep Sleep nützlich |
+| SD | **an 3V3** | am getesteten Klon Mono (L+R)/2 festgelegt; nicht alte Offenlassen-Annahme übernehmen |
 | Speaker +/− | 4-Ω-Lautsprecher (ADA3351, JST-PH) | |
 
-Test: Tone- oder WebRadio-Beispiel; prüfen, ob der Lautsprecher laut und
-verzerrungsfrei klingt.
+Test: bekannter Testton-/Audio-Sketch, minimaler Pegel zuerst; leise
+Wiedergabe und Störungen prüfen. Kein automatisches Hochdrehen, keine
+Maximallautstärke mit Kind im Raum (`docs/audio-safety.md`).
 
 **BESTANDEN am 02.10.2026** — Protokoll mit Messwerten und der ganzen
 Fehlersuche (setPins-Falle, Klon-Pinout, SD-Schwellwerte):
 `docs/testprotokoll-etappe1.md`. Erkenntnis: Amp läuft, Software-Lautstärke
-muss kindersicher begrenzt werden (MAX_AMP ~6000–8000 geplant).
+soll begrenzt werden; MAX_AMP/Volume-Zahlen sind kein dB(A)- oder
+Normnachweis. Akustische Bewertung noch offen (`docs/audio-safety.md`).
 
 ## Etappe 2 — SD-Karte
 
@@ -107,8 +110,9 @@ Test-Sketch: Button-Druck → spielt ein hinterlegtes „Pups"-mp3 von der SD.
 **BESTANDEN am 02.10.2026** — Button an IO5 (INPUT_PULLUP) unterbricht
 Boot-Loop und spielt `subbasesoft.mp3` ✔. 20-ms-Entprellen reicht, Volume
 per Hörtest 6 → 12. Protokoll: `docs/testprotokoll-etappe3.md`.
-IO6/IO11 und die 44-mm-Wechselschalter sind elektrisch identisch, kein
-Eigentest nötig.
+Bisher nur IO5/AB24OL getestet. IO6/IO11 und 44-mm-Wechselschalter
+jeweils mit Durchgangs-/Anschlusstest und eigener Firmwarefunktion
+prüfen; gleiche Grundschaltung bedeutet nicht bereits abgenommen.
 
 ## Etappe 4 — PN532 (NFC)
 
@@ -157,15 +161,24 @@ hochladen, Dateiliste sehen, Tag-UID zuordnen.
 
 ## Etappe 6 — AW9523, NeoPixel, Encoder, Boost, Button-LEDs
 
+**Noch nicht abgenommen.** Erst GPIO-/Einzeltests, dann freigegebenen
+LED-/Rail-Schaltplan erstellen. Quellen und offene elektrische Prüfungen:
+`docs/power-plan.md`. Keine +5 V auf eine bereits an 3V3 angeschlossene
+AW9523-VIN-Rail, kein PN532 an 5,2 V Boost.
+
 - **AW9523** an I2C: SDA=IO3, SCL=IO4 (oder STEMMA-QT-Kabel),
-  VIN 3,3 V, GND. INT optional an IO13 (Tasten-Events ohne Polling),
-  RST offen. Test: I2C-Scan findet **0x58** (Standardadresse).
+  VIN **3V3**, GND. INT/Reset für ersten GPIO-Test nicht zusätzlich
+  verdrahten. Test: I2C-Scan findet **0x58**. Vor gleichzeitiger Nutzung
+  mit PN532/Fuel Gauge Wire-Zugriffe zwischen Tasks synchronisieren.
 - **Weitere Taster über AW9523:** jeder Taster braucht einen **externen
   10-kΩ-Pull-up** von 3,3 V zum Port-Pin, Taster dann gegen GND
   (Chip hat keine internen Pull-ups!). Taster-Zustand per I2C lesen.
-- **Button-LEDs 30 mm (AB30L5, 5 V):** LED-Anschlüsse an AW9523-Port-Pins,
-  gemeinsame +5 V an die VIN-Rail des AW9523 — Konstantstrom-Modus,
-  **keine Vorwiderstände nötig**, Dimmung per I2C.
+- **Button-LEDs 30 mm (AB30L5, 5 V):** integrierte Vorwiderstände bleiben
+  erhalten. LED-Versorgung von AW9523-Logikversorgung trennen; **direkter
+  5-V-LED-Portanschluss noch nicht freigegeben**. Erst Portspannungsgrenzen,
+  Reset-Zustände, Strom/Verlustleistung und Spannungsreserve prüfen.
+  Nur LED-Modus ist Konstantstrom-Senke, nicht normaler GPIO-Ausgang.
+  Separater LED-Test erst nach Schaltplanprüfung (`docs/power-plan.md`).
 - **Button-LEDs 44 mm (DT44L12): ⚠️ sind 12-V-LEDs.** Am 5-V-Boost
   leuchten sie vermutlich nicht. Test an 5 V: Verhalten dokumentieren
   (gar nichts / schwach glimmen). Entscheidung danach:
@@ -175,21 +188,27 @@ hochladen, Dateiliste sehen, Tag-UID zuordnen.
 - **NeoPixel-Stick:** VCC an **USB 5 V** (WS2812 will 4–7 V, nicht an
   3,3 V!), 1000-µF-Elko über 5 V/GND am Stick, DIN an IO8 (A5) mit
   330 Ω in Reihe. Falls Pixel zittern/flackern: Pegel-Problem (3,3-V-Logik
-  gegen 5-V-Versorgung, Schwellwert ~3,5 V) — dann 1N4148 in die
-  Stick-VCC-Leitung (Stick läuft bei ~4,3 V, Schwellwert sinkt).
-  DOUT offen lassen.
+  gegen 5-V-Versorgung, mögliche Schwellwertverletzung) — geeigneten
+  Pegelwandler oder elektrisch dimensionierte Alternative vorsehen.
+  Keine ungeprüfte 1N4148 als Versorgungsdiode für acht LEDs; Strombudget
+  und tatsächliche Pegel messen. DOUT offen lassen.
 - **Encoder:** mittlerer Pin (C) an GND, A=IO15, B=IO14, Taster-Paar an
   IO12 + GND, alle mit `INPUT_PULLUP`. C vor dem Einstecken mit dem
   Durchgangsprüfer verifizieren (C schaltet abwechselnd gegen A und B
   beim Drehen).
 - **TPS61023-Boost:** IN an 5 V (USB), GND, EN an IO39, OUT 5,2 V →
   Button-LED-Rail. EN auf Low = True Disconnect (OUT komplett stromlos).
-  Test: EN togglen → 5-V-LEDs an/aus; prüfen, ob Audio über 5,2 V
-  lauter wird (Vorsicht: MAX98357A verträgt max. 5,5 V, 5,2 V ist ok).
+  Erst Ausgangsspannung unbelastet/unter geeigneter Last und EN-Verhalten
+  prüfen. LED-Rail nur nach Freigabe anschließen; Amp-Boost-Vergleich
+  separat und leise (MAX98357A max. 5,5 V, reale Boost-Spannung prüfen).
+  Noch kein bereits aufgebauter Verstärker-/LED-Versorgungspfad.
 - Erst jetzt, wenn alles an USB klappt: Akku mit **polungsgeprüfter**
   JST-Verbindung an den Feather, USB ab, Betrieb aus Akku testen. Deep
-  Sleep + Wake über IO5/6/11 (nur GPIO 0–21 können wecken). PN532- und
-  NeoPixel-Versorgung im Sleep abschaltbar über Boost-EN.
+  Sleep + Wake über IO5/6/11 (nur GPIO 0–21 können wecken). PN532 am
+  aktuellen 3V3-Header wird **nicht** durch Boost-EN oder IO7 abgeschaltet.
+  Separate schaltbare 3,3-V-Rail erst planen; externen NeoPixel-Stick
+  seiner realen Rail zuordnen. Sleep-Zustände, Rückspeisung und Gesamt-
+  Sleep-Strom prüfen (`docs/power-plan.md`).
 - Kippschalter als Hauptschalter: zwischen **EN** und **GND** — schaltet
   das Board ab, Laden über USB geht trotzdem weiter.
 

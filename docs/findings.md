@@ -45,10 +45,13 @@ Thema einfügen, Datum dazu.
   → Heißt für Boxbert: In die Firmware — Play/Pause mit kurzem Fade bauen,
   nicht hart abschalten.
   Quelle: [EE StackExchange „MAX98357A popping noise"](https://electronics.stackexchange.com/questions/723166/max98357a-creating-popping-noise-understanding-i2s-for-stm32), [esp32.com I2S-Crackling-Thread](https://www.esp32.com/viewtopic.php?t=4872)
-- **32-bit-Samples auf 16-bit-Format → Dauerknacksen.** Der Chip will
-  16-bit-Daten; wenn die Library 32 bit schickt, knistert es dauerhaft.
-  → Heißt für Boxbert: Bei ständigen Knacksern zuerst das Sample-Format
-  prüfen (`I2S_DATAFORMAT_16B` bzw. 16-bit-Standard der gewählten Library).
+- **Sample-/Slot-Format nicht aus dem Höreindruck erraten.** Die frühere
+  pauschale Aussage „Chip will nur 16 Bit, 32 Bit knistert“ war hier
+  nicht belegt und ist keine Fehlersuchregel. Bei Störungen tatsächliche
+  Decoder-/I2S-Einstellungen gegen Datenblatt und Beispiel der verwendeten
+  Library prüfen, nicht ungeprüft `I2S_DATAFORMAT_16B` erzwingen. Für die
+  getestete ESP_I2S-Referenz siehe `docs/testprotokoll-etappe1.md` und
+  `firmware/tests/etappe1_audio_led/`; MP3-Player nutzt andere Audio-API.
 - **Stottern bei WLAN/Webserver-Betrieb** kommt meist aus DMA-Underruns
   bzw. CPU-Core-Wechseln. Bewährte Werte aus der Community:
   DMA-Buffer erhöhen (~`buffer_count = 16`, `buffer_size = 1024`) und Audio
@@ -76,11 +79,14 @@ Thema einfügen, Datum dazu.
   hängender" Pin (z. B. halber Kontakt) kann also rechte-Kanal-Modus
   erzeugen: Das Mono-Links-Slot-Signal wird dann nicht ausgegeben →
   unsichtbar stumm. Fix: SD fest an 3,3 V.
-- **Lautstärke-Dynamik ist enorm:** AMP 10/32767 (≈ −70 dB) am 4-Ω-LS
-  ist noch deutlich hörbar. Für Kindersicherheit: MAX_AMP per Software
-  begrenzen (EN 71-1: 85 dB(A) für Hand-/Tischspielzeug, 65 dB(A)
-  nah-am-Ohr — Messung Quelle: STC-Infosheet, STC Group 2020).
-  Eigene Messreihe: `docs/testprotokoll-etappe1.md`
+- **Subjektiver Hörtest ist keine Schalldruckmessung (Klarstellung
+  04.10.2026).** AMP 10/32767 wurde noch gehört; der relative digitale
+  Pegel ist kein dB(A)-Wert. Frühere MAX_AMP-/65/85-dB-Angaben hatten
+  keinen dokumentierten akustischen Mess-/Normnachweis für Boxbert.
+  Keine kindersichere Grenze daraus berechnen; aktuelle leise Volume-6-
+  Referenz und nötige spätere Bewertung in `docs/audio-safety.md`.
+  Quelle: tatsächlich dokumentierter Hörtest `docs/testprotokoll-etappe1.md`
+  und Nutzer-Hörtests der Etappen 2–4; keine neue Normprüfung behauptet.
 
 ## SD-Karte
 
@@ -264,9 +270,10 @@ Thema einfügen, Datum dazu.
   Schwellwert (~3,5 V) → Flackern. Bewährte Fixes in der Community:
   echter Level-Shifter (74AHCT125), oder Versorgung des Sticks per
   Dioden-Drop auf ~4,3 V senken, oder ein „Opfer-Pixel" als Puffer.
-  → Heißt für Boxbert: Unser Plan (330 Ω in Reihe, fallback 1N4148 in die
-  VCC-Leitung des Sticks) ist genau der Community-Standard — wenn
-  geflickert wird,Diode rein, kein Geld für einen Shifter nötig.
+  → Für Boxbert keine pauschale 1N4148-Lastdiode für den ganzen 8-LED-
+  Stick freigeben. Pegelwandler oder passend belastbare Alternative
+  nach Strom-/Spannungsprüfung planen; Forumslösung ist keine Abnahme
+  für unseren Stick. Prüfgrenzen in `docs/power-plan.md`.
   Quelle: [AllAboutCircuits-Level-Shifter-Thread](https://forum.allaboutcircuits.com/threads/fast-and-accurate-3-3v-to-5v-level-shifter-for-neopixel-addressable-led-ws2812b-wled-esp32-project-needed.207614/), [r/WLED](https://www.reddit.com/r/WLED/comments/1hdlz6e/esp32_logic_level_shifter_ws2812b_keeps_flickering/)
 - **FastLED-Flackern auf ESP32:** Umstellen von `FASTLED_SHOW_CORE` 0 → 1
   (WLAN-Kram läuft auf Core 0 und stört das Bit-Banging).
@@ -275,13 +282,17 @@ Thema einfügen, Datum dazu.
 
 ## AW9523 (GPIO-Expander)
 
-- **Konstantstrom-Modus treibt bis ~45 mA pro Pin** — für unsere
-  5-V-Button-LEDs potentiell zu viel, wenn man die Default-Helligkeit
-  einfach voll aufdreht.
-  → Heißt für Boxbert: In der Firmware den Strom per Library drosseln
-  (z. B. `setMaxCurrent` / Port-Config), bevor die LEDs mit voller Pulle
-  laufen; Dimmwerte ohnehin per I2C — da ist der Stromlimit-Mechanismus
-  gratis dabei.
+- **GPIO-Modus und LED-Stromsenke unterscheiden (Herstellerprüfung,
+  04.10.2026).** Adafruit zeigt GPIO-LED mit Widerstand; erst
+  `AW9523_LED_MODE` bietet Konstantstrom-Senke (Kathode an Port),
+  `analogWrite` setzt den Dimmwert. VIN am Feather laut Hersteller
+  **3V3**, keine +5 V auf diese Rail. AB30L5-Widerstände bleiben erhalten.
+  5-V-Portspannung, Reset-/Gesamtstromgrenzen und Stromsenken-Reserve
+  noch anhand Datenblatt/Schaltplan prüfen; kein bereits bestandener
+  Button-LED-Test und keine ungeprüfte Maximalstrom-/API-Angabe.
+  Quelle: [Adafruit Arduino-Beispiele](https://learn.adafruit.com/adafruit-aw9523-gpio-expander-and-led-driver/arduino),
+  [Pinouts](https://learn.adafruit.com/adafruit-aw9523-gpio-expander-and-led-driver/pinouts);
+  aktueller Prüfplan `docs/power-plan.md`.
 - **A0/A1-Adress-Pads live umzulöten kann den Chip einfrieren** (Community-
   Berichte) und **3,3-V-Outputs schalten manche 5-V-Verbraucher nicht
   sicher**.
@@ -297,10 +308,12 @@ Thema einfügen, Datum dazu.
   692 µA**, je nach Lade-IC, Regler, Pegelwandlern und Peripherie. Adafruit
   gibt für unser Feather ~40–50 µA an — das ist ein *Board-Sollwert*, kein
   Gesamtsystem.
-  → Heißt für Boxbert: Nach dem ersten Sleep-Test selbst messen (USB-Meter
-  zwischen Akku/Board), PN532- und NeoPixel-Versorgung müssen im Sleep
-  über Boost-EN oder Rail-Switch wirklich stromlos sein — sonst dominieren
-  die Peripheral-Ströme den Board-Sleep-Strom locker um Faktor 10.
+  → Sleep-Strom mit geeignetem uA-Messaufbau messen, kein gewöhnlicher
+  USB-Meter als uA-Nachweis. PN532 hängt aktuell am 3V3-Header, nicht
+  hinter Boost-EN oder der TFT/STEMMA-Rail. Separate abschaltbare
+  3,3-V-Versorgung erst planen; den externen Stick seiner realen Rail
+  zuordnen, Rückspeisung prüfen (`docs/power-plan.md`). Herstellerprüfung
+  04.10.2026: [Feather Power Management](https://learn.adafruit.com/esp32-s3-reverse-tft-feather/power-management).
   Quelle: [lucidar.me ESP32-S3-Deep-Sleep-Messungen](https://lucidar.me/en/esp32/power-consumption-of-esp32-s3-devkitm-1/), [Espressif Current-Consumption-Doku](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/api-guides/current-consumption-measurement-modules.html)
 - **WLAN-TX-Spikes bis ~310 mA.** Beim Abspecken des Akkus/Boosts
   einkalkulieren, nicht nur den Audiogrundlast-Fall.

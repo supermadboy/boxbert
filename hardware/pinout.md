@@ -83,7 +83,7 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 
 | Funktion | Pin | Hinweis |
 |---|---|---|
-| AW9523 SDA / SCL | IO3 / IO4 | Adresse 0x58; Wire-Zugriffe mit NFC-Task synchronisieren |
+| AW9523 SDA / SCL | IO3 / IO4 | Adresse 0x58; VIN 3V3, kein +5 V auf VIN; Wire-Zugriffe synchronisieren |
 | Wake-Buttons | IO5, IO6, IO11 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet |
 | Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
 | Encoder-Taster | IO12 | |
@@ -96,8 +96,10 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 - Deep-Sleep-Wake nur ueber RTC-GPIOs 0–21; Wake-Buttons nicht am AW9523.
 - SPI ist ein Bus: weitere SPI-Geraete brauchen eigenen CS. Aktuell
   **PN532 per I2C**, SD auf SPI; alte SPI-/HSU-Plaene nicht mischen.
-- IO7 nicht selbst umschalten: LOW schaltet Display/I2C ab. Gezieltes
-  Power-Gating im Deep Sleep separat planen, nicht im laufenden Test.
+- IO7 nicht selbst umschalten: LOW schaltet TFT/STEMMA-QT-Rail ab,
+  nicht den allgemeinen 3V3-Header. Aktueller PN532 dort bleibt versorgt.
+  Feather-EN, Boost-EN und IO7 nicht gleichsetzen; Gezieltes Sleep-
+  Power-Gating erst nach `docs/power-plan.md` planen/pruefen.
 - Historische verworfene Pinplaene: `docs/archive/pinout-etappe4-legacy.md`;
   alte Diagnose-Sketches: `firmware/archive/etappe4_diagnostics/`.
 - Keine pauschale Diagnose „Clock-Stretching defekt“ oder „Modul kaputt“:

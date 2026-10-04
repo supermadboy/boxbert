@@ -1,4 +1,9 @@
-# Preisvergleich — Boxbert
+# Historischer Preisvergleich — Boxbert
+
+Auswahl-/Preisstand vom 25.09.2026, kein aktueller Bestand oder Warenkorb.
+Teile wie MT3608/MCP23017/Vergleichspaar wurden später ersetzt. Aktuell
+vorhanden: `hardware/BOM.md`; tatsächlicher Kauf: `docs/bestellliste.md`.
+Für Nachbestellungen Preise/Verfügbarkeit/Versand neu prüfen.
 
 Erhebung: 25.09.2026, live abgerufen (nicht geschätzt, außer wo markiert).
 Markiert als *Geschätzt* = Preis aus Erfahrungswerten, vor Bestellung auf der

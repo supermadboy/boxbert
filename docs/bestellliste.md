@@ -1,6 +1,9 @@
 # Bestellliste — Boxbert
 
-## Tastenkrone (berrybase.de) — bestellt am 27.09.2026, Status: unterwegs
+## Tastenkrone (berrybase.de) — bestellt 27.09.2026, angekommen 01.10.2026
+
+Historischer Kaufbeleg mit damaligen Preisen, kein laufender Warenkorb.
+Vorhandener Bestand/aktuelle Abweichungen: `hardware/BOM.md`.
 
 Gesamt brutto: **109,81 €** (Netto 92,28 €, MwSt 17,53 €, Versand 4,95 €).
 Diese Liste ist der tatsächliche Kauf — Abweichungen von `hardware/BOM.md`
@@ -40,15 +43,18 @@ sind bewusste Entscheidungen daraus (Details in `docs/entscheidungen.md`).
 ## Abweichungen von der BOM (hardware/BOM.md)
 
 - **Boost-Modul:** statt MT3608 der TPS61023 MiniBoost (Adafruit 4654) —
-  sauberer gelötet, fixe 5 V/1 A, Enable vorhanden.
+  nominal **5,2 V/1 A**, Enable/True Disconnect laut Bauteilunterlagen.
+  Shopbezeichnung „5 V“ nicht als eigene Ausgangsmessung behandeln.
 - **Lautsprecher:** nur einer bestellt (ADA3351, Gehäuselautsprecher),
   nicht das 40/50-mm-Vergleichspaar.
 - **Akku:** 3000 mAh statt 2000–2500 mAh.
 - **WS2812:** NeoPixel Stick mit 8 statt Strip mit min. 20.
 - **Button-Bestand:** 6 beleuchtete (2 × 44 mm/12 V-LED, 4 × 30 mm/5 V-LED),
   4 unbeleuchtete 24 mm, 3 Mini-Drucktaster — statt 8 + 6 beleuchteter.
-- **GPIO-Erweiterung:** AW9523 Breakout statt MCP23017 (kann beides I2C,
-  AW9523 kann zusätzlich LED-PWM treiben — passt zu den Button-LEDs).
+- **GPIO-Erweiterung:** AW9523 statt MCP23017: I2C-GPIO-Expander mit
+  programmierbarer LED-Konstantstromsenke. Eignung/Versorgung für die
+  fertigen 5-V-Button-LEDs noch prüfen, kein bereits freigegebener Anschluss
+  (`docs/power-plan.md`).
 - **Kippschalter:** zwei Stück, aber ein Miniatur- und ein Subminiatur-Typ
   statt zwei gleiche.
 - NFC-Tags: 2 × 6 Stück = 12 statt 10.

@@ -26,6 +26,18 @@ nicht als vollstaendiger Produkt-/Dauertest. Noch gezielt pruefen:
 - [ ] Vor AW9523-/Fuel-Gauge-Erweiterung Wire-Zugriffe mit NFC-Task
   synchronisieren. Akku erst ganz zum Schluss, Polung vorher pruefen.
 
+### Vor Etappe-6-/Akku-Ausbau prüfen
+
+- [ ] AW9523 erst an 3V3 im GPIO-/Tastertest; 5-V-LED-Portgrenzen,
+  Reset-/Stromverhalten und Schaltplan prüfen. Kein +5 V auf VIN-3V3,
+  integrierte Button-Widerstände behalten (`docs/power-plan.md`).
+- [ ] Tatsächliche Rails/Abschaltung festlegen: PN532 am Header wird nicht
+  durch Boost-EN/IO7 abgeschaltet. SD-Akkuversorgung, NeoPixel-Pegel,
+  Sleep-Zustände/Rückspeisung und Gesamtstrom testen, dann erst Akku.
+- [ ] Akustische Bewertung am finalen Aufbau planen; Volume/MAX_AMP
+  nicht mit festen dB(A) oder Normkonformität gleichsetzen.
+- [ ] IO6/IO11 und 44-mm-Schalter einzeln elektrisch/funktional testen.
+
 ## Erledigt
 
 - [x] **04.10.2026: Etappe 4 BESTANDEN — Breadboard-Abnahme.** Neuer
@@ -65,8 +77,9 @@ nicht als vollstaendiger Produkt-/Dauertest. Noch gezielt pruefen:
   Analogschwellwert (Mono-Modus > 1,4 V festlegen), und `ESP_I2S` braucht
   zwingend `setPins()` vor `begin()` — ohne das läuft alles grün, nur
   ohne Ton. Protokoll: `docs/testprotokoll-etappe1.md`.
-  Software-Lautstärkedekel für `Config.h` vereinbart (MAX_AMP ~6000–8000,
-  EN 71-1: 85 dB(A) Spielzeug).
+  Software-Limit vorgesehen; früheres MAX_AMP 6000–8000 ist kein
+  akustisch validierter Grenzwert. Norm-/Schalldruckbewertung offen,
+  `docs/audio-safety.md`.
 
 - [x] 01.10.2026: Etappe 0 in `docs/breadboard-testing.md` abgehakt — TFT-Test
   bestanden (Sketch: `firmware/tests/etappe0_tft/`, zeigt Text + WLAN-Scan

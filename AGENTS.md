@@ -21,9 +21,10 @@ wie erklärt wird, nicht was gilt.
 
 **Status 04.10.2026: Etappen 0–4 als Breadboard-Meilensteine bestanden.**
 Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
-Aktuell geflasht `firmware/tests/etappe4_tag_player/`: SD 4 MHz, NFC-Pause
-200 ms, Volume 6/21, USB-only. Naechster Schritt: Etappe 5 (WLAN-Webserver
-+ Upload), zuerst Umfang/Framework abstimmen. Fahrplan und Abnahmeumfang:
+Letzter hier dokumentierter Flash: `firmware/tests/etappe4_tag_player/`,
+SD 4 MHz, NFC-Pause 200 ms, Volume 6/21, USB-only. Aktueller Arbeitsstand
+und nächste Schritte ausschließlich in `To-Do.md`; Flash-Inhalt vor Tests
+am laufenden Sketch verifizieren. Fahrplan und Abnahmeumfang:
 `docs/breadboard-testing.md`, `docs/testprotokoll-etappe4.md`, `To-Do.md`.
 Dauertests/Produktreife nicht mit dieser Breadboard-Abnahme gleichsetzen.
 Entwicklungsumgebung ist eingerichtet; Reproduktion in `docs/dev-setup.md`.
@@ -59,9 +60,11 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
   Aufbau an Akkuspannung oder Boost (Entscheidung nach Hörtest). Lautsprecher:
   ADA3351-Gehäuselautsprecher 4 Ω / 3 W (kein 40/50-mm-Vergleichspaar, nur
   einer bestellt).
-- **Boost:** TPS61023 MiniBoost (ADA4654, fix 5,2 V / 1 A, Enable-Pin). EN auf
-  Low = True Disconnect — trennt Verstärker-Zusatzversorgung und Button-LEDs
-  im Deep Sleep komplett. MAX98357A verträgt max. 5,5 V, 5,2 V ist ok.
+- **Boost:** TPS61023 MiniBoost (ADA4654, nominal 5,2 V / 1 A, Enable-Pin).
+  EN Low = True Disconnect **nur für Verbraucher hinter seinem Ausgang**.
+  Aktueller Amp/PN532 hängen nicht dort; fertige Akku-/Sleep-Rails noch
+  offen (`docs/power-plan.md`). MAX98357A max. 5,5 V; vor Anschluss
+  Boost-Ausgang prüfen, 5,2 V nominal ist keine eigene Modulmessung.
 - **NFC:** PN532 aktuell **I2C**: SDA IO3, SCL IO4, VCC 3V3, DIP 1 ON /
   2 OFF, Adresse 0x24, 100 kHz. UID-Lesen und NFC+SD+Audio neu geprueft,
   Nutzer-Hoertest bestaetigt. Timeout 0 nur in eigener NFC-Task mit Queue,
@@ -85,16 +88,38 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
   Mini-Drucktaster, Drehencoder EC11, NeoPixel-Stick (8 × WS2812), 2
   Kippschalter. Nur 5–8 Buttons bekommen echte Funktionen, der Rest ist rein
   mechanisch (Busyboard-Gefühl).
-- **GPIO-Erweiterung:** AW9523 (ADA4886, I2C, 16 Kanäle, Adresse 0x58). Kann
-  **keine internen Pull-ups** (Taster brauchen externe 10 kΩ) und hat
-  Konstantstrom-LED-Treiber auf allen Pins (Button-LEDs ohne Vorwiderstand,
-  Dimmung per I2C).
-- **Stromsparen:** Deep Sleep (~40–50 µA am Feather), Aufwachen nur über
+- **GPIO-Erweiterung:** AW9523 (ADA4886, I2C, 16 Kanäle, 0x58), am Feather
+  **VIN 3V3**, niemals +5 V auf diese Rail. Keine internen Pull-ups:
+  Taster brauchen externe 10 kΩ. Nur LED-Modus ist Konstantstrom-Senke;
+  GPIO-Modus begrenzt LED-Strom nicht automatisch. Integrierte Button-
+  Vorwiderstände bleiben erhalten. 5-V-LED-Portansteuerung erst elektrisch
+  prüfen/freigeben; Details und Quellen in `docs/power-plan.md`.
+- **Stromsparen:** Deep Sleep (~40–50 µA Board-Richtwert, kein gemessener
+  Gesamtsystemstrom), Aufwachen nur über
   RTC-GPIOs 0–21 (daher Wake-Buttons auf IO5/6/11, nie über den AW9523),
   Auto-Sleep nach Inaktivität. PN532-Standby ist hoch (~10–13 mA) — im Sleep
-  abschalten.
+  abschalten. Dafür separate PN532-3,3-V-Abschaltung planen; Boost-EN,
+  Feather-EN und TFT/STEMMA-Power sind verschiedene Funktionen.
 - **Kippschalter als Hauptschalter:** zwischen EN und GND — schaltet das Board
   ab, Laden über USB geht trotzdem weiter.
+
+## Quellenzuständigkeit — Widersprüche nicht weginterpretieren
+
+| Frage | Maßgebliche Datei |
+|---|---|
+| Arbeitsweise und Sicherheitsregeln | `AGENTS.md` |
+| Aktueller Arbeitsstand / nächste Schritte | `To-Do.md` |
+| Pins / bestätigte Verkabelung | `hardware/pinout.md` |
+| Tatsächlich vorhandene Teile | `hardware/BOM.md` (Kaufbeleg: `docs/bestellliste.md`) |
+| Bauteilwerte | `docs/kernwerte.md` mit Datenblatt-/Herstellerquellen |
+| Nachgewiesene Tests / Messwerte | datierte Testprotokolle, Rohlogs, Nutzerbestätigungen |
+| Aktuelle Entscheidungen / Begründungen | `docs/entscheidungen.md` |
+
+Bei Widersprüchen **stoppen, Quellen prüfen und klären** — nicht einfach
+jüngere, bequemere oder häufiger wiederholte Angabe wählen. Historie /
+Archiv / Foren-Findings sind kein Ersatz für aktuelle Anschlussfreigaben.
+Datierter Dokumentationsstand beweist nicht den aktuellen Flash-Inhalt.
+Noch geplante Teile/Rails nicht als bereits aufgebaut/getestet behandeln.
 
 ## Pins — nie aus dem Gedächtnis
 
@@ -108,7 +133,8 @@ Kurzregeln: **PN532 auf I2C IO3/IO4, SD auf SPI IO36/35/37, CS IO10.**
 IO9/IO38 sind fuer NFC nicht mehr belegt. Weitere SPI-Geraete brauchen
 eigenen CS (Onboard-TFT hat IO42); alte SPI-/HSU-Plaene sind archiviert.
 **IO7 nicht anfassen**
-(schaltet Display- und I2C-Strom), **IO33/IO21 sind Onboard-NeoPixel-Power**,
+(schaltet TFT/STEMMA-QT-Rail, nicht allgemeinen 3V3-Header),
+**IO33/IO21 sind Onboard-NeoPixel-Daten/Power**,
 nicht belegen. Die endgültige Belegung nach Breadboard-Test landet in
 `firmware/Config.h`.
 
@@ -160,8 +186,10 @@ jedem Sketch-Flash und jeder Verkabelung einmal durchgehen:**
   Fehler („exit status 2") ansehen; `ls /dev/ttyACM*` als Port-Gegencheck.
 - **Lautstärke vor dem Ton denken.** Kindersicherheit gilt auch im
   Breadboard-Test: Testtöne immer mit minimaler Aussteuerung starten und
-  nur in Stufen hoch (Kindersicherheits-Grenzwert EN 71-1 im Kopf).
-  Kind im Raum = leise Stufen, keine Maximallautstärke-Tests.
+  nur in Stufen hoch. Kind im Raum = leise Stufen, keine Maximallautstärke-
+  Tests. MAX_AMP/Volume sind keine dB(A)-Messung oder Normgarantie;
+  vor Sicherheitsfreigabe passende akustische Bewertung durchführen
+  (`docs/audio-safety.md`), keine pauschalen 65/85-dB-Grenzen übernehmen.
 - **Doku direkt nach jedem Test**, nicht „später": Messwerte mit Datum
   ins Protokoll, neue Erkenntnisse in `docs/findings.md` nachtragen.
 
