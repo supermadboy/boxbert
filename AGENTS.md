@@ -151,16 +151,51 @@ jedem Sketch-Flash und jeder Verkabelung einmal durchgehen:**
   **nie positionsgleich durchverbinden**; pro Draht: Modul-Beschriftung
   lesen → Feather-Beschriftung lesen → stecken. Der Durchgangsprüfer
   bestätigt sonst fröhlich die eigene irrige Annahme.
-- **Nur kompilierte Binaries flashen.** Wenn `compile` fehlschlägt, nie
-  uploaden (es geht sonst das alte Binary raus) und den Fehler erst
-  ansehen. Upload-Fehler („exit status 2") nachschauen — dabei kann der
-  Port verschwinden; `ls /dev/ttyACM*` als Gegencheck.
+- **Genau den erfolgreich kompilierten Build flashen.** Eindeutiges
+  Build-Verzeichnis verwenden; `compile && upload --input-dir "$build_dir"`
+  verketten (vollständiger Befehl in `docs/dev-setup.md`). Bei Compile-
+  Fehler nie uploaden — sonst geht möglicherweise ein altes Binary raus.
+  Board-Defaults einschließlich QSPI-PSRAM beibehalten, kein `PSRAM=opi`.
+  Build-Pfad, Board-Optionen und Upload-Ergebnis ins Protokoll. Upload-
+  Fehler („exit status 2") ansehen; `ls /dev/ttyACM*` als Port-Gegencheck.
 - **Lautstärke vor dem Ton denken.** Kindersicherheit gilt auch im
   Breadboard-Test: Testtöne immer mit minimaler Aussteuerung starten und
   nur in Stufen hoch (Kindersicherheits-Grenzwert EN 71-1 im Kopf).
   Kind im Raum = leise Stufen, keine Maximallautstärke-Tests.
 - **Doku direkt nach jedem Test**, nicht „später": Messwerte mit Datum
   ins Protokoll, neue Erkenntnisse in `docs/findings.md` nachtragen.
+
+## Arbeitsregeln aus Etappe 4 (04.10.2026)
+
+Belege und Beispiele: `docs/testprotokoll-etappe4.md`, Rohlogs in
+`docs/serial/`. Zusätzlich zur Fehler-Checkliste oben:
+
+- **Flash/Reset ist kein Power-Cycle der Peripherie.** Der PN532 bleibt
+  beim Feather-Reset möglicherweise versorgt und im bisherigen Zustand.
+  Nach Initfehler nicht sofort umverdrahten oder wiederholt flashen:
+  laufenden Sketch identifizieren, bei Bedarf einen gezielten USB-
+  Power-Cycle mit weiterhin getrenntem Akku durchführen und dokumentieren.
+- **Serial-Beobachtung soll den Versuch nicht verändern.** Zunächst
+  passiv lesen, keinen unbeabsichtigten Reset über DTR/RTS auslösen
+  (Monitorverhalten prüfen). Bei geplantem Kaltstart Leser vorher öffnen.
+  Fehlende Boot-Zeilen nicht rekonstruieren; Rohlogs mit Datum, Variante
+  und Einstellungen sichern, Ausschnitte als solche kennzeichnen.
+- **Messstrecke und Nachweis präzise benennen.** Zeitstempel an relevante
+  Ereignisse: UID erkannt → Datei geöffnet → Stream bereit. Das ist nicht
+  Tag aufgelegt → erster hörbarer Ton. Datei-/Decoder-Erfolg und Nutzer-
+  Hörtest getrennt behandeln; wiederholter „bereit“-Text beweist keine
+  neue erfolgreiche Hardwareabfrage.
+- **Eine funktionale Stellschraube pro Vergleich.** Funktionierenden
+  Referenzstand sichern, erst messen, dann einzelne Änderung testen und
+  Ergebnis direkt dokumentieren. Nicht gleichzeitig Verdrahtung,
+  Bibliothek, Timeout und Takt ändern. Erfolgreiche Referenz-Sketches
+  unverändert lassen, Experimente separat halten; verworfene Varianten
+  eindeutig als historisch kennzeichnen.
+- **Bestätigt, vermutet und ungeprüft trennen.** Frühere Agentenaussagen
+  sind keine Abnahme. Logs, Nutzerbeobachtungen, Hypothesen und offene
+  Tests getrennt ausweisen. Ein ausdrücklich akzeptierter Breadboard-
+  Meilenstein ist keine Produkt-/Dauerprüfung; nicht durchgeführte Tests
+  als spätere Härtung in `To-Do.md` erhalten, nie als bestanden ausgeben.
 
 ## Findings-Datenbank
 
