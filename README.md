@@ -15,8 +15,15 @@ hat Vorrang.
 ## Status
 
 - [x] Projektstruktur, AGENTS.md, BOM, Entscheidungen
-- [ ] Preisrecherche → `docs/preisvergleich.md`
-- [ ] Bestellliste → `docs/bestellliste.md` (Daddelbert bestellt selbst)
+- [x] Preisrecherche → `docs/preisvergleich.md`
+- [x] Bestellliste, Bestellung und Lieferung (Daddelbert bestellt selbst)
+- [x] Entwicklungsumgebung und Breadboard-Etappen 0–4
+- [x] Zwei NFC-Tags wechseln SD-Musik; optimierter Hoertest bestaetigt
+  (04.10.2026). PN532 I2C, SD 4 MHz, Volume 6/21, USB-only.
+  [Etappe-4-Protokoll](docs/testprotokoll-etappe4.md),
+  [aktive Referenzen](firmware/tests/README.md).
+- [ ] Als Naechstes: Etappe 5, WLAN-Webserver + Upload (Umfang/Framework
+  zuerst abstimmen). Spaetere Haertung und Detailstatus: [To-Do.md](To-Do.md).
 - [ ] Button-Layout und Pin-Belegung → `hardware/`
 - [ ] Firmware-Grundgerüst → `firmware/`
 - [ ] App-Grundgerüst → `app/`

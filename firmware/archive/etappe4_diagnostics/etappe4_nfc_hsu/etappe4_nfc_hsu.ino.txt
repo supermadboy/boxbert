@@ -1,0 +1,229 @@
+// Boxbert — Etappe 4, Plan C: PN532 über HSU (High Speed UART) statt SPI.
+//
+// Warum: SD + PN532 am gemeinsamen SPI-MISO ist elektrisch gestört
+// (docs/testprotokoll-etappe4.md, 21:40). HSU umgeht den Bus komplett —
+// SD kriegt den SPI-Bus allein zurück (MISO=37 wieder angeschlossen!).
+//
+// Modul HW-147, DIP = BEIDE SCHALTER OFF (= HSU, Silkscreen: I2C 1/0,
+// SPI 0/1; Quelle Elechouse-Handbuch V3: HSU OFF/OFF).
+// I2C- und HSU-Pins teilen sich denselben Header: vorn SDA/SCL,
+// hinten TXD/RXD. SDA = TXD (Modulausgang), SCL = RXD (Moduleingang).
+//
+// Verdrahtung (stromlos umstecken!):
+//   Feather TX = IO39  ->  Modul SCL (= RXD)
+//   Feather RX = IO38  <-  Modul SDA (= TXD)
+//   Modul VCC = 3V3, GND = GND. IRQ unbenutzt, offen lassen.
+//   SPI-Leitungen (SCK 36 / MOSI 35 / MISO 37 / SS 9) VOM PN532 AB!
+//   SD bleibt: CS=10, SCK=36, MOSI=35, MISO=37, VCC=USB-5V.
+//
+// Musik: Boot = /arcade-music-loop.mp3, Tag E3:2F:F6:33 = arcade,
+// jede andere UID = /happy-tune.mp3 (UID wird ausgegeben, damit wir
+// Tag 2 festnageln koennen). Button IO5 (Etappe-3-Verdrahtung:
+// Terminal A -> IO5, B -> GND) spielt /fart.mp3.
+// Volume 6 (Kindersicherheit). Nur an USB testen, Akku bleibt ab.
+
+#include <Arduino.h>
+#include <Audio.h>
+#include <SPI.h>
+#include <SD.h>
+#include <Adafruit_NeoPixel.h>
+#include <PN532_HSU.h>
+#include <PN532.h>
+
+constexpr uint8_t SD_CS = 10;
+constexpr uint8_t SPI_SCK = 36;
+constexpr uint8_t SPI_MISO = 37;
+constexpr uint8_t SPI_MOSI = 35;
+constexpr uint8_t HSU_RX = 38; // Feather RX  <- Modul SCL (= TXD)
+constexpr uint8_t HSU_TX = 39; // Feather TX  -> Modul SDA (= RXD)
+constexpr uint8_t I2S_DOUT = 16;
+constexpr uint8_t I2S_BCLK = 17;
+constexpr uint8_t I2S_LRC = 18;
+constexpr uint8_t LED_PIN = 33; // Power=IO21 macht der Board-Core
+constexpr uint8_t BUTTON_PIN = 5; // Terminal A -> IO5, B -> GND, INPUT_PULLUP
+
+// Bekannte UID aus Etappe 4 (SPI-Test, 03.10.2026): 4 Bytes, SAK 0x08.
+const uint8_t TAG1_UID[] = {0xE3, 0x2F, 0xF6, 0x33};
+
+PN532_HSU transport(Serial1, HSU_RX, HSU_TX);
+PN532 nfc(transport);
+Audio audio;
+Adafruit_NeoPixel px(1, LED_PIN, NEO_GRB + NEO_KHZ800);
+const char *STARTTRACK = "/arcade-music-loop.mp3";
+const char *TAG1TRACK = "/arcade-music-loop.mp3";
+const char *TAG2TRACK = "/happy-tune.mp3";
+const char *FARTTRACK = "/fart.mp3";
+const char *state = "Boot";
+const char *nfcState = "PN532 HSU: noch nicht initialisiert";
+bool sdOk = false;
+bool nfcOk = false;
+bool audioReady = false;
+uint8_t lastUid[7] = {};
+uint8_t lastUidLength = 0;
+uint32_t lastSeen = 0;
+
+void color(uint8_t r, uint8_t g, uint8_t b) {
+  px.setPixelColor(0, px.Color(r, g, b));
+  px.show();
+}
+
+void my_audio_info(Audio::msg_t m) {
+  Serial.printf("[audio] %s: %s\n", m.s, m.msg);
+}
+
+// Workaround aus dem SPI-Direkttest (transportunabhaengiger
+// Bibliotheksfehler): SAMConfig/RFConfiguration antworten ohne
+// Nutzdaten; PN532.cpp verlangt dort fälschlich >0. Gueltig ist
+// eine validierte leere Antwort (Laenge 0). Der Transport prueft
+// ACK, Rahmen und Pruefsummen weiterhin selbst.
+bool configure(const char *name, const uint8_t *command, uint8_t length) {
+  const int8_t ack = transport.writeCommand(command, length);
+  if (ack != 0) {
+    Serial.printf("%s: ACK-Fehler %d\n", name, ack);
+    return false;
+  }
+  uint8_t response[8] = {};
+  const int16_t received = transport.readResponse(response, sizeof(response), 1000);
+  Serial.printf("%s: Antwortlaenge %d (0 = OK)\n", name, received);
+  return received == 0;
+}
+
+void setup() {
+  digitalWrite(SD_CS, HIGH);
+  pinMode(SD_CS, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP); // IO5: LOW = gedrueckt
+  px.begin();
+  px.setBrightness(20);
+  color(0, 0, 80);
+  Audio::audio_info_callback = my_audio_info;
+
+  Serial.begin(115200);
+  const uint32_t started = millis();
+  while (!Serial && millis() - started < 3000) delay(10);
+  Serial.println("\nEtappe 4 Plan C: PN532 an HSU (RX=38 <- SDA/TXD, TX=39 -> SCL/RXD), SD allein am SPI-Bus");
+
+  if (!SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI)) {
+    state = "FEHLER: SPI.begin";
+    color(80, 0, 0);
+    Serial.println(state);
+    return;
+  }
+  sdOk = SD.begin(SD_CS, SPI, 4000000);
+  Serial.println(sdOk ? "SD ok (4 MHz)" : "SD begin FEHLGESCHLAGEN");
+  digitalWrite(SD_CS, HIGH);
+
+  // nfc.begin(): Serial1.begin(115200, 8N1, 38, 39) + Wakeup
+  // (0x55 0x55 00 00 00). Erst ab jetzt antwortet das Modul.
+  nfc.begin();
+  delay(100);
+  const uint32_t version = nfc.getFirmwareVersion();
+  if (version) {
+    Serial.printf("PN5%02X gefunden, Firmware %u.%u\n",
+                  (unsigned)((version >> 24) & 0xFF),
+                  (unsigned)((version >> 16) & 0xFF),
+                  (unsigned)((version >> 8) & 0xFF));
+    const uint8_t sam[] = {PN532_COMMAND_SAMCONFIGURATION, 0x01, 0x14, 0x01};
+    const uint8_t retries[] = {PN532_COMMAND_RFCONFIGURATION, 0x05, 0xFF, 0x01, 0x00};
+    if (!configure("SAMConfig", sam, sizeof(sam))) {
+      nfcState = "PN532 antwortet, aber SAMConfig scheitert";
+      Serial.println("Konfiguration fehlgeschlagen: SAMConfig");
+    } else if (!configure("PassiveRetries", retries, sizeof(retries))) {
+      nfcState = "PN532 antwortet, aber PassiveRetries scheitert";
+      Serial.println("Konfiguration fehlgeschlagen: PassiveRetries");
+    } else {
+      nfcOk = true;
+      nfcState = "PN532 HSU bereit — Tag auflegen";
+    }
+  } else {
+    nfcState = "keine PN532-Firmware-Antwort ueber HSU";
+    Serial.println("FEHLER: PN532 antwortet nicht — DIP wirklich beide OFF? RX/TX vertauscht?");
+  }
+
+  if (sdOk) {
+    audioReady = audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+    if (audioReady) {
+      audio.setVolume(6);
+      const bool startedAudio = audio.connecttoFS(SD, STARTTRACK);
+      Serial.println(startedAudio ? "Boot-Musik gestartet (Volume 6)" : "Boot-Datei nicht gestartet");
+    } else {
+      Serial.println("FEHLER: Audio-Pinout");
+    }
+  }
+  if (nfcOk && sdOk && audioReady) {
+    state = "SD + NFC(HSU) bereit — Tag auflegen";
+    color(0, 80, 0);
+  } else if (nfcOk) {
+    state = "NFC(HSU) bereit, SD/Audio fehlt";
+    color(80, 40, 0);
+  } else {
+    state = "NFC fehlt — Etappe 4 Plan C NICHT bestanden";
+    color(80, 40, 0);
+  }
+  Serial.println(state);
+}
+
+void loop() {
+  if (audioReady) audio.loop();
+
+  // Button IO5: fallende Flanke mit 20-ms-Entprellen (bewaehrt aus
+  // Etappe 3), kurz Druecken spielt fart.mp3.
+  static bool lastState = HIGH;
+  static uint32_t lastChange = 0;
+  const bool pressed = digitalRead(BUTTON_PIN) == LOW;
+  if (pressed != (lastState == LOW)) {
+    lastState = pressed;
+    lastChange = millis();
+  } else if (pressed && millis() - lastChange > 20 &&
+             millis() - lastChange < 300) {
+    lastChange = 0; // nur einmal pro Druckvorgang
+    Serial.println("Button IO5: fart.mp3");
+    color(80, 80, 0);
+    if (audioReady) audio.connecttoFS(SD, FARTTRACK);
+  }
+
+  const uint32_t now = millis();
+  static uint32_t lastReport = 0;
+  if (now - lastReport >= 5000) {
+    lastReport = now;
+    Serial.printf("Status: %s | NFC: %s\n", state, nfcState);
+  }
+  if (!nfcOk) {
+    delay(1);
+    return;
+  }
+  static uint32_t lastPoll = 0;
+  if (now - lastPoll < 200) return;
+  lastPoll = now;
+
+  uint8_t uid[7] = {};
+  uint8_t length = 0;
+  // Endliche chipinterne Retries, Antworttimeout 100 ms. Zwischen den
+  // Abfragen laeuft audio.loop weiter; Hoertest muss Stottern ausschliessen.
+  if (!nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &length, 100)) return;
+  if (length == 0 || length > sizeof(uid)) return;
+  const uint32_t detected = millis();
+  const bool newTag = length != lastUidLength ||
+                      memcmp(uid, lastUid, length) != 0 ||
+                      detected - lastSeen > 2000;
+  lastSeen = detected;
+  if (!newTag) return; // gehaltenes Tag darf den Pups nicht staendig neu starten
+  memcpy(lastUid, uid, length);
+  lastUidLength = length;
+
+  Serial.print("Tag UID: ");
+  for (uint8_t i = 0; i < length; ++i) {
+    if (i) Serial.print(':');
+    Serial.printf("%02X", uid[i]);
+  }
+  Serial.println();
+  color(0, 80, 80);
+
+  const bool isTag1 = length == sizeof(TAG1_UID) &&
+                      memcmp(uid, TAG1_UID, sizeof(TAG1_UID)) == 0;
+  const char *track = isTag1 ? TAG1TRACK : TAG2TRACK;
+  Serial.printf("Spiele: %s\n", track);
+  if (audioReady) {
+    const bool played = audio.connecttoFS(SD, track);
+    Serial.println(played ? "Pups gestartet — bitte auf Aussetzer achten" : "FEHLER: Pups-Datei nicht gestartet");
+  }
+}

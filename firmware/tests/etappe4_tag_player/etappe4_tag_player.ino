@@ -1,0 +1,259 @@
+// Boxbert — Etappe 4: NEUER minimaler 2-Tag-Musiktest.
+// NFC-Suche mit getestetem Host-Timeout 0 in eigener FreeRTOS-Task;
+// Audio/SD und audio.loop() ausschliesslich im Arduino-Hauptloop.
+// Kein Boot-Lied, kein Autotest, kein WLAN, keine Button-Erweiterung.
+// Pins aus hardware/pinout.md; Kernwerte/Etappen 1–3 beachten.
+// Nur USB, Akku ab. VOLUME fest 6/21, keine Norm-Konformitaetsbehauptung.
+// API-Abgleich: Adafruit PN532 1.3.4 + etappe4_nfc_switch; Audio 4.0.0
+// examples/I2Saudio_SD; Core 3.3.12 FreeRTOS Queue/BasicMultiThreading.
+// Board-Defaults mit QSPI-PSRAM verwenden; NICHT PSRAM=opi.
+
+#include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <Adafruit_PN532.h>
+#include <Audio.h>
+#include <atomic>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+#include <freertos/queue.h>
+#include "TagMap.h"
+
+constexpr uint8_t NFC_SDA = 3;
+constexpr uint8_t NFC_SCL = 4;
+constexpr uint8_t SD_CS = 10;
+constexpr uint8_t SD_SCK = 36;
+constexpr uint8_t SD_MISO = 37;
+constexpr uint8_t SD_MOSI = 35;
+constexpr uint8_t I2S_BCLK = 17;
+constexpr uint8_t I2S_LRC = 18;
+constexpr uint8_t I2S_DOUT = 16;
+constexpr uint8_t VOLUME = 6;
+constexpr uint32_t SD_SPI_HZ = 4000000; // Separat gemessen: Happy Tune 5499 -> 1548 ms.
+constexpr uint32_t NFC_PAUSE_MS = 200; // Zweiter Vergleich: nur NFC-Erfolgspause kuerzen.
+
+// Dummy-Pins wie in den erfolgreichen I2C-Tests, kein IRQ-/Reset-Kabel.
+Adafruit_PN532 nfc(255, 254, &Wire);
+Audio audio;
+QueueHandle_t nfcEvents = nullptr;
+bool ready = false;
+bool nfcFailed = false;
+const char *state = "Boot";
+const char *lastPath = "-";
+uint32_t reads = 0;
+uint32_t switches = 0;
+uint32_t starts = 0;
+uint32_t startErrors = 0;
+uint32_t loopCount = 0;
+// Audio-Callbacks koennen aus der Library-Task kommen; Messmarker atomar.
+std::atomic<uint32_t> timingUidMs{0};
+std::atomic<bool> awaitingStream{false};
+
+void audioInfo(Audio::msg_t message) {
+    if (message.e == Audio::evt_vu || message.e == Audio::evt_spectrum) return;
+    const uint32_t now = millis();
+    if (message.e == Audio::evt_info && message.msg &&
+        strcmp(message.msg, "stream ready") == 0 && awaitingStream.exchange(false)) {
+        Serial.printf("TIMING stream_ready_ms=%lu since_uid_ms=%lu\n",
+                      (unsigned long)now, (unsigned long)(now - timingUidMs.load()));
+    }
+    Serial.printf("[audio %lu ms] %s: %s\n", (unsigned long)now,
+                  message.s ? message.s : "?", message.msg ? message.msg : "");
+}
+
+void nfcTask(void *) {
+    uint8_t lastUid[7] = {};
+    uint8_t lastLength = 0;
+    uint32_t taskReads = 0;
+    uint32_t taskSwitches = 0;
+    for (;;) {
+        NfcEvent event;
+        // Darf ohne Tag warten: Adafruit waitready() gibt mit delay(10)
+        // CPU-Zeit frei. Der Hauptloop kann parallel Audio nachfuellen.
+        const bool ok = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A,
+                                                event.uid, &event.length, 0);
+        if (!ok || event.length == 0 || event.length > sizeof(event.uid)) {
+            event.failed = true;
+            xQueueSend(nfcEvents, &event, portMAX_DELAY);
+            vTaskDelete(nullptr); // Keine Suchkommandos nach einem Fehler.
+        }
+        event.detectedMs = millis();
+        event.reads = ++taskReads;
+        event.changed = event.length != lastLength ||
+                        memcmp(event.uid, lastUid, event.length) != 0;
+        if (event.changed) {
+            if (lastLength != 0) ++taskSwitches;
+            memcpy(lastUid, event.uid, event.length);
+            lastLength = event.length;
+        }
+        event.switches = taskSwitches;
+        // Queue kopiert den kompletten Event; Hauptloop besitzt Audio.
+        xQueueSend(nfcEvents, &event, portMAX_DELAY);
+        // Kurze Erfolgs-Pause; Suchpfad mit Timeout 0 bleibt unveraendert.
+        vTaskDelay(pdMS_TO_TICKS(NFC_PAUSE_MS));
+    }
+}
+
+void reportStatus() {
+    Serial.printf("STATUS | %s | NFC %s | READS %lu | SWITCHES %lu | STARTS %lu"
+                  " | START_ERRORS %lu | AUDIO %s | FILE %s | LOOPS %lu\n",
+                  state, nfcFailed ? "FEHLER" : (ready ? "Task aktiv" : "nicht gestartet"),
+                  (unsigned long)reads, (unsigned long)switches,
+                  (unsigned long)starts, (unsigned long)startErrors,
+                  ready && audio.isRunning() ? "laeuft" : "idle", lastPath,
+                  (unsigned long)loopCount);
+}
+
+void setup() {
+    Serial.begin(115200);
+    delay(2500);
+    const uint32_t started = millis();
+    while (!Serial && millis() - started < 2000) {}
+    Serial.printf("\n=== BOXBERT TAG PLAYER v1-timing — SD=%lu Hz, NFC-Pause=%lu ms, Volume 6 ===\n",
+                  (unsigned long)SD_SPI_HZ, (unsigned long)NFC_PAUSE_MS);
+    Audio::audio_info_callback = audioInfo;
+    if (!psramFound() || ESP.getFreePsram() == 0) {
+        state = "FEHLER: PSRAM fehlt; Board-Defaults/QSPI pruefen";
+        Serial.println(state);
+        return;
+    }
+    Serial.printf("PSRAM frei: %lu Bytes\n", (unsigned long)ESP.getFreePsram());
+
+    // Wie im bestaetigten Wechseltest, keine Retry-/RFConfiguration.
+    if (!Wire.begin(NFC_SDA, NFC_SCL)) {
+        state = "FEHLER: Wire.begin";
+        Serial.println(state);
+        return;
+    }
+    Wire.setClock(100000);
+    if (!nfc.begin()) {
+        state = "FEHLER: nfc.begin";
+        Serial.println(state);
+        return;
+    }
+    delay(100);
+    const uint32_t version = nfc.getFirmwareVersion();
+    if (!version || !nfc.SAMConfig()) {
+        state = "FEHLER: PN532-Firmwareantwort/SAMConfig";
+        Serial.println(state);
+        return;
+    }
+    Serial.printf("PN532 Firmware %u.%u, I2C 100 kHz\n",
+                  unsigned((version >> 16) & 0xFF), unsigned((version >> 8) & 0xFF));
+
+    pinMode(SD_CS, OUTPUT);
+    digitalWrite(SD_CS, HIGH);
+    if (!SPI.begin(SD_SCK, SD_MISO, SD_MOSI, SD_CS) ||
+        !SD.begin(SD_CS, SPI, SD_SPI_HZ) || SD.cardType() == CARD_NONE) {
+        state = "FEHLER: SD nicht erreichbar";
+        Serial.println(state);
+        return;
+    }
+    for (const auto &binding : TAG_BINDINGS) {
+        File file = SD.open(binding.path, FILE_READ);
+        if (!file || file.isDirectory() || file.size() == 0) {
+            Serial.printf("FEHLER: Datei %s fehlt/leer/nicht lesbar\n", binding.path);
+            state = "FEHLER: Lieddatei";
+            return;
+        }
+        Serial.printf("%s -> %s | %lu Bytes\n", binding.name, binding.path,
+                      (unsigned long)file.size());
+        file.close();
+    }
+    if (!audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT)) {
+        state = "FEHLER: audio.setPinout";
+        Serial.println(state);
+        return;
+    }
+    audio.setVolume(VOLUME);
+
+    nfcEvents = xQueueCreate(8, sizeof(NfcEvent));
+    if (!nfcEvents) {
+        state = "FEHLER: NFC-Queue";
+        Serial.println(state);
+        return;
+    }
+    // Ungepinnte Task, niedrige Prioritaet; die Audio-Lib behaelt ihre
+    // eigenen Defaults. Nach setup() benutzt nur nfcTask den PN532/Wire.
+    if (xTaskCreate(nfcTask, "BoxbertNFC", 4096, nullptr, 1, nullptr) != pdPASS) {
+        vQueueDelete(nfcEvents);
+        nfcEvents = nullptr;
+        state = "FEHLER: NFC-Task";
+        Serial.println(state);
+        return;
+    }
+    ready = true;
+    state = "Bereit";
+    Serial.println("Bereit. Keine Boot-Musik; bekanntes Tag startet sein Lied einmal.");
+    Serial.println("h/s: Status. Entfernen stoppt nicht; anderes Tag wechselt.");
+}
+
+void loop() {
+    ++loopCount;
+    if (ready) {
+        audio.loop();
+        NfcEvent event;
+        if (xQueueReceive(nfcEvents, &event, 0) == pdTRUE) {
+            if (event.failed) {
+                nfcFailed = true;
+                Serial.println("FEHLER: NFC-Lesen gestoppt; laufende Musik bleibt unangetastet");
+            } else {
+                reads = event.reads;
+                switches = event.switches;
+                if (event.changed) {
+                    Serial.print("NFC NEUE UID: ");
+                    for (uint8_t i = 0; i < event.length; ++i) {
+                        if (i) Serial.print(':');
+                        Serial.printf("%02X", unsigned(event.uid[i]));
+                    }
+                    Serial.printf(" | SWITCHES %lu\n", (unsigned long)switches);
+                    const TagBinding *binding = findTagBinding(event.uid, event.length);
+                    if (!binding) {
+                        Serial.println("Unbekanntes Tag: kein Liedstart, laufende Musik bleibt.");
+                    } else {
+                        // connecttoFS beendet laut Library zuvor laufenden Song.
+                        // Kein Audiozugriff aus nfcTask, kein automatischer EOF-Loop.
+                        const uint32_t handlerMs = millis();
+                        Serial.printf("TIMING tag=%s uid_ms=%lu handler_ms=%lu queue_ms=%lu sd_hz=%lu pause_ms=%lu\n",
+                                      binding->name, (unsigned long)event.detectedMs,
+                                      (unsigned long)handlerMs,
+                                      (unsigned long)(handlerMs - event.detectedMs),
+                                      (unsigned long)SD_SPI_HZ, (unsigned long)NFC_PAUSE_MS);
+                        timingUidMs.store(event.detectedMs);
+                        awaitingStream.store(true);
+                        audio.setVolume(VOLUME);
+                        const uint32_t connectMs = millis();
+                        const bool connected = audio.connecttoFS(SD, binding->path);
+                        const uint32_t openedMs = millis();
+                        Serial.printf("TIMING tag=%s file_open_ms=%lu connect_ms=%lu since_uid_ms=%lu ok=%u\n",
+                                      binding->name, (unsigned long)openedMs,
+                                      (unsigned long)(openedMs - connectMs),
+                                      (unsigned long)(openedMs - event.detectedMs), unsigned(connected));
+                        if (connected) {
+                            ++starts;
+                            lastPath = binding->path;
+                            Serial.printf("START %s -> %s | VOLUME %u | STARTS %lu\n",
+                                          binding->name, binding->path, unsigned(VOLUME),
+                                          (unsigned long)starts);
+                        } else {
+                            awaitingStream.store(false);
+                            ++startErrors;
+                            Serial.printf("FEHLER: connecttoFS(%s)\n", binding->path);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if (Serial.available()) {
+        const int command = Serial.read();
+        if (command == 'h' || command == 's') reportStatus();
+    }
+    static uint32_t lastReport = 0;
+    if (millis() - lastReport >= 5000) {
+        lastReport = millis();
+        reportStatus(); // Bleibt auch bei taglos wartender NFC-Task erreichbar.
+    }
+    delay(1);
+}

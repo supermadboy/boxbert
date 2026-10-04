@@ -1,78 +1,104 @@
 # Pinbelegung — Adafruit ESP32-S3 Reverse TFT Feather (ADA5691)
 
-Stand: 27.09.2026. **Verbindliche Quelle für alle Pin-Vorschläge** in
-`docs/`, Firmware (`firmware/Config.h`) und Chats. Wer einen Pin vorschlägt,
-nimmt ihn von hier oder prüft ihn vorher wie unten beschrieben.
+Stand: **04.10.2026, Etappe 4 als Breadboard-Meilenstein abgeschlossen.**
+Verbindliche Quelle fuer Pin-Vorschlaege in Doku, Firmware und Chats.
+Getestete Verbindungen und noch nicht aufgebaute Erweiterungen sind unten
+getrennt. Endgueltige Firmware-Belegung spaeter in `firmware/Config.h`.
 
 ## Warum es diese Datei gibt
 
-Der erste Breadboard-Plan (27.09.2026) war aus dem Gedächtnis geschrieben und
-hatte sechs falsche Pins: I2C auf IO42/41 (sind TFT_CS/TFT_RST), SPI auf
-IO5/6/7 (Hardware-SPI ist 36/35/37, IO7 schaltet Display- und I2C-Strom),
-Buttons auf IO1/2/3 (Onboard-Taster bzw. SDA), Encoder auf IO45/46 (Backlight
-bzw. nicht herausgeführt), Boost-Enable auf IO33 (Onboard-NeoPixel). Beim
-Review gefunden, siehe Commit-Historie.
+Der erste Breadboard-Plan (27.09.2026) hatte sechs falsche Pins: I2C auf
+IO42/41 (TFT_CS/TFT_RST), SPI auf IO5/6/7 (Hardware-SPI 36/35/37; IO7
+schaltet Display-/I2C-Strom), Buttons auf IO1/2/3 (Board-Taster/SDA),
+Encoder auf IO45/46 (Backlight/nicht herausgefuehrt), Boost-EN auf IO33
+(Onboard-NeoPixel). Neue Pins deshalb nie aus allgemeinem ESP32-Wissen.
 
-## Wie man Pins prüft (so wurde es gefunden)
+## Wie man Pins prueft
 
-Die Board-Definition aus dem Arduino-Core ist die Wahrheit, nicht allgemeines
-ESP32-S3-Wissen und nicht Pinouts anderer Feather-Boards:
+Board-Definition der Variante `adafruit_feather_esp32s3_reversetft`:
 
 ```bash
 curl -s https://raw.githubusercontent.com/espressif/arduino-esp32/master/variants/adafruit_feather_esp32s3_reversetft/pins_arduino.h
 curl -s https://raw.githubusercontent.com/espressif/arduino-esp32/master/variants/adafruit_feather_esp32s3_reversetft/variant.cpp
 ```
 
-`pins_arduino.h` zeigt, was für SDA/SCL/SPI/TFT/LED/NeoPixel reserviert ist;
-`variant.cpp` zeigt, dass IO7 (TFT_I2C_POWER) und IO21 (NEOPIXEL_POWER) beim
-Start automatisch auf HIGH gesetzt werden — nicht selbst ansteuern.
-Die Header-Belegung (welche GPIOs überhaupt herausgeführt sind) steht im
-Adafruit-Learn-Guide „ESP32-S3 Reverse TFT Feather → Pinouts".
+Fuer Reproduktion der Tests auch die lokale Core-3.3.12-Definition
+heranziehen: `~/.arduino15/packages/esp32/hardware/esp32/3.3.12/variants/adafruit_feather_esp32s3_reversetft/`.
+`variant.cpp` setzt IO7 (TFT_I2C_POWER) und IO21 (NEOPIXEL_POWER) beim
+Start HIGH. Header-Belegung: Adafruit-Learn-Guide „ESP32-S3 Reverse TFT
+Feather → Pinouts“. Die Aufraeumarbeiten fuegen keine neuen Pins hinzu.
 
-## Vom Board belegt — nicht verwenden
+## Vom Board belegt — nicht frei zuweisen
 
 | GPIO | Belegt durch |
 |---|---|
 | 0, 1, 2 | Onboard-Taster D0 (BOOT) / D1 / D2 |
-| 7 | TFT_I2C_POWER (Strom für Display + STEMMA/I2C) |
-| 13 | rote Onboard-LED (als Ausgang nutzbar, leuchtet dann mit) |
+| 7 | TFT_I2C_POWER (Display + STEMMA/I2C) |
+| 13 | rote Onboard-LED; Ausgang moeglich, LED leuchtet mit |
 | 21 | NeoPixel-Power |
 | 33 | Onboard-NeoPixel |
 | 40, 41, 42 | TFT DC / RST / CS |
 | 45 | TFT-Backlight |
-| 46 u. a. | nicht auf den Header geführt |
+| 46 u. a. | nicht auf den Header gefuehrt |
 
-## Herausgeführte, nutzbare Pins
+Herausgefuehrt: A0=18, A1=17, A2=16, A3=15, A4=14, A5=8;
+SCK=36, MOSI=35, MISO=37; SDA=3, SCL=4; RX=38, TX=39;
+D5, D6, D9, D10, D11, D12, D13 (mit LED).
 
-A0=18, A1=17, A2=16, A3=15, A4=14, A5=8 · SCK=36, MOSI=35, MISO=37 ·
-SDA=3, SCL=4 · RX=38, TX=39 · D5, D6, D9, D10, D11, D12, (D13 mit LED)
+## Bestaetigter Breadboard-Aufbau — Etappen 1–4
 
-## Belegung (Vorschlag, im Breadboard-Test bestätigen)
+**Nur USB, Akku ab. Vor Umstecken USB trennen.** Jeden Anschluss nach
+Modul-/Feather-Silkscreen verbinden, nicht nach Position der Stiftleiste.
+
+| Funktion | Feather-Pin | Hinweis |
+|---|---|---|
+| MAX98357A DIN | IO16 (A2) | I2S-Daten |
+| MAX98357A BCLK | IO17 (A1) | |
+| MAX98357A LRC | IO18 (A0) | |
+| MAX98357A VIN / GND | USB-5V / GND | SD an 3V3, GAIN offen; Speaker nur zwischen Amp-Ausgaengen |
+| SD SCK | IO36 | SPI fuer SD; PN532 nicht angeschlossen |
+| SD MOSI / MISO | IO35 / IO37 | |
+| SD CS | IO10 | Player mit 4 MHz getestet |
+| SD VCC / GND | USB-5V / GND | Modul hat 3,3-V-Regler |
+| PN532 SDA | IO3 | I2C 100 kHz; auch STEMMA-QT |
+| PN532 SCL | IO4 | |
+| PN532 VCC / GND | 3V3 / GND | DIP **1 ON / 2 OFF** |
+| PN532 SPI/UART/IRQ/Reset | nicht verbunden | kein SS auf IO9 erforderlich |
+| Button (Etappe 3) | IO5 / GND | INPUT_PULLUP; im Etappe-4-Player keine Button-Funktion |
+
+PN532-Adresse **0x24**, onboard MAX17048 **0x36**. Nutzerbericht vom
+04.10.2026: I2C-Ruhepegel SDA/SCL 3,3 V; eigener neuer Chip-/UID-Test
+und neuer NFC+SD+Audio-Player erfolgreich, Hoertest auch nach Optimierung
+bestaetigt. Buspegel vor anderem Modul/anderer Versorgung neu pruefen.
+Modulunterlagen nennen fuer HSU/I2C 5-V-TTL; der funktionierende konkrete
+I2C-Aufbau ist keine allgemeine 3,3-V-Freigabe fuer beliebige PN532-Klone.
+**HSU-TXD nie direkt an IO38:** isoliert 4,1 V bei VCC=3,27 V gemessen;
+Feather-GPIOs sind nicht 5-V-tolerant. HSU ohne Pegelwandler gesperrt.
+
+Aktueller Player: `firmware/tests/etappe4_tag_player/`, Timeout 0 in
+NFC-Task, Pause 200 ms, Volume 6/21. UID-Zuordnung `hardware/nfc-tags.md`.
+Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
+
+## Geplante Erweiterungen — noch im Breadboard bestaetigen
 
 | Funktion | Pin | Hinweis |
 |---|---|---|
-| I2S DIN (MAX98357A) | IO16 (A2) | |
-| I2S BCLK | IO17 (A1) | |
-| I2S LRC | IO18 (A0) | |
-| SPI SCK (SD + PN532 geteilt) | IO36 | Hardware-SPI |
-| SPI MOSI | IO35 | |
-| SPI MISO | IO37 | |
-| SD CS | IO10 | |
-| PN532 SS | IO9 | |
-| I2C SDA (AW9523) | IO3 | auch STEMMA-QT-Buchse |
-| I2C SCL | IO4 | |
-| Button 1–3 (direkt, Wake-fähig) | IO5, IO6, IO11 | INPUT_PULLUP, andere Seite GND |
-| Encoder A / B | IO15 (A3), IO14 (A4) | |
+| AW9523 SDA / SCL | IO3 / IO4 | Adresse 0x58; Wire-Zugriffe mit NFC-Task synchronisieren |
+| Wake-Buttons | IO5, IO6, IO11 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet |
+| Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
 | Encoder-Taster | IO12 | |
-| NeoPixel-Stick DIN | IO8 (A5) | 330 Ω in Reihe |
-| Boost EN (TPS61023) | IO39 (TX) | |
-| frei | IO13, IO38 | weitere Buttons über AW9523 (16 Kanäle) |
+| NeoPixel-Stick DIN | IO8 (A5) | 330 Ohm in Reihe |
+| Boost EN (TPS61023) | IO39 (TX) | kein NFC-UART-Konflikt mehr |
+| frei | IO9, IO38; IO13 mit LED | weitere Buttons ueber AW9523 |
 
-## Regeln
+## Regeln und Historie
 
-- **Deep-Sleep-Wake** geht nur über RTC-GPIOs **0–21**. Wake-Buttons daher
-  auf IO5/6/11 (oder A-Pins), nie über den AW9523.
-- **SPI ist ein Bus** — SD und PN532 teilen SCK/MOSI/MISO, jedes Gerät hat
-  nur seinen eigenen CS.
-- **IO7 nicht anfassen.** Wird vom Core auf HIGH gesetzt; LOW schaltet
-  Display und I2C ab (später evtl. bewusst im Deep Sleep).
+- Deep-Sleep-Wake nur ueber RTC-GPIOs 0–21; Wake-Buttons nicht am AW9523.
+- SPI ist ein Bus: weitere SPI-Geraete brauchen eigenen CS. Aktuell
+  **PN532 per I2C**, SD auf SPI; alte SPI-/HSU-Plaene nicht mischen.
+- IO7 nicht selbst umschalten: LOW schaltet Display/I2C ab. Gezieltes
+  Power-Gating im Deep Sleep separat planen, nicht im laufenden Test.
+- Historische verworfene Pinplaene: `docs/archive/pinout-etappe4-legacy.md`;
+  alte Diagnose-Sketches: `firmware/archive/etappe4_diagnostics/`.
+- Keine pauschale Diagnose „Clock-Stretching defekt“ oder „Modul kaputt“:
+  Ursachen der frueheren Fehlschlaege bleiben teilweise unbekannt.

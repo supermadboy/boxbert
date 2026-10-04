@@ -1,0 +1,111 @@
+STATUS | Bereit | NFC Task aktiv | READS 2 | SWITCHES 0 | STARTS 1 | START_ERRORS 0 | AUDIO laeuft | FILE /arcade-music-loop.mp3 | LOOPS 9312
+NFC NEUE UID: 01:8C:F1:6E | SWITCHES 1
+TIMING tag=TAG2 uid_ms=15650 handler_ms=15652 queue_ms=2 sd_hz=4000000 pause_ms=200
+TIMING tag=TAG2 file_open_ms=15686 connect_ms=33 since_uid_ms=36 ok=1
+START TAG2 -> /happy-tune.mp3 | VOLUME 6 | STARTS 2
+[audio 15688 ms] info: Closing audio file "arcade-music-loop.mp3"
+[audio 15689 ms] info: MP3Decoder has been destroyed
+[audio 15689 ms] info: Reading file: "/happy-tune.mp3"
+[audio 15845 ms] info: MP3Decoder has been initialized
+[audio 16000 ms] info: File-Size: 642028
+[audio 16001 ms] info: ID3 framesSize: 44
+[audio 16001 ms] info: ID3 version: 2.4
+[audio 16621 ms] id3data: SettingsForEncoding: Lavf63.1.102
+[audio 17210 ms] info: Duration (s): 40
+[audio 17211 ms] info: Bitrate (b/s): 128396
+TIMING stream_ready_ms=17212 since_uid_ms=1562
+[audio 17212 ms] info: stream ready
+[audio 17214 ms] info: syncword found at pos 0
+[audio 17219 ms] info: MPEG-1 Layer III
+[audio 17220 ms] info: Audio-Data-Start: 44
+[audio 17220 ms] info: Audio-Length: 641984
+[audio 17220 ms] info: Channels: 2
+[audio 17221 ms] info: SampleRate (Hz): 44100
+[audio 17221 ms] info: BitsPerSample: 16
+[audio 17221 ms] bitrate (b/s): 128396
+STATUS | Bereit | NFC Task aktiv | READS 4 | SWITCHES 1 | STARTS 2 | START_ERRORS 0 | AUDIO laeuft | FILE /happy-tune.mp3 | LOOPS 12242
+NFC NEUE UID: E3:2F:F6:33 | SWITCHES 2
+TIMING tag=TAG1 uid_ms=22150 handler_ms=22151 queue_ms=1 sd_hz=4000000 pause_ms=200
+TIMING tag=TAG1 file_open_ms=22178 connect_ms=26 since_uid_ms=28 ok=1
+START TAG1 -> /arcade-music-loop.mp3 | VOLUME 6 | STARTS 3
+[audio 22180 ms] info: Closing audio file "happy-tune.mp3"
+[audio 22180 ms] info: MP3Decoder has been destroyed
+[audio 22181 ms] info: Reading file: "/arcade-music-loop.mp3"
+[audio 22337 ms] info: MP3Decoder has been initialized
+[audio 22493 ms] info: File-Size: 549988
+[audio 22494 ms] info: ID3 framesSize: 373
+[audio 22494 ms] info: ID3 version: 2.4
+[audio 23115 ms] id3data: Encoded by: Logic Pro X
+[audio 23490 ms] id3data: Publication date: 2014-10-09
+[audio 23494 ms] id3data: UserDefinedText: coding_history
+[audio 23498 ms] id3data: UserDefinedText: time_reference
+[audio 23503 ms] id3data: UserDefinedText: umid
+[audio 23507 ms] id3data: SettingsForEncoding: Lavf63.1.102
+[audio 23519 ms] info: Duration (s): 34
+[audio 23520 ms] info: Bitrate (b/s): 129321
+TIMING stream_ready_ms=23522 since_uid_ms=1372
+[audio 23522 ms] info: stream ready
+[audio 23523 ms] info: syncword found at pos 0
+[audio 23528 ms] info: MPEG-1 Layer III
+[audio 23529 ms] info: Audio-Data-Start: 373
+[audio 23529 ms] info: Audio-Length: 549615
+[audio 23529 ms] info: Channels: 2
+[audio 23529 ms] info: SampleRate (Hz): 44100
+[audio 23529 ms] info: BitsPerSample: 16
+[audio 23530 ms] bitrate (b/s): 129321
+STATUS | Bereit | NFC Task aktiv | READS 5 | SWITCHES 2 | STARTS 3 | START_ERRORS 0 | AUDIO laeuft | FILE /arcade-music-loop.mp3 | LOOPS 15902
+NFC NEUE UID: 01:8C:F1:6E | SWITCHES 3
+TIMING tag=TAG2 uid_ms=26423 handler_ms=26425 queue_ms=2 sd_hz=4000000 pause_ms=200
+TIMING tag=TAG2 file_open_ms=26452 connect_ms=26 since_uid_ms=29 ok=1
+START TAG2 -> /happy-tune.mp3 | VOLUME 6 | STARTS 4
+[audio 26453 ms] info: Closing audio file "arcade-music-loop.mp3"
+[audio 26453 ms] info: MP3Decoder has been destroyed
+[audio 26453 ms] info: Reading file: "/happy-tune.mp3"
+[audio 26610 ms] info: MP3Decoder has been initialized
+[audio 26765 ms] info: File-Size: 642028
+[audio 26766 ms] info: ID3 framesSize: 44
+[audio 26766 ms] info: ID3 version: 2.4
+[audio 27386 ms] id3data: SettingsForEncoding: Lavf63.1.102
+[audio 27976 ms] info: Duration (s): 40
+[audio 27977 ms] info: Bitrate (b/s): 128396
+TIMING stream_ready_ms=27978 since_uid_ms=1555
+[audio 27978 ms] info: stream ready
+[audio 27980 ms] info: syncword found at pos 0
+[audio 27985 ms] info: MPEG-1 Layer III
+[audio 27986 ms] info: Audio-Data-Start: 44
+[audio 27986 ms] info: Audio-Length: 641984
+[audio 27986 ms] info: Channels: 2
+[audio 27987 ms] info: SampleRate (Hz): 44100
+[audio 27987 ms] info: BitsPerSample: 16
+[audio 27987 ms] bitrate (b/s): 128396
+STATUS | Bereit | NFC Task aktiv | READS 7 | SWITCHES 3 | STARTS 4 | START_ERRORS 0 | AUDIO laeuft | FILE /happy-tune.mp3 | LOOPS 19347
+NFC NEUE UID: E3:2F:F6:33 | SWITCHES 4
+TIMING tag=TAG1 uid_ms=32832 handler_ms=32834 queue_ms=2 sd_hz=4000000 pause_ms=200
+TIMING tag=TAG1 file_open_ms=32861 connect_ms=26 since_uid_ms=29 ok=1
+START TAG1 -> /arcade-music-loop.mp3 | VOLUME 6 | STARTS 5
+[audio 32863 ms] info: Closing audio file "happy-tune.mp3"
+[audio 32863 ms] info: MP3Decoder has been destroyed
+[audio 32864 ms] info: Reading file: "/arcade-music-loop.mp3"
+[audio 33020 ms] info: MP3Decoder has been initialized
+[audio 33175 ms] info: File-Size: 549988
+[audio 33176 ms] info: ID3 framesSize: 373
+[audio 33176 ms] info: ID3 version: 2.4
+[audio 33796 ms] id3data: Encoded by: Logic Pro X
+[audio 34171 ms] id3data: Publication date: 2014-10-09
+[audio 34175 ms] id3data: UserDefinedText: coding_history
+[audio 34179 ms] id3data: UserDefinedText: time_reference
+[audio 34183 ms] id3data: UserDefinedText: umid
+[audio 34187 ms] id3data: SettingsForEncoding: Lavf63.1.102
+[audio 34199 ms] info: Duration (s): 34
+[audio 34200 ms] info: Bitrate (b/s): 129321
+TIMING stream_ready_ms=34201 since_uid_ms=1369
+[audio 34201 ms] info: stream ready
+[audio 34203 ms] info: syncword found at pos 0
+[audio 34209 ms] info: MPEG-1 Layer III
+[audio 34209 ms] info: Audio-Data-Start: 373
+[audio 34210 ms] info: Audio-Length: 549615
+[audio 34210 ms] info: Channels: 2
+[audio 34210 ms] info: SampleRate (Hz): 44100
+[audio 34210 ms] info: BitsPerSample: 16
+[audio 34211 ms] bitrate (b/s): 129321
+STATUS | Bereit | NFC Task aktiv | READS 9 | SWITCHES 4 | STARTS 5 | START_ERRORS 0 | AUDIO laeuft | FILE /arcade-music-loop.mp3 | LOOPS 23006

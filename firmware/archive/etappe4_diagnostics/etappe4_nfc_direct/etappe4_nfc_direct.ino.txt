@@ -1,0 +1,108 @@
+// Boxbert — Etappe 4: ein isolierter PN532-Rettungsversuch.
+// Pins aus hardware/pinout.md, Ablauf aus PN532/examples/iso14443a_uid.
+// Verdrahtung unveraendert: 3V3, GND, SCK=36, MISO=37, MOSI=35,
+// SS=9 (+externer Pull-up), DIP auf SPI (1 OFF, 2 ON).
+// Diagnose: SD-MISO getrennt, SD-CS=10 HIGH. Kein Audio.
+
+#include <SPI.h>
+#include <PN532_SPI.h>
+#include <PN532.h>
+
+constexpr uint8_t SD_CS = 10;
+constexpr uint8_t NFC_CS = 9;
+PN532_SPI pn532spi(SPI, NFC_CS);
+PN532 nfc(pn532spi);
+bool ready = false;
+const char *result = "Noch nicht initialisiert";
+
+// SAMConfiguration und RFConfiguration antworten ohne Nutzdaten.
+// PN532_SPI::readResponse liefert dafuer korrekt 0; die installierte
+// PN532-Lib prueft in SAMConfig/setPassiveActivationRetries falsch auf >0.
+// Nur hier umgehen, globale Bibliothek unveraendert lassen. Der Transport
+// prueft ACK, Antwortkommando, Rahmen und Pruefsummen weiterhin selbst.
+bool configure(const char *name, const uint8_t *command, uint8_t length) {
+  const int8_t ack = pn532spi.writeCommand(command, length);
+  if (ack != 0) {
+    Serial.printf("%s: ACK-Fehler %d\n", name, ack);
+    return false;
+  }
+  uint8_t response[8] = {};
+  const int16_t received = pn532spi.readResponse(response, sizeof(response), 1000);
+  Serial.printf("%s: Antwortlaenge %d (0 = OK, negativ = Fehler)\n", name, received);
+  return received == 0;
+}
+
+void setup() {
+  digitalWrite(SD_CS, HIGH);
+  pinMode(SD_CS, OUTPUT);
+  digitalWrite(NFC_CS, HIGH);
+  pinMode(NFC_CS, OUTPUT);
+
+  Serial.begin(115200);
+  const uint32_t started = millis();
+  while (!Serial && millis() - started < 3000) delay(10);
+  Serial.println("\nPN532 Rettungsversuch: korrekte Pins, SD-CS HIGH, begin + Wakeup");
+
+  if (!SPI.begin(36, 37, 35)) {
+    result = "FEHLER: SPI.begin";
+    Serial.println(result);
+    return;
+  }
+  nfc.begin(); // Fehlte im bisherigen Direkttest: SS-Ausgang + SPI + Wakeup!
+  // Seeed begin() verwendet einen alten ClockDivider. Danach explizit
+  // konservative ESP32-Einstellungen setzen; kein anderer SPI-Nutzer aktiv.
+  SPI.setFrequency(100000);
+  SPI.setBitOrder(LSBFIRST);
+  SPI.setDataMode(SPI_MODE0);
+  delay(100);
+
+  const uint32_t version = nfc.getFirmwareVersion(); // genau ein Init-Test
+  if (!version) {
+    result = "FEHLER: PN532 antwortet auch mit korrigierter Initialisierung nicht";
+    Serial.println(result);
+    return;
+  }
+  Serial.printf("PN5%02X gefunden, Firmware %u.%u\n",
+                (unsigned)((version >> 24) & 0xFF),
+                (unsigned)((version >> 16) & 0xFF),
+                (unsigned)((version >> 8) & 0xFF));
+  const uint8_t sam[] = {PN532_COMMAND_SAMCONFIGURATION, 0x01, 0x14, 0x01};
+  if (!configure("SAMConfig", sam, sizeof(sam))) {
+    result = "FEHLER: SAMConfig";
+    Serial.println(result);
+    return;
+  }
+  const uint8_t retries[] = {PN532_COMMAND_RFCONFIGURATION, 0x05, 0xFF, 0x01, 0x00};
+  if (!configure("PassiveRetries", retries, sizeof(retries))) {
+    result = "FEHLER: PassiveRetries";
+    Serial.println(result);
+    return;
+  }
+  ready = true;
+  result = "PN532 bereit — NTAG215 auflegen";
+  Serial.println(result);
+}
+
+void loop() {
+  static uint32_t lastReport = 0;
+  if (millis() - lastReport >= 3000) {
+    lastReport = millis();
+    Serial.println(result); // auch nach spaetem Oeffnen des Monitors sichtbar
+  }
+  if (!ready) {
+    delay(100);
+    return; // keine weiteren Init-Versuche
+  }
+  uint8_t uid[7] = {};
+  uint8_t uidLength = 0;
+  if (nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength, 1000)) {
+    Serial.print("Tag UID: ");
+    for (uint8_t i = 0; i < uidLength && i < sizeof(uid); ++i) {
+      if (i) Serial.print(':');
+      Serial.printf("%02X", uid[i]);
+    }
+    Serial.println();
+    delay(1000);
+  }
+  delay(100);
+}

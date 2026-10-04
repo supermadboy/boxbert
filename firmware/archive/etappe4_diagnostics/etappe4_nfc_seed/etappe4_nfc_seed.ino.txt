@@ -1,0 +1,53 @@
+// Boxbert — Etappe 4 diagnose: PN532 mit SEEED-Lib (nicht Adafruit)
+//
+// Hintergrund: Adafruit-PN532 findet den HW-147C am ESP32 nicht (auch mit
+// 100 kHz + SLOWDOWN nicht). GitHub-Issue adafruit/Adafruit-PN532#80:
+// genau dieses Muster — Adafruit-Lib findet Chip nicht, Seeed-Lib
+// funktioniert mit identischer Verkabelung. Das testen wir jetzt.
+//
+// Verkabelung UNVERAENDERT (wie Adafruit-Test):
+//   PN532 VCC -> 3V3, GND -> GND, SCK -> IO36, MISO -> IO37,
+//   MOSI -> IO35, SS -> IO9 (+10k Pull-up nach 3V3)
+//   DIP auf SPI (Silkscreen-Tabelle "0 1": S1 OFF, S2 ON)
+//
+// Kein Audio, keine SD in diesem Test — nur NFC-Erkennung.
+// Achtung: Seeed-Lib ruft SPI.begin() ohne Pins auf — deshalb rufen WIR
+// SPI.begin(36,37,35) VOR nfc.begin() auf; der zweite Aufruf der Lib ist
+// dank Guard im Core ein No-op (verifiziert in SPI.cpp 3.3.12).
+
+#include <SPI.h>
+#include <PN532_SPI.h>
+#include <PN532.h>
+#include <NfcAdapter.h>
+
+#define SPI_SCK  36
+#define SPI_MISO 37
+#define SPI_MOSI 35
+#define PN532_SS 9
+
+PN532_SPI interface(SPI, PN532_SS);
+NfcAdapter nfc = NfcAdapter(interface);
+
+void setup() {
+    Serial.begin(115200);
+    unsigned long t0 = millis();
+    while (!Serial && millis() - t0 < 2000) {}
+
+    Serial.println("\n=== Etappe 4 diagnose: PN532 via SEEED-Lib (NfcAdapter) ===");
+
+    SPI.begin(SPI_SCK, SPI_MISO, SPI_MOSI);   // unsere Pins ZUERST
+    nfc.begin();
+    Serial.println("NfcAdapter begin() ok — warte auf Tags ...");
+}
+
+void loop() {
+    if (nfc.tagPresent()) {
+        NfcTag tag = nfc.read();
+        Serial.println("Tag gefunden!");
+        Serial.print("UID: ");
+        Serial.println(tag.getUidString());
+        Serial.println("(gleichen Tag erneut vorlegen zum Wiederholen)");
+        delay(1000);
+    }
+    delay(100);
+}

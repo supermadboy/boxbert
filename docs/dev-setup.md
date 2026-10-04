@@ -1,13 +1,46 @@
 # Dev-Setup — Entwicklungsumgebung für Boxbert
 
-Stand: **01.10.2026 — installiert und per Compile-Test verifiziert.**
-Offen: Gruppenwechsel (Logout/Login) und der echte Hardware-Test (Etappe 0
-aus `docs/breadboard-testing.md`) — Werkzeug dafür ist komplett bereit.
+Stand: **04.10.2026 — eingerichtet; Etappen 0–4 auf Hardware bestanden.**
+Gruppenwechsel/Kernel-Reboot und Flash-/Serial-/TFT-Test erledigt.
+Unten bleibt das Installationsprotokoll vom 01.10.2026 chronologisch
+stehen; spaetere Bibliotheken/Build-Referenz siehe naechsten Abschnitt.
 
 Beim Aufsetzen hier eintragen: Versionsnummern, Distribution, jede Abweichung
 von diesem Plan und jede gefundene Lösung (mit Datum). Diese Datei ist das
 Protokoll, nicht nur die Anleitung — der nächste Rechner (oder ein neu
 aufgesetztes System) soll denselben Weg gehen können.
+
+## Reproduzierbarer Etappe-4-Stand (04.10.2026)
+
+- arduino-cli 1.5.1, esp32-Core **3.3.12**; FQBN
+  `esp32:esp32:adafruit_feather_esp32s3_reversetft` mit Board-Defaults,
+  insbesondere **QSPI-PSRAM**, kein `PSRAM=opi`; USB CDC bereits Default.
+- Aktiver Player: `firmware/tests/etappe4_tag_player/`, Adafruit PN532
+  **1.3.4**, Adafruit BusIO **1.17.4**, ESP32-audioI2S **4.0.0**.
+  Letztere lokal als `ESP32-audioI2S-master` installiert. Wire/SPI/SD
+  werden fuer den Player aus dem Core aufgeloest; die ebenfalls
+  installierte User-SD-1.3.0 ist nicht die verwendete Core-SD.
+- Alte Diagnosen verwendeten PN532-Arduino/NDEF; fuer aktuellen I2C-
+  Player nicht erforderlich. Keine globalen Bibliotheken gepatcht.
+- Arch-Port `/dev/ttyACM0`, Gruppe uucp. Letzter erfolgreich geflashter
+  Player: 1646096 Bytes Flash / 77184 Bytes globale Variablen; SD 4 MHz,
+  NFC-Pause 200 ms, Volume 6. Hoertest/Abnahme im Etappe-4-Protokoll.
+
+Compile und Upload unbedingt verketten (keine alten Binaries nach Fehler):
+
+```bash
+build_dir=$(mktemp -d /tmp/boxbert-player.XXXXXX)
+arduino-cli compile \
+  --fqbn esp32:esp32:adafruit_feather_esp32s3_reversetft \
+  --build-path "$build_dir" firmware/tests/etappe4_tag_player && \
+arduino-cli upload \
+  --fqbn esp32:esp32:adafruit_feather_esp32s3_reversetft \
+  --port /dev/ttyACM0 --input-dir "$build_dir"
+```
+
+Aufgelegtes bekanntes Tag kann nach Boot leise Musik starten. Nur USB,
+Akku ab. Beim Dokumentationsabschluss nicht erneut geflasht: bestaetigter
+Player bleibt auf dem Board. Aktive Referenzen `firmware/tests/README.md`.
 
 ## Werkzeug-Entscheidung
 

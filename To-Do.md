@@ -2,13 +2,47 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Etappe 4:** PN532 (NFC) am geteilten SPI-Bus (SS=IO9) — DIP auf
-  SPI, VCC an 3V3. Test: Tag auflegen → UID. Danach Etappen 5–6 nach
-  Fahrplan, je Etappe ein Testprotokoll in `docs/`.
-- [ ] Framework-Entscheidung (Arduino vs. ESP-IDF) — erst relevant für
-  Sprint 4 (Firmware-Skelett), nicht für die Breadboard-Etappen.
+- [ ] **Etappe 5 vorbereiten — WLAN-Webserver + Upload.** Erst Umfang und
+  Firmware-Framework abstimmen, dann schrittweise Webserver neben dem
+  funktionierenden NFC-/SD-/Audio-Pfad testen. Keine BLE-Abhaengigkeit.
+- [ ] Framework-Entscheidung (Arduino vs. ESP-IDF) — Sprint 4; bisherige
+  Breadboard-Referenzen verwenden Arduino-Core 3.3.12.
+
+### Spaetere Haertung — keine offenen Etappe-4-Abschlussbedingungen
+
+Etappe 4 ist auf Nutzerwunsch als Breadboard-Meilenstein abgenommen,
+nicht als vollstaendiger Produkt-/Dauertest. Noch gezielt pruefen:
+
+- [ ] Mindestens 20 **kontrollierte** Tagwechsel und mehrere Minuten
+  Audio unter NFC-Last, spaeter auch WLAN-/Upload-Last; Fehler zaehlen.
+- [ ] Entfernen waehrend Audio und EOF ohne automatischen Neustart
+  explizit beobachten. Verhalten ist implementiert, nicht separat abgenommen.
+- [ ] Kaltstart ohne Tag im **Player**, spaeteres Auflegen. NFC-only-
+  Wechselreferenz bestand diese angeforderte Testfolge bereits.
+- [ ] Physisch unbekanntes Tag: kein Start/keine Unterbrechung. UID-
+  Mapping host-getestet, noch kein unbekanntes Tag auf Hardware getestet.
+- [ ] Tag-Chiptyp bei Bedarf bestimmen; beide bestaetigten Tags haben
+  4-Byte-UIDs. Nicht allein aus Hinweistext „NTAG215“ ableiten.
+- [ ] Vor AW9523-/Fuel-Gauge-Erweiterung Wire-Zugriffe mit NFC-Task
+  synchronisieren. Akku erst ganz zum Schluss, Polung vorher pruefen.
 
 ## Erledigt
+
+- [x] **04.10.2026: Etappe 4 BESTANDEN — Breadboard-Abnahme.** Neuer
+  `etappe4_tag_player`: PN532 I2C IO3/IO4 (DIP ON/OFF, 100 kHz), SD SPI
+  IO36/35/37 mit CS IO10 (4 MHz), MAX98357A I2S IO16/17/18, USB-only.
+  Tag 1 `E3:2F:F6:33` → `/arcade-music-loop.mp3`, Tag 2 `01:8C:F1:6E`
+  → `/happy-tune.mp3`, Volume 6/21. Hoerbarer Liedwechsel und kein
+  Neustart bei gleicher UID vom Nutzer bestaetigt; optimierter Hoertest
+  ebenfalls „super“, Nutzer gibt Abschluss frei. Happy Tune intern
+  UID→stream-ready 5499→ca. 1555–1562 ms; Arcade ca. 1369–1372 ms.
+  Host-Test/Compile/Upload-Hashes erfolgreich, keine Startfehler im
+  letzten Kurzlog. Timeout 0 in eigener NFC-Task, Pause 200 ms, Queue
+  zum Audio-Hauptloop; kein Tag-Schreiben/Fallback/Boot-Song/WLAN.
+  v1/Zwischenstaende und alte Diagnosen archiviert; nur bestaetigte
+  NFC-Referenzen aktiv, Hauptdoku auf I2C aktualisiert. Protokoll:
+  `docs/testprotokoll-etappe4.md`, Rohlogs `docs/serial/`, UID-Tabelle
+  `hardware/nfc-tags.md`. Keine erfundene Dauer-/Produktabnahme.
 
 - [x] 02.10.2026: **Etappe 3 BESTANDEN** — Button (AB24OL, Terminal A
   → IO5, B → GND, INPUT_PULLUP) unterbricht Boot-Loop und spielt

@@ -1,8 +1,9 @@
 # Breadboard-Testplan — Boxbert
 
-Stand: 27.09.2026 (Pins gegen Board-Definition **und Datenblätter** geprüft —
-Kernwerte in `docs/kernwerte.md`). Vorlage für das erste Aufbauen, wenn die
-Bestellung (Tastenkrone, 109,81 €) angekommen ist. **Alle Pins kommen aus
+Stand: 04.10.2026 (Etappen 0–4 bestanden; NFC auf I2C aktualisiert).
+Pins gegen Board-Definition **und Datenblätter** geprüft —
+Kernwerte in `docs/kernwerte.md`. Bestellung angekommen; Fahrplan fuer
+Aufbau und weitere Integration. **Alle Pins kommen aus
 `hardware/pinout.md`** — dort steht auch, wie man Pins prüft und welche
 Fehler die erste Version dieses Plans hatte. Endgültige Belegung danach in
 `firmware/Config.h`.
@@ -111,33 +112,46 @@ Eigentest nötig.
 
 ## Etappe 4 — PN532 (NFC)
 
-DIP-Schalter am Modul: **SPI-Modus** (Set0 = AUS, Set1 = EIN — Beschriftung
-am Modul gegenprüfen). Datenblatt sagt Betriebsspannung **3,3 V** → VCC an
-3V3, keine Pegel-Thematik am SPI-Bus. Multimeter-Check entfällt damit
-weitgehend; trotzdem vor dem ersten Einstecken kurz nachmessen, was am
-Modul „5V"-beschriftet ist (manche PN532-Klone haben einen Regler — dann
-geht auch 5 V, aber 3,3 V ist immer sicher).
-
-PN532 teilt sich den SPI-Bus mit der SD-Karte, nur SS ist eigen:
+**BESTANDEN am 04.10.2026 als Breadboard-Meilenstein**, inklusive
+Nutzer-Hoertest nach Latenzoptimierung. Aktuell **I2C**, nicht der alte
+SPI-/HSU-Plan. Vor Umstecken USB ab, Akku weiter getrennt.
 
 | PN532 | Feather | Hinweis |
 |---|---|---|
-| VCC | 3,3 V | laut Datenblatt |
+| VCC | 3V3 | konkrete Modulversorgung |
 | GND | GND | |
-| SCK | IO36 | geteilter Bus |
-| MISO | IO37 | |
-| MOSI | IO35 | |
-| SS/NSS | IO9 | eigenes CS |
-| IRQ / RSTO | erstmal offen (Polling reicht) | |
+| SDA | IO3 | I2C 100 kHz, Adresse 0x24 |
+| SCL | IO4 | |
+| SPI/UART/IRQ/Reset | nicht verbunden | keine SS-Leitung auf IO9 |
 
-Test: NTAG215-Sticker drauflegen → UID auf Serial/Display (504 Bytes
-nutzbar, reicht für Dateipfad). Danach: SD abspielen und Tag lesen
-gleichzeitig (geteilter Bus). Falls die SD beim geteilten Betrieb hakt:
-SPI-Frequenz senken (beginnen bei 4 MHz, hochtasten).
+DIP **1 ON / 2 OFF**. Buspegel am konkreten Modul pruefen: Nutzerbericht
+SDA/SCL in I2C 3,3 V. HSU am selben Pad lieferte isoliert 4,1 V und darf
+nicht direkt an Feather-RX; GPIOs nicht 5-V-tolerant. VCC=3,3 V allein
+beweist keinen sicheren Signalpegel. Keine allgemeine Klon-Freigabe.
+
+Aktive Referenzen in `firmware/tests/README.md`:
+- `etappe4_nfc_i2c`: unveraenderter UID-Einzeltest.
+- `etappe4_nfc_switch`: nachgewiesener Timeout-0-Wechselpfad.
+- `etappe4_tag_player`: zwei exakte UIDs starten zwei SD-Dateien; SD
+  4 MHz, NFC-Pause 200 ms, Volume 6/21. NFC wartet in eigener Task,
+  Audio/SD im Hauptloop; unbekannte UIDs starten kein Ersatzlied.
+
+Liedwechsel und kein Neustart bei gleicher UID akustisch bestaetigt.
+Happy Tune UID→stream-ready von 5499 auf ca. 1555–1562 ms reduziert,
+Arcade ca. 1369–1372 ms. Keine physische Auflege→Ton-Messung.
+V1 ohne Entfernen-Event: gleiche UID startet auch nach Neuauflegen nicht
+neu, solange keine andere UID dazwischen gelesen wurde. Kein Tag-Schreiben.
+
+Abnahme/Chronologie: `docs/testprotokoll-etappe4.md`; UIDs/Pfade:
+`hardware/nfc-tags.md`. 20 kontrollierte Wechsel, Minutenlast, expliziter
+Entfernen-/EOF-Test und Player-Kaltstart stehen als **spaetere Haertung**
+in `To-Do.md`, nicht als offene Bedingungen dieses Nutzerabschlusses.
 
 ## Etappe 5 — WLAN-Webserver + Upload
 
-Firmware-Skelett (Sprint 4): HTTP-Server auf dem Feather, Endpoints
+**Naechster Schritt nach Etappe 4.** Vor Umsetzung Umfang und Framework
+abstimmen; bisheriger Player bleibt Referenz. Firmware-Skelett (Sprint 4):
+HTTP-Server auf dem Feather, Endpoints
 `/files`, `/upload`, `/tags`. Test am Handy im gleichen WLAN: mp3
 hochladen, Dateiliste sehen, Tag-UID zuordnen.
 

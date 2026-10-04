@@ -15,7 +15,7 @@ ist (Ø44-Button-Bohrmaß, Feather-Pinmap), steht es im Abschnitt "Offene Punkte
 | LiPo-Akku (SOL-333286) | 3,7 V, 3000 mAh, 11,1 Wh | — | Schutzschaltung gegen Überladung/Kurzschluss vorhanden; JST-PH 2 mm Buchse; **Polung gegen Feather prüfen** |
 | Boost TPS61023 (ADA4654) | IN 2–5 V → OUT 5,2 V | @3,7 V: 500 mA out = 800 mA in (88 %); 1 A out = 1,8 A in (78 %) | Enable auf Low = True Disconnect (OUT komplett stromlos). Bootet erst ab ~2 V |
 | MAX98357A (ADA3006) | 2,7–5,5 V | — | 3,2 W @ 4 Ω bei 5 V; läuft am Akku (3,7 V) leiser |
-| PN532 (PN532-MOD) | 3,3 V | Betrieb 13–26 mA, Peak <30 mA, Standby 10–13 mA | Standby-Strom ist hoch — abschalten (EN/TFT-Rail) im Sleep |
+| PN532 (PN532-MOD) | VCC 3,3 V | Betrieb 13–26 mA, Peak <30 mA, Standby 10–13 mA | Aktuell I2C; konkreter Ruhepegel 3,3 V laut Nutzer, HSU isoliert 4,1 V: nicht direkt an GPIO |
 | NeoPixel Stick (NEOPS8) | 4–7 V (WS2812 will 5 V) | ~60 mA/LED bei Weiß, voll | 8 LEDs; Dateneingang will 3,3-V-TTL (feather-seitig ok, ggf. Serien-W + Level) |
 | Button-LEDs 30 mm | 5 V DC | — | über AW9523 ansteuerbar (Konstantstrom-Dimmung, keine Vorwiderstände nötig) |
 | Button-LEDs 44 mm | **12 V DC** | — | **nicht an 5 V/Boost-Kette hängen!** Deckt keinen akkubetriebenen Standardpegel ab → wie geplant absichtlich Deko-Lauf am Boost-Ausgang nur wenn 12 V erzeugt wird — eigentlich Absicht: Lauf an Boost geht NICHT, siehe entscheidungen.md |
@@ -25,9 +25,14 @@ ist (Ø44-Button-Bohrmaß, Feather-Pinmap), steht es im Abschnitt "Offene Punkte
 ## Logikpegel / Busse
 
 - **Alles am Feather läuft auf 3,3 V.** ESP32-GPIOs sind NICHT 5-V-tolerant.
-- **PN532:** Betriebsspannung 3,3 V — passt direkt. Modus per 2× DIP-Schalter
-  (SPI = Primärweg, siehe entscheidungen.md). Am Modul: Header
-  SCLK/MOSI/MISO/SS/INT0 oder SDA/SCL; Foto im PDF zeigt Beschriftung.
+- **PN532:** aktuell **I2C IO3/IO4**, DIP 1 ON / 2 OFF, Adresse **0x24**,
+  100 kHz, VCC 3,3 V. Etappe-4-NFC+SD+Audio-Player mit Hoertest bestaetigt.
+  **Pegel getrennt bewerten:** Unterlagen nennen HSU/I2C 5V TTL und SPI
+  3,3V TTL. Konkreter I2C-Ruhepegel laut Nutzer 3,3 V; kein Freibrief fuer
+  andere Klone/Versorgungen. HSU-TXD/SDA isoliert **4,1 V bei VCC=3,27 V**
+  gemessen (04.10.2026): niemals direkt an IO38, HSU ohne Pegelwandler
+  gesperrt. Feather nicht 5-V-tolerant. Timeout 0 nur in eigener NFC-Task;
+  weitere Wire-Clients synchronisieren. Quellen/Umfang im Etappe-4-Protokoll.
 - **MAX98357A:** Eingänge vertragen 3,3 V **und** 5 V Logik. Pins:
   `LRC, BCLK, DIN, GAIN, SD, VIN, GND` (+/− Lautsprecher). Gain default 9 dB,
   per GAIN-Pin 3/6/9/12/15 dB. SD/Mode-Pin: default (L+R)/2-Mix; zum
@@ -156,14 +161,14 @@ innen/außen je nach gewünschter PWA-Bedienung — Entscheidung offen.
 5. Feather "Reverse TFT" = Display auf der Unterseite. PWA ist der Hauptweg,
    Display als Zweitdisplay — Ausrichtung beim Gehäusedesign entscheiden.
 
-##_chipübersicht (Firmware-relevant)
+## Chipuebersicht (Firmware-relevant)
 | Chip | Bus/Protokoll | Adresse/Mode | Bemerkung |
 |---|---|---|---|
 | ESP32-S3 (Feather) | WLAN (BLE passt NICHT in 4 MB Flash) | — | n8? → n4/2MB-PSRAM-Variante laut Bestelltext |
 | MAX98357A | I2S | — | 8–96 kHz, kein MCLK |
-| PN532 | SPI (DIP) | — | IRQ-Pin vorhanden |
+| PN532 | I2C 100 kHz | 0x24; DIP ON/OFF | Timeout 0 in NFC-Task, IRQ/Reset offen |
 | AW9523 | I2C | 4 Adressen (A0/A1) | Konstantstrom-LED, kein Pull-up intern |
-| MAX17048 | I2C (onboard Feather) | — | Akku-SoC auslesen |
+| MAX17048 | I2C (onboard Feather) | 0x36 | spaetere Wire-Zugriffe mit NFC synchronisieren |
 | ST7789 (TFT onboard) | SPI | — | 240×135, Backlight per PWM |
 | WS2812 ×8 | Single-Wire | — | RMT-Treiber, exaktes Timing |
-| microSD | SPI | — | CS-Pin nötig, bis 32 GB (SDHC) |
+| microSD | SPI (Player 4 MHz) | CS IO10 | bis 32 GB (SDHC) |

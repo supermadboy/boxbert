@@ -1,0 +1,72 @@
+// Boxbert — Etappe 4 diagnose: PN532 über I2C-Seitenheader testen
+//
+// ZWECK: Unabhängig von der kompletten SPI-Verkabelung prüfen, ob das
+// PN532-Modul überhaupt lebt und ob der DIP-Moduswechsel greift.
+//
+// Verkabelung (Seitenheader am Modul, 4 Pins):
+//   GND -> GND (hängt vermutlich schon)
+//   VCC -> 3V3 (hängt vermutlich schon)
+//   SDA -> IO3   (NEU verdrahten)
+//   SCL -> IO4   (NEU verdrahten)
+//   7-Pin-Header (SCK/MISO/MOSI/SS): egal für diesen Test, kann dranbleiben
+//
+// DIP-Schalter MUSS auf I2C stehen: laut Silkscreen-Tabelle "1 0"
+// (Schalter 1 = ON, Schalter 2 = OFF).
+//
+// Erwartung: Scanner findet 0x24 (7-Bit-Adresse des PN532). Manche Scanner
+// zeigen 0x48/0x49 (8-Bit-Schreib-/Lesepaar) — Hauptsache, IRGENDEWAS
+// meldet sich. Kein Fund = Modul antwortet überhaupt nicht.
+
+#include "Arduino.h"
+#include <Wire.h>
+#include <Adafruit_PN532.h>
+
+#define SDA_PIN 3
+#define SCL_PIN 4
+// IRQ/Reset-Pins sind am Modul fuer I2C vorhanden (IRQ-Header-Pin);
+// wir lassen sie offen und geben Dummy-Pins an — die Lib pollt dann
+// am Bus statt am IRQ.
+Adafruit_PN532 nfc(255, 254, &Wire);
+
+void setup() {
+    Serial.begin(115200);
+    delay(2500);  // Zeitfenster, um nach dem Upload den Serial-Leser zu oeffnen
+    unsigned long t0 = millis();
+    while (!Serial && millis() - t0 < 2000) {}
+
+    Serial.println("\n=== Etappe 4 Diagnose: PN532 I2C-Scan ===");
+    Wire.begin(SDA_PIN, SCL_PIN);
+    Wire.setClock(100000);   // konservativ, 100 kHz
+
+    Serial.println("I2C-Scan (0x01..0x7E) ...");
+    bool found = false;
+    for (uint8_t addr = 1; addr < 127; addr++) {
+        Wire.beginTransmission(addr);
+        if (Wire.endTransmission() == 0) {
+            Serial.printf("  -> I2C-Geraet gefunden: 0x%02X (%d)\n", addr, addr);
+            found = true;
+        }
+    }
+    if (!found) {
+        Serial.println("  -> NICHTS gefunden am Bus!");
+        Serial.println("     Check: DIP wirklich '1 0' (I2C)? SDA/SCL vertauscht?");
+    }
+
+    if (found) {
+        Serial.println("PN532-Firmware-Version ueber I2C abfragen ...");
+        nfc.begin();
+        uint32_t v = nfc.getFirmwareVersion();
+        if (v) {
+            Serial.printf("PN532 LEBT: Chip PN5%02X, FW v%d.%d\n",
+                          (v >> 24) & 0xFF, (v >> 16) & 0xFF, (v >> 8) & 0xFF);
+            Serial.println("=> Modul + Moduswechsel OK. Fehler sitzt in der "
+                           "SPI-Verkabelung oder DIP-SPI-Stellung.");
+        } else {
+            Serial.println("Adresse gefunden, aber PN532 antwortet nicht "
+                           "(Lib-Fehler). Modul-Incarnation verdachtig.");
+        }
+    }
+    Serial.println("=== Ende — Board kann jetzt neu verkabelt werden ===");
+}
+
+void loop() { delay(1000); }

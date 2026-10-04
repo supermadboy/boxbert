@@ -1,0 +1,39 @@
+NFC NEUE UID: 01:8C:F1:6E | SWITCHES 1
+TIMING tag=TAG2 uid_ms=29200 handler_ms=29201 queue_ms=1 sd_hz=1000000 pause_ms=1300
+TIMING tag=TAG2 file_open_ms=29232 connect_ms=30 since_uid_ms=32 ok=1
+START TAG2 -> /happy-tune.mp3 | VOLUME 6 | STARTS 2
+[audio 29233 ms] info: Closing audio file "arcade-music-loop.mp3"
+[audio 29234 ms] info: MP3Decoder has been destroyed
+[audio 29234 ms] info: Reading file: "/happy-tune.mp3"
+[audio 29795 ms] info: MP3Decoder has been initialized
+STATUS | Bereit | NFC Task aktiv | READS 5 | SWITCHES 1 | STARTS 2 | START_ERRORS 0 | AUDIO laeuft | FILE /happy-tune.mp3 | LOOPS 19717
+[audio 30352 ms] info: File-Size: 642028
+[audio 30353 ms] info: ID3 framesSize: 44
+[audio 30353 ms] info: ID3 version: 2.4
+[audio 32581 ms] id3data: SettingsForEncoding: Lavf63.1.102
+[audio 34697 ms] info: Duration (s): 40
+[audio 34698 ms] info: Bitrate (b/s): 128396
+TIMING stream_ready_ms=34699 since_uid_ms=5499
+[audio 34699 ms] info: stream ready
+[audio 34701 ms] info: syncword found at pos 0
+[audio 34706 ms] info: MPEG-1 Layer III
+[audio 34707 ms] info: Audio-Data-Start: 44
+[audio 34707 ms] info: Audio-Length: 641984
+[audio 34707 ms] info: Channels: 2
+[audio 34708 ms] info: SampleRate (Hz): 44100
+[audio 34708 ms] info: BitsPerSample: 16
+[audio 34708 ms] bitrate (b/s): 128396
+STATUS | Bereit | NFC Task aktiv | READS 5 | SWITCHES 1 | STARTS 2 | START_ERRORS 0 | AUDIO laeuft | FILE /happy-tune.mp3 | LOOPS 20370
+NFC NEUE UID: E3:2F:F6:33 | SWITCHES 2
+TIMING tag=TAG1 uid_ms=40189 handler_ms=40191 queue_ms=2 sd_hz=1000000 pause_ms=1300
+TIMING tag=TAG1 file_open_ms=40225 connect_ms=33 since_uid_ms=36 ok=1
+START TAG1 -> /arcade-music-loop.mp3 | VOLUME 6 | STARTS 3
+[audio 40226 ms] info: Closing audio file "happy-tune.mp3"
+[audio 40226 ms] info: MP3Decoder has been destroyed
+[audio 40227 ms] info: Reading file: "/arcade-music-loop.mp3"
+STATUS | Bereit | NFC Task aktiv | READS 6 | SWITCHES 2 | STARTS 3 | START_ERRORS 0 | AUDIO laeuft | FILE /arcade-music-loop.mp3 | LOOPS 25201
+[audio 40789 ms] info: MP3Decoder has been initialized
+[audio 41345 ms] info: File-Size: 549988
+[audio 41346 ms] info: ID3 framesSize: 373
+[audio 41346 ms] info: ID3 version: 2.4
+[audio 43574 ms] id3data: Encoded by: Logic Pro X

@@ -1,8 +1,38 @@
 # Entscheidungen — Boxbert
 
-Stand: 25.09.2026. Jede Entscheidung mit Warum und Konsequenz. Neue
+Grundentscheidungen: 25.09.2026; aktueller Stand ergaenzt am 04.10.2026.
+Jede Entscheidung mit Warum und Konsequenz. Neue
 Entscheidungen hier ergänzen, alte nicht auslöschen sondern mit Datum
 überbieten.
+
+## Aktueller verbindlicher Stand (04.10.2026)
+
+Dieser Abschnitt ueberbietet die urspruenglichen Auswahlplaene unten:
+Board **ADA5691 Reverse TFT**, Boost **TPS61023/ADA4654** (5,2 V, True
+Disconnect), ein **ADA3351 4-Ohm/3-W-Gehaeuselautsprecher**, Akku **3000 mAh
+mit Schutzschaltung**, GPIO-Expander **AW9523**. Details in `AGENTS.md`
+und `docs/kernwerte.md`. Breadboard bislang USB-only; Amp an USB-5V,
+Akku noch nicht angeschlossen, finale Amp-Versorgung weiter offen.
+
+**NFC: I2C statt SPI/HSU** (Etappe 4 abgenommen, 04.10.2026).
+- Warum: UID-Lesen und Wechsel mit genau unserem Modul neu reproduziert;
+  neuer Zwei-Tag-Player mit SD/I2S und optimiertem Nutzer-Hoertest erfolgreich.
+- Konsequenz: PN532 IO3/IO4, 100 kHz, DIP ON/OFF, 0x24; SD bleibt SPI
+  IO36/35/37, CS IO10, im Player 4 MHz. Audio bleibt I2S IO16/17/18.
+  IO9/IO38 fuer NFC frei. Kein gemeinsamer SD-/NFC-MISO mehr.
+- Blockierendes Timeout-0-Lesen nur in NFC-Task; Queue zum Audio-Hauptloop,
+  Erfolgs-Pause 200 ms. Weitere Wire-Clients spaeter synchronisieren.
+- HSU ohne Pegelwandler gesperrt (4,1 V isoliert am TXD/SDA gemessen).
+  I2C-Ruhepegel laut Nutzer 3,3 V; anderes Modul/Versorgung neu pruefen.
+- Exaktes UID→Pfad-Mapping, keine Tag-Beschreibung noetig. Gleiche UID
+  startet ohne zwischenzeitlich andere UID nicht erneut; Entfernen stoppt
+  nicht. Volume 6/21. Keine Produkt-/Dauerabnahme aus Kurztests ableiten.
+- Quellen: `docs/testprotokoll-etappe4.md`, `hardware/nfc-tags.md`,
+  `hardware/pinout.md`. Nicht durchgefuehrte Haertung in `To-Do.md`.
+
+## Urspruengliche Entscheidungen (25.09.2026)
+
+Historische Auswahlphase; bei Abweichungen gilt der aktuelle Stand oben.
 
 ## Board
 
@@ -13,8 +43,8 @@ Entscheidungen hier ergänzen, alte nicht auslöschen sondern mit Datum
   Deep Sleep laut Adafruit ~40–50 µA.
 - *Konsequenz:* Kein Bluetooth LE — passt nicht mehr in die 4 MB Flash,
   wenn WLAN + Audio + TFT drin sind. WLAN (HTTP vom ESP-Webserver) ist
-  der einzige Kommunikationsweg zur App. NFC/SD/Audio teilen sich die
-  SPI-Pins — Pinbelegung sorgfältig planen (`hardware/pinbelegung.md`).
+  der einzige Kommunikationsweg zur App. Aktuell NFC per I2C, SD per SPI,
+  Audio per I2S — Pinbelegung in `hardware/pinout.md`.
 
 ## Audio
 
@@ -37,8 +67,9 @@ Entscheidungen hier ergänzen, alte nicht auslöschen sondern mit Datum
 
 **PN532-Modul**, Bus-Modus per DIP-Schalter (I2C/SPI/UART).
 - *Warum:* Günstig, verbreitet, NTAG-kompatibel.
-- *Konsequenz:* **SPI als Primärweg.** I2C hat am ESP32 Probleme mit dem
-  Clock-Stretching des PN532. Vor dem ersten Anschließen: Pegel prüfen —
+- *Urspruenglicher Plan, am 04.10.2026 ueberholt:* **SPI als Primaerweg**
+  wegen Forenhinweisen zu PN532-I2C/Clock-Stretching am ESP32. Das ist
+  keine Diagnose fuer unseren inzwischen erfolgreichen I2C-Aufbau. Vor dem ersten Anschließen: Pegel prüfen —
   es gibt 3,3-V- und 5-V-TTL-Varianten; nur die 3,3-V-feste ans Feather.
   Tags: **NTAG215**-Sticker (540 Byte, genug für URL/ID-Mapping).
 
@@ -46,8 +77,9 @@ Entscheidungen hier ergänzen, alte nicht auslöschen sondern mit Datum
 
 **Externes microSD-Modul über SPI.**
 - *Warum:* Feather hat keinen Slot; Audio von SD entlastet den Flash.
-- *Konsequenz:* SD und PN532 teilen sich den SPI-Bus mit separaten
-  CS-Pins — im Pinplan festzulegen.
+- *Urspruenglicher Plan, am 04.10.2026 ueberholt:* SD und PN532 auf
+  gemeinsamem SPI mit separaten CS. Aktuell PN532 per I2C; SD unveraendert
+  per SPI mit CS IO10, im Player 4 MHz.
 
 ## Akku
 

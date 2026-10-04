@@ -14,6 +14,30 @@ Thema einfügen, Datum dazu.
 
 ## I2S-Audio / MAX98357A
 
+- **SD-Takt dominiert gemessene MP3-Startstrecke (eigener Vergleich,
+  04.10.2026).** Nutzer meldet beim neuen Zwei-Tag-Player ca. 5 s
+  Wechselzeit. Danach Zeitstempel: Happy Tune UID→stream-ready **5499 ms**
+  bei 1 MHz SD, Queue 1 ms / connecttoFS 30 ms. *Nur* SD auf 4 MHz
+  geaendert (NFC-Pause weiterhin 1300 ms): gleicher Pfad **1548 ms**,
+  rund 72 % kuerzer. Arcade 1362/1368 ms. Separat NFC-Pause 1300→200 ms:
+  Happy Tune 1562/1555 ms, Arcade 1372/1369 ms; keine Startfehler im
+  kurzen Mitschnitt. UID liegt nach Erkennung: NFC-Pause vor UID und
+  physischer Auflege→Ton-Abstand damit nicht gemessen. stream-ready
+  ist kein Nachweis fuer hoerbaren Ton; Nutzer bestaetigt danach auch
+  optimierten Hoertest und nimmt Breadboard-Etappe 4 ab. Installierte Audio-Lib
+  4.0.0 liest in processLocalFile() vor jedem schrittweisen MP3-/ID3-
+  Header-Aufruf bis 65535 Bytes nach. Bei 1 MHz braucht schon ein voller
+  solcher Block idealisiert 0,524 s, real mehr; mehrere Startaufrufe
+  koennen grosse Datenmengen vor dem ersten Ton lesen. Kein pauschaler
+  Zwang, kompletten ca. 655-KB-Puffer vor Audio zu fuellen!
+  → SD 4 MHz als aktuell getestet beibehalten; bei weiteren Latenz-
+  Optimierungen Messstrecke und jeweils einzelne Stellschraube trennen.
+  Mehrere Minuten/20 kontrollierte Wechsel als spaetere Haertung offen.
+  Quelle: `docs/testprotokoll-etappe4.md`, eigene Serial-Rohlogs unter
+  `docs/serial/etappe4-player-latency-*.log`; eigene Codepruefung
+  `etappe4_tag_player.ino`, Audio-4.0.0 `Audio.cpp` (processLocalFile,
+  read_ID3_Header), `Audio.h` (MAX_TRANSFER_SIZE).
+
 - **Knackser beim Start/Stop sind normal und behandelbar.** Der MAX98357A
   zentriert seinen Analog-Ausgang bei VCC/2; fährt der I2S-Stream mit
   Nullen hoch/runter, hörst du einen Pop. Abhilfe: Samples am Anfang und
@@ -73,28 +97,166 @@ Thema einfügen, Datum dazu.
 
 ## SPI-Bus-Sharing (SD + PN532)
 
+- **Eigene Beobachtung (03.10.2026): Erst mit getrenntem SD-MISO antwortet
+  der PN532.** Unveränderter Sketch, SD-CS bereits HIGH, SPI 100 kHz;
+  vor Trennen keine Firmware-Antwort, danach „Chip erkannt,
+  Tag-Konfiguration fehlgeschlagen“. Starker Hinweis auf Störung durch
+  den SD-MISO-Zweig; nicht durch Buspegelmessung oder Rückvergleich
+  bestätigt. Nach lokaler Konfigurationskorrektur UID E3:2F:F6:33
+  wiederholt erkannt. Rückvergleich 21:40 mit SD-MISO wieder verbunden:
+  SD-zuerst-Init und getrennte SPI-Transaktionen helfen nicht, NFC meldet
+  Invalid ACK; SD und Audio-Stream starten. Damals separater SPI-Bus
+  vorgeschlagen; inzwischen durch bestaetigten I2C-Aufbau ueberholt.
+  Historischer Befund, kein neuer Integrationsnachweis aus diesem alten
+  Sketch. Nicht vorschnell NFC-Modul fuer defekt erklaeren.
+  Quelle: eigene Hardware-Tests, `docs/testprotokoll-etappe4.md`.
 - **Gemeinsamer Bus zwischen SD-Reader und RFID führt häufig zu Bus-Lockups**
   — es ist DIE bekannte Schwachstelle solcher Projekte. Forumslage: Uneins,
   ob Pull-ups/CS-Widerstände das zuverlässig fixen; als zuverlässiger gilt
   ein zweiter SPI-Bus.
-  → Heißt für Boxbert: Wir bleiben beim geteilten Bus (nur 2 Geräte, eigener
-  CS je Gerät, laut Plan beginnen bei 4 MHz und hochtasten) — aber wenn
-  Etappe 4 hakt, ist das der erste verdächtige Punkt, und ein zweiter Bus
-  (z. B. SD an FSPI, PN532 an HSPI) ist der Plan B. Nicht stundenlang am
-  gleichen Bus dubeln.
+  → Historischer Plan fuer Boxbert, inzwischen ueberholt: **PN532 I2C**,
+  SD SPI, kein gemeinsamer SD-/NFC-MISO mehr. Zweiten NFC-SPI-Bus nicht
+  erneut als aktuellen Plan empfehlen. Bei anderen SPI-Erweiterungen
+  korrekte CS-/Busfreigabe weiterhin beachten.
   Quelle: [StackExchange RFID+SD-Thread](https://stackoverflow.com/questions/75639315/using-rfid-and-sd-card-reader-at-the-same-time-with-spi-and-esp32-not-working)
 
 ## PN532 (NFC)
 
+- **Host-Timeout 0 besteht grundlegenden I2C-Wechsel-/Starttest
+  (04.10.2026, ca. 20:34–20:42).** Separater `etappe4_nfc_switch`,
+  Referenz-Init und Erfolgs-Pause beibehalten, Host-Timeout 500→0:
+  TAG1→TAG2→TAG1→TAG2 im selben Lauf, SWITCHES 3; Rueck-/Hinwechsel
+  nach jeweils angeforderter tagloser Pause erfolgreich. Nach angefordertem
+  Kaltstart ohne Tag spaeter Tag 1 erkannt (READS 14→22, SWITCHES 0).
+  Pausendauern nicht unabhaengig gemessen, kein Dauertest/Audio-Nachweis.
+  Codepruefung: Adafruit PN532 1.3.4 gibt bei Host-Timeout false zurueck,
+  ohne in diesem Pfad explizit eine PN532-Suche abzubrechen; erneuter
+  Aufruf schreibt neuen Suchbefehl. Ueberlappung als plausible Hypothese,
+  genaue Ursache nicht bewiesen. Timeout 0 ist der dokumentierte Default
+  und darf ohne Tag unbegrenzt warten.
+  → Fuer Audio niemals diesen Aufruf direkt in audio.loop-Hauptloop:
+  neuer Player nutzt eigene NFC-Task/Queue; inzwischen mit SD/I2S und
+  optimiertem Hoertest vom Nutzer als Breadboard-Meilenstein abgenommen.
+  Langzeit-/WLAN-Last bleibt spaetere Haertung.
+  Quelle: eigene Serial-Tests `docs/testprotokoll-etappe4.md`, installierte
+  `Adafruit_PN532.cpp` (`readPassiveTargetID`, `sendCommandCheckAck`,
+  `waitready`) und `examples/readMifare` (Adafruit PN532 1.3.4).
+
+- **Beide vorhandenen Tags ueber I2C lesbar, Tagwechsel noch nicht stabil
+  nachgewiesen (04.10.2026, ca. 20:20–20:24).** Im unveraenderten
+  `etappe4_nfc_i2c` jeweils nach USB-Kaltstart mit allein aufgelegtem Tag:
+  Tag 1 `E3:2F:F6:33`, Tag 2 `01:8C:F1:6E`, beide 4 Bytes, jeweils neun
+  identische Ausgaben in 12 Sekunden. Beim Wechsel von Tag 1 zu Tag 2
+  ohne Neustart zuvor keine UID, nur wiederholter Bereitschaftstext.
+  Dieser Text stammt aus setup() und belegt keine aktuelle Busantwort.
+  → Beide Tags sind lesbar; spaeteren erfolgreichen Wechseltest siehe
+  Finding oben. Die Einzelreferenz unveraendert erhalten. Ursache
+  des Wechsel-Fehlschlags offen, weder Tagdefekt noch bestimmter Bus-/
+  Treiberfehler bewiesen. UIDs identifizieren noch keinen genauen Chiptyp.
+  Quelle: eigene Serial-Beobachtung, `docs/testprotokoll-etappe4.md`;
+  UID-/Dateipfad-Uebersicht: `hardware/nfc-tags.md`.
+
+- **Neu reproduzierter I2C-Leseerfolg und eigene Diagnose-Regression
+  (04.10.2026, ca. 20:20).** Unveraenderter `etappe4_nfc_i2c` mit
+  Adafruit PN532 1.3.4, I2C 100 kHz, SAMConfig und 500-ms-Host-Timeout:
+  nach USB-Power-Cycle mit aufgelegtem Tag 1 neun gleiche Lesungen
+  `E3:2F:F6:33` (4 Bytes) in 12 Sekunden. Der neu geschriebene
+  `etappe4_inventory` hatte dagegen bei zwei Versuchen keine UID
+  geliefert; nach dem ersten Versuch keine I2C-Adressen mehr sichtbar,
+  durch Power-Cycle fuer die Chipabfrage behebbar. Inventory unterscheidet
+  sich durch zusaetzliche Retry-Konfiguration, kuerzeren Host-Timeout
+  und weitere Details; keine einzelne Ursache nachgewiesen.
+  → Fuer Boxbert: funktionierenden Einzeltest als Referenz erhalten,
+  Inventory nur als SD-Dateilisten-Nachweis verwenden. Keine Hardware-
+  oder Clock-Stretching-Ursache aus diesem Vergleich behaupten. Der
+  Sketch-Hinweis `NTAG215 auflegen` identifiziert keinen Tagtyp.
+  Quelle: neue eigene Serial-Beobachtung, `docs/testprotokoll-etappe4.md`.
+
+- **Installierte Seeed-PN532-Lib verwirft leere Konfigurationsantworten
+  (03.10.2026).** `SAMConfig()` und `setPassiveActivationRetries()`
+  prüfen `0 < readResponse(...)`; SAMConfiguration und RFConfiguration
+  liefern gültige Antworten mit null Nutzdaten. Der Transport gibt
+  dafür 0 zurück (>=0 ist laut `PN532Interface.h` Erfolg).
+  Lokaler Workaround im Direkttest sendet die beiden Kommandos selbst
+  und verlangt ACK plus gültigen Antwortframe mit Länge=0. Danach
+  bestätigt: „PN532 bereit“, laufendes Polling mit gültigen Antworten
+  (noch null Targets). Quelle: installierte `PN532/src/PN532.cpp`,
+  `PN532_SPI.cpp`, `PN532Interface.h`, eigene Hardware-Beobachtung in
+  `docs/testprotokoll-etappe4.md`. Globale Bibliothek nicht geändert.
+- **Eigener Direkttest: `nfc.begin()` fehlte (03.10.2026).** In der
+  installierten Seeed-PN532-Lib setzt erst `begin()` SS als Ausgang und
+  ruft Wakeup auf. `SPI.begin()` allein ersetzt das nicht. Korrigierter
+  isolierter Test (SD-CS HIGH, 100 kHz, LSBFIRST, MODE0) blieb trotzdem
+  ohne Chipantwort; der Fehler erklärt daher nicht nachweislich das
+  gesamte Problem. Quelle: lokales Beispiel
+  `PN532/examples/iso14443a_uid`, `PN532/src/PN532.cpp`,
+  `PN532/src/PN532_SPI.cpp`; eigene Beobachtung:
+  `docs/testprotokoll-etappe4.md`.
+- **HSU-Pinlabels der Elechouse/HW-147-Platine in unserer Doku zunächst
+  vertauscht (04.10.2026).** Web-Gegenprüfung: HSU verwendet bei der
+  gemeinsamen I2C/UART-Stiftleiste SDA/TXD als PN532-Ausgang und SCL/RXD als
+  PN532-Eingang. Daher: SDA/TXD → Host-RX, SCL/RXD → Host-TX. Tasmota nennt
+  explizit `D1 -> SCL/RXD`, `D2 -> SDA/TXD`; eine zweite Verdrahtungsquelle
+  nennt `SDA/TxD`, `SCL/RxD`. Unsere frühere Tabelle war umgekehrt. Der
+  isolierte HSU-Test meldete `Ack: Timeout`, was bei TX→TX/RX→RX passt;
+  nach Korrektur noch nicht neu getestet. Clone-Rückseiten-Silkscreen prüfen.
+  Quellen: [Elechouse V3 Manual](https://www.elechouse.com/elechouse/images/product/PN532_module_V3/PN532_%20Manual_V3.pdf),
+  [Tasmota-Issue #5497](https://github.com/arendst/Tasmota/issues/5497),
+  [Raspberry-Pi-StackExchange](https://raspberrypi.stackexchange.com/questions/82220/connecting-elechouse-pn532-v3-to-raspberry-pi-5v-or-3-3v),
+  eigene HSU-Messung in `docs/testprotokoll-etappe4.md`.
+- **Serial1-Loopback am Feather bestanden (04.10.2026).** Mit PN532-Daten-
+  leitungen getrennt und IO39/TX direkt auf IO38/RX zurückgeführt, empfängt
+  die installierte HSU-Diagnose den eigenen Frame (`00 00 FF 02 FE D4`) statt
+  eines Timeouts. Damit sind Feather-UART, Pinroute und Sketch-Baudrate
+  funktionsfähig; der echte PN532-HSU-Test liefert nach Power-Cycle weiterhin
+  keinen ACK. Quelle: eigene Hardwaremessung,
+  `docs/testprotokoll-etappe4.md`.
+- **PN532-HSU-Pegel nicht direkt Feather-kompatibel (04.10.2026).**
+  Elechouse V3 nennt den eingebauten Level-Shifter „Standard 5V TTL for I2C
+  and UART, 3.3V TTL SPI“; V4 nennt dieselben Pegel und V3/V4-Kompatibilität.
+  Nutzer maß bei VCC=3,27 V **4,1 V am TXD/SDA, isoliert vom Feather**.
+  Das bestätigt >3,3 V am Modul-Ausgang: nicht direkt an den nicht
+  5V-toleranten Feather-RX/IO38 anschließen. Das kann den GPIO beschädigen
+  und kann den HSU-Ausfall erklären. Noch kein Pegelwandler-Test; bis dahin
+  HSU stoppen. Inzwischen laeuft unser konkreter Aufbau per I2C mit
+  geprueftem Ruhepegel; kein neuer SPI-/HSU-Versuch noetig. Quellen: [Elechouse V3 Manual](https://www.elechouse.com/elechouse/images/product/PN532_module_V3/PN532_%20Manual_V3.pdf),
+  [Elechouse V4 Specs](https://www.elechouse.com/product/pn532-nfc-rfid-module-v4/),
+  eigene Messung in `docs/testprotokoll-etappe4.md`.
+- **SWHSU-YouTube-Beispiel nicht direkt auf Feather übertragbar.** `PN532_SWHSU`
+  benutzt SoftwareSerial, im Beispiel RX=GPIO3/TX=GPIO2. Bei Boxbert ist IO3
+  SDA und IO2 für eine Board-Taste reserviert; außerdem fehlt `SoftwareSerial.h`
+  in der installierten Umgebung und SWHSU ist in PN532-Arduino 1.1.0 opt-in.
+  Der getestete `PN532_HSU` mit Serial1/IO38/39 ist der passendere Weg.
+  Quelle: installierter PN532-Arduino-1.1.0-README/Quellcode, eigene
+  Kompilierprobe.
 - **Clone-Module sind stark unterschiedlich** (z. B. HW-147C): DIP-Schalter-
   Beschriftung, Pegelwandlung und Library-Kompatibilität variieren.
   Bibliotheken defaulten auf ~1 MHz SPI; manche Setups laufen erst bei
   deutlich weniger.
   → Heißt für Boxbert: Vor dem ersten Anschließen DIP-Stellung physisch
   gegenmodulieren (steht schon so in `breadboard-testing.md`), SPI-Clock
-  konservativ starten. Der I2C-Modus gilt in Foren als unzuverlässig an
-  geteilten Bussen — unsere SPI-Entscheidung wird bestätigt.
+  konservativ starten, falls SPI ueberhaupt verwendet wird. I2C-
+  Forenprobleme sind keine Diagnose fuer unser Modul: Entscheidung
+  inzwischen durch bestaetigten I2C-Aufbau ueberholt (04.10.2026).
   Quelle: [Arduino-Forum PN532-Thread](https://forum.arduino.cc/t/esp32c6-pn532-nfc-reader-hw-147c-spi-i2c-communication-not-working-didnt-find-pn53x-board/1415164), [esp32.com ESP-IDF/PN532](https://esp32.com/viewtopic.php?p=142068&t=43567)
+- **Unser HW-147-Klon läuft über I2C direkt am Feather — Tag-Lesen bestätigt
+  (04.10.2026, Abend).** DIP auf I2C (1 ON / 2 OFF), Ruhelage des Busses
+  gemessen 3,3 V an SDA/SCL (anders als die 4,1 V am SDA/TXD-Pad im
+  HSU-Kontext), direkter Anschluss SDA→IO3, SCL→IO4 ohne Pegelwandler.
+  I2C-Scan: PN532 auf 0x24 (plus onboard MAX17048 auf 0x36), FW v1.6;
+  Nutzer meldet funktionierenden Tag-Lesetest. Konsequenzen:
+  - HSU endgültig verworfen (Pegelwandlung nötig, kein Vorteil) und
+    Plan B (eigener SPI-Bus) nicht mehr nötig; SD hat den SPI-Bus allein,
+    das MISO-Bussharing-Problem ist obsolet. IO9/IO38 frei.
+  - Inzwischen UID-/Wechseltests neu reproduziert und neuer NFC+SD+Audio-
+    Player mit optimiertem Hoertest vom Nutzer abgenommen. Timeout 0 in
+    eigener Task, Queue zum Audio-Hauptloop, NFC-Pause 200 ms. Weitere
+    Wire-Clients spaeter synchronisieren. Fruehere 500-ms-Suchfehler
+    bleiben nicht abschliessend diagnostiziert; keine pauschale Clock-
+    Stretching-/Hardwaredefekt-Erklaerung. Minutenlast/20 kontrollierte
+    Wechsel als spaetere Haertung offen, nicht als bestanden behaupten.
+  Quelle: eigene Messung und Beobachtung, `docs/testprotokoll-etappe4.md`
+  (04.10.2026, Abend).
 
 ## WS2812 / NeoPixel
 

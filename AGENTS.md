@@ -19,11 +19,14 @@ Das entschuldigt **keine** Regel weiter unten: Pins nie aus dem Gedächtnis,
 Kindersicherheit und „Daddelbert bestellt" gelten immer — die Persona ändert,
 wie erklärt wird, nicht was gilt.
 
-**Status: alle Bauteile bestellt und angekommen.** Es geht ans Aufbauen —
-Fahrplan dafür ist `docs/breadboard-testing.md` (Etappen 0–6, pro Etappe ein
-Test-Sketch). Die erste Pflicht davor: Entwicklungsumgebung auf Daddelberts
-Linux-Rechner — Anleitung und Protokoll dafür stehen in `docs/dev-setup.md`,
-damit es beim nächsten Rechner nachvollziehbar ist.
+**Status 04.10.2026: Etappen 0–4 als Breadboard-Meilensteine bestanden.**
+Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
+Aktuell geflasht `firmware/tests/etappe4_tag_player/`: SD 4 MHz, NFC-Pause
+200 ms, Volume 6/21, USB-only. Naechster Schritt: Etappe 5 (WLAN-Webserver
++ Upload), zuerst Umfang/Framework abstimmen. Fahrplan und Abnahmeumfang:
+`docs/breadboard-testing.md`, `docs/testprotokoll-etappe4.md`, `To-Do.md`.
+Dauertests/Produktreife nicht mit dieser Breadboard-Abnahme gleichsetzen.
+Entwicklungsumgebung ist eingerichtet; Reproduktion in `docs/dev-setup.md`.
 
 ## Rollen
 
@@ -59,9 +62,18 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
 - **Boost:** TPS61023 MiniBoost (ADA4654, fix 5,2 V / 1 A, Enable-Pin). EN auf
   Low = True Disconnect — trennt Verstärker-Zusatzversorgung und Button-LEDs
   im Deep Sleep komplett. MAX98357A verträgt max. 5,5 V, 5,2 V ist ok.
-- **NFC:** PN532-Modul, Modus per DIP-Schalter, **SPI ist der Primärweg**
-  (I2C-Clock-Stretching macht am ESP32 Probleme). Betriebsspannung laut
-  Datenblatt 3,3 V → direkt an 3V3. Tags: NTAG215-Sticker (504 Bytes nutzbar).
+- **NFC:** PN532 aktuell **I2C**: SDA IO3, SCL IO4, VCC 3V3, DIP 1 ON /
+  2 OFF, Adresse 0x24, 100 kHz. UID-Lesen und NFC+SD+Audio neu geprueft,
+  Nutzer-Hoertest bestaetigt. Timeout 0 nur in eigener NFC-Task mit Queue,
+  nicht im Audio-Hauptloop; Pause 200 ms. Spaetere Wire-Nutzer (AW9523 /
+  Fuel Gauge) synchronisieren. Fruehere Fehler nicht pauschal als
+  Clock-Stretching-/Hardwaredefekt erklaeren. **Pegel je Modus pruefen:**
+  Unterlagen nennen HSU/I2C 5-V-TTL; konkreter I2C-Ruhepegel laut Nutzer
+  3,3 V. HSU-TXD/SDA isoliert **4,1 V bei VCC=3,27 V** gemessen;
+  niemals direkt an RX/IO38, HSU ohne Pegelwandler gesperrt. Feather
+  nicht 5-V-tolerant. Zwei bestaetigte Tags haben 4-Byte-UIDs, Chiptyp
+  offen; bestellte NTAG215 nicht aus Hinweistext als identifiziert werten.
+  Verbindliche UID-/Liedzuordnung: `hardware/nfc-tags.md`.
 - **SD:** externes microSD-Modul (MSD-AADP) über SPI, hat Onboard-3,3-V-Regler
   → VCC an 5 V. Karte: Verbatim 32 GB (SDHC, max. 32 GB), FAT32.
 - **Akku:** LiPo 3,7 V **3000 mAh** (Soldered 605080, mit Schutzschaltung,
@@ -92,8 +104,10 @@ gegen die Board-Definition prüfen (`pins_arduino.h` der Variante
 pinout.md). Der erste Breadboard-Plan hatte sechs falsche Pins, weil sie
 aus allgemeinem ESP32-Wissen geraten waren.
 
-Kurzregeln: **SPI ist ein Bus** — SD (CS IO10) und PN532 (SS IO9) teilen sich
-SCK/MOSI/MISO, jedes Gerät hat nur seinen eigenen CS. **IO7 nicht anfassen**
+Kurzregeln: **PN532 auf I2C IO3/IO4, SD auf SPI IO36/35/37, CS IO10.**
+IO9/IO38 sind fuer NFC nicht mehr belegt. Weitere SPI-Geraete brauchen
+eigenen CS (Onboard-TFT hat IO42); alte SPI-/HSU-Plaene sind archiviert.
+**IO7 nicht anfassen**
 (schaltet Display- und I2C-Strom), **IO33/IO21 sind Onboard-NeoPixel-Power**,
 nicht belegen. Die endgültige Belegung nach Breadboard-Test landet in
 `firmware/Config.h`.
@@ -175,6 +189,14 @@ echter Quelle oder eigener Messung, kein KI-generiertes Blabla.
 - **Daddelberts Rechner ist Arch Linux** (Hyprland/Wayland) — kein WSL, auch
   wenn der PATH so aussieht. Setup-Protokoll: `docs/dev-setup.md`. Bei
   Serial-Ports gilt die Gruppe `uucp` (Arch), nicht `dialout` (Ubuntu).
+- **microSD immer nach `~/sd-card` mounten** (Nutzerkonvention):
+  `sudo mount -o uid=$(id -u),gid=$(id -g) /dev/sda1 ~/sd-card` —
+  danach landen Musikdateien dort und `sync` + `sudo umount` vor dem Ziehen.
+  Kein udisks/gvfs auf dem Rechner; ohne sudo-Option uid/gid schreibt nur root.
+  ⚠️ **Erst mounten, dann kopieren** — Dateien in ein ungemountetes
+  Mount-Verzeichnis landen auf der Root-FS und verschwinden unter der
+  gemounteten Karte (passiert 04.10.2026, drei halbe Dateien mussten
+  danach nach dem Umount aus `~/sd-card` gelöscht werden).
 - Preise immer mit Datum und Quelle notieren — Live-Preise veralten schnell.
 - Bestelllisten gebündelt nach Händler, Zollpauschale einrechnen (Stand und
   Quelle in `docs/bestellliste.md` pflegen).

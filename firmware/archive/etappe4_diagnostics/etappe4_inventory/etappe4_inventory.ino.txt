@@ -1,0 +1,169 @@
+// Boxbert — Etappe 4: neue Bestandsaufnahme, KEINE Audiowiedergabe.
+// Pins ausschliesslich aus hardware/pinout.md, gegen Core 3.3.12 geprueft.
+// PN532: SDA=IO3, SCL=IO4, VCC=3V3, GND; DIP 1 ON / 2 OFF.
+// PN532-SPI/UART-Leitungen ab, IRQ/Reset nicht angeschlossen.
+// SD: CS=IO10, SCK=IO36, MISO=IO37, MOSI=IO35, VCC=USB-5V, GND.
+// USB-Betrieb, Akku bleibt ab. SD-Dateien und Tags werden NICHT veraendert.
+// API-Abgleich: Adafruit PN532 1.3.4 iso14443a_uid + Treibercode;
+// SD: ESP32-Core 3.3.12 SD_Test (file.path() fuer vollstaendige Pfade).
+
+#include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <Adafruit_PN532.h>
+
+constexpr uint8_t NFC_SDA = 3;
+constexpr uint8_t NFC_SCL = 4;
+constexpr uint8_t SD_CS = 10;
+constexpr uint8_t SD_SCK = 36;
+constexpr uint8_t SD_MISO = 37;
+constexpr uint8_t SD_MOSI = 35;
+// uint8_t 255 wird in Adafruit PN532 1.3.4 als int8_t -1 gespeichert:
+// kein Reset; I2C-Bereitschaft wird per RDY-Byte, nicht per IRQ, gelesen.
+Adafruit_PN532 nfc(255, 255, &Wire);
+bool nfcReady = false;
+bool sdReady = false;
+
+void help() {
+  Serial.println("\n=== BOXBERT ETAPPE4 INVENTORY v1 — KEIN AUDIO ===");
+  Serial.println("n: I2C-Scan + PN532 initialisieren");
+  Serial.println("d: SD-Dateiliste mit vollstaendigen Pfaden (nur lesen)");
+  Serial.println("1 / 2: einen Tag fuer Zuordnung 1 / 2 erfassen (20 s)");
+  Serial.println("h: diese Hilfe; kein automatischer Tag-/Audiotest");
+}
+
+void initNfc() {
+  nfcReady = false;
+  if (!Wire.begin(NFC_SDA, NFC_SCL, 100000)) {
+    Serial.println("FEHLER: Wire.begin");
+    return;
+  }
+  Wire.setTimeOut(50);
+  Serial.println("I2C-Scan, 100 kHz (Adressen allein identifizieren keinen Chip):");
+  for (uint8_t addr = 1; addr < 127; ++addr) {
+    Wire.beginTransmission(addr);
+    if (Wire.endTransmission() == 0) Serial.printf("  Adresse 0x%02X\n", addr);
+  }
+  if (!nfc.begin()) {
+    Serial.println("FEHLER: nfc.begin");
+    return;
+  }
+  const uint32_t version = nfc.getFirmwareVersion();
+  if (!version) {
+    Serial.println("FEHLER: keine PN532-Firmwareantwort");
+    return;
+  }
+  Serial.printf("PN5%02X, Firmware %u.%u\n",
+                unsigned((version >> 24) & 0xFF),
+                unsigned((version >> 16) & 0xFF),
+                unsigned((version >> 8) & 0xFF));
+  if (!nfc.SAMConfig()) {
+    Serial.println("FEHLER: SAMConfig");
+    return;
+  }
+  // Endliche chipinterne Suchversuche; der Host-Timeout allein ersetzt das nicht.
+  if (!nfc.setPassiveActivationRetries(0x00)) {
+    Serial.println("FEHLER: setPassiveActivationRetries");
+    return;
+  }
+  nfcReady = true;
+  Serial.println("NFC bereit. Fuer jeden Tag einzeln 1 bzw. 2 senden.");
+}
+
+void listDir(const char *path, uint8_t depth, uint16_t &entries) {
+  File dir = SD.open(path, FILE_READ);
+  if (!dir || !dir.isDirectory()) {
+    Serial.printf("FEHLER: Verzeichnis %s nicht lesbar\n", path);
+    return;
+  }
+  while (entries < 256) {
+    File entry = dir.openNextFile();
+    if (!entry) break;
+    ++entries;
+    if (entry.isDirectory()) {
+      Serial.printf("DIR  %s\n", entry.path());
+      if (depth < 12) listDir(entry.path(), depth + 1, entries);
+      else Serial.println("  Tiefenlimit erreicht; Unterverzeichnis nicht durchsucht");
+    } else {
+      Serial.printf("FILE %s | %lu Bytes\n", entry.path(), (unsigned long)entry.size());
+    }
+    entry.close();
+  }
+  dir.close();
+}
+
+void listSd() {
+  if (!sdReady) {
+    pinMode(SD_CS, OUTPUT);
+    digitalWrite(SD_CS, HIGH);
+    if (!SPI.begin(SD_SCK, SD_MISO, SD_MOSI, SD_CS)) {
+      Serial.println("FEHLER: SPI.begin");
+      return;
+    }
+    // Explizit 1 MHz, unabhaengig vom SD.begin-Default.
+    sdReady = SD.begin(SD_CS, SPI, 1000000);
+  }
+  if (!sdReady || SD.cardType() == CARD_NONE) {
+    Serial.println("FEHLER: SD nicht erreichbar. Karte/Verkabelung pruefen, keine Pfade angenommen.");
+    return;
+  }
+  Serial.printf("SD erreichbar | %llu Bytes | SPI 1 MHz\n",
+                (unsigned long long)SD.cardSize());
+  Serial.println("--- SD-Dateiliste BEGIN ---");
+  uint16_t entries = 0;
+  listDir("/", 0, entries);
+  if (entries >= 256) Serial.println("Eintragslimit erreicht; Liste moeglicherweise unvollstaendig.");
+  Serial.printf("--- SD-Dateiliste END | %u Eintraege ---\n", unsigned(entries));
+}
+
+void captureTag(char slot) {
+  if (!nfcReady) {
+    Serial.println("Zuerst n senden. Kein Tag-Test ohne erfolgreiche NFC-Initialisierung.");
+    return;
+  }
+  Serial.printf("TAG %c: Nur diesen einen Tag auflegen. Warte bis zu 20 Sekunden.\n", slot);
+  const uint32_t started = millis();
+  while (millis() - started < 20000) {
+    uint8_t uid[7] = {};
+    uint8_t length = 0;
+    if (nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &length, 150)) {
+      if (length == 0 || length > sizeof(uid)) {
+        Serial.println("FEHLER: unplausible UID-Laenge");
+        return;
+      }
+      Serial.printf("TAG %c | UID_LEN %u | UID ", slot, unsigned(length));
+      for (uint8_t i = 0; i < length; ++i) {
+        if (i) Serial.print(':');
+        Serial.printf("%02X", unsigned(uid[i]));
+      }
+      Serial.println(" | Noch KEINE Liedzuordnung; Tag nicht beschrieben.");
+      return;
+    }
+    delay(100);
+  }
+  // Diese API trennt Abwesenheit, ACK-/Antwortfehler und Timeout nicht auf.
+  Serial.printf("TAG %c: Keine UID erfasst. Das ist kein Beweis fuer einen I2C-Busfehler.\n", slot);
+}
+
+void setup() {
+  Serial.begin(115200);
+  const uint32_t started = millis();
+  while (!Serial && millis() - started < 3000) delay(10);
+  help();
+}
+
+void loop() {
+  if (Serial.available()) {
+    switch (Serial.read()) {
+      case 'n': initNfc(); break;
+      case 'd': listSd(); break;
+      case '1': captureTag('1'); break;
+      case '2': captureTag('2'); break;
+      case 'h': help(); break;
+      case '\r': case '\n': case ' ': break;
+      default: Serial.println("Unbekannter Befehl; h zeigt Hilfe."); break;
+    }
+  }
+  delay(5);
+}
