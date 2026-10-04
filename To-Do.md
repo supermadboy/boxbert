@@ -2,16 +2,22 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Etappe 5 vorbereiten — WLAN-Webserver + Upload.** Erst Umfang und
-  Firmware-Framework abstimmen, dann schrittweise Webserver neben dem
-  funktionierenden NFC-/SD-/Audio-Pfad testen. Keine BLE-Abhaengigkeit.
-- [ ] Framework-Entscheidung (Arduino vs. ESP-IDF) — Sprint 4; bisherige
-  Breadboard-Referenzen verwenden Arduino-Core 3.3.12.
+- [ ] Langfristige Framework-Entscheidung fuer Produktfirmware (Arduino vs.
+  ESP-IDF) separat klaeren; Breadboard-Etappe 5 nutzt Arduino-Core 3.3.12.
 
-### Spaetere Haertung — keine offenen Etappe-4-Abschlussbedingungen
+### Spaetere Haertung — keine offenen Etappen-4-/5-Abschlussbedingungen
 
-Etappe 4 ist auf Nutzerwunsch als Breadboard-Meilenstein abgenommen,
-nicht als vollstaendiger Produkt-/Dauertest. Noch gezielt pruefen:
+Etappen 4 und 5 sind als Breadboard-Meilensteine abgenommen, nicht als
+vollstaendige Produkt-/Dauertests. Noch gezielt pruefen:
+
+- [ ] Etappe 5: abgelehnte/doppelte/ungueltige Uploads, Upload-Abbruch,
+  Groessenlimit und SD-Fehler; bestehende Musikdateien intakt halten.
+- [ ] Etappe 5: Verhalten bei Upload waehrend Audio/NFC-Last pruefen —
+  synchroner WebServer kann den Audio-Loop blockieren; erst danach
+  parallelen Upload freigeben. Auth/Netz-Sicherheit vor Produktbetrieb
+  bewerten (HTTP Basic nur im vertrauten lokalen WLAN).
+- [ ] Etappe 5: physisch unbekanntes Tag, beide urspruenglichen Songs und
+  mehrere Neustarts separat testen; bisher Happy-Path mit zugewiesener MP3.
 
 - [ ] Mindestens 20 **kontrollierte** Tagwechsel und mehrere Minuten
   Audio unter NFC-Last, spaeter auch WLAN-/Upload-Last; Fehler zaehlen.
@@ -39,6 +45,17 @@ nicht als vollstaendiger Produkt-/Dauertest. Noch gezielt pruefen:
 - [ ] IO6/IO11 und 44-mm-Schalter einzeln elektrisch/funktional testen.
 
 ## Erledigt
+
+- [x] **04.10.2026: Etappe 5 BESTANDEN — Breadboard-Abnahme.**
+  `firmware/tests/etappe5_web_upload/` mit Arduino-Core 3.3.12,
+  WLAN-Station, einfacher Handy-Seite, `/files`, `/upload`, `/tags`,
+  NVS-Zuordnung fuer die zwei bekannten UIDs. Nutzer bestaetigt
+  Browser/Dateiliste, MP3-Upload, Tag-Zuweisung, hoerbares Abspielen und
+  nach RESET erhaltene Zuordnung **sowie erneutes Abspielen** ohne
+  Neuzuweisung. Serial: WLAN/NFC an, letzter Schnappschuss STARTS=4,
+  ERRORS=0; Compile und Upload-Hashes ok. Nur USB, kein Akku; keine
+  React-PWA, kein BLE. Fehlertests/Dauertest ausstehend, keine
+  Produktfreigabe. Protokoll: `docs/testprotokoll-etappe5.md`.
 
 - [x] **04.10.2026: Etappe 4 BESTANDEN — Breadboard-Abnahme.** Neuer
   `etappe4_tag_player`: PN532 I2C IO3/IO4 (DIP ON/OFF, 100 kHz), SD SPI

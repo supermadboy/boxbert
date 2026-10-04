@@ -1,6 +1,6 @@
 # Aktive Breadboard-Referenzen
 
-Stand: **04.10.2026, Etappen 0–4 bestanden.** Kein Produktfirmware-
+Stand: **04.10.2026, Etappen 0–5 als Breadboard-Meilensteine bestanden.** Kein Produktfirmware-
 Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 
 | Sketch | Zweck / Status |
@@ -12,7 +12,8 @@ Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 | etappe3_button | Button an IO5, Etappe 3 |
 | etappe4_nfc_i2c | unveraenderte PN532-I2C-UID-Einzelreferenz, beide Tags neu reproduziert |
 | etappe4_nfc_switch | bestaetigter Timeout-0-Wechselpfad, NFC-only |
-| etappe4_tag_player | **aktuell geflasht**, neuer Zwei-Tag-/Zwei-Lied-Player, optimierter Hoertest bestaetigt |
+| etappe4_tag_player | Etappe-4-Referenz, optimierter Hoertest bestaetigt; seit Etappe-5-Flash nicht mehr auf Board |
+| etappe5_web_upload | **aktuell geflasht, Breadboard-Abnahme bestanden**: WLAN-Station, Handy-Webseite, Dateiliste, Upload, NVS-Zuordnung der zwei bekannten Tags samt RESET-Test; Haertung offen, siehe `docs/testprotokoll-etappe5.md` |
 
 ## Etappe 4 — gueltiger Stand
 

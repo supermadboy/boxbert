@@ -19,14 +19,17 @@ Das entschuldigt **keine** Regel weiter unten: Pins nie aus dem Gedächtnis,
 Kindersicherheit und „Daddelbert bestellt" gelten immer — die Persona ändert,
 wie erklärt wird, nicht was gilt.
 
-**Status 04.10.2026: Etappen 0–4 als Breadboard-Meilensteine bestanden.**
+**Status 04.10.2026: Etappen 0–5 als Breadboard-Meilensteine bestanden.**
 Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
-Letzter hier dokumentierter Flash: `firmware/tests/etappe4_tag_player/`,
-SD 4 MHz, NFC-Pause 200 ms, Volume 6/21, USB-only. Aktueller Arbeitsstand
-und nächste Schritte ausschließlich in `To-Do.md`; Flash-Inhalt vor Tests
-am laufenden Sketch verifizieren. Fahrplan und Abnahmeumfang:
-`docs/breadboard-testing.md`, `docs/testprotokoll-etappe4.md`, `To-Do.md`.
-Dauertests/Produktreife nicht mit dieser Breadboard-Abnahme gleichsetzen.
+Etappe 5: Handy-Webseite, MP3-Upload, Tag-Zuordnung und Wiedergabe laut
+Nutzer erfolgreich, Zuordnung **und Wiedergabe nach RESET** bestaetigt.
+Aktuell geflasht: `firmware/tests/etappe5_web_upload/` (Arduino-Core 3.3.12,
+SD 4 MHz, NFC-Pause 200 ms, Volume 6/21, USB-only; privates `Secrets.h`
+git-ignored). Etappe-4-Player bleibt unveraenderte Referenz im Repo.
+Aktueller Arbeitsstand/nächste Schritte in `To-Do.md`; Flash-Inhalt vor
+Tests verifizieren. Fahrplan/Abnahmeumfang: `docs/breadboard-testing.md`,
+`docs/testprotokoll-etappe4.md`, `docs/testprotokoll-etappe5.md`.
+Dauertests/Produktreife nicht mit der Breadboard-Abnahme gleichsetzen.
 Entwicklungsumgebung ist eingerichtet; Reproduktion in `docs/dev-setup.md`.
 
 ## Rollen

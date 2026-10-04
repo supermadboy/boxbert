@@ -1,6 +1,6 @@
 # Breadboard-Testplan — Boxbert
 
-Stand: 04.10.2026 (Etappen 0–4 bestanden; NFC auf I2C aktualisiert).
+Stand: 04.10.2026 (Etappen 0–5 als Breadboard-Meilensteine bestanden).
 Pins gegen Board-Definition **und Datenblätter** geprüft —
 Kernwerte in `docs/kernwerte.md`. Bestellung angekommen; Fahrplan fuer
 Aufbau und weitere Integration. **Alle Pins kommen aus
@@ -153,11 +153,19 @@ in `To-Do.md`, nicht als offene Bedingungen dieses Nutzerabschlusses.
 
 ## Etappe 5 — WLAN-Webserver + Upload
 
-**Naechster Schritt nach Etappe 4.** Vor Umsetzung Umfang und Framework
-abstimmen; bisheriger Player bleibt Referenz. Firmware-Skelett (Sprint 4):
-HTTP-Server auf dem Feather, Endpoints
-`/files`, `/upload`, `/tags`. Test am Handy im gleichen WLAN: mp3
-hochladen, Dateiliste sehen, Tag-UID zuordnen.
+**BESTANDEN als Breadboard-Meilenstein am 04.10.2026.** Arduino-Core
+3.3.12, vorhandenes 2,4-GHz-WLAN, einfache Handy-Seite statt fertiger
+React-PWA. Etappe-4-Player bleibt unveraenderte Referenz. Aktuell
+geflasht: `firmware/tests/etappe5_web_upload/` mit HTTP-Server
+`/files`, `/upload`, `/tags`; Upload nur bei idle Audio und
+Zuordnung der zwei bekannten UIDs in NVS. Nutzer bestaetigt Webseite,
+MP3-Upload, Zuordnung und hoerbare Wiedergabe; nach RESET bleibt die
+Zuordnung erhalten und derselbe Tag spielt erneut ohne Neu-Zuweisung.
+USB-only, Akku ab. Serial WLAN/NFC aktiv; Build und Upload-Hashes ok.
+**Kein Produkt-/Dauertest**: Fehlerfaelle, WLAN-/Upload-Last und
+paralleler Upload bei Audio offen. Zugangsdaten lokal git-ignored;
+HTTP Basic Auth nur im vertrauenswuerdigen WLAN, kein Port-Forwarding.
+Grenzen/Chronologie: `docs/testprotokoll-etappe5.md`.
 
 ## Etappe 6 — AW9523, NeoPixel, Encoder, Boost, Button-LEDs
 
