@@ -1,0 +1,9 @@
+[Herz] reads=382 i2cErrors=0 A0=1 LEDMODE0=0xFF CONFIG0=0xFF
+[     10368 ms] A0 -> 0 (NIEDRIG = GEDRUECKT)
+[     11334 ms] A0 -> 1 (HOCH  = losgelassen)
+[     12027 ms] A0 -> 0 (NIEDRIG = GEDRUECKT)
+[     13623 ms] A0 -> 1 (HOCH  = losgelassen)
+[     14106 ms] A0 -> 0 (NIEDRIG = GEDRUECKT)
+[Herz] reads=621 i2cErrors=0 A0=0 LEDMODE0=0xFF CONFIG0=0xFF
+[     15514 ms] A0 -> 1 (HOCH  = losgelassen)
+[     15976 ms] A0 -> 0 (NIEDRIG = GEDRUECKT)

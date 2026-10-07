@@ -1,0 +1,14 @@
+[Selbstantrieb 3] treibe 1 -> liest 0 | P0_CFG=0x00 LEDMODE=0x00 | I2C ok
+[Selbstantrieb 4] treibe 0 -> liest 0 | P0_CFG=0x00 LEDMODE=0x00 | I2C ok
+[Selbstantrieb 5] treibe 1 -> liest 0 | P0_CFG=0x00 LEDMODE=0x00 | I2C ok
+[Selbstantrieb 6] treibe 0 -> liest 0 | P0_CFG=0x00 LEDMODE=0x00 | I2C ok
+--- Selbstantrieb beendet, A0 wieder Eingang ---
+--- AB JETZT: Taster betaetigen erlaubt ---
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
+[Herz] i2cErrors=0 A0=0 P0_CFG=0xFF LEDMODE=0x00
