@@ -126,6 +126,14 @@ erst nach Wake, das ist das bestehende Konzept, nicht neu).
 
 ### Optionsentscheidung A — PN532 abschalten
 
+**ENTSCHEIDUNG (Nutzer, 07.10.2026): Verworfen.** PN532 bleibt dauerhaft
+am 3V3-Header, keine Abschalt-Rail. Folge: Sleep-Strom 10–13 mA Standby
+(Akku im Schlaf ~10–12 Tage bei 3000 mAh, Rechnung ohne Messung); der
+Hauptschalter (Feather-EN) ist der Null-Strom-Weg. Begründung und
+Auto-Sleep-/Wake-Planung: `docs/entscheidungen.md`.
+
+Historische Optionen (nicht umgesetzt):
+
 1. **PN532 an die IO7-Rail (TFT/STEMMA-Versorgung) umversorgen:** kein
    neues Bauteil; IO7 ist RTC-faehig (0–21) und default-aus im Sleep;
    Rail laedt TFT (+STEMMA, ~wenige mA) + PN532 (13–26 mA).
@@ -139,6 +147,13 @@ erst nach Wake, das ist das bestehende Konzept, nicht neu).
    Empfehlung bei Bestellung: z. B. Si2301/DMG3415-Klasse + 10 kΩ.
 
 ### Optionsentscheidung B — Boost-EN im Deep Sleep
+
+**ENTSCHEIDUNG (Nutzer, 07.10.2026): B1 angenommen** — EN auf IO9
+(RTC-fähig), Firmware haelt LOW vor dem Sleep (`rtc_gpio_hold_en`),
+nach Wake wieder HIGH. Anschlussskizze: Boost-EN-Pad → IO9 am Feather,
+Breakout-Pull-up bleibt drin (schadet, solange IO9 aktiv treibt).
+Verifikationstest im Rail-Zusammenbau: Sleep starten und am Boost-
+Ausgang 0 V messen (True Disconnect nachweisen).
 
 **Problem (neu erkannt, 07.10.2026):** Geplanter EN-Pin IO39 ist **kein
 RTC-GPIO** (RTC = 0–21) — im Deep Sleep floatet er, das Breakout zieht

@@ -80,9 +80,28 @@ pruefen. USB-Breadboard-Erfolg ersetzt keinen Lade-/Akkubetriebs-/Sleep-Test.
 
 Geplant: Deep Sleep, Auto-Sleep und Wake-Buttons auf RTC-GPIOs aus dem
 Pinplan. Board-Richtwert ~40–50 uA ist kein gemessener Gesamtsystemstrom.
-PN532-Abschaltung auf geeigneter 3,3-V-Rail noch entscheiden; Feather-EN,
-TFT/STEMMA-Power und Boost-EN nicht gleichsetzen. Hauptschalter zwischen
-Feather-EN/GND deaktiviert Board-Regler, Laden ueber USB bleibt moeglich.
+Hauptschalter zwischen Feather-EN/GND deaktiviert Board-Regler, Laden
+ueber USB bleibt moeglich.
+
+**Entscheidung (Nutzer, 07.10.2026):** PN532 bleibt dauerhaft am
+3V3-Header, keine eigene Abschalt-Rail (fruehere Option A/MOSFET
+verworfen). Begründung: Einfachheit; die Box wird regelmaessig per
+Hauptschalter ausgemacht. **Bekannte Folge:** Im Auto-Sleep zieht der
+PN532-Standby 10–13 mA weiter — bei 3000 mAh reicht der Akku im
+Schlafzustand nur fuer ca. 10–12 Tage, nicht fuer Wochen (Rechnung,
+keine Messung). Der Hauptschalter ist der eigentliche Null-Strom-Weg.
+
+**Auto-Sleep-Trigger (Nutzer, 07.10.2026):** Deep Sleep nach 5 Minuten
+ohne Interaktion — kein Lied laeuft (audio.isRunning false) UND kein
+Button/Encoder seit dem letzten Ereignis. Tag auflegen zaehlt als
+Interaktion (startet ja ein Lied). Encoder ist Endaufbau-Bauteil — auf
+dem Breadboard testet nur der Button-Pfad.
+
+**Wake-Quellen (offen, 07.10.2026):** Im Deep Sleep weckt ein Tag den
+ESP32 NICHT (I2C-Geraete koennen nicht wecken). Variante a: Wake nur
+per Wake-Button (IO5/6/11) — Empfehlung fuer Etappe 8. Variante b:
+PN532-IRQ-Pin auf RTC-GPIO legen + Low-Power-Card-Detection — spaeter
+pruefen, kein IRQ-Kabel verdrahtet (Etappe 4 lief bewusst ohne).
 
 ## Bestellprozess und Historie
 
