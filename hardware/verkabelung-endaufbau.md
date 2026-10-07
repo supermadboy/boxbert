@@ -68,8 +68,11 @@ Direkt am Feather (ohne AW9523):
 | IO12 | Encoder-Taster | Encoder SW | [geplant] |
 | IO9 | Boost-EN | TPS61023 EN | [geplant] (Decision B1) |
 | IO8 (A5) | NeoPixel-Daten | Stick DIN über **330 Ω** | [bestätigt] Minimal-Rot (Etappe 6) |
+| IO38 | Kippschalter 2 (10014) | Schalter A → IO38, B → GND, INPUT_PULLUP | [geplant] |
+| IO39 (TX) | 24-mm-Button 1 | Schalter A → IO39, B → GND | [geplant] |
+| IO13 | 24-mm-Button 2 (optional) | Schalter A → IO13, B → GND. **Quirk:** Onboard-LED leuchtet mit dem Schalterzustand — wer das stört: Button nicht anschließen (mechanisch lassen) | [geplant] |
 | — | Hauptschalter | Kippschalter 10020: Mitte ↔ Feather-EN, Ende ↔ GND | [geplant] |
-| IO38, IO39(TX), IO13( LED) | frei / reserviert | IO11 = reserviert PN532-IRQ (Wake per Tag, später) | — |
+| IO38, IO39(TX), IO13( LED) | (siehe oben) | IO11 = reserviert PN532-IRQ (Wake per Tag, später) | — |
 
 **Nicht anfassen:** IO0/1/2 (Onboard-Taster), IO7 (TFT/STEMMA-Rail),
 IO13 nur mit Bewusstsein (Onboard-LED leuchtet mit), IO21/IO33
@@ -92,37 +95,51 @@ VIN → Feather **3V3** (niemals +5 V), GND gemeinsam, SDA/SCL → IO3/IO4.
 Adresse 0x58. **Keine internen Pull-ups im Chip** — jeder Tastereingang
 braucht **externen 10 kΩ nach 3V3**; Taster andere Seite GND.
 
+**Port-Budget (voll ausgenutzt, Stand 07.10.2026):** Alle Schalter sollen
+angeschlossen werden — dazu wandern 3 Eingänge direkt an freie Feather-
+GPIOs (IO38 = Kippschalter 2, IO39 = 24-mm-Button 1, IO13 = 24-mm-Button
+2 mit LED-Quirk), damit alles passt:
+
 | AW9523-Port | Funktion | Detail |
 |---|---|---|
 | P00 | DT44L12-R Schalter | + externer 10 k Pull-up |
 | P01 | DT44L12-B Schalter | + externer 10 k Pull-up |
 | P02 | AB30L5-Schalter #3 | + externer 10 k Pull-up |
 | P03 | AB30L5-Schalter #4 | + externer 10 k Pull-up |
-| P04 | Mini-Drucktaster 1 | + externer 10 k Pull-up |
-| P05 | Mini-Drucktaster 2 | + externer 10 k Pull-up |
-| P06 | Mini-Drucktaster 3 | + externer 10 k Pull-up |
-| P07 | frei (reserviert) | z. B. späterer 24-mm-Button |
-| P10 | DT44L12-R **LED-Kathode** | Anode → 5-V-LED-Rail |
-| P11 | DT44L12-B **LED-Kathode** | Anode → 5-V-LED-Rail |
-| P12 | AB30L5-LED #3 Kathode | Anode → 5-V-LED-Rail |
-| P13 | AB30L5-LED #4 Kathode | Anode → 5-V-LED-Rail |
-| P14–P15 | frei (reserviert) | |
-| P16–P17 | frei (reserviert) | z. B. spätere 24-mm-Buttons |
+| P04 | AB24OL-Button 3 | + externer 10 k Pull-up |
+| P05 | AB24OL-Button 4 | + externer 10 k Pull-up |
+| P06 | Mini-Drucktaster 1 | + externer 10 k Pull-up |
+| P07 | Mini-Drucktaster 2 | + externer 10 k Pull-up |
+| P10 | Mini-Drucktaster 3 | + externer 10 k Pull-up |
+| P11 | DT44L12-R **LED-Kathode** | Anode → 5-V-LED-Rail |
+| P12 | DT44L12-B **LED-Kathode** | Anode → 5-V-LED-Rail |
+| P13 | AB30L5-LED #3 Kathode | Anode → 5-V-LED-Rail |
+| P14 | AB30L5-LED #4 Kathode | Anode → 5-V-LED-Rail |
+| P15 | AB30L5-LED #1 Kathode (Button an IO5) | Anode → 5-V-LED-Rail |
+| P16 | AB30L5-LED #2 Kathode (Button an IO6) | Anode → 5-V-LED-Rail |
+| P17 | frei (reserviert) | z. B. AB24OL-Button 2 statt IO13-Variante |
 
-- 24-mm-Buttons (4×): **rein mechanisch, keine Verkabelung** (Busyboard-
-  Gefühl; nur 5–8 echte Funktionen laut AGENTS). Bei Bedarf später über
-  freie Ports P07/P14–P17.
-- AB30L5-Schalter #1/#2 sitzen an **IO5/IO6** (Wake-Buttons, s. o.) —
-  ihre LEDs trotzdem über die AW9523-LED-Ports (P12/P13 oder reservierte
-  Ports) anbinden, damit die Anzeige unabhängig von der Button-Funktion
-  ist. Bei Portknappheit entscheiden: zwei der vier 30-mm-LEDs weglassen
-  oder dauerleuchten.
-- **LED-Rail-Status [offen]:** Konstantstrom-Senkenmodus (AW9523_LED_MODE)
-  ist die Planung; zulässige Portspannung/Strom bei 5-V-Anoden sind noch
-  nicht geprüft. Erst im Aufbau: Firmware-Test mit kleinem Strom
-  (Dimmwert niedrig), Messung pro Port, dann Freigabe. 44-mm-LEDs an
-  5 V sind als „klar sichtbar" bestätigt (Nutzer, 07.10.2026), Strom
-  ungemessen.
+Verteilungslogik: 9 Schalter + 6 LED-Kathoden = 15 von 16 Ports; P17
+bleibt als Reserve. Die AB24OL-Buttons 1/2 sitzen an IO39/IO13 (Feather-
+GPIOs, interne Pull-ups reichen dort), Button-Schalter der AB30L5 #1/#2
+an IO5/IO6 (Wake).
+
+- **LED-Rail-Status [offen]:** Konstantstrom-Senkenmodus
+  (AW9523_LED_MODE) ist die Planung; zulässige Portspannung/Strom bei
+  5-V-Anoden sind noch nicht geprüft. Erst im Aufbau: Firmware-Test mit
+  kleinem Strom (Dimmwert niedrig), Messung pro Port, dann Freigabe.
+  44-mm-LEDs an 5 V sind als „klar sichtbar" bestätigt (Nutzer,
+  07.10.2026), Strom ungemessen.
+
+## 4b. Encoder EN2424-6T20 [geplant]
+
+| Encoder-Pin | Feather | Detail |
+|---|---|---|
+| A | IO15 (A3) | externer 10 kΩ Pull-up nach **3V3** (rechtsdrehbar sauber lesen; interne Pull-ups reichen prinzipiell, extern ist stabiler) |
+| B | IO14 (A4) | externer 10 kΩ Pull-up nach 3V3 |
+| SW (Taster) | IO12 | externer 10 kΩ Pull-up nach 3V3 (bzw. INPUT_PULLUP) |
+| + / LED-Versorgung | **3V3** | kweine 5 V: Falls das Modul interne Widerstände hat, ziehen die nach VCC — A/B/SW dürfen max. 3,3 V an den GPIO legen. Falls das Modul eine LED hat, ist sie an 3,3 V evtl. dunkel — Module/Silkscreen/Datenblatt VORHER prüfen |
+| − | GND | gemeinsam |
 
 ## 5. NeoPixel-Stick [bestätigt Verlötung, Rest geplant]
 
