@@ -88,8 +88,8 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 | Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
 | Encoder-Taster | IO12 | |
 | NeoPixel-Stick DIN | IO8 (A5) | 330 Ohm in Reihe |
-| Boost EN (TPS61023) | IO39 (TX) | kein NFC-UART-Konflikt mehr |
-| frei | IO9, IO38; IO13 mit LED | weitere Buttons ueber AW9523 |
+| Boost EN (TPS61023) | IO9 | **Decision 07.10.2026: IO9 statt IO39** — RTC-faehig, `rtc_gpio_hold_en` im Sleep; IO39 ist kein RTC-GPIO (`docs/power-plan.md` B1). |
+| frei | IO38, IO39 (TX); IO13 mit LED | weitere Buttons ueber AW9523 |
 
 ## Regeln und Historie
 
