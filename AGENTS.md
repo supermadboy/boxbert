@@ -243,7 +243,9 @@ echter Quelle oder eigener Messung, kein KI-generiertes Blabla.
   (Play/Pause, Vol, Skip, …) — im Breadboard-Test herausspielen, Ergebnis
   nach `hardware/` dokumentieren.
 - 44-mm-LEDs (12 V): 12-V-Step-Up nachbestellen oder Deko-LEDs weglassen —
-  nach Verhaltenstest an 5 V entscheiden.
+  nach Verhaltenstest an 5 V entscheiden. **ENTSCHIEDEN 07.10.2026:**
+  keine Button-LEDs, NeoPixel übernimmt alle visuellen Signale
+  (`hardware/verkabelung-endaufbau.md`).
 - Boost-Ausgang an MAX98357A: ja/nein, je nach Hörtest (lauter, aber mehr
   Strom und Verzerrungsrisiko an der 5,2-V-Grenze).
 - Arduino-Framework vs. ESP-IDF für die Firmware (Sprint-4-Entscheidung;

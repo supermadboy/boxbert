@@ -48,6 +48,19 @@ USB-C ──► Feather (Laden läuft unabhängig von allem)
 
 ## 2. Feather-Header — Gesamtablauf [bestätigt soweit verdrahtet]
 
+**Fazit (07.10.2026): Der Feather ist zu 100 % belegt** — jede
+herausgeführte GPIO hat eine Aufgabe oder ist reserviert (IO11 für PN532-
+IRQ). Erweiterungen laufen ab jetzt über den AW9523 (7 freie Ports) bzw.
+einen zweiten Expander mit anderer I2C-Adresse. Konsequenz fürs Lötern:
+Erst nach Doppelkontrolle löten — vertauschte Pins über den Button-
+Test-Sketch vor der Gehäusemontage finden.
+
+**Amp SD/Mode-Pin nicht vergessen:** → 3V3 (bestätigte Konfiguration,
+sonst schaltet der Amp in Shutdown/tri-state).
+
+**Pad „DB" am rechten Header-Ende:** GPIO-Zuordnung in unseren
+Unterlagen nicht verifiziert — nicht verdrahten.
+
 Direkt am Feather (ohne AW9523):
 
 | Feather-Pin | Funktion | Modul-Pin | Status |
