@@ -19,6 +19,22 @@ Abnahme. Test-/Bauteilbestand siehe `hardware/BOM.md`, Details im
 Etappe-4-Protokoll. Es wird nicht aus zukuenftigen Plaenen auf heutige
 Sleep-Stroeme oder eine bereits vorhandene Rail-Schaltung geschlossen.
 
+## Rail-Merksatz (07.10.2026, aus Planungsdiskussion)
+
+**BAT = Energiequelle, 3V3 = Logik, Boost-Ausgang = Leistung.**
+- BAT (rohe Akkuspannung, 3,0–4,2 V) ist ungeeignet für SD-Modul
+  (Regler-Dropout), NeoPixel/LED-Rail (Helligkeitsschwankung) und PN532
+  (3,3-V-Teil). Einziger BAT-Direktkandidat: MAX98357A (2,7–5,5 V),
+  siehe offene Amp-Variante oben.
+- Der 3V3-Header speist den ESP32 selbst (inkl. WLAN-Bursts) — dort
+  nur Logik-Verbraucher (PN532 ~30 mA Peak, AW9523 µA), keine
+  Leistungslasten (Brown-out-Risiko).
+- Boost-Eingang künftig **direkt an der Akku-JST-Buchse abgreifen**,
+  nicht über den BAT-Header-Pin — Board-Leiterbahn ist nicht für
+  ~2-A-Boost-Eingangsstrom dimensioniert (kernwerte: 1 A out ≈ 1,8 A in
+  @3,7 V). Noch ungeprüft/zu testen, erst Anschlussfreigabe nach
+  elektrischer Prüfung.
+
 ## Drei verschiedene Enable-/Power-Funktionen
 
 1. **Feather-EN (Header):** deaktiviert den Haupt-3,3-V-Regler und damit
@@ -85,7 +101,81 @@ Die VIN-Vorgabe und Modusunterscheidung sind quellengeprueft; daraus
 keine bereits erfolgte Board-/Button-LED-Messung behaupten. Die externe
 5-V-Rail ist bewusst bis zur elektrischen Gegenpruefung offen.
 
-## Vor Akku-/Deep-Sleep-Abnahme
+## Rail-Feinplanung (ENTWURF, 07.10.2026) — Entscheidungen und offene Pruefungen
+
+Status: **Entwurf nach Etappe-6-Breadboard-Programm** (Teilprogramm
+bestanden, s. `docs/testprotokoll-etappe6.md`). Nichts davon ist
+angeschlossen/getestet; Umsetzung erst nach Freigabe + Bestellung
+fehlender Teile. Ziel: Deep Sleep nur Feather (~40–50 µA Richtwert),
+Wake nur ueber IO5/6/11 (PN532 ist im Sleep aus — Tag-Erkennung gibt es
+erst nach Wake, das ist das bestehende Konzept, nicht neu).
+
+### Verbraucher → Rail (Vorschlag)
+
+| Verbraucher | Rail im Endaufbau | Abschaltung im Sleep | Wie |
+|---|---|---|---|
+| Feather | BAT/USB, onboard 3,3-V-Regler | schlaeft selbst (Wake IO5/6/11) | Deep Sleep, Kippschalter an Feather-EN als Hauptschalter |
+| Fuel Gauge MAX17048 (onboard) | immer an | nein (µA, Batterie-Monitoring) | — |
+| AW9523 | Feather 3V3 | nein (µA-Logik; Ports im Sleep als Eingang, LED-Rail ist aus) | — |
+| **PN532** | 3,3 V, **abschaltbar** | **ja (10–13 mA Standby!)** | Optionsentscheidung unten (A) |
+| SD-Modul | **Boost-Ausgang 5,2 V** (Play-Modus) | ja, via Boost-EN | Modul-Regler vertraegt 5,2 V (AMS1117-Klasse), geprueft werden Einschaltspitzen |
+| MAX98357A | **offen**: Akkuspannung (3,7–4,2 V) vs. Boost 5,2 V — Hörtest ausstehend (AGENTS offene Frage) | ja, via Boost-EN wenn Boost-Variante; bei Akku-Variante Shutdown-Pin nutzen | Variante (a) heißt: kein Extra-Schalter nötig, aber leiser |
+| NeoPixel-Stick | Boost-Ausgang 5,2 V | ja, via Boost-EN | DIN 330 Ω wie getestet; Rueckspeisung ueber DIN im Sleep pruefen (Pulldown) |
+| Button-LEDs 30 mm + 44 mm | gemeinsame **5-V-LED-Rail** vom Boost-Ausgang | ja, via Boost-EN | Anoden an Rail, Kathoden an AW9523-Ports (Konstantstrom-Sink) — **Portgrenzen-Pruefung ausstehend** |
+| Boost (TPS61023) | IN an BAT (oder USB) | ja (True Disconnect bestaetigt, Teil 3b) | EN-Steuerung: Optionsentscheidung unten (B) |
+
+### Optionsentscheidung A — PN532 abschalten
+
+1. **PN532 an die IO7-Rail (TFT/STEMMA-Versorgung) umversorgen:** kein
+   neues Bauteil; IO7 ist RTC-faehig (0–21) und default-aus im Sleep;
+   Rail laedt TFT (+STEMMA, ~wenige mA) + PN532 (13–26 mA).
+   Vorher zu pruefen: Rail-Belastbarkeit/Ladewandler? (Adafruit-Schaltplan
+   gegensehen), Verhalten bei Boot (variant.cpp setzt IO7 HIGH), ob TFT-aus
+   im Sleep okay ist (ja, Display schlaeft mit).
+2. **P-Kanal-MOSFET High-Side an 3V3 (neues Bauteil, Bestellung):** Gate-
+   Pull-up an 3V3 (default aus im Deep Sleep, Gate floatet), Gate von
+   **IO38** (frei laut pinout.md; nicht RTC — reicht, weil Pull-up den
+   Aus-Zustand definiert). Sauber getrennt von TFT-Funktion.
+   Empfehlung bei Bestellung: z. B. Si2301/DMG3415-Klasse + 10 kΩ.
+
+### Optionsentscheidung B — Boost-EN im Deep Sleep
+
+**Problem (neu erkannt, 07.10.2026):** Geplanter EN-Pin IO39 ist **kein
+RTC-GPIO** (RTC = 0–21) — im Deep Sleep floatet er, das Breakout zieht
+EN hoch → Boost bleibt AN → SD/Amp/Stick/LED-Rail ziehen Sleep-Strom.
+1. **EN auf IO9 umziehen** (frei laut pinout.md, RTC-faehig): Firmware
+   hält LOW vor dem Sleep (rtc_gpio_hold_en), Boost aus; nach Wake wieder
+   an. Breakout-Pull-up bleibt nutzbar. IO39 bleibt frei.
+2. **Externer Pulldown an EN (IO39 bleibt):** teilt mit Breakout-Pull-up
+   einen unklaren Mittelpegel, wenn Pull-up-Wert nicht gegengeprueft ist —
+   riskanter, nur mit Schaltplan-Check des Breakouts.
+3. **EN an RTC-GPIO IO13** (onboard-LED haengt dran, aber nutzbar): nur
+   falls IO9 anderweitig gebraucht wird.
+
+**Empfehlung im Entwurf: B1 (IO9) + A je nach Nutzerentscheidung**
+(IO7-Rail spart Bauteil, MOSFET ist sauberer isoliert).
+
+### Offene elektrische Pruefungen vor Umsetzung
+
+- AW9523-Port-Spannungsgrenzen im Konstantstrom-Modus bei VDD=3,3 V,
+  Reset-/Boot-Zustaende der Ports, Strom/Verlustleistung pro Port/gesamt,
+  Spannungsreserve der Senke gegen 5-V-Rail (Datenblatt AW9523 +
+  Breakout-Schaltplan); integrierte 44-mm-Widerstaende im 5-V-Betrieb.
+- LED-Stroeme an 5 V messen (30 mm und 44 mm) fuer das Strombudget.
+- Rueckspeisung: DIN/NeoPixel-Datenleitung im Boost-aus-Zustand;
+  SD-Modul-Einschaltspitze am Boost; AW9523-Ports bei abgeschalteter
+  LED-Rail (koennen Ports aus der 3,3-V-Logik speisen?).
+- Gesamt-Sleep-Strom messen (µA-Messbereich, Burden beachten) — Richtwert
+  40–50 µA ist kein gemessener Gesamtsystemstrom.
+- Amp-Variante (Akku vs. Boost) erst nach Hörtest festlegen; dann ggf.
+  MAX98357A-Verlustleistung an 5,2 V unter Last bewerten (max. 5,5 V).
+- Akku: Polung gegen Feather-Pinout pruefen (JST nicht polarisations-
+  genormt), Akku erst ganz zum Schluss ans Board (AGENTS).
+
+## Vor Akku-/Deep-Sleep-Abnahme (Checkliste, Stand 04.10.2026)
+
+*Hinweis 07.10.2026: Die meisten Punkte sind im Rail-Feinplanungs-Entwurf
+oben gebündelt und konkretisiert; Liste bleibt als Gegenkontrolle stehen.*
 
 - Verbraucher ihren **realen** Rails zuordnen, Strom-/Spannungsgrenzen,
   Reglerverlustleistung und Einschaltspitzen pruefen.
