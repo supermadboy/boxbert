@@ -13,7 +13,8 @@ Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 | etappe4_nfc_i2c | unveraenderte PN532-I2C-UID-Einzelreferenz, beide Tags neu reproduziert |
 | etappe4_nfc_switch | bestaetigter Timeout-0-Wechselpfad, NFC-only |
 | etappe4_tag_player | Etappe-4-Referenz, optimierter Hoertest bestaetigt; seit Etappe-5-Flash nicht mehr auf Board |
-| etappe5_web_upload | **aktuell geflasht, Breadboard-Abnahme bestanden**: WLAN-Station, Handy-Webseite, Dateiliste, Upload, NVS-Zuordnung der zwei bekannten Tags samt RESET-Test; Haertung offen, siehe `docs/testprotokoll-etappe5.md` |
+| etappe5_web_upload | Breadboard-Abnahme bestanden: WLAN-Station, Handy-Webseite, Dateiliste, Upload, NVS-Zuordnung der zwei bekannten Tags samt RESET-Test; Haertung offen, siehe `docs/testprotokoll-etappe5.md` |
+| akku_fuel_gauge | **aktuell geflasht (07.10.2026)**: liest onboard MAX17048 (Spannung/SoC/Laderate) am Serial-Monitor; kein NFC/SD/Audio. Werte nicht gesichert, nur Nutzerbestätigung — `docs/testprotokoll-akku.md` |
 
 ## Etappe 4 — gueltiger Stand
 

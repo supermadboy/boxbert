@@ -2,6 +2,17 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Akku 1 ABGESCHLOSSEN (07.10.2026)** — Polung vorher geprüft,
+  läuft am USB + Akku, lädt, alles kühl, Lautstärke-Eindruck gleich.
+  Fuel-Gauge-Test-Sketch `firmware/tests/akku_fuel_gauge/` (MAX17048,
+  Adafruit MAX1704X 1.0.3) läuft laut Nutzer; **keine Rohwerte
+  gesichert** — nur Nutzerbeobachtung, keine Messwerte in der Doku.
+  Protokoll inkl. Bewertung und offener Punkte:
+  `docs/testprotokoll-akku.md`.
+- [ ] Akku-only-Betrieb mit gesicherten Serial-Rohwerten (laden /
+  idle / playback), exakte Akkuspannung nachtragen, Verhalten bei
+  niedriger Akkuspannung beobachten.
+
 - [ ] **Etappe 6 Breadboard-Programm BESTANDEN (07.10.2026)** — AW9523
   (Scan 0x58, Taster A0), NeoPixel (Minimal-Rot, alle 8 Pixel), DT44L12
   an 5 V „klar sichtbar", Boost isoliert (EN/True Disconnect/5,2 V).
