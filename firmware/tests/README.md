@@ -5,7 +5,7 @@ Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 
 | Sketch | Zweck / Status |
 |---|---|
-| etappe0_tft | Board/TFT/WLAN-Scan, Etappe 0 |
+| etappe0_tft | Board/TFT/WLAN-Scan, Etappe 0 — **Achtung:** nutzt `tft.init(240,135)`, laut Lib-Beispiel falsch (richtig: 135, 240); Abnahmebefund nur eingeschränkt gültig, `docs/findings.md` |
 | etappe1_audio_led | I2S-/Testtonreferenz, Etappe 1 |
 | etappe2_sd | SD-/Musikreferenz, Etappe 2 |
 | etappe2_play | damalige SD-Wiedergabereferenz |
@@ -14,7 +14,8 @@ Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 | etappe4_nfc_switch | bestaetigter Timeout-0-Wechselpfad, NFC-only |
 | etappe4_tag_player | Etappe-4-Referenz, optimierter Hoertest bestaetigt; seit Etappe-5-Flash nicht mehr auf Board |
 | etappe5_web_upload | Breadboard-Abnahme bestanden: WLAN-Station, Handy-Webseite, Dateiliste, Upload, NVS-Zuordnung der zwei bekannten Tags samt RESET-Test; Haertung offen, siehe `docs/testprotokoll-etappe5.md` |
-| akku_fuel_gauge | **aktuell geflasht (07.10.2026)**: liest onboard MAX17048 (Spannung/SoC/Laderate) am Serial-Monitor; kein NFC/SD/Audio. Werte nicht gesichert, nur Nutzerbestätigung — `docs/testprotokoll-akku.md` |
+| akku_fuel_gauge | liest onboard MAX17048 (Spannung/SoC/Laderate) am Serial-Monitor; kein NFC/SD/Audio. Werte nicht gesichert, nur Nutzerbestätigung — `docs/testprotokoll-akku.md` |
+| etappe7_gesamtmonitor | **aktuell geflasht (07.10.2026)**: NFC-Player + TFT-Statusanzeige (Akku/Ladestatus/Lied/Volume/WLAN) + MAX17048-Eigen-Task mit Wire-Mutex, NFC-Timeout 250 ms (Abweichung zur Referenz, siehe Protokoll); kein Web-Upload. Nutzer: „funktioniert alles“ — `docs/testprotokoll-etappe7.md` |
 
 ## Etappe 4 — gueltiger Stand
 

@@ -280,6 +280,25 @@ Thema einfügen, Datum dazu.
   → Heißt für Boxbert: Falls wir FastLED statt NeoPixel-Lib nutzen und es
   flackert, sobald WLAN an ist — erst diese Konstante drehen.
 
+## TFT (ST7789, onboard Reverse-TFT-Feather)
+
+- **`tft.init(240, 135)` ist falsch für das 1,14"-240×135-Panel (eigener
+  Befund, 07.10.2026).** Die Lib rechnet die GRAM-Offsets nur bei
+  `init(135, 240)` (Portrait-Maße) richtig — das steht im Lib-Beispiel
+  `graphicstest_st7789` („//tft.init(135, 240); // Init ST7789 240x135“).
+  Mit (240, 135) fällt der Aufruf durch keinen Offsets-Sonderfall:
+  Inhalt landet in der Display-Mitte, Ränder zeigen geflecktes
+  uninitialisiertes GRAM; Zeilen oben fehlen sichtbar. Korrektur im
+  `etappe7_gesamtmonitor` mit `init(135, 240)` + Rotation 1 bestätigt
+  (Nutzer: „sieht alles super aus, funktioniere alles“).
+  **Achtung:** Die Etappe-0-Referenz `etappe0_tft` nutzt denselben
+  falschen `init(240, 135)` — sie „lief“ bei der Abnahme, weil der
+  kleine Text links oben zufällig lesbar war; Abnahmebefund „TFT ok“
+  gilt nur eingeschränkt. Sketch bleibt als Referenz unangetastet;
+  jeder neue TFT-Code benutzt `init(135, 240)`.
+  Quelle: installierte Adafruit-ST7735/ST7789-Lib 1.11.0,
+  `Adafruit_ST7789.cpp` Offset-Sonderfälle + Beispiele.
+
 ## AW9523 (GPIO-Expander)
 
 - **GPIO-Modus und LED-Stromsenke unterscheiden (Herstellerprüfung,

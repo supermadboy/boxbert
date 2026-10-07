@@ -2,6 +2,14 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Etappe 7 Gesamtmonitor (07.10.2026)** — TFT-Anzeige (Akku %/
+  Ladestatus/Spannung, WLAN SSID+IP, Lied, Volume, Statistik) läuft mit
+  NFC-Player + Gauge + WLAN zusammen, Nutzer: „funktioniert alles“.
+  Protokoll mit offenen Punkten (Tagwechsel unter Gauge-Last, Akku-only-
+  Beobachtung, NFC-Verzögerung, Gauge-Gegenprüfung):
+  `docs/testprotokoll-etappe7.md`. TFT-Init-Finding in `docs/findings.md`
+  (init(135,240); Etappe-0-Referenz betroffen).
+
 - [x] **Akku 1 ABGESCHLOSSEN (07.10.2026)** — Polung vorher geprüft,
   läuft am USB + Akku, lädt, alles kühl, Lautstärke-Eindruck gleich.
   Fuel-Gauge-Test-Sketch `firmware/tests/akku_fuel_gauge/` (MAX17048,
