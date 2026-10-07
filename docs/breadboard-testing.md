@@ -169,7 +169,18 @@ Grenzen/Chronologie: `docs/testprotokoll-etappe5.md`.
 
 ## Etappe 6 — AW9523, NeoPixel, Encoder, Boost, Button-LEDs
 
-**Noch nicht abgenommen.** Erst GPIO-/Einzeltests, dann freigegebenen
+**Status 07.10.2026: Breadboard-Teilprogramm BESTANDEN mit Ausnahmen.**
+Abgenahmt: AW9523 I2C-Scan (0x58), Taster an A0 mit externem 10-kΩ-
+Pull-up, NeoPixel Minimal-Rot (alle 8 Pixel), DT44L12-Verhalten an 5 V
+(„klar sichtbar"), TPS61023-Boost isoliert (EN/True Disconnect/5,2 V
+unbelastet). **Nicht getestet / ausdrücklich offen:** Encoder (Breadboard
+entfällt laut Nutzer, erst Verlöten im Endaufbau inkl. C-Pin-Verifikation),
+30-mm-Button-LEDs und LED-Rail-Anbindung an AW9523-Ports (Portgrenzen-
+prüfung in `docs/power-plan.md` steht aus), Boost-Lasttest (entfällt laut
+Nutzer), Akku-Betrieb. Protokoll mit Rohlogs:
+`docs/testprotokoll-etappe6.md`. Keine Produkt-/Dauerabnahme.
+
+Erst GPIO-/Einzeltests, dann freigegebenen
 LED-/Rail-Schaltplan erstellen. Quellen und offene elektrische Prüfungen:
 `docs/power-plan.md`. Keine +5 V auf eine bereits an 3V3 angeschlossene
 AW9523-VIN-Rail, kein PN532 an 5,2 V Boost.

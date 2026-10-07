@@ -21,7 +21,7 @@ Bauteilwerte sind keine Abnahme der noch ungeprüften Etappe-6-Schaltung.
 | PN532 (PN532-MOD) | VCC 3,3 V | Betrieb 13–26 mA, Peak <30 mA, Standby 10–13 mA | Aktuell I2C; konkreter Ruhepegel 3,3 V laut Nutzer, HSU isoliert 4,1 V: nicht direkt an GPIO |
 | NeoPixel Stick (NEOPS8) | 5 V im geplanten Test | konservatives Budget bis ~60 mA/LED, 8 LEDs bis ~480 mA; nicht gemessen | 3,3-V-Daten an 5-V-LEDs nicht pauschal garantiert; Pegel/Strom prüfen |
 | Button-LEDs 30 mm | 5 V DC | noch zu prüfen | AB30L5 mit integriertem Vorwiderstand; AW9523-/LED-Rail-Anschluss noch nicht freigegeben |
-| Button-LEDs 44 mm | **12 V DC** | noch zu prüfen | DT44L12: keine 12-V-Quelle vorhanden; Verhalten bei kleinerer Spannung nur gezielt testen, kein direkter AW9523-Anschluss |
+| Button-LEDs 44 mm | **12 V DC**, leuchtet auch an **5 V**, Helligkeit „klar sichtbar“ (Nutzer, 07.10.2026); Strom an 5 V noch nicht gemessen | DT44L12: 12-V-Step-Up vs. 5-V-Rail — Helligkeitssorge entfällt; Strommessung + Portgrenzen offen; kein direkter AW9523-Anschluss |
 | Encoder (EN2424-6T20) | 5 V DC (Taster-Schaltung) | max 10 mA | Signale A/B/Taster passiv, Pegel = Versorgung |
 | Kippschalter/Drucktaster | passiv | — | max 3 A/125 V bzw. 1 A/125 V — für Logik egal |
 

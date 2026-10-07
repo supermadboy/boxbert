@@ -293,6 +293,35 @@ Thema einfügen, Datum dazu.
   Quelle: [Adafruit Arduino-Beispiele](https://learn.adafruit.com/adafruit-aw9523-gpio-expander-and-led-driver/arduino),
   [Pinouts](https://learn.adafruit.com/adafruit-aw9523-gpio-expander-and-led-driver/pinouts);
   aktueller Prüfplan `docs/power-plan.md`.
+- **Register-Map aus dem Gedaechtnis = gefaehrlich (eigene Messung,
+  07.10.2026).** Erste Etappe-6-Version las den Eingangszustand aus Reg
+  0x06 (ist laut Bibliothek **INTENABLE0**) und schrieb "LEDMODE" ins
+  Reg 0x11 (ist **GCR**) mit 0xFF -> globaler Konstantstrom-LED-Modus,
+  A0 dauerhaft LOW. Symptom: I2C fehlerfrei, CONFIG-Readback plausibel,
+  Pin trotzdem immer 0 — ACK beweist nicht, dass der Wert das Register
+  erreicht, das man im Kopf hat. Korrektes Map laut Adafruit_AW9523.h:
+  INPUT0=0x00, OUTPUT0=0x02, CONFIG0=0x04 (Bit 1=Eingang), CHIPID=0x10
+  (liest 0x23), GCR=0x11, LEDMODE0=0x12/0x13, SOFTRESET=0x7F (0
+  schreiben = Reset). LEDMODE-**und** CONFIG-Bits sind invertiert
+  (Bibliothek schreibt ~pins; Registerbit 0 = LED-Sink, 1 = GPIO).
+  Chip-ID-Check + Soft-Reset wie lib begin() sind billige Absicherung.
+  Quelle: [Adafruit_AW9523.h/.cpp](https://github.com/adafruit/Adafruit_AW9523),
+  Rohlogs `docs/serial/etappe6-aw9523-*`; Protokoll Etappe 6, Teil 2.
+- **LED-Last klemmt den Eingangspin (eigene Beobachtung, 07.10.2026).**
+  LED (Anode A0, Kathode GND) am Taster-Eingangspin: LED leuchtete
+  unbetaetigt (ueber den 10k-Pull-up), Chip las trotzdem dauerhaft LOW
+  — Pegelklemmung durch LED-Vorwaertsspannung unterhalb der HIGH-
+  Schwelle. Regel: Eingangspins nur Pull-up + Taster sehen lassen;
+  LED auf eigenen Port mit definierter Ansteuerung.
+  Rohlog: `docs/serial/etappe6-aw9523-diag-a0.log`.
+- **Breakout hat 17 VIN-Pads (Nutzer-Silkscreen-Check, 07.10.2026).**
+  16 Port-VIN-Pads neben den GPIOs + 1 Haupt-VIN, intern dieselbe Rail
+  (Adafruit-Guide: "connect the LED anode to one of the many VIN pads").
+  Zweck: kurze LED-Anoden-Anschluesse ohne lange Draehte. Bei Boxbert:
+  VIN=3,3 V — 5-V-LED-Einheiten (AB30L5) darueber nur schwach/dunkel,
+  getrennte 5-V-LED-Rail bleibt Pruefthema in `docs/power-plan.md`.
+  Quelle: [Adafruit AW9523-Guide](https://learn.adafruit.com/adafruit-aw9523-gpio-expander-and-led-driver/overview)
+  ("one of the many VIN pads").
 - **A0/A1-Adress-Pads live umzulöten kann den Chip einfrieren** (Community-
   Berichte) und **3,3-V-Outputs schalten manche 5-V-Verbraucher nicht
   sicher**.

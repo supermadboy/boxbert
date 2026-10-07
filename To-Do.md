@@ -2,6 +2,18 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Etappe 6 Breadboard-Programm BESTANDEN (07.10.2026)** — AW9523
+  (Scan 0x58, Taster A0), NeoPixel (Minimal-Rot, alle 8 Pixel), DT44L12
+  an 5 V „klar sichtbar", Boost isoliert (EN/True Disconnect/5,2 V).
+  Ausgeschlossene Reste: Encoder (Endaufbau), 30-mm-LED-Rail/Portgrenzen
+  (power-plan), Boost-Lasttest (entfällt laut Nutzer), Akku-Betrieb.
+  Protokoll: `docs/testprotokoll-etappe6.md`; Fahrplan-Status:
+  `docs/breadboard-testing.md`.
+- [ ] Rails/Feinplanung in `docs/power-plan.md` fertigstellen (5-V-LED-
+  Rail inkl. AW9523-Portgrenzen, PN532-Abschaltung, NeoPixel-Rail-
+  Zuordnung, SD am Akkubetrieb) — Eintrittskarte für Akku-Ausbau.
+- [ ] NeoPixel-Stick verlötet (DIN/DOUT geklärt: nur DIN→IO8, DOUT offen);
+  1000-µF-Elko+330 Ω einbauen, Minimal-Rot-Test als Teil 3.
 - [ ] Langfristige Framework-Entscheidung fuer Produktfirmware (Arduino vs.
   ESP-IDF) separat klaeren; Breadboard-Etappe 5 nutzt Arduino-Core 3.3.12.
 
