@@ -19,7 +19,7 @@ nicht gegen eine Tabellenposition.
 2. **Hauptschalter (Feather-EN↔GND) während des gesamten Aufbaus auf
    AUS** und USB nur zum Testen kurz dran.
 3. **Kein +5 V auf eine 3V3-Rail.** AW9523-VIN, PN532-VCC, Feather-Logik
-   sind 3,3 V. Boost-Ausgang (5,2 V) nur an SD-Modul, LED-Rail, NeoPixel.
+   sind 3,3 V. Boost-Ausgang (5,2 V) nur an SD-Modul und NeoPixel.
 4. **PN532-HSU nie an GPIO** — HSU-TXD isoliert 4,1 V gemessen, Feather
    nicht 5-V-tolerant. I2C wie bestätigt, DIP 1 ON / 2 OFF.
 5. Lautsprecher **nur zwischen Amp-Ausgang + und −**, nie gegen GND.
@@ -32,7 +32,7 @@ LiPo JST-PH ──► Feather BAT-Buchse
 LiPo JST-PH ──► TPS61023 IN   (direkt an der Akku-Buchse abgreifen,
                                 nicht über den BAT-Header-Pin)
 TPS61023 EN ──► Feather IO9    (Breakout-Pull-up bleibt drin)
-TPS61023 OUT (5,2 V) ──► SD-Modul VCC, LED-Rail-Anoden, NeoPixel 5V
+TPS61023 OUT (5,2 V) ──► SD-Modul VCC, NeoPixel 5V
 USB-C ──► Feather (Laden läuft unabhängig von allem)
 ```
 
@@ -89,7 +89,14 @@ IO13 nur mit Bewusstsein (Onboard-LED leuchtet mit), IO21/IO33
 | DIP-Schalter | **1 ON / 2 OFF** (I2C, Adresse 0x24) |
 | IRQ / RST / SPI-Pins | nicht verbunden (IO11 bleibt für spätere IRQ-Erweiterung frei) |
 
-## 4. AW9523 — Ports-Belegung [geplant, Portgrenzen-LED-Test offen]
+## 4. AW9523 — Ports-Belegung [geplant]
+
+**Nutzerentscheidung 07.10.2026: keine Button-LEDs.** Die 44-mm-/30-mm-
+LED-Einheiten bleiben unverbunden (44-mm-12-V-LEDs und AB30L5-LEDs sind
+nicht angeschlossen); alle visuellen Signale übernimmt der NeoPixel-Stick
+(Farbe/Helligkeit in der Firmware). Damit entfällt auch die 5-V-LED-Rail
+und der offene AW9523-LED-Portgrenzen-Test. Erkenntnis bleibt in
+docs/findings.md für einen späteren Umbau erhalten.
 
 VIN → Feather **3V3** (niemals +5 V), GND gemeinsam, SDA/SCL → IO3/IO4.
 Adresse 0x58. **Keine internen Pull-ups im Chip** — jeder Tastereingang
@@ -111,25 +118,11 @@ GPIOs (IO38 = Kippschalter 2, IO39 = 24-mm-Button 1, IO13 = 24-mm-Button
 | P06 | Mini-Drucktaster 1 | + externer 10 k Pull-up |
 | P07 | Mini-Drucktaster 2 | + externer 10 k Pull-up |
 | P10 | Mini-Drucktaster 3 | + externer 10 k Pull-up |
-| P11 | DT44L12-R **LED-Kathode** | Anode → 5-V-LED-Rail |
-| P12 | DT44L12-B **LED-Kathode** | Anode → 5-V-LED-Rail |
-| P13 | AB30L5-LED #3 Kathode | Anode → 5-V-LED-Rail |
-| P14 | AB30L5-LED #4 Kathode | Anode → 5-V-LED-Rail |
-| P15 | AB30L5-LED #1 Kathode (Button an IO5) | Anode → 5-V-LED-Rail |
-| P16 | AB30L5-LED #2 Kathode (Button an IO6) | Anode → 5-V-LED-Rail |
-| P17 | frei (reserviert) | z. B. AB24OL-Button 2 statt IO13-Variante |
+| P11–P17 | **frei** (LED-Entscheidung 07.10.2026) | Reserve für spätere Ideen |
 
-Verteilungslogik: 9 Schalter + 6 LED-Kathoden = 15 von 16 Ports; P17
-bleibt als Reserve. Die AB24OL-Buttons 1/2 sitzen an IO39/IO13 (Feather-
-GPIOs, interne Pull-ups reichen dort), Button-Schalter der AB30L5 #1/#2
-an IO5/IO6 (Wake).
-
-- **LED-Rail-Status [offen]:** Konstantstrom-Senkenmodus
-  (AW9523_LED_MODE) ist die Planung; zulässige Portspannung/Strom bei
-  5-V-Anoden sind noch nicht geprüft. Erst im Aufbau: Firmware-Test mit
-  kleinem Strom (Dimmwert niedrig), Messung pro Port, dann Freigabe.
-  44-mm-LEDs an 5 V sind als „klar sichtbar" bestätigt (Nutzer,
-  07.10.2026), Strom ungemessen.
+Verteilung: 9 Schalter auf 10 Ports (P00–P07, P10); P11–P17 frei. Die
+AB24OL-Buttons 1/2 sitzen an IO39/IO13 (Feather-GPIOs, interne Pull-ups
+reichen dort), Button-Schalter der AB30L5 #1/#2 an IO5/IO6 (Wake).
 
 ## 4b. Encoder EN2424-6T20 [geplant]
 
@@ -207,9 +200,8 @@ weg vom I2C/I2S, NFC-Antennenbereich meiden.
 3. SD am Boost-Ausgang: Dateiliste, Playback
 4. Encoder: A/B-Drehen + Taster
 5. AW9523-Buttons: Lesen aller Schalterports
-6. LED-Rail: pro Port kleiner Strom → messen → Freigabe
-7. NeoPixel am Boost-Rail: Minimal-Rot
-8. Gesamtmonitor-Sketch mit TFT: alles gleichzeitig
-9. Akku ran (Polung!), laden, Akku-only-Betrieb
-10. Etappe-8-Firmware: Auto-Sleep, Wake-Button, 0-V-Nachweis am Boost,
-    Gesamtsystem-Sleep-Strom (µA)
+6. NeoPixel am Boost-Rail: Minimal-Rot
+7. Gesamtmonitor-Sketch mit TFT: alles gleichzeitig
+8. Akku ran (Polung!), laden, Akku-only-Betrieb
+9. Etappe-8-Firmware: Auto-Sleep, Wake-Button, 0-V-Nachweis am Boost,
+   Gesamtsystem-Sleep-Strom (µA)
