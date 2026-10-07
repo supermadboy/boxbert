@@ -2,6 +2,15 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Etappe 8 planen: Rail-Zusammenbau + Auto-Sleep (Stand 07.10.2026,
+  Entscheidungen abgeschlossen)** — Boost-Eingang an Akku-JST-Buchse,
+  Ausgang an SD-Rail, EN → IO9 (`rtc_gpio_hold_en`), 0-V-Nachweis am
+  Boost-Ausgang im Sleep. Auto-Sleep: 5 min ohne Lied UND ohne
+  Button/Encoder-Interaktion. Wake per Button (IO5/IO6); IO11 reserviert
+  für spätere PN532-IRQ-Wake-Erweiterung („Hybrid"-Entscheidung). PN532
+  bleibt an 3V3 (verworfene Option A: 10–13 mA Standby, Hauptschalter
+  als Null-Strom-Weg). Gesamtsystem-Sleep-Strom messen (µA-Bereich).
+
 - [ ] **Etappe 7 Gesamtmonitor (07.10.2026)** — TFT-Anzeige (Akku %/
   Ladestatus/Spannung, WLAN SSID+IP, Lied, Volume, Statistik) läuft mit
   NFC-Player + Gauge + WLAN zusammen, Nutzer: „funktioniert alles“.

@@ -97,11 +97,12 @@ Button/Encoder seit dem letzten Ereignis. Tag auflegen zaehlt als
 Interaktion (startet ja ein Lied). Encoder ist Endaufbau-Bauteil — auf
 dem Breadboard testet nur der Button-Pfad.
 
-**Wake-Quellen (offen, 07.10.2026):** Im Deep Sleep weckt ein Tag den
-ESP32 NICHT (I2C-Geraete koennen nicht wecken). Variante a: Wake nur
-per Wake-Button (IO5/6/11) — Empfehlung fuer Etappe 8. Variante b:
-PN532-IRQ-Pin auf RTC-GPIO legen + Low-Power-Card-Detection — spaeter
-pruefen, kein IRQ-Kabel verdrahtet (Etappe 4 lief bewusst ohne).
+**Wake-Quellen (Nutzerentscheidung „Hybrid", 07.10.2026):** Im Deep
+Sleep weckt ein Tag den ESP32 NICHT (I2C-Geraete koennen nicht wecken).
+Jetzt: Wake per Wake-Button (IO5/IO6), Tag-Erkennung erst nach dem
+Aufwachen. Später: PN532-IRQ-Pin auf **IO11** (RTC-GPIO, reserviert)
+legen + Low-Power-Card-Detection-Modus — dann weckt das Tag direkt.
+IO11 ist dafür nicht als Wake-Button zu belegen (`hardware/pinout.md`).
 
 ## Bestellprozess und Historie
 

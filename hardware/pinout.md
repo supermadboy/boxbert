@@ -84,7 +84,7 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 | Funktion | Pin | Hinweis |
 |---|---|---|
 | AW9523 SDA / SCL | IO3 / IO4 | Adresse 0x58; VIN 3V3, kein +5 V auf VIN; Wire-Zugriffe synchronisieren |
-| Wake-Buttons | IO5, IO6, IO11 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet |
+| Wake-Buttons | IO5, IO6 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet. **IO11 reserviert** für spätere PN532-IRQ-Erweiterung (Wake per Tag, Nutzerentscheidung „Hybrid" 07.10.2026) — nicht als Wake-Button belegen |
 | Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
 | Encoder-Taster | IO12 | |
 | NeoPixel-Stick DIN | IO8 (A5) | 330 Ohm in Reihe |
