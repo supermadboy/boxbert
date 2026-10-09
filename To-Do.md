@@ -2,6 +2,17 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
+  `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,
+  Deckel und Boden abschraubbar, einzelne Mounts mit regelmäßigem
+  Gitterboden und herausragenden Abstandspfosten für ruthex RX-M2,5×5,7.
+  **Bisheriger Step-Up-Entwurf in `3d-print/mounts/stepup-mount/`
+  ausdrücklich abgelehnt** (unregelmäßige Öffnungen / erhöhte L-Auflage).
+  Alte Höhen, Pocket-Maße und M4-Befestigung sind nicht freigegeben.
+  Nächster Schritt: Konzeptskizze abstimmen, Hersteller-Einbaumaße und
+  reales Modul-Lochbild prüfen, dann neuen Step-Up-Mount entwerfen.
+  Weitere Mounts und Akkuhalter erst anschließend planen.
+
 - [ ] **Etappe 8 planen: Rail-Zusammenbau + Auto-Sleep (Stand 07.10.2026,
   Entscheidungen abgeschlossen)** — Boost-Eingang an Akku-JST-Buchse,
   Ausgang an SD-Rail, EN → IO9 (`rtc_gpio_hold_en`), 0-V-Nachweis am
