@@ -281,6 +281,15 @@ eigenen Debug-Marathon dort nachsehen**, ob das Problem schon dokumentiert
 ist. Eigene Erkenntnisse aus Testprotokollen dorthin nachtragen — nur mit
 echter Quelle oder eigener Messung, kein KI-generiertes Blabla.
 
+## Ideendatenbank — ein Punkt pro Session
+
+Daddelbert möchte **genau einen Punkt pro Session** besprechen. Index mit
+Status, Name und Beschreibung: `ideen/README.md`; jede Idee hat einen eigenen
+Ordner mit ihrer Ausarbeitung. Zu Beginn gemeinsam einen Eintrag wählen,
+am Ende Ausarbeitung und Index aktualisieren. Keine anderen Ideen ungefragt
+vorziehen. Ideen sind noch keine Bauaufträge; verbindliche Hardwareentscheidungen
+bleiben in den zuständigen Fachdateien, konkrete Arbeit in `To-Do.md`.
+
 ## Offene Fragen
 
 - Welcher Button (44/30/24 mm, welche Farbe) bekommt welche Funktion
