@@ -5,6 +5,17 @@
 **Core:** arduino-cli 1.5.1, esp32 3.3.12
 **Ergebnis: BESTANDEN** (siehe unten), mit zwei wichtigen Lehrstücken.
 
+## Nachtrag zur Modulidentifikation — 09.10.2026
+
+Nutzer bestätigt, dass das fotografierte Modul das bestellte ADA3006 ist.
+Fotos beider Seiten stimmen mit Adafruit-Herstellerfoto und Mono-PCB-Layout
+visuell überein (auch grüne Schraubklemme und Pinreihe). Die folgenden
+historischen „Klon / schwarz / anderes Layout“-Deutungen sind damit
+widersprochen, nicht als aktuelle Modulidentifikation verwenden.
+Pinbeschriftungen und bestätigte Verdrahtung bleiben unverändert.
+Quellenvergleich: `docs/cad/2026-10-09-max98357-mount/`.
+Der Nachtrag ändert nicht die Mess-/Hörergebnisse des damaligen Tests.
+
 ## Verkabelung (ist so gebaut, gegen Modul-Silkscreen verifiziert)
 
 Modul ist ein **MAX98357A-Klon** (schwarz, grüne Schraubklemme) — Pin-

@@ -9,7 +9,7 @@ Bestell-Artikelnummer ist nicht automatisch die Identifikation eines Klons.
 | Menge | Bauteil / Bestellreferenz | Aktueller Stand / Hinweis |
 |---|---|---|
 | 1 | Adafruit ESP32-S3 **Reverse TFT** Feather, ADA5691 | 4 MB Flash / 2 MB PSRAM; LiPo-Lader onboard; Projektkommunikation per WLAN |
-| 1 | MAX98357A, Bestellreferenz ADA3006 | Testprotokoll beschreibt abweichendes Klon-Pinlayout; 2,7–5,5 V, I2S; aktuell VIN USB-5V, SD 3V3, GAIN offen |
+| 1 | MAX98357A, Bestellreferenz ADA3006 | 09.10.2026: Nutzerfoto/-bestätigung passt zum bestellten ADA3006; alte Klon-Einordnung widersprochen (Quellen: docs/cad/2026-10-09-max98357-mount/); 2,7–5,5 V, I2S; bestätigte Verdrahtung VIN USB-5V, SD 3V3, GAIN offen unverändert |
 | 1 | ADA3351 Gehaeuselautsprecher | 4 Ohm / 3 W, 30 × 70 × 17 mm; kein 40/50-mm-Vergleichspaar |
 | 1 | PN532-MOD | aktuell I2C, DIP 1 ON / 2 OFF; laut Bestellung inkl. Karte/Dongle; kein NFC-SPI im bestaetigten Aufbau |
 | 12 | NFC-Sticker, Bestellbezeichnung NTAG215, 125452 | 2 Packungen zu 6; Lieferbezeichnung, keine neue Chiptyp-Verifikation. Die zwei getesteten UIDs/Chiptypgrenzen stehen in `hardware/nfc-tags.md` |

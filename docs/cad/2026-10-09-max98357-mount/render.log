@@ -1,0 +1,83 @@
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Geometries in cache: 52
+Geometry cache size in bytes: 319720
+CGAL Polyhedrons in cache: 18
+CGAL cache size in bytes: 27056144
+Total rendering time: 0:00:11.893
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     3540
+   Halfedges:   11904
+   Edges:        5952
+   Halffacets:   4836
+   Facets:       2418
+   Volumes:         2
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 45 elements
+Geometries in cache: 43
+Geometry cache size in bytes: 210728
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.149
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 45 elements
+Geometries in cache: 43
+Geometry cache size in bytes: 210728
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.144
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 69 elements
+Geometries in cache: 68
+Geometry cache size in bytes: 501608
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.178
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 69 elements
+Geometries in cache: 68
+Geometry cache size in bytes: 501608
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.163
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 69 elements
+Geometries in cache: 68
+Geometry cache size in bytes: 501608
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.156
+ECHO: "Mount W/D/H", 38, 26, 12, "PCB-Ursprung", [10.11, 3.475]
+ECHO: "Montageloecher", [[12.65, 19.985], [25.35, 19.985]], "Stuetzen", [[14.61, 10.475], [23.39, 10.475]]
+ECHO: "Einsaetze UNTEN, Kammerende", 6.9, "Wand um max-D", 1.8
+ECHO: "Holzeingriff nominal", 8.5, "Reserve bei 12mm Holz", 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 45 elements
+Geometries in cache: 43
+Geometry cache size in bytes: 210728
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.136

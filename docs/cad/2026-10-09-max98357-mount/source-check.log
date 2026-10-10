@@ -1,0 +1,5 @@
+SHA256: de54250dee04ac9aa117992ecf2da398a11785ee4310fdfde1480231e2b54f84
+Contour: 17.78 x 19.05, R2.54; holes: [(15.24, 16.51), (2.54, 16.51)]
+Pads transformed: [(7.09, 15.494), (10.59, 15.494), (16.51, 2.54), (13.97, 2.54), (11.43, 2.54), (8.89, 2.54), (6.35, 2.54), (3.81, 2.54), (1.27, 2.54)]
+Closest pad centre: 4.662054911731521 mm; assumed neck/lot clearance: 1.062054911731521
+PASS: source geometry matches mount assumptions; NOT physical approval
