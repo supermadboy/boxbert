@@ -1,0 +1,90 @@
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Geometries in cache: 63
+Geometry cache size in bytes: 319920
+CGAL Polyhedrons in cache: 18
+CGAL cache size in bytes: 27700112
+Total rendering time: 0:00:11.357
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     3688
+   Halfedges:   12348
+   Edges:        6174
+   Halffacets:   4984
+   Facets:       2492
+   Volumes:         2
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 49 elements
+Geometries in cache: 54
+Geometry cache size in bytes: 210928
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.159
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 49 elements
+Geometries in cache: 54
+Geometry cache size in bytes: 210928
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.143
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 130 elements
+Geometries in cache: 109
+Geometry cache size in bytes: 1102104
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.225
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 130 elements
+Geometries in cache: 109
+Geometry cache size in bytes: 1102104
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.205
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 130 elements
+Geometries in cache: 109
+Geometry cache size in bytes: 1102104
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.207
+ECHO: "NEU: B/T/H", 56, 26, 12, "PCB-Ursprung", [8.95, 4.11]
+ECHO: "Einsatzwand um max. Aussendurchmesser", 1.8
+ECHO: "Einsaetze von UNTEN, Unterkante", 0.2, "Kammerende", 6.9
+ECHO: "Pinreserve vertikal", 4, "Auflage-D", 4.6
+ECHO: "Holzschraubenanzahl", 2, "Eingriff nominal", 8.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 49 elements
+Geometries in cache: 54
+Geometry cache size in bytes: 210928
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.163
