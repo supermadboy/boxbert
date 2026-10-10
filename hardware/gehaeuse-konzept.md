@@ -35,6 +35,18 @@ sind noch festzulegen. Die Anordnung legt keine elektrischen Rails oder
 Pins neu fest: dafür gelten `hardware/pinout.md`,
 `hardware/verkabelung-endaufbau.md` und `docs/power-plan.md`.
 
+## Lautsprecher-Einbau — Entscheidung aus dem Chat
+
+Der Lautsprecher bleibt an der **Rückseite**. Vor seiner Schallöffnung wird
+statt eines separaten sichtbaren Gitters ein dichtes Raster aus **2-mm-Bohrungen**
+im Holz vorgesehen. Die Rückwand wird in diesem Bereich **von innen dünner
+gefräst**, damit keine langen engen Schallkanäle durch die volle Holzstärke
+entstehen. Die Befestigung liegt außerhalb der Ausfräsung im vollen Holz;
+dünnes Schaumstoffband um die Schallöffnung soll Klappern verhindern.
+Nutzer hat diesem Vorgehen zugestimmt. Rasterfläche/-abstand, verbleibende
+Wandstärke und Schrauben sind noch festzulegen; Hörvergleich am Reststück
+vor der fertigen Rückwand empfohlen. Keine Bau-/Klang-/Sicherheitsabnahme.
+
 ## Gewünschte 3D-Druck-Mounts
 
 **Entschieden: einzelne Mounts statt einer gemeinsamen Elektronik-Tray.**
