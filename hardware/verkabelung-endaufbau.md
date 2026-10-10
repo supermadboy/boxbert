@@ -163,6 +163,30 @@ ADA3351 (4 Ω / 3 W) **nur** an MAX98357A +/− (zwei Adern, kein GND-Bezug).
 Amp-Ausgänge sind Brücke (BTL). GAIN offen = 9 dB. Adern verdrillt legen,
 weg vom I2C/I2S, NFC-Antennenbereich meiden.
 
+## 6b. Kabelführung und Verdrillen — Merkhilfe für den Endaufbau
+
+- SD-/SPI- und Verstärker-/I2S-Signale kurz und direkt vom Feather zum
+  Modul führen, keine unnötigen Schleifen. Einen zugehörigen GND-Pfad
+  nahe an den Signalen mitführen.
+- Lautsprecher + und − locker miteinander verdrillen, separat vom
+  Signalstrang zur Rückwand führen. Beide sind BTL-Ausgänge: **keine
+  Lautsprecherader an GND anschließen**.
+- Versorgung und zugehöriges GND gemeinsam führen; längere Strecken
+  (insbesondere Unterteil–Deckel) locker als Paar verdrillen. Bei kurzen
+  Modul-Abzweigen genügt die Führung nebeneinander.
+- Nicht alle SPI-/I2S-/I2C-Signaladern miteinander zu einer engen Kordel
+  verdrillen. Falls längere Signalleitungen erforderlich werden, kann
+  eine Signalader mit einer eigenen gemeinsamen-GND-Ader gepaart werden;
+  die konkrete Busführung danach im Endaufbau prüfen.
+- Lautsprecherpaar und Boost-Stromleitungen nicht über längere Strecken
+  parallel direkt neben empfindlichen Signalen bündeln; NFC-Antennenbereich
+  freihalten. Kreuzungen sind erlaubt, möglichst quer statt lange parallel.
+- Keine feste Windungszahl vorgeschrieben. Kabel befestigen, Lötstellen
+  und Stecker zugentlasten und Spiel zum Abnehmen des Deckels vorsehen.
+
+Dies sind Aufbauempfehlungen, kein bereits geprüfter Endaufbau und keine
+Garantie störungsfreier Buskommunikation.
+
 ## 7. Werkstatt-Tipps (aus echten Ausrutschern + Standardpraxis)
 
 1. **Silkscreen ist die Wahrheit.** Der MAX98357A-Klon hat eine andere
