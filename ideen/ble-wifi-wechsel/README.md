@@ -53,10 +53,23 @@ Die derzeitige Projektbasis bleibt WLAN-only gemäß
 [Kommunikationsentscheidung](../../docs/entscheidungen.md). Hier wird eine
 künftige Erweiterung beschrieben, nicht deren erfolgreiche Umsetzung.
 
-`AGENTS.md` nennt Flash-Platz als BLE-Einschränkung. Für die hier gewünschte
-Gesamtfirmware ist in dieser Besprechung weder ein Build noch eine geeignete
-Partitionierung geprüft worden. Die Machbarkeit ist deshalb offen; die
-bestehende Einschränkung wird nicht stillschweigend aufgehoben.
+Die frühere pauschale Aussage in `AGENTS.md`, BLE passe nicht in den Flash,
+wurde durch eine präzisere Abgrenzung ersetzt: Hardware-BLE ist möglich,
+die vollständige Boxbert-Firmware mit BLE aber noch nicht gebaut oder
+getestet. Die Recherche prüft verfügbare Partitionierungen anhand der
+Core-Dateien; sie bestimmt noch kein finales Layout. Die aktuelle WLAN-only-
+Basis wird dadurch nicht stillschweigend aufgehoben.
+
+## Recherche und Folgethema
+
+Die [Machbarkeitsrecherche vom 10.10.2026](machbarkeit.md) belegt BLE auf
+Plattformebene und SD-Webhosting, beschreibt Speicher-/Partitionierungsgrenzen
+und schlägt eine Realisierung vor. Die vollständige BLE-Gesamtfirmware und
+Laufzeitreserven sind noch nicht nachgewiesen; es wurde nichts geflasht.
+
+Die eigentliche Oberflächenentwicklung ist als eigenes Thema
+[PWA bauen](../pwa-bauen/README.md) erfasst. Das Funkmodus-Thema ist für die
+Konzept-/Recherchephase besprochen, nicht umgesetzt oder technisch abgenommen.
 
 ## Vor einer Umsetzung noch zu prüfen
 

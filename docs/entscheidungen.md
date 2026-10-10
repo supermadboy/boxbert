@@ -14,6 +14,17 @@ Arduino-Core 3.3.12, Board-Defaults/QSPI-PSRAM, Reproduktion in
 `docs/dev-setup.md`. Langfristige Produktfirmware-Frameworkentscheidung
 ist davon getrennt; konkreter naechster Umfang steht in `To-Do.md`.
 
+**Künftige Erweiterung, Konzept-/Recherchephase 10.10.2026:** D0 soll zwischen
+Funk aus, WLAN und BLE wählen, Startmodus BLE. WLAN soll zuerst das Heimnetz
+versuchen und sonst ein eigenes AP öffnen. Android-Chrome-PWA über BLE ist
+als Ergänzung vorgesehen. Das ist noch nicht implementiert oder technisch
+abgenommen und hebt die WLAN-only-Basis für die aktuelle Firmware nicht auf.
+[Machbarkeitsrecherche](../ideen/ble-wifi-wechsel/machbarkeit.md) und
+[Folgethema PWA bauen](../ideen/pwa-bauen/README.md) enthalten Details.
+Hardware-BLE ist möglich; ob die Gesamtfirmware passt, bleibt ein Build-/RAM-
+Test. Der dokumentierte Etappe-5-Build passt bereits ohne BLE nicht in den
+1.966.080-Byte-OTA-Slot von `min_spiffs`; Updates und Layout gemeinsam planen.
+
 ## Audio
 
 **MAX98357A I2S**, aktuell USB-5V. Getestetes Modul hat laut Protokoll

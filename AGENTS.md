@@ -57,8 +57,10 @@ Details, Warum und Konsequenzen: `docs/entscheidungen.md`. Elektrische und
 mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
 
 - **Board:** Adafruit ESP32-S3 Reverse TFT Feather (ADA5691, 4 MB Flash /
-  2 MB PSRAM, LiPo-Lader onboard). BLE passt nicht in den Flash — WLAN ist
-  der einzige Kommunikationsweg, nicht drauf bauen.
+  2 MB PSRAM, LiPo-Lader onboard). Aktuelle Firmwarebasis bleibt WLAN-only.
+  BLE ist hardwareseitig möglich, aber die Gesamtfirmware mit BLE ist noch
+  nicht gebaut; Flash-/RAM-Machbarkeit und Updatepartitionierung sind offen
+  (`ideen/ble-wifi-wechsel/machbarkeit.md`). Keine BLE-Funktionszusage daraus.
 - **Audio:** MAX98357A (ADA3006, I2S) — im Breadboard an USB-5 V, im finalen
   Aufbau an Akkuspannung oder Boost (Entscheidung nach Hörtest). Lautsprecher:
   ADA3351-Gehäuselautsprecher 4 Ω / 3 W (kein 40/50-mm-Vergleichspaar, nur
