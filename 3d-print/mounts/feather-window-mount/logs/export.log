@@ -1,0 +1,17 @@
+ECHO: "Carrier only STL; grid base", [62, 32], "PCB z", 14, "wood contact z", 12
+ECHO: "PCB holes: two D2.5 screws; two D2.2 flat supports; inserts from REAR"
+ECHO: "Draft glass/display gap", 3.2
+ECHO: "Wood screw nominal engagement", 8.5
+Geometries in cache: 107
+Geometry cache size in bytes: 351064
+CGAL Polyhedrons in cache: 22
+CGAL cache size in bytes: 23593072
+Total rendering time: 0:00:09.780
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     3398
+   Halfedges:   11126
+   Edges:        5563
+   Halffacets:   4354
+   Facets:       2177
+   Volumes:         2

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">
+<defs><pattern id="wood" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#ead3ad"/><path d="M0 5h16M0 13h16" stroke="#d6b884" stroke-width="1"/></pattern><style>text{font-family: sans-serif;fill:#253343} .title{font-size:28px;font-weight:bold}.sub{font-size:19px;font-weight:bold}.label{font-size:16px}.small{font-size:14px}.leader{stroke:#596b7d;stroke-width:1.5;fill:none}</style></defs>
+<rect width="1200" height="850" fill="#f8fafc"/>
+<text x="40" y="45" class="title">Feather hinter Plexiglas — gekröpfter Innenträger</text>
+<text x="40" y="76" class="label">Formvorschlag, nicht maßstäblich • keine Fräs-, Lochbild- oder Druckfreigabe</text>
+<text x="40" y="123" class="sub">1 · Schnitt durch die Holzfront</text>
+<text x="350" y="163" class="label">AUSSEN / Blick aufs Display</text>
+<!-- Wood with outer rabbet -->
+<path d="M100 180H220V205H245V400H100Z M575 180H700V400H555V205H575Z" fill="url(#wood)" stroke="#9b794c" stroke-width="2"/>
+<rect x="222" y="180" width="351" height="24" rx="2" fill="#b6e8f7" stroke="#4394b3" stroke-width="2"/>
+<!-- Board and display; symbolic component geometry -->
+<rect x="290" y="252" width="220" height="12" fill="#217861" stroke="#174f40" stroke-width="2"/>
+<rect x="340" y="225" width="120" height="27" fill="#253343"/>
+<rect x="345" y="225" width="110" height="4" fill="#66bce3"/>
+<rect x="365" y="264" width="70" height="30" fill="#a2aab2"/>
+<!-- Printed supports and stepped tabs -->
+<path d="M170 412H270V320H310" fill="none" stroke="#dd7942" stroke-width="18" stroke-linejoin="round"/>
+<path d="M630 412H530V320H490" fill="none" stroke="#dd7942" stroke-width="18" stroke-linejoin="round"/>
+<rect x="298" y="264" width="18" height="56" fill="#dd7942"/><rect x="484" y="264" width="18" height="56" fill="#dd7942"/>
+<!-- Concept fasteners into full wood -->
+<path d="M190 420V351 M610 420V351" stroke="#586675" stroke-width="6"/><path d="M181 423h18M601 423h18" stroke="#586675" stroke-width="5"/>
+<text x="355" y="465" class="label">INNEN / Montage und Kabel</text>
+<path d="M574 191H770" class="leader"/><text x="785" y="197" class="label">Plexiglas bündig in äußerer Falz</text>
+<path d="M460 237H770" class="leader"/><text x="785" y="243" class="label">TFT mit Luft zum Glas</text>
+<path d="M510 258H770" class="leader"/><text x="785" y="264" class="label">Feather (symbolisch)</text>
+<path d="M539 330H770" class="leader"/><text x="785" y="336" class="label">90°-Versatz mit verstärkten Ecken</text>
+<path d="M640 412H770" class="leader"/><text x="785" y="418" class="label">Laschen auf der Holzinnenseite</text>
+<text x="785" y="442" class="small">Schrauben ins volle Holz, nicht unter die Falz</text>
+<text x="40" y="513" class="sub">2 · Blick von innen — offener Träger statt einer Wanne</text>
+<!-- Rear view schematic -->
+<rect x="100" y="540" width="600" height="215" rx="3" fill="url(#wood)" stroke="#9b794c"/>
+<rect x="250" y="560" width="300" height="175" rx="9" fill="#f8fafc" stroke="#9b794c" stroke-dasharray="6 4"/>
+<!-- offset tabs and open frame -->
+<rect x="178" y="620" width="85" height="55" rx="9" fill="#dd7942"/>
+<rect x="537" y="620" width="85" height="55" rx="9" fill="#dd7942"/>
+<rect x="272" y="577" width="256" height="138" rx="13" fill="none" stroke="#dd7942" stroke-width="17"/>
+<path d="M255 647H279M521 647H545" stroke="#dd7942" stroke-width="17"/>
+<circle cx="211" cy="647" r="8" fill="#f8fafc" stroke="#596b7d" stroke-width="3"/>
+<circle cx="589" cy="647" r="8" fill="#f8fafc" stroke="#596b7d" stroke-width="3"/>
+<rect x="290" y="591" width="220" height="110" rx="8" fill="#217861" fill-opacity=".55" stroke="#174f40" stroke-width="2"/>
+<rect x="355" y="618" width="73" height="50" fill="#a2aab2" stroke="#586675"/>
+<rect x="480" y="627" width="43" height="30" fill="#b7c0c7" stroke="#586675"/>
+<text x="327" y="690" class="small">PCB transparent / symbolisch</text>
+<text x="785" y="573" class="label">• Einteiliger, offener Träger</text>
+<text x="785" y="607" class="label">• Zwei seitliche Holzlaschen als Vorschlag</text>
+<text x="785" y="641" class="label">• Einzelne Pfosten an echten PCB-Löchern</text>
+<text x="785" y="675" class="label">• USB, Lötstellen und Kabel bleiben frei</text>
+<text x="785" y="709" class="label">• Ganze Einheit von innen herausnehmbar</text>
+<text x="40" y="792" class="small">Platinenkontur, Komponenten, Pfosten und USB sind schematisch; keine geprüften Herstellerkoordinaten.</text>
+<text x="40" y="818" class="small">Noch festzulegen: Plexiglasstärke, Falz, Fräsausschnitt, Höhenversatz, Anschlussfreiraum und Schraubenlängen.</text>
+</svg>
