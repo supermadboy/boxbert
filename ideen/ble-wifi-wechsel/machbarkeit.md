@@ -209,6 +209,15 @@ Erstbesuch ohne erreichbaren Host funktioniert nicht; gelöschte App-Daten oder
 verlorener Cache sind ein eigener Fehlerfall. Kein dauerhaft garantierter
 Offline-Speicher allein durch die Bezeichnung PWA. Caching, Neustart und
 Versionswechsel müssen in Chrome auf Daddelberts Handy geprüft werden.
+Browserdaten sind standardmäßig „best-effort“; persistenter Speicher kann
+angefragt werden, ist aber keine Datensicherung.[21]
+
+**Kein garantierter Hintergrundtransfer:** Web Bluetooth ist nicht in Web
+Workers und damit nicht im Service Worker verfügbar.[20] BLE-Steuerung und
+Transfer laufen im geöffneten App-Dokument. Bildschirm-Aus, Android-
+Hintergrundzustand und Rückkehr zur PWA müssen auf dem Handy getestet werden;
+ein geschlossener App-Bildschirm darf nicht als sicher weiterlaufender Upload
+vorausgesetzt werden.
 
 ### Sound direkt aus dem Internet auf die Box
 
@@ -220,8 +229,10 @@ Handyspeicher und Wiederaufnahme berücksichtigen.
 
 Web Bluetooth stellt keinen fertigen Dateiupload bereit. Die API kann
 Byte-Arrays in eine Charakteristik schreiben, beispielsweise mit
-`writeValueWithResponse`, dessen Ergebnis ein Promise ist.[17] Das Projekt
-muss daraus ein Transferprotokoll bauen:
+`writeValueWithResponse`, dessen Ergebnis ein Promise ist.[17] Der
+Spezifikationsentwurf begrenzt einen Schreibwert auf höchstens 512 Bytes;
+das ist keine garantierte praktisch nutzbare Chunkgröße oder Nutzdatenrate.[22]
+Das Projekt muss daraus ein Transferprotokoll bauen:
 
 - Transfer starten mit Dateiname, Größe, Format und Transferkennung.
 - Begrenzte Blöcke mit eindeutigem Offset/Sequenz senden, Größen passend zur
@@ -347,3 +358,6 @@ Soundquellen, Offline-Speicherung, WLAN-Timeout und Updateverfahren treffen.
 [17] https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/writeValueWithResponse
 [18] https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
 [19] https://developer.chrome.com/blog/local-network-access
+[20] https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API
+[21] https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria
+[22] https://raw.githubusercontent.com/WebBluetoothCG/web-bluetooth/main/index.bs
