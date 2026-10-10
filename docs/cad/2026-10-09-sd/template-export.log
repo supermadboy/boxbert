@@ -1,0 +1,14 @@
+ECHO: "Pruefschablone: 30 x 48 x 2 mm, Lochraster 20 x 38, D2.7"
+Geometries in cache: 8
+Geometry cache size in bytes: 70688
+CGAL Polyhedrons in cache: 2
+CGAL cache size in bytes: 1869552
+Total rendering time: 0:00:00.530
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:      656
+   Halfedges:    1968
+   Edges:         984
+   Halffacets:    660
+   Facets:        330
+   Volumes:         2

@@ -1,0 +1,8 @@
+ECHO: "Pruefschablone: 30 x 48 x 2 mm, Lochraster 20 x 38, D2.7"
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 6 elements
+Geometries in cache: 3
+Geometry cache size in bytes: 15336
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.105

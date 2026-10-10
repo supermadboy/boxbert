@@ -1,0 +1,5 @@
+PASS: closed, connected, oriented mesh; no degenerate triangles
+PASS: bounds (0.0, 0.0, 0.0) (30.0, 48.0, 2.0) ; expected frame/hole volume 2114.242652425727
+Triangles: 1328
+SHA256: bfc72d6c6cabf82e0b4fadd8dab0f12de9fc5d5ba54ed7e9132a1720c9510627
+Digital template check only; physical hole spacing unverified.
