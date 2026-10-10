@@ -1,0 +1,84 @@
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Geometries in cache: 51
+Geometry cache size in bytes: 259576
+CGAL Polyhedrons in cache: 7
+CGAL cache size in bytes: 11675472
+Total rendering time: 0:00:05.980
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     1831
+   Halfedges:    6352
+   Edges:        3176
+   Halffacets:   2694
+   Facets:       1347
+   Volumes:         2
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 13 elements
+Geometries in cache: 44
+Geometry cache size in bytes: 177832
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.143
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 13 elements
+Geometries in cache: 44
+Geometry cache size in bytes: 177832
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.152
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 16 elements
+Geometries in cache: 64
+Geometry cache size in bytes: 320832
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.162
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 16 elements
+Geometries in cache: 64
+Geometry cache size in bytes: 320832
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.161
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:", 3.2, 6.2, 90
+ECHO: "Schraubpolster Gesamtdicke / Senktiefe:", 3.5, 1.5
+ECHO: "Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):", 8.5, 3.5
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 16 elements
+Geometries in cache: 64
+Geometry cache size in bytes: 320832
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.134

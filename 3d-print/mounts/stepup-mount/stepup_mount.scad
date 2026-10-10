@@ -1,158 +1,206 @@
-// ============================================================
-// Boxbert Mount — TPS61023 MiniBoost (Adafruit 4654) — v3
-// Stand: 09.10.2026 — BEISPIEL-Mount, noch nicht gedruckt/getestet
-//
-// Konzept (Daddelbert): KEINE Waende. Flache Gitterplatte (4 mm),
-// daraus ragt ein Post (+ 2 gleichhohe Stuetzstege in L-Form).
-// In den Post wird der ruthex RX-M2.5x5.7 eingelötet; die Platine
-// wird auf den Post-Kopf geschraubt und "schwebt" 7 mm ueber Holz.
-// Grund fuer die Stuetzstege: die Platine hat nur EIN Loch —
-// nur der Post allein wuerde kippeln.
-//
-// Quellen (nicht geraten):
-//   Platine 17.8 x 11.3 mm, Hoehe 5.6 mm -> adafruit.com/product/4654
-//   Bohrbild: github.com/adafruit/Adafruit-TPS61023-PCB (.brd)
-//     - EIN Montageloch Ø2.5 (M2.5), je 2.54 mm von Lang-/Schmalkante,
-//       Ecke diagonal zum 4-Pin-Header JP1 (0.1"-Raster, Reihe
-//       2.54 mm ab Gegenseite)
-//     - alle SMD-Bauteile Oberseite (kein 'M'-rot im .brd)
-//   ruthex RX-M2.5x5.7, offizielles STEP: Koerper Ø4.06,
-//   Kragen Ø4.6, L 5.7 -> Pocket Ø4.2 / Tiefe 5.8
-//
-// Schrauben:
-//   Platine: M2.5 x 7 (M2.5x8 staende am Pocket-Boden an)
-//   Mount->Holz: 1x M4 Zylinderkopf, K-B Ø7.5, in Einschlagmutter M4
-//   ⚠ 1 Holzschraube = Mount kann theoretisch rotieren. Praktisch
-//   halten Nachbar-Mounts + Flachbandkabel; sonst 2. Loch ergänzen.
-//
-// Header-Freiraum: Pin-Spitzen enden bei z ~4.5, Loetpunkte ~5.5 —
-// beide ueber der Platte (4.0). Der rechte Stuetzsteg beginnt erst
-// unterhalb des letzten Pins (Loetpunkt-Freiraum am letzten Pin).
-//
-// VOR DEM DRUCK: Pocket-Ø 4.2 an ECHTEM Einsatz testen (Probewürfel),
-// Platine auf Post/Stege legen, Lochposition gegenprüfen (Klon-Gefahr).
-// ============================================================
+// Boxbert — TPS61023 Einzel-Mount, NEUENTWURF 2026-10-09
+// Nutzer-OK: regelmaessiges Gitter, ein Schraubpfosten am Montageloch,
+// zwei einzelne Stuetzpfosten mittig; keine Waende oder L-Auflage.
+// Entwurf / Passungspruefung offen, KEINE Einbau- oder Druckfreigabe.
+// Quellen und offene Annahmen: README.md.
 
-/* [Platine — Adafruit 4654] */
-board_l = 11.43;
-board_w = 17.78;
-hole_from_x = 2.54;      // Loch ab linker Kante
-hole_from_y_top = 2.54;  // Loch ab oberer Kante
-header_from_y = 2.54;    // Header-Reihe ab unterer Kante
+/* [Gitterboden] */
+cell_size = 4;               // quadratische, vollstaendig offene Zellen
+rib_width = 2;               // ALLE regulaeren Rippen gleich breit
+cells_x = 4;
+cells_y = 5;
+base_thickness = 2;
 
-/* [ruthex RX-M2.5x5.7] */
-pocket_d = 4.2;          // STEP-Koerper Ø4.06 + Spiel -> PROBEDRUCK
-pocket_l = 5.8;          // STEP-Laenge 5.7 + 0.1
+/* [Abstandspfosten] */
+post_height = 8;             // UEBER der Oberseite des Gitterbodens
+insert_post_d = 8.2;         // 1.8 mm radial ausserhalb Einsatz-max. D 4.6
+insert_root_d = 10;
+support_d = 2.8;
+support_root_d = 4.4;
+root_height = 1;             // kurze lokale Fussverbreiterung, keine Wand
+insert_hole_d = 4.0;         // offizielles ruthex EINBAULOCH, Passung testen
+insert_hole_depth = 6.7;     // Hersteller: Einsatzlaenge 5.7 + min. 1 mm
 
-/* [Mount] */
-plate_t  = 4.0;          // Gitterplatte
-post_top = 7.0;          // Oberkante Post + Stuetzstege
-post_d   = 9.0;
-sup_w    = 2.0;          // Stuetzstegbreite
-rib_w    = 2.5;          // Gitterrippen
-margin_l = 4.0;          // links (Post-Seite)
-margin_r = 7.0;          // rechts
-margin_b = 7.0;          // unten (Platz Holzschraube)
-margin_t = 5.5;          // oben
-wood_d   = 4.3;          // M4-Durchgang
-wood_cb_d = 7.5;         // Kopf-K-B M4 Zylinderkopf
-wood_cb_t = 2.8;
-corner_r = 2.0;
-$fn = 48;
+/* [Holzbefestigung — Nutzerentscheidung 2026-10-09] */
+// Holzschraube 3 x 12 mm, Senkkopf; KEIN metrisches M3-Gewinde.
+wood_hole_d = 3.2;           // Durchgang fuer nominal 3-mm-Holzschraube
+wood_pad_d = 8;
+wood_pad_thickness = 3.5;    // lokale GESAMTdicke ab Holzoberseite
+wood_head_clearance_d = 6.2; // fuer Kopf ca. D6; konkretes Fabrikat pruefen
+wood_head_angle = 90;       // Entwurfsannahme, am realen Kopf pruefen
+wood_screw_length = 12;     // bei Senkkopf INKLUSIVE Kopf
+wood_thickness = 12;        // beschlossen: Pappelsperrholz, Istmass pruefen
+wood_position = [22, 4];
 
-// --- abgeleitet ---
-outer_l = margin_l + board_l + margin_r;   // 22.43
-outer_w = margin_b + board_w + margin_t;   // 30.28
-bx = margin_l; by = margin_b;              // Platinenursprung (4, 7)
-boss_x = bx + hole_from_x;                 // 6.54
-boss_y = by + board_w - hole_from_y_top;   // 22.24
-header_y = by + header_from_y;             // 9.54
-header_xs = [for (i=[0:3]) bx + 5.715 + (i-1.5)*2.54];
-screw_pos = [17.2, 5.0];                   // M4 -> Einschlagmutter Holz
-edge = 0.4;                                // Mindeststeg zwischen Aussparungen
+/* [Platine — Original-PCB, reale Passung offen] */
+board_width = 11.43;
+board_length = 17.78;
+board_origin = [6, 8];
+board_mount_hole = [2.54, 15.24];
+board_mount_hole_d = 2.5;
+// Nur massive Auflagen, KEINE weiteren Gewindeeinsaetze.
+// Mittig und fern der Anschlussreihe (y=2.54 in Platinenkoordinaten).
+support_positions = [[board_width/2, 6.5], [board_width/2, 10]];
 
-// ================= 2D-Grundkoerper =================
-module outline() {
-    offset(r = corner_r) offset(delta = -corner_r)
-        square([outer_l, outer_w]);
+/* [Vorschau — nicht im STL] */
+show_board = true;
+show_insert = true;
+board_preview_thickness = 1.6; // ANNAHME zur Darstellung, nicht gemessen
+
+/* [Hidden] */
+$fn = 80;
+eps = 0.02;
+pitch = cell_size + rib_width;
+base_width = cells_x * cell_size + (cells_x + 1) * rib_width;
+base_length = cells_y * cell_size + (cells_y + 1) * rib_width;
+board_z = base_thickness + post_height;
+insert_position = board_origin + board_mount_hole;
+insert_max_d = 4.6;          // ruthex Masszeichnung: d1
+insert_length = 5.7;
+wood_countersink_depth = (wood_head_clearance_d-wood_hole_d)/
+                         (2*tan(wood_head_angle/2));
+wood_nominal_penetration = wood_screw_length-wood_pad_thickness;
+
+assert(cell_size > 0 && rib_width >= 1.6 && base_thickness >= 1.6);
+assert(cells_x >= 1 && cells_y >= 1);
+assert(insert_hole_depth >= insert_length + 1);
+assert(insert_hole_d < insert_max_d);
+assert((insert_post_d - insert_max_d)/2 >= 1.6,
+       "Zu wenig Material um den eingesetzten Heat-Set-Einsatz");
+assert(post_height - insert_hole_depth >= 1,
+       "Mindestens 1 mm geschlossener Pfostenboden ueber dem Gitter");
+assert(root_height > 0 && root_height < post_height);
+assert(wood_hole_d > 0 && wood_pad_d - wood_hole_d >= 3.2);
+assert(wood_head_angle > 0 && wood_head_angle < 180);
+assert(wood_head_clearance_d > wood_hole_d &&
+       wood_pad_d > wood_head_clearance_d);
+assert(wood_pad_thickness >= base_thickness);
+assert(wood_pad_thickness-wood_countersink_depth >= base_thickness,
+       "Mindestens Gitterbodendicke unter der Senkung erhalten");
+assert(wood_nominal_penetration > 0 &&
+       wood_thickness-wood_nominal_penetration >= 3,
+       "Mindestens 3 mm nominale Holzreserve; Istmasse trotzdem pruefen");
+assert(wood_position[0] - wood_pad_d/2 >= 0 &&
+       wood_position[0] + wood_pad_d/2 <= base_width &&
+       wood_position[1] - wood_pad_d/2 >= 0 &&
+       wood_position[1] + wood_pad_d/2 <= base_length);
+for (p = support_positions) {
+    assert(p[0] - support_d/2 > 0 &&
+           p[0] + support_d/2 < board_width &&
+           p[1] - support_d/2 > 4 &&
+           p[1] + support_d/2 < board_length);
+    assert(norm(p-board_mount_hole) > (insert_post_d+support_d)/2+0.3,
+           "Stuetzpfosten muss vom Schraubpfosten getrennt bleiben");
 }
+assert(norm(support_positions[0]-support_positions[1]) > support_d+0.3,
+       "Stuetzpfosten muessen einzeln bleiben");
 
-// Platte (z 0..plate_t)
-module plate2d() {
-    union() {
-        difference() { outline(); offset(r = -rib_w) outline(); }  // Ring
-        translate([rib_w/2, by - rib_w/2])                         // Rippe unten (bordnetze)
-            square([outer_l - rib_w, rib_w]);
-        translate([bx - rib_w/2, rib_w/2])                         // Rippe links (2.25 breit)
-            square([rib_w - 0.25, outer_w - rib_w]);
-        translate([screw_pos[0], screw_pos[1]]) circle(d = 9);     // Pad Holzschraube
+module grid_2d() {
+    difference() {
+        offset(r=0.8) offset(delta=-0.8)
+            square([base_width, base_length]);
+        for (ix = [0:cells_x-1], iy = [0:cells_y-1])
+            translate([rib_width + ix*pitch, rib_width + iy*pitch])
+                square([cell_size, cell_size]);
     }
 }
 
-// Erhabene Teile (z 0..post_top)
-module raised2d() {
-    union() {
-        translate([boss_x, boss_y]) circle(d = post_d);            // Post
-        // Stuetzsteg unter Platinen-Oberkante (bis zum rechten Steg)
-        translate([bx - 1.25, by + board_w - 1.28])
-            square([(bx + board_l - 1.0) - (bx - 1.25), sup_w]);
-        // Stuetzsteg rechts, abstandshalber zum letzten Header-Pin
-        translate([bx + board_l - 1.0, header_y + 2.0])
-            square([sup_w, (by + board_w - 1.28 + sup_w) - (header_y + 2.0)]);
-    }
+module reinforced_base() {
+    linear_extrude(base_thickness)
+        union() {
+            grid_2d();
+            // Pad 0.2 mm radial breiter als Fuss: keine fast identischen
+            // Kreis-/Kegelkanten bei Booleschen Operationen/Float-Export.
+            translate(insert_position) circle(d=insert_root_d+0.4);
+            for (p = support_positions)
+                translate(board_origin + p) circle(d=support_root_d+0.4);
+            translate(wood_position) circle(d=wood_pad_d);
+        }
 }
 
-// Aussparungen in der Platte (Gitter)
-module cuts2d() {
-    union() {
-        // grosse Mitte (Header-Pins haengen hier frei in der Luft)
-        translate([bx + 1.4, by + 2.2])   // y ab 9.2: K-B der Holzschraube (bis 8.75) frei lassen
-            square([(bx + board_l - 1.3) - (bx + 1.4),
-                    (boss_y - post_d/2 - edge) - (by + 1.7)]);
-        // rechts neben dem Post (bis vor den rechten Stuetzsteg)
-        translate([boss_x + post_d/2 + 0.3, boss_y - post_d/2 + 0.3])
-            square([(bx + board_l - 1.3) - (boss_x + post_d/2 + 0.3),
-                    (by + board_w - 1.28 - edge) - (boss_y - post_d/2 + 0.3)]);
-        // rechts zwischen Stuetzsteg und Aussenring
-        translate([bx + board_l - 1.0 + sup_w + edge, header_y + 2.0])
-            square([(outer_l - rib_w - edge) - (bx + board_l - 1.0 + sup_w + edge),
-                    (outer_w - rib_w - edge) - (header_y + 2.0)]);
-        // Streifen oberhalb des oberen Stuetzstegs (erst RECHTS vom Post!)
-        translate([boss_x + post_d/2 + edge, by + board_w - 1.28 + sup_w + edge])
-            square([(bx + board_l - 1.0 + sup_w + edge) - (boss_x + post_d/2 + edge),
-                    (outer_w - rib_w - edge) - (by + board_w - 1.28 + sup_w + edge)]);
-        // Streifen unterhalb der unteren Rippe (links vom Schrauben-Pad)
-        translate([bx + 1.4, rib_w + edge])
-            square([12.4 - (bx + 1.4), (by - rib_w/2 - edge) - (rib_w + edge)]);
-    }
-}
-
-// ================= 3D =================
-module holes() {
-    // Pocket im Post (von oben)
-    translate([boss_x, boss_y, post_top - pocket_l])
-        cylinder(d = pocket_d, h = pocket_l + 0.1);
-    // Holzschraube: Durchgang + Kopf-K-B von oben
-    translate([screw_pos[0], screw_pos[1], 0]) {
-        translate([0, 0, -0.1]) cylinder(d = wood_d, h = plate_t + 0.2);
-        translate([0, 0, plate_t - wood_cb_t])
-            cylinder(d = wood_cb_d, h = wood_cb_t + 0.05);
+module post_at(p, d, root_d) {
+    translate([p[0], p[1], 0]) {
+        // Kern durchgehend ab Druckbett; kein nahezu deckungsgleicher
+        // Z-Overlap am Fuss, der beim STL-Float-Export Nullflaechen erzeugt.
+        cylinder(d=d, h=board_z);
+        translate([0, 0, base_thickness])
+            cylinder(d1=root_d, d2=d, h=root_height);
     }
 }
 
 module mount() {
     difference() {
         union() {
-            linear_extrude(plate_t) plate2d();
-            linear_extrude(post_top) raised2d();   // Post/Steg durchgehend ab z0
+            reinforced_base();
+            // Nur dieses kleine Polster ragt 1.5 mm ueber das Gitter.
+            translate([wood_position[0], wood_position[1], 0])
+                cylinder(d=wood_pad_d, h=wood_pad_thickness);
+            post_at(insert_position, insert_post_d, insert_root_d);
+            for (p = support_positions)
+                post_at(board_origin + p, support_d, support_root_d);
         }
-        translate([0, 0, -0.1]) linear_extrude(plate_t + 0.2) cuts2d();
-        holes();
+        // Sackloch von oben: Einsatz endet BUENDIG mit Pfostenoberkante.
+        translate([insert_position[0], insert_position[1],
+                   board_z-insert_hole_depth])
+            cylinder(d=insert_hole_d, h=insert_hole_depth+eps);
+        // Genau EIN Holzbefestigungsloch + 90-Grad-Senkung von oben.
+        translate([wood_position[0], wood_position[1], -eps])
+            cylinder(d=wood_hole_d, h=wood_pad_thickness+2*eps);
+        translate([wood_position[0], wood_position[1],
+                   wood_pad_thickness-wood_countersink_depth])
+            cylinder(d1=wood_hole_d,
+                     d2=wood_head_clearance_d+2*eps*tan(wood_head_angle/2),
+                     h=wood_countersink_depth+eps);
     }
 }
 
-mount();
+module board_outline() {
+    // Original-PCB: untere Ecken rechtwinklig, obere Radius 2.54.
+    r = 2.54;
+    union() {
+        square([board_width, board_length-r]);
+        translate([r, board_length-r]) square([board_width-2*r, r]);
+        for (x = [r, board_width-r])
+            translate([x, board_length-r]) circle(r=r);
+    }
+}
 
-echo("Aussen:", outer_l, "x", outer_w, " Post-Top:", post_top);
-echo("Boss:", boss_x, boss_y, " Header-Y:", header_y);
-echo("Header-Pins X:", header_xs, " Schraube:", screw_pos);
+module board_dummy() {
+    // 0.03 mm reiner Anzeigeversatz vermeidet flackernde Kontaktflaechen.
+    translate([board_origin[0], board_origin[1], board_z+0.03])
+        linear_extrude(board_preview_thickness)
+            difference() {
+                board_outline();
+                translate(board_mount_hole) circle(d=board_mount_hole_d);
+                for (x = [1.905, 4.445, 6.985, 9.525])
+                    translate([x, 2.54]) circle(d=1);
+            }
+}
+
+module insert_dummy() {
+    // Symbolisch, ohne Raendelung/Gewinde. Fuer kollisionsfreie Anzeige
+    // auf Einbauloch-D verkleinert; realer Aussendurchmesser ist 4.6 mm.
+    translate([insert_position[0], insert_position[1], board_z-insert_length])
+        difference() {
+            cylinder(d=insert_hole_d-eps, h=insert_length);
+            translate([0, 0, -eps])
+                cylinder(d=2.5, h=insert_length+2*eps);
+        }
+}
+
+color([0.92, 0.57, 0.18]) mount();
+// $preview ist beim STL-Export false: NUR Mount, niemals Dummies.
+if ($preview && show_board)
+    color([0.36, 0.22, 0.72, 0.28]) board_dummy();
+if ($preview && show_insert)
+    color([0.82, 0.66, 0.25]) insert_dummy();
+
+echo("Mount B x L x H:", base_width, base_length, board_z);
+echo("Abstand Platinenunterseite / Gitteroberseite:", post_height);
+echo("Heat-Set Sackloch D / Tiefe:", insert_hole_d, insert_hole_depth);
+echo("Holzschraube 3 x 12 Senkkopf: Durchgang / Senkung-D / Winkel:",
+     wood_hole_d, wood_head_clearance_d, wood_head_angle);
+echo("Schraubpolster Gesamtdicke / Senktiefe:",
+     wood_pad_thickness, wood_countersink_depth);
+echo("Nominal Holzeingriff / Reserve nach aussen (Istmasse pruefen):",
+     wood_nominal_penetration, wood_thickness-wood_nominal_penetration);

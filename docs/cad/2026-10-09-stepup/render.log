@@ -1,0 +1,72 @@
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Geometries in cache: 47
+Geometry cache size in bytes: 205080
+CGAL Polyhedrons in cache: 7
+CGAL cache size in bytes: 10376400
+Total rendering time: 0:00:04.748
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     1511
+   Halfedges:    5224
+   Edges:        2612
+   Halffacets:   2210
+   Facets:       1105
+   Volumes:         2
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 9 elements
+Geometries in cache: 42
+Geometry cache size in bytes: 150584
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.133
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 9 elements
+Geometries in cache: 42
+Geometry cache size in bytes: 150584
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.155
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 12 elements
+Geometries in cache: 62
+Geometry cache size in bytes: 293584
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.138
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 12 elements
+Geometries in cache: 62
+Geometry cache size in bytes: 293584
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.165
+ECHO: "Mount B x L x H:", 26, 32, 10
+ECHO: "Abstand Platinenunterseite / Gitteroberseite:", 8
+ECHO: "Heat-Set Sackloch D / Tiefe:", 4, 6.7
+ECHO: "Holzloch D VORLAEUFIG / keine Schraubenauswahl:", 3.2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 12 elements
+Geometries in cache: 62
+Geometry cache size in bytes: 293584
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.153

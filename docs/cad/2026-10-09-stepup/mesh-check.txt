@@ -1,0 +1,17 @@
+STL-Geometriepruefung — keine physische Passungspruefung
+SHA256: 9162f131cc795a876889619bc5842693783b84135e5edab651526a40cdf6af81
+Dreiecke: 3094
+Bounding box: (0.0, 0.0, 0.0) .. (26.0, 32.0, 10.0) mm
+Volumen: 1586.530 mm^3
+PASS: eine zusammenhaengende, geschlossene, konsistent orientierte Oberflaeche
+PASS: keine degenerierten/tiny Dreiecke, keine zusaetzlichen Vorschaukoerper
+PASS: Gitterrippe
+PASS: Gitterzelle offen
+PASS: Holzloch durchgehend
+PASS: Heat-Set Sackloch offen
+PASS: Sacklochboden geschlossen
+PASS: Pfostenwand
+PASS: Stuetzpfosten 1
+PASS: Stuetzpfosten 2
+PASS: Luft zwischen Stuetzpfosten
+PASS: Luft unter Platine
