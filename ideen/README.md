@@ -36,6 +36,10 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 | offen | [Auto-Play-Modus](autoplay/README.md) | Musik automatisch starten lassen. |
 | offen | [Spotify-Verbindung](spotify/README.md) | Boxbert mit Spotify verbinden. |
 | offen | [Bluetooth-Lautsprecher-Modus](bluetooth-lautsprecher/README.md) | Boxbert als Bluetooth-Lautsprecher für externe Geräte verwenden. |
+| offen | [Hör-Memory mit RFID-Karten](hoer-memory/README.md) | Geräuschpaare durch nacheinander aufgelegte RFID-Karten finden. |
+| offen | [Gute-Nacht-Figur](gute-nacht-figur/README.md) | Ruhige Playlist starten, Beleuchtung dimmen und nach der letzten Geschichte abschalten. |
+| offen | [Soundboard für die Arcade-Knöpfe](soundboard/README.md) | Eine RFID-Figur schaltet funktionale Knöpfe vorübergehend auf kurze Geräusche um. |
+
 ## Bereits besprochener Aufbau und Zubehör
 
 Diese Punkte sind **für die Besprechung abgeschlossen** und keine offenen
