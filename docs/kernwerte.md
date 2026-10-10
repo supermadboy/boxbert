@@ -40,9 +40,12 @@ Bauteilwerte sind keine Abnahme der noch ungeprüften Etappe-6-Schaltung.
   `LRC, BCLK, DIN, GAIN, SD, VIN, GND` (+/− Lautsprecher). Gain default 9 dB,
   per GAIN-Pin 3/6/9/12/15 dB. SD/Mode-Pin: default (L+R)/2-Mix; zum
   Abschalten auf Low (Shutdown) — nützlich für Deep Sleep.
-  ⚠️ **Unser bestelltes Modul ist ein Klon** mit abweichender Pinreihenfolge
-  `VIN, GND, SD, GAIN, DIN, BCLK, LRC` und Schraubklemme statt JST —
-  Verkabelung und Details: `docs/testprotokoll-etappe1.md`.
+  **Korrektur 09.10.2026:** Nutzerfotos/-bestätigung passen zum bestellten
+  Adafruit ADA3006 mit Schraubklemme. Alte Klon-/JST-Abweichungsbehauptung
+  widersprochen; Schraubklemme und Reihe `VIN, GND, SD, GAIN, DIN, BCLK,
+  LRC` (von VIN gelesen) passen zum Herstellerfoto. Quellenvergleich:
+  `docs/cad/2026-10-09-max98357-mount/`. Bestätigte Verkabelung unverändert:
+  `docs/testprotokoll-etappe1.md`.
   **Datenblatt-Zahlen (Rev 7):** 3,2 W @ 4 Ω/5 V (10 % THD), 2,5 W @ 1 % THD;
   3,7 V (Akku): 0,93 W @ 10 % THD. GAIN: offen = 9 dB; GND = 12 dB;
   VDD = 6 dB. SD-Pin-Modi (Analogschwellwerte): < 0,16 V Shutdown ·
@@ -57,7 +60,7 @@ Bauteilwerte sind keine Abnahme der noch ungeprüften Etappe-6-Schaltung.
   AB30L5-Widerstände bleiben aber erhalten. Direkte 5-V-Button-Ansteuerung
   erst anhand Portgrenzen/Schaltplan freigeben. Quellen/Testplan:
   `docs/power-plan.md` (Adafruit Pinouts/Arduino-Beispiele, 04.10.2026).
-- **microSD-Modul (MSD-AADP / Soldered 333050):** Pins `VCC, GND, SCLK, MISO, MOSI, CS`.
+- **microSD-Modul (MSD-AADP; reales Nutzer-Modul HW-125):** Pins `VCC, GND, SCLK, MISO, MOSI, CS`.
   Onboard-3,3-V-Regler → mit 5 V speisen (nicht 3,3 V direkt — Regler-Dropout).
   SPI, bis 32 GB (die Verbatim-Karte ist microSDHC Class 10/U1, 80 MB/s Lesen).
 - **NeoPixel:** Single-Wire 800 kHz; exaktes Timing in Firmware (RMT-Treiber).
@@ -102,6 +105,55 @@ sind kein Membran- oder Ausschnittmaß. Die frühere 65/66-mm-Lochidee war
 nicht belegt und ist keine Bohrfreigabe. Gehäuse-/Abdeckungsentwurf erst
 nach mechanischem Abgleich und Hörtest, ohne zugängliche Kleinteile.
 
+### MAX98357A / ADA3006 — mechanische Originaldaten
+
+Am **09.10.2026** Original-Mono-Eagle-Datei aus
+[Adafruit-PCB-Repo](https://github.com/adafruit/Adafruit-MAX98357-I2S-Amp-Breakout)
+geprüft: **17,78 × 19,05 mm**, vier gerundete Ecken R2,54;
+**zwei Ø2,5-Montagelöcher**, Abstand **12,70 mm**, Zentren
+(2,54;16,51) / (15,24;16,51) ab linker/unterer Kante.
+Klemmen-Pads (7,09;15,494) und (10,59;15,494), nächstes Padzentrum
+ca. 4,66 mm vom Montageloch. Nutzerfoto passt visuell zum Herstellerfoto;
+Unterseite ohne SMD-Bauteile, reale Lötstellenhöhe nicht gemessen.
+Quellenkopien/Rotationsprüfung: `docs/cad/2026-10-09-max98357-mount/`.
+Mount-Entwurfswerte getrennt in `3d-print/mounts/max98357-mount/README.md`.
+
+### AW9523 / ADA4886 — mechanische Originaldaten
+
+Am **09.10.2026 erneut** direkt aus dem
+[Adafruit-Eagle-PCB](https://github.com/adafruit/Adafruit-AW9523-PCB)
+(`Adafruit AW9523.brd`, master) geprüft, einschließlich Padrotation:
+**38,1 × 17,78 mm**, vier **gerundete Ecken R 2,54 mm** (Layer 20,
+curve=90; ältere Fasen-Angabe war falsch). Montagebohrungen **4 × Ø 2,5**
+bei x = 2,54 / 35,56, y = 2,54 / 15,24 mm; nächster Anschluss-Padmittelpunkt
+jeweils **3,81 mm** entfernt. 38 Through-Hole-Pads Ø 1,0 mm.
+Hersteller-Unterseitenfoto zeigt keine aufgesetzten Bauteile, aber keine
+Überstände der später angelöteten Nutzer-Stiftleisten. M2,5-Passung am
+realen Ø-2,5-Loch ohne Kraft prüfen, nicht aufbohren.
+Quellenkopie und Prüflog: `docs/cad/2026-10-09-aw9523-redesign/`.
+Mount-Entwurfswerte separat in `3d-print/mounts/aw9523-mount/README.md`;
+keine CAD-Annahme als Bauteil-Messwert übernehmen.
+
+### TPS61023 MiniBoost (ADA4654) / ruthex-Pfosten
+
+Mechanik am **09.10.2026** aus [originaler Adafruit-PCB-Datei](https://github.com/adafruit/Adafruit-TPS61023-PCB)
+(`Adafruit TPS61023.brd`, Git-Blob `bbdc02b72e9c77a2412e7a7ea90e644356b00168`)
+verifiziert: Kontur **11,43 × 17,78 mm**, oben Radius 2,54 mm; **ein
+Montageloch Ø 2,5 mm**, Mittelpunkt (2,54; 15,24) mm ab linker/unterer
+Kante. Anschlussreihe mit vier Ø-1-mm-Löchern auf y = 2,54 mm, Raster
+2,54 mm. [Offizielles Unterseitenfoto](https://cdn-shop.adafruit.com/970x728/4654-08.jpg)
+zeigt keine aufgesetzten Bauteile; reale Pin-/Lötstellenüberstände sind
+damit nicht gemessen.
+
+Für die laut Nutzer bestellten **ruthex RX-M2,5×5,7** nennt die
+[offizielle Einbauzeichnung](https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911)
+**Einbauloch Ø 4,0 mm**, **Mindestlochtiefe 6,7 mm** (L + 1 mm) und
+**Mindestwandstärke 1,6 mm** radial. Einsatz L = 5,7 mm,
+Maximal-Außen-Ø d1 = 4,6 mm. FDM-Passung noch nicht getestet; nicht aus
+dem Außen-Ø oder STEP-Kontrollpunkten ein eigenes Einbauloch ableiten.
+Neuer Mount-Entwurf und offene mechanische Prüfungen:
+`3d-print/mounts/stepup-mount/README.md`.
+
 ### PN532-Modul (PN532-MOD)
 Platine **40 × 60 mm** (rechteckig, Antennenschleife außen am Rand). Bohrlöcher
 am Foto sichtbar (2, hinten). DIP-Schalter 2-fach oben. Header: gerade +
@@ -143,15 +195,35 @@ planen, gegen Verrutschen sichern, JST-PH-Buchse herausführen (Feather-Seite
 hat Gegenstück — Polung einmal durchmessen, JST ist nicht genormt polarisiert).
 
 ### microSD-Modul (MSD-AADP)
-Platine **38 × 22 mm**, SD-Slot an einer Längskante, 4 Ecken-Bohrlöcher (M2, Foto:
-4 Stück, gegen die Platine geöffnet). Karte zeigt nach außen — Zugangsluke oder
-herausgeführter Slot im Gehäuse einplanen.
+**Korrektur 09.10.2026:** reales Nutzer-Modul laut Foto **HW-125**, nicht
+Soldered 333050. Nutzer misst **23,68 × 41,78 mm**, bestätigt M2,5-Passung;
+Foto zeigt vier geschlossene Ecklöcher und Karteneinschub gegenüber der
+Pinleiste. Alte 38-×-22-mm-/M2-/offene-Löcher-Angaben nicht weiterverwenden.
+[Botland](https://botland.store/memory-cards-accessories/8230-micro-sd-card-reader-module-5904422311278.html)
+nennt für eine ähnliche 42-×-24-mm-Bauform **38 × 20 mm Lochraster**, aber
+M2-Löcher. Nutzer akzeptiert das Raster als Entwurfsbasis, nicht gemessen
+oder physisch abgenommen. Foto/Quellenstand und Prüfschablone:
+`3d-print/mounts/sd-mount/README.md`. Kartenzugang im Gehäuse frei halten.
 
 ### Feather (ADA5691)
-Standard-Feather-Format: **50,8 × 22,86 mm** (2" × 0,9"), Lochabstand der
-Padreihen 43,18 mm ± üblich. Display auf der **Rückseite** (Reverse TFT!),
-Taster D0–D2 + USB-C auf der Front. → Bei der Deckel-Montage Display nach
-innen/außen je nach gewünschter PWA-Bedienung — Entscheidung offen.
+**Original-Eagle frisch geprüft 09.10.2026:** PCB **50,8 × 22,86 mm**,
+Ecken R2,54. Montagelöcher (x/y ab PCB-Bounding-Box, USB bei x≈0):
+**2,54/2,54 und 2,54/20,32: Ø2,5 plated**; **48,26/1,8415 und
+48,26/20,955: Ø2,2**. Kein einheitliches Vier-Loch-M2,5-Raster!
+Alte pauschale 43,18-mm-Angabe ist keine gültige Montagegrundlage.
+Display **und D0–D2 auf Displayseite**, USB-C und Akku-JST auf
+Elektronikseite. Die bisherige gemeinsame Front-Zuordnung der Taster mit
+USB war falsch; Original-PCB-Rotationen und Herstellerfoto klären dies.
+Fenster-Mount: TFT nach vorne, in Draufsicht vorne rechts in der bisherigen
+Vorderwand-Anordnung; USB zur rechten Seitenwand, Akkuanschluss innen.
+Herstellerbohrwert ist kein Nachweis realer Schraubenpassung; kleinere
+Löcher nicht für M2,5 erzwingen/aufbohren.
+Quellen: [Adafruit Downloads](https://learn.adafruit.com/esp32-s3-reverse-tft-feather/downloads),
+[Original-Eagle](https://github.com/adafruit/Adafruit-ESP32-S3-Reverse-TFT-Feather-PCB),
+[Hersteller-CAD-Foto](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/5691%20Feather%20ESP32%20S3%20Reverse%20TFT).
+Gesicherte Quelle/Extraktor: `docs/cad/feather-window/`.
+Mount-Höhen, PCB-Dicke und Stecker-Hüllen bleiben Entwurfsannahmen,
+keine aus Eagle ermittelten oder am Nutzerboard gemessenen Höhen.
 
 ## Offene Punkte / Vorsicht
 

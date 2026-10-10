@@ -117,6 +117,7 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
 | Bauteilwerte | `docs/kernwerte.md` mit Datenblatt-/Herstellerquellen |
 | Nachgewiesene Tests / Messwerte | datierte Testprotokolle, Rohlogs, Nutzerbestätigungen |
 | Aktuelle Entscheidungen / Begründungen | `docs/entscheidungen.md` |
+| Gehäuse / bestätigtes Mount-Prinzip | `hardware/gehaeuse-konzept.md` |
 
 Bei Widersprüchen **stoppen, Quellen prüfen und klären** — nicht einfach
 jüngere, bequemere oder häufiger wiederholte Angabe wählen. Historie /
@@ -175,8 +176,11 @@ jedem Sketch-Flash und jeder Verkabelung einmal durchgehen:**
   das **Beispiel der Bibliothek** abgleichen, nicht nur gegen Vorstellung
   der API. Doku: `docs/testprotokoll-etappe1.md`, `docs/findings.md`.
 - **Modul-Silkscreen ist die Wahrheit, nicht die Tabelle.** Klons haben
-  oft eine andere Pinreihenfolge als das Original (unser MAX98357A-Klon:
-  `VIN, GND, SD, GAIN, DIN, BCLK, LRC` — anders als ADA3006). Verkabelung
+  oft eine andere Pinreihenfolge als das Original. **Korrektur 09.10.2026:**
+  Unser MAX98357A passt laut Nutzerfoto/-bestätigung zum bestellten ADA3006;
+  die alte Klon-Einordnung war nicht belastbar. `VIN, GND, SD, GAIN, DIN,
+  BCLK, LRC` passt von der VIN-Seite gelesen auch zum Herstellerfoto
+  (`docs/cad/2026-10-09-max98357-mount/`). Verkabelung
   **nie positionsgleich durchverbinden**; pro Draht: Modul-Beschriftung
   lesen → Feather-Beschriftung lesen → stecken. Der Durchgangsprüfer
   bestätigt sonst fröhlich die eigene irrige Annahme.
@@ -227,6 +231,46 @@ Belege und Beispiele: `docs/testprotokoll-etappe4.md`, Rohlogs in
   Tests getrennt ausweisen. Ein ausdrücklich akzeptierter Breadboard-
   Meilenstein ist keine Produkt-/Dauerprüfung; nicht durchgeführte Tests
   als spätere Härtung in `To-Do.md` erhalten, nie als bestanden ausgeben.
+
+## Einzel-Mounts / CAD — Übergabe 09.10.2026
+
+Vor einem Mount-Auftrag **`docs/mounts-weiterarbeit.md` und
+`hardware/gehaeuse-konzept.md` lesen**, dazu den CAD-Abschnitt in
+`docs/findings.md`. „Mount für GPIO-Expander“ meint **AW9523 / ADA4886**
+aus der BOM, nicht MCP23017. Ein kurzer neuer Bauauftrag reicht aus;
+das bereits bestätigte Grundprinzip nicht erneut zur Diskussion stellen.
+Ein nur angekündigter/zitierter Folgeprompt ist noch kein Bauauftrag.
+
+- Aktuelle Stilvorlage: **`3d-print/mounts/stepup-mount/`**, Nutzer hat
+  die neue Senkkopf-Version ausdrücklich positiv bewertet. Kein gedruckter
+  oder mechanisch abgenommener Referenz-Mount! Dessen Unterordner
+  `archive/rejected-2026-10-09/` ist verworfen, niemals als Vorlage nutzen.
+- Regelmäßiger, durchbrochener Gitterboden; einzelne Abstandspfosten,
+  Einsätze bündig. **Keine Wände, Mulde oder erhöhte L-Auflage.**
+  Lokale Füße/Verstärkungen erlaubt, Raster muss sichtbar bleiben.
+- Holzbox außen 250 × 180 × 110 mm, **12 mm Pappelsperrholz**,
+  Deckel/Boden abschraubbar. **3 × 12 mm Senkkopf-Holzschrauben** für
+  Mounts, nicht M3-Maschinengewinde, nicht M4. Fabrikat/Kopfpassung und
+  Vorbohrung noch prüfen; nichts als bereits gekauft ausgeben.
+- Step-Up-Vorlage: 2-mm-Boden, 4-mm-Zellen/2-mm-Rippen, 8-mm-Pfosten
+  über Gitter; Holz-Schraubpolster lokal 3,5 mm, Durchgang Ø 3,2,
+  Senkung Ø 6,2 / 90°. Das sind Entwurfsparameter, **kein universelles
+  Modul-Lochbild oder Außenmaß**. Lochanzahl zur Holzbefestigung bislang
+  nur für den Step-Up entschieden, nicht pauschal auf jedes Modul übertragen.
+- ruthex RX-M2,5×5,7 laut Nutzer bestellt: offizielles Einbauloch Ø 4,0,
+  Tiefe min. 6,7, Wand min. 1,6 mm; Quellen in Kernwerten/Mount-README.
+  Neue PCB-Löcher erst gegen M2,5 prüfen; nicht aufbohren oder Schrauben
+  erzwingen. Zwei mittige massive Stützpfosten waren die **Step-Up-Lösung
+  wegen nur eines Montagelochs**, kein Pflichtdetail für andere Module.
+- Neues Modul separat anlegen, bestehendes Step-Up-Modell unverändert
+  erhalten. Erst BOM/Kernwerte und echte Hersteller-PCB-Daten/Fotos
+  prüfen; keine Maße, Lötstellenhöhen oder Schraubenlängen erfinden.
+  Fotos zunächst selbst recherchieren, Nutzer nur bei realer Unklarheit fragen.
+- Vorschauen ohne **und mit transparenter Platine**, STL nur Mount.
+  `render.sh` (OpenSCAD/CGAL, offscreen) und `check_mesh.py` als technische
+  Vorlage; Prüfkoordinaten/Bounds an neues Modul anpassen, keine alten
+  Erfolgslogs wiederverwenden. Export + tatsächliche STL + Bilder prüfen.
+  CAD-Erfolg ist keine Passungs-/Kindersicherheitsfreigabe.
 
 ## Findings-Datenbank
 

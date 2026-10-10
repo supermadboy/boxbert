@@ -104,6 +104,38 @@ Aufwachen. Später: PN532-IRQ-Pin auf **IO11** (RTC-GPIO, reserviert)
 legen + Low-Power-Card-Detection-Modus — dann weckt das Tag direkt.
 IO11 ist dafür nicht als Wake-Button zu belegen (`hardware/pinout.md`).
 
+## Gehäuse / Einzel-Mounts — Nutzerentscheidung 09.10.2026
+
+**12 mm Pappelsperrholz**, Holzbox außen 250 × 180 × 110 mm, Deckel und
+Boden abschraubbar. Pappel hält das Gehäuse leicht; weichere Oberfläche
+und empfindlichere Schraubklemmung als bei Birke berücksichtigen.
+Noch kein gebautes Gehäuse und keine Holzbeschaffung bestätigt.
+
+Einzel-Mounts statt gemeinsamer Tray, mit regelmäßigem durchbrochenem
+Gitterboden und einzelnen Abstandspfosten, keine Wände oder L-Auflage.
+Step-Up: ein Schraubpfosten mit bündigem ruthex RX-M2,5×5,7 plus zwei
+massive Stützpfosten mittig, weg von der gelöteten Anschlussreihe.
+
+**Mount → Holz: 3 × 12 mm Senkkopf-Holzschraube**, kein metrisches M3.
+Nur das Schraubloch-Polster des Step-Up-Mounts wird auf insgesamt 3,5 mm
+verdickt; Gitter bleibt 2 mm. Nominal etwa 8,5 mm Holzeingriff bei
+bündigem Kopf, 3,5 mm Reserve in 12-mm-Holz. Istmaße, Kopfpassung und
+Halt am Reststück prüfen, von Hand anziehen und Bohrtiefe begrenzen.
+Konkretes Fabrikat ist noch nicht ausgewählt/bestellt; CAD-Senkung
+Ø 6,2 mm / 90° ist eine zu prüfende Konstruktionsannahme.
+
+Zuschnitt, Deckel-/Bodenbefestigung und Innenleisten separat planen.
+Aktuelle Step-Up-Senkkopf-Form vom Nutzer nach Vorschau ausdrücklich
+positiv bewertet. **AW9523-Neustart am 09.10.2026 ausdrücklich beauftragt**,
+nachdem der erste Expander-Entwurf verworfen wurde. Neuer Vorschlag mit
+Gitter und gestuften Pfosten in `3d-print/mounts/aw9523-mount/`.
+**Keine Nutzerentscheidung bislang** zu Unterseiten-Heat-Set-Montage
+(statt oben bündig) und zwei Holzschrauben; diese Änderungen nur als
+Konzeptvorschlag behandeln. Übergabe: `docs/mounts-weiterarbeit.md`.
+Details/aktueller Entwurf:
+`hardware/gehaeuse-konzept.md`, `3d-print/mounts/stepup-mount/README.md`.
+Keine Druck-/Einbaufreigabe aus CAD-Erfolg oder digitalem Nutzerlob ableiten.
+
 ## Bestellprozess und Historie
 
 **Daddelbert bestellt selbst**. Agenten recherchieren, aber keine

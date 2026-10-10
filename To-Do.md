@@ -2,16 +2,72 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **MAX98357A-Verstärker-Mount als Vorschlag erstellt (09.10.2026)**:
+  `3d-print/mounts/max98357-mount/`, 38 × 26 × 12 mm, Gitter,
+  zwei gestufte Gewindepfosten + zwei massive Stützen, Einsätze von unten,
+  zwei seitliche Senkkopflöcher. Nutzerfotos und Bestätigung passen zum
+  bestellten ADA3006; alte Klon-Einordnung widersprochen. Original-Mono-PCB
+  geprüft: 17,78 × 19,05, zwei Ø2,5-Löcher im Abstand 12,70 mm.
+  STL/Quellprüfung PASS, sechs Vorschauen tatsächlich angesehen.
+  **Nächster Schritt: Nutzer schaut Vorschlag an.** Druck-, Einsatz-/Last-,
+  Lot-/Stecker-, PCB-Schrauben- und Holzpassung weiter offen.
+  Details: `docs/testprotokoll-max98357-mount.md` und Mount-README.
+
+- [ ] **SD-Mount beauftragt (09.10.2026)** — reales HW-125 laut Nutzerfoto,
+  Platine 23,68 × 41,78 mm, M2,5-Passung bestätigt. Botland-Lochraster
+  38 × 20 mm vom Nutzer als Entwurfsbasis akzeptiert, nicht gemessen.
+  `3d-print/mounts/sd-mount/`: flache Prüfschablone SCAD/STL/Bild erstellt,
+  tatsächliche STL digital geprüft, keine physische Passungsabnahme.
+  Noch kein fertiger Mount. Vor Konstruktion abstimmen: gestufte Pfosten
+  mit Einsätzen von unten (Lötstellenfreiheit an Pinreihe) und zwei seitliche
+  Holzschrauben. Details/Quellen im Mount-README; Soldered-Zuordnung korrigiert.
+
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,
-  Deckel und Boden abschraubbar, einzelne Mounts mit regelmäßigem
+  **12 mm Pappelsperrholz (09.10.2026 beschlossen)**, Deckel und Boden
+  abschraubbar, einzelne Mounts mit regelmäßigem
   Gitterboden und herausragenden Abstandspfosten für ruthex RX-M2,5×5,7.
-  **Bisheriger Step-Up-Entwurf in `3d-print/mounts/stepup-mount/`
-  ausdrücklich abgelehnt** (unregelmäßige Öffnungen / erhöhte L-Auflage).
-  Alte Höhen, Pocket-Maße und M4-Befestigung sind nicht freigegeben.
-  Nächster Schritt: Konzeptskizze abstimmen, Hersteller-Einbaumaße und
-  reales Modul-Lochbild prüfen, dann neuen Step-Up-Mount entwerfen.
-  Weitere Mounts und Akkuhalter erst anschließend planen.
+  **09.10.2026: Konzept zugestimmt und Step-Up-Mount neu entworfen**:
+  ein Schraubpfosten am Montageloch + zwei massive Stützpfosten mittig,
+  weg von der gelöteten Anschlussreihe. SCAD/STL und transparente
+  Platinen-Vorschauen in `3d-print/mounts/stepup-mount/`; Geometrieprüfung
+  erfolgreich, noch keine Druck-/Passungsabnahme. Hersteller-PCB und
+  ruthex-Einbauzeichnung geprüft (Ø 4,0 / Tiefe min. 6,7 mm / Wand min.
+  1,6 mm). **Holzbefestigung beschlossen: 3 × 12 mm Senkkopf-Holzschraube**,
+  Mount angepasst: Durchgang Ø 3,2, Senkung Ø 6,2 / 90°, lokales Polster
+  insgesamt 3,5 mm dick (Gitter weiter 2 mm). Geometrie erneut geprüft;
+  Kopf-Istmaß/Fabrikat, Vorbohrung und tatsächliche Holzstärke offen.
+  Abgelehnter Vorgänger unverändert unter `archive/rejected-2026-10-09/`
+  im Mount-Ordner; alte Höhen, Pocket-Maße und M4 sind nicht freigegeben.
+  **Neue digitale Senkkopf-Form vom Nutzer ausdrücklich positiv bewertet.**
+  Physisch offen: Heat-Set-Probedruck, reale Platinen-/Lötstellenpassung,
+  PCB-Schraubenauswahl und Kopf-/Holztest am Reststück. Zuschnitt und
+  Deckel-/Bodenbefestigung separat planen.
+  Prüfprotokoll: `docs/testprotokoll-stepup-mount.md`.
+  **AW9523-Mount komplett neu konstruiert (09.10.2026)** nach Nutzer-
+  Ablehnung des Vorgängers; dieser unverändert im Mount-Archiv. Neuer
+  Vorschlag in `3d-print/mounts/aw9523-mount/`: 56 × 26 × 12 mm,
+  2 gestufte Gewindepfosten + 2 Stützen, keine Freistiche. ruthex von
+  UNTEN eingeschmolzen (0,2 mm zurückgesetzt), 1,8 mm umlaufende Wand
+  um max. Einsatz-Ø; schmale obere Auflagen halten Abstand zu Pin-Hüllen.
+  Original-PCB frisch geprüft: 38,1 × 17,78 mm mit GERUNDETEN Ecken,
+  4 × Ø 2,5 Montagelöcher; alte Fasen-Angabe falsch. STL + sechs Bilder
+  neu exportiert/geprüft, Mesh PASS. **Noch abzustimmen:** Einsatzmontage
+  von unten statt bündig oben sowie 2 seitliche Holzschrauben. **Physisch
+  offen:** Heat-Set-/Lastprobe, reale Pin-/Lotfreiheit, PCB-Schraubenlänge
+  und Kopfpassung; M2,5×12 nur Rechenbeispiel, alte M2,5×8 gilt nicht mehr.
+  Keine Druck-/Passungsabnahme. Details: Mount-README,
+  `docs/testprotokoll-aw9523-mount.md`, `docs/mounts-weiterarbeit.md`.
+  **Akkuhalter-Vorschlag beauftragt und erstellt (09.10.2026):**
+  `3d-print/mounts/akku-mount/`, Gitterbasis 100 × 76 mm + separater
+  Schraubbügel, zwei ruthex-Pfosten, abgerundete Anschläge. Zwei STLs
+  digital geprüft; sechs Vorschauen. Keine Passungs-/Sicherheitsfreigabe.
+  Vor realem Einbau: maximale Akku-Hülle, PCM/Kabelseite per Foto/Messung,
+  glatte isolierende Unterlage (Entwurfsannahme 0,5 mm), Dummy-Rückhaltung,
+  Wärme-/Druck-/Schraubenprüfung. Details im Mount-README, Prüfprotokoll
+  `docs/testprotokoll-akku-mount.md`. Nutzer-Sichtentscheidung noch offen.
+  SD-/Verstärker-Aufträge inzwischen separat erteilt, siehe Einträge oben.
+  Weitere Module nicht ohne separaten Auftrag vorziehen.
 
 - [ ] **Etappe 8 planen: Rail-Zusammenbau + Auto-Sleep (Stand 07.10.2026,
   Entscheidungen abgeschlossen)** — Boost-Eingang an Akku-JST-Buchse,

@@ -1,14 +1,16 @@
-# Findings — Wissen aus Foren & Blogs (kuratiert)
+# Findings — Foren, Herstellerquellen und eigene Tests (kuratiert)
 
 Praxis-Wissen von Leuten, die es selbst gebaut haben (Foren-Threads, Blogs,
 GitHub-Issues) — gesammelt am **01.10.2026**, sortiert nach unseren
 Baugruppen. Kein Ersatz für `docs/kernwerte.md` (dort stehen *unsere*
 Bauteile), sondern das, was schiefgeht, bevor wir es selbst erleben.
 
-Pflegeregel: Nur echte Quellen von echten Menschen (Forum, Blog, Issue) —
-keine KI-generierten „Top-10-Artikel". Jedes Finding mit Link und, wenn
-relevant, mit „Heißt für Boxbert". Neues oben dran? Nein — beim passenden
-Thema einfügen, Datum dazu.
+Pflegeregel: Echte Quellen (Forum, Blog, Issue, Herstellerunterlagen) oder
+nachvollziehbare eigene Tests mit Protokoll — keine KI-generierten
+„Top-10-Artikel". Digitale CAD-/Codeprüfungen ausdrücklich von physischen
+Messungen unterscheiden. Jedes Finding mit Quelle und, wenn relevant,
+mit „Heißt für Boxbert". Neues oben dran? Nein — beim passenden Thema
+einfügen, Datum dazu.
 
 ---
 
@@ -68,11 +70,15 @@ Thema einfügen, Datum dazu.
   BCLK, LRC, DOUT — Amp-DIN ist aus ESP32-Sicht DOUT!). Eigenes Symptom
   am 02.10.2026 erlebt, Debugging in `docs/testprotokoll-etappe1.md`.
   Quelle: Beispiel `ESP_I2S/examples/Simple_tone` im arduino-esp32-Core
-- **MAX98357A-Klons: Pinreihenfolge am Silkscreen prüfen, nicht raten.**
-  Unser Modul (schwarz, grüne Schraubklemme): `VIN, GND, SD, GAIN, DIN,
-  BCLK, LRC` — völlig anders als Adafruit-Layout. Positionsgleich
-  „durchverdrahtete" Kabel piepen beim Durchgangstest perfekt und
-  funktionieren trotzdem nicht. IMMER Beschriftung gegenprüfen.
+- **MAX98357A: Pinreihenfolge am Silkscreen prüfen, nicht raten.**
+  **Korrektur 09.10.2026:** Nutzerfotos und Bestätigung passen zum
+  bestellten Adafruit ADA3006 einschließlich Pinlabels und Schraubklemme.
+  Die frühere „schwarzer Klon / völlig anderes Adafruit-Layout“-Einordnung
+  war nicht belastbar. `VIN, GND, SD, GAIN, DIN, BCLK, LRC` ist die Reihe
+  von der VIN-Seite gelesen, kein Klon-Beweis. Durchgangstest bestätigt
+  nur die Verdrahtung, nicht die richtige Signalzuordnung.
+  Quellenvergleich: `docs/cad/2026-10-09-max98357-mount/`,
+  `docs/testprotokoll-max98357-mount.md`. Bestätigte Verdrahtung unverändert.
 - **MAX98357A: SD-Pin ist ein Analog-Schwellwert-Pin, kein Digital-Ein/Aus.**
   Datenblatt-Modi: < 0,16 V = Shutdown · 0,16–0,77 V = nur rechter Kanal ·
   0,77–1,4 V = nur linker Kanal · > 1,4 V = Mono-Mix (L+R)/2. Ein „halbhoch
@@ -379,6 +385,121 @@ Thema einfügen, Datum dazu.
   SPIFFS-Never-Used-Szenarien vermeiden wir, indem wir für Konfigdaten
   (falls überhaupt nötig) von Anfang an LittleFS nutzen, nicht SPIFFS.
   Quelle: [Offizielle Migrations-Guide 2.x→3.0](https://docs.espressif.com/projects/arduino-esp32/en/latest/migration_guides/2.x_to_3.0.html), [Random Nerd Tutorials dazu](https://randomnerdtutorials.com/esp32-migrating-version-2-to-3-arduino/)
+
+## 3D-Druck / Einzel-Mounts / OpenSCAD
+
+- **AW9523: enge Loch-/Pinabstände erfordern keine dünne Einsatzwand
+  (erneute Original-PCB-Auswertung und eigener CAD-Neuaufbau, 09.10.2026).**
+  Vier Ø-2,5-Montagebohrungen, nächste Pins 3,81 mm entfernt. Ein breiter
+  Pfosten bis zur PCB-Unterseite überschneidet mögliche Löt-/Pinbereiche.
+  Die alte Behauptung „kein coaxialer Heat-Set-Pfosten ohne Freistich“ war
+  zu pauschal: **Höhenstaffelung** löst die Kollision im neuen Entwurf.
+  Ø-8,2-Gewindebereich endet 4 mm unter PCB; oben Ø-4,6-Auflage. Einsätze
+  von unten, volle 1,8-mm-Wand um max. Einsatz-Ø 4,6; 0,41 mm nominale
+  obere Freigängigkeit bei angenommener Lot-Hülle r=1,1. Pin-/Lot-Hüllen
+  sind Entwurfsgrenzen, keine gemessene Hardware. Unterseiten-Einsätze
+  weichen vom bündigen Obermontage-Wunsch ab und brauchen Nutzer-OK.
+  Vorgänger mit 0,61-mm-Wand vom Nutzer verworfen und archiviert, niemals
+  als freigegebene Konstruktion verwenden. **Zusätzlicher Quellenfehler
+  korrigiert:** Layer-20-Ecken enthalten curve=90, also Radius 2,54 mm,
+  keine Fasen. Quellenkopie/Pad-Rotationsprüfung und neue STL-Rohlogs in
+  `docs/cad/2026-10-09-aw9523-redesign/`; Prüfstand in
+  `docs/testprotokoll-aw9523-mount.md`. Kein physischer Passungsnachweis.
+
+- **Ein Boden mit Ausschnitten ist nicht automatisch das gewünschte Gitter
+  (Nutzer-Sichtprüfung, 09.10.2026).** Der Vorgänger war ein Rahmen mit
+  unregelmäßigen Öffnungen und erhöhter L-Auflage und wurde ausdrücklich
+  abgelehnt. Neuaufbau mit regelmäßigem 4-mm-Zellraster/2-mm-Rippen und
+  einzelnen Pfosten wurde nach Senkkopf-Anpassung ausdrücklich gelobt.
+  → Bestätigte Form beibehalten, nicht den verworfenen Entwurf schrittweise
+  reparieren. Lokale Pads sind erlaubt; Raster bleibt die Grundstruktur.
+  Quelle: Nutzerentscheidungen `hardware/gehaeuse-konzept.md`,
+  aktuelle/archivierte Bilder in `3d-print/mounts/stepup-mount/`.
+
+- **Einbauzeichnung statt Einsatz-Außenmaß/STEP-Kontrollpunkten
+  (Herstellerprüfung, 09.10.2026).** ruthex RX-M2,5×5,7: Einbauloch
+  **Ø 4,0 mm**, Mindesttiefe **L + 1 = 6,7 mm**, Mindestwand **1,6 mm**
+  radial. Einsatz-Maximal-Ø 4,6 mm ist nicht der Einbauloch-Ø. Die alten
+  Ø-4,2-/5,8-mm-Pocketwerte waren nicht hergeleitet und bleiben verworfen.
+  → Bei neuen Pfosten diese Herstellerwerte verwenden; Einschmelzpassung
+  trotzdem zunächst am Probestück mit realem Material/Druckprofil prüfen.
+  Quelle: [ruthex-Maßtabelle mit Einbauzeichnung](https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911),
+  `docs/kernwerte.md`, `docs/testprotokoll-stepup-mount.md`.
+
+- **PCB-Kontur und Bohrwert direkt lesen; Foto ersetzt keine Überstandsmessung
+  (Herstellerprüfung, 09.10.2026).** Originale MiniBoost-Eagle-Datei hat
+  11,43 × 17,78 mm Kontur und genau ein Montageloch; tatsächliches
+  Package-Pad `drill="2.5"` bestätigt Ø 2,5 mm. Unterseitenfoto zeigt keine
+  aufgesetzten Bauteile, aber keine am Boxbert-Modul angelöteten Pins.
+  → Herstellerfotos selbst recherchieren, PCB-`drill` und Koordinaten
+  auswerten. Für den AW9523 weder MiniBoost-Maße noch M2,5-Kompatibilität
+  aus Wiederholung ableiten. 8-mm-Luftreserve ist keine gemessene Lötfreiheit.
+  Quellen: [Adafruit-PCB](https://github.com/adafruit/Adafruit-TPS61023-PCB),
+  [Unterseitenfoto](https://cdn-shop.adafruit.com/970x728/4654-08.jpg),
+  `docs/testprotokoll-stepup-mount.md`.
+
+- **Gleich hohe Pfosten können versehentlich miteinander verschmelzen
+  (eigene CAD-Prüfung, 09.10.2026).** Ein früher Zwischenstand setzte den
+  hinteren Ø-2,8-mm-Stützpfosten bei PCB-y=11: Abstand zum Ø-8,2-mm-
+  Schraubpfosten nur ca. 5,30 mm bei Radien-Summe 5,50 mm, also Überlappung.
+  Stützpunkte neu bei y=6,5/10; kleinster Zylinderabstand nun ca. 0,63 mm,
+  zwischen Stützpfosten 0,7 mm. Lokale Fußpads dürfen verbunden sein,
+  die oberen Pfosten sollen getrennt stehen.
+  → Zentrumabstände gegen Radien prüfen, im SCAD Assertions und in der STL
+  Luft-Punktprüfungen verwenden; nicht nur hübsche Isoansicht betrachten.
+  Quelle: eigener CAD-Zwischenvergleich; aktuelle Parameter/Assertions in
+  `stepup_mount.scad`, Prüfprotokoll und `check_mesh.py` im Mount-Ordner.
+
+- **OpenSCAD „Manifold / NoError“ reicht nicht für die exportierte STL
+  (eigener digitaler Befund, 09.10.2026).** Im zunächst exportierten
+  Manifold-Binär-STL kollabierten Dreiecke an fast deckungsgleichen
+  Kreis-/Fußkanten zu Nullflächen, trotz erfolgreicher CAD-Meldung.
+  Durchgehende Pfostenkerne, radial 0,2 mm größere ebene Pads als konische
+  Füße und endgültiger CGAL-Export lieferten eine sauber geprüfte STL.
+  → Nicht nur Renderstatus prüfen: tatsächliche Binär-STL auf winzige/
+  degenerierte Dreiecke, Kantenorientierung, Zusammenhang und Bounds
+  prüfen. Fehler nicht durch bloßes Verschweigen oder Mesh-Reparatur
+  überdecken. Befund gilt für diesen Aufbau/Toolstand, nicht pauschal
+  als Aussage, dass jeder Manifold-Export defekt sei.
+  Quelle: `docs/testprotokoll-stepup-mount.md`, erfolgreiche Rohlogs
+  `docs/cad/2026-10-09-stepup/` und `senkkopf/`, `check_mesh.py`.
+
+- **Senkkopf braucht lokal Material — nicht den ganzen Gitterboden verdicken
+  (Konstruktion/Rechnung, 09.10.2026; kein physischer Test).** Nutzer wählt
+  3 × 12 mm Senkkopf-Holzschrauben in 12-mm-Pappel. Im 2-mm-Boden ließe
+  eine Ø-6,2-/90°-Senkung bei Ø-3,2-Durchgang nur 0,5 mm Restmaterial.
+  Lokales 3,5-mm-Polster lässt unter 1,5-mm-Senkung wieder 2 mm stehen.
+  Länge bei Senkkopf inklusive Kopf: nominal 8,5 mm Holzeingriff und
+  3,5 mm Reserve bei bündigem Kopf. Kopf kann tiefer sitzen; keine reale
+  Sicherheitsfreigabe aus dieser Rechnung ableiten.
+  → Nur Schraubpolster erhöhen; Holzschraube nicht mit M3-Gewinde verwechseln.
+  Konkrete Kopfgeometrie, Ist-Holzstärke, Vorbohrung und Halt am Reststück
+  prüfen, von Hand anziehen, Tiefe begrenzen.
+  Quellen: Nutzerentscheidung `hardware/gehaeuse-konzept.md`, Rechnung/
+  Geometrieprüfungen im Senkkopf-Nachtrag des Testprotokolls; Kopf-Ø-
+  Referenz [SPAX-Tabelle beim Händler](https://1aschrauben.de/mediafiles/Sonstiges/Spax/KopfdurchmesserSPAX-Schrauben.pdf).
+
+- **Transparente PCB-Vorschau: Kontaktflächen flackern, Dummies nicht exportieren
+  (eigene Sichtprüfung, 09.10.2026).** Exakt deckungsgleiche PCB-Unterseite
+  und Pfostenoberkanten erzeugten sichtbare Streifen. 0,03 mm reiner
+  Anzeigeversatz beseitigte sie, ohne Mountgeometrie zu ändern. Symbolischer
+  Einsatz-Dummy ist zur kollisionsfreien Anzeige schlanker als real.
+  → Anzeigeannahmen benennen, nicht als mechanische Toleranz/Messung nutzen.
+  Dummies mit `$preview` schützen; STL nur Mount. Bilder mit
+  `QT_QPA_PLATFORM=offscreen`/`--preview`, STL mit CGAL reproduziert.
+  Quellen: aktuelles SCAD/`render.sh`/Bilder, CAD-Testprotokoll.
+
+- **Prüfskript und Ein-Loch-Lösung sind modulspezifisch
+  (Übergabe, 09.10.2026).** Das Step-Up-Prüfskript hat feste STL-Datei,
+  Bounds und Prüfkoordinaten. Unverändert weiterverwendet würde es den
+  Step-Up statt eines neuen Expanders prüfen. Dessen zwei mittige massive
+  Stützpfosten sind ein Workaround für genau ein Montageloch, keine
+  allgemeine Vorgabe für Boards mit mehreren Löchern.
+  → Für jedes Modul eigenes CAD/STL und passende Prüfungen/Logs; vorhandene
+  PCB-Montagepunkte nutzen. Reine Auflagen sind keine Verdrehsicherung,
+  Kabel/Nachbarmodule keine Halterungen. Neue Session: Übergabe lesen.
+  Quellen: `check_mesh.py`, `hardware/gehaeuse-konzept.md`,
+  `docs/mounts-weiterarbeit.md`.
 
 ## Projekt-Referenzen (nicht nur lesen, sondern benutzen)
 
