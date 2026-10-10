@@ -32,7 +32,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |
 | offen | [Belegung der kleinen TFT-Knöpfe](tft-knopfbelegung/README.md) | Praktische Funktionen für die mit einem Zahnstocher erreichbaren Onboard-Knöpfe bestimmen. |
 | offen | [BLE-/WiFi-Wechsel](ble-wifi-wechsel/README.md) | Zwischen BLE und WiFi wechseln können. |
-| offen | [Von SD-Karte booten](sd-boot/README.md) | Nutzeridee „Von SD-Karten booten“. |
+| besprochen | [Firmware-Archiv auf SD und WLAN-Updates](sd-boot/README.md) | Als spätere Option erhalten: Images per Upload auf SD speichern, bei Bedarf in Flash installieren und neu starten; kein direktes Ausführen von SD, kein Bauauftrag. |
 | offen | [Auto-Play-Modus](autoplay/README.md) | Musik automatisch starten lassen. |
 | offen | [Spotify-Verbindung](spotify/README.md) | Boxbert mit Spotify verbinden. |
 | offen | [Bluetooth-Lautsprecher-Modus](bluetooth-lautsprecher/README.md) | Boxbert als Bluetooth-Lautsprecher für externe Geräte verwenden. |
