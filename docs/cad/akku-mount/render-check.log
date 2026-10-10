@@ -1,0 +1,85 @@
+Geometries in cache: 236
+Geometry cache size in bytes: 479704
+CGAL Polyhedrons in cache: 14
+CGAL cache size in bytes: 20228848
+Total rendering time: 0:00:13.187
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:     3934
+   Halfedges:   12206
+   Edges:        6103
+   Halffacets:   4298
+   Facets:       2149
+   Volumes:         2
+Geometries in cache: 11
+Geometry cache size in bytes: 56960
+CGAL Polyhedrons in cache: 2
+CGAL cache size in bytes: 935056
+Total rendering time: 0:00:00.182
+Top level object is a 3D object (Nef polyhedron):
+   Simple:     yes
+   Vertices:      392
+   Halfedges:    1176
+   Edges:         588
+   Halffacets:    396
+   Facets:        198
+   Volumes:         2
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 218 elements
+Geometries in cache: 37
+Geometry cache size in bytes: 157416
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.172
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 218 elements
+Geometries in cache: 37
+Geometry cache size in bytes: 157416
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.179
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 218 elements
+Geometries in cache: 37
+Geometry cache size in bytes: 157416
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.145
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 220 elements
+Geometries in cache: 44
+Geometry cache size in bytes: 180216
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.178
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 220 elements
+Geometries in cache: 44
+Geometry cache size in bytes: 180216
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.161
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 220 elements
+Geometries in cache: 44
+Geometry cache size in bytes: 180216
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.151
+PASS: grid opening
+PASS: grid rib
+PASS: wood hole
+PASS: countersink
+PASS: insert pocket
+PASS: pocket bottom
+PASS: post wall
+PASS: battery free space
+PASS: stop
+base PASS: watertight, oriented, connected, no degenerate triangles
+Bounds: (0.0, 0.0, 0.0) (100.0, 76.0, 10.5) Volume: 10938.516688331929 Triangles: 8640
+SHA256: ccf23a4180ed283b70ee07f2ed09c78d3c81ef2ecb2dd3090eec1a9cef860195
+PASS: screw hole
+PASS: bridge web
+bridge PASS: watertight, oriented, connected, no degenerate triangles
+Bounds: (0.0, 0.0, 0.0) (16.0, 74.0, 3.0) Volume: 3504.752759018081 Triangles: 788
+SHA256: d0335118495b38581ca997fb3741e51575f86710b308b5f0abb008f01499b020
