@@ -17,8 +17,9 @@ bei Bedarf in denselben Ordner. Kein Datenbankdienst nötig.
 - **geprüft:** definierter Umfang durch echte Tests bestätigt; Nachweis verlinken.
 - **verworfen:** nicht weiterverfolgen, Begründung in der Ausarbeitung.
 
-Status bezieht sich auf den gesamten Eintrag. Schon beschlossene Teilaspekte
-stehen in seiner Ausarbeitung; ein offener Eintrag macht sie nicht rückgängig.
+Besprechungsabschluss und technische Umsetzung sind getrennt: **besprochen**
+heißt nicht gebaut oder getestet. Schon beschlossene Teilaspekte stehen in der
+Ausarbeitung; ein offener Eintrag macht sie nicht rückgängig.
 Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 
 ## Ideen
@@ -35,10 +36,18 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 | offen | [Auto-Play-Modus](autoplay/README.md) | Musik automatisch starten lassen. |
 | offen | [Spotify-Verbindung](spotify/README.md) | Boxbert mit Spotify verbinden. |
 | offen | [Bluetooth-Lautsprecher-Modus](bluetooth-lautsprecher/README.md) | Boxbert als Bluetooth-Lautsprecher für externe Geräte verwenden. |
-| offen | [Lautsprecher-Einbau konkretisieren](lautsprecher-einbau/README.md) | Beschlossene rückseitige Montage mit 2-mm-Lochraster und innerer Ausfräsung ausarbeiten. |
-| offen | [Verteiler und Deckelverbindung](stromverteiler/README.md) | Stromverteilung oben/unten und lösbare Deckelverbindung konkretisieren. |
-| offen | [Kabellängen und Einkaufsmengen](kabellaengen/README.md) | Nach der Anordnung benötigte Kabellängen und Mengen bestimmen. |
-| offen | [Deep Sleep und Wiederaufnahme](deep-sleep/README.md) | Beschlossenen Schlafplan umsetzen und am vollständigen Aufbau prüfen. |
+## Bereits besprochener Aufbau und Zubehör
+
+Diese Punkte sind **für die Besprechung abgeschlossen** und keine offenen
+Feature-Ideen. Noch ausstehende Ausführung, Einkauf oder Messungen werden
+in den zuständigen Hardwaredateien und `To-Do.md` verfolgt.
+
+| Status | Name | Beschreibung |
+|---|---|---|
+| besprochen | [Lautsprecher-Einbau konkretisieren](lautsprecher-einbau/README.md) | Beschlossene rückseitige Montage mit 2-mm-Lochraster und innerer Ausfräsung ausarbeiten. |
+| besprochen | [Verteiler und Deckelverbindung](stromverteiler/README.md) | Stromverteilung oben/unten und lösbare Deckelverbindung konkretisieren. |
+| besprochen | [Kabellängen und Einkaufsmengen](kabellaengen/README.md) | Nach der Anordnung benötigte Kabellängen und Mengen bestimmen. |
+| besprochen | [Deep Sleep und Wiederaufnahme](deep-sleep/README.md) | Beschlossenen Schlafplan umsetzen und am vollständigen Aufbau prüfen. |
 | besprochen | [Mini-Heißklebepistole](mini-heisskleber/README.md) | Kleine temperaturgeregelte Heißklebepistole als Montagehilfe. |
 
 ## Zuständigkeit und Pflege
