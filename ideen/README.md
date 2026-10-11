@@ -27,7 +27,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 | Status | Name | Beschreibung |
 |---|---|---|
 | offen | [TFT-Anzeige](tft-anzeige/README.md) | Akkustand und aktuellen Song übersichtlich anzeigen. |
-| offen | [ESP-Partybeleuchtung](esp-partybeleuchtung/README.md) | Die LED auf dem ESP soll das Innere der Box beleuchten. |
+| besprochen | [ESP-Partybeleuchtung](esp-partybeleuchtung/README.md) | Besprechung abgeschlossen: Onboard-NeoPixel und Stick in der PWA getrennt einstellbar, speicherbar und als Vorschau animiert. Echte Firmware-Ansteuerung und Sleep-Verhalten noch offen. |
 | offen | [Intro je RFID](rfid-intro/README.md) | Zu jeder RFID-Figur ein eigenes Intro aufnehmen und vor dem Inhalt abspielen. |
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |
 | offen | [Belegung der kleinen TFT-Knöpfe](tft-knopfbelegung/README.md) | Praktische Funktionen für die mit einem Zahnstocher erreichbaren Onboard-Knöpfe bestimmen. |
