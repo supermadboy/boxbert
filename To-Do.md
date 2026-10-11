@@ -9,6 +9,17 @@
   Tests inklusive echtem HTTPS-Offline-Neustart bestanden. Quelle `app/`,
   Übergabe `app/README.md`, Nachweise `app/docs/verification.md`.
   Relativer SD-Webbuild und bestehende Etappe-5-HTTP-API vorbereitet.
+  **PWA-Teilfreigabe erweitert (11.10.2026):** grafische Demo-MP3-Belegung
+  aller zehn Buttons (4 × 30 mm links, 4 × 24 mm Mitte, 2 × 44 mm rechts),
+  persistenter bunter Regenbogen mit Helligkeitsvorschau. Alte Demo-v1-Daten
+  bleiben bei Migration erhalten. Tests/HTTPS-Offline erneut bestanden:
+  `app/docs/verification-buttons-rainbow.md`. Keine Freigabe aller zehn
+  Hardwarebuttons zur Verkabelung, kein RFID-Soundboard oder echtes Demo-Audio;
+  Geräte-Button-/NeoPixel-APIs fehlen weiterhin und sind ausgegraut.
+  **Tag-Namen ergänzt:** frei und wiederholt änderbare Namen, UID stabil,
+  Browser-Persistenz und Migration geprüft. Später Namen auf SD speichern;
+  Namens-/SD-API und echte SD-/Neustarttests fehlen noch. 26 Unit-/Vertragstests
+  plus Namens-, Button- und HTTPS-Offline-Browserprüfungen bestanden.
   **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in
   Firmware, weitere Status-/Einstellungs-APIs und BLE integrieren und am ESP
   testen. Kein Flash, keine TFT-/OTA-Änderung; kein Plug-and-play-Nachweis.

@@ -26,6 +26,47 @@ keine Synchronisierung. Fehler bei beschädigtem/vollem Speicher werden sichtbar
 Reset setzt nur Demo-Daten zurück. Es gibt keinen heimlichen Demo-Fallback
 nach einer gescheiterten Geräteanfrage.
 
+## Grafische Demo-Button-Belegung & Regenbogen (11.10.2026)
+
+- In **Demo-Soundbelegung** einen der zehn nummerierten Buttons anklicken:
+  **1–4 links (30 mm), 5–8 in der Mitte (24 mm), 9–10 rechts (44 mm)**.
+  Die Darstellung ist schematisch; kleine Displays stapeln die vier linken
+  und mittleren Buttons jeweils senkrecht. Kein maßhaltiges Bohrbild.
+- Die Auswahl zeigt die gespeicherte MP3. Vorhandene Demo-Datei oder
+  **Unbelegt** wählen → **Button-Belegung speichern**. Auswahl allein
+  speichert nichts. Beim Wechsel des Buttons werden ungespeicherte Entwürfe
+  verworfen. Die Belegungen bleiben nach Reload; Demo-Reset leert alle zehn.
+- Alle zehn sind ausdrücklich **nur in der Demo** belegbar. Das entscheidet
+  weder Verkabelung noch echte Hardwarefunktionen. Eigenständige Soundbelegung,
+  kein Ersatz für Play/Pause/Lautstärke. **RFID-Soundboard-Aktivierung ist
+  weiterhin nicht gebaut**, ebenso wenig echtes Demo-Audio/Playback.
+- **Regenbogen** im Verhalten-Dropdown zeigt acht verschiedenfarbige Pixel
+  als bunte, statische Vorschau; Helligkeit wird berücksichtigt (0 = unsichtbar).
+  Die Farbe bleibt für Statisch/Atmen erhalten. Einstellungen speichern und
+  Reload erhalten den Modus. Keine reale NeoPixel-Ansteuerung.
+- Im lokalen HTTP-Gerätemodus sind Button-Auswahl, MP3-Belegung und Speichern
+  ausgegraut: **Button-API fehlt**. Es gibt keinen erfundenen `/buttons`-Request,
+  keinen Speichererfolg und keine Übernahme der Demo-Belegung als Gerätedaten.
+- Vorhandene gültige `boxbert-demo-v1`-Daten werden beim Lesen um zehn leere
+  Buttons ergänzt; Dateien, Tags, Lautstärke und Pixel bleiben erhalten. Die
+  nächste erfolgreiche Demo-Änderung persistiert den ergänzten Zustand.
+  Beschädigte Daten melden weiterhin eine sichtbare Warnung statt stiller Migration.
+
+Nachweise: [Prüfprotokoll Button-/Regenbogen-Erweiterung](docs/verification-buttons-rainbow.md).
+
+## Tags umbenennen
+
+In der RFID-Zuordnung einen Namen eingeben und **Name speichern** wählen.
+Namen wie **Schleichstegosaurus** oder **Dino 🦕** bleiben nach Reload erhalten;
+UID und MP3-Zuordnung ändern sich dabei nicht. Leer stellt Tag 1/2 wieder her.
+Unicode ist erlaubt, UI-Grenze 80 Codepoints. Alte Demodaten erhalten Defaultnamen,
+Dateien und bisherige Einstellungen bleiben erhalten.
+
+**Aktuell nur Browser-Demo**, keine Speicherung auf SD. Im HTTP-Gerätemodus
+sind Namensfelder deaktiviert, da der Firmware die Namens-/SD-API fehlt.
+SD-Speicherung ist als spätere Anforderung im
+[Erweiterungsprotokoll](docs/verification-buttons-rainbow.md) dokumentiert.
+
 ## Installation & Offline
 
 HTTPS-PWA mit Manifest, eigenen 192/512-PNG-Icons und Service Worker. Nach
@@ -98,6 +139,8 @@ Quelle des existierenden Vertrags:
 | Zuordnung lesen | `GET /tags` → `{uid,path}[]`, zwei bekannte UIDs | dieselben zwei UIDs |
 | Zuordnung ändern | `POST /tags`, URLSearchParams `uid,path` → `{ok:true}` | Browser-Persistenz |
 | Upload | `POST /upload`, Multipart Feld `file` → `{ok:true}` | zeitgesteuerter Metadaten-Transfer |
+| Tag umbenennen | **nicht verfügbar**, Namens-/SD-API fehlt | wiederholt änderbare Namen, UID stabil, Browser-Persistenz |
+| Button-Soundbelegung | **nicht verfügbar**, kein Request/kein Erfolg | zehn stabile IDs, MP3 oder leer, Browser-Persistenz |
 | Lautstärke/NeoPixel | **nicht verfügbar**, kein Request/kein Erfolg | persistente Simulation |
 | Funk-/SD-/Audio-Status | **unbekannt**, keine Status-API | sichtbar simuliert |
 | Löschen / Play / neue UID / Playlist / BLE | **nicht verfügbar** | nicht als Gerätefeature erfunden |

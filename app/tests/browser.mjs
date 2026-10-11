@@ -1,11 +1,17 @@
 import { chromium, expect } from '@playwright/test';
 import {createServer} from 'vite';
+import {checkButtons} from './button-checks.mjs';
+import {checkRainbow} from './rainbow-checks.mjs';
 import fs from 'node:fs/promises';
 const server=await createServer({server:{host:'127.0.0.1',port:0},base:'/boxbert/'});await server.listen();
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH,args:['--no-sandbox']});
 try{
  const context=await browser.newContext({viewport:{width:390,height:844}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(server.resolvedUrls.local[0]);
+ await page.evaluate(()=>localStorage.setItem('boxbert-demo-v1',JSON.stringify({files:['/arcade-music-loop.mp3','/happy-tune.mp3','/migration.mp3'],tags:[{uid:'E3:2F:F6:33',path:'/migration.mp3'},{uid:'01:8C:F1:6E',path:'/happy-tune.mp3'}],volume:3,pixel:{color:'#123456',brightness:7,effect:'atmen'}})));
+ await page.reload();await expect(page.getByText('/migration.mp3',{exact:true})).toBeVisible();await expect(page.getByLabel('Datei für E3:2F:F6:33')).toHaveValue('/migration.mp3');await expect(page.getByRole('slider',{name:'Lautstärke'})).toHaveValue('3');await expect(page.getByLabel('Farbe',{exact:true})).toHaveValue('#123456');await expect(page.getByLabel('Helligkeit (%)')).toHaveValue('7');await expect(page.getByLabel('Verhalten')).toHaveValue('atmen');
+ await checkButtons(page);
+ await checkRainbow(page);
  await expect(page.getByRole('heading',{name:'Deine Musik. Deine Box.'})).toBeVisible();
  await expect(page.getByText('Demo · Simulation', {exact:true})).toBeVisible();
  await page.getByLabel('MP3-Datei').setInputFiles({name:'neu.mp3',mimeType:'audio/mpeg',buffer:Buffer.from('ID3demo')});
@@ -22,5 +28,5 @@ try{
  await expect(page.getByRole('button',{name:'Lokale Box (HTTP)'})).toBeDisabled();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await fs.mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/demo-mobile.png',fullPage:true});
- expect(errors).toEqual([]);console.log('PASS Browser Demo: Upload, RFID, Einstellungen, Persistence, Abbruch, SD-Fehler, Reset, Hosting-Grenze, Mobile/Console');
+ expect(errors).toEqual([]);console.log('PASS Browser Demo: 10 grafische Buttons, Auswahl/Leer/Reset/Persistence, v1-Migration, Regenbogen/Farbe/Helligkeit, Layout 320/390/1280 ohne Überlappung, Upload, RFID, Einstellungen, Persistence, Abbruch, SD-Fehler, Reset, Hosting-Grenze, Mobile/Console');
 }finally{await browser.close();await server.close();}

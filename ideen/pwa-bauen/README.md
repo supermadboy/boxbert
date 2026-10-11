@@ -10,6 +10,19 @@ browserseitig bedienbar und persistent; Demo-Uploads speichern nur Metadaten.
 Hosted-HTTPS-PWA inklusive Offline-Neustart browsergeprüft; relativer SD-Build
 und HTTP-Adapter für die vorhandene Etappe-5-API vorbereitet.
 
+**Erweiterte PWA-Teilfreigabe (11.10.2026):** alle zehn grafischen Demo-Buttons
+sind mit vorhandenen MP3-Metadaten oder leer belegbar, mit stabilen IDs,
+Reload-Persistenz und Reset. 4 × 30 mm links, 4 × 24 mm Mitte, 2 × 44 mm
+rechts; nur schematische Vorschau, keine Verkabelungsentscheidung. Regenbogen
+zeigt acht bunte Pixel mit Helligkeit, persistent und HTTPS-offline geprüft.
+Alte Demo-v1-Dateien/Tags/Volume/Pixel bleiben erhalten. Im lokalen HTTP-Modus
+bleibt die Button-Belegung deaktiviert (API fehlt). Kein reales Demo-Audio,
+keine RFID-Soundboard-Aktivierung, keine Freigabe der allgemeinen Soundboard-Idee.
+Tag-Namen sind ebenfalls frei und wiederholt änderbar, UID und MP3 bleiben
+unverändert. Aktuell browserpersistent; spätere Speicherung auf SD ist
+gefordert, noch nicht implementiert. Im HTTP-Gerätemodus Namensfelder gesperrt.
+Nachweise: [Erweiterungsprotokoll](../../app/docs/verification-buttons-rainbow.md).
+
 Firmware, TFT, BLE und OTA wurden nicht geändert. Die alte Firmware liefert
 weiterhin ihre eingebettete Seite; SD-Webhosting und weitere Geräte-APIs sind
 Folgearbeit. Keine Zusage sofortiger Hardwarekompatibilität. Bedienung,
