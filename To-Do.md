@@ -2,6 +2,17 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **PWA-Grundgerüst gebaut (11.10.2026)** — schlichte Verwaltung unter
+  https://habibi.supermittel.com/boxbert/, eigene MP3, zwei RFID-Zuordnungen,
+  Lautstärke/NeoPixel als eindeutig persistente Browser-Simulation. Kein
+  Online-Soundkatalog im aktuellen Auftrag. 11 Unit-/Vertragstests und Browser-
+  Tests inklusive echtem HTTPS-Offline-Neustart bestanden. Quelle `app/`,
+  Übergabe `app/README.md`, Nachweise `app/docs/verification.md`.
+  Relativer SD-Webbuild und bestehende Etappe-5-HTTP-API vorbereitet.
+  **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in
+  Firmware, weitere Status-/Einstellungs-APIs und BLE integrieren und am ESP
+  testen. Kein Flash, keine TFT-/OTA-Änderung; kein Plug-and-play-Nachweis.
+
 - [ ] **MAX98357A-Verstärker-Mount als Vorschlag erstellt (09.10.2026)**:
   `3d-print/mounts/max98357-mount/`, 38 × 26 × 12 mm, Gitter,
   zwei gestufte Gewindepfosten + zwei massive Stützen, Einsätze von unten,

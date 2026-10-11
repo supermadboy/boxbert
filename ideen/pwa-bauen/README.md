@@ -1,10 +1,30 @@
 # PWA bauen
 
+## Stand 11.10.2026
+
+Daddelbert hat das Grundgerüst zur Umsetzung freigegeben: schlichte Verwaltung
+für ihn, zunächst nur eigene MP3, kein Online-Soundkatalog. Live-Demo unter
+https://habibi.supermittel.com/boxbert/, Quellcode ausschließlich `app/`.
+Dateiliste/Upload/RFID-Zuordnung und Lautstärke/NeoPixel-Simulation sind
+browserseitig bedienbar und persistent; Demo-Uploads speichern nur Metadaten.
+Hosted-HTTPS-PWA inklusive Offline-Neustart browsergeprüft; relativer SD-Build
+und HTTP-Adapter für die vorhandene Etappe-5-API vorbereitet.
+
+Firmware, TFT, BLE und OTA wurden nicht geändert. Die alte Firmware liefert
+weiterhin ihre eingebettete Seite; SD-Webhosting und weitere Geräte-APIs sind
+Folgearbeit. Keine Zusage sofortiger Hardwarekompatibilität. Bedienung,
+Schnittstellen und Nachweise: [App-README](../../app/README.md),
+[Prüfprotokoll](../../app/docs/verification.md).
+
+Die folgenden Abschnitte beschreiben auch spätere Ziele; Online-Soundtransfer
+ist **nicht** Teil des freigegebenen ersten Grundgerüsts.
+
 ## Ziel
 
 Eine gemeinsame, mobil bedienbare Verwaltung für Boxbert bauen. Daddelbert hat
-am 10.10.2026 dieses eigene Folgethema zur Funkmodus-Recherche beauftragt.
-Die Anlage des Themas ist **noch kein Auftrag zur Implementierung**.
+am 10.10.2026 dieses eigene Folgethema zur Funkmodus-Recherche angelegt.
+Am 11.10.2026 wurde das oben beschriebene Demo-Grundgerüst zur Umsetzung
+freigegeben; die weitergehende Firmwareintegration bleibt Folgearbeit.
 
 Grundlagen: [Funkmodus-Konzept](../ble-wifi-wechsel/README.md) und
 [Machbarkeitsrecherche](../ble-wifi-wechsel/machbarkeit.md).
@@ -70,5 +90,6 @@ Frontend-Code allein erweitert die vorhandene Etappe-5-Firmware nicht.
 - D0-Moduswechsel und Uploads verhalten sich kontrolliert; keine unbemerkten
   Rechtefreigaben, keine unzulässigen Lautstärkeänderungen.
 
-Noch keine PWA, API oder BLE-Firmware im Rahmen dieses Themas gebaut oder
-getestet. Der Status wird ausschließlich im [Ideenindex](../README.md) geführt.
+Das Grundgerüst ist inzwischen gebaut und geprüft (siehe aktuellen Stand oben).
+API-Erweiterungen und BLE-Firmware sind noch nicht gebaut oder hardwaregeprüft.
+Der Status wird ausschließlich im [Ideenindex](../README.md) geführt.

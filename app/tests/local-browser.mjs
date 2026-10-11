@@ -1,0 +1,28 @@
+// Explicit Etappe-5 HTTP contract fixture, NOT ESP firmware or hardware verification.
+import {createServer} from 'node:http';import fs from 'node:fs/promises';import path from 'node:path';import {chromium,expect} from '@playwright/test';
+const files=['/arcade-music-loop.mp3','/happy-tune.mp3'];const tags=[{uid:'E3:2F:F6:33',path:files[0]},{uid:'01:8C:F1:6E',path:files[1]}];let failure=0;const calls=[];
+const server=createServer(async(req,res)=>{try{
+ const url=new URL(req.url,'http://box');const api=['/files','/tags','/upload'].includes(url.pathname);if(api){calls.push({route:url.pathname,method:req.method,origin:req.headers.origin});res.setHeader('Content-Type','application/json');if(req.headers.authorization!=='Basic '+Buffer.from('boxbert:contract-only').toString('base64')){res.writeHead(401).end('unauthorized');return;}if(req.method==='POST'&&req.headers.origin!==`http://${req.headers.host}`){res.writeHead(403).end('origin');return;}if(failure){res.writeHead(failure).end('fixture failure');return;}
+ let body='';for await(const chunk of req)body+=chunk.toString();
+ if(url.pathname==='/tags'&&req.method==='POST'){const values=new URLSearchParams(body);tags.find(t=>t.uid===values.get('uid')).path=values.get('path');}
+ if(url.pathname==='/upload'){const filename=/filename="([^"]+)"/.exec(body)?.[1];if(!filename){res.writeHead(400).end('no file');return;}if(files.includes('/'+filename)){res.writeHead(409).end('duplicate');return;}files.push('/'+filename);}
+ res.end(JSON.stringify(req.method==='POST'?{ok:true}:url.pathname==='/files'?files:tags));return;}
+ const relative=url.pathname==='/'?'index.html':url.pathname.slice(1);if(relative.includes('..')){res.writeHead(403).end();return;}const body=await fs.readFile(path.join('dist-sd',relative));res.setHeader('Content-Type',relative.endsWith('.js')?'text/javascript':relative.endsWith('.css')?'text/css':relative.endsWith('.svg')?'image/svg+xml':'text/html');res.end(body);
+ }catch(e){res.writeHead(500).end('fixture error');}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const url=`http://127.0.0.1:${server.address().port}/`;
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
+try{const context=await browser.newContext({viewport:{width:1280,height:900}});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(url);
+ await expect(page.getByText('Lokale Box · HTTP',{exact:true})).toBeVisible();await expect(page.getByRole('slider',{name:'Lautstärke'})).toBeDisabled();
+ await page.getByLabel('Box-Passwort').fill('wrong');await page.getByRole('button',{name:'Mit lokaler Box verbinden'}).click();await expect(page.locator('.notice')).toContainText('401');await expect(page.getByText('Lokale Box · HTTP',{exact:true})).toBeVisible();
+ await page.getByLabel('Box-Passwort').fill('contract-only');await page.getByRole('button',{name:'Mit lokaler Box verbinden'}).click();await expect(page.locator('.notice')).toContainText('verbunden');
+ await page.getByLabel('MP3-Datei').setInputFiles({name:'local.mp3',mimeType:'audio/mpeg',buffer:Buffer.from('ID3fixture')});await page.getByRole('button',{name:'MP3 hochladen',exact:true}).click();await expect(page.getByText('/local.mp3',{exact:true})).toBeVisible();
+ await page.getByLabel('Datei für E3:2F:F6:33').selectOption('/local.mp3');await page.getByRole('button',{name:'Zuordnung für E3:2F:F6:33 speichern'}).click();await expect(page.locator('.notice')).toContainText('gespeichert');expect(tags[0].path).toBe('/local.mp3');
+ for(const status of [403,409,413,500]){failure=status;await page.getByRole('button',{name:'Dateiliste neu laden'}).click();await expect(page.locator('.notice')).toContainText(String(status));await expect(page.getByText('Lokale Box · HTTP',{exact:true})).toBeVisible();}
+ failure=0;await page.getByRole('button',{name:'Dateiliste neu laden'}).click();await expect(page.locator('.notice')).toContainText('aktualisiert');
+ expect(await page.evaluate(()=>JSON.stringify({...localStorage}))).not.toContain('contract-only');expect(await page.getByLabel('Box-Passwort').inputValue()).toBe('');expect(await page.evaluate(()=>navigator.serviceWorker.getRegistrations().then(r=>r.length))).toBe(0);
+ await fs.mkdir('test-results',{recursive:true});await page.screenshot({path:'test-results/local-desktop.png',fullPage:true});
+ expect(calls.filter(c=>c.method==='POST').every(c=>c.origin===url.slice(0,-1))).toBe(true);expect(calls.every(c=>['/files','/tags','/upload'].includes(c.route))).toBe(true);expect(errors).toEqual([]);
+ await page.reload();await expect(page.getByText('Nicht verbunden',{exact:true})).toBeVisible();expect(await page.getByLabel('Box-Passwort').inputValue()).toBe('');
+ await page.getByRole('button',{name:'Demo ausprobieren'}).click();await expect(page.getByText('Demo · Simulation',{exact:true})).toBeVisible();await page.reload();await expect(page.getByText('Demo · Simulation',{exact:true})).toBeVisible();
+ console.log('PASS SD Browser HTTP-Contract: echte HTTP-Anfragen, Basic/Origin/Form/Multipart, RFID, 401/403/409/413/500, kein Fallback, Passwort flüchtig, kein SW, Demo-Modus persistent');
+}finally{await browser.close();await new Promise(r=>server.close(r));}

@@ -32,7 +32,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |
 | offen | [Belegung der kleinen TFT-Knöpfe](tft-knopfbelegung/README.md) | Praktische Funktionen für die mit einem Zahnstocher erreichbaren Onboard-Knöpfe bestimmen. |
 | besprochen | [BLE-/WiFi-Wechsel](ble-wifi-wechsel/README.md) | D0 wählt Funk aus, WLAN oder BLE; Start mit BLE, WLAN mit Heimnetz-/AP-Fallback. Machbarkeit recherchiert, Gesamtbuild und Hardwaretests offen; kein Bauauftrag. |
-| offen | [PWA bauen](pwa-bauen/README.md) | Gemeinsame RFID-/Sound-/NeoPixel-/Lautstärke-Verwaltung über lokale WLAN-Weboberfläche und externe BLE-PWA; Online-Soundtransfer und Offline-Bedienung ausarbeiten und später bauen. |
+| in Umsetzung | [PWA bauen](pwa-bauen/README.md) | Schlichte HTTPS-Demo-PWA für eigene MP3 gebaut und browsergeprüft; relativer SD-Webbuild und Etappe-5-HTTP-Adapter vorbereitet. ESP-SD-Hosting, weitere APIs und BLE noch offen; kein Online-Soundkatalog im aktuellen Auftrag. |
 | besprochen | [Firmware-Archiv auf SD und WLAN-Updates](sd-boot/README.md) | Als spätere Option erhalten: Images per Upload auf SD speichern, bei Bedarf in Flash installieren und neu starten; kein direktes Ausführen von SD, kein Bauauftrag. |
 | offen | [Auto-Play-Modus](autoplay/README.md) | Musik automatisch starten lassen. |
 | offen | [Spotify-Verbindung](spotify/README.md) | Boxbert mit Spotify verbinden. |
