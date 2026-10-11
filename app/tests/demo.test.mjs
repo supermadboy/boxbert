@@ -22,7 +22,7 @@ test('Migration von v1 ergänzt nur leere Buttons und erhält alle alten Daten',
  const store=storage(),old={files:['/own.mp3'],tags:[{uid:'E3:2F:F6:33',path:'/own.mp3'},{uid:'01:8C:F1:6E',path:'/own.mp3'}],volume:3,pixel:{color:'#123456',brightness:7,effect:'atmen'}};
  store.setItem('boxbert-demo-v1',JSON.stringify(old));const demo=new DemoAdapter(store),state=await demo.read();
  assert.equal(demo.warning,undefined);assert.equal(state.buttons.length,10);
- const {buttons,categories,boardPixel,...rest}=state;assert.deepEqual(categories,{'/own.mp3':'musik'});assert.equal(boardPixel.effect,'aus');assert.deepEqual(rest,{...old,pixel:{...old.pixel,palette:'solid'},tags:old.tags.map((t,i)=>({...t,name:`Tag ${i+1}`}))});
+ const {buttons,categories,boardPixel,...rest}=state;assert.deepEqual(categories,{'/own.mp3':'musik'});assert.equal(boardPixel.effect,'aus');assert.deepEqual(rest,{...old,pixel:{...old.pixel,palette:'solid'},tags:old.tags.map((t,i)=>({...t,name:`Tag ${i+1}`,introPath:''}))});
  await demo.assignButton(8,'/own.mp3');assert.equal((await new DemoAdapter(store).read()).buttons[7].path,'/own.mp3');
 });
 test('Ungültige Button-IDs und Dateien werden ohne Speicherung abgewiesen',async()=>{

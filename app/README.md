@@ -1,7 +1,19 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=ux-effects-4**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-intro-5**
+
+## Optionales Intro je RFID · 11.10.2026
+
+Unter **Zuordnung** je Figur eine vorhandene MP3 als **Intro (optional)** wählen
+und **Intro speichern**. **Kein Intro** deaktiviert es. Song-Zuordnung bleibt
+unabhängig; Reload erhält gespeicherte Intros, Reiterwechsel verwirft Entwürfe.
+Alte Demo-Daten erhalten leere Intros, andere Einstellungen bleiben erhalten.
+Nur Zuordnung im Browser (`localStorage`), keine Wiedergabe, keine Audiodaten
+oder Einstellungen auf dem Server. HTTP-Modus deaktiviert: Intro-API fehlt.
+Keine Garantie für einen nahtlosen Übergang am ESP.
+Prüfungen: [Intro-Prüfprotokoll](docs/verification-intro.md).
+Browserprüfung: `node tests/intro-browser.mjs`, auch mit `BOXBERT_URL` für HTTPS/Offline.
 
 ## UX-Erweiterung · drei Bereiche (11.10.2026)
 
