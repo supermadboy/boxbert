@@ -292,6 +292,13 @@ am Ende Ausarbeitung und Index aktualisieren. Keine anderen Ideen ungefragt
 vorziehen. Ideen sind noch keine Bauaufträge; verbindliche Hardwareentscheidungen
 bleiben in den zuständigen Fachdateien, konkrete Arbeit in `To-Do.md`.
 
+**Ziel für die Endinbetriebnahme:** Daddelbert möchte nach dem fertigen Aufbau
+mit einem kurzen Prompt flashen und Website/ESP testen, nicht erst die
+Softwareintegration beginnen. Vorbereiteter Build, Gerätetransport und
+Firmwarevertrag sind dafür vorher nötig; Details und fehlende Nachweise in
+[docs/endinbetriebnahme.md](docs/endinbetriebnahme.md). Wenige Minuten für die
+erste Gesamtprüfung sind keine zugesagte oder nachgewiesene Zeit.
+
 ## Offene Fragen
 
 - Welcher Button (44/30/24 mm, welche Farbe) bekommt welche Funktion
