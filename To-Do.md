@@ -34,8 +34,7 @@
   Migration, Reduced Motion und RAF-Lifecycle geprüft. 42 Tests und echte
   HTTPS-Offline-/UX-/Effektprüfungen bestanden. Neuer Release-Link:
   `https://habibi.supermittel.com/boxbert/?stand=ux-effects-4`.
-  Nachweise `app/docs/verification-led-effects.md`; kompakte Übergabe für
-  eine neue Session: `docs/pwa-uebergabe.md`.
+  Nachweise `app/docs/verification-led-effects.md`.
   **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in
   Firmware, weitere Status-/Einstellungs-APIs und BLE integrieren und am ESP
   testen. Kein Flash, keine TFT-/OTA-Änderung; kein Plug-and-play-Nachweis.
