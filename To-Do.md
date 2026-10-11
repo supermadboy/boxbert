@@ -20,6 +20,22 @@
   Browser-Persistenz und Migration geprüft. Später Namen auf SD speichern;
   Namens-/SD-API und echte SD-/Neustarttests fehlen noch. 26 Unit-/Vertragstests
   plus Namens-, Button- und HTTPS-Offline-Browserprüfungen bestanden.
+  **Autorisierte UX-Erweiterung umgesetzt (11.10.2026):** drei echte Reiter
+  Medienbibliothek / Zuordnung / LEDs, fixed Lautstärkebar mit Safe-Area,
+  Sounds/Musik ausschließlich für MP3 als Browser-Metadaten, zwei unabhängige
+  NeoPixel-Kanäle (Stick 8 + Onboard 1), automatisches System-Dark/Light.
+  Altdatenmigration und Browserregressionen bestanden, beide Builds gebaut und HTTPS deployed;
+  HTTPS-UX 320/390/1280 in Light/Dark sowie Offline-Reload/neues Dokument
+  geprüft. Release `https://habibi.supermittel.com/boxbert/?stand=ux-3`,
+  Nachweise `app/docs/verification-ux.md`. Keine Firmware-/GPIO-Änderungen.
+  **UX-/Effekt-Ausbau für diese Session abgeschlossen:** unabhängige Palette
+  Einfarbig/Regenbogen plus animierte Stick-Laufrichtungen, Mitte nach außen,
+  Atmen und sanfte Party; Onboard zusätzlich Farbwechsel/Kerzen-Licht.
+  Migration, Reduced Motion und RAF-Lifecycle geprüft. 42 Tests und echte
+  HTTPS-Offline-/UX-/Effektprüfungen bestanden. Neuer Release-Link:
+  `https://habibi.supermittel.com/boxbert/?stand=ux-effects-4`.
+  Nachweise `app/docs/verification-led-effects.md`; kompakte Übergabe für
+  eine neue Session: `docs/pwa-uebergabe.md`.
   **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in
   Firmware, weitere Status-/Einstellungs-APIs und BLE integrieren und am ESP
   testen. Kein Flash, keine TFT-/OTA-Änderung; kein Plug-and-play-Nachweis.

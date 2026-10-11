@@ -1,6 +1,45 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=ux-effects-4**
+
+## UX-Erweiterung · drei Bereiche (11.10.2026)
+
+- **Medienbibliothek**: ausschließlich eigene **MP3**, Kategorien **Sounds / Musik**
+  beim Demo-Upload wählen, filtern und später pro Datei ändern. Kategorieänderungen
+  speichern sofort. Altdaten erhalten **Musik**, Dateien bleiben am bisherigen Pfad.
+  Kategorien sind Browser-Metadaten, **keine echte SD-Kategorisierung**.
+- **Zuordnung**: zehn grafische Demo-Buttons sowie die zwei RFID-Tags mit frei
+  umbenennbaren Namen und MP3-Zuordnung. Bestehende IDs/UIDs bleiben erhalten.
+- **LEDs**: NeoPixel-Stick mit **8 Pixeln** (`pixel`, bisheriger kompatibler Zustand)
+  und **ESP Onboard mit 1 NeoPixel** (`boardPixel`) getrennt steuern und speichern:
+  **Palette Einfarbig / Regenbogen** unabhängig vom **Effekt** wählen; Farbe bleibt
+  erhalten und ist bei Regenbogen deaktiviert. Stick: Aus, Statisch, Atmen,
+  Lauflicht links → rechts / rechts → links, Mitte → außen, sanftes Party-Funkeln.
+  Onboard: Aus, Statisch, Atmen, Party, langsamer Farbwechsel, Kerze.
+  Beide Vorschauen verwenden dieselbe deterministische Effekt-Engine (8 + 1 Pixel).
+  Onboard startet bei alten Daten ausgeschaltet. Reduced Motion hält eine feste
+  Momentaufnahme; Hintergrund/Reiterwechsel stoppen die Animationsschleifen.
+  Vorschau zeigt den Entwurf; erst der jeweilige Speichern-Knopf persistiert ihn.
+  Speichern des anderen Kanals oder der Lautstärke verwirft keinen LED-Entwurf.
+  Reiterwechsel und Reset verwerfen Entwürfe bewusst. Kein echtes Hardware-Licht.
+- **Lautstärke**: auf allen Reitern eine wirklich **fixed** Bar am unteren Fensterrand,
+  explizit **Lautstärke speichern**, Demo-Skala 0–21 ohne Sicherheitsfreigabe.
+  Safe-Area und zusätzlicher Seitenabstand verhindern Überdeckung am Seitenende.
+- **Systemtheme**: folgt automatisch `prefers-color-scheme`, kein Theme-Schalter.
+  Dauerhafte Nutzerpräferenz für diese App: Daddelbert verwendet ein dunkles
+  Systemtheme; Boxbert soll dessen Dark/Light-Einstellung übernehmen.
+- Reiter sind per Tab sowie Pfeil links/rechts und Home/End bedienbar. Nur der
+  aktive Inhalt ist gerendert, keine für Tests versteckten Vollseiten. Gespeicherte
+  Daten bleiben erhalten; ungespeicherte LED-/Namens-/Upload-/Zuordnungsentwürfe
+  werden beim Reiterwechsel ausdrücklich verworfen. Lautstärkeentwurf bleibt stehen.
+- **Verbindung & Demo-Werkzeuge** bündelt die bisherigen Details, Fehlersimulation
+  und Reset. Demo-Badge, Speichergrenzen und Online-/Offline-Status bleiben sichtbar.
+  Im HTTP-Modus öffnen sich Verbindung/Zugang automatisch. Kategorie, beide LEDs,
+  Lautstärke, Buttonbelegung und Namensänderung sind dort deaktiviert: APIs fehlen.
+
+Nachweise und Cache-Hilfe: [UX-Prüfprotokoll](docs/verification-ux.md),
+aktuelle Effekt-Integration: [LED-Prüfprotokoll](docs/verification-led-effects.md).
 
 Eine schlichte gemeinsame Oberfläche, ausschließlich für **eigene MP3**.
 Kein Online-Soundkatalog, keine Downloads, kein Backend, keine Firmware-,
@@ -13,7 +52,7 @@ bedienbar. Der Quellcode liegt nur hier in `boxbert/app/`.
 2. Eigene `.mp3` auswählen → **MP3 hochladen**. In der Demo werden **nur
    Dateinamen** gespeichert; keine Audiodaten kopiert oder abgespielt.
 3. Für einen der zwei bekannten Tags eine Datei wählen → Zuordnung speichern.
-4. Lautstärke, Farbe, Helligkeit und Verhalten auswählen → Einstellungen speichern.
+4. Unten Lautstärke wählen → **Lautstärke speichern**; unter **LEDs** jeden Kanal separat einstellen und speichern.
    Das ist nur Browser-Vorschau, keine echte Box-Steuerung und kein Sicherheitslimit.
 5. Optional Musik aktiv / SD-Fehler / Verbindung verloren simulieren. Während
    des simulierten Transfers kann abgebrochen werden. Fehler erzeugen keinen
@@ -40,10 +79,15 @@ nach einer gescheiterten Geräteanfrage.
   weder Verkabelung noch echte Hardwarefunktionen. Eigenständige Soundbelegung,
   kein Ersatz für Play/Pause/Lautstärke. **RFID-Soundboard-Aktivierung ist
   weiterhin nicht gebaut**, ebenso wenig echtes Demo-Audio/Playback.
-- **Regenbogen** im Verhalten-Dropdown zeigt acht verschiedenfarbige Pixel
-  als bunte, statische Vorschau; Helligkeit wird berücksichtigt (0 = unsichtbar).
-  Die Farbe bleibt für Statisch/Atmen erhalten. Einstellungen speichern und
-  Reload erhalten den Modus. Keine reale NeoPixel-Ansteuerung.
+- **Regenbogen** ist jetzt eine separate Palette, kombinierbar mit jedem Effekt.
+  Statisch zeigt am Stick acht feste Farben; der einzelne Onboard-Pixel zeigt
+  eine Farbe, **Farbwechsel** durchläuft die Palette langsam. Einfarbiges Grau
+  bleibt bei Farbwechsel grau; Kerze moduliert die Helligkeit der gewählten Farbe.
+  0 % bleibt dunkel. Legacy `effect: regenbogen` ohne Palette migriert verlustfrei
+  zu `palette: rainbow, effect: statisch`, sonst ergänzt fehlende Palette `solid`.
+  Migration überschreibt keine ungültigen Rohdaten, sondern zeigt die Speicherwarnung;
+  gültige Daten werden beim nächsten erfolgreichen Demo-Write kanonisch persistiert.
+  `DemoAdapter.settings` akzeptiert auch den alten Schema-Eingang. Keine Hardware-API.
 - Im lokalen HTTP-Gerätemodus sind Button-Auswahl, MP3-Belegung und Speichern
   ausgegraut: **Button-API fehlt**. Es gibt keinen erfundenen `/buttons`-Request,
   keinen Speichererfolg und keine Übernahme der Demo-Belegung als Gerätedaten.
@@ -95,6 +139,10 @@ npm run build                # dist/ und dist-sd/
 npx playwright install chromium
 npm run test:browser          # Browser-Demo
 node tests/local-browser.mjs # SD-Build gegen lokalen HTTP-Contract-Server
+node tests/tag-names-browser.mjs # Namens-/80-Codepoint-Regression
+node tests/ux-browser.mjs    # 3 Reiter, Kategorien, 2 LEDs, fixed Bar, Systemtheme
+node tests/led-browser.mjs   # Animation/Richtungen, Palette+Effekt, RAF-Cleanup/Reduced Motion
+BOXBERT_URL='https://habibi.supermittel.com/boxbert/?stand=ux-effects-4' node tests/ux-browser.mjs # echte HTTPS-UX + Offline
 npm run test:https            # echte HTTPS-URL, PWA/Offline/Interaktionen
 ```
 
