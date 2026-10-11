@@ -1,19 +1,29 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-intro-5**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-record-6**
 
-## Optionales Intro je RFID · 11.10.2026
+## Intro direkt je RFID aufnehmen · 11.10.2026
 
-Unter **Zuordnung** je Figur eine vorhandene MP3 als **Intro (optional)** wählen
-und **Intro speichern**. **Kein Intro** deaktiviert es. Song-Zuordnung bleibt
-unabhängig; Reload erhält gespeicherte Intros, Reiterwechsel verwirft Entwürfe.
-Alte Demo-Daten erhalten leere Intros, andere Einstellungen bleiben erhalten.
-Nur Zuordnung im Browser (`localStorage`), keine Wiedergabe, keine Audiodaten
-oder Einstellungen auf dem Server. HTTP-Modus deaktiviert: Intro-API fehlt.
-Keine Garantie für einen nahtlosen Übergang am ESP.
-Prüfungen: [Intro-Prüfprotokoll](docs/verification-intro.md).
-Browserprüfung: `node tests/intro-browser.mjs`, auch mit `BOXBERT_URL` für HTTPS/Offline.
+Unter **Zuordnung** direkt bei der Figur **Aufnehmen** drücken, Mikrofon
+freigeben und **Stoppen und speichern** wählen. Keine Dateiauswahl aus der
+Bibliothek. **Aufnahme löschen** entfernt nach Bestätigung nur die Aufnahme
+dieser UID, nicht Tag oder Song. **Aufnahme abbrechen** und Reiterwechsel
+verwerfen eine laufende Aufnahme; eine frühere gespeicherte Aufnahme bleibt
+bis zum erfolgreichen Speichern der Neuaufnahme erhalten.
+Audiodaten bleiben lokal in **IndexedDB**, übrige Demo-Einstellungen in
+`localStorage`; keine Server-Speicherung, Synchronisierung oder Übertragung
+auf SD. Browserdatenverlust verliert auch Aufnahmen.
+
+Der Browser bestimmt das Aufnahmeformat; keine MP3-Konvertierung implementiert.
+Aktuelle Firmware unterstützt diesen Intro-Weg noch nicht. HTTP-Modus bleibt
+deaktiviert; Mikrofonzugriff verlangt HTTPS (bzw. localhost beim Entwickeln).
+Eine normale lokale HTTP-WebUI auf dem ESP kann ihn nicht einfach übernehmen.
+Kein automatisches Abspielen und keine Garantie für einen
+nahtlosen Übergang am ESP. Der frühere Zuordnungs-Mock ist ein
+[historischer Zwischenstand](docs/verification-intro.md).
+Aktuelles Aufnahme-Prüfverfahren und Grenzen:
+[Aufnahme-Prüfprotokoll](docs/verification-recording.md).
 
 ## UX-Erweiterung · drei Bereiche (11.10.2026)
 
@@ -53,10 +63,11 @@ Browserprüfung: `node tests/intro-browser.mjs`, auch mit `BOXBERT_URL` für HTT
 Nachweise und Cache-Hilfe: [UX-Prüfprotokoll](docs/verification-ux.md),
 aktuelle Effekt-Integration: [LED-Prüfprotokoll](docs/verification-led-effects.md).
 
-Eine schlichte gemeinsame Oberfläche, ausschließlich für **eigene MP3**.
+Eine schlichte gemeinsame Oberfläche für **eigene MP3** und taggebundene
+**Browser-Introaufnahmen** (separat, browserabhängiges Audioformat).
 Kein Online-Soundkatalog, keine Downloads, kein Backend, keine Firmware-,
-TFT- oder OTA-Änderungen. Ohne ESP vollständig als **sichtbare Simulation**
-bedienbar. Der Quellcode liegt nur hier in `boxbert/app/`.
+TFT- oder OTA-Änderungen. Ohne ESP als **sichtbare Gerätesimulation**
+bedienbar; Introaufnahmen sind echte lokale Mikrofonaufnahmen. Der Quellcode liegt nur hier in `boxbert/app/`.
 
 ## Jetzt benutzen — Demo
 
@@ -72,9 +83,13 @@ bedienbar. Der Quellcode liegt nur hier in `boxbert/app/`.
    Ausgangsdaten wieder her; reale SD-Dateien bleiben unberührt.
 
 Demo-Modus, Dateimetadaten, Zuordnungen und Einstellungen bleiben in diesem
-Browser (localStorage). Browserdaten können gelöscht werden; kein Backup und
+Browser (localStorage); eigene Introaufnahmen separat in IndexedDB.
+Browserdaten können gelöscht werden; kein Backup und
 keine Synchronisierung. Fehler bei beschädigtem/vollem Speicher werden sichtbar.
-Reset setzt nur Demo-Daten zurück. Es gibt keinen heimlichen Demo-Fallback
+Reset löscht nach Bestätigung auch die lokalen Introaufnahmen. Scheitert der
+Metadatenreset, bleiben Aufnahmen erhalten; ist nur der Aufnahmespeicher nicht
+verfügbar, wird der Metadatenreset ausdrücklich als Teilreset gemeldet.
+Es gibt keinen heimlichen Demo-Fallback
 nach einer gescheiterten Geräteanfrage.
 
 ## Grafische Demo-Button-Belegung & Regenbogen (11.10.2026)
@@ -200,6 +215,7 @@ Quelle des existierenden Vertrags:
 | Zuordnung ändern | `POST /tags`, URLSearchParams `uid,path` → `{ok:true}` | Browser-Persistenz |
 | Upload | `POST /upload`, Multipart Feld `file` → `{ok:true}` | zeitgesteuerter Metadaten-Transfer |
 | Tag umbenennen | **nicht verfügbar**, Namens-/SD-API fehlt | wiederholt änderbare Namen, UID stabil, Browser-Persistenz |
+| Intro aufnehmen/löschen | **nicht verfügbar**, Intro-/Format-/SD-Weg fehlt | echter Mikrofonzugriff mit Berechtigung, UID-Blob in IndexedDB, kein ESP |
 | Button-Soundbelegung | **nicht verfügbar**, kein Request/kein Erfolg | zehn stabile IDs, MP3 oder leer, Browser-Persistenz |
 | Lautstärke/NeoPixel | **nicht verfügbar**, kein Request/kein Erfolg | persistente Simulation |
 | Funk-/SD-/Audio-Status | **unbekannt**, keine Status-API | sichtbar simuliert |

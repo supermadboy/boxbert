@@ -35,11 +35,18 @@
   HTTPS-Offline-/UX-/Effektprüfungen bestanden. Neuer Release-Link:
   `https://habibi.supermittel.com/boxbert/?stand=ux-effects-4`.
   Nachweise `app/docs/verification-led-effects.md`.
-  **Intro-Zuordnung als Mock ergänzt (11.10.2026):** optionale vorhandene MP3
+  **Historischer Zwischenstand: Intro-Zuordnung als Mock (11.10.2026):** optionale vorhandene MP3
   pro RFID, unabhängig vom Song; Browser-Persistenz, Migration, Entfernen,
   Reset und HTTP-Deaktivierung geprüft. 46 Tests und echte HTTPS-/Offline-
   Browserprüfungen bestanden. Release `?stand=rfid-intro-5`, Nachweis
   `app/docs/verification-intro.md`. Kein Audio, keine Firmware-/Timingzusage.
+  **Nutzerkorrektur Intro (11.10.2026):** direkt je RFID aufnehmen und Aufnahme
+  löschen, keine Bibliotheksauswahl. Browser-Mikrofon/IndexedDB umgesetzt und
+  mit synthetischem Testmikrofon auf echtem HTTPS inklusive Offline-Neustart
+  geprüft; Aufnahme-/Resetfehlerregressionen bestanden. Release
+  `?stand=rfid-record-6`, Nachweis `app/docs/verification-recording.md`.
+  MP3-Konvertierung, HTTPS-PWA-Gerätetransport, SD-Introzuordnung und echte
+  Player-/Timingtests bleiben separate Arbeit. Keine Firmwarefreigabe daraus.
   **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in
   Firmware, weitere Status-/Einstellungs-APIs und BLE integrieren und am ESP
   testen. Kein Flash, keine TFT-/OTA-Änderung; kein Plug-and-play-Nachweis.

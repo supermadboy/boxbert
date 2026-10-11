@@ -1,5 +1,9 @@
 # Prüfung: optionale Intro-Zuordnung · 11.10.2026
 
+**Historischer Zwischenstand:** Die Bibliotheksauswahl wurde auf Nutzerkorrektur
+durch direkte taggebundene Mikrofonaufnahme und Aufnahme löschen ersetzt.
+Dieses Protokoll ist kein Nachweis des neuen Aufnahmewegs.
+
 Aktueller Release: https://habibi.supermittel.com/boxbert/?stand=rfid-intro-5
 
 ## Umfang
