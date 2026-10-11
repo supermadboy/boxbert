@@ -144,3 +144,25 @@ h2{font-size:18px}
  .tabs button {font-size:12px;}
  .draft-note {font-size:11px;}
 }
+
+/* Local voice-message recorder; no waveform or amplitude is simulated. */
+.intro-recording {min-width:0;}
+.intro-recording .recording-message {padding:14px;border:1px solid var(--border);border-radius:16px;background:var(--surface-soft);}
+.intro-recording .recording-summary {display:flex;align-items:center;gap:12px;}
+.intro-recording .recording-symbol {display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:50%;background:var(--surface);color:var(--text);border:1px solid var(--border);}
+.intro-recording .recording-symbol.is-recording {color:var(--error-text);background:var(--error-bg);}
+.intro-recording .recording-info {min-width:0;flex:1;}
+.intro-recording .recording-info p {margin:0;color:var(--text);font-size:14px;overflow-wrap:anywhere;}
+.intro-recording .recording-clock {display:flex;align-items:center;gap:8px;margin-top:4px;font-size:24px;font-weight:650;font-variant-numeric:tabular-nums;}
+.intro-recording .recording-indicator {width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--error-text);}
+.intro-recording .recording-icon {width:20px;height:20px;flex:0 0 20px;}
+.intro-recording .recording-actions {display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.intro-recording .recording-actions button {display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;min-width:0;border-radius:24px;padding:10px 12px;}
+.intro-recording .recording-actions .recording-main:not(:disabled) {background:#0068c5;color:#fff;border-color:#0068c5;}
+.intro-recording .recording-actions .recording-main:hover:not(:disabled) {background:#0059aa;}
+.intro-recording .recording-delete:not(:disabled) {color:var(--error-text);}
+@media(max-width:480px) {
+ .intro-recording .recording-message {padding:10px;}
+ .intro-recording .recording-actions .recording-main {flex-basis:100%;}
+ .intro-recording .recording-actions button {flex-grow:1;}
+}

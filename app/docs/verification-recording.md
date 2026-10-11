@@ -1,5 +1,8 @@
 # Prüfung: taggebundene Introaufnahme · 11.10.2026
 
+Historischer Aufnahme-Zwischenstand ohne Dauer-/Icon-Ausbau. Aktuelle
+Oberfläche und Nachweise: [Sprachaufnahme-UI](verification-recording-ux.md).
+
 ## Umfang
 
 Die vorherige Bibliotheksauswahl ist entfernt. Pro bekannter UID direkt

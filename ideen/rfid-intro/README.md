@@ -24,6 +24,21 @@ Vorherige Bibliothekszuordnung ist ein überholter Zwischenstand. Bestehende
 Song-/Namens-/LED-/Button-Daten bleiben erhalten; alte Intro-Pfadmetadaten
 werden nicht als Mikrofonaufnahmen ausgegeben.
 
+## Abschluss der Idee · 11.10.2026
+
+Daddelbert hat die Aufnahmeoberfläche abschließend um eine laufende und
+gespeicherte Daueranzeige (**mm:ss**) sowie verständliche Mikrofon-/Stop-/
+Abbruch-/Löschen-Icons erweitert. Bestehende Aufnahmen bleiben erhalten,
+ermittelbare Legacy-Audiodauer wird lokal dekodiert; sonst klar unbekannt.
+Keine Bibliotheksauswahl, keine erfundene Pegelkurve und kein Abspielen.
+
+Die **Ideenbesprechung und der Browser-UI-Auftrag sind abgeschlossen**. Das
+ist keine Geräteabnahme. Geräteformat, Transport, SD und Player bleiben als
+Integrationsarbeit erhalten, nicht erneut als ungeklärte Ideenentscheidung.
+Daddelbert erwartet diese Integration vor dem Endaufbau, damit später ein
+kurzer Flash-/Testprompt genügt; [Ziel und Voraussetzungen](../../docs/endinbetriebnahme.md).
+Aktueller [UI-Prüfbericht](../../app/docs/verification-recording-ux.md).
+
 ## Geprüfter Browser-Teilumfang
 
 Aufnahme, Blob-Persistenz, Reload, Lösch-/Abbruch-/Resetfehler und echter

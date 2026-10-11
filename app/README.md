@@ -1,7 +1,7 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-record-6**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-record-ui-7**
 
 ## Intro direkt je RFID aufnehmen · 11.10.2026
 
@@ -11,6 +11,15 @@ Bibliothek. **Aufnahme löschen** entfernt nach Bestätigung nur die Aufnahme
 dieser UID, nicht Tag oder Song. **Aufnahme abbrechen** und Reiterwechsel
 verwerfen eine laufende Aufnahme; eine frühere gespeicherte Aufnahme bleibt
 bis zum erfolgreichen Speichern der Neuaufnahme erhalten.
+Die Sprachaufnahme-Karte zeigt Mikrofon-, Stop-, Abbruch- und Löschen-Icons.
+Während der Aufnahme läuft ein Zähler in **mm:ss**; die gespeicherte Dauer
+bleibt nach Reload und Offline-Neustart sichtbar. Neue Aufnahmen speichern
+die gemessene Aufnahmezeit zusammen mit dem Blob. Ältere Aufnahmen bleiben
+erhalten; ihre Audiodauer wird lokal dekodiert, soweit der Browser das Format
+unterstützt. Sonst steht ausdrücklich **Dauer unbekannt**. Der Aufnahmeindikator
+zeigt den Zustand, keine gemessene Wellenform; weiterhin kein Abspielen.
+[Aktueller UI-Prüfbericht](docs/verification-recording-ux.md).
+
 Audiodaten bleiben lokal in **IndexedDB**, übrige Demo-Einstellungen in
 `localStorage`; keine Server-Speicherung, Synchronisierung oder Übertragung
 auf SD. Browserdatenverlust verliert auch Aufnahmen.

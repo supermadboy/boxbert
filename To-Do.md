@@ -45,6 +45,15 @@
   mit synthetischem Testmikrofon auf echtem HTTPS inklusive Offline-Neustart
   geprüft; Aufnahme-/Resetfehlerregressionen bestanden. Release
   `?stand=rfid-record-6`, Nachweis `app/docs/verification-recording.md`.
+  **Intro-Idee/UI abgeschlossen (11.10.2026):** laufende und gespeicherte
+  mm:ss-Dauer, Mikrofon-/Stop-/Abbruch-/Löschen-Icons, bestehende Blobs erhalten
+  und Legacy-Dauer lokal dekodiert (sonst unbekannt). Nachweis
+  `app/docs/verification-recording-ux.md`, Release `?stand=rfid-record-ui-7`.
+  Echte HTTPS-/Offline-Dauerprüfung und Aufnahmeregressionen bestanden.
+  **Endinbetriebnahme-Ziel:** gemeinsame Firmware und Geräteadapter sollen
+  vor dem fertigen Aufbau vorbereitet sein. Ein späterer kurzer Flash-/
+  Testprompt darf nicht erst die Softwareentwicklung starten. Aktuell fehlt
+  diese Integration; Grenzen und Voraussetzungen: `docs/endinbetriebnahme.md`.
   MP3-Konvertierung, HTTPS-PWA-Gerätetransport, SD-Introzuordnung und echte
   Player-/Timingtests bleiben separate Arbeit. Keine Firmwarefreigabe daraus.
   **Noch offen:** Nutzer beurteilt Look-and-feel; später SD-Webhosting in

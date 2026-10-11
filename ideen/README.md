@@ -28,7 +28,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 |---|---|---|
 | offen | [TFT-Anzeige](tft-anzeige/README.md) | Akkustand und aktuellen Song übersichtlich anzeigen. |
 | besprochen | [ESP-Partybeleuchtung](esp-partybeleuchtung/README.md) | Besprechung abgeschlossen: Onboard-NeoPixel und Stick in der PWA getrennt einstellbar, speicherbar und als Vorschau animiert. Echte Firmware-Ansteuerung und Sleep-Verhalten noch offen. |
-| besprochen | [Intro je RFID](rfid-intro/README.md) | Direkt je Tag Mikrofonaufnahme und Aufnahme löschen, keine Bibliotheksauswahl. Browser-Teilfreigabe umgesetzt und HTTPS/offline geprüft; Formatkonvertierung, SD-Übertragung und echte Wiedergabe/Timing noch offen. |
+| besprochen | [Intro je RFID](rfid-intro/README.md) | Ideenbesprechung und Browser-UI abgeschlossen: direkte Tag-Aufnahme, Daueranzeige und Sprachaufnahme-Icons; HTTPS/offline geprüft. Echte ESP-Integration bleibt eigener, vor Endaufbau vorzubereitender Auftrag. |
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |
 | offen | [Belegung der kleinen TFT-Knöpfe](tft-knopfbelegung/README.md) | Praktische Funktionen für die mit einem Zahnstocher erreichbaren Onboard-Knöpfe bestimmen. |
 | besprochen | [BLE-/WiFi-Wechsel](ble-wifi-wechsel/README.md) | D0 wählt Funk aus, WLAN oder BLE; Start mit BLE, WLAN mit Heimnetz-/AP-Fallback. Machbarkeit recherchiert, Gesamtbuild und Hardwaretests offen; kein Bauauftrag. |
