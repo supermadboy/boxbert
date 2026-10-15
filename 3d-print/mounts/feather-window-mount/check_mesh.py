@@ -39,7 +39,7 @@ require(len(seen)==n,'Disconnected surfaces')
 mins=tuple(min(v[k] for t in triangles for v in t) for k in range(3))
 maxs=tuple(max(v[k] for t in triangles for v in t) for k in range(3))
 require(all(abs(a-b)<1e-5 for a,b in zip(mins,(-6.8,-24,0))),'Unexpected minimum bounds')
-require(all(abs(a-b)<1e-5 for a,b in zip(maxs,(57.6,46.86,25))),'Unexpected max bounds / preview solids in STL')
+require(all(abs(a-b)<1e-5 for a,b in zip(maxs,(57.6,46.86,26.5))),'Unexpected max bounds / preview solids in STL')
 require(volume>0,'Negative signed volume')
 def inside(p):
     direction=(0.3127,0.1731,1);hits=[]
@@ -58,7 +58,7 @@ def inside(p):
     return bool(len(unique)%2)
 checks=[
  ('Dupont housing lower outer corner',(5.1,2.5,maxs[2]-14),False),
- ('New pocket locating corner',(-5.9,-4.4,23.5),True),
+ ('Through-opening locating corner',(-5.9,-4.4,23.5),True),
  ('Grid cell open',(-2,0,1),False),
  ('Grid rib present',(-4.8,11.43,1),True),
  ('Central opening',(25.4,11.43,1),False),
@@ -101,3 +101,15 @@ for h in facts['holes'][:2]:
 for h in facts['holes'][2:]:
     require(inside((*h['xy'],23.9)),'Wrong support location')
 print('PASS post locations checked against independently extracted Eagle JSON')
+# Nominal stack target, not a measurement of the physical TFT.
+import re
+source=(p/'window_geometry.scad').read_text()+'\n'+(p/'feather_window_mount.scad').read_text()
+values={}
+for name in ['wood_contact_z','wood_h','plexi_h','board_z','board_t','display_h']:
+    match=re.search(r'^'+name+r'\s*=\s*([0-9.]+)',source,re.M)
+    require(match is not None, f'Missing stack parameter {name}')
+    assert match is not None
+    values[name]=float(match[1])
+gap=values['wood_contact_z']+values['wood_h']-values['plexi_h']-values['board_z']-values['board_t']-values['display_h']
+require(abs(gap-2)<0.001,f'Expected 2 mm nominal TFT/glass gap, got {gap}')
+print('PASS nominal TFT/glass gap 2 mm (assumed component heights)')

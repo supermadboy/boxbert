@@ -1,6 +1,6 @@
-ECHO: "Carrier only STL; grid base", [62, 32], "PCB z", 24, "wood contact z", 22
+ECHO: "Carrier only STL; grid base", [62, 32], "PCB z", 25.2, "wood contact z", 22
 ECHO: "PCB holes: two D2.5 screws; two D2.2 flat supports; inserts from REAR"
-ECHO: "Draft glass/display gap", 3.2
+ECHO: "Draft glass/display gap", 2
 ECHO: "Wood screw nominal engagement", 8.5
 Compiling design (CSG Products normalization)...
 Normalized CSG tree has 75 elements
@@ -8,4 +8,4 @@ Geometries in cache: 103
 Geometry cache size in bytes: 416064
 CGAL Polyhedrons in cache: 0
 CGAL cache size in bytes: 0
-Total rendering time: 0:00:00.343
+Total rendering time: 0:00:00.466

@@ -1,5 +1,11 @@
 # Feather-Fenster / CNC-Front — digitale Prüfung 15.10.2026
 
+**Historischer Erstlauf mit Innenbearbeitung, inzwischen überholt.**
+Aktuell gilt die reine Außenfräs-Version mit 2 mm nominalem TFT-Abstand.
+Aktuelle Maße/Prüfungen: Mount-README und `logs/{mesh,cnc,fit}-check.log`.
+Die frühere USB-Freigängigkeit stammt aus dem verworfenen Innenkanal;
+Daddelbert fertigt die USB-Aussparung nun ausdrücklich von Hand.
+
 ## Auftrag und Grenzen
 
 Front noch nicht gefertigt. CNC-Tasche und Druckträger gemeinsam entwerfen:

@@ -43,8 +43,6 @@ holes=concat(threaded,supported);
 // Wood screw positions come from window_geometry.scad.
 pins=concat([for(k=[0:15]) [6.35+k*2.54,1.27]],
             [for(k=[0:11]) [16.51+k*2.54,21.59]]);
-// Preview aperture only. Relates to this carrier, NOT a fabrication template.
-aperture=opening;
 sink_h=(head_d-wood_d)/2;
 assert(board_z > wide_top+pin_overhang+0.5);
 assert(wide_top-(insert_setback+insert_depth)>=1);
@@ -104,23 +102,23 @@ module locating_corners() {
         union() {
             linear_extrude(wood_contact_z+guide_height-lead_height)
                 difference() {
-                    pocket_profile(fit_clearance);
-                    pocket_profile(fit_clearance+guide_wall);
+                    guide_profile(fit_clearance);
+                    guide_profile(fit_clearance+guide_wall);
                 }
             difference() {
                 hull() {
                     translate([0,0,wood_contact_z+guide_height-lead_height-0.02])
-                        linear_extrude(0.02) pocket_profile(fit_clearance);
+                        linear_extrude(0.02) guide_profile(fit_clearance);
                     translate([0,0,wood_contact_z+guide_height-0.02])
-                        linear_extrude(0.02) pocket_profile(fit_clearance+lead_in);
+                        linear_extrude(0.02) guide_profile(fit_clearance+lead_in);
                 }
                 linear_extrude(wood_contact_z+guide_height+0.02)
-                    pocket_profile(fit_clearance+guide_wall);
+                    guide_profile(fit_clearance+guide_wall);
             }
         }
         // Clip the ring to the four corners; no surrounding tray wall.
-        for(x=[pocket[0],pocket[0]+pocket[2]-8])
-            for(y=[pocket[1],pocket[1]+pocket[3]-8])
+        for(x=[guide_outline[0],guide_outline[0]+guide_outline[2]-8])
+            for(y=[guide_outline[1],guide_outline[1]+guide_outline[3]-8])
                 translate([x,y,0]) cube([8,8,wood_contact_z+guide_height]);
     }
 }

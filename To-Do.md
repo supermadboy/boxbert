@@ -80,14 +80,15 @@
   mit Einsätzen von unten (Lötstellenfreiheit an Pinreihe) und zwei seitliche
   Holzschrauben. Details/Quellen im Mount-README; Soldered-Zuordnung korrigiert.
 
-- [ ] **Feather-Fenster / CNC-Front (Vorschlag 15.10.2026):** Noch nichts
-  gefertigt; Tasche und Inlay gemeinsam neu konstruiert, vier Eckführungen,
-  Anschlag über Schraublaschen und außen Glasfalz. Vormontage komplett außerhalb,
-  eingebaut kein Steckzugang nötig. SCAD/STL/DXF/Vorschauen und reproduzierbare
-  Tests: `3d-print/mounts/feather-window-mount/`. Dupont-Hülle angenommen,
-  rückwärtiger Bauraum erhöht; neue PCB-Schraubenlänge real prüfen. Noch offen:
-  Nutzer-Sichtentscheidung, Passungs-Probestück, echte Stecker-/Headermaße,
-  Pfosten-/Schraubenhalteprobe, Glasfixierung und USB-Seitenöffnung.
+- [ ] **Feather-Fenster / CNC-Front — aktuelle Außenfräs-Version 15.10.2026:**
+  Nur Durchbruch + äußere Glasfalz, keine Innenbearbeitung. Führung direkt im
+  Durchbruch, Laschen als Anschlag, TFT nominal 2 mm vor Glas. Vormontage
+  außerhalb, eingebaut kein Steckzugang nötig. SCAD/STL/DXF und Höhenansicht
+  im Fenster-Mount-Ordner. **USB-Aussparung macht Daddelbert von Hand**, nicht
+  per CNC; ohne sie bleibt dort eine bewusst dokumentierte Kollision.
+  Reale Passprobe, Bauteil-/Headerhöhen, Glasfixierung und Lasttest offen.
+  Deckel-Mounts für NEOPS8 und PN532-MOD für die nächste Session angekündigt,
+  noch nicht beauftragt. Referenzzuordnung: `docs/mounts-weiterarbeit.md`.
 
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,

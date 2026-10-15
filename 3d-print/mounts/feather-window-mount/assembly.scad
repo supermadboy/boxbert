@@ -25,6 +25,10 @@ if(scene=="board_collision") intersection() { mount(); board(); }
 if(scene=="plug_collision") intersection() { mount(); dupont_envelopes(); }
 if(scene=="connector_collision") intersection() { mount(); connection_envelopes(); }
 if(scene=="front_connector_collision") intersection() { front_panel(); connection_envelopes(); }
+if(scene=="front_jst_collision") intersection() {
+    front_panel();
+    translate([5.8,10.8,board_z-9]) cube([10,20,8]);
+}
 if(scene=="insertion") intersection() {
     front_panel();
     // Entire straight insertion path of the mount from inside to final seat.

@@ -27,7 +27,7 @@ openscad --hardwarnings --export-format binstl \
   -o feather_window_mount.stl feather_window_mount.scad >logs/export.log 2>&1
 openscad --hardwarnings --export-format binstl \
   -o front_cnc.stl front_cnc.scad >logs/front-export.log 2>&1
-for part in pocket opening rebate glass; do
+for part in opening rebate glass; do
   openscad --hardwarnings -D "part=\"$part\"" -o "cnc-$part.dxf" front_cnc.scad >"logs/cnc-$part.log" 2>&1
 done
 common=(--hardwarnings --preview '--imgsize=1200,950' --colorscheme=Tomorrow --projection=o)
@@ -47,6 +47,7 @@ preview exploded assembly.scad 25.4,11.43,15,55,0,35,270 -D 'scene="exploded"'
 preview seated-inside assembly.scad 25.4,11.43,18,145,0,215,285 -D 'scene="inside"'
 preview front-inner front_cnc.scad 25.4,11.43,28,45,0,35,300 -D 'part="inner-view"'
 preview front-outer front_cnc.scad 25.4,11.43,28,45,0,35,300 -D 'part="local"'
+preview height-side assembly.scad 25.4,11.43,23,90,0,0,230 -D 'scene="section"'
 preview front-full assembly.scad 101,11.43,28,0,0,0,650 -D 'scene="outside"'
 python3 check_mesh.py | tee logs/mesh-check.log
 python3 check_cnc.py | tee logs/cnc-check.log

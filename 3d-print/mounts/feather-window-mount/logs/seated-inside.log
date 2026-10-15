@@ -1,7 +1,7 @@
 Compiling design (CSG Products normalization)...
-Normalized CSG tree has 147 elements
-Geometries in cache: 177
-Geometry cache size in bytes: 1292864
+Normalized CSG tree has 146 elements
+Geometries in cache: 170
+Geometry cache size in bytes: 1257512
 CGAL Polyhedrons in cache: 0
 CGAL cache size in bytes: 0
-Total rendering time: 0:00:00.394
+Total rendering time: 0:00:00.294

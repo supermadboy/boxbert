@@ -29,10 +29,9 @@ assert all(abs(a-b) < 0.0001 for a,b in zip(hi, (226,66.43,34)))
 assert volume > 0
 print(f"PASS CNC STL: {count} triangles, closed/oriented, bounds {lo}…{hi}, {volume:.3f} mm^3")
 for name, expected in [
-    ("pocket", (-25,57.8,-7,32)),
-    ("opening", (-2,52.8,-2,24.86)),
-    ("rebate", (-6,56.8,-6,28.86)),
-    ("glass", (-5.8,56.6,-5.8,28.66)),
+    ("opening", (-7,57.8,-7,32)),
+    ("rebate", (-11,61.8,-11,36)),
+    ("glass", (-10.8,61.6,-10.8,35.8)),
 ]:
     lines = (ROOT / f"cnc-{name}.dxf").read_text().splitlines()
     pairs = [(int(a), b.strip()) for a,b in zip(lines[::2], lines[1::2])]

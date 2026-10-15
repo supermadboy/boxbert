@@ -234,7 +234,19 @@ Belege und Beispiele: `docs/testprotokoll-etappe4.md`, Rohlogs in
   Meilenstein ist keine Produkt-/Dauerprüfung; nicht durchgeführte Tests
   als spätere Härtung in `To-Do.md` erhalten, nie als bestanden ausgeben.
 
-## Einzel-Mounts / CAD — Übergabe 09.10.2026
+## Einzel-Mounts / CAD — aktuelle Referenz
+
+**Korrektur 15.10.2026:** CNC nur von außen, kein Wenden/keine Innentasche.
+Für Fenster-/Deckelmodule und die angekündigten Mounts für NeoPixel-Stick
+NEOPS8 und PN532-MOD ist `3d-print/mounts/feather-window-mount/README.md`
+die neue methodische Referenz: gemeinsame CNC-/Druckkontur, selbst ausrichtende
+Führung, separater Holzanschlag, Vormontage außerhalb und klare Höhenansicht.
+Beim TFT 2 mm nominal zum Glas; keine universelle Einbauhöhe für andere Module.
+USB-Aussparung fertigt Daddelbert ausdrücklich von Hand, sie ist nicht Teil
+des CNC-Modells. Steckerfreiraum und ungemessene Bauteilhöhen real prüfen.
+Details/Findings zuerst in `docs/mounts-weiterarbeit.md` lesen.
+Hermes nutzt für diesen Ablauf den Skill `boxbert-cad-mounts`.
+Die nachfolgenden Step-Up-Regeln gelten weiterhin für flache Boden-Mounts.
 
 Vor einem Mount-Auftrag **`docs/mounts-weiterarbeit.md` und
 `hardware/gehaeuse-konzept.md` lesen**, dazu den CAD-Abschnitt in

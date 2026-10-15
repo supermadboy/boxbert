@@ -39,7 +39,8 @@ def check(case):
             volume = abs(volume)
             assert "WARNING" not in text, (name, text)
         assert (volume > 0.001) == expected, (name, volume, text)
-        return f"PASS {name}: intersection {volume:.6f} mm^3"
+        prefix = 'MANUAL STEP REQUIRED' if name.startswith('KNOWN-LIMIT') else 'PASS'
+        return f"{prefix} {name}: intersection {volume:.6f} mm^3"
 
 # 1 micrometre retreat avoids CGAL 2021's zero-thickness contact-face exports.
 # Positive controls prove the test detects a misplaced carrier/over-insertion.
@@ -52,10 +53,12 @@ CASES = [
     ("pcb", "board_collision", "[0,0,0]", False),
     ("dupont-assumed", "plug_collision", "[0,0,0]", False),
     ("usb-jst-assumed", "connector_collision", "[0,0,0]", False),
-    ("front-usb-jst-assumed", "front_connector_collision", "[0,0,0]", False),
+    ("front-jst-assumed", "front_jst_collision", "[0,0,0]", False),
+    # Deliberately NOT approved: the separate side-USB route still intersects front wood.
+    ("KNOWN-LIMIT-side-usb", "front_connector_collision", "[0,0,0]", True),
 ]
 if __name__ == "__main__":
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         for line in pool.map(check, CASES):
             print(line, flush=True)
-    print("Digital geometry only; real plugs, wood and printed fit remain untested.")
+    print("KNOWN LIMIT: direct side-USB route NOT released; front-wood collision remains. No hidden inner pocket.\nDigital geometry only; real plugs, wood and printed fit remain untested.")

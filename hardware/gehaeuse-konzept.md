@@ -134,26 +134,29 @@ Die Stützpfosten sind keine formschlüssige Verdrehsicherung. Schraubklemmung,
 Lötstellenfreiraum und Druckpassung müssen am realen Aufbau geprüft werden.
 Prüfstand: `docs/testprotokoll-stepup-mount.md`.
 
-## Feather-Fenster — passgeführter CNC-/Druck-Vorschlag 15.10.2026
+## Feather-Fenster — aktuelle Außenfräs-Version 15.10.2026
 
-Noch nichts gefräst oder gebaut laut Nutzer; CNC-Tasche und Druckteil gemeinsam
-frei auslegbar. Neuer Auftrag: selbst ausrichtender Einsatz mit Tiefenanschlag,
-weil die Front im montierten Rahmen nur von innen mit Handwerkzeug erreichbar
-ist. Kein nachträgliches Ausrichten beim Einschrauben gewünscht.
+Nutzerkorrektur: **CNC ausschließlich von außen**, Durchbruch und äußere
+Glasfalz. Keine Wendeaufspannung, keine Innentasche. Noch nichts gefertigt.
+Vier Eckführungen des Druckteils greifen mit nominal 0,20 mm Spiel je Seite
+4,5 mm in den Durchbruch. Holzlaschen bilden den Tiefenanschlag; sie sitzen
+3,2 mm hinter der PCB-Auflage. Nominal **2 mm TFT→Plexiglas**, Bauteilhöhen
+noch nicht gemessen. Größerer Durchbruch/Glasfalz ersetzen die Innentasche.
 
-`3d-print/mounts/feather-window-mount/` enthält die gemeinsame Parameterdatei,
-SCAD für Front und Träger, STL, DXF-Konturen und Baugruppen-Vorschauen.
-Vier Eckführungen greifen mit nominal 0,20 mm Spiel je Seite 3 mm tief in eine
-4-mm-Innentasche; Holzlaschen bilden den Anschlag. Außen 3-mm-Glasfalz.
-Rückwärtiger Bauraum wegen vormontierter Dupont-Buchsen vergrößert; Displaylage
-zur Front unverändert. Steckerhüllen sind Annahmen, reale Passung nicht geprüft.
+Feather, Dupont und nach USB-Prüfung Akku außerhalb vormontieren, dann
+Einheit von innen einsetzen und mit Handwerkzeug verschrauben. Eingebaut
+kein Steckzugang erforderlich, zur Wartung ausbauen. Kabel nicht quetschen.
+CAD, Maße, Exporte und Prüfungen: `3d-print/mounts/feather-window-mount/`.
 
-Montage: Feather und Leitungen außerhalb am Träger montieren, nach USB-Test
-Akku anschließen, Einheit von innen einsetzen und verschrauben. Im eingebauten
-Zustand **kein Steckzugang** erforderlich; zur Änderung Träger wieder ausbauen.
-Kabel brauchen trotzdem Platz ohne Quetschung/Zug. Keine Presspassungs- oder
-Druck-/Fräsfreigabe ohne Probestück. Glasfixierung und USB-Seitenöffnung mit
-realem Stecker noch offen; Details und Maße im Mount-README.
+**USB-Aussparung fertigt Daddelbert von Hand**, sie gehört nicht zur CNC.
+Die angenommene direkte Steckerroute kollidiert ohne diesen manuellen Schritt
+noch mit Front-Holz; der digitale Test weist dies bewusst aus. Freigängigkeit
+am realen Stecker prüfen. Glasfixierung, reale Passung, Header-/Tasterhöhen und
+Lastprüfung bleiben offen. Ältere positive Prüfungen der zweiseitigen Variante
+gelten nicht als Freigabe für das neue Ladeport-Layout.
+
+Nächste angekündigte Deckel-Mounts: NeoPixel-Stick NEOPS8 und PN532-MOD.
+Methodische Referenz ist das neue Fenster; Übergabe in `docs/mounts-weiterarbeit.md`.
 
 ## Weitere offene mechanische Fragen
 

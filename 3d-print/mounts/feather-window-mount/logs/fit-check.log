@@ -1,10 +1,12 @@
 PASS seated: intersection 0.000000 mm^3
 PASS insert-5mm: intersection 0.000000 mm^3
-PASS shift-x-control: intersection 11.245892 mm^3
-PASS shift-y-control: intersection 11.245895 mm^3
+PASS shift-x-control: intersection 17.711444 mm^3
+PASS shift-y-control: intersection 17.711448 mm^3
 PASS depth-control: intersection 262.243685 mm^3
 PASS pcb: intersection 0.000000 mm^3
 PASS dupont-assumed: intersection 0.000000 mm^3
 PASS usb-jst-assumed: intersection 0.000000 mm^3
-PASS front-usb-jst-assumed: intersection 0.000000 mm^3
+PASS front-jst-assumed: intersection 0.000000 mm^3
+MANUAL STEP REQUIRED KNOWN-LIMIT-side-usb: intersection 902.400218 mm^3
+KNOWN LIMIT: direct side-USB route NOT released; front-wood collision remains. No hidden inner pocket.
 Digital geometry only; real plugs, wood and printed fit remain untested.

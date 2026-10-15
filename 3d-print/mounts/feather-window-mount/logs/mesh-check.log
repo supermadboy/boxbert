@@ -1,9 +1,9 @@
 Feather-window actual STL digital checks — NOT physical fit approval
-SHA256 007b288558bdd6d7ed2817f17d3415f6f680d1f87c83efd204614d3cf4eb66d3
-Triangles 7236 Bounds (-6.8000030517578125, -24.0, 0.0) (57.59999084472656, 46.86000061035156, 25.0) Volume mm^3 10046.788
+SHA256 987df103b78a0035658ee3f6b1629a73509cdc52ff826f91b510185bc117985c
+Triangles 7236 Bounds (-6.8000030517578125, -24.0, 0.0) (57.59999084472656, 46.86000061035156, 26.5) Volume mm^3 10307.772
 PASS closed, consistently oriented, one connected surface; nondegenerate triangles
 PASS Dupont housing lower outer corner
-PASS New pocket locating corner
+PASS Through-opening locating corner
 PASS Grid cell open
 PASS Grid rib present
 PASS Central opening
@@ -26,3 +26,4 @@ PASS Strain relief bridge
 PASS USB reserved box 125 interior samples (not proof for every real connector)
 PASS JST reserved box 125 interior samples (not proof for every real connector)
 PASS post locations checked against independently extracted Eagle JSON
+PASS nominal TFT/glass gap 2 mm (assumed component heights)
