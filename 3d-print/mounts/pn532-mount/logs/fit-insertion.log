@@ -1,0 +1,22 @@
+PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty
+PASS insertion-z-20: intersection 0.000000 mm^3
+PASS insertion-z-19: intersection 0.000000 mm^3
+PASS insertion-z-18: intersection 0.000000 mm^3
+PASS insertion-z-17: intersection 0.000000 mm^3
+PASS insertion-z-16: intersection 0.000000 mm^3
+PASS insertion-z-15: intersection 0.000000 mm^3
+PASS insertion-z-14: intersection 0.000000 mm^3
+PASS insertion-z-13: intersection 0.000000 mm^3
+PASS insertion-z-12: intersection 0.000000 mm^3
+PASS insertion-z-11: intersection 0.000000 mm^3
+PASS insertion-z-10: intersection 0.000000 mm^3
+PASS insertion-z-9: intersection 0.000000 mm^3
+PASS insertion-z-8: intersection 0.000000 mm^3
+PASS insertion-z-7: intersection 0.000000 mm^3
+PASS insertion-z-6: intersection 0.000000 mm^3
+PASS insertion-z-5: intersection 0.000000 mm^3
+PASS insertion-z-4: intersection 0.000000 mm^3
+PASS insertion-z-3: intersection 0.000000 mm^3
+PASS insertion-z-2: intersection 0.000000 mm^3
+PASS insertion-z-1: intersection 0.000000 mm^3
+PASS insertion-z0: intersection 0.000000 mm^3

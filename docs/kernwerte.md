@@ -155,9 +155,16 @@ Neuer Mount-Entwurf und offene mechanische Prüfungen:
 `3d-print/mounts/stepup-mount/README.md`.
 
 ### PN532-Modul (PN532-MOD)
-Platine **40 × 60 mm** (rechteckig, Antennenschleife außen am Rand). Bohrlöcher
-am Foto sichtbar (2, hinten). DIP-Schalter 2-fach oben. Header: gerade +
-gewinkelte Stiftleiste im Lieferumfang.
+**40 × 60 mm ist nur die BerryBase-Shopangabe**, keine verifizierte PCB-Kontur.
+Produktfoto annähernd quadratisch, zwei diagonale Löcher. Nutzer akzeptiert
+am 15.10.2026 die **Elechouse-V3-Zeichnung als CAD-Basis**, nicht als Modulnachweis:
+42,7 × 40,4 mm, Lochmitten in Originalorientierung unten links (7,4; 7,6) und
+oben rechts (35,2; 32,8), Versatz 27,8 × 25,2 mm. Bohrdurchmesser nicht bemaßt;
+Ø2,5 im CAD nur angenommen. PCB-Dicke 1,6 mm und Bauteil-/Steckerhüllen ebenfalls
+Annahmen. DIP-Schalter 2-fach laut Produktfoto; Header gerade + gewinkelt im
+Lieferumfang. Quellen/Originalzeichnung: `docs/cad/pn532/README.md`.
+Plexiglas-Deckelhalter: `3d-print/mounts/pn532-mount/README.md`; reale
+Passung und NFC-Lesereichweite durch fertige Schichtung bleiben offen.
 
 ### Inkrementalgeber (EN2424-6T20)
 Achse **6 mm, D-Schnitt, 20 mm lang** → Drehknopf mit 6-mm-D-Aufnahme.

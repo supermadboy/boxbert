@@ -88,7 +88,18 @@
   per CNC; ohne sie bleibt dort eine bewusst dokumentierte Kollision.
   Reale Passprobe, Bauteil-/Headerhöhen, Glasfixierung und Lasttest offen.
   Der NeoPixel-Mount ist inzwischen separat beauftragt und erstellt, siehe unten.
-  PN532-MOD bleibt nur angekündigt. Referenz: `docs/mounts-weiterarbeit.md`.
+  PN532-MOD ist separat beauftragt und konstruiert, siehe unten.
+  Referenz: `docs/mounts-weiterarbeit.md`.
+
+- [ ] **PN532-Plexiglas-Deckelhalter (15.10.2026), digitaler Vorschlag:**
+  `3d-print/mounts/pn532-mount/`. Nutzer akzeptiert Elechouse V3 als Basis,
+  reales PN532-MOD noch abgleichen. Durchbruch 47,5×45,2 / Außenfalz 51,5×49,2×3,
+  R2 (Fräser max. Ø4), nominal 2 mm PCB→Plexiglas. Zwei M2×25/M2-Muttern,
+  angenommene PCB-Löcher Ø2,5, Kopf max. Höhe 1,5 mm. Eigene STL/DXF,
+  Mesh-/CNC-/Solid-Tests und echte Vorschauen; frische Logs im Mount-Ordner.
+  **Offen:** Nutzer-Sichtprüfung, reales Modul/Lochbild/Stecker-/Löt-/Kopfmaß,
+  Passungs-/Lasttest, sichere Scheibenfixierung und NFC-Test mit fertiger
+  Schichtung. Gesamtdeckelposition/Drehung samt Buttons/Leisten noch planen.
 
 - [ ] **NeoPixel-Deckelhalter / CNC (15.10.2026) erstellt, physisch offen:**
   `3d-print/mounts/neopixel-stick-mount/`. Nutzer gibt Adafruit 1426 als Basis

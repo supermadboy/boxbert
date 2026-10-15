@@ -1,29 +1,33 @@
 # Übergabe — Einzel-Mounts
 
-## Einstieg nächste Session: NFC-Reader PN532-MOD
+## Aktuell: NFC-Reader PN532-MOD beauftragt und konstruiert
 
-Daddelbert hat den kompakten NeoPixel-Entwurf im Chat mit „sehr gut“ bestätigt
-und möchte als Nächstes in einer neuen Session den NFC-Reader besprechen/bauen.
-Das ist eine Zustimmung zum digitalen Entwurf, keine physische Passungsabnahme.
-Der NFC-Mount selbst ist noch nicht konstruiert. Hier nicht ungefragt anfangen.
+Daddelbert hat den NFC-Mount ausdrücklich beauftragt und **Plexiglas** gewählt.
+Nach dem Quellenwiderspruch (BerryBase 40×60 vs. annähernd quadratisches Foto)
+hat er ausdrücklich die **Elechouse-V3-Maßzeichnung als Entwurfsbasis** akzeptiert.
+Das beweist keine mechanische Identität mit seinem gelieferten Modul.
 
-Zum Start genügt: **„Mach bitte mit dem NFC-Reader-Mount für Boxbert weiter;
- lies docs/mounts-weiterarbeit.md.“**
+Entwurf: `3d-print/mounts/pn532-mount/README.md`; Quellen inklusive Original-PDF
+und echter Rasterung der Maßzeichnung: `docs/cad/pn532/README.md`.
+PCB42,7×40,4, Lochmitten in Zeichnungsorientierung untenlinks(7,4;7,6) und
+obenrechts(35,2;32,8). **Ø2,5-Lochdurchmesser ist angenommen**, nicht bemaßt;
+zwei M2×25 und rückseitige M2-Muttern vorgeschlagen, keine M2,5-ruthex erzwingen.
+Köpfe max.Ø4/Höhe1,5 mm; reale Teile prüfen. Elektronik/Stecker nach innen,
+I2C im lokalen Koordinatensystem links; exakte Stecker-/Löthüllen angenommen.
 
-Vor Konstruktion BOM und `docs/kernwerte.md` für die genaue PN532-MOD-Version
-lesen, Hersteller-/Platinenquellen für Lochbild, Anschlüsse und Bauteilhöhen
-prüfen. Deckelposition, Leserichtung und gewünschte äußere Abdeckung sind noch
-nicht verbindlich festgelegt; nur echte offene Entscheidungen gezielt fragen.
-NeoPixel-Rückwandposition und dessen linksseitige Kabelroute sind modulspezifisch,
-nicht automatisch auf NFC übertragen. Keine universelle 2-/3-mm-Luft annehmen:
-NFC-Antenne, Holz-/Kunststoff-/Glasschichten und Metall-/Schraubennähe bestimmen
-die Funktion; reale Lesereichweite später mit Tags und fertiger Schichtung testen.
+CNC nur außen: Durchbruch47,5×45,2, Glasfalz51,5×49,2×3 mm, R2, Fräser max.Ø4.
+Vier Eckführungen mit0,20 mm Spiel/Seite; zwei Holzlaschen vorne/hinten als
+Anschlag; 3×12-mm-Senkkopf-Holzschrauben. PCB→3-mm-Scheibe nominal2 mm,
+Schraubenkopf→Glas0,5 mm; keine universelle NFC-Abstandsfreigabe. Quellen und
+Höhenannahmen im README. Nur lokales Holz-Prüfstück, **kein Gesamtdeckel-Layout**.
+Genauer Platz und Drehung zwischen Buttons/NeoPixel/Leisten bleiben offen.
 
-Methodische Referenz: gemeinsame SCAD-Geometrie für Druckteil/CNC, Außenfräsung
-mit Falz falls für NFC tatsächlich gewünscht, vormontierbarer Halter, kompakte
-Ränder ohne unnötige Steckerreserve. Vorhandene echte Stecker trotzdem samt
-Kabelroute/Einsetzweg berücksichtigen. Nach Bau frische STL/DXF, Solid-Prüfungen
-und verständliche gerenderte Bilder liefern, erst dann committen/pushen.
+Neue STL/DXF, eigene Mesh-/CNC-/Solid-Prüfungen und echte Ansichten im Mount-
+Ordner, Prüfstatus aus frischen Logs lesen. Kein realer Druck-/Passungs-/RF-Test.
+**Vor Fertigung offen:** Modul-/Lochabgleich, Löt-/Stecker-/Bauteilhöhen,
+Schrauben/Muttern, Führungskalibrierung, Holz-/Glasstärke, Lastprobe und sichere
+Scheibenfixierung. Echte Tags mit fertiger Schichtung inklusive Metallnähe testen.
+NeoPixel-Rückwandposition und dessen Kabelroute gelten nicht automatisch für NFC.
 
 NeoPixel-Abschluss: `3d-print/mounts/neopixel-stick-mount/README.md` mit allen
 Maßen und offenen realen Prüfungen; `cnc-compare.png` zeigt die Randverkleinerung.
@@ -84,7 +88,7 @@ max. Ø3,0 / Höhe 2 mm erforderlich, konkreter Schraubentyp noch zu prüfen.
 Muttersitztiefe 3 mm schafft mehr Gewindereserve. Frische STL/DXF und
 12 Solid-Fälle digital PASS; Scheibenfixierung, Druck-/Last-/Lichttest und
 reale Hardwaremaße offen. Quellen: `docs/cad/neopixel-stick/`.
-**PN532-MOD weiterhin nur angekündigt, noch kein Bauauftrag.**
+**Historischer Einstieg; inzwischen PN532-Mount beauftragt und konstruiert, siehe oben.**
 BOM und Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.
 Fenster als methodische Referenz für gemeinsam passende CNC-Ausschnitte und
 Druckhalter verwenden, nicht dessen Feather-Maße blind kopieren. 2 mm sind

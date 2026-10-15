@@ -164,7 +164,12 @@ Durchbruch55,2×14,56 / Falz59,2×18,56×3, R2; LED-Luft bleibt nominal 3 mm.
 Links nur kurzer Kabelübergang unter das Holz, keine große Steckertasche.
 Ø2,2-Platinenlöcher erfordern M2-Schrauben/M2-Muttern, keine M2,5-ruthex.
 Digital geprüft, keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
-PN532-MOD bleibt nur angekündigt. Übergabe in `docs/mounts-weiterarbeit.md`.
+PN532-MOD ist inzwischen beauftragt und als digitaler Vorschlag konstruiert:
+`3d-print/mounts/pn532-mount/README.md`. Nutzer wählt Plexiglas und akzeptiert
+Elechouse V3 als Basis; reales Modul noch abgleichen. Außenfalz3 mm, PCB-Luft
+nominal2 mm, zwei Holzlaschen vorne/hinten. Nur lokales Prüfstück, genaue
+Position/Drehung auf dem Deckel und echte Lesereichweite bleiben offen.
+Übergabe in `docs/mounts-weiterarbeit.md`.
 
 ## Weitere offene mechanische Fragen
 

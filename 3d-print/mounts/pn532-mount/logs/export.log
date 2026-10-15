@@ -1,0 +1,38 @@
+CGAL Cache insert: union(){linear_extrude(height=22.4,cente (270640 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-2.4],[0,1,0, (22592 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,41.6],[0,1,0, (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (410544 bytes)
+CGAL Cache insert: group(){group(){multmatrix([[1,0,0,-2.4] (45088 bytes)
+CGAL Cache insert: intersection(){difference(){union(){line (465664 bytes)
+CGAL Cache insert: group(){cylinder($fn=48,$fa=12,$fs=2,h=2 (466256 bytes)
+CGAL Cache hit: group(){cylinder($fn=48,$fa=12,$fs=2,h=2 (466256 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,7.4],[0,1,0,7.6],[0,0 (466256 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,35.2],[0,1,0,32.8],[0 (466256 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,3],[0,1,0,37.4],[0,0, (258896 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,3],[0,0, (258896 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,7.4],[0,1,0,7 (932416 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,3],[0,1,0,37. (517696 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,18.35],[0,1,0 (318272 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,7.4],[0,1,0,7.6],[0,0 (146000 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,35.2],[0,1,0,32.8],[0 (146000 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,21.35],[0,1,0,-10],[0 (252880 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,21.35],[0,1,0,50.4],[ (252880 bytes)
+CGAL Cache insert: union(){linear_extrude(height=2,center=f (2764464 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,7.4],[0,1,0,7 (291904 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,21.35],[0,1,0 (505664 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-10],[0,1,0,2 (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (3671984 bytes)
+CGAL Cache insert: color([0.96,0.46,0.13,1]){difference(){u (3671984 bytes)
+Geometries in cache: 125
+Geometry cache size in bytes: 446688
+CGAL Polyhedrons in cache: 24
+CGAL cache size in bytes: 16648416
+Total rendering time: 0:00:11.754
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:     2506
+   Halfedges:    8242
+   Edges:        4121
+   Halffacets:   3240
+   Facets:       1620
+   Volumes:         2
