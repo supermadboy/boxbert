@@ -93,8 +93,10 @@
 - [ ] **NeoPixel-Deckelhalter / CNC (15.10.2026) erstellt, physisch offen:**
   `3d-print/mounts/neopixel-stick-mount/`. Nutzer gibt Adafruit 1426 als Basis
   frei und gleicht reales Modul vor Druck ab. DIN außen links, hinten im Deckel,
-  beide Holzlaschen vorne mittig. Nur Außenfräsung: Durchbruch + 3-mm-Glasfalz,
-  Scheibe nominal 3 mm, LED-Luft 3 mm. M2×16 / M2-Muttern bei Ø2,2-PCB-Löchern,
+  beide Holzlaschen vorne mittig. **Rand in X/Y verkleinert, Tiefe unverändert**:
+  Durchbruch55,2×14,56, Falz59,2×18,56×3, R2; nur2,2 mm je PCB-Seite.
+  Kabel kurz links heraus, ohne senkrechte Schleife/JST-Reserve.
+  Scheibe nominal 3 mm, LED-Luft weiterhin 3 mm (nicht diskutierte8,5 mm). M2×16 / M2-Muttern bei Ø2,2-PCB-Löchern,
   kein M2,5-ruthex; reduzierter Kopf max. Ø3,0 / Höhe 2 mm, noch zu beschaffen.
   Ø3,8 nach Toleranzprüfung nicht freigegeben. Muttersitztiefe 3 mm.
   STL/DXF, 12 Solid-Fälle mit Kopfversatz-/Bauteilhüllen, Gegenproben und

@@ -42,5 +42,6 @@ preview top-board neopixel_mount.scad 23,0,9,0,0,0,165
 preview height-raw assembly.scad 23,0,12,90,0,0,210 -D 'scene="section"'
 preview exploded assembly.scad 23,0,12,60,0,25,235 -D 'scene="exploded"'
 preview seated-inside assembly.scad 23,0,10,140,0,210,245 -D 'scene="inside"'
-preview outside assembly.scad 25.4,-52.84,20,0,0,0,640 -D 'scene="outside"'
+preview outside assembly.scad 25.4,-59.64,20,0,0,0,640 -D 'scene="outside"'
+preview cnc-compare-raw cnc_compare.scad -14.6,5.08,1,0,0,0,360
 python3 annotate.py

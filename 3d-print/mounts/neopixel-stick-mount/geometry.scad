@@ -12,16 +12,17 @@ wood_h=12;
 glass_h=3;           // proposed opal PMMA, verify actual thickness
 optical_gap=3;       // proposed LED/glass gap, no optical test
 board_z=wood_z+wood_h-glass_h-optical_gap-led_h-pcb_t; //14.9
-opening=[-6,-5,62.8,22.16];
-rebate=[-10,-9,70.8,30.16];
-corner_r=3;
+opening=[-2.2,-2.2,55.2,14.56]; // only 2.2 mm per PCB edge, guide space included
+rebate=[-4.2,-4.2,59.2,18.56]; // 2 mm glass-bearing lip, not old 4 mm
+corner_r=2;
 fit=0.20;           // per side, needs real print/wood calibration
 lead_in=0.4;
 lead_h=0.6;
 guide_h=4.5;
-guide_wall=2.2;
+guide_wall=1.5;
+guide_clip=2.4; // leave actual left wire pads clear, no tall cable loop
 // Both wood screws near the middle, on FRONT side only; never rear tabs.
-wood_points=[[18.4,-17],[32.4,-17]];
+wood_points=[[18.4,-10],[32.4,-10]];
 tab_h=3.5;
 wood_d=3.2;
 head_d=6.2;
@@ -37,8 +38,8 @@ nut_h=1.6;
 m2_length=16;        // head to tip, not a countersunk screw
 head_h=2;            // maximum allowed head height; verify actual selected screw
 pcb_head_d=3;        // REQUIRED reduced head max OD3.0; common D3.8 heads unsuitable
-panel_rect=[-99.6,-142.84,250,180];
-rear_wall_y=25.16;   // inside plane of 12-mm rear wall
+panel_rect=[-99.6,-149.64,250,180];
+rear_wall_y=18.36;   // inside plane of 12-mm rear wall
 rear_wall_t=12;
 assert(abs(board_z-14.9)<0.001);
 assert(guide_h<wood_h-glass_h);

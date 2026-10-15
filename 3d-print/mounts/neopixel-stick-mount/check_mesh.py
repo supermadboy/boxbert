@@ -45,8 +45,8 @@ def mesh(path):
 
 if __name__=='__main__':
     tris,lo,hi,vol = mesh(ROOT/'neopixel_mount.stl')
-    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-12,-23,0))),lo
-    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(56.6,16.96,16.5))),hi
+    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-8,-16,0))),lo
+    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(52.8,12.628,16.5))),hi
     print('PASS mount STL: closed/oriented/connected/nondegenerate',len(tris),'triangles')
     print('Bounds',lo,hi,'Volume mm^3',round(vol,3))
     def inside(point):
@@ -73,15 +73,15 @@ if __name__=='__main__':
             ('Rear-entry hex pocket',(14.7,8.128,1),False),
             ('Full nut pocket wall',(16,8.128,1),True),
             ('Front PCB support',(8,1.1,14.8),True),
-            ('Wood screw bore',(18.4,-17,11),False),
-            ('Wood head opens toward interior',(20.9,-17,8.6),False),
-            ('Wood contact face solid',(20.9,-17,11.9),True),
-            ('Second front wood bore',(32.4,-17,11),False),
+            ('Wood screw bore',(18.4,-10,11),False),
+            ('Wood head opens toward interior',(20.9,-10,8.6),False),
+            ('Wood contact face solid',(20.9,-10,11.9),True),
+            ('Second front wood bore',(32.4,-10,11),False),
             ('No rear tab',(25.4,22,10),False),
-            ('Grid cell',(-0.5,0.5,1),False),
-            ('Grid rib',(2.5,3,1),True),
-            ('Cable tie slot',(-10,0,1),False),
-            ('Cable tie bridge',(-8,0,1),True)]
+            ('Grid cell',(2,2,1),False),
+            ('Grid rib',(5.5,3,1),True),
+            ('Cable tie slot',(-4,-0.3,7.5),False),
+            ('Cable tie bridge',(-4,4,7.5),True)]
     for label,point,expected in checks:
         assert inside(point)==expected,label
         print('PASS actual mesh probe',label)

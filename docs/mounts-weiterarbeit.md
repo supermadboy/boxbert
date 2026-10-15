@@ -36,8 +36,13 @@ und dessen SCAD-Dateien. Der zuerst erstellte zweiseitige Fensterentwurf ist
 `3d-print/mounts/neopixel-stick-mount/README.md`. Nutzer akzeptiert ausdrücklich
 Adafruit 1426 als Entwurfsbasis und gleicht reales Modul vor Druck ab; NEOPS8-
 Identität damit nicht bewiesen. DIN außen links, hinten am Deckel, zwei mittige
-Holzlaschen beide vorne. CNC nur außen: Durchbruch 62,8×22,16 und Glasfalz
-70,8×30,16×3 mm. LED/Glas nominal 3 mm, Annahmen im README. Platinenlöcher
+Holzlaschen beide vorne. **Kompakte Nutzerkorrektur:** XY-Rand verkleinern,
+Einbautiefe beibehalten; der diskutierte 8,5-mm-Lichtspalt ist NICHT übernommen.
+CNC nur außen: Durchbruch55,2×14,56 (2,2 mm je PCB-Seite), Glasfalz
+59,2×18,56×3 mm (2-mm-Falzrand), R2. Vorige größere Konturen sind überholt.
+Kabel kurz links/abwärts im Durchbruch, dann unter dem Holz direkt links,
+keine lange senkrechte Schleife/JST-Reserve und keine Kabelausbuchtung.
+LED/Glas weiterhin nominal 3 mm, Annahmen im README. Platinenlöcher
 Ø2,2 → M2×16 und rückseitige M2-Muttern statt M2,5-ruthex. Reduzierte Köpfe
 max. Ø3,0 / Höhe 2 mm erforderlich, konkreter Schraubentyp noch zu prüfen.
 Ø3,8 passt nur nominal und ist nach Toleranzprüfung nicht freigegeben.

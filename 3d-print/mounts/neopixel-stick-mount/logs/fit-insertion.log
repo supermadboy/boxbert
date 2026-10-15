@@ -1,66 +1,22 @@
-CGAL Cache insert: difference(){multmatrix([[1,0,0,-99.6],[ (377296 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,0.675],[0,1,0 (90080 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,0.763],[0,1,0 (90080 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,12.7],[0,1,0, (345152 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,-1],[0,1,0,0. (27472 bytes)
-CGAL Cache insert: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache hit: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-Trimming cache: difference(){multmatrix([[1,0,0,-99.6],[ (377296 bytes)
-Trimming cache: group(){multmatrix([[1,0,0,0.675],[0,1,0 (90080 bytes)
-Trimming cache: group(){multmatrix([[1,0,0,0.763],[0,1,0 (90080 bytes)
-Trimming cache: group(){multmatrix([[1,0,0,12.7],[0,1,0, (345152 bytes)
-Trimming cache: group(){multmatrix([[1,0,0,-1],[0,1,0,0. (27472 bytes)
-Trimming cache: group(){import(file="neopixel_mount.stl" (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-Trimming cache: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,0],[0,1,0,0], (4219264 bytes)
-Trimming cache: multmatrix([[1,0,0,0],[0,1,0,0],[0,0,1,- (5029856 bytes)
-CGAL Cache insert: union(){difference(){multmatrix([[1,0,0, (565840 bytes)
-CGAL Cache insert: union(){group(){multmatrix([[1,0,0,0],[0 (4219264 bytes)
-CGAL Cache insert: intersection(){union(){difference(){mult (0 bytes)
-CGAL Cache hit: intersection(){union(){difference(){mult (0 bytes)
-Geometries in cache: 52
-Geometry cache size in bytes: 649360
-CGAL Polyhedrons in cache: 23
-CGAL cache size in bytes: 104571632
-Total rendering time: 0:04:18.951
-Current top level object is empty.
+PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty
+PASS insertion-z-20: intersection 0.000000 mm^3
+PASS insertion-z-19: intersection 0.000000 mm^3
+PASS insertion-z-18: intersection 0.000000 mm^3
+PASS insertion-z-17: intersection 0.000000 mm^3
+PASS insertion-z-16: intersection 0.000000 mm^3
+PASS insertion-z-15: intersection 0.000000 mm^3
+PASS insertion-z-14: intersection 0.000000 mm^3
+PASS insertion-z-13: intersection 0.000000 mm^3
+PASS insertion-z-12: intersection 0.000000 mm^3
+PASS insertion-z-11: intersection 0.000000 mm^3
+PASS insertion-z-10: intersection 0.000000 mm^3
+PASS insertion-z-9: intersection 0.000000 mm^3
+PASS insertion-z-8: intersection 0.000000 mm^3
+PASS insertion-z-7: intersection 0.000000 mm^3
+PASS insertion-z-6: intersection 0.000000 mm^3
+PASS insertion-z-5: intersection 0.000000 mm^3
+PASS insertion-z-4: intersection 0.000000 mm^3
+PASS insertion-z-3: intersection 0.000000 mm^3
+PASS insertion-z-2: intersection 0.000000 mm^3
+PASS insertion-z-1: intersection 0.000000 mm^3
+PASS insertion-z0: intersection 0.000000 mm^3

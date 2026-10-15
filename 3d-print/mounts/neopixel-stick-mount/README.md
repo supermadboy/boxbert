@@ -5,17 +5,32 @@ Daddelbert hat ausdrücklich die **Adafruit-1426-Platine als Entwurfsbasis**
 freigegeben und gleicht sein geliefertes Exemplar vor dem Druck ab. Das ist
 keine nachgewiesene Identifikation des in der BOM als NEOPS8 bestellten Moduls.
 
+## Kompakte Überarbeitung
+
+Nutzerkorrektur: kleinerer **Rand in X/Y**, nicht mehr Abstand zur Scheibe.
+Die bisherigen großen Konturen (62,8×22,16 / Falz70,8×30,16) sind überholt;
+der kurz besprochene 8,5-mm-LED-/Glasabstand wurde **nicht übernommen**.
+Einbautiefe, 3-mm-Falztiefe und nominal 3-mm-Lichtspalt bleiben unverändert.
+
+PCB50,8×10,16 → Durchbruch55,2×14,56: nur **2,2 mm je Platinenseite**.
+Das enthält an den Führungen 0,5 mm PCB-Luft, 1,5 mm Kunststoff und 0,2 mm
+Passspiel. Zusätzlich nur 2 mm Falzrand; Scheibe mit 0,2 mm Spiel liegt nominal
+1,8 mm je gerader Seite auf. Erst reale Pass-/Druckprobe, nicht weiter auf null
+reduzieren. `cnc-compare.png` zeigt alt/neu maßstäblich; links nur historische
+Ansicht, **keine alten Fräskonturen verwenden**.
+
 ## Anordnung
 
 Von **außen auf den Deckel und die LEDs** gesehen: DIN links, DOUT rechts,
 Loch-/Kondensatorseite hinten. Zwei Holzlaschen liegen beide an der Vorderseite
 nahe der Mitte, nicht eine vorne und eine hinten. Zentren relativ zur linken
-unteren PCB-Ecke: (18,4; −17) und (32,4; −17) mm. Rückwand bleibt ohne Laschen.
+unteren PCB-Ecke: (18,4; −10) und (32,4; −10) mm. Rückwand bleibt ohne Laschen.
 
 Der Stick liegt mittig über die 250-mm-Deckelbreite, weit hinten auf dem
-250 × 180 × 12-mm-Deckel. Referenz-Rückwand innen y=25,16, außen y=37,16:
+250 × 180 × 12-mm-Deckel. Referenz-Rückwand innen y=18,36, außen y=30,36:
 zwischen Glasfalz hinten und innerer Rückwand bleiben 4 mm, zwischen Druckteil
-hinten und innerer Rückwand 8,2 mm. Die Rückwand ist als 12-mm-Wand modelliert;
+hinten und innerer Rückwand 5,732 mm. Die PCB-Mitte liegt 25,28 mm vor der
+hinteren Außenkante. Druckteil-Bounds 60,8×28,628×16,5 mm. Die Rückwand ist als 12-mm-Wand modelliert;
 **noch keine Deckel-Schraubleisten/anderen Module** geprüft. Die Position muss
 zum echten Deckelrahmen passen, nicht ungeprüft zwischen bestehende Leisten setzen.
 
@@ -24,26 +39,26 @@ zum echten Deckelrahmen passen, nicht ungeprüft zwischen bestehende Leisten set
 - `geometry.scad`: gemeinsame CNC-/Druckmaße und Höhen.
 - `neopixel_mount.scad` / `neopixel_mount.stl`: **nur das Druckteil**.
 - `panel_cnc.scad` / `panel_cnc.stl`: Deckel-Referenzmodell, **nicht drucken**.
-- `cnc-opening.dxf`: Durchbruch, 62,8 × 22,16 mm, R3.
-- `cnc-rebate.dxf`: äußere Glasfalz, 70,8 × 30,16 mm, R3, **3 mm tief**.
-- `cnc-glass.dxf`: vorgeschlagene Scheibe, 70,4 × 29,76 × 3 mm, R2,8.
+- `cnc-opening.dxf`: Durchbruch, 55,2 × 14,56 mm, R2.
+- `cnc-rebate.dxf`: äußere Glasfalz, 59,2 × 18,56 mm, R2, **3 mm tief**.
+- `cnc-glass.dxf`: vorgeschlagene Scheibe, 58,8 × 18,16 × 3 mm, R1,8.
 - `overview.png`: mit Platine / nur Halter; `height-side.png`: gerader Höhenschnitt.
 - `top-board.png`, `exploded.png`, `seated-inside.png`, `outside.png`: Zusatzansichten.
 
 Koordinaten in **mm**, Ursprung linke untere PCB-Ecke; +x rechts, +y hinten,
-+z außen. Der vollständige Deckel reicht x=−99,6…150,4 / y=−142,84…37,16.
++z außen. Der vollständige Deckel reicht x=−99,6…150,4 / y=−149,64…30,36.
 DXF sind **Nennkonturen, keine Werkzeugbahnen und kein G-Code**.
 
 ## CNC: ausschließlich von außen
 
 Eine Aufspannung, zuerst Falz, dann Durchbruch; **kein Wenden, keine Innentasche**.
-Maximal Ø6-mm-Fräser wegen R3, CAM-Werkzeugkompensation/Zustellungen und sichere
+Maximal Ø4-mm-Fräser wegen R2, CAM-Werkzeugkompensation/Zustellungen und sichere
 Werkstückhaltung separat festlegen. Tatsächliche Plattenstärke prüfen.
 Holzbefestigung von innen per 3 × 12-mm-Senkkopf-Holzschrauben; deren begrenzte
 Pilotbohrungen sind Handarbeit von innen, **keine Durchgangslöcher im Deckel**
 und nicht in den Außen-CNC-Dateien enthalten.
 
-Vier kurze Eckführungen greifen 4,5 mm in den Durchbruch, 0,20 mm Spiel pro
+Vier kurze Eckführungen (2,4-mm-Eckbereiche, 1,5-mm-Wand) greifen 4,5 mm in den Durchbruch, 0,20 mm Spiel pro
 Seite, 0,4-mm-Einführfase über 0,6 mm Höhe. Holzlaschen, nicht PCB/Glas/LEDs,
 setzen den Tiefenanschlag. Führung richtet aus, Schrauben klemmen.
 
@@ -109,16 +124,22 @@ Kopfmaß/Halt und begrenzte Vorbohrtiefe am Reststück prüfen, von Hand anziehe
 
 ## Kabel und Montagefolge
 
-Direkt angelötete Leitungen links zunächst **nach unten**, erst unterhalb der
-Holzinnenseite nach links/vorne führen. Kein gerader seitlicher Steckerkanal
-im Holz nötig. Darstellung ist eine Route, keine neue elektrische Pinbelegung.
+Direkt angelötete Leitungen **links heraus**, mit kurzem links/abwärts führendem
+Übergang im Durchbruch und dann unter dem Holz gerade nach links. **Keine lange
+senkrechte Kabelschleife**, kein JST-/Steckerraum. Vollständig waagerecht auf
+PCB-Höhe bis ins Holz geht bei unveränderter Tiefe nicht; deshalb nur dieser
+kurze Übergang innerhalb des vorhandenen schmalen Durchbruchs. Keine zusätzliche
+CNC-Kabelausbuchtung. Darstellung ist eine Route, keine neue elektrische Pinbelegung.
 DOUT bleibt laut bestehendem Verkabelungsplan offen. Elko/330-Ω-Widerstand und
 Schrumpfschlauch nicht in den 3-mm-Lichtspalt legen; eigene Halterung/Isolierung
 im Innenraum vorsehen, keine Zuglast auf die Lötpads.
 
-Digitale Kabel-/Schrumpfschlauch-Hülle: x=−1…4, y=0,2…9,96, z=6…14,9 und
-x=−16…4, y=1…9, z=3…9. **Keine vermessene Dupont-/Steckerfreigabe.** Größere
-Stecker verlangen neue Hüllenprüfung. Kabelbinderpad links vorhanden;
+Digitale Kabelhülle: drei quadratische 1,9-mm-Hüllen, je entlang
+(1,397;y;14,05) → (−0,9;y;9,5) → (−12;y;9,5), y=1,27 / 3,81 / 6,35.
+Die runden Vorschauleitungen Ø1,5 liegen vollständig darin; keine vorhandenen
+Drahtdurchmesser behauptet. **Keine Dupont-/Steckerfreigabe.** Größere Stecker
+verlangen eine andere Hüllenprüfung. Kleines erhöhtes Kabelbinderpad links,
+Oberseite z=8,5, zwei quer zur Kabelrichtung nutzbare Schlitze;
 Biegeradius, Isolierung und echte Zugentlastung vor Ort prüfen.
 
 1. Druck-/Mutter-/Führungspassprobe, Muttern einsetzen; keine Elektronik beim
@@ -151,7 +172,12 @@ orientierte Hülle ohne degenerierte Dreiecke; Bounds und CNC-/DXF-Maße geprüf
 Kabelhüllen, Rückwand und Glas; Schraubenköpfe nominal und mit angenommenem
 Versatz-/Bauteiltoleranzraum separat gegen LEDs/SMD geprüft.
 Absichtliche 0,5-mm-Seitversätze/Über-Einsetzen erzeugen erkannte Kollisionen.
-Gerader Einsetzweg in 1-mm-Schritten geprüft, **kein lückenloser Bewegungsbeweis**.
+Gerader Einsetzweg in 21 Einzelpositionen z=−20…0 mm geprüft, **kein lückenloser
+Bewegungsbeweis**. Jede Position hat eine eigene Solid-Schnittmenge und eigenes
+Log. Die mathematisch gleichwertige gemeinsame Union lief im kompakten Modell
+zweimal in ein 300-s-Zeitlimit; die getrennten Positionen ersetzen diese
+aufwendige Union, nicht die Prüfung. Konservative Boxhüllen statt vieler
+Kugel-Facetten halten die Kabelprüfung einfach.
 0,001-mm-Prüfrückzug vermeidet reine Nullstärken-Kontaktflächen in CGAL.
 Rohlogs unter `logs/`. Vorschauen tatsächlich gerendert und angesehen.
 

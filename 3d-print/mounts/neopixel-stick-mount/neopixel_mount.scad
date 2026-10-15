@@ -4,8 +4,8 @@ eps=0.02;
 show_board=true;
 module grid(){
     linear_extrude(base_h) difference(){
-        profile([-4.5,-3.5,59.8,18.16],1.4);
-        for(i=[0:8],j=[0:1]) translate([-2.5+6*i,-1.5+6*j]) square([4,4]);
+        profile([-1.4,-1.4,53.6,13.16],1.0);
+        for(i=[0:8],j=[0:1]) translate([0.8+6*i,0.6+6*j]) square([4,4]); // avoid tangent cell/post edges
     }
 }
 module guides(){
@@ -20,8 +20,8 @@ module guides(){
             }
             translate([0,0,-eps]) linear_extrude(wood_z+guide_h+2*eps) opening_profile(fit+guide_wall);
         }
-        for(x=[opening[0],opening[0]+opening[2]-4])
-            for(y=[opening[1],opening[1]+opening[3]-4]) translate([x,y,0]) cube([4,4,wood_z+guide_h]);
+        for(x=[opening[0],opening[0]+opening[2]-guide_clip])
+            for(y=[opening[1],opening[1]+opening[3]-guide_clip]) translate([x,y,0]) cube([guide_clip,guide_clip,wood_z+guide_h]);
     }
 }
 module screw_post(){
@@ -41,11 +41,12 @@ module mount(){
             for(h=board_holes) translate(h) screw_post();
             for(x=[8,43]) translate([x,1.1,0]) support_post();
             for(w=wood_points){
-                translate([w[0]-3,-4,0]) cube([6,3,wood_z]);
+                translate([w[0]-3,-1.8,0]) cube([6,3,wood_z]);
                 translate([0,0,wood_z-tab_h]) profile_tab(w[0]);
             }
-            // Cable-tie pad, cable exits LEFT then down/forward into interior.
-            linear_extrude(base_h) profile([-12,-2.5,8.5,6],1);
+            // Small raised tie pad, immediately left of PCB; cable runs LEFT below wood.
+            translate([-1.4,0.5,0]) cube([1,7,8.5]);
+            translate([0,0,6.5]) linear_extrude(2) profile([-8,-2,7.6,12],1);
         }
         for(h=board_holes) translate(h){
             translate([0,0,-eps]) cylinder(d=m2_clear,h=board_z+2*eps);
@@ -56,10 +57,10 @@ module mount(){
             cylinder(d=wood_d,h=tab_h+2*eps);
             cylinder(d1=head_d+2*eps,d2=wood_d,h=(head_d-wood_d)/2+eps);
         }
-        for(x=[-10.8,-6]) translate([x,-1.5,-eps]) cube([1.5,4,base_h+2*eps]);
+        for(y=[-1,7.5]) translate([-6,y,6.5-eps]) cube([4,1.5,2+2*eps]);
     }
 }
-module profile_tab(x){linear_extrude(tab_h) profile([x-5.5,-23,11,20.5],1.5);}
+module profile_tab(x){linear_extrude(tab_h) profile([x-5.5,-16,11,14.5],1.5);}
 module pcb(){
     translate([0,0,board_z]) linear_extrude(pcb_t) difference(){
         square([pcb_w,pcb_d]);
@@ -69,16 +70,21 @@ module pcb(){
 module leds(){for(p=led_xy) translate([p[0]-2.5,p[1]-2.5,board_z+pcb_t]) cube([5,5,led_h]);}
 module caps(){for(p=cap_xy) translate([p[0]-1.65,p[1]-0.8,board_z+pcb_t]) cube([3.3,1.6,1.2]);}
 module screw_heads(){for(h=board_holes) translate([h[0],h[1],board_z+pcb_t]) cylinder(d=pcb_head_d,h=head_h);}
-module cables(){
-    // Assumed direct-solder/heatshrink envelope, NOT a measured Dupont connector.
-    translate([-1,0.2,6]) cube([5,9.76,board_z-6]);
-    translate([-16,1,3]) cube([20,8,6]);
-}
-module cable_visual(){
-    for(y=[2.54,5.08,7.62]) color(y<3?"red":y<6?"black":"dodgerblue"){
-        translate([1.4,y,6]) cylinder(d=1.5,h=board_z-6);
-        translate([-16,y,6]) rotate([0,90,0]) cylinder(d=1.5,h=17.4);
+module wire_path(y,r=0.95,box=false){
+    // CN2 backside: GND pad4 y1.27, DIN pad3 y3.81, +5V pad2 y6.35.
+    // Short LEFT/down transition inside narrow opening, then directly LEFT.
+    // Not a long vertical loop and no connector pocket. Actual bend must be checked.
+    points=[[1.397,y,board_z-0.85],[-0.9,y,9.5],[-12,y,9.5]];
+    for(i=[0:1]) hull(){
+        translate(points[i]) if(box) cube([2*r,2*r,2*r],center=true); else sphere(r=r,$fn=24);
+        translate(points[i+1]) if(box) cube([2*r,2*r,2*r],center=true); else sphere(r=r,$fn=24);
     }
+}
+// Conservative square swept envelopes enclose the visual round wires and are
+// dramatically cheaper for CGAL insertion unions; no collision test is skipped.
+module cables(){for(y=[1.27,3.81,6.35]) wire_path(y,0.95,true);}
+module cable_visual(){
+    for(y=[1.27,3.81,6.35]) color(y<2?"black":y<5?"dodgerblue":"red") wire_path(y,0.75);
 }
 module visible_pcb(){
     color([0.1,0.5,0.3,0.45]) translate([0,0,0.03]) pcb();

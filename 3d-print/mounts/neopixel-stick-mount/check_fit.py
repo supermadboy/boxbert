@@ -9,6 +9,14 @@ ROOT=Path(__file__).resolve().parent
 CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.5,0,-0.001],True),('shift-y','wood',[0,0.5,-0.001],True),('too-deep','wood',[0,0,0.5],True),('heads-tolerance','heads_tolerance',[0,0,0],False),('heads-components','heads_components',[0,0,0],False),('pcb','pcb',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('rear-wall','rear',[0,0,0],False),('glass','glass',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
 def check(case):
     name,scene,shift,expect=case
+    if scene=='insertion':
+        # Intersection distributes over union. Same 21 poses, no giant union.
+        results=[]
+        for z in range(-20,1):
+            results.append(check((f'insertion-z{z}','insert_pose',[0,0,z-0.001],False)))
+        summary='PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty'
+        (ROOT/'logs'/'fit-insertion.log').write_text(summary+'\n'+'\n'.join(results)+'\n')
+        return summary
     with tempfile.TemporaryDirectory(prefix='neopixel-fit-') as d:
         target=Path(d)/'intersection.stl'
         result=subprocess.run(['openscad','--hardwarnings','--export-format','binstl','-o',str(target),'-D',f'scene="{scene}"','-D',f'shift={shift}','assembly.scad'],cwd=ROOT,text=True,capture_output=True,timeout=300)

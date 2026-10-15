@@ -159,7 +159,9 @@ NeoPixel ist inzwischen als Vorschlag gebaut:
 `3d-print/mounts/neopixel-stick-mount/README.md`. DIN links von außen,
 beide Holzlaschen vorne mittig, Rückwand ohne Laschen. Nutzer akzeptiert
 Adafruit 1426 als Entwurfsbasis, Modulabgleich vor Druck noch offen.
-CNC nur außen (Durchbruch + Glasfalz), LED-Luft nominal 3 mm.
+Nutzerkorrektur: kleinerer XY-Rand statt anderer Einbautiefe. CNC nur außen:
+Durchbruch55,2×14,56 / Falz59,2×18,56×3, R2; LED-Luft bleibt nominal 3 mm.
+Links nur kurzer Kabelübergang unter das Holz, keine große Steckertasche.
 Ø2,2-Platinenlöcher erfordern M2-Schrauben/M2-Muttern, keine M2,5-ruthex.
 Digital geprüft, keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
 PN532-MOD bleibt nur angekündigt. Übergabe in `docs/mounts-weiterarbeit.md`.

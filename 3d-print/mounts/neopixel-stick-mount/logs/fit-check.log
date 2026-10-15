@@ -1,7 +1,7 @@
 PASS seated: intersection 0.000000 mm^3
-PASS shift-x: intersection 7.813755 mm^3 (deliberate collision)
-PASS shift-y: intersection 7.813754 mm^3 (deliberate collision)
-PASS too-deep: intersection 188.999068 mm^3 (deliberate collision)
+PASS shift-x: intersection 4.477179 mm^3 (deliberate collision)
+PASS shift-y: intersection 4.477179 mm^3 (deliberate collision)
+PASS too-deep: intersection 142.677791 mm^3 (deliberate collision)
 PASS heads-tolerance: intersection 0.000000 mm^3
 PASS heads-components: intersection 0.000000 mm^3
 PASS pcb: intersection 0.000000 mm^3
@@ -9,5 +9,5 @@ PASS cable-mount: intersection 0.000000 mm^3
 PASS cable-wood: intersection 0.000000 mm^3
 PASS rear-wall: intersection 0.000000 mm^3
 PASS glass: intersection 0.000000 mm^3
-PASS insertion: intersection 0.000000 mm^3
+PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty
 Digital assumed envelopes only; insertion sampled at 1 mm, not physical fit approval.

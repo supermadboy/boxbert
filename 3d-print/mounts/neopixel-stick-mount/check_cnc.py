@@ -6,10 +6,10 @@ from check_mesh import mesh
 ROOT=Path(__file__).resolve().parent
 if __name__=='__main__':
     tris,lo,hi,vol=mesh(ROOT/'panel_cnc.stl')
-    assert all(abs(a-b)<0.001 for a,b in zip(lo,(-99.6,-142.84,12))),lo
-    assert all(abs(a-b)<0.001 for a,b in zip(hi,(150.4,37.16,24))),hi
+    assert all(abs(a-b)<0.001 for a,b in zip(lo,(-99.6,-149.64,12))),lo
+    assert all(abs(a-b)<0.001 for a,b in zip(hi,(150.4,30.36,24))),hi
     print('PASS closed CNC panel 250 x 180 x 12 mm, volume',round(vol,3))
-    for name,expected in [('opening',(-6,56.8,-5,17.16)),('rebate',(-10,60.8,-9,21.16)),('glass',(-9.8,60.6,-8.8,20.96))]:
+    for name,expected in [('opening',(-2.2,53,-2.2,12.36)),('rebate',(-4.2,55,-4.2,14.36)),('glass',(-4,54.8,-4,14.16))]:
         lines=(ROOT/f'cnc-{name}.dxf').read_text().splitlines()
         pairs=[(int(a),b.strip()) for a,b in zip(lines[::2],lines[1::2])]
         assert any(k==0 and v=='LINE' for k,v in pairs)
