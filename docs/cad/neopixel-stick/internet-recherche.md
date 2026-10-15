@@ -34,6 +34,21 @@ Originaldatei `Adafruit NeoPixel 8 Stick.brd` mit XML-Parser ausgewertet:
 dass BerryBase NEOPS8 dasselbe Bohrbild besitzt.** Deshalb diese präzisen
 Originalmaße nicht als bestätigte NEOPS8-Maße ausgeben.
 
+## Weiterer Händler: purecrea 420024 (andere Identität)
+
+[Bastelgarage](https://www.bastelgarage.ch/neopixel-stick-8x-ws2812-rgb-led),
+Seite selbst abgerufen und technische Angaben geprüft:
+
+> Montagelöcher: Durchmesser 3mm / Distanz 27mm
+> Grösse: 54 x 10 x 3.5mm
+
+Hersteller purecrea, Artikel 420024, SKU `YXK511 White`, GTIN `0745604844314`;
+Produkttext nennt weiße Platine. Das sind konkrete **Händlerangaben**, keine
+selbst vermessene Geometrie und keine bemaßte NEOPS8-Zeichnung. Unterschiedliche
+Identität/Abmessungen; keine mechanische Gleichheit mit schwarzem NEOPS8 belegt.
+Randabstände fehlen auch hier. 27 mm / Ø3 und Adafruit 25,4 mm / Ø2,2 zeigen,
+warum die Bezeichnung „8er NeoPixel Stick“ allein kein eindeutiges Lochbild ist.
+
 ## Recherchegrenzen
 
 Suchmaschinenabrufe lieferten teils Anti-Bot-Seiten/HTTP 429/403, Bing zudem
