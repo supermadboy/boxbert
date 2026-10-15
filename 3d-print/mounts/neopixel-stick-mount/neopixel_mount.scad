@@ -49,7 +49,7 @@ module mount(){
         }
         for(h=board_holes) translate(h){
             translate([0,0,-eps]) cylinder(d=m2_clear,h=board_z+2*eps);
-            // Open from back; seated nut ceiling z=2.2. No M2.5 insert forced in PCB.
+            // Open from back; seated nut ceiling z=3.0. No M2.5 insert forced in PCB.
             translate([0,0,-eps]) cylinder(d=nut_af/cos(30),h=nut_pocket_h+eps,$fn=6);
         }
         for(w=wood_points) translate([w[0],w[1],wood_z-tab_h-eps]){

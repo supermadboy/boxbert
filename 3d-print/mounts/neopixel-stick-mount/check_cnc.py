@@ -29,6 +29,11 @@ if __name__=='__main__':
     tip=b+vals['pcb_t']-vals['m2_length'];nutbottom=vals['nut_pocket_h']-vals['nut_h']
     assert abs(gap-3)<1e-8
     assert 0<tip<nutbottom
+    # Deliberate assumed tolerance budget, not measured hardware tolerances.
+    # Length -0.2; PCB +0.15; incomplete tip thread 0.3; nut seat -0.2; nut h -0.1.
+    min_engagement=min(vals['nut_h']-0.1,(vals['nut_pocket_h']-0.2)-(tip+0.2+0.15+0.3))
+    assert min_engagement>=1.2,('insufficient assumed worst-case M2 engagement',min_engagement)
+    print('PASS assumed tolerance budget: minimum M2 thread engagement',min_engagement,'mm')
     assert abs(vals['wood_screw_l']-vals['tab_h']-8.5)<1e-8
     print('PASS nominal PCB bottom',b,'LED/glass gap',gap,'M2x16 tip',tip,'nut bottom',nutbottom,'wood engagement 8.5 mm')
     print('CAM compensation, real screw/nut/wood/glass and optical/diffusion tests still required.')

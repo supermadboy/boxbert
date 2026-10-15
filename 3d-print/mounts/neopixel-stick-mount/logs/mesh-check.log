@@ -1,5 +1,5 @@
 PASS mount STL: closed/oriented/connected/nondegenerate 5464 triangles
-Bounds (-12.0, -23.0, 0.0) (56.59999084472656, 16.959991455078125, 16.5) Volume mm^3 4986.024
+Bounds (-12.0, -23.0, 0.0) (56.59999084472656, 16.959991455078125, 16.5) Volume mm^3 4968.219
 PASS actual mesh probe PCB M2 bore
 PASS actual mesh probe Second M2 bore
 PASS actual mesh probe Upper narrow screw post

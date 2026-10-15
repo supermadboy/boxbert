@@ -392,11 +392,16 @@ einfügen, Datum dazu.
   (eigener digitaler CAD-Test, 15.10.2026).** Beim vom Nutzer akzeptierten
   Adafruit-1426-v2-Referenzboard liegen Ø2,2-Montagelöcher bei y=8,128 und
   5×5-LED-Zentren auf y=3,81. Ein Ø4-mm-Kopf überschneidet die benachbarten
-  LED-Ecken im Solid-Test um zusammen 0,030518 mm³; Ø3,8 ist im nominalen
-  Modell kollisionsfrei. M2×16 mit rückseitiger M2-Mutter ersetzt hier M2,5-
+  LED-Ecken im Solid-Test um zusammen 0,030518 mm³. Ø3,8 ist zwar nominal
+  kollisionsfrei, scheitert aber an der nachträglichen Toleranzprüfung mit
+  0,2 mm radialem Schraubenspiel und 0,1 mm XY-Hüllenreserve pro Bauteilseite
+  (0,648703 mm³). Aktuelle Kopfvorgabe deshalb max. Ø3,0 / Höhe 2 mm;
+  konkreten Schraubentyp noch verifizieren, keine pauschale Normteilfreigabe.
+  Muttersitztiefe von 2,2 auf 3 mm erhöht für mehr Gewindereserve; eigenes
+  angenommenes Worst-Case-Budget im Test. M2×16 mit rückseitiger M2-Mutter ersetzt hier M2,5-
   ruthex, ohne PCB-Löcher aufzubohren. Keine breiten Scheiben dazunehmen.
   → Kopfhülle als eigenen Vollkörper gegen LEDs/SMD prüfen. Reale Maße,
-  Toleranzen und Druck-/Lastfreigabe bleiben offen, keine universelle Ø3,8-
+  Toleranzen und Druck-/Lastfreigabe bleiben offen, keine universelle Kopfmaß-
   Regel für andere Platinen. Quelle: `docs/cad/neopixel-stick/`,
   `3d-print/mounts/neopixel-stick-mount/README.md` und `check_fit.py`.
 

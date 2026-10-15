@@ -8,6 +8,14 @@ module printed(){import("neopixel_mount.stl",convexity=12);}
 module assembly_parts(){printed();pcb();leds();caps();screw_heads();cables();}
 module cut_panel(){difference(){local_panel();translate([-30,-40,wood_z-1])cube([110,45.08,wood_h+2]);}}
 if(scene=="wood") intersection(){panel();translate(shift)printed();}
+if(scene=="heads_tolerance") intersection(){
+    // Entire disk of up to 0.2 mm radial screw float, not only one shift.
+    for(h=board_holes) translate([h[0],h[1],board_z+pcb_t]) cylinder(d=pcb_head_d+0.4,h=head_h);
+    union(){
+        for(p=led_xy) translate([p[0]-2.6,p[1]-2.6,board_z+pcb_t]) cube([5.2,5.2,led_h]);
+        for(p=cap_xy) translate([p[0]-1.75,p[1]-0.9,board_z+pcb_t]) cube([3.5,1.8,1.2]);
+    }
+}
 if(scene=="heads_components") intersection(){screw_heads();union(){leds();caps();}}
 if(scene=="pcb") intersection(){printed();translate([0,0,0.001])pcb();}
 if(scene=="cable_mount") intersection(){printed();cables();}

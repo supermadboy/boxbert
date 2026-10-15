@@ -6,7 +6,7 @@ import tempfile
 import struct
 from concurrent.futures import ThreadPoolExecutor
 ROOT=Path(__file__).resolve().parent
-CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.5,0,-0.001],True),('shift-y','wood',[0,0.5,-0.001],True),('too-deep','wood',[0,0,0.5],True),('heads-components','heads_components',[0,0,0],False),('pcb','pcb',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('rear-wall','rear',[0,0,0],False),('glass','glass',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
+CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.5,0,-0.001],True),('shift-y','wood',[0,0.5,-0.001],True),('too-deep','wood',[0,0,0.5],True),('heads-tolerance','heads_tolerance',[0,0,0],False),('heads-components','heads_components',[0,0,0],False),('pcb','pcb',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('rear-wall','rear',[0,0,0],False),('glass','glass',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
 def check(case):
     name,scene,shift,expect=case
     with tempfile.TemporaryDirectory(prefix='neopixel-fit-') as d:

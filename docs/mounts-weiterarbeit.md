@@ -38,9 +38,11 @@ Adafruit 1426 als Entwurfsbasis und gleicht reales Modul vor Druck ab; NEOPS8-
 Identität damit nicht bewiesen. DIN außen links, hinten am Deckel, zwei mittige
 Holzlaschen beide vorne. CNC nur außen: Durchbruch 62,8×22,16 und Glasfalz
 70,8×30,16×3 mm. LED/Glas nominal 3 mm, Annahmen im README. Platinenlöcher
-Ø2,2 → M2×16 und rückseitige M2-Muttern statt M2,5-ruthex. Köpfe max. Ø3,8,
-keine breiten Scheiben (Ø4 kollidiert mit LED-Ecken). Frische STL/DXF und
-11 Solid-Fälle digital PASS; Scheibenfixierung, Druck-/Last-/Lichttest und
+Ø2,2 → M2×16 und rückseitige M2-Muttern statt M2,5-ruthex. Reduzierte Köpfe
+max. Ø3,0 / Höhe 2 mm erforderlich, konkreter Schraubentyp noch zu prüfen.
+Ø3,8 passt nur nominal und ist nach Toleranzprüfung nicht freigegeben.
+Muttersitztiefe 3 mm schafft mehr Gewindereserve. Frische STL/DXF und
+12 Solid-Fälle digital PASS; Scheibenfixierung, Druck-/Last-/Lichttest und
 reale Hardwaremaße offen. Quellen: `docs/cad/neopixel-stick/`.
 **PN532-MOD weiterhin nur angekündigt, noch kein Bauauftrag.**
 BOM und Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.

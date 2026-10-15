@@ -95,7 +95,9 @@
   frei und gleicht reales Modul vor Druck ab. DIN außen links, hinten im Deckel,
   beide Holzlaschen vorne mittig. Nur Außenfräsung: Durchbruch + 3-mm-Glasfalz,
   Scheibe nominal 3 mm, LED-Luft 3 mm. M2×16 / M2-Muttern bei Ø2,2-PCB-Löchern,
-  kein M2,5-ruthex; Kopf max. Ø3,8. STL/DXF, 11 Solid-Fälle, Gegenproben und
+  kein M2,5-ruthex; reduzierter Kopf max. Ø3,0 / Höhe 2 mm, noch zu beschaffen.
+  Ø3,8 nach Toleranzprüfung nicht freigegeben. Muttersitztiefe 3 mm.
+  STL/DXF, 12 Solid-Fälle mit Kopfversatz-/Bauteilhüllen, Gegenproben und
   Vorschauen geprüft. **Offen:** Nutzer-Sichtprüfung, Modulabgleich vor Druck,
   reale Schrauben/Muttern/Stecker-/Lotmaße, Support-/Passungs-/Lastprobe,
   sichere Scheibenfixierung, optische Wirkung. Kein Druck-/Fertigungsnachweis.

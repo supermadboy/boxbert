@@ -78,18 +78,27 @@ Original-Eagle v2: 50,8 × 10,16 mm, zwei **Ø2,2** bei (12,7;8,128) und
 x=3,175 + n·6,35, y=3,81. Linker Eingang durch CN2/R1→LED1-DIN am Netz geprüft.
 Quellenkopie, Lizenz und frischer Extraktor: `../../../docs/cad/neopixel-stick/`.
 
-- Zwei vorgeschlagene **M2 × 16-mm-Zylinderschrauben**, Kopf maximal Ø3,8 / 2 mm
-  hoch, **keine breiten Unterlegscheiben**. Bereits Ø4-mm-Köpfe schneiden im
-  nominellen Modell die benachbarten LED-Ecken; dieser Fehler wurde im Test
-  erkannt und durch die kleinere Kopfhülle behoben. Reale Kopfform prüfen.
+- Zwei vorgeschlagene **M2 × 16-mm-Schrauben mit reduziertem Kopf**,
+  **Kopf maximal Ø3,0 / 2 mm hoch**, keine breiten Unterlegscheiben.
+  **Übliche Ø3,8-mm-Köpfe sind nicht freigegeben:** sie passen nur nominal
+  zentriert und kollidieren in der ergänzten Toleranzprüfung. Der konkrete
+  Schraubentyp mit diesem kleinen Kopf muss noch beschafft/verifiziert werden;
+  keine Verfügbarkeit eines bestimmten Normartikels behauptet. Der neue Test
+  reserviert 0,2 mm radialen Schraubenversatz und vergrößert die LED-/SMD-
+  XY-Hüllen je Seite um 0,1 mm. Das ist ein angenommener Prüfspielraum, keine
+  Hersteller-Toleranzangabe. Reale Kopfform und Bauteilposition prüfen.
 - Zwei **M2-Sechskantmuttern**, nominal SW4 / Höhe 1,6; rückseitige Taschen
-  SW4,2 / Tiefe 2,2. Passung kalibrieren, Muttern vor dem Verschrauben von
+  SW4,2 / Tiefe 3,0. Passung kalibrieren, Muttern vor dem Verschrauben von
   unten einlegen/festhalten. Verdrehsicherung, **keine selbsthaltenden Clips**.
   Dieses M2-Material ist nicht als vorhanden/bestellt inventarisiert.
-- Schraubenspitze rechnerisch z=0,5, Mutter z=0,6…2,2, somit nominal volle
-  Mutterhöhe im Eingriff; nur 0,1 mm Überstand unter der Mutter. Tatsächliche
-  PCB-/Schrauben-/Mutternmaße vor Verwendung prüfen; keine zu kurze Schraube
-  durch stärkeres Anziehen kompensieren.
+- Schraubenspitze rechnerisch z=0,5, Mutter z=1,4…3,0: nominal 0,9 mm
+  Überstand unter der Mutter. Die tiefer von hinten ausgeführte Tasche setzt
+  die Mutter näher an die PCB und schafft Reserve, ohne längere Schraube.
+  Prüfannahmen: Schraubenlänge −0,2; PCB-Dicke +0,15; unvollständiges
+  Spitzengewinde 0,3; Muttersitz −0,2; Mutterhöhe −0,1 mm. Damit mindestens
+  1,5 mm Eingriff bei Prüfziel 1,2 mm. Das sind keine gemessenen Toleranzen.
+  Tatsächliche Maße und tragende Gewindegänge prüfen; nicht stärker anziehen,
+  um eine zu kurze Schraube zu kompensieren.
 - Zwei zusätzliche flache Kunststoffstützen vorne unter der PCB; keine
   Pfosten auf LED-Bauteile. Unterseiten-Lotfreiheit real abgleichen.
 - Die vorhandenen **M2,5-ruthex passen nicht durch Ø2,2**. Kein Aufbohren/Erzwingen.
@@ -138,8 +147,9 @@ vorhandenen Umgebung für Bildbeschriftungen. `bash -n` und `shellcheck` bestand
 
 Frische tatsächliche STL: eine zusammenhängende, geschlossene, konsistent
 orientierte Hülle ohne degenerierte Dreiecke; Bounds und CNC-/DXF-Maße geprüft.
-11 Solid-Fälle einschließlich **importierter Druck-STL** gegen Holz, PCB,
-Kabelhüllen, Rückwand und Glas; Schraubenköpfe separat gegen LEDs/SMD geprüft.
+12 Solid-Fälle einschließlich **importierter Druck-STL** gegen Holz, PCB,
+Kabelhüllen, Rückwand und Glas; Schraubenköpfe nominal und mit angenommenem
+Versatz-/Bauteiltoleranzraum separat gegen LEDs/SMD geprüft.
 Absichtliche 0,5-mm-Seitversätze/Über-Einsetzen erzeugen erkannte Kollisionen.
 Gerader Einsetzweg in 1-mm-Schritten geprüft, **kein lückenloser Bewegungsbeweis**.
 0,001-mm-Prüfrückzug vermeidet reine Nullstärken-Kontaktflächen in CGAL.
