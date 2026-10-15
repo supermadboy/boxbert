@@ -89,7 +89,8 @@
   Reale Passprobe, Bauteil-/Headerhöhen, Glasfixierung und Lasttest offen.
   NeoPixel-Deckel-Mount inzwischen beauftragt: DIN links von außen gesehen,
   hinten am Deckel, Holzbefestigung mittig. Quellenprüfung zeigt fehlendes
-  bemaßtes Lochbild; vor Konstruktion Foto/Maße des echten NEOPS8 klären.
+  bemaßtes NEOPS8-Lochbild. Nutzer möchte nicht selbst messen; ergänzende
+  Internetrecherche findet präzise Adafruit-Daten, deren Übertragbarkeit offen ist.
   Quellen und offene Maße: `docs/cad/neopixel-stick/README.md`.
   PN532-MOD bleibt nur angekündigt. Referenz: `docs/mounts-weiterarbeit.md`.
 

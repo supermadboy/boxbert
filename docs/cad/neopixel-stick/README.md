@@ -42,9 +42,16 @@ wird durch das separat geprüfte Rückseitenfoto belegt, nicht durch das Leucht-
 
 ## Vor fertigungstauglichem Modell offen
 
-Foto des echten Moduls mit lesbarer DIN-/DOUT-Beschriftung und Lochseite;
-Lochdurchmesser, Lochmittenabstand und Lage zur Platinenkante; tatsächliche
-Löt-/Kabel-/Steckerüberstände. Kein Original-Adafruit-Lochbild ungeprüft für
+Ergänzende Internetrecherche samt tatsächlich geprüftem BerryBase-PDF und
+Original-Adafruit-CAD: [internet-recherche.md](internet-recherche.md).
+Das Original hat 25,4 mm Lochabstand und Ø2,2 mm, aber eine andere Außenkontur;
+das ist **noch kein bestätigtes NEOPS8-Lochbild**. Daddelbert möchte momentan
+nicht selbst messen; deshalb nicht erneut eine Messung als nächsten Schritt verlangen.
+
+Zum gelieferten Modul fehlen weiterhin bestätigte Lochdurchmesser, Lochmittenabstand
+und Lage zur Platinenkante sowie tatsächliche Löt-/Kabel-/Steckerüberstände.
+Ein Nutzerfoto könnte später die Modulgleichheit abgleichen, ist aber jetzt
+nicht zugesagt. Kein Original-Adafruit-Lochbild ungeprüft für
 diesen BerryBase-Stick übernehmen. M2,5-ruthex nicht durch mögliche M2-Löcher
 zwingen. Die Shopbilder reichen nicht für eine Bohrfreigabe.
 

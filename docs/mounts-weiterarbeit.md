@@ -36,7 +36,9 @@ und dessen SCAD-Dateien. Der zuerst erstellte zweiseitige Fensterentwurf ist
 DIN links von außen gesehen, Holzbefestigung im mittleren Halterbereich statt
 vorne/hinten. Quellenprüfung und offene Maße vor dem CAD-Start:
 `docs/cad/neopixel-stick/README.md`. Shopfoto zeigt seitliche Löcher, aber
-kein bemaßtes Lochbild. Zusätzliches Rückseitenfoto klärt die Orientierung:
+kein bemaßtes Lochbild. Nutzer möchte nicht messen, weitere Internetrecherche
+in `docs/cad/neopixel-stick/internet-recherche.md`; Adafruit-Raster noch nicht
+als NEOPS8-Maß bestätigt. Zusätzliches Rückseitenfoto klärt die Orientierung:
 Bei DIN links von außen liegt die Loch-/Kondensatorreihe hinten.
 **PN532-MOD weiterhin nur angekündigt, noch kein Bauauftrag.**
 BOM und Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.
