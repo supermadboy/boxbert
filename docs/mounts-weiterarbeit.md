@@ -1,5 +1,40 @@
 # Übergabe — Einzel-Mounts
 
+## Einstieg nächste Session: NFC-Reader PN532-MOD
+
+Daddelbert hat den kompakten NeoPixel-Entwurf im Chat mit „sehr gut“ bestätigt
+und möchte als Nächstes in einer neuen Session den NFC-Reader besprechen/bauen.
+Das ist eine Zustimmung zum digitalen Entwurf, keine physische Passungsabnahme.
+Der NFC-Mount selbst ist noch nicht konstruiert. Hier nicht ungefragt anfangen.
+
+Zum Start genügt: **„Mach bitte mit dem NFC-Reader-Mount für Boxbert weiter;
+ lies docs/mounts-weiterarbeit.md.“**
+
+Vor Konstruktion BOM und `docs/kernwerte.md` für die genaue PN532-MOD-Version
+lesen, Hersteller-/Platinenquellen für Lochbild, Anschlüsse und Bauteilhöhen
+prüfen. Deckelposition, Leserichtung und gewünschte äußere Abdeckung sind noch
+nicht verbindlich festgelegt; nur echte offene Entscheidungen gezielt fragen.
+NeoPixel-Rückwandposition und dessen linksseitige Kabelroute sind modulspezifisch,
+nicht automatisch auf NFC übertragen. Keine universelle 2-/3-mm-Luft annehmen:
+NFC-Antenne, Holz-/Kunststoff-/Glasschichten und Metall-/Schraubennähe bestimmen
+die Funktion; reale Lesereichweite später mit Tags und fertiger Schichtung testen.
+
+Methodische Referenz: gemeinsame SCAD-Geometrie für Druckteil/CNC, Außenfräsung
+mit Falz falls für NFC tatsächlich gewünscht, vormontierbarer Halter, kompakte
+Ränder ohne unnötige Steckerreserve. Vorhandene echte Stecker trotzdem samt
+Kabelroute/Einsetzweg berücksichtigen. Nach Bau frische STL/DXF, Solid-Prüfungen
+und verständliche gerenderte Bilder liefern, erst dann committen/pushen.
+
+NeoPixel-Abschluss: `3d-print/mounts/neopixel-stick-mount/README.md` mit allen
+Maßen und offenen realen Prüfungen; `cnc-compare.png` zeigt die Randverkleinerung.
+Durchbruch 55,2×14,56 mm, Falz 59,2×18,56×3 mm, R2 → Fräser höchstens Ø4 mm.
+LED-/Glasabstand unverändert nominal 3 mm. Zwölf Solid-Testfälle einschließlich
+21 einzeln geschnittener Einsetzpositionen bestanden; Quellen/SCAD/STL/DXF,
+Logs und Bilder sind versioniert. Schrauben max. Kopf-Ø3/Höhe2 mm, reales
+BerryBase-Modul gegen freigegebene Adafruit-Basis abgleichen; Scheibenfixierung,
+Druck-/Passungs-/Last-/Lichtprüfung bleiben offen. Keine erneute Maßrecherche
+zum NeoPixel als Voraussetzung für den separaten NFC-Auftrag aufmachen.
+
 ## Aktuelle Übergabe 15.10.2026 — Fenster / nächste Deckel-Mounts
 
 **Neueste Vorgabe: nur von außen CNC-fräsen.** Kein Wenden und keine
