@@ -121,8 +121,14 @@ Original-Adafruit-Eagle: **50,8 × 22,86 mm**, Ecken R2,54. USB bei x≈0:
 | 48,26 / 20,955 | Ø2,2 | flache Stütze |
 
 Display-Footprint x=11,291…42,291 / y=2,503…20,103, gespiegelte Displayseite.
-D0/D1/D2 ebenfalls Displayseite; hinter Glas nicht bedienbar, so vorgesehen.
-Reset/BOOT gegebenenfalls nach Ausbau erreichen. Hersteller-STEP gesichert,
+D0/D1/D2 ebenfalls Displayseite; zusätzlich sitzt dort **SW4/RESET** bei
+(44,45 / 11,43), `MR270` im Original-Eagle und mit dem RESET-Netz verbunden.
+SW2/RESET sitzt auf der Elektronikseite. Hinter Glas sind die frontseitigen
+Taster nicht bedienbar, so vorgesehen. Die Vorschau bildet die Taster nicht ab:
+reale Tasterhöhen samt Schraubenköpfen/Headerenden gegen das Glas prüfen und
+Dauerbetätigung von BOOT/RESET ausschließen. Der Durchbruch umfasst auch SW4;
+kein Führungssteg liegt hinter dessen Footprint. Reset/BOOT gegebenenfalls
+nach Ausbau erreichen. Hersteller-STEP gesichert,
 aber nicht als vollständige bestückte Kollisionsgeometrie ausgewertet.
 
 - [Adafruit Downloads](https://learn.adafruit.com/esp32-s3-reverse-tft-feather/downloads)
