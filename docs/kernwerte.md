@@ -166,10 +166,15 @@ Drehknopf-Freistich und Befestigungsmutter beachten (Achsgewinde M6 üblich
 bei EC11-artigem Aufbau — **am realen Teil nachmessen**).
 
 ### NeoPixel Stick (NEOPS8)
-Platine ca. **54 × 10,5 × 3,15 mm**, 8 LEDs im Abstand ~10 mm (WS2812-5050).
-2 Bohrlöcher (M2, ~Ø 2,1 mm, an den Enden — Foto zeigt Löcher zwischen Pin 1
-und Pin 8-Bereich). Pins: GND, VCC, DIN, DOUT. Abstandhle zum Deckel: über
-2× M2-Schrauben oder Einlassnut.
+**Quellenkorrektur 15.10.2026:** [BerryBase](https://www.berrybase.de/neopixel-stick-mit-8-ws2812-5050-rgb-leds)
+nennt ca. **54 × 10,5 × 3,15 mm** für das Modul und **5 × 5 × 1,50 mm** je LED.
+PCB-Dicke und reale Löt-/Kabelüberstände sind damit nicht einzeln gemessen.
+Shopfotos zeigen zwei Montagelöcher an einer **langen Kante**, nicht an den
+Stirnenden. Lochdurchmesser/-koordinaten und DIN-/DOUT-Orientierung zum
+Lochbild sind noch offen. Frühere Ø2,1-/M2-Zuordnung nicht als Bohrfreigabe
+verwenden; die alte Angabe „~10 mm LED-Abstand“ war unplausibel und ist gestrichen.
+Nutzer wünscht DIN links von außen gesehen. Quellenfotos und offene Maße:
+`docs/cad/neopixel-stick/README.md`. Noch kein fertiger Druck-/CNC-Mount.
 
 ### Kippschalter Miniatur (10020, goobay)
 **12,5 × 6,5 × 9,5 mm** (L×B×H), 3 Pin, EIN-EIN, Lötösen, max **6 A/125 V oder

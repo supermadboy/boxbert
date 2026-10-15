@@ -87,8 +87,11 @@
   im Fenster-Mount-Ordner. **USB-Aussparung macht Daddelbert von Hand**, nicht
   per CNC; ohne sie bleibt dort eine bewusst dokumentierte Kollision.
   Reale Passprobe, Bauteil-/Headerhöhen, Glasfixierung und Lasttest offen.
-  Deckel-Mounts für NEOPS8 und PN532-MOD für die nächste Session angekündigt,
-  noch nicht beauftragt. Referenzzuordnung: `docs/mounts-weiterarbeit.md`.
+  NeoPixel-Deckel-Mount inzwischen beauftragt: DIN links von außen gesehen,
+  hinten am Deckel, Holzbefestigung mittig. Quellenprüfung zeigt fehlendes
+  bemaßtes Lochbild; vor Konstruktion Foto/Maße des echten NEOPS8 klären.
+  Quellen und offene Maße: `docs/cad/neopixel-stick/README.md`.
+  PN532-MOD bleibt nur angekündigt. Referenz: `docs/mounts-weiterarbeit.md`.
 
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,

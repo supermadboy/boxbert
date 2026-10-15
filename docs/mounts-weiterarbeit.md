@@ -32,9 +32,13 @@ und dessen SCAD-Dateien. Der zuerst erstellte zweiseitige Fensterentwurf ist
   OpenSCAD 2021.01/CGAL + Xvfb + Mesa. `offscreen` allein reicht hier nicht;
   Library-/DRI-Pfade vor Xvfb-Start setzen. Kein Root und kein Flake-Update.
 
-**Angekündigte nächste Session, noch kein neuer Bauauftrag:** Mounts für
-NeoPixel-Stick **NEOPS8 (8 WS2812)** und **PN532-MOD** am Deckel. BOM und
-Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.
+**NeoPixel-Stick inzwischen beauftragt (15.10.2026):** NEOPS8 oben hinten,
+DIN links von außen gesehen, Holzbefestigung im mittleren Halterbereich statt
+vorne/hinten. Quellenprüfung und offene Maße vor dem CAD-Start:
+`docs/cad/neopixel-stick/README.md`. Shopfoto zeigt seitliche Löcher, aber
+kein bemaßtes Lochbild und keine lesbare DIN-/DOUT-Orientierung.
+**PN532-MOD weiterhin nur angekündigt, noch kein Bauauftrag.**
+BOM und Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.
 Fenster als methodische Referenz für gemeinsam passende CNC-Ausschnitte und
 Druckhalter verwenden, nicht dessen Feather-Maße blind kopieren. 2 mm sind
 TFT-Optikziel, keine generelle NFC-/LED-Einbauhöhe. NFC-Antenne, Holz-/Glas-
