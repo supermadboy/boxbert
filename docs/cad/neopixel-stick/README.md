@@ -1,6 +1,10 @@
 # NEOPS8 — Quellen und offene Maße
 
-Recherche 15.10.2026 zum beauftragten Deckel-Mount, noch kein fertiger CAD-Entwurf.
+Recherche 15.10.2026 zum beauftragten Deckel-Mount.
+**Aktueller Entwurf:** `../../../3d-print/mounts/neopixel-stick-mount/README.md`.
+Daddelbert hat nach der Recherche ausdrücklich Adafruit 1426 als Entwurfsbasis
+akzeptiert; reales Modul gleicht er vor Druck ab. Nachfolgende Recherche erklärt
+die nicht bewiesene NEOPS8-Gleichheit, sie blockiert diese Nutzerentscheidung nicht.
 
 ## Nutzerauftrag
 
@@ -58,4 +62,10 @@ zwingen. Die Shopbilder reichen nicht für eine Bohrfreigabe.
 Die frühere Kernwertangabe „~10 mm LED-Abstand“ ist unplausibel: acht Zentren
 hätten dann 70 mm Spannweite auf einem angeblich 54 mm langen Modul. Auch
 „Löcher an den Enden“ sowie Ø2,1/M2 waren nicht durch eine Maßzeichnung belegt.
-Es wurden noch keine STL/DXF exportiert oder Passungsprüfungen durchgeführt.
+Der separate Adafruit-Entwurf wurde inzwischen exportiert und digital geprüft;
+reale NEOPS8-Identität/Passung ist dadurch weiterhin nicht bestätigt.
+`adafruit-stick-v2.brd`, `adafruit-license.txt`, `verify_source.py` und
+`source-facts.json` sichern die tatsächlich verwendete Referenz aus
+[Adafruit](https://github.com/adafruit/NeoPixel-Sticks/tree/73d3e55379367ca0ef051d7c9a8b846b6948b21a).
+Mit `python3 docs/cad/neopixel-stick/verify_source.py` werden Kontur, Löcher,
+LED-Zentren und DIN-Linkslage am Originalnetz erneut geprüft.

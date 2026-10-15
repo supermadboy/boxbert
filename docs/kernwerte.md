@@ -174,7 +174,12 @@ Stirnenden. Lochdurchmesser/-koordinaten sind noch offen. Rückseitenfoto belegt
 DIN links von der LED-Seite gesehen bedeutet Loch-/Kondensatorreihe hinten. Frühere Ø2,1-/M2-Zuordnung nicht als Bohrfreigabe
 verwenden; die alte Angabe „~10 mm LED-Abstand“ war unplausibel und ist gestrichen.
 Nutzer wünscht DIN links von außen gesehen. Quellenfotos und offene Maße:
-`docs/cad/neopixel-stick/README.md`. Noch kein fertiger Druck-/CNC-Mount.
+`docs/cad/neopixel-stick/README.md`. **Nutzerfreigabe 15.10.2026:**
+Adafruit 1426 v2 als Entwurfsbasis akzeptiert; Nutzer gleicht das gelieferte
+Modul vor Druck ab. Referenz: 50,8×10,16 mm, Lochmitten (12,7;8,128) und
+(38,1;8,128), Ø2,2; kein M2,5 erzwingen. Originaldaten/Extraktor im Quellenordner.
+Fertiger digitaler Entwurf: `3d-print/mounts/neopixel-stick-mount/README.md`.
+Die Zustimmung beweist keine mechanische Identität des NEOPS8 mit Adafruit.
 
 ### Kippschalter Miniatur (10020, goobay)
 **12,5 × 6,5 × 9,5 mm** (L×B×H), 3 Pin, EIN-EIN, Lötösen, max **6 A/125 V oder

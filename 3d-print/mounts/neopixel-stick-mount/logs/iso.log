@@ -1,0 +1,8 @@
+ECHO: "Adafruit basis only; DIN left; M2 not M2.5; nominal PCB bottom", 14.9, "LED/glass gap", 3
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 67 elements
+Geometries in cache: 62
+Geometry cache size in bytes: 366464
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.297

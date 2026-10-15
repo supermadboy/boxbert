@@ -388,6 +388,18 @@ einfügen, Datum dazu.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 
+- **NeoPixel: Schraubenkopf gegen LED-Ecken prüfen, nicht nur PCB-Bohrung
+  (eigener digitaler CAD-Test, 15.10.2026).** Beim vom Nutzer akzeptierten
+  Adafruit-1426-v2-Referenzboard liegen Ø2,2-Montagelöcher bei y=8,128 und
+  5×5-LED-Zentren auf y=3,81. Ein Ø4-mm-Kopf überschneidet die benachbarten
+  LED-Ecken im Solid-Test um zusammen 0,030518 mm³; Ø3,8 ist im nominalen
+  Modell kollisionsfrei. M2×16 mit rückseitiger M2-Mutter ersetzt hier M2,5-
+  ruthex, ohne PCB-Löcher aufzubohren. Keine breiten Scheiben dazunehmen.
+  → Kopfhülle als eigenen Vollkörper gegen LEDs/SMD prüfen. Reale Maße,
+  Toleranzen und Druck-/Lastfreigabe bleiben offen, keine universelle Ø3,8-
+  Regel für andere Platinen. Quelle: `docs/cad/neopixel-stick/`,
+  `3d-print/mounts/neopixel-stick-mount/README.md` und `check_fit.py`.
+
 - **AW9523: enge Loch-/Pinabstände erfordern keine dünne Einsatzwand
   (erneute Original-PCB-Auswertung und eigener CAD-Neuaufbau, 09.10.2026).**
   Vier Ø-2,5-Montagebohrungen, nächste Pins 3,81 mm entfernt. Ein breiter

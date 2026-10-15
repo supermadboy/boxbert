@@ -32,14 +32,16 @@ und dessen SCAD-Dateien. Der zuerst erstellte zweiseitige Fensterentwurf ist
   OpenSCAD 2021.01/CGAL + Xvfb + Mesa. `offscreen` allein reicht hier nicht;
   Library-/DRI-Pfade vor Xvfb-Start setzen. Kein Root und kein Flake-Update.
 
-**NeoPixel-Stick inzwischen beauftragt (15.10.2026):** NEOPS8 oben hinten,
-DIN links von außen gesehen, Holzbefestigung im mittleren Halterbereich statt
-vorne/hinten. Quellenprüfung und offene Maße vor dem CAD-Start:
-`docs/cad/neopixel-stick/README.md`. Shopfoto zeigt seitliche Löcher, aber
-kein bemaßtes Lochbild. Nutzer möchte nicht messen, weitere Internetrecherche
-in `docs/cad/neopixel-stick/internet-recherche.md`; Adafruit-Raster noch nicht
-als NEOPS8-Maß bestätigt. Zusätzliches Rückseitenfoto klärt die Orientierung:
-Bei DIN links von außen liegt die Loch-/Kondensatorreihe hinten.
+**NeoPixel-Stick beauftragt und konstruiert (15.10.2026):**
+`3d-print/mounts/neopixel-stick-mount/README.md`. Nutzer akzeptiert ausdrücklich
+Adafruit 1426 als Entwurfsbasis und gleicht reales Modul vor Druck ab; NEOPS8-
+Identität damit nicht bewiesen. DIN außen links, hinten am Deckel, zwei mittige
+Holzlaschen beide vorne. CNC nur außen: Durchbruch 62,8×22,16 und Glasfalz
+70,8×30,16×3 mm. LED/Glas nominal 3 mm, Annahmen im README. Platinenlöcher
+Ø2,2 → M2×16 und rückseitige M2-Muttern statt M2,5-ruthex. Köpfe max. Ø3,8,
+keine breiten Scheiben (Ø4 kollidiert mit LED-Ecken). Frische STL/DXF und
+11 Solid-Fälle digital PASS; Scheibenfixierung, Druck-/Last-/Lichttest und
+reale Hardwaremaße offen. Quellen: `docs/cad/neopixel-stick/`.
 **PN532-MOD weiterhin nur angekündigt, noch kein Bauauftrag.**
 BOM und Kernwerte zuerst lesen, tatsächliche Modulversionen/Lochbilder/Stecker prüfen.
 Fenster als methodische Referenz für gemeinsam passende CNC-Ausschnitte und

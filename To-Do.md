@@ -87,12 +87,18 @@
   im Fenster-Mount-Ordner. **USB-Aussparung macht Daddelbert von Hand**, nicht
   per CNC; ohne sie bleibt dort eine bewusst dokumentierte Kollision.
   Reale Passprobe, Bauteil-/Headerhöhen, Glasfixierung und Lasttest offen.
-  NeoPixel-Deckel-Mount inzwischen beauftragt: DIN links von außen gesehen,
-  hinten am Deckel, Holzbefestigung mittig. Quellenprüfung zeigt fehlendes
-  bemaßtes NEOPS8-Lochbild. Nutzer möchte nicht selbst messen; ergänzende
-  Internetrecherche findet präzise Adafruit-Daten, deren Übertragbarkeit offen ist.
-  Quellen und offene Maße: `docs/cad/neopixel-stick/README.md`.
+  Der NeoPixel-Mount ist inzwischen separat beauftragt und erstellt, siehe unten.
   PN532-MOD bleibt nur angekündigt. Referenz: `docs/mounts-weiterarbeit.md`.
+
+- [ ] **NeoPixel-Deckelhalter / CNC (15.10.2026) erstellt, physisch offen:**
+  `3d-print/mounts/neopixel-stick-mount/`. Nutzer gibt Adafruit 1426 als Basis
+  frei und gleicht reales Modul vor Druck ab. DIN außen links, hinten im Deckel,
+  beide Holzlaschen vorne mittig. Nur Außenfräsung: Durchbruch + 3-mm-Glasfalz,
+  Scheibe nominal 3 mm, LED-Luft 3 mm. M2×16 / M2-Muttern bei Ø2,2-PCB-Löchern,
+  kein M2,5-ruthex; Kopf max. Ø3,8. STL/DXF, 11 Solid-Fälle, Gegenproben und
+  Vorschauen geprüft. **Offen:** Nutzer-Sichtprüfung, Modulabgleich vor Druck,
+  reale Schrauben/Muttern/Stecker-/Lotmaße, Support-/Passungs-/Lastprobe,
+  sichere Scheibenfixierung, optische Wirkung. Kein Druck-/Fertigungsnachweis.
 
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,

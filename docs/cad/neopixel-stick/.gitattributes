@@ -1,0 +1,2 @@
+# Preserve the upstream Eagle source byte-for-byte, including vendor whitespace.
+adafruit-stick-v2.brd -whitespace

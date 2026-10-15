@@ -246,6 +246,10 @@ USB-Aussparung fertigt Daddelbert ausdrücklich von Hand, sie ist nicht Teil
 des CNC-Modells. Steckerfreiraum und ungemessene Bauteilhöhen real prüfen.
 Details/Findings zuerst in `docs/mounts-weiterarbeit.md` lesen.
 Hermes nutzt für diesen Ablauf den Skill `boxbert-cad-mounts`.
+Aktueller NeoPixel-Vorschlag: `3d-print/mounts/neopixel-stick-mount/README.md`.
+Nutzer akzeptiert Adafruit 1426 als Basis (Modulabgleich vor Druck offen): DIN
+außen links, beide Holzlaschen vorne mittig, CNC nur außen. Ø2,2-PCB-Löcher
+bedeuten M2-Schrauben/M2-Muttern, keine M2,5-ruthex. Noch keine physische Freigabe.
 Die nachfolgenden Step-Up-Regeln gelten weiterhin für flache Boden-Mounts.
 
 Vor einem Mount-Auftrag **`docs/mounts-weiterarbeit.md` und

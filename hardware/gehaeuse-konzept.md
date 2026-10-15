@@ -155,8 +155,14 @@ am realen Stecker prüfen. Glasfixierung, reale Passung, Header-/Tasterhöhen un
 Lastprüfung bleiben offen. Ältere positive Prüfungen der zweiseitigen Variante
 gelten nicht als Freigabe für das neue Ladeport-Layout.
 
-Nächste angekündigte Deckel-Mounts: NeoPixel-Stick NEOPS8 und PN532-MOD.
-Methodische Referenz ist das neue Fenster; Übergabe in `docs/mounts-weiterarbeit.md`.
+NeoPixel ist inzwischen als Vorschlag gebaut:
+`3d-print/mounts/neopixel-stick-mount/README.md`. DIN links von außen,
+beide Holzlaschen vorne mittig, Rückwand ohne Laschen. Nutzer akzeptiert
+Adafruit 1426 als Entwurfsbasis, Modulabgleich vor Druck noch offen.
+CNC nur außen (Durchbruch + Glasfalz), LED-Luft nominal 3 mm.
+Ø2,2-Platinenlöcher erfordern M2-Schrauben/M2-Muttern, keine M2,5-ruthex.
+Digital geprüft, keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
+PN532-MOD bleibt nur angekündigt. Übergabe in `docs/mounts-weiterarbeit.md`.
 
 ## Weitere offene mechanische Fragen
 
