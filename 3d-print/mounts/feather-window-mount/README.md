@@ -10,7 +10,13 @@ Eigenständiger Auftrag nach Nutzer-OK zur Z-Halter-Konzeptskizze.
 - USB-C-Ende zeigt zur **rechten Seitenwand**, Laden von der Seite gewünscht.
   Die Darstellung des einzelnen Mounts zeigt USB links; das ist die lokale
   CAD-Ansicht, nicht die Orientierung im Gehäuse. Bei Einbau entsprechend drehen.
-- Akku am Feather-JST angeschlossen; Anschluss und Kabel bleiben innen zugänglich.
+- Montagevorgabe des Nutzers: Feather außerhalb der Holzbox am Druckträger
+  befestigen, Dupont-Leitungen und nach bestandenem USB-Test den Akku anschließen,
+  dann die vorbereitete Einheit einsetzen und von innen verschrauben.
+  Dupont- und Akku-Stecker müssen nur vor dem Einsetzen erreichbar sein;
+  im eingebauten Zustand ist kein Steck-/Handzugang erforderlich. Zur Wartung
+  wird die gesamte Einheit wieder abgeschraubt. Die eingesteckten Stecker und
+  Leitungen brauchen trotzdem kollisionsfreien Bauraum ohne Quetschung und Zug.
 - Von außen bündige Plexiglasscheibe in gefräster Falz. Elektronik von innen
   komplett vorbereitet einsetzen, Holzlaschen neben dem Fenster verschrauben.
 - Zwei seitliche Z-Laschen und ein offener Träger wurden als Konzept positiv
