@@ -80,6 +80,15 @@
   mit Einsätzen von unten (Lötstellenfreiheit an Pinreihe) und zwei seitliche
   Holzschrauben. Details/Quellen im Mount-README; Soldered-Zuordnung korrigiert.
 
+- [ ] **Feather-Fenster / CNC-Front (Vorschlag 15.10.2026):** Noch nichts
+  gefertigt; Tasche und Inlay gemeinsam neu konstruiert, vier Eckführungen,
+  Anschlag über Schraublaschen und außen Glasfalz. Vormontage komplett außerhalb,
+  eingebaut kein Steckzugang nötig. SCAD/STL/DXF/Vorschauen und reproduzierbare
+  Tests: `3d-print/mounts/feather-window-mount/`. Dupont-Hülle angenommen,
+  rückwärtiger Bauraum erhöht; neue PCB-Schraubenlänge real prüfen. Noch offen:
+  Nutzer-Sichtentscheidung, Passungs-Probestück, echte Stecker-/Headermaße,
+  Pfosten-/Schraubenhalteprobe, Glasfixierung und USB-Seitenöffnung.
+
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,
   **12 mm Pappelsperrholz (09.10.2026 beschlossen)**, Deckel und Boden

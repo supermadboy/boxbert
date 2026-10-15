@@ -1,7 +1,9 @@
 Feather-window actual STL digital checks — NOT physical fit approval
-SHA256 940ef80748f434cc43a225c59e1547a8f12444164c42cef31e409833f217d725
-Triangles 6948 Bounds (-5.59999942779541, -24.0, 0.0) (56.400001525878906, 46.86000061035156, 14.0) Volume mm^3 5600.219
+SHA256 007b288558bdd6d7ed2817f17d3415f6f680d1f87c83efd204614d3cf4eb66d3
+Triangles 7236 Bounds (-6.8000030517578125, -24.0, 0.0) (57.59999084472656, 46.86000061035156, 25.0) Volume mm^3 10046.788
 PASS closed, consistently oriented, one connected surface; nondegenerate triangles
+PASS Dupont housing lower outer corner
+PASS New pocket locating corner
 PASS Grid cell open
 PASS Grid rib present
 PASS Central opening

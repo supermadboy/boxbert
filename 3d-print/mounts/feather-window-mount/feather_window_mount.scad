@@ -2,10 +2,8 @@
 // Actual Eagle contour/holes; source verification in docs/cad/feather-window/.
 // Draft only: window, connector HEIGHTS and wood screw head require real checks.
 /* [Window layout - draft, NOT milling dimensions] */
-wood_contact_z = 12;        // top faces of tabs touch inner wood surface
-board_z = 14;               // electronics-side PCB plane; +z points outside
-wood_h = 12;
-plexi_h = 3;                // adjustable placeholder, not selected/measured
+include <window_geometry.scad>
+use <front_cnc.scad>
 /* [Carrier] */
 base_h = 2;
 cell = 4;
@@ -42,11 +40,11 @@ base_size=[62,32];
 threaded=[[2.54,2.54],[2.54,20.32]]; // actual plated D2.5 holes
 supported=[[48.26,1.8415],[48.26,20.955]]; // actual D2.2: NO M2.5 screw!
 holes=concat(threaded,supported);
-wood_points=[[25.4,-17],[25.4,39.86]];
+// Wood screw positions come from window_geometry.scad.
 pins=concat([for(k=[0:15]) [6.35+k*2.54,1.27]],
             [for(k=[0:11]) [16.51+k*2.54,21.59]]);
 // Preview aperture only. Relates to this carrier, NOT a fabrication template.
-aperture=[-7,-9,64.8,40.86];
+aperture=opening;
 sink_h=(head_d-wood_d)/2;
 assert(board_z > wide_top+pin_overhang+0.5);
 assert(wide_top-(insert_setback+insert_depth)>=1);
@@ -99,10 +97,38 @@ module strain_relief_pad() {
     // Cable-tie slots on rear plane. Route/wrap cable only after bend check.
     translate([5.8,24.43,0]) linear_extrude(base_h) rounded_rect(10,6,1);
 }
+// Four short rounded corner guides. The long sides remain open for cables.
+// A 0.4 mm lead-in makes entry easier; tabs, NOT guide tips, set depth.
+module locating_corners() {
+    intersection() {
+        union() {
+            linear_extrude(wood_contact_z+guide_height-lead_height)
+                difference() {
+                    pocket_profile(fit_clearance);
+                    pocket_profile(fit_clearance+guide_wall);
+                }
+            difference() {
+                hull() {
+                    translate([0,0,wood_contact_z+guide_height-lead_height-0.02])
+                        linear_extrude(0.02) pocket_profile(fit_clearance);
+                    translate([0,0,wood_contact_z+guide_height-0.02])
+                        linear_extrude(0.02) pocket_profile(fit_clearance+lead_in);
+                }
+                linear_extrude(wood_contact_z+guide_height+0.02)
+                    pocket_profile(fit_clearance+guide_wall);
+            }
+        }
+        // Clip the ring to the four corners; no surrounding tray wall.
+        for(x=[pocket[0],pocket[0]+pocket[2]-8])
+            for(y=[pocket[1],pocket[1]+pocket[3]-8])
+                translate([x,y,0]) cube([8,8,wood_contact_z+guide_height]);
+    }
+}
 module mount() {
     difference() {
         union() {
             grid_frame();
+            locating_corners();
             for(h=threaded) translate(h) screw_post();
             for(h=supported) translate(h) support_post();
             step_leg(-6.57,-1);
@@ -153,32 +179,29 @@ module parts() {
             translate([0,0,-eps]) cylinder(d=2.5,h=insert_l+2*eps);
         }
 }
+module dupont_envelopes() {
+    // Assumption: 2.6 x 2.6 mm housing, 14 mm back from PCB electronics face.
+    // All populated positions shown conservatively, not a wiring plan.
+    for(p=pins) translate([p[0]-1.3,p[1]-1.3,board_z-14]) cube([2.6,2.6,14]);
+}
 module connection_envelopes() {
     // Transparent RED boxes are DRAFT reserved space, NOT actual connectors.
-    color([0.95,0.12,0.1,0.22]) translate([-23,5.43,9.5]) cube([25,12,6]);
-    color([0.95,0.12,0.1,0.22]) translate([5.8,10.8,5]) cube([10,20,8]);
+    color([0.95,0.12,0.1,0.22]) translate([-23,5.43,board_z-4.5]) cube([25,12,6]);
+    color([0.95,0.12,0.1,0.22]) translate([5.8,10.8,board_z-9]) cube([10,20,8]);
 }
 module installation() {
-    // Only a 2-mm-wide section of the illustrative wall/glass is shown.
-    // No visual occlusion from the uncut wall behind the mount.
     color([0.72,0.55,0.34,0.8]) intersection() {
+        local_panel();
         translate([24.4,-34,wood_contact_z]) cube([2,91,wood_h]);
-        difference() {
-            translate([-18,-34,wood_contact_z]) cube([87,91,wood_h]);
-            translate([aperture[0],aperture[1],wood_contact_z-eps])
-                linear_extrude(wood_h+2*eps) rounded_rect(aperture[2],aperture[3],3);
-            translate([aperture[0]-2.2,aperture[1]-2.2,wood_contact_z+wood_h-plexi_h])
-                cube([aperture[2]+4.4,aperture[3]+4.4,plexi_h+eps]);
-        }
     }
-    // Illustrative rabbet only; actual glass fixing/edge support still open.
-    color([0.4,0.8,0.95,0.6])
-        translate([24.4,aperture[1]-2,wood_contact_z+wood_h-plexi_h+0.03])
-            cube([2,aperture[3]+4,plexi_h-0.03]);
+    color([0.4,0.8,0.95,0.6]) intersection() {
+        window_glass();
+        translate([24.4,-34,wood_contact_z]) cube([2,91,wood_h]);
+    }
 }
 color([0.92,0.48,0.20]) mount();
 if($preview && show_board) {color([0.22,0.48,0.36,0.28]) board(); parts();}
-if($preview && show_connections) connection_envelopes();
+if($preview && show_connections) { connection_envelopes(); color([0.1,0.4,0.9,0.45]) dupont_envelopes(); }
 if($preview && show_installation) installation();
 echo("Carrier only STL; grid base",base_size,"PCB z",board_z,"wood contact z",wood_contact_z);
 echo("PCB holes: two D2.5 screws; two D2.2 flat supports; inserts from REAR");

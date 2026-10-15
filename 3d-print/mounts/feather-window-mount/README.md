@@ -1,156 +1,167 @@
-# Feather-Fenster-Mount — Entwurf 09.10.2026
+# Feather-Fenster: passgeführter Druckträger + CNC-Front
 
-Eigenständiger Auftrag nach Nutzer-OK zur Z-Halter-Konzeptskizze.
-**Digitaler Vorschlag, kein gedruckter/passungsgeprüfter Mount.**
+## Aktueller Vorschlag — 15.10.2026
 
-## Einbau und Nutzerentscheidungen
+**Nutzerauftrag:** Noch nichts gefräst oder gebaut. Tasche und Druckteil dürfen
+zusammen neu ausgelegt werden. Träger außerhalb der Box mit Feather, Dupont-
+Leitungen und nach bestandenem USB-Test mit Akku vormontieren; komplett von innen
+einsetzen, bis die Anschläge anliegen, dann von innen mit Handwerkzeug befestigen.
+Eingebaut ist **kein Steck-/Handzugang** zu Dupont/JST nötig. Zur Wartung die
+Einheit wieder abschrauben. Platz für Stecker, Kabel und spannungsfreies Einsetzen
+bleibt erforderlich. Akku sitzt weiterhin im separaten Akkuhalter.
 
-- In der Draufsicht **vorne rechts**. Bisherige Vorderwand-Anordnung bleibt
-  Grundlage: TFT zeigt nach vorne, nicht aus dem Deckel nach oben.
-- USB-C-Ende zeigt zur **rechten Seitenwand**, Laden von der Seite gewünscht.
-  Die Darstellung des einzelnen Mounts zeigt USB links; das ist die lokale
-  CAD-Ansicht, nicht die Orientierung im Gehäuse. Bei Einbau entsprechend drehen.
-- Montagevorgabe des Nutzers: Feather außerhalb der Holzbox am Druckträger
-  befestigen, Dupont-Leitungen und nach bestandenem USB-Test den Akku anschließen,
-  dann die vorbereitete Einheit einsetzen und von innen verschrauben.
-  Dupont- und Akku-Stecker müssen nur vor dem Einsetzen erreichbar sein;
-  im eingebauten Zustand ist kein Steck-/Handzugang erforderlich. Zur Wartung
-  wird die gesamte Einheit wieder abgeschraubt. Die eingesteckten Stecker und
-  Leitungen brauchen trotzdem kollisionsfreien Bauraum ohne Quetschung und Zug.
-- Von außen bündige Plexiglasscheibe in gefräster Falz. Elektronik von innen
-  komplett vorbereitet einsetzen, Holzlaschen neben dem Fenster verschrauben.
-- Zwei seitliche Z-Laschen und ein offener Träger wurden als Konzept positiv
-  bewertet und dessen CAD-Umsetzung beauftragt. Diese Geometrie ist bewusst ein
-  Fenster-Mount, nicht die allgemeine Boden-Mount-Vorlage.
+**Digitaler Entwurf, keine reale Druck-/Holz-/Passungs- oder Sicherheitsabnahme.**
+Die neuen Passmaße sind gemeinsam konstruierte Sollmaße, keine Messwerte.
 
-## Dateien
+## Was geändert wurde
 
-- `feather_window_mount.scad`: parametrisierbare Quelle.
-- `feather_window_mount.stl`: **nur der gedruckte Mount**.
-- `iso.png`, `top.png`: ohne Platine.
-- `iso-board.png`, `top-board.png`, `side-board.png`: transparente Platine,
-  vereinfachte Komponenten. Keine echte bestückte STEP-Geometrie.
-- `connections.png`: Innenansicht; rote transparente Kästen sind reservierte,
-  **angenommene** USB-/JST-Räume, keine gemessenen Stecker.
-- `installation.png`: Seitenansicht mit einem schmalen Schnitt durch
-  illustrative Holzfront und Glas. Keine Frässchablone.
-- `render.sh`, `check_mesh.py`, `logs/`: reproduzierbare technische Prüfung.
+- Vier abgerundete Eckführungen greifen von innen **3 mm** in eine **4 mm**
+  tiefe CNC-Tasche. Die langen Seiten bleiben zwischen den Ecken offen.
+- **0,20 mm Spiel je Seite**, also 0,40 mm insgesamt. Keine Presspassung.
+  Oben 0,4 mm Einführschräge über 0,6 mm Höhe.
+- Die beiden Schraublaschen liegen voll auf der Holzinnenseite und bilden den
+  **Tiefenanschlag**. Führungsspitzen bleiben 1 mm vor dem Taschenboden;
+  die Schrauben halten fest, sie dienen nicht zur optischen Ausrichtung.
+- Spiel erlaubt ein kleines Restverdrehen; „absolut spielfrei“ ist ohne realen
+  Probedruck nicht zugesagt. `fit_clearance` nach Test in Restholz kalibrieren.
+- Rückwärtiger Bauraum vergrößert: PCB-Elektronikfläche jetzt 24 mm über der
+  Trägerbasis, Holzinnenseite bei 22 mm. **Die Platinen-/Displaylage zur Front
+  bleibt unverändert.** Unter der Platine sind 16 mm bis zum breiten Einsatzkopf.
+  Das berücksichtigt angenommene **2,6 × 2,6 × 14 mm Dupont-Steckerkörper**;
+  die alte 3,4-mm-Pinhülle reichte hierfür nicht. Reale Header-/Steckbauhöhe messen.
+- Bestehende Kabelbinder-Aufnahmen erhalten. Heißkleber ist nicht erforderlich
+  und ersetzt keine Zugentlastung. Kabel mit Biegereserve nach innen führen.
 
-## Herstellergeometrie statt Standard-Feather-Annahmen
+## Dateien und Bedienung
 
-Original-Adafruit-Eagle-Datei frisch geladen und maschinell ausgewertet:
-PCB **50,8 × 22,86 mm**, vier gerundete Ecken **R2,54**.
-Koordinaten bezogen auf linke untere PCB-Bounding-Box-Ecke, USB bei x≈0:
+Alles in diesem Ordner halten, damit die relativen SCAD-Verweise funktionieren:
 
-| Position | Lochzentrum x/y [mm] | Original-Bohrwert | Nutzung |
-|---|---|---|---|
-| USB unten | 2,54 / 2,54 | Ø 2,5 mm, plated Package | M2,5-Schraubpfosten |
-| USB oben | 2,54 / 20,32 | Ø 2,5 mm, plated Package | M2,5-Schraubpfosten |
-| Gegenende unten | 48,26 / 1,8415 | Ø 2,2 mm | flache Stütze, keine M2,5-Schraube |
-| Gegenende oben | 48,26 / 20,955 | Ø 2,2 mm | flache Stütze, keine M2,5-Schraube |
+- **`feather_window_mount.scad`**: druckbarer Träger, F6/STL nur das Kunststoffteil.
+- **`front_cnc.scad`**: 250 × 110 × 12 mm Frontplatte mit Fenster, innerer
+  Führungstasche und äußerer Glasfalz. Keine Eckverbindungen der Holzbox,
+  keine Pilotbohrungen und keine USB-Öffnung in der separaten Seitenwand.
+- **`window_geometry.scad`**: gemeinsame Schnittstellenmaße. Änderungen an Tasche,
+  Spiel, Holz-/Glasdicke oder Schichtung hier, nicht getrennt in zwei Modellen.
+- **`assembly.scad`**: Ansicht/Schnitt/Explosionszeichnung, kein Druckteil.
+  `scene` auf `section`, `exploded`, `inside` oder `outside` setzen.
+- `feather_window_mount.stl`, `front_cnc.stl`: echte Geometrie-Exporte.
+- `cnc-pocket.dxf`, `cnc-opening.dxf`, `cnc-rebate.dxf`, `cnc-glass.dxf`:
+  2D-Nennkonturen im **gleichen lokalen Koordinatensystem, Einheit mm**.
+  Es sind Bauteilgrenzen, **keine Werkzeugmittelbahnen und kein G-Code**.
+- PNGs: Träger, Platine, Anschlussräume, Schnitt, Explosionszeichnung,
+  eingebaute Innenansicht und beide Frässeiten.
+- `render.sh`, `check_mesh.py`, `check_fit.py`, `logs/`: Reproduktion/Prüfung.
 
-**Nicht vier gleich große Standardlöcher!** Kein Aufbohren, kein Erzwingen.
-Auch die zwei plated Ø2,5-Löcher am echten Board mit konkreter M2,5-Schraube
-kraftfrei prüfen; ein CAD-Bohrwert garantiert die fertige Lochpassung nicht.
+### CNC-Maße
 
-Display-Footprint laut Eagle: x=11,291…42,291, y=2,503…20,103 mm,
-auf gespiegelter Displayseite (`MR270`). D0/D1/D2 liegen ebenfalls auf
-Displayseite, nicht gemeinsam mit USB auf Elektronikseite. Glas verdeckt diese
-Taster; hier ist keine Bedienung durch die Scheibe geplant. Reset auf
-Elektronikseite zugänglich halten; BOOT bei Wartung gegebenenfalls durch
-Ausbau erreichen.
+| Operation | Nennmaß / Radius | Tiefe |
+|---|---|---|
+| Frontrohteil | 250 × 110 mm | 12 mm Holz |
+| Innen: Führungstasche | 64,8 × 36,86 mm, R3 | 4 mm ab Innenseite |
+| Durchbruch | 54,8 × 26,86 mm, R3 | durchgehend |
+| Außen: Glasfalz | 62,8 × 34,86 mm, R3 | 3 mm ab Außenseite |
+| Plexiglas-Vorschlag | 62,4 × 34,46 mm, R2,8 | 3 mm Material |
 
-Quellen:
-- [Adafruit Downloads / Eagle + CAD](https://learn.adafruit.com/esp32-s3-reverse-tft-feather/downloads)
+Die rechteckigen Grundkonturen sind um die Platinenmitte zentriert. Die
+4-mm-Innentasche hat zusätzlich einen zur USB-Seitenkante offenen Kanal
+(lokal x=−25…−5 / y=4…19, R2) und eine JST-Kabelausbuchtung
+(x=4,8…16,8 / y=27…32, R2). Diese sind in `cnc-pocket.dxf` bereits vereinigt;
+die vier Pass-Ecken bleiben davon unberührt. Die Leitungen werden später nach
+innen geführt, nicht zwischen Anschlag und Holz geklemmt. **Beidseitige
+Bearbeitung** mit registrierter Wendeaufspannung; DXFs nicht unabhängig mit
+beliebigem Nullpunkt importieren. CAM muss Fräserradius, Zustellung, Halterung,
+Spiegelung beim Wenden und Durchbruchstrategie ergänzen. Für die R3-Innenecken
+Fräser **höchstens Ø4 mm** wegen der R2-Anschlusskanäle. Tatsächliche Holzdicke zuerst messen.
+Glasfixierung noch festlegen; die Falz allein sichert es nicht gegen Herausfallen.
+
+Lokales System: USB links bei x≈0, +z nach außen; dies ist die **Innenansicht**
+der Front. Die USB-Seite entspricht der rechten Boxseite. Frontunterkante
+`y=-43,57`, USB-seitige Außenkante `x=-24`; Fenster-/PCB-Mitte liegt 49,4 mm
+von dieser Seitenkante und auf halber Fronthöhe. Position ist ein Vorschlag.
+Bei 12-mm-Seitenwand liegt deren innere Fläche bei x=-12; USB-Buchse x≈0:
+Zugriff durch die Seitenwand muss separat mit dem echten Ladestecker ausgelegt
+werden, inklusive Kunststoffkörper/Entlastung. Nicht bloß USB-C-Metallkontur fräsen.
+
+Schichtung im SCAD: Trägerbasis z=0; Holzanschlag z=22; PCB-Unterseite z=24;
+angenommene PCB-Oberseite z=25,6; Display bis z=27,8; Taschenboden z=26;
+Glasunterseite z=31; Außenfläche z=34. Display-/Glasabstand nominal **3,2 mm**.
+Die Fensteröffnung lässt die gesamte PCB-Kontur mit Rand frei; keine Klemme am TFT.
+
+### Schrauben, Einsätze und Druck
+
+- Holzlaschen: 3,5 mm dick, Durchgang Ø3,2, Ø6,2/90°-Senkung von innen.
+  Zwei 3×12-mm-Holzschrauben; nominal 8,5 mm Holzeingriff, 3,5 mm Restholz.
+  Kopfpassung, begrenztes Vorbohren und Halt im Pappel-Reststück prüfen.
+  Die Schraubzentren liegen jeweils 10 mm außerhalb der inneren Tasche.
+- Zwei ruthex RX-M2,5×5,7 **von hinten** einschmelzen, 0,2 mm zurückgesetzt.
+  Ø4,0-Einbauloch, 6,7 mm tief; 1,8 mm Wand um max. Einsatz-Ø4,6.
+- Zwei schmale Ø4,6-Schraubhälse und zwei Ø3,2-Stützen bis z=24. Gegenende
+  wird weiterhin nur gestützt, nicht durch seine Ø2,2-Löcher verschraubt.
+- **Alte PCB-Schraubenlängen gelten nicht mehr.** Beispiel mit 1,6-mm-PCB:
+  M2,5×25 reicht von z=25,6 bis z=0,6, nominell 5,3 mm Eingriff in den Einsatz.
+  Nur Rechenbeispiel: echte PCB-Dicke, Schraubenkopf, Gewindelänge, Bodenabstand
+  und Kopf-/Display-/Glasfreiheit prüfen, keinesfalls auf Grund festziehen.
+- Druckteil-Bounds x=−6,8…57,6, y=−24…46,86, z=0…25:
+  **64,4 × 70,86 × 25 mm**. Führungen und Hälse sind länger als zuvor;
+  PETG als Ausgangsidee, Druckorientierung, Schichthaftung, Steifigkeit und
+  Überhang-Support an den erhöhten Laschen im Slicer prüfen. Nicht supportfrei.
+- Erst Heat-Set- und Führungspassung am Probestück, dann Vollteil. Einsätze ohne
+  Elektronik einschmelzen. M2,5 durch die realen PCB-Löcher kraftfrei prüfen.
+  PCB-Schrauben vor dem Einsetzen von der Displayseite montieren.
+
+## Belegte Boardgeometrie / Quellen
+
+Original-Adafruit-Eagle: **50,8 × 22,86 mm**, Ecken R2,54. USB bei x≈0:
+
+| Lochzentrum x/y [mm] | Hersteller-Bohrwert | Verwendung |
+|---|---|---|
+| 2,54 / 2,54 | Ø2,5 plated | Schraubpfosten |
+| 2,54 / 20,32 | Ø2,5 plated | Schraubpfosten |
+| 48,26 / 1,8415 | Ø2,2 | flache Stütze |
+| 48,26 / 20,955 | Ø2,2 | flache Stütze |
+
+Display-Footprint x=11,291…42,291 / y=2,503…20,103, gespiegelte Displayseite.
+D0/D1/D2 ebenfalls Displayseite; hinter Glas nicht bedienbar, so vorgesehen.
+Reset/BOOT gegebenenfalls nach Ausbau erreichen. Hersteller-STEP gesichert,
+aber nicht als vollständige bestückte Kollisionsgeometrie ausgewertet.
+
+- [Adafruit Downloads](https://learn.adafruit.com/esp32-s3-reverse-tft-feather/downloads)
 - [Original-PCB](https://github.com/adafruit/Adafruit-ESP32-S3-Reverse-TFT-Feather-PCB)
-- [Original CAD und Foto](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/5691%20Feather%20ESP32%20S3%20Reverse%20TFT)
+- [Original CAD](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/5691%20Feather%20ESP32%20S3%20Reverse%20TFT)
 - [Elektronikseitenfoto](https://cdn-shop.adafruit.com/970x728/5691-03.jpg)
-- [ruthex Einbauzeichnung](https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911)
+- [ruthex Zeichnung](https://cdn.shopify.com/s/files/1/0567/7019/9760/files/1Tabelle.PT05_eb2a30fa-5c34-46f8-b557-a6c432354560.jpg?v=1748341911)
 
-Gesicherte Downloads, Dateilisten, Extraktor und Fakten:
-`docs/cad/feather-window/`. STEP wurde gesichert, aber **nicht** als
-geprüfte 3D-Kollisionsgeometrie ausgewertet. Foto belegt keine Nutzer-Lot-/Kabelhöhe.
+Gesicherte Daten/Extraktor: `docs/cad/feather-window/`.
 
-## Konstruktion / veränderbare Entwurfsmaße
-
-Aktuelle STL-Hülle **62 × 70,86 × 14 mm**, lokale Bounds
-x=−5,6…56,4, y=−24…46,86, z=0…14. z zeigt zur Außenseite.
-
-- Offener Gitterrahmen: 2 mm dick, 4-mm-Zellen / 2-mm-Rippen;
-  große zusätzliche mittige Öffnung für Elektronikzugang.
-- PCB-Elektronikfläche z=14. Zwei Ø4,6-Schraubhälse, zwei Ø3,2-Stützen.
-  Breiter Ø8,2-Einsatzbereich endet bei z=8: 6 mm Abstand zur Platine.
-- Zwei ruthex RX-M2,5×5,7 **von hinten/Unterseite** einschmelzen,
-  Unterkante 0,2 mm zurückgesetzt. Einbauloch Ø4,0; 6,7 mm tief ab
-  Einsatzbeginn; 1,8 mm Wand um maximalen Einsatz-Ø4,6.
-  Diese Unterseiten-Einsatzmontage ist Teil des neuen Vorschlags, keine
-  bereits physisch freigegebene Einbaumethode.
-- Kleine lokale Dreiecksverstärkungen an den 90°-Stufen. Keine Wanne,
-  umlaufenden Wände oder PCB-Klemmung am Display.
-- Holzlaschen 3,5 mm dick, Holz-Kontaktfläche z=12. Ø3,2-Durchgang,
-  Ø6,2/90°-Senkung **von innen**, also auf der dem Holz abgewandten Fläche.
-  Unter der Senkung 2 mm Material. Zwei Schrauben als Vorschlag.
-- 3×12-mm-Holzschraube: nominal 8,5 mm Holzeingriff / 3,5 mm Reserve bei
-  voller 12-mm-Holzstärke und passend bündigem Kopf. Keine reale Freigabe.
-- Zwei Kabelbinder-Schlitze 1,6×4 mm im lokalen Pad auf der hinteren
-  Trägerebene. Zugentlastung nur mit geeignetem kleinen Binder,
-  ohne Quetschen/enge Kabelbiegung; nicht über LiPo-Pouch führen.
-
-**Nicht gemessene Höhen / keine Fertigungsmaße:** PCB-Dicke 1,6 mm,
-Displayhöhe 2,2 mm, Plexiglas 3 mm, Pinüberstand 3,4 mm, Lotradius 1,1 mm.
-Die illustrative Fensteröffnung 64,8×40,86 und Falz sind nur Anzeigeannahmen.
-Bei dieser angenommenen Schichtung: Platine 2 mm vor Holzinnenseite,
-Display 3,2 mm hinter Glas. Wirkliche Schichtung vor Fräsen und Druck einstellen!
-
-## USB und Akku — was jetzt frei ist, was noch zu prüfen ist
-
-Die Laschen liegen an den Längsseiten, **nicht vor dem USB-Ende**.
-Das große Mittel-Fenster bleibt offen; JST nicht unter einer Druckwand.
-Reservierte Beispiel-Räume relativ zum lokalen CAD:
-
-- USB: x=−23…2, y=5,43…17,43, z=9,5…15,5.
-- JST/Kabel: x=5,8…15,8, y=10,8…30,8, z=5…13.
-
-125 Innenpunkte je Raum wurden gegen die tatsächliche STL geprüft. Das ist
-kein vollständiger Solid-Solid-Kollisionsnachweis und **keine Garantie für
-unbekannte Stecker, angelötete Header oder reale Biegeradien**.
-
-USB-Seitenöffnung und der Abstand Feather→rechte Seitenwand sind noch offen.
-Bei direktem Einstecken muss auch der USB-Stecker-Kunststoffkörper durch die
-12-mm-Wand bzw. in eine passende innere Tasche passen. Nicht einfach nur eine
-kleine USB-C-Lochkontur fräsen. Alternative wäre eine geeignete, noch nicht
-festgelegte Panel-Verlängerung. Der Mount entscheidet keine Beschaffung.
-Kabel beim Herausnehmen nicht ziehen; Außen-Ladekabel zuerst abstecken.
-
-Akku bleibt am separaten Akkuhalter, nicht an diesem Mount. Nicht am JST
-ziehen; Polung prüfen, Akku für mechanische Arbeiten abziehen und erst nach
-USB-Prüfung wieder anschließen. Ladekabel/USB-Port dürfen beim Spielen keine
-Stoßlast auf die Boardbuchse übertragen. TFT-Orientierung erst in der finalen
-Firmware passend zur mechanischen Drehung setzen; hier keine Firmwareänderung.
-
-## Prüfung, Druck und Abnahme
+## Reproduktion und Prüfumfang
 
 ```bash
-python docs/cad/feather-window/verify_source.py
+python3 docs/cad/feather-window/verify_source.py
 bash 3d-print/mounts/feather-window-mount/render.sh
 ```
 
-OpenSCAD 2026.09.18, CGAL, hardwarnings, binäre STL, offscreen-Vorschauen.
-Tatsächliche STL: geschlossen, konsistent orientiert, eine zusammenhängende
-Oberfläche, keine degenerierten Dreiecke; Bounds, Holzloch/Senkrichtung,
-Einsatzkammern, Stützen und freie Räume geprüft. Alle sieben aktuellen
-Vorschauen persönlich durch den Agenten angesehen.
+`render.sh` lädt bei Bedarf OpenSCAD 2021.01, xvfb-run und shellcheck aus
+gepinntem nixpkgs `0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5`, ohne Root und
+ohne Änderung an `flake.lock`. Xvfb + Mesa 26.1.5 (Software-OpenGL) für echte PNGs;
+`QT_QPA_PLATFORM=offscreen` allein funktionierte auf diesem Server nicht.
+Auch Xvfb ohne Mesa-Pfade meldete `glXChooseFBConfig failed`. Mesa-Library- und
+DRI-Pfade müssen **vor** dem Xvfb-Start für Server und Client gesetzt sein;
+`render.sh` erledigt dies nur in seiner eigenen Prozessumgebung.
+CGAL ist in dieser Version der Standard; `--backend=CGAL` entfällt.
 
-**Offen:** Sichtentscheidung zu konkreter Form, Druck-/Heat-Set-/Lasttest,
-reale Platinen- und Kopfpassung, lot-/header-/USB-/JST-Freiraum,
-Schraubenlängen, Holzhalteprobe, Fenster-/Falzmaße, Plexiglasfixierung,
-USB-Seitenzugang und Kindersicherheitsbewertung.
+Mesh-Test prüft reale STL: geschlossene/konsistent orientierte zusammenhängende
+Oberfläche, keine degenerierten Dreiecke, Bounds, Schraublöcher, Einsätze und
+Führungen. CGAL-Schnittmengen prüfen Träger/Holz, PCB und angenommene Stecker-
+hüllen. Absichtlich um 0,5 mm verschobene bzw. zu tief gesetzte Modelle müssen
+Kollisionen auslösen. Für die nominale Holzprüfung wird der Träger 0,001 mm
+zurückgesetzt, um reine Nullstärken-Kontaktflächen des alten CGAL auszuschließen.
+Das ist eine digitale Kollisionsprüfung, kein Nachweis realer Steckermontage.
+Der gerade Einsetzweg ist geometrisch frei: alle Trägerteile über der Holz-
+innenseite liegen in der zur Innenseite offenen Tasche; der Rest bleibt dahinter.
+Kabel und der separate Akku sind nicht als verformbare Körper simuliert.
 
-FDM-Ausgangsidee: PETG, zunächst Probestück für Heat-Set. Keine universellen
-Druckparameter freigegeben. Die erhöhten Laschen erzeugen Überhänge:
-Slicer-Support und Druckorientierung prüfen; STL-Z=0 ist Konstruktionsebene,
-keine Aussage „druckt supportfrei“. Einschmelzen außerhalb der montierten
-Elektronik, Binder-/Schraubenkanten entgraten. PCB-Schrauben von Displayseite
-vor Einbau ins Fenster setzen; Schrauben dürfen keine Bauteile oder das Glas
-berühren. Zwei rechte Stützen verhindern nicht das Abheben bei Zug:
-Biegung/Schock und USB-Stecklasten real prüfen, nicht mit Kabeln abfangen.
+**Physisch offen:** Passspiel/Restverdrehung, tatsächliche Stecker- und Headerhöhe,
+Kabelbiegung/Zugentlastung, TFT-/Taster-/Kopf-Höhen, Glasfixierung, lange Pfosten
+unter Stoß-/USB-Last, Heat-Set, Schrauben-/Holzhalteprobe und Seiten-USB-Zugang.
+Keine Bau-/Kindersicherheitsfreigabe. Akku-Polung prüfen, mechanisch spannungsfrei
+arbeiten; keine Zuglast auf JST/USB, keine Schraubspitze außen.

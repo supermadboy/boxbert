@@ -38,8 +38,8 @@ while stack:
 require(len(seen)==n,'Disconnected surfaces')
 mins=tuple(min(v[k] for t in triangles for v in t) for k in range(3))
 maxs=tuple(max(v[k] for t in triangles for v in t) for k in range(3))
-require(all(abs(a-b)<1e-5 for a,b in zip(mins,(-5.6,-24,0))),'Unexpected minimum bounds')
-require(all(abs(a-b)<1e-5 for a,b in zip(maxs,(56.4,46.86,14))),'Unexpected max bounds / preview solids in STL')
+require(all(abs(a-b)<1e-5 for a,b in zip(mins,(-6.8,-24,0))),'Unexpected minimum bounds')
+require(all(abs(a-b)<1e-5 for a,b in zip(maxs,(57.6,46.86,25))),'Unexpected max bounds / preview solids in STL')
 require(volume>0,'Negative signed volume')
 def inside(p):
     direction=(0.3127,0.1731,1);hits=[]
@@ -57,23 +57,25 @@ def inside(p):
         if not unique or abs(h-unique[-1])>1e-5:unique.append(h)
     return bool(len(unique)%2)
 checks=[
+ ('Dupont housing lower outer corner',(5.1,2.5,maxs[2]-14),False),
+ ('New pocket locating corner',(-5.9,-4.4,23.5),True),
  ('Grid cell open',(-2,0,1),False),
  ('Grid rib present',(-4.8,11.43,1),True),
  ('Central opening',(25.4,11.43,1),False),
- ('Lower tab top material',(30,-17,11.8),True),
- ('Lower tab screw bore',(25.4,-17,11),False),
- ('Lower head recess opens INSIDE',(27.8,-17,8.6),False),
- ('Wood-contact face beside bore',(27.8,-17,11.9),True),
- ('Upper tab bore',(25.4,39.86,11),False),
+ ('Lower tab top material',(30,-17,21.8),True),
+ ('Lower tab screw bore',(25.4,-17,21),False),
+ ('Lower head recess opens INSIDE',(27.8,-17,18.6),False),
+ ('Wood-contact face beside bore',(27.8,-17,21.9),True),
+ ('Upper tab bore',(25.4,39.86,21),False),
  ('Step leg',(25.4,-5,6),True),
  ('Air below outer tab',(25.4,-20,4),False),
  ('Insert pocket',(2.54,2.54,4),False),
  ('Insert surrounding full wall',(5.54,2.54,4),True),
- ('Upper screw passage',(2.54,2.54,13),False),
- ('Narrow upper screw post',(4.54,2.54,13),True),
- ('Right D2.2-hole location is flat support',(48.26,1.8415,13.9),True),
- ('USB route reserved space',(-10,11.43,12),False),
- ('JST cable reserved space',(10.8,17.5,8),False),
+ ('Upper screw passage',(2.54,2.54,23),False),
+ ('Narrow upper screw post',(4.54,2.54,23),True),
+ ('Right D2.2-hole location is flat support',(48.26,1.8415,23.9),True),
+ ('USB route reserved space',(-10,11.43,22),False),
+ ('JST cable reserved space',(10.8,17.5,18),False),
  ('Strain relief slot',(8,27,1),False),
  ('Strain relief bridge',(10.8,27,1),True),
 ]
@@ -84,8 +86,8 @@ print('PASS closed, consistently oriented, one connected surface; nondegenerate 
 for label,point,expected in checks:
     require(inside(point)==expected,label);print('PASS',label)
 # Sample reserved connector boxes against actual mesh, not merely one point.
-for label,lo,hi in [('USB',(-23,5.43,9.5),(2,17.43,15.5)),
-                    ('JST',(5.8,10.8,5),(15.8,30.8,13))]:
+for label,lo,hi in [('USB',(-23,5.43,19.5),(2,17.43,25.5)),
+                    ('JST',(5.8,10.8,15),(15.8,30.8,23))]:
     for ix in range(5):
         for iy in range(5):
             for iz in range(5):
@@ -95,7 +97,7 @@ for label,lo,hi in [('USB',(-23,5.43,9.5),(2,17.43,15.5)),
 facts=json.loads((p.parents[2]/'docs/cad/feather-window/source-facts.json').read_text())
 require([h['drill'] for h in facts['holes']]==[2.5,2.5,2.2,2.2],'Manufacturer source changed')
 for h in facts['holes'][:2]:
-    require(not inside((*h['xy'],13.9)),'Wrong screw hole location')
+    require(not inside((*h['xy'],23.9)),'Wrong screw hole location')
 for h in facts['holes'][2:]:
-    require(inside((*h['xy'],13.9)),'Wrong support location')
+    require(inside((*h['xy'],23.9)),'Wrong support location')
 print('PASS post locations checked against independently extracted Eagle JSON')

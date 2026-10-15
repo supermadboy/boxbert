@@ -63,8 +63,8 @@ Druck-/Passungsabnahme. Vorgänger im Archiv, nicht als Vorlage verwenden.
 Übergabe/Prüfstand in `docs/mounts-weiterarbeit.md` und
 `docs/testprotokoll-aw9523-mount.md`.
 Weitere vom Nutzer genannte Modul-Mounts: SD-Modul und Verstärker.
-Befestigungsdetails für Feather, Lautsprecher und Deckelmodule sind noch
-nicht als konkrete 3D-Druckteile beschlossen.
+Für den Feather liegt inzwischen der passgeführte Fenster-Vorschlag vom
+15.10.2026 vor (Abschnitt unten); Lautsprecher- und Deckel-Mounts bleiben offen.
 
 Das gewünschte Grundprinzip:
 
@@ -133,6 +133,27 @@ Lötstellen.
 Die Stützpfosten sind keine formschlüssige Verdrehsicherung. Schraubklemmung,
 Lötstellenfreiraum und Druckpassung müssen am realen Aufbau geprüft werden.
 Prüfstand: `docs/testprotokoll-stepup-mount.md`.
+
+## Feather-Fenster — passgeführter CNC-/Druck-Vorschlag 15.10.2026
+
+Noch nichts gefräst oder gebaut laut Nutzer; CNC-Tasche und Druckteil gemeinsam
+frei auslegbar. Neuer Auftrag: selbst ausrichtender Einsatz mit Tiefenanschlag,
+weil die Front im montierten Rahmen nur von innen mit Handwerkzeug erreichbar
+ist. Kein nachträgliches Ausrichten beim Einschrauben gewünscht.
+
+`3d-print/mounts/feather-window-mount/` enthält die gemeinsame Parameterdatei,
+SCAD für Front und Träger, STL, DXF-Konturen und Baugruppen-Vorschauen.
+Vier Eckführungen greifen mit nominal 0,20 mm Spiel je Seite 3 mm tief in eine
+4-mm-Innentasche; Holzlaschen bilden den Anschlag. Außen 3-mm-Glasfalz.
+Rückwärtiger Bauraum wegen vormontierter Dupont-Buchsen vergrößert; Displaylage
+zur Front unverändert. Steckerhüllen sind Annahmen, reale Passung nicht geprüft.
+
+Montage: Feather und Leitungen außerhalb am Träger montieren, nach USB-Test
+Akku anschließen, Einheit von innen einsetzen und verschrauben. Im eingebauten
+Zustand **kein Steckzugang** erforderlich; zur Änderung Träger wieder ausbauen.
+Kabel brauchen trotzdem Platz ohne Quetschung/Zug. Keine Presspassungs- oder
+Druck-/Fräsfreigabe ohne Probestück. Glasfixierung und USB-Seitenöffnung mit
+realem Stecker noch offen; Details und Maße im Mount-README.
 
 ## Weitere offene mechanische Fragen
 
