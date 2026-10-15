@@ -10,7 +10,8 @@ Recherche 15.10.2026 zum beauftragten Deckel-Mount, noch kein fertiger CAD-Entwu
   wie beim Feather; Rückwand und Kabel berücksichtigen.
 - Gemeinsames Modell für Druckhalter, CNC-Durchbruch und äußere Glasfalz.
   CNC nur von außen; keine Innentasche/Wendeaufspannung.
-- Links/rechts der PCB-Lochseite bei DIN links ist noch am echten Teil zu klären.
+- Beim Shopmodul liegen bei DIN links von der LED-Seite gesehen die Löcher
+  an der hinteren langen Kante (Kondensatorreihe hinten). Am echten Teil abgleichen.
 
 ## Tatsächlich eingesehene Quellen
 
@@ -26,12 +27,18 @@ PCB-Dicke oder Höhe der Lötstellen. Keine Nutzermessung.
 - `shop-front.webp`: [unbeleuchtete LED-Seite](https://www.berrybase.de/media/da/5a/dc/1729395207/NeoPixelStickmit8WS28125050RGBLEDs-77021.webp?ts=1750795082).
 - `shop-lit.webp`: [beleuchtete LED-Seite mit Kabeln](https://www.berrybase.de/media/cd/46/f9/1729395205/NeoPixelStickmit8WS28125050RGBLEDs-77022.webp?ts=1750795081).
 
-Beide Original-Shopfotos sind hier unverändert als Quellenkopien gespeichert,
+Zusätzlich `shop-back.webp`: [Rückseite](https://www.berrybase.de/media/57/54/c3/1729395209/NeoPixelStickmit8WS28125050RGBLEDs-77020.webp).
+Bei lesbarer Schrift und Lochreihe oben steht dort DOUT links und DIN rechts;
+von der LED-Seite mit weiterhin oben liegender Lochreihe ist DIN somit links.
+Auf der Unterseite sind keine aufgesetzten SMD-Bauteile erkennbar; das misst
+nicht die späteren Nutzer-Lötstellen.
+
+Die drei Original-Shopfotos sind hier unverändert als Quellenkopien gespeichert,
 nicht als eigene technische Zeichnungen. Sichtbar sind zwei Befestigungslöcher
 an einer **langen Kante**, ungefähr im Bereich zwischen zweiter/dritter bzw.
-sechster/siebter LED. Nicht an den Stirnenden. Auf diesen Bildern keine
-lesbare DIN-/DOUT-Beschriftung und keine bemaßte Lochzeichnung. Aus dem
-beleuchteten Demo allein folgt keine eindeutige DIN-Orientierung.
+sechster/siebter LED. Nicht an den Stirnenden. Auf den LED-Bildern keine
+lesbare DIN-/DOUT-Beschriftung und keine bemaßte Lochzeichnung. Die Orientierung
+wird durch das separat geprüfte Rückseitenfoto belegt, nicht durch das Leucht-Demo.
 
 ## Vor fertigungstauglichem Modell offen
 

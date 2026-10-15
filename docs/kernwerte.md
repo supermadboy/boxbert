@@ -170,8 +170,8 @@ bei EC11-artigem Aufbau — **am realen Teil nachmessen**).
 nennt ca. **54 × 10,5 × 3,15 mm** für das Modul und **5 × 5 × 1,50 mm** je LED.
 PCB-Dicke und reale Löt-/Kabelüberstände sind damit nicht einzeln gemessen.
 Shopfotos zeigen zwei Montagelöcher an einer **langen Kante**, nicht an den
-Stirnenden. Lochdurchmesser/-koordinaten und DIN-/DOUT-Orientierung zum
-Lochbild sind noch offen. Frühere Ø2,1-/M2-Zuordnung nicht als Bohrfreigabe
+Stirnenden. Lochdurchmesser/-koordinaten sind noch offen. Rückseitenfoto belegt:
+DIN links von der LED-Seite gesehen bedeutet Loch-/Kondensatorreihe hinten. Frühere Ø2,1-/M2-Zuordnung nicht als Bohrfreigabe
 verwenden; die alte Angabe „~10 mm LED-Abstand“ war unplausibel und ist gestrichen.
 Nutzer wünscht DIN links von außen gesehen. Quellenfotos und offene Maße:
 `docs/cad/neopixel-stick/README.md`. Noch kein fertiger Druck-/CNC-Mount.
