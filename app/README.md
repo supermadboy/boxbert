@@ -1,7 +1,16 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-boxbert-8**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-statusbar-9**
+
+### Smartphone-Statusleiste
+
+Akku, Lautstärke und WLAN erscheinen jetzt als kompakte Symbole oben rechts
+im TFT, ohne ausgeschriebene Werte. Zugängliche Beschriftungen erhalten die
+Beispielwerte. Die einfachen Symbolkoordinaten sind in `src/tft-status-icons.json`
+für eine spätere C/C++-Übertragung gebündelt; keine Firmwareänderung.
+48 Tests und echte HTTPS-/Offline-/UX-Prüfungen bestanden:
+[aktueller Statusleisten-Prüfbericht](docs/verification-tft-statusbar.md).
 
 ## TFT-Vorschau · 16.10.2026
 

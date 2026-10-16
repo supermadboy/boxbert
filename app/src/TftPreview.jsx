@@ -1,5 +1,13 @@
 import React,{useEffect,useState} from 'react';
 import './tft.css';
+import statusIcons from './tft-status-icons.json';
+
+function StatusBar(){
+ const colors={ink:'#eff6ff',muted:'#526373',accent:'#82e3c2',none:'none'};
+ return <div className="tft-status" role="group" aria-label="Gerätestatus · Beispieldaten" data-tft-region>{statusIcons.icons.map(icon=><svg key={icon.id} className={'tft-status-icon tft-status-'+icon.id} viewBox={`0 0 ${statusIcons.width} ${statusIcons.height}`} role="img" aria-label={icon.label}>
+  <title>{icon.label}</title>{icon.shapes.map(({type,points,fill,tone,...attrs},index)=>React.createElement(type,{...attrs,key:index,points:points?.map(point=>point.join(',')).join(' '),fill:colors[fill],stroke:fill==='none'?colors[tone||'ink']:'none',strokeWidth:1,strokeLinejoin:'round',strokeLinecap:'round'}))}
+ </svg>)}</div>;
+}
 
 // Deliberately independent of the device adapter and saved demo configuration.
 const examples={
@@ -26,8 +34,7 @@ export function TftPreview(){
  return <section className="card tft-preview"><h2>TFT-Vorschau</h2>
   <p className="tft-disclaimer">Beispieldaten · keine Geräteverbindung</p>
   <figure className="tft-figure"><div className="tft-bezel"><div className="tft-screen" aria-label="TFT-Anzeige mit Beispieldaten">
-   <div className="tft-status" data-tft-region><span>Akku 78 %</span><span>Lautstärke 35 %</span></div>
-   <div className="tft-wifi" data-tft-region><span className="tft-wifi-dot" aria-hidden="true"/><span>WLAN verbunden</span><span className="tft-demo">DEMO</span></div>
+   <span className="tft-demo" data-tft-region>DEMO</span><StatusBar/>
    <div className="tft-character" data-tft-region><Boxbert/></div>
    <div className="tft-identity" data-tft-region><strong>{song.figure}</strong><span>{playing?'Läuft':'Pause'}</span></div>
    <div className="tft-title" data-tft-region tabIndex={0} aria-label={'Songtitel: '+song.title}><span key={song.title} className={'tft-title-track'+(example==='fox'?' is-long':'')}>{song.title}</span></div>

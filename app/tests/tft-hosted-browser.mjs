@@ -1,6 +1,6 @@
 import {chromium,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
-const out=new URL('../docs/tft-ui/',import.meta.url).pathname;
+const out=new URL('../docs/tft-statusbar-ui/',import.meta.url).pathname;
 await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
 try {
@@ -9,7 +9,7 @@ try {
  page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(r.status()>=400)failed.push(r.status()+' '+r.url());});
  page.on('request',r=>{if(/\/(files|tags|upload|settings|pixel|buttons)$/.test(new URL(r.url()).pathname))api.push(r.url());});
- const r=await page.goto('https://habibi.supermittel.com/boxbert/?stand=tft-boxbert-8');expect(r.status()).toBe(200);
+ const r=await page.goto('https://habibi.supermittel.com/boxbert/?stand=tft-statusbar-9');expect(r.status()).toBe(200);
  await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
  await expect(page.locator('.tft-screen')).toBeVisible();
  console.log('TFT-TEXT',await page.locator('.tft-screen').innerText());

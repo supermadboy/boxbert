@@ -7,7 +7,10 @@
   Lautstärke, Titel-Laufschrift, Fortschritt und Spielzeit. Nur Beispieldaten,
   keine Firmwareänderung. 47 Tests und HTTPS-/Offline-/UX-Prüfungen bestanden.
   Designfeedback und späterer Geräte-Render-/Statusvertrag bleiben offen.
-  Nachweise: `app/docs/verification-tft.md`; Release `?stand=tft-boxbert-8`.
+  Nachweise: `app/docs/verification-tft.md`. Statusleiste anschließend auf
+  Nutzerwunsch als Smartphone-Icons oben rechts umgesetzt; portierbare
+  Symbolgeometrie, 48 Tests und HTTPS/offline geprüft. Aktueller Nachweis:
+  `app/docs/verification-tft-statusbar.md`, Release `?stand=tft-statusbar-9`.
 
 **Fertigungscheck 16.10.2026:** Alle zwölf erneut ausgeführten Mesh-/Schablonen-/
 CNC-Prüfaufrufe bestanden. **SD-Halter inzwischen fertig konstruiert**, siehe

@@ -10,6 +10,10 @@ keine Geräteverbindung und keine Änderung an Firmware oder echtem TFT.
 - Figurenname und Songtitel; lange Songtitel laufen langsam als Laufschrift.
 - Fortschrittsleiste mit vergangener Spielzeit und Gesamtdauer.
 - Akku, Lautstärke und WLAN-Verbindung **innerhalb der TFT-Vorschau** sichtbar.
+  Nutzerfeedback 16.10.: kompakte Smartphone-Symbole oben rechts, keine
+  ausgeschriebenen Werte. Boxbert-Look ausdrücklich positiv bewertet.
+  Icon-Geometrie für spätere C/C++-Übertragung gebündelt;
+  [aktueller Nachweis](../../app/docs/verification-tft-statusbar.md).
 - Boxbert als kleine dreidimensionale Box mit großen, ausdrucksstarken Augen
   und Persönlichkeit im Clippy-Stil. Dezentes Blinzeln, Wippen und neugieriges
   Drehen; zunächst keine Sprüche. Die erste ASCII-Idee wurde durch den

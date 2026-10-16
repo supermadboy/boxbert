@@ -15,7 +15,12 @@ try{
  await expect(page.getByRole('img',{name:'Boxbert, ein neugieriges dreidimensionales Box-Maskottchen'})).toBeVisible();
  expect(await page.locator('.boxbert-cube').evaluate(el=>getComputedStyle(el).transformStyle)).toBe('preserve-3d');
  expect(await page.locator('.boxbert-face').count()).toBe(6);
- for(const text of ['Akku 78 %','Lautstärke 35 %','WLAN verbunden','Fuchs','Der kleine Fuchs auf einer großen Reise durch den Zauberwald','0:42 / 3:24']) await expect(screen.getByText(text,{exact:true})).toBeVisible();
+ for(const text of ['Fuchs','Der kleine Fuchs auf einer großen Reise durch den Zauberwald','0:42 / 3:24']) await expect(screen.getByText(text,{exact:true})).toBeVisible();
+ const status=screen.getByRole('group',{name:'Gerätestatus · Beispieldaten'});
+ await expect(status).toBeVisible();
+ for(const name of ['Akku 78 Prozent','Lautstärke 35 Prozent','WLAN verbunden']) await expect(status.getByRole('img',{name,exact:true})).toBeVisible();
+ expect(await status.innerText()).toBe('');
+ expect(await status.evaluate(el=>{const a=el.getBoundingClientRect(),b=el.closest('.tft-screen').getBoundingClientRect();return a.right<=b.right&&a.right>b.right-20*(b.width/240)&&a.top<b.top+10*(b.width/240);})).toBe(true);
  for(const child of await screen.locator('[data-tft-region]').all()) {
   const contained=await child.evaluate(el=>{const a=el.getBoundingClientRect(),b=el.closest('.tft-screen').getBoundingClientRect();return a.left>=b.left&&a.top>=b.top&&a.right<=b.right+.5&&a.bottom<=b.bottom+.5;});
   expect(contained).toBe(true);

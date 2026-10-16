@@ -4,10 +4,9 @@
 .tft-figure {margin:28px 0;text-align:center;}
 .tft-bezel {display:inline-block;padding:12px;background:#070b10;border:1px solid #46515e;border-radius:12px;box-shadow:0 8px 24px #0003;}
 .tft-screen {position:relative;width:240px;height:135px;background:#0c1219;color:#eff6ff;text-align:left;font-family:system-ui,sans-serif;line-height:1.2;overflow:hidden;color-scheme:dark;isolation:isolate;}
-.tft-status {position:absolute;top:5px;left:7px;right:7px;display:flex;justify-content:space-between;font-size:9px;font-weight:600;}
-.tft-wifi {position:absolute;top:21px;left:7px;right:7px;display:flex;align-items:center;gap:4px;font-size:9px;color:#c3d3df;}
-.tft-wifi-dot {width:5px;height:5px;border-radius:50%;background:#82e3c2;}
-.tft-demo {margin-left:auto;font-size:7px;letter-spacing:1px;color:#b1bfce;}
+.tft-status {position:absolute;top:5px;right:7px;display:flex;gap:5px;height:14px;align-items:center;}
+.tft-status-icon {display:block;width:24px;height:14px;overflow:visible;}
+.tft-demo {position:absolute;top:8px;left:7px;font-size:7px;letter-spacing:1px;color:#b1bfce;}
 .tft-character {position:absolute;left:6px;top:36px;width:87px;height:63px;}
 .tft-identity {position:absolute;left:103px;top:49px;width:129px;display:grid;gap:5px;}
 .tft-identity strong {font-size:17px;font-weight:650;letter-spacing:.1px;}

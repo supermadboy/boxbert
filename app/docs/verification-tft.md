@@ -1,5 +1,9 @@
 # TFT-Vorschau · Browser-Abnahme vom 16.10.2026
 
+Historischer Erststand. Die beschrifteten Statuswerte wurden danach auf
+Nutzerwunsch durch eine Smartphone-Statusleiste ersetzt. Aktuelle Nachweise:
+[Statusleisten-Prüfbericht](verification-tft-statusbar.md).
+
 Release: https://habibi.supermittel.com/boxbert/?stand=tft-boxbert-8
 
 ## Umfang
