@@ -1,0 +1,13 @@
+PASS pcb: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS underside: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS pins: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS connector: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS card: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS wood: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS heads: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS heads-tolerance: 0.000000 mm^3 volume <=0.001 mm^3 (acceptance threshold)
+PASS heads-control: 6.771347 mm^3 deliberate collision >0.001 mm^3 detected
+PASS pins-control: 3.496599 mm^3 deliberate collision >0.001 mm^3 detected
+PASS connector-control: 253.700470 mm^3 deliberate collision >0.001 mm^3 detected
+PASS card-control: 263.916066 mm^3 deliberate collision >0.001 mm^3 detected
+Heads: max D4, radial play 0.1 and component XY allowance 0.1 mm checked against ASSUMED envelopes only. Real module/head/card/hand fit NOT certified.

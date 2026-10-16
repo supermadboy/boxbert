@@ -1,5 +1,21 @@
 # Übergabe — Einzel-Mounts
 
+## Aktuell 16.10.2026: SD-Halter fertig konstruiert
+
+Nutzer beauftragt Fertigstellung. `3d-print/mounts/sd-mount/README.md` ist
+die aktuelle Referenz statt des früheren Nur-Schablonen-Stands: Gitterhalter
+44×56×12 mm, vier gestufte Pfosten im akzeptierten 20×38-mm-Raster, vier
+ruthex RX-M2,5×5,7 von unten, zwei seitliche 3×12-Senkkopf-Holzschrauben.
+M2,5×12 als Längenbeispiel; reduzierte PCB-Köpfe max. Ø4/Höhe1,8 mm,
+konkreten Schraubentyp/Verfügbarkeit und echte Kopf-/Sockelfreiheit prüfen.
+Reale Lochraster-/Unterseiten-/Heat-Set-/Lastpassprobe bleibt offen, kein
+fehlender CAD-Auftrag daraus. Stecker Richtung -Y, Karte +Y ohne Wand.
+Digitale Prüfergebnisse im Mount-Ordner; keine physische Freigabe.
+
+Gehäuse-/Button-/NFC-/NeoPixel-Anordnung, Leisten/Kabelräume und Lautsprecher-
+Rückwand macht Daddelbert selbst, nicht als Gesamt-CAD-Auftrag nachfordern.
+Akku-Basis/Bügel existieren; Rückhaltung bedeutet nur reale Halteprobe.
+
 ## Aktuell: NFC-Reader PN532-MOD beauftragt und konstruiert
 
 Daddelbert hat den NFC-Mount ausdrücklich beauftragt und **Plexiglas** gewählt.

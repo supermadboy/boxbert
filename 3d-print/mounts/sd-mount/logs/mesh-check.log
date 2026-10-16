@@ -1,0 +1,5 @@
+PASS SD mount: closed/oriented/connected/nondegenerate 7776 triangles
+Bounds (0.0, 0.0, 0.0) (44.0, 56.0, 12.0) Volume mm^3 4455.759
+PASS 77 actual mesh probes: four 20x38 posts, underside pockets, full walls, grid, two countersinks
+SHA256 3d2d9a95bc0ff5871688d0c0de947254d7f61af2b8038c2008a17d637e37759b
+Digital geometry only; measured hole spacing / underside / screw heads / real fit still required.

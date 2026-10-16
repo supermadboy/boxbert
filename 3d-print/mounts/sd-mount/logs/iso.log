@@ -1,0 +1,9 @@
+ECHO: "HW125 mount mm", 44, 56, 12, "PCB origin", [10.16, 7.11], "holes", [[12, 9], [32, 9], [12, 47], [32, 47]]
+ECHO: "UNDER entry inserts; NOT physical approval; top screw-head clearance unmeasured"
+Compiling design (CSG Products normalization)...
+Normalized CSG tree has 67 elements
+Geometries in cache: 79
+Geometry cache size in bytes: 224608
+CGAL Polyhedrons in cache: 0
+CGAL cache size in bytes: 0
+Total rendering time: 0:00:00.655

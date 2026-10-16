@@ -1,0 +1,23 @@
+ECHO: "HW125 mount mm", 44, 56, 12, "PCB origin", [10.16, 7.11], "holes", [[12, 9], [32, 9], [12, 47], [32, 47]]
+ECHO: "UNDER entry inserts; NOT physical approval; top screw-head clearance unmeasured"
+CGAL Cache insert: multmatrix([[1,0,0,12],[0,1,0,9],[0,0,1, (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,32],[0,1,0,9],[0,0,1, (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,12],[0,1,0,47],[0,0,1 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,32],[0,1,0,47],[0,0,1 (344912 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,12],[0,1,0,9] (1379360 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,14.2],[0,1,0, (45088 bytes)
+CGAL Cache insert: intersection(){group(){multmatrix([[1,0, (54848 bytes)
+CGAL Cache hit: intersection(){group(){multmatrix([[1,0, (54848 bytes)
+Geometries in cache: 12
+Geometry cache size in bytes: 43296
+CGAL Polyhedrons in cache: 7
+CGAL cache size in bytes: 2858944
+Total rendering time: 0:00:02.613
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:       40
+   Halfedges:     120
+   Edges:          60
+   Halffacets:     48
+   Facets:         24
+   Volumes:         3

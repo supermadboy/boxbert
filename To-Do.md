@@ -3,7 +3,8 @@
 ## In Arbeit / Nächste Schritte
 
 **Fertigungscheck 16.10.2026:** Alle zwölf erneut ausgeführten Mesh-/Schablonen-/
-CNC-Prüfaufrufe bestanden; eigentlicher SD-Halter fehlt. Gehäuselayout,
+CNC-Prüfaufrufe bestanden. **SD-Halter inzwischen fertig konstruiert**, siehe
+aktueller Eintrag unten und `3d-print/mounts/sd-mount/README.md`. Gehäuselayout,
 Positionen, Leisten/Kabelräume und Lautsprecher-Rückwand übernimmt Daddelbert
 selbst; keine Voraussetzung für weitere Einzelhalter. Plexiglas-Schraubfixierung
 von Hand vorgeschlagen. Akkuhalter vorhanden, nur reale Haltewirkung ungeprüft.
@@ -78,14 +79,14 @@ Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertig
   Lot-/Stecker-, PCB-Schrauben- und Holzpassung weiter offen.
   Details: `docs/testprotokoll-max98357-mount.md` und Mount-README.
 
-- [ ] **SD-Mount beauftragt (09.10.2026)** — reales HW-125 laut Nutzerfoto,
-  Platine 23,68 × 41,78 mm, M2,5-Passung bestätigt. Botland-Lochraster
-  38 × 20 mm vom Nutzer als Entwurfsbasis akzeptiert, nicht gemessen.
-  `3d-print/mounts/sd-mount/`: flache Prüfschablone SCAD/STL/Bild erstellt,
-  tatsächliche STL digital geprüft, keine physische Passungsabnahme.
-  Noch kein fertiger Mount. Vor Konstruktion abstimmen: gestufte Pfosten
-  mit Einsätzen von unten (Lötstellenfreiheit an Pinreihe) und zwei seitliche
-  Holzschrauben. Details/Quellen im Mount-README; Soldered-Zuordnung korrigiert.
+- [ ] **SD-Halter fertig konstruiert (16.10.2026)** auf ausdrücklichen
+  Fertigstellungsauftrag: HW-125, Gitter44×56×12, vier gestufte Pfosten mit
+  ruthex RX-M2,5×5,7 von unten, zwei seitliche3×12-Senkkopf-Holzschrauben.
+  SCAD/STL, echte Vorschauen, Mesh-/Solid-Prüfungen im Mount-Ordner.
+  Lochraster20×38 bleibt akzeptierte Annahme; physische Passprobe offen.
+  M2,5×12 als Längenbeispiel, reduzierte Köpfe max.Ø4/Höhe1,8 mm erforderlich.
+  Reale Unterseite, Schrauben-/Heat-Set-/Last-/Kartenpassung prüfen; keine
+  Druck-/Einbaufreigabe. README: `3d-print/mounts/sd-mount/README.md`.
 
 - [ ] **Feather-Fenster / CNC-Front — aktuelle Außenfräs-Version 15.10.2026:**
   Nur Durchbruch + äußere Glasfalz, keine Innenbearbeitung. Führung direkt im

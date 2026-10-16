@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/habibi/projects/boxbert/3d-print/mounts/sd-mount/check_mesh.py", line 90, in <module>
+    assert all(abs(a-b) < 1e-4 for a, b in zip(hi, (44, 56, 12))), ('Expected finished 44x56x12 mount, not flat template', hi)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Expected finished 44x56x12 mount, not flat template', (30.0, 48.0, 2.0))

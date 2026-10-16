@@ -1,5 +1,12 @@
 # Fertigungsstatus — Prüfung 16.10.2026
 
+**Nachtrag: SD-Halter inzwischen auf Nutzerauftrag fertig konstruiert.**
+Aktueller Stand mit STL, Vorschauen und eigenen Prüflogs:
+[`3d-print/mounts/sd-mount/README.md`](../3d-print/mounts/sd-mount/README.md).
+Die folgende Bestandsaufnahme dokumentiert den Zustand **vor** diesem Bauauftrag;
+„SD-Halter fehlt“ ist historisch und kein aktueller Konstruktionspunkt mehr.
+Reale Passproben bleiben davon unabhängig.
+
 **Ergebnis des digitalen Checks: Die vorhandenen Druck-/CNC-Einzeldateien
 bestehen ihre erneut ausgeführten Prüfungen; der eigentliche SD-Halter fehlt.
 Keine pauschale reale Passungs-/Einbaufreigabe.**

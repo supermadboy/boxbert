@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/habibi/projects/boxbert/3d-print/mounts/sd-mount/check_pinning.py", line 32, in <module>
+    assert calls.exists(), ('Preinstalled host tools bypass pinned Nix environment', run.returncode, run.stdout, run.stderr)
+           ^^^^^^^^^^^^^^
+AssertionError: ('Preinstalled host tools bypass pinned Nix environment', 19, '', '')
