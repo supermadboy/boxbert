@@ -2,9 +2,11 @@
 
 ## In Arbeit / Nächste Schritte
 
-**Fertigungscheck 16.10.2026:** Noch kein vollständiger Druck-/CNC-Fertigungssatz.
-Alle zwölf erneut ausgeführten Mesh-/Schablonen-/CNC-Prüfaufrufe bestanden;
-SD-Halter fehlt, Gesamtgehäuse-/Deckellayout und Befestigungsdetails offen.
+**Fertigungscheck 16.10.2026:** Alle zwölf erneut ausgeführten Mesh-/Schablonen-/
+CNC-Prüfaufrufe bestanden; eigentlicher SD-Halter fehlt. Gehäuselayout,
+Positionen, Leisten/Kabelräume und Lautsprecher-Rückwand übernimmt Daddelbert
+selbst; keine Voraussetzung für weitere Einzelhalter. Plexiglas-Schraubfixierung
+von Hand vorgeschlagen. Akkuhalter vorhanden, nur reale Haltewirkung ungeprüft.
 Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertigungsstatus.md).
 
 - [ ] **PWA-Grundgerüst gebaut (11.10.2026)** — schlichte Verwaltung unter

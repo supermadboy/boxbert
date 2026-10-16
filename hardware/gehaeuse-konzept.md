@@ -18,6 +18,19 @@ bereits gebauten oder getesteten Gehäuses.
 - Scharniere sind nicht beschlossen; der Nutzer beschreibt einen
   abschraubbaren Deckel.
 
+## Zuständigkeit — Nutzerkorrektur 16.10.2026
+
+Daddelbert übernimmt das konkrete Gehäuselayout einschließlich Buttons, NFC,
+NeoPixel, CNC-Anordnung, Befestigungsleisten und Kabelräumen selbst. Auch
+Lautsprecheröffnung/Rückwand fertigt er selbst als Lochraster. Fehlende
+Gesamt-CAD-Dateien sind dafür kein offener Agentenauftrag. Die nachfolgenden
+älteren Detailfragen bleiben eigene Fertigungsentscheidungen des Nutzers.
+Plexiglasfixierung schlägt er mit selbst gebohrten und von Hand 45° gesenkten
+Löchern sowie Schrauben vor; keine geprüfte Schrauben-/Senkungs-/Rissfreigabe.
+Akkuhalter-Basis und -Bügel sind bereits konstruiert (`3d-print/mounts/akku-mount/`);
+ungeprüfte Rückhaltung bedeutet eine ausstehende reale Halteprobe, keinen
+fehlenden Halter. Keine Neukonstruktion daraus ableiten.
+
 ## Räumliche Anordnung
 
 | Bereich | Geplante Teile |
