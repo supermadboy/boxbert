@@ -1,0 +1,35 @@
+import {chromium,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+const out=new URL('../docs/tft-ui/',import.meta.url).pathname;
+await fs.mkdir(out,{recursive:true});
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
+try {
+ const context=await browser.newContext({viewport:{width:390,height:844},colorScheme:'dark'});
+ const page=await context.newPage();const errors=[],api=[],failed=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('response',r=>{if(r.status()>=400)failed.push(r.status()+' '+r.url());});
+ page.on('request',r=>{if(/\/(files|tags|upload|settings|pixel|buttons)$/.test(new URL(r.url()).pathname))api.push(r.url());});
+ const r=await page.goto('https://habibi.supermittel.com/boxbert/?stand=tft-boxbert-8');expect(r.status()).toBe(200);
+ await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
+ await expect(page.locator('.tft-screen')).toBeVisible();
+ console.log('TFT-TEXT',await page.locator('.tft-screen').innerText());
+ const before=await page.locator('.boxbert-cube').evaluate(el=>getComputedStyle(el).transform);
+ await page.waitForTimeout(2800);
+ const after=await page.locator('.boxbert-cube').evaluate(el=>getComputedStyle(el).transform);
+ expect(after).not.toBe(before);console.log('PASS LIVE: 3D-Drehung ändert tatsächlich den gerenderten Transform');
+ await page.screenshot({path:out+'/preview-mobile-dark.png',fullPage:true});
+ await page.locator('.tft-screen').screenshot({path:out+'/display-dark.png'});
+ await page.setViewportSize({width:1280,height:900});
+ await page.locator('.tft-bezel').screenshot({path:out+'/display-dark.png'});
+ await page.screenshot({path:out+'/preview-desktop-dark.png',fullPage:true});
+ await expect(page.getByText('Offline-Cache bereit · Browserdaten können gelöscht werden',{exact:true})).toBeVisible();
+ await page.evaluate(()=>navigator.serviceWorker.ready);
+ await page.goto('https://habibi.supermittel.com/boxbert/');await page.reload();
+ await context.setOffline(true);await page.close();
+ const restart=await context.newPage();restart.on('pageerror',e=>errors.push(e.message));
+ await restart.goto('https://habibi.supermittel.com/boxbert/');
+ await restart.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
+ await expect(restart.locator('.tft-screen')).toBeVisible();
+ expect(errors).toEqual([]);expect(failed).toEqual([]);expect(api).toEqual([]);
+ console.log('PASS LIVE HTTPS: vollständige TFT-Vorschau, Screenshots, Offline-Neustart als neues Dokument, keine JS-/HTTP-Fehler oder ESP-Requests');
+} finally {await browser.close();}

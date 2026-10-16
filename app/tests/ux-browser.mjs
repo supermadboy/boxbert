@@ -8,7 +8,7 @@ try {
  const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));await page.goto(process.env.BOXBERT_URL||server.resolvedUrls.local[0]);
  await expect(page.locator('.connection')).toHaveJSProperty('open',false);
- await expect(page.getByRole('tab')).toHaveCount(3);
+ await expect(page.getByRole('tab')).toHaveCount(4);
  await expect(page.getByRole('tabpanel')).toHaveCount(1);
  await page.getByRole('tab',{name:'Medienbibliothek'}).focus();await page.keyboard.press('ArrowRight');
  await expect(page.getByRole('tab',{name:'Zuordnung'})).toBeFocused();await expect(page.locator('.box-button')).toHaveCount(10);
@@ -36,7 +36,7 @@ try {
   await page.emulateMedia({colorScheme,reducedMotion:'reduce'});await page.setViewportSize({width,height:844});
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   expect(await page.evaluate(()=>getComputedStyle(document.documentElement).colorScheme)).toBe(colorScheme);
-  for(const name of ['Medienbibliothek','Zuordnung','LEDs']){
+  for(const name of ['Medienbibliothek','Zuordnung','LEDs','TFT-Vorschau']){
    await go(page,name);
    for(const bottom of [false,true]){
     await page.evaluate(b=>window.scrollTo(0,b?document.documentElement.scrollHeight:0),bottom);await page.waitForTimeout(100);
@@ -45,7 +45,7 @@ try {
     expect(await page.getByRole('button',{name:'Lautstärke speichern',exact:true}).evaluate(el=>{const r=el.getBoundingClientRect();return el.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));})).toBe(true);
     if(bottom){const footer=await page.locator('footer').boundingBox();expect(footer.y+footer.height).toBeLessThanOrEqual(bar.y);}
    }
-   await page.screenshot({path:`test-results/ux-${width}-${colorScheme}-${name==='LEDs'?'leds':name==='Zuordnung'?'mapping':'media'}.png`,fullPage:true});
+   await page.screenshot({path:`test-results/ux-${width}-${colorScheme}-${name==='LEDs'?'leds':name==='Zuordnung'?'mapping':name==='TFT-Vorschau'?'tft':'media'}.png`,fullPage:true});
   }
  }
  if(new URL(page.url()).protocol==='https:'){
@@ -67,5 +67,5 @@ try {
   await page.locator('.connection summary').click();page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Demo zurücksetzen'}).click();
   await expect(page.locator('.notice')).toContainText('zurückgesetzt');await expect(page.getByRole('slider',{name:'Lautstärke',exact:true})).toHaveValue('6');
  }
- expect(errors).toEqual([]);console.log('PASS UX: echte 3 Tabs/Keyboard, Kategorie Upload/Filter/Änderung, unabhängige 8+1 LEDs, fixed Volume/Persistence, 320/390/1280 × Light/Dark × alle Reiter, keine Überdeckung/JS-Fehler');
+ expect(errors).toEqual([]);console.log('PASS UX: echte 4 Tabs/Keyboard, Kategorie Upload/Filter/Änderung, unabhängige 8+1 LEDs, fixed Volume/Persistence, 320/390/1280 × Light/Dark × alle Reiter, keine Überdeckung/JS-Fehler');
 }finally{await browser.close();await server.close();}

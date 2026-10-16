@@ -2,6 +2,13 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **TFT-Vorschau gebaut und HTTPS-geprüft (16.10.2026):** neuer App-Reiter
+  mit vollständiger 240×135-Ansicht, 3D-Boxbert mit Augen/Bewegung, Akku, WLAN,
+  Lautstärke, Titel-Laufschrift, Fortschritt und Spielzeit. Nur Beispieldaten,
+  keine Firmwareänderung. 47 Tests und HTTPS-/Offline-/UX-Prüfungen bestanden.
+  Designfeedback und späterer Geräte-Render-/Statusvertrag bleiben offen.
+  Nachweise: `app/docs/verification-tft.md`; Release `?stand=tft-boxbert-8`.
+
 **Fertigungscheck 16.10.2026:** Alle zwölf erneut ausgeführten Mesh-/Schablonen-/
 CNC-Prüfaufrufe bestanden. **SD-Halter inzwischen fertig konstruiert**, siehe
 aktueller Eintrag unten und `3d-print/mounts/sd-mount/README.md`. Gehäuselayout,

@@ -1,7 +1,19 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=rfid-record-ui-7**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-boxbert-8**
+
+## TFT-Vorschau · 16.10.2026
+
+Neuer Reiter **TFT-Vorschau**: vollständige dunkle 240×135-Anzeige mit
+3D-Boxbert, großen Augen, sanften Bewegungen, Akku, WLAN, Lautstärke, Figur,
+Titel-Laufschrift und Fortschritt mit Spielzeit/Gesamtdauer. Play/Pause,
+Zeitleiste und zwei Titel zum Ausprobieren. Alles ausdrücklich Beispieldaten,
+kein Audio und keine ESP-/Firmware-Änderung. Bestehende Browserdaten bleiben
+unverändert. Reduced Motion stoppt dekorative Animationen; Titel manuell scrollbar.
+
+47 Tests und echte HTTPS-/Offline-/UX-Prüfungen bestanden;
+[aktueller Prüfbericht und Screenshots](docs/verification-tft.md).
 
 ## Intro direkt je RFID aufnehmen · 11.10.2026
 
