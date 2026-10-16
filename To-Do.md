@@ -2,6 +2,15 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **TFT V1/V2 – sessionsübergreifender Fahrplan (16.10.2026):**
+  Recherche und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).
+  Nächste Session: Schriftwahl klären und gemeinsamen C++-/WASM-Pixelrenderer
+  für **V1 ohne Sprite** vorbereiten. Danach V1 auf echter Hardware absichern;
+  erst anschließend **V2 mit optionalen, vorberechneten Boxbert-Frames**.
+  Gleiche logische Pixel/Fonts/Assets im Browser und auf dem Gerät, kein
+  getrenntes CSS-Nachbild. Planungsauftrag ist noch kein Flashauftrag.
+  Ausführliche Checkliste und kurze Folgeprompts stehen nur im Plan.
+
 - [ ] **TFT-Vorschau gebaut und HTTPS-geprüft (16.10.2026):** neuer App-Reiter
   mit vollständiger 240×135-Ansicht, 3D-Boxbert mit Augen/Bewegung, Akku, WLAN,
   Lautstärke, Titel-Laufschrift, Fortschritt und Spielzeit. Nur Beispieldaten,
