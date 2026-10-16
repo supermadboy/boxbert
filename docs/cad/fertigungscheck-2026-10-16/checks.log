@@ -1,0 +1,1059 @@
+### 3d-print/mounts/akku-mount/check_mesh.py exit 0
+PASS: grid opening
+PASS: grid rib
+PASS: wood hole
+PASS: countersink
+PASS: insert pocket
+PASS: pocket bottom
+PASS: post wall
+PASS: battery free space
+PASS: stop
+base PASS: watertight, oriented, connected, no degenerate triangles
+Bounds: (0.0, 0.0, 0.0) (100.0, 76.0, 10.5) Volume: 10938.516688331929 Triangles: 8640
+SHA256: ccf23a4180ed283b70ee07f2ed09c78d3c81ef2ecb2dd3090eec1a9cef860195
+
+### 3d-print/mounts/aw9523-mount/check_mesh.py exit 0
+STL-Geometriepruefung — keine physische Passungspruefung
+SHA256: 9faa5d7f90ed3c4529431f761fbe29e96ba733fea6326480471deaa5f014b5ce
+Dreiecke: 7532
+Bounding box: (0.0, 0.0, 0.0) .. (56.0, 26.0, 12.0) mm
+Volumen: 3029.051 mm^3
+  OK  Gitterrippe: (1, 8, 1) -> Material
+  OK  Gitterzelle offen: (22, 10, 1) -> Luft
+  OK  Freie Mitte oberhalb Gitter: (28, 13, 3) -> Luft
+  OK  Massive Stuetze B: (44.51, 6.65, 11) -> Material
+  OK  Massive Stuetze C: (11.49, 19.35, 11) -> Material
+  OK  Holzloch durchgehend: (4, 13, 1) -> Luft
+  OK  Senkung offen: (6.2, 13, 2.75) -> Luft
+  OK  Material unter Senkung: (6.2, 13, 1.5) -> Material
+  OK  Schraubpolster neben Senkung: (7.5, 13, 3.25) -> Material
+  OK  Holzloch durchgehend: (52, 13, 1) -> Luft
+  OK  Senkung offen: (54.2, 13, 2.75) -> Luft
+  OK  Material unter Senkung: (54.2, 13, 1.5) -> Material
+  OK  Schraubpolster neben Senkung: (55.5, 13, 3.25) -> Material
+  OK  Einsatzkammer unten offen: (11.49, 6.65, 0.1) -> Luft
+  OK  Einsatzkammer bis 6.9 offen: (13.290000000000001, 6.65, 6.8) -> Luft
+  OK  Schulter ueber Kammer: (13.290000000000001, 6.65, 7.1) -> Material
+  OK  Schraubenkanal oben: (11.49, 6.65, 11.9) -> Luft
+  OK  Schmale obere Auflage: (13.49, 6.65, 11.9) -> Material
+  OK  Dicker Pfosten unten: (15.29, 6.65, 7.5) -> Material
+  OK  Dicker Pfosten endet bei z8: (15.29, 6.65, 8.1) -> Luft
+  OK  Umlaufende Einsatzwand: (15.39, 6.65, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.39, 6.65, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.39, 6.65, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.39, 6.65, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 7.659394275899832, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 7.659394275899832, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 7.659394275899832, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 7.659394275899832, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.867499074759312, 8.6, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.867499074759312, 8.6, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.867499074759312, 8.6, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.867499074759312, 8.6, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 9.407716446627536, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 9.407716446627536, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 9.407716446627536, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 9.407716446627536, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 10.02749907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 10.02749907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 10.02749907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 10.02749907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.499394275899832, 10.417110722527367, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.499394275899832, 10.417110722527367, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.499394275899832, 10.417110722527367, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.499394275899832, 10.417110722527367, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 10.55, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 10.55, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 10.55, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 10.55, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 10.417110722527367, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 10.417110722527367, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 10.417110722527367, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 10.417110722527367, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.540000000000001, 10.027499074759312, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.540000000000001, 10.027499074759312, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.540000000000001, 10.027499074759312, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.540000000000001, 10.027499074759312, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 9.407716446627536, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 9.407716446627536, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 9.407716446627536, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 9.407716446627536, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.112500925240688, 8.6, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.112500925240688, 8.6, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.112500925240688, 8.6, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.112500925240688, 8.6, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 7.659394275899833, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 7.659394275899833, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 7.659394275899833, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 7.659394275899833, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.59, 6.650000000000001, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.59, 6.650000000000001, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.59, 6.650000000000001, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.59, 6.650000000000001, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 5.640605724100169, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 5.640605724100169, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 5.640605724100169, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (7.722889277472634, 5.640605724100169, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.11250092524069, 4.7, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.11250092524069, 4.7, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.11250092524069, 4.7, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.11250092524069, 4.7, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 3.892283553372465, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 3.892283553372465, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 3.892283553372465, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.732283553372465, 3.892283553372465, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.54, 3.2725009252406907, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.54, 3.2725009252406907, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.54, 3.2725009252406907, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.54, 3.2725009252406907, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 2.8828892774726342, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 2.8828892774726342, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 2.8828892774726342, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.480605724100169, 2.8828892774726342, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 2.7500000000000004, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 2.7500000000000004, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 2.7500000000000004, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.49, 2.7500000000000004, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.49939427589983, 2.882889277472634, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.49939427589983, 2.882889277472634, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.49939427589983, 2.882889277472634, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.49939427589983, 2.882889277472634, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 3.27250092524069, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 3.27250092524069, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 3.27250092524069, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.440000000000001, 3.27250092524069, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 3.8922835533724642, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 3.8922835533724642, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 3.8922835533724642, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.247716446627535, 3.8922835533724642, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.86749907475931, 4.699999999999998, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.86749907475931, 4.699999999999998, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.86749907475931, 4.699999999999998, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.86749907475931, 4.699999999999998, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 5.64060572410017, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 5.64060572410017, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 5.64060572410017, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.257110722527367, 5.64060572410017, 6.8) -> Material
+  OK  Einsatzkammer unten offen: (44.51, 19.35, 0.1) -> Luft
+  OK  Einsatzkammer bis 6.9 offen: (46.309999999999995, 19.35, 6.8) -> Luft
+  OK  Schulter ueber Kammer: (46.309999999999995, 19.35, 7.1) -> Material
+  OK  Schraubenkanal oben: (44.51, 19.35, 11.9) -> Luft
+  OK  Schmale obere Auflage: (46.51, 19.35, 11.9) -> Material
+  OK  Dicker Pfosten unten: (48.309999999999995, 19.35, 7.5) -> Material
+  OK  Dicker Pfosten endet bei z8: (48.309999999999995, 19.35, 8.1) -> Luft
+  OK  Umlaufende Einsatzwand: (48.41, 19.35, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.41, 19.35, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.41, 19.35, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (48.41, 19.35, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 20.35939427589983, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 20.35939427589983, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 20.35939427589983, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 20.35939427589983, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.88749907475931, 21.3, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.88749907475931, 21.3, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.88749907475931, 21.3, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.88749907475931, 21.3, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 22.107716446627535, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 22.107716446627535, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 22.107716446627535, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 22.107716446627535, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 22.72749907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 22.72749907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 22.72749907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 22.72749907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 23.117110722527368, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 23.117110722527368, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 23.117110722527368, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 23.117110722527368, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 23.25, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 23.25, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 23.25, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 23.25, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 23.117110722527368, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 23.117110722527368, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 23.117110722527368, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 23.117110722527368, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (42.56, 22.72749907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (42.56, 22.72749907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (42.56, 22.72749907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (42.56, 22.72749907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 22.10771644662754, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 22.10771644662754, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 22.10771644662754, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 22.10771644662754, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 21.3, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 21.3, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 21.3, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 21.3, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 20.359394275899835, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 20.359394275899835, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 20.359394275899835, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 20.359394275899835, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.61, 19.35, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.61, 19.35, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.61, 19.35, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.61, 19.35, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 18.340605724100172, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 18.340605724100172, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 18.340605724100172, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (40.742889277472635, 18.340605724100172, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 17.400000000000002, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 17.400000000000002, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 17.400000000000002, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.132500925240684, 17.400000000000002, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 16.592283553372468, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 16.592283553372468, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 16.592283553372468, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (41.752283553372465, 16.592283553372468, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (42.559999999999995, 15.972500925240691, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (42.559999999999995, 15.972500925240691, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (42.559999999999995, 15.972500925240691, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (42.559999999999995, 15.972500925240691, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 15.582889277472635, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 15.582889277472635, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 15.582889277472635, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (43.50060572410017, 15.582889277472635, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 15.450000000000001, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 15.450000000000001, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 15.450000000000001, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (44.51, 15.450000000000001, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 15.582889277472635, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 15.582889277472635, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 15.582889277472635, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (45.51939427589983, 15.582889277472635, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 15.972500925240691, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 15.972500925240691, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 15.972500925240691, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (46.46, 15.972500925240691, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 16.592283553372464, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 16.592283553372464, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 16.592283553372464, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.26771644662753, 16.592283553372464, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.887499074759305, 17.4, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.887499074759305, 17.4, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (47.887499074759305, 17.4, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (47.887499074759305, 17.4, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 18.340605724100172, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 18.340605724100172, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 18.340605724100172, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (48.27711072252736, 18.340605724100172, 6.8) -> Material
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.85, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.749999999999998, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.4, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.2, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.39, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.29, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.94, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.74, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.93, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.83, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.48, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.279999999999998, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (23.47, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.369999999999997, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.02, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.819999999999997, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.01, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.91, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.560000000000002, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.36, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.55, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (27.45, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.1, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.9, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.09, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.99, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.64, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.439999999999998, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.629999999999995, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (32.53, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.18, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.979999999999997, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.169999999999995, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.07, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.72, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.519999999999996, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.709999999999994, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.61, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.26, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.059999999999995, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.24999999999999, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.15, 6.65, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 7.2, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 6.1000000000000005, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.8, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.599999999999994, 6.65, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 7.75, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 5.550000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.09, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.99, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 9.740000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 8.64, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.64, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.439999999999998, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 10.290000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 8.090000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.629999999999995, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (32.53, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 9.740000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 8.64, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.18, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.979999999999997, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 10.290000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 8.090000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.169999999999995, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.07, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 9.740000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 8.64, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.72, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.519999999999996, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 10.290000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 8.090000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.709999999999994, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.61, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 9.740000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 8.64, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.26, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.059999999999995, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 10.290000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 8.090000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.25, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.150000000000006, 9.190000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 9.740000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 8.64, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.800000000000004, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.6, 9.190000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 10.290000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.7, 8.090000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.85, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.749999999999998, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.4, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.2, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.39, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.29, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.94, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.74, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.93, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.83, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.48, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.279999999999998, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (23.47, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.369999999999997, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.02, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.819999999999997, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.01, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.91, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.560000000000002, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.36, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.55, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (27.45, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.1, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.9, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.09, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.99, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.64, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.439999999999998, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.629999999999995, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (32.53, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.18, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.979999999999997, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.169999999999995, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.07, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.72, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.519999999999996, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.709999999999994, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.61, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.26, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.059999999999995, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.24999999999999, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.15, 16.81, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 17.36, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 16.259999999999998, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.8, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.599999999999994, 16.81, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 17.91, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 15.709999999999999, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.85, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.749999999999998, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.4, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.2, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.299999999999999, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.39, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.29, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.94, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.74, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.84, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.93, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.83, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.48, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.279999999999998, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.38, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (23.47, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.369999999999997, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.02, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.819999999999997, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.919999999999998, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.01, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.91, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.560000000000002, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.36, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.46, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.55, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (27.45, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.1, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.9, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (28.0, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.09, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.99, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.64, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (29.439999999999998, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (30.54, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.629999999999995, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (32.53, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.18, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (31.979999999999997, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (33.08, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.169999999999995, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.07, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (36.72, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (34.519999999999996, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (35.62, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.709999999999994, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.61, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.26, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (37.059999999999995, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (38.16, 18.25, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.24999999999999, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.15, 19.35, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 19.900000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 18.8, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (41.8, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (39.599999999999994, 19.35, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 20.450000000000003, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (40.699999999999996, 18.25, 11.8) -> Luft
+PASS: eine zusammenhaengende, geschlossene, konsistent orientierte Oberflaeche
+
+### 3d-print/mounts/feather-window-mount/check_mesh.py exit 0
+Feather-window actual STL digital checks — NOT physical fit approval
+SHA256 987df103b78a0035658ee3f6b1629a73509cdc52ff826f91b510185bc117985c
+Triangles 7236 Bounds (-6.8000030517578125, -24.0, 0.0) (57.59999084472656, 46.86000061035156, 26.5) Volume mm^3 10307.772
+PASS closed, consistently oriented, one connected surface; nondegenerate triangles
+PASS Dupont housing lower outer corner
+PASS Through-opening locating corner
+PASS Grid cell open
+PASS Grid rib present
+PASS Central opening
+PASS Lower tab top material
+PASS Lower tab screw bore
+PASS Lower head recess opens INSIDE
+PASS Wood-contact face beside bore
+PASS Upper tab bore
+PASS Step leg
+PASS Air below outer tab
+PASS Insert pocket
+PASS Insert surrounding full wall
+PASS Upper screw passage
+PASS Narrow upper screw post
+PASS Right D2.2-hole location is flat support
+PASS USB route reserved space
+PASS JST cable reserved space
+PASS Strain relief slot
+PASS Strain relief bridge
+PASS USB reserved box 125 interior samples (not proof for every real connector)
+PASS JST reserved box 125 interior samples (not proof for every real connector)
+PASS post locations checked against independently extracted Eagle JSON
+PASS nominal TFT/glass gap 2 mm (assumed component heights)
+
+### 3d-print/mounts/max98357-mount/check_mesh.py exit 0
+STL-Geometriepruefung — keine physische Passungspruefung
+SHA256: 44b0b1c069c11713288a1938c0a2834b641276173297f802d659deae7edcb0b4
+Dreiecke: 7188
+Bounding box: (0.0, 0.0, 0.0) .. (38.0, 26.0, 12.0) mm
+Volumen: 2421.073 mm^3
+  OK  Gitterrippe: (1, 8, 1) -> Material
+  OK  Gitterzelle offen: (22, 4, 1) -> Luft
+  OK  Freie Mitte oberhalb Gitter: (19, 13, 3) -> Luft
+  OK  Massive Stuetze links: (14.61, 10.475, 11) -> Material
+  OK  Massive Stuetze rechts: (23.39, 10.475, 11) -> Material
+  OK  Pfosten getrennt: (19, 19.985, 7.5) -> Luft
+  OK  Holzloch durchgehend: (4, 13, 1) -> Luft
+  OK  Senkung offen: (6.2, 13, 2.75) -> Luft
+  OK  Material unter Senkung: (6.2, 13, 1.5) -> Material
+  OK  Schraubpolster neben Senkung: (7.5, 13, 3.25) -> Material
+  OK  Holzloch durchgehend: (34, 13, 1) -> Luft
+  OK  Senkung offen: (36.2, 13, 2.75) -> Luft
+  OK  Material unter Senkung: (36.2, 13, 1.5) -> Material
+  OK  Schraubpolster neben Senkung: (37.5, 13, 3.25) -> Material
+  OK  Einsatzkammer unten offen: (12.65, 19.985, 0.1) -> Luft
+  OK  Einsatzkammer bis 6.9 offen: (14.450000000000001, 19.985, 6.8) -> Luft
+  OK  Schulter ueber Kammer: (14.450000000000001, 19.985, 7.1) -> Material
+  OK  Schraubenkanal oben: (12.65, 19.985, 11.9) -> Luft
+  OK  Schmale obere Auflage: (14.65, 19.985, 11.9) -> Material
+  OK  Dicker Pfosten unten: (16.45, 19.985, 7.5) -> Material
+  OK  Dicker Pfosten endet bei z8: (16.45, 19.985, 8.1) -> Luft
+  OK  Umlaufende Einsatzwand: (16.55, 19.985, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.55, 19.985, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.55, 19.985, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.55, 19.985, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 20.99439427589983, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 20.99439427589983, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 20.99439427589983, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 20.99439427589983, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.027499074759312, 21.935, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.027499074759312, 21.935, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.027499074759312, 21.935, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.027499074759312, 21.935, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 22.742716446627533, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 22.742716446627533, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 22.742716446627533, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 22.742716446627533, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 23.36249907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 23.36249907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 23.36249907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 23.36249907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.659394275899832, 23.752110722527366, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.659394275899832, 23.752110722527366, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.659394275899832, 23.752110722527366, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.659394275899832, 23.752110722527366, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 23.884999999999998, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 23.884999999999998, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 23.884999999999998, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 23.884999999999998, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 23.752110722527366, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 23.752110722527366, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 23.752110722527366, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 23.752110722527366, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.700000000000001, 23.36249907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.700000000000001, 23.36249907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.700000000000001, 23.36249907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.700000000000001, 23.36249907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 22.742716446627536, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 22.742716446627536, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 22.742716446627536, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 22.742716446627536, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.272500925240688, 21.935, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.272500925240688, 21.935, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.272500925240688, 21.935, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.272500925240688, 21.935, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 20.994394275899833, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 20.994394275899833, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 20.994394275899833, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 20.994394275899833, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.75, 19.985, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.75, 19.985, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.75, 19.985, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.75, 19.985, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 18.97560572410017, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 18.97560572410017, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 18.97560572410017, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (8.882889277472634, 18.97560572410017, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.27250092524069, 18.035, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.27250092524069, 18.035, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.27250092524069, 18.035, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.27250092524069, 18.035, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 17.227283553372466, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 17.227283553372466, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 17.227283553372466, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (9.892283553372465, 17.227283553372466, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.7, 16.60750092524069, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.7, 16.60750092524069, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (10.7, 16.60750092524069, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (10.7, 16.60750092524069, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 16.217889277472633, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 16.217889277472633, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 16.217889277472633, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (11.640605724100169, 16.217889277472633, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 16.085, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 16.085, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 16.085, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (12.65, 16.085, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.65939427589983, 16.217889277472633, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.65939427589983, 16.217889277472633, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (13.65939427589983, 16.217889277472633, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (13.65939427589983, 16.217889277472633, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 16.60750092524069, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 16.60750092524069, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 16.60750092524069, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (14.600000000000001, 16.60750092524069, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 17.227283553372462, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 17.227283553372462, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 17.227283553372462, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (15.407716446627536, 17.227283553372462, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.02749907475931, 18.034999999999997, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.02749907475931, 18.034999999999997, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.02749907475931, 18.034999999999997, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.02749907475931, 18.034999999999997, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 18.97560572410017, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 18.97560572410017, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 18.97560572410017, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (16.417110722527365, 18.97560572410017, 6.8) -> Material
+  OK  Einsatzkammer unten offen: (25.35, 19.985, 0.1) -> Luft
+  OK  Einsatzkammer bis 6.9 offen: (27.150000000000002, 19.985, 6.8) -> Luft
+  OK  Schulter ueber Kammer: (27.150000000000002, 19.985, 7.1) -> Material
+  OK  Schraubenkanal oben: (25.35, 19.985, 11.9) -> Luft
+  OK  Schmale obere Auflage: (27.35, 19.985, 11.9) -> Material
+  OK  Dicker Pfosten unten: (29.150000000000002, 19.985, 7.5) -> Material
+  OK  Dicker Pfosten endet bei z8: (29.150000000000002, 19.985, 8.1) -> Luft
+  OK  Umlaufende Einsatzwand: (29.25, 19.985, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.25, 19.985, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.25, 19.985, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (29.25, 19.985, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 20.99439427589983, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 20.99439427589983, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 20.99439427589983, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 20.99439427589983, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 21.935, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 21.935, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 21.935, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 21.935, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.10771644662754, 22.742716446627533, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.10771644662754, 22.742716446627533, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.10771644662754, 22.742716446627533, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.10771644662754, 22.742716446627533, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 23.36249907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 23.36249907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 23.36249907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 23.36249907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 23.752110722527366, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 23.752110722527366, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 23.752110722527366, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 23.752110722527366, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 23.884999999999998, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 23.884999999999998, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 23.884999999999998, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 23.884999999999998, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 23.752110722527366, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 23.752110722527366, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 23.752110722527366, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 23.752110722527366, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (23.400000000000002, 23.36249907475931, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (23.400000000000002, 23.36249907475931, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (23.400000000000002, 23.36249907475931, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (23.400000000000002, 23.36249907475931, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372468, 22.742716446627536, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372468, 22.742716446627536, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372468, 22.742716446627536, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372468, 22.742716446627536, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 21.935, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 21.935, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 21.935, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 21.935, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 20.994394275899833, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 20.994394275899833, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 20.994394275899833, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 20.994394275899833, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.450000000000003, 19.985, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.450000000000003, 19.985, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.450000000000003, 19.985, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.450000000000003, 19.985, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 18.97560572410017, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 18.97560572410017, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 18.97560572410017, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.582889277472635, 18.97560572410017, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 18.035, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 18.035, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 18.035, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (21.97250092524069, 18.035, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372464, 17.227283553372466, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372464, 17.227283553372466, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372464, 17.227283553372466, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (22.592283553372464, 17.227283553372466, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (23.4, 16.60750092524069, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (23.4, 16.60750092524069, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (23.4, 16.60750092524069, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (23.4, 16.60750092524069, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 16.217889277472633, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 16.217889277472633, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 16.217889277472633, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (24.340605724100172, 16.217889277472633, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 16.085, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 16.085, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 16.085, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (25.35, 16.085, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 16.217889277472633, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 16.217889277472633, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 16.217889277472633, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (26.35939427589983, 16.217889277472633, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 16.60750092524069, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 16.60750092524069, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 16.60750092524069, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (27.3, 16.60750092524069, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.107716446627535, 17.227283553372462, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.107716446627535, 17.227283553372462, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.107716446627535, 17.227283553372462, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.107716446627535, 17.227283553372462, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 18.034999999999997, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 18.034999999999997, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 18.034999999999997, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (28.72749907475931, 18.034999999999997, 6.8) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 18.97560572410017, 0.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 18.97560572410017, 3.5) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 18.97560572410017, 5.8) -> Material
+  OK  Umlaufende Einsatzwand: (29.117110722527368, 18.97560572410017, 6.8) -> Material
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.93, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (10.829999999999998, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (12.68, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (10.079999999999998, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (11.379999999999999, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (14.469999999999999, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.369999999999997, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.219999999999999, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (12.619999999999997, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (13.919999999999998, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.01, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.91, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.76, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.16, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.46, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.55, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.45, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.3, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.7, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.0, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.09, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.99, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.84, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.24, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.54, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.63, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (23.529999999999998, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.38, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.779999999999998, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (24.08, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (27.169999999999998, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.069999999999997, 6.015000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 6.565, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 5.465000000000001, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (27.919999999999998, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (25.319999999999997, 6.015000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 7.315, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (26.619999999999997, 4.715000000000001, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.75, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (16.65, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 19.519000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 18.419, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (18.5, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (15.899999999999999, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 20.269000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (17.2, 17.669, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (21.25, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.15, 18.969, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 19.519000000000002, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 18.419, 8.6) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (22.0, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (19.4, 18.969, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 20.269000000000002, 11.8) -> Luft
+  OK  Pin-/Lot-Huellraum frei: (20.7, 17.669, 11.8) -> Luft
+PASS: eine zusammenhaengende, geschlossene, konsistent orientierte Oberflaeche
+
+### 3d-print/mounts/neopixel-stick-mount/check_mesh.py exit 0
+PASS mount STL: closed/oriented/connected/nondegenerate 5848 triangles
+Bounds (-8.0, -16.0, 0.0) (52.79999923706055, 12.628000259399414, 16.5) Volume mm^3 3516.715
+PASS actual mesh probe PCB M2 bore
+PASS actual mesh probe Second M2 bore
+PASS actual mesh probe Upper narrow screw post
+PASS actual mesh probe Rear-entry hex pocket
+PASS actual mesh probe Full nut pocket wall
+PASS actual mesh probe Front PCB support
+PASS actual mesh probe Wood screw bore
+PASS actual mesh probe Wood head opens toward interior
+PASS actual mesh probe Wood contact face solid
+PASS actual mesh probe Second front wood bore
+PASS actual mesh probe No rear tab
+PASS actual mesh probe Grid cell
+PASS actual mesh probe Grid rib
+PASS actual mesh probe Cable tie slot
+PASS actual mesh probe Cable tie bridge
+
+### 3d-print/mounts/pn532-mount/check_mesh.py exit 0
+PASS PN532 STL: closed/oriented/connected/nondegenerate 5232 triangles
+Bounds (-12.0, -16.0, 0.0) (44.900001525878906, 56.400001525878906, 23.899999618530273) Volume mm^3 6616.832
+
+### 3d-print/mounts/stepup-mount/check_mesh.py exit 0
+STL-Geometriepruefung — keine physische Passungspruefung
+SHA256: abd03a5dbde76d8c5a4e389d1645b3fb9ae508d5d4ebc2689ab0034388ceb4da
+Dreiecke: 3734
+Bounding box: (0.0, 0.0, 0.0) .. (26.0, 32.0, 10.0) mm
+Volumen: 1634.971 mm^3
+PASS: eine zusammenhaengende, geschlossene, konsistent orientierte Oberflaeche
+PASS: keine degenerierten/tiny Dreiecke, keine zusaetzlichen Vorschaukoerper
+PASS: Gitterrippe
+PASS: Gitterzelle offen
+PASS: Holzloch durchgehend
+PASS: Holzloch oberhalb Gitter offen
+PASS: Erhoehtes Schraubpolster vorhanden
+PASS: Senkung kegelfoermig offen
+PASS: Material neben Senkung
+PASS: 2-mm-Material unter Senkung
+PASS: Senkung bis D6.2 offen
+PASS: Kein erhoehter Boden ausserhalb Polster
+PASS: Heat-Set Sackloch offen
+PASS: Sacklochboden geschlossen
+PASS: Pfostenwand
+PASS: Stuetzpfosten 1
+PASS: Stuetzpfosten 2
+PASS: Luft zwischen Stuetzpfosten
+PASS: Luft unter Platine
+
+### 3d-print/mounts/akku-mount/check_mesh.py bridge exit 0
+PASS: screw hole
+PASS: bridge web
+bridge PASS: watertight, oriented, connected, no degenerate triangles
+Bounds: (0.0, 0.0, 0.0) (16.0, 74.0, 3.0) Volume: 3504.752759018081 Triangles: 788
+SHA256: d0335118495b38581ca997fb3741e51575f86710b308b5f0abb008f01499b020
+
+### 3d-print/mounts/sd-mount/check_template.py exit 0
+PASS: closed, connected, oriented mesh; no degenerate triangles
+PASS: bounds (0.0, 0.0, 0.0) (30.0, 48.0, 2.0) ; expected frame/hole volume 2114.242652425727
+Triangles: 1328
+SHA256: bfc72d6c6cabf82e0b4fadd8dab0f12de9fc5d5ba54ed7e9132a1720c9510627
+Digital template check only; physical hole spacing unverified.
+
+### 3d-print/mounts/feather-window-mount/check_cnc.py exit 0
+PASS CNC STL: 704 triangles, closed/oriented, bounds (-24.0, -43.56999969482422, 22.0)…(226.0, 66.43000030517578, 34.0), 298116.136 mm^3
+PASS DXF opening: nominal mm bounds (-7.0, 57.8, -7.0, 32.0)
+PASS DXF rebate: nominal mm bounds (-11.0, 61.8, -11.0, 36.0)
+PASS DXF glass: nominal mm bounds (-10.8, 61.6, -10.8, 35.8)
+CAM compensation, setup and real material thickness remain user checks.
+
+### 3d-print/mounts/neopixel-stick-mount/check_cnc.py exit 0
+PASS closed CNC panel 250 x 180 x 12 mm, volume 529511.768
+PASS nominal DXF mm opening (-2.2, 53.0, -2.2, 12.36)
+PASS nominal DXF mm rebate (-4.2, 55.0, -4.2, 14.36)
+PASS nominal DXF mm glass (-4.0, 54.8, -4.0, 14.16)
+PASS assumed tolerance budget: minimum M2 thread engagement 1.5 mm
+PASS nominal PCB bottom 14.9 LED/glass gap 3.0 M2x16 tip 0.5 nut bottom 1.4 wood engagement 8.5 mm
+CAM compensation, real screw/nut/wood/glass and optical/diffusion tests still required.
+
+### 3d-print/mounts/pn532-mount/check_cnc.py exit 0
+PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume 52906.012
+PASS nominal DXF mm opening (-2.4, 45.1, -2.4, 42.8)
+PASS nominal DXF mm rebate (-4.4, 47.1, -4.4, 44.8)
+PASS nominal DXF mm glass (-4.2, 46.9, -4.2, 44.6)
+PASS assumed stack PCB 23.9 25.5 glass 27.5 M2x25 tip 0.5 minimum thread engagement 1.5
+PASS wood engagement 8.5 mm, rest wood 3.5 mm; NO measured RF/physical fit approval
+
+
+__HERMES_CWD_a8b59c688f9b__/home/habibi/projects/boxbert__HERMES_CWD_a8b59c688f9b__

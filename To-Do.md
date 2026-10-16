@@ -2,6 +2,11 @@
 
 ## In Arbeit / Nächste Schritte
 
+**Fertigungscheck 16.10.2026:** Noch kein vollständiger Druck-/CNC-Fertigungssatz.
+Alle zwölf erneut ausgeführten Mesh-/Schablonen-/CNC-Prüfaufrufe bestanden;
+SD-Halter fehlt, Gesamtgehäuse-/Deckellayout und Befestigungsdetails offen.
+Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertigungsstatus.md).
+
 - [ ] **PWA-Grundgerüst gebaut (11.10.2026)** — schlichte Verwaltung unter
   https://habibi.supermittel.com/boxbert/, eigene MP3, zwei RFID-Zuordnungen,
   Lautstärke/NeoPixel als eindeutig persistente Browser-Simulation. Kein
