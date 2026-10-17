@@ -2,3 +2,4 @@ node_modules/
 dist/
 dist-sd/
 test-results/
+public/tft-renderer.wasm

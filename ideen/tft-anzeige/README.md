@@ -1,6 +1,22 @@
 # TFT-Anzeige
 
-## Freigegebener Umfang · 16.10.2026
+## Aktueller Stand · TFT V1 · 17.10.2026
+
+Daddelbert hat DejaVu Sans und den Bau der spritefreien Basis bestätigt.
+Die Vorschau verwendet nun einen gemeinsamen Arduino-freien C++-/WASM-
+Pixelrenderer mit 240×135 RGB565, Bitmap-Schrift, Statussymbolen, Figur/Titel,
+Zeit und Fortschritt. **Kein CSS-3D-Maskottchen in V1.** Die unten beschriebene
+3D-Vorschau ist der historische Designstand; V2 soll später optionale echte
+Geräteframes verwenden, nicht eine separate Browseranimation.
+
+Native-/WASM-Pixelgleichheit, App-/Browserregressionen und echtes HTTPS samt
+neuem Offline-Dokument sind geprüft: [aktueller V1-Nachweis](../../app/docs/verification-tft-v1.md).
+Anzeigevertrag und Reproduktion: [TFT-Rendering](../../docs/tft-rendering.md).
+Weiter offen: eigener ESP-Integrationssketch, realer Build/Flash nach Freigabe,
+Player-/Gauge-/Funkzustände und Audio-/SPI-/Speicher-/TFT-Geräteprüfung.
+V2 beginnt erst nach erfolgreicher V1-Geräteprüfung.
+
+## Historische Vorschau-Freigabe · 16.10.2026
 
 Daddelbert hat die Umsetzung einer vollständigen TFT-Vorschau direkt in der
 bestehenden Boxbert-App freigegeben. Zunächst ausschließlich Beispieldaten,

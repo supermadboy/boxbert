@@ -26,7 +26,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 
 | Status | Name | Beschreibung |
 |---|---|---|
-| in Umsetzung | [TFT-Anzeige](tft-anzeige/README.md) | Vollständige App-Vorschau mit 3D-Boxbert, Akku, WLAN, Lautstärke, Titel-Laufschrift und Spielzeit/Fortschritt gebaut und HTTPS/offline geprüft. Designfeedback und echte TFT-/Firmware-Integration offen. |
+| in Umsetzung | [TFT-Anzeige](tft-anzeige/README.md) | V1 mit gemeinsamem C++-/WASM-Pixelrenderer, DejaVu Sans und vollständiger spritefreier 240×135-Anzeige gebaut; Native-/WASM-Gleichheit und HTTPS/offline geprüft. Echte V1-Geräteintegration noch offen; danach V2 mit optionalen Boxbert-Frames. |
 | besprochen | [ESP-Partybeleuchtung](esp-partybeleuchtung/README.md) | Besprechung abgeschlossen: Onboard-NeoPixel und Stick in der PWA getrennt einstellbar, speicherbar und als Vorschau animiert. Echte Firmware-Ansteuerung und Sleep-Verhalten noch offen. |
 | besprochen | [Intro je RFID](rfid-intro/README.md) | Ideenbesprechung und Browser-UI abgeschlossen: direkte Tag-Aufnahme, Daueranzeige und Sprachaufnahme-Icons; HTTPS/offline geprüft. Echte ESP-Integration bleibt eigener, vor Endaufbau vorzubereitender Auftrag. |
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |

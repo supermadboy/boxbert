@@ -1,0 +1,14 @@
+import { spawnSync } from 'node:child_process';
+import { mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../../', import.meta.url));
+export const revision = '0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5';
+const pkgs = ['clang', 'lld'].map(p => `github:NixOS/nixpkgs/${revision}#${p}`);
+const lookup=spawnSync('nix',['eval','--raw',`github:NixOS/nixpkgs/${revision}#clang.cc.outPath`],{encoding:'utf8'});
+if(lookup.status!==0)throw new Error(lookup.stderr);
+const wasmCompiler=lookup.stdout.trim()+'/bin/clang++';
+const common = '-std=c++17 -O2 -Wall -Wextra -Werror -fno-exceptions -fno-rtti';
+mkdirSync(`${root}/tools/tft/build`, { recursive: true });
+const cmd = `clang++ ${common} firmware/ui/TftRenderer.cpp tools/tft/tests/native.cpp -o tools/tft/build/tft-native && ${wasmCompiler} ${common} --target=wasm32 -ffreestanding -nostdlib -fno-builtin -c firmware/ui/TftRenderer.cpp -o tools/tft/build/renderer.o && wasm-ld --no-entry --export-memory --export=tft_figure_input --export=tft_title_input --export=tft_render --initial-memory=262144 --max-memory=262144 tools/tft/build/renderer.o -o tools/tft/build/tft-renderer.wasm`;
+const result = spawnSync('nix', ['shell', ...pkgs, '--command', 'sh', '-c', cmd], { cwd: root, stdio: 'inherit' });
+process.exit(result.status ?? 1);

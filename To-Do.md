@@ -2,16 +2,20 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **TFT V1/V2 – sessionsübergreifender Fahrplan (16.10.2026):**
-  Recherche und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).
-  Nächste Session: Schriftwahl klären und gemeinsamen C++-/WASM-Pixelrenderer
-  für **V1 ohne Sprite** vorbereiten. Danach V1 auf echter Hardware absichern;
-  erst anschließend **V2 mit optionalen, vorberechneten Boxbert-Frames**.
-  Gleiche logische Pixel/Fonts/Assets im Browser und auf dem Gerät, kein
-  getrenntes CSS-Nachbild. Planungsauftrag ist noch kein Flashauftrag.
-  Ausführliche Checkliste und kurze Folgeprompts stehen nur im Plan.
+- [x] **TFT V1 – Phase 0/1 gebaut und geprüft (17.10.2026):** DejaVu Sans
+  bestätigt, gemeinsamer C++-/WASM-Pixelrenderer mit identischen RGB565-Pixeln,
+  Bitmap-Schrift, Icons und Zeit/Fortschritt. Browser nutzt nur das fertige
+  240×135-Canvas ohne Sprite. Native-/WASM-Pixeltests, 51 App-Tests sowie
+  Browser/HTTPS/Offline bestanden. [V1-Nachweis](app/docs/verification-tft-v1.md),
+  [Anzeigevertrag/Build](docs/tft-rendering.md), Release `?stand=tft-v1-10`.
+- [ ] **TFT V1 – Phase 2 auf echter Hardware:** separaten Integrationssketch
+  vorbereiten, echte Zustände und ST7789-Ausgabe anbinden, tatsächlichen ESP-
+  Build mit Speicherwerten prüfen. Flash nur nach gesonderter Freigabe; keine
+  Referenz-Sketches ändern. Geräte-/Audio-/SPI-Lastprüfung fehlt noch.
+  Danach erst **V2 mit optionalen, vorberechneten Boxbert-Frames**.
+  Fahrplan und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).
 
-- [ ] **TFT-Vorschau gebaut und HTTPS-geprüft (16.10.2026):** neuer App-Reiter
+- [x] **Historischer Browser-Designstand vor V1 (16.10.2026):** App-Reiter
   mit vollständiger 240×135-Ansicht, 3D-Boxbert mit Augen/Bewegung, Akku, WLAN,
   Lautstärke, Titel-Laufschrift, Fortschritt und Spielzeit. Nur Beispieldaten,
   keine Firmwareänderung. 47 Tests und HTTPS-/Offline-/UX-Prüfungen bestanden.

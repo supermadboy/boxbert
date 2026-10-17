@@ -1,9 +1,29 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-statusbar-9**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v1-10**
 
-### Smartphone-Statusleiste
+### TFT V1 · gemeinsamer Pixelrenderer
+
+Der TFT-Reiter verwendet jetzt den gleichen Arduino-freien C++-Kern wie die
+native Gerätevorbereitung: RGB565, 240×135, DejaVu Sans Bold 16 px und Regular
+12 px. Im Browser läuft dieser Kern als WebAssembly; Canvas zeigt ausschließlich
+seine fertigen Pixel. Keine CSS-/SVG-/Systemschrift-Nachbildung im Display.
+**V1 ist bewusst ohne Maskottchen**; vorberechnete Boxbert-Frames folgen erst
+nach der separaten V1-Geräteprüfung.
+
+Play/Pause, Titelwahl, Zeitleiste und manuelle Titelverschiebung bleiben reine
+Beispiele. Zusätzliche Fälle zeigen Start, keine Figur, Dateifehler, unbekannte
+Messwerte sowie Umlaute/ß und Ersatzzeichen. Reduced Motion hält die Laufschrift
+an; alle Knöpfe und der vollständige Anzeigetext bleiben zugänglich. Der WASM-
+Renderer wird mit der PWA offline gespeichert. Geräteadapter und gespeicherte
+Demo-Konfiguration bleiben unabhängig.
+
+Reproduktion und Anzeigevertrag: [TFT-Rendering](../docs/tft-rendering.md).
+Abnahme und Grenzen: [TFT-V1-Prüfbericht](docs/verification-tft-v1.md).
+Keine Gerätefirmware kompiliert/geflasht, kein echter TFT-/Audio-/Lasttest.
+
+### Historischer Stand: Smartphone-Statusleiste
 
 Akku, Lautstärke und WLAN erscheinen jetzt als kompakte Symbole oben rechts
 im TFT, ohne ausgeschriebene Werte. Zugängliche Beschriftungen erhalten die
@@ -186,13 +206,21 @@ Normales lokales **HTTP auf dem ESP ist keine zugesagte Offline-PWA**.
 
 ## Bauen / testen
 
-Node aus dem ai-habibi-Flake (`--no-update-lock-file`), vorhandener Node funktioniert:
+Node aus dem ai-habibi-Flake (`--no-update-lock-file`), vorhandener Node funktioniert.
+Für TFT V1 zusätzlich Nix: `build.mjs` baut vor Vite den gepinnten C++-/WASM-Kern
+und kopiert das WASM nach `public/` (generiert/ignoriert). Nach frischem Checkout
+vor einem Vite-Entwicklungsserver einmal `npm run build` ausführen.
+Fontquellen und generierte Glyphen sind versioniert; kein Fontdownload zur Laufzeit.
 
 ```sh
 cd /home/habibi/projects/boxbert/app
 npm ci --no-audit --no-fund
 npm test                     # Unit + API-Adapter + beide Build-Verträge
-npm run build                # dist/ und dist-sd/
+npm run build                # gemeinsamer TFT-Kern, dist/ und dist-sd/
+(cd .. && node tools/tft/tests/fixtures.mjs && tools/tft/build/tft-native --selftest) # 80 Pixelvergleiche + UTF-8-Grenzen
+CHROMIUM_PATH=/pfad/zu/chromium node tests/tft-browser.mjs
+CHROMIUM_PATH=/pfad/zu/chromium node tests/tft-lifecycle-browser.mjs
+CHROMIUM_PATH=/pfad/zu/chromium node tests/tft-hosted-browser.mjs
 npx playwright install chromium
 npm run test:browser          # Browser-Demo
 node tests/local-browser.mjs # SD-Build gegen lokalen HTTP-Contract-Server

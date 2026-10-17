@@ -1,0 +1,32 @@
+import {chromium,expect} from '@playwright/test';
+import {createServer} from 'vite';
+const server=await createServer({server:{host:'127.0.0.1',port:0},base:'/boxbert/'});await server.listen();
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
+const base=process.env.BOXBERT_URL||server.resolvedUrls.local[0];
+try{
+ const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'}),page=await context.newPage(),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ await page.route('**/tft-renderer.wasm',route=>route.fulfill({status:503,body:'unavailable'}));
+ await page.goto(base);await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
+ await expect(page.getByRole('alert')).toContainText('HTTP 503');
+ expect(await page.locator('.boxbert-cube,svg.tft-status-icon').count()).toBe(0);
+ await page.getByRole('tab',{name:'Medienbibliothek',exact:true}).click();
+ await page.unroute('**/tft-renderer.wasm');
+ let release;const gate=new Promise(resolve=>release=resolve);let requested;const request=new Promise(resolve=>requested=resolve);
+ await page.route('**/tft-renderer.wasm',async route=>{requested();await gate;await route.continue();});
+ await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();await request;
+ await expect(page.getByText('Pixelrenderer wird geladen…',{exact:true})).toBeVisible();
+ await page.getByRole('tab',{name:'Medienbibliothek',exact:true}).click();release();
+ await page.waitForTimeout(300);await page.unroute('**/tft-renderer.wasm');
+ await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
+ const canvas=page.locator('.tft-screen canvas');await expect(canvas).toHaveAttribute('data-renderer','ready');
+ await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(150);
+ const tick=await canvas.getAttribute('data-render-time');await page.waitForTimeout(250);expect(await canvas.getAttribute('data-render-time')).toBe(tick);
+ await page.emulateMedia({reducedMotion:'no-preference'});await page.waitForTimeout(250);expect(await canvas.getAttribute('data-render-time')).not.toBe(tick);
+ await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'));});
+ await page.waitForTimeout(150);const hiddenTick=await canvas.getAttribute('data-render-time');await page.waitForTimeout(250);expect(await canvas.getAttribute('data-render-time')).toBe(hiddenTick);
+ await page.evaluate(()=>{delete document.hidden;document.dispatchEvent(new Event('visibilitychange'));});await page.waitForTimeout(250);expect(await canvas.getAttribute('data-render-time')).not.toBe(hiddenTick);
+ expect(errors).toEqual([]);
+ console.log('PASS TFT WASM lifecycle: HTTP-Fehler sichtbar ohne Ersatz, verspätetes Laden nach Unmount ignoriert, Wiederöffnung, Reduced Motion und Hintergrund stoppen Rendering');
+ await context.close();
+}finally{await browser.close();await server.close();}

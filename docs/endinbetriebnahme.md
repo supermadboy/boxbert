@@ -32,6 +32,21 @@ Belege: [Aufgaben](../To-Do.md),
 [Funk-/Speicherrecherche](../ideen/ble-wifi-wechsel/machbarkeit.md),
 [reproduzierbarer Toolchain-/Flashweg](dev-setup.md).
 
+## TFT-Vorbereitung · 17.10.2026
+
+Für V1 liegt ein gemeinsamer Arduino-freier C++-Pixelrenderer mit DejaVu-Sans-
+Bitmapglyphen vor. Native Ausführung und Browser-WASM verwenden denselben Kern;
+die PWA zeigt dessen RGB565-Buffer ohne CSS-/Systemfont-Nachzeichnung. Der
+Anzeigevertrag ist in [tft-rendering.md](tft-rendering.md) beschrieben, der
+abgenommene Browserumfang in [TFT-V1-Prüfung](../app/docs/verification-tft-v1.md).
+Das ist ein Integrationsbaustein, **keine ESP-Firmware-/Geräteabnahme**.
+
+Nächster separater TFT-Schritt: neuer Integrationssketch für V1, echte
+Player-/Gauge-/WLAN-Zustände und ST7789-Ausgabe, zunächst tatsächlicher Build
+mit Speicherwerten; danach gesondert freigegebener Flash und reale Audio-/
+SPI-/Display-/Neustartprüfung. Referenz-Sketches bleiben unverändert. V2-Sprites
+bleiben bis nach erfolgreicher V1-Geräteprüfung zurückgestellt.
+
 ## Vor dem Endaufbau vorzubereiten
 
 Die gemeinsame Firmware und die echten Frontend-Geräteadapter müssen als eigener

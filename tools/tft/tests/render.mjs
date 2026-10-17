@@ -1,0 +1,71 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+const {instance:{exports:e}}=await WebAssembly.instantiate(readFileSync('tools/tft/build/tft-renderer.wasm'));
+export function frame(figure='',title='',...args) {
+ for(const [ptr,s,limit] of [[e.tft_figure_input(),figure,512],[e.tft_title_input(),title,2048]]) {
+ const mem=new Uint8Array(e.memory.buffer,ptr,limit); mem.fill(0); mem.set(new TextEncoder().encode(s).slice(0,limit-1)); }
+ const p=e.tft_render(...args); const wasm=Buffer.from(new Uint8Array(e.memory.buffer,p,64800));
+ const native=spawnSync('tools/tft/build/tft-native',[figure,title,...args.map(String)]);
+ assert.equal(native.status,0); assert.equal(wasm.length,64800); assert.deepEqual(wasm,native.stdout,'native/WASM pixels'); return wasm;
+}
+const base=['','',0,-1,-1,-1,-1,0,3,0,-1];
+const a=frame(...base);
+assert.equal(a.readUInt16LE(0),0x1082,'background is dark RGB565');
+assert.deepEqual(a,frame(...base),'repeat deterministic');
+console.log('PASS initial framebuffer: native/WASM exact 64800 bytes');
+const named=frame('Änne','Grüße aus Köln',2,12,100,-1,-1,0,3,0,-1);
+assert.notDeepEqual(named,a,'text must draw real glyphs');
+assert.deepEqual(frame('🐻','漢字',2,12,100,-1,-1,0,3,0,-1),frame('?','??',2,12,100,-1,-1,0,3,0,-1),'fallback once per codepoint');
+assert.notDeepEqual(named,frame('Anne','Grusse aus Koln',2,12,100,-1,-1,0,3,0,-1),'accent glyphs retained');
+console.log('PASS font UTF8 and glyph pixels');
+const longTitle='Eine außergewöhnlich lange Geschichte über Bären im großen Zauberwald';
+const long=(time,offset=-1)=>frame('Änne',longTitle,2,12,100,-1,-1,0,3,time,offset);
+assert.notDeepEqual(long(0),long(4000),'automatic title scrolling');
+assert.deepEqual(long(0,17),long(9000,17),'manual offset ignores render time');
+assert.notDeepEqual(long(0,0),long(0,17),'manual title scrolling');
+const crop=(b,y,h)=>b.subarray(y*480,(y+h)*480);
+assert.deepEqual(crop(frame('W'.repeat(500),'',2,0,1,-1,-1,0,3,0,-1),28,24),crop(frame('W'.repeat(499)+'i','',2,0,1,-1,-1,0,3,0,-1),28,24),'name bounded and ellipsized');
+console.log('PASS core text layout and scroll');
+const state=p=>frame('','',p,-1,-1,-1,-1,0,3,0,-1);
+assert.equal(new Set(Array.from({length:6},(_,p)=>state(p).toString('hex'))).size,6,'each playback state has a visible label');
+assert.deepEqual(state(-7),state(999),'invalid playback visibly unknown');
+assert.notDeepEqual(state(-7),state(1),'unknown playback is not idle');
+console.log('PASS playback states');
+const icons=(volume=-1,battery=-1,charging=0,wifi=3,time=0)=>crop(frame('','',2,0,10,volume,battery,charging,wifi,time,-1),0,27);
+for(const v of [0,7,21])assert.notDeepEqual(icons(v),icons(),'volume/mute/unknown visible');
+assert.deepEqual(icons(22),icons(),'invalid volume unknown');
+for(const b of [0,50,100])assert.notDeepEqual(icons(-1,b),icons(),'battery gauge known');
+assert.deepEqual(icons(-1,101),icons(),'invalid gauge unknown');
+assert.notDeepEqual(icons(-1,50,0),icons(-1,50,1),'charging bolt');
+assert.equal(new Set([0,1,2,3].map(w=>icons(-1,-1,0,w).toString('hex'))).size,4,'wifi off/connecting/connected/unknown');
+assert.notDeepEqual(icons(-1,-1,0,1,0),icons(-1,-1,0,1,600),'connecting animation uses explicit time');
+assert.deepEqual(icons(-1,-1,0,-99),icons(),'invalid wifi unknown');
+console.log('PASS dynamic status icons');
+const timeline=(elapsed,duration)=>crop(frame('','',2,elapsed,duration,-1,-1,0,3,0,-1),88,45);
+assert.notDeepEqual(timeline(0,100),timeline(50,100),'elapsed and progress rendered');
+assert.deepEqual(timeline(200,100),timeline(100,100),'progress and elapsed bounded at end');
+assert.deepEqual(timeline(9,0),timeline(9,-1),'zero duration unknown');
+assert.notDeepEqual(timeline(9,0),timeline(9,100),'unknown duration not demo fallback');
+assert.deepEqual(timeline(-4,100),timeline(-1,100),'invalid elapsed unknown');
+const half=frame('','',2,50,100,-1,-1,0,3,0,-1);
+assert.equal(half.readUInt16LE((93*240+100)*2),0x4e19,'half progress accent');
+assert.equal(half.readUInt16LE((93*240+150)*2),0x7bef,'unfilled progress muted');
+console.log('PASS timeline unknown duration and bounded progress');
+assert.notDeepEqual(icons(-1,50,-1),icons(-1,50,0),'invalid charging visibly unknown');
+assert.deepEqual(icons(-1,50,-1),icons(-1,50,5),'invalid charging normalization');
+console.log('PASS unknown charging status');
+assert.deepEqual(crop(frame('W'.repeat(500),'',2,0,1,-1,-1,0,3,0,-1),32,24),crop(frame('W'.repeat(11)+'…','',2,0,1,-1,-1,0,3,0,-1),32,24),'actual measured name ellipsis');
+const mod=new WebAssembly.Module(readFileSync('tools/tft/build/tft-renderer.wasm'));
+assert.deepEqual(WebAssembly.Module.imports(mod),[],'freestanding WASM no glue');
+assert.deepEqual(WebAssembly.Module.exports(mod).map(x=>x.name),['memory','tft_figure_input','tft_title_input','tft_render']);
+for(const [fp,tp] of [[e.tft_figure_input(),e.tft_title_input()]]){
+ const mem=new Uint8Array(e.memory.buffer);
+ mem.fill(0xff,fp,fp+512);mem.fill(0xc2,tp,tp+2048);
+ const figureBefore=mem.slice(fp,fp+512),titleBefore=mem.slice(tp,tp+2048);
+ const p=e.tft_render(99,2147483647,1,99,99,99,99,0xffffffff,2147483647);
+ assert.equal(new Uint16Array(e.memory.buffer,p,32400).length,32400);
+ assert.deepEqual(mem.slice(fp,fp+512),figureBefore,'figure input unchanged');
+ assert.deepEqual(mem.slice(tp,tp+2048),titleBefore,'title input unchanged');
+}
+console.log('PASS exact ABI and malformed/full-capacity UTF8 bounds');

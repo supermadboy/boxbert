@@ -1,5 +1,9 @@
 # Smartphone-Statusleiste · 16.10.2026
 
+Historischer CSS-/SVG-Zwischenstand, durch den gemeinsamen C++-/WASM-Renderer
+in V1 abgelöst. Aktuelle Nachweise: [TFT-V1-Prüfbericht](verification-tft-v1.md).
+Die unten beschriebenen 3D-Bewegungen gehören zur alten Vorschau, nicht zu V1.
+
 Release: https://habibi.supermittel.com/boxbert/?stand=tft-statusbar-9
 
 ## Nutzerfeedback und Umsetzung
