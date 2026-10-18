@@ -58,7 +58,7 @@ console.log('PASS unknown charging status');
 assert.deepEqual(crop(frame('W'.repeat(500),'',2,0,1,-1,-1,0,3,0,-1),32,24),crop(frame('W'.repeat(11)+'…','',2,0,1,-1,-1,0,3,0,-1),32,24),'actual measured name ellipsis');
 const mod=new WebAssembly.Module(readFileSync('tools/tft/build/tft-renderer.wasm'));
 assert.deepEqual(WebAssembly.Module.imports(mod),[],'freestanding WASM no glue');
-assert.deepEqual(WebAssembly.Module.exports(mod).map(x=>x.name),['memory','tft_figure_input','tft_title_input','tft_render']);
+assert.deepEqual(WebAssembly.Module.exports(mod).map(x=>x.name),['memory','tft_figure_input','tft_title_input','tft_set_asset','tft_asset_input','tft_asset_capacity','tft_render','tft_render_v2']);
 for(const [fp,tp] of [[e.tft_figure_input(),e.tft_title_input()]]){
  const mem=new Uint8Array(e.memory.buffer);
  mem.fill(0xff,fp,fp+512);mem.fill(0xc2,tp,tp+2048);

@@ -3,3 +3,4 @@ dist/
 dist-sd/
 test-results/
 public/tft-renderer.wasm
+public/boxbert.rgb565

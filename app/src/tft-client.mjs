@@ -5,6 +5,17 @@ export async function loadTftRenderer(url){
  return instance.exports;
 }
 
+export async function loadTftAsset(renderer,url,signal){
+ renderer.tft_set_asset(0,0);
+ const response=await fetch(url,{signal});
+ if(!response.ok)throw new Error(`Boxbert-Frames konnten nicht geladen werden (HTTP ${response.status})`);
+ const data=new Uint8Array(await response.arrayBuffer());
+ if(signal?.aborted)throw new DOMException('Abgebrochen','AbortError');
+ if(data.length!==renderer.tft_asset_capacity())throw new Error('Boxbert-Frames: falsche Größe');
+ new Uint8Array(renderer.memory.buffer,renderer.tft_asset_input(),data.length).set(data);
+ if(!renderer.tft_set_asset(renderer.tft_asset_input(),data.length))throw new Error('Boxbert-Frames: Format oder Prüfsumme ungültig');
+}
+
 // TextEncoder.encodeInto never emits a partial UTF-8 sequence.
 export function writeUtf8(target,text){
  target.fill(0);new TextEncoder().encodeInto(text,target.subarray(0,target.length-1));

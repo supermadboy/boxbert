@@ -1,5 +1,7 @@
 # TFT V1 — gemeinsamer Pixelrenderer
 
+**V1 abgeschlossen; aktuelle optionale V2-Erweiterung:** [Boxbert-Frames](tft-v2.md).
+
 Stand 17.10.2026. Daddelbert bestätigte DejaVu Sans und die spritefreie Basis.
 **Gebaut/geprüft: Native C++ und Browser-WASM, nicht die ESP-Geräteintegration.**
 Aktueller Nachweis: [TFT-V1-Prüfbericht](../app/docs/verification-tft-v1.md).
@@ -27,7 +29,7 @@ Alpha ist 255. WASM-Bytes sind Little Endian. Native Vergleichsausgabe schreibt
 jedes uint16 explizit als Low-/High-Byte. Browservergrößerung ohne Interpolation.
 Physische Helligkeit und Farbwirkung zweier Displays sind damit nicht identisch.
 
-Ein Framebuffer benötigt 64.800 Bytes. Aktuelles WASM: 47.559 Bytes; fixe
+Ein Framebuffer benötigt 64.800 Bytes. Historischer V1-Build: WASM 47.559 Bytes; fixe
 WASM-Memory 262.144 Bytes, keine Imports/JS-Glue. Dies ist **kein** freies
 ESP-Speicherbudget; native/WASM-Dateigröße sagt nichts über das gesamte
 Arduino-Firmwareimage oder dessen freien Heap/PSRAM aus.
@@ -76,8 +78,8 @@ aus mehreren Tasks verwenden. Ein Buffer, keine DMA-/Doppelbuffer-Abstraktion.
 Leerer Titel: Boot zeigt `Boxbert`, Idle `Figur auflegen`; andere Zustände einen
 unbekannten Platzhalter. Kein Tag, Pause, Ende und Dateifehler sind eigene
 sichtbare Zustände. Dies ist ein **Rendervertrag**, keine implementierte
-Geräte-Status-API. V2 soll diesen Vertrag erweitern/nutzen; Spriteparameter oder
-Dateipfade werden noch nicht eingeführt.
+Geräte-Status-API. V2 nutzt denselben Vertrag mit optionalem Asset; Erweiterung siehe
+[tft-v2.md](tft-v2.md). Die hier beschriebene V1-ABI bleibt erhalten.
 
 ## Layout und Font
 
@@ -87,7 +89,7 @@ Smartphone-Symbole rechts oben. Figur im Bereich ab y=32, Titel ab y=58,
 Fortschrittsleiste y=91–94, Zeiten ab y=103. Horizontaler Inhaltsbereich
 x=8 bis ausschließlich 232; automatische Titelbewegung wird dort beschnitten.
 V1 nutzt den freien Mittelbereich für lesbare Information, kein Maskottchen.
-Ein späteres V2-Layout/Frame-Blitting bleibt eigener Arbeitsschritt.
+Das optionale V2-Layout/Frame-Blitting ist separat in [tft-v2.md](tft-v2.md) dokumentiert.
 
 Schrift: **DejaVu Sans 2.37 Bold 16 px**, **Regular 12 px**. Quelldateien unter
 `assets/tft/fonts/`, vollständige Original-Lizenz in `assets/tft/fonts/LICENSE`.

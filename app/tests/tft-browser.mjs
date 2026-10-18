@@ -12,6 +12,8 @@ try{
  const screen=page.locator('.tft-screen'),canvas=screen.locator('canvas');
  await expect(canvas).toBeVisible();
  await expect(canvas).toHaveAttribute('data-renderer','ready');
+ await page.getByRole('checkbox',{name:'Boxbert-Animation',exact:true}).uncheck();
+ await expect(canvas).toHaveAttribute('data-mode','v1');
  expect(await canvas.evaluate(el=>[el.width,el.height,el.offsetWidth,el.offsetHeight])).toEqual([240,135,240,135]);
  expect(await screen.locator('svg,.boxbert-cube,.tft-title-track')).toHaveCount(0);
  expect(await canvas.evaluate(el=>getComputedStyle(el).imageRendering)).toBe('pixelated');

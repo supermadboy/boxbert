@@ -9,6 +9,6 @@ if(lookup.status!==0)throw new Error(lookup.stderr);
 const wasmCompiler=lookup.stdout.trim()+'/bin/clang++';
 const common = '-std=c++17 -O2 -Wall -Wextra -Werror -fno-exceptions -fno-rtti';
 mkdirSync(`${root}/tools/tft/build`, { recursive: true });
-const cmd = `clang++ ${common} firmware/ui/TftRenderer.cpp tools/tft/tests/native.cpp -o tools/tft/build/tft-native && ${wasmCompiler} ${common} --target=wasm32 -ffreestanding -nostdlib -fno-builtin -c firmware/ui/TftRenderer.cpp -o tools/tft/build/renderer.o && wasm-ld --no-entry --export-memory --export=tft_figure_input --export=tft_title_input --export=tft_render --initial-memory=262144 --max-memory=262144 tools/tft/build/renderer.o -o tools/tft/build/tft-renderer.wasm`;
+const cmd = `clang++ ${common} firmware/ui/TftRenderer.cpp tools/tft/tests/native.cpp -o tools/tft/build/tft-native && ${wasmCompiler} ${common} --target=wasm32 -ffreestanding -nostdlib -fno-builtin -c firmware/ui/TftRenderer.cpp -o tools/tft/build/renderer.o && wasm-ld --no-entry --export-memory --export=tft_figure_input --export=tft_title_input --export=tft_render --export=tft_render_v2 --export=tft_asset_input --export=tft_asset_capacity --export=tft_set_asset --initial-memory=524288 --max-memory=524288 tools/tft/build/renderer.o -o tools/tft/build/tft-renderer.wasm`;
 const result = spawnSync('nix', ['shell', ...pkgs, '--command', 'sh', '-c', cmd], { cwd: root, stdio: 'inherit' });
 process.exit(result.status ?? 1);

@@ -1,18 +1,24 @@
 # TFT-Anzeige
 
-## Aktueller Stand · TFT V1 · 17.10.2026
+## Aktueller Stand · TFT V2 · 18.10.2026
+
+V1 ist abgeschlossen. Optionale Boxbert-Frames werden im gemeinsamen Renderer
+integriert und als Software abgeschlossen, nicht als separate Browseranimation.
+[Vertrag](../../docs/tft-v2.md), [Nachweis](../../app/docs/verification-tft-v2.md).
+
+## Abgeschlossene Basis · TFT V1 · 17.10.2026
 
 Daddelbert hat DejaVu Sans und den Bau der spritefreien Basis bestätigt.
 Die Vorschau verwendet nun einen gemeinsamen Arduino-freien C++-/WASM-
 Pixelrenderer mit 240×135 RGB565, Bitmap-Schrift, Statussymbolen, Figur/Titel,
 Zeit und Fortschritt. **Kein CSS-3D-Maskottchen in V1.** Die unten beschriebene
-3D-Vorschau ist der historische Designstand; V2 soll später optionale echte
-Geräteframes verwenden, nicht eine separate Browseranimation.
+3D-Vorschau ist der historische Designstand; die aktuelle V2 verwendet echte
+Geräteframes statt einer separaten Browseranimation.
 
 Native-/WASM-Pixelgleichheit, App-/Browserregressionen und echtes HTTPS samt
 neuem Offline-Dokument sind geprüft: [aktueller V1-Nachweis](../../app/docs/verification-tft-v1.md).
 Anzeigevertrag und Reproduktion: [TFT-Rendering](../../docs/tft-rendering.md).
-**V1 abgeschlossen laut Daddelbert (18.10.2026); V2 jetzt beauftragt.**
+**V1 abgeschlossen laut Daddelbert; V2-Software ebenfalls abgeschlossen (18.10.2026).**
 ESP-Integration, Build/Flash und reale Geräte-/Lasttests bleiben separat bei
 der Endinbetriebnahme dokumentiert. Daraus folgt kein neuer Hardware-Nachweis.
 

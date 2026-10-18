@@ -26,7 +26,7 @@ Kein Datum oder Agentenkommentar allein gilt als Abnahme.
 
 | Status | Name | Beschreibung |
 |---|---|---|
-| in Umsetzung | [TFT-Anzeige](tft-anzeige/README.md) | V1 mit gemeinsamem C++-/WASM-Pixelrenderer, DejaVu Sans und vollständiger spritefreier 240×135-Anzeige gebaut; Native-/WASM-Gleichheit und HTTPS/offline geprüft. Echte V1-Geräteintegration noch offen; danach V2 mit optionalen Boxbert-Frames. |
+| Software fertig | [TFT-Anzeige](tft-anzeige/README.md) | V1 abgeschlossen; V2 mit reproduzierbaren Blender-/RGB565-Frames und exaktem V1-Fallback gebaut. Gemeinsamer C++-/WASM-Kern, 240 V2-/80 V1-Pixelvergleiche, Browser/HTTPS/offline geprüft. ESP-Gesamtintegration separat. |
 | besprochen | [ESP-Partybeleuchtung](esp-partybeleuchtung/README.md) | Besprechung abgeschlossen: Onboard-NeoPixel und Stick in der PWA getrennt einstellbar, speicherbar und als Vorschau animiert. Echte Firmware-Ansteuerung und Sleep-Verhalten noch offen. |
 | besprochen | [Intro je RFID](rfid-intro/README.md) | Ideenbesprechung und Browser-UI abgeschlossen: direkte Tag-Aufnahme, Daueranzeige und Sprachaufnahme-Icons; HTTPS/offline geprüft. Echte ESP-Integration bleibt eigener, vor Endaufbau vorzubereitender Auftrag. |
 | offen | [Bilderbibliothek in der App](bilderbibliothek/README.md) | Bilder für die Gestaltung auswählen und zuordnen können. |

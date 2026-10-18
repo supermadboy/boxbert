@@ -4,6 +4,11 @@
 namespace {
 char figure[512], title[2048];
 uint16_t pixels[240*135];
+const uint8_t* sprite=nullptr;
+uint32_t little32(const uint8_t* p){return uint32_t(p[0])|(uint32_t(p[1])<<8)|(uint32_t(p[2])<<16)|(uint32_t(p[3])<<24);}
+#if defined(__wasm__)
+uint8_t assetInput[24+64*64*2*12];
+#endif
 constexpr uint16_t BG=0x1082, INK=0xf7be;
 void pixel(int x,int y,uint16_t color){if(x>=0&&x<240&&y>=0&&y<135)pixels[y*240+x]=color;}
 constexpr uint16_t MUTED=0x7bef, ACCENT=0x4e19;
@@ -75,20 +80,38 @@ void statusIcons(int volume,int battery,int charging,int wifi,uint32_t time){
 }
 extern "C" char* tft_figure_input(){return figure;}
 extern "C" char* tft_title_input(){return title;}
-extern "C" uint16_t* tft_render(int playback,int elapsed,int duration,int volume,int battery,int charging,int wifi,uint32_t timeMs,int scrollOverride){
+extern "C" int tft_set_asset(const uint8_t* data,uint32_t size){
+ sprite=nullptr;
+ if(!data||size!=24+64*64*2*12)return 0;
+#if defined(__wasm__)
+ // Reject arbitrary or out-of-range linear-memory addresses before dereferencing.
+ if(data!=assetInput)return 0;
+#endif
+ if(data[0]!='B'||data[1]!='B'||data[2]!='T'||data[3]!='2'||little32(data+4)!=64||little32(data+8)!=64||little32(data+12)!=12||little32(data+16)!=160)return 0;
+ uint32_t crc=0xffffffffu;
+ for(uint32_t i=24;i<size;++i){crc^=data[i];for(int bit=0;bit<8;++bit)crc=(crc>>1)^((crc&1u)?0xedb88320u:0u);}
+ if((crc^0xffffffffu)!=little32(data+20))return 0;
+ sprite=data+24;return 1;
+}
+#if defined(__wasm__)
+extern "C" uint8_t* tft_asset_input(){return assetInput;}
+extern "C" uint32_t tft_asset_capacity(){return sizeof assetInput;}
+#endif
+static uint16_t* render(int playback,int elapsed,int duration,int volume,int battery,int charging,int wifi,uint32_t timeMs,int scrollOverride,bool v2){
  for(int i=0;i<240*135;++i)pixels[i]=BG;
  char name[515]; int p=0,end=0,width=0;
- bool truncate=measure(figure,512,false)>224;
+ const int left=v2?80:8,available=232-left;
+ bool truncate=measure(figure,512,false)>available;
  while(auto cp=decode(figure,p,512)){
   int next=width+glyph(cp,false).advance;
-  if(truncate&&next+glyph(0x2026,false).advance>224)break;
+  if(truncate&&next+glyph(0x2026,false).advance>available)break;
   width=next;end=p;
  }
  for(int i=0;i<end;++i)name[i]=figure[i];
  if(truncate){name[end++]=static_cast<char>(0xe2);name[end++]=static_cast<char>(0x80);name[end++]=static_cast<char>(0xa6);}
  name[end]=0;
- text(name,515,8,32,false);
- int w=measure(title,2048,false),maximum=w>224?w-224:0,offset=0;
+ text(name,515,left,32,false,left,232);
+ int w=measure(title,2048,false),maximum=w>available?w-available:0,offset=0;
  if(scrollOverride>=0)offset=scrollOverride>maximum?maximum:scrollOverride;
  else if(maximum){
   uint32_t travel=static_cast<uint32_t>(maximum)*40u;
@@ -98,12 +121,18 @@ extern "C" uint16_t* tft_render(int playback,int elapsed,int duration,int volume
   else if(phase<2000u+travel)offset=maximum;
   else offset=maximum-static_cast<int>((phase-2000u-travel)/40u);
  }
- text(title,2048,w<224?(240-w)/2:8-offset,58,false);
+ text(title,2048,w<available?left+(available-w)/2:left-offset,58,false,left,232);
  const char* labels[]={"Startet…","Kein Tag","Wiedergabe","Pause","Beendet","Dateifehler"};
  const char* label=playback>=0&&playback<=5?labels[playback]:"Status ?";
  text(label,64,8,4,true,8,151);
  statusIcons(volume,battery,charging,wifi,timeMs);
  timeline(elapsed,duration);
- if(!title[0])text(playback==1?"Figur auflegen":playback==0?"Boxbert":"—",64,8,58,false);
+ if(!title[0])text(playback==1?"Figur auflegen":playback==0?"Boxbert":"—",64,left,58,false,left,232);
+ if(v2){
+  const uint8_t* frame=sprite+(playback==2?(timeMs/160u)%12u:0u)*8192u;
+  for(int y=0;y<64;++y)for(int x=0;x<64;++x){const uint8_t* p=frame+(y*64+x)*2;pixel(8+x,26+y,uint16_t(p[0])|(uint16_t(p[1])<<8));}
+ }
  return pixels;
 }
+extern "C" uint16_t* tft_render(int p,int e,int d,int v,int b,int c,int w,uint32_t t,int s){return render(p,e,d,v,b,c,w,t,s,false);}
+extern "C" uint16_t* tft_render_v2(int p,int e,int d,int v,int b,int c,int w,uint32_t t,int s){return render(p,e,d,v,b,c,w,t,s,sprite!=nullptr);}

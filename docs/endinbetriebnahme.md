@@ -49,6 +49,12 @@ mit Speicherwerten; anschließend gesondert freigegebener Flash und reale
 Audio-/SPI-/Display-/Neustartprüfung. Referenz-Sketches bleiben unverändert.
 Diese Tests wurden durch die Statuskorrektur nicht nachträglich ausgeführt.
 
+V2-Software: [gemeinsames Frameformat, Renderer und Fallback](tft-v2.md).
+Die spätere Gesamtfirmware muss die optionalen Assets aus dauerhaft gültigem
+Speicher einbinden, reale Reserve/Last prüfen und V1 ohne Asset erhalten.
+Browser-WASM verwendet einen eigenen Stagingbuffer; diesen nicht blind
+als Speicherstrategie in die ESP-Firmware übernehmen.
+
 ## Vor dem Endaufbau vorzubereiten
 
 Die gemeinsame Firmware und die echten Frontend-Geräteadapter müssen als eigener

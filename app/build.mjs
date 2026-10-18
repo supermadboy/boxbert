@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 execFileSync(process.execPath,[new URL('../tools/tft/build.mjs',import.meta.url).pathname],{stdio:'inherit'});
 await fs.mkdir('public',{recursive:true});
 await fs.copyFile(new URL('../tools/tft/build/tft-renderer.wasm',import.meta.url),'public/tft-renderer.wasm');
+await fs.copyFile(new URL('../assets/tft/boxbert/boxbert.rgb565',import.meta.url),'public/boxbert.rgb565');
 for(const [target,base,outDir] of [['hosted','/boxbert/','dist'],['sd','./','dist-sd']]){
  await build({base,define:{'import.meta.env.VITE_TARGET':JSON.stringify(target)},build:{outDir,emptyOutDir:true},plugins:[{name:'manifest-link',transformIndexHtml(html){return target==='hosted'?html.replace('</head>',`<link rel="manifest" href="${base}manifest.webmanifest"></head>`):html;}}]});
  if(target==='sd')continue;

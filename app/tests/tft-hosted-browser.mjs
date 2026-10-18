@@ -1,7 +1,7 @@
 import {chromium,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
-const base=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=tft-v1-10';
-const out=new URL('../docs/tft-v1-ui/',import.meta.url).pathname;
+const base=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=tft-v2-11';
+const out=new URL('../docs/tft-v2-ui/',import.meta.url).pathname;
 await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
 try{
@@ -13,7 +13,7 @@ try{
  const r=await page.goto(base);expect(r.status()).toBe(200);
  const persisted=await page.evaluate(()=>JSON.stringify({...localStorage}));
  await page.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
- const canvas=page.locator('.tft-screen canvas');await expect(canvas).toHaveAttribute('data-renderer','ready');
+ const canvas=page.locator('.tft-screen canvas');await expect(canvas).toHaveAttribute('data-renderer','ready');await expect(canvas).toHaveAttribute('data-mode','v2');
  expect(await canvas.evaluate(el=>[el.width,el.height])).toEqual([240,135]);
  await expect(canvas).toHaveAccessibleName(/Fuchs.*Pause.*0:42 \/ 3:24/);
  expect(wasm).toContain(200);
@@ -34,9 +34,9 @@ try{
  const restart=await context.newPage();restart.on('pageerror',e=>errors.push(e.message));
  await restart.goto(new URL('./',base).href);
  await restart.getByRole('tab',{name:'TFT-Vorschau',exact:true}).click();
- const offline=restart.locator('.tft-screen canvas');await expect(offline).toHaveAttribute('data-renderer','ready');
+ const offline=restart.locator('.tft-screen canvas');await expect(offline).toHaveAttribute('data-renderer','ready');await expect(offline).toHaveAttribute('data-mode','v2');
  expect(await offline.evaluate(el=>new Set(el.getContext('2d').getImageData(0,0,240,135).data).size)).toBeGreaterThan(4);
  await expect(offline).toHaveAccessibleName(/Fuchs.*Pause/);
  expect(errors).toEqual([]);expect(failed).toEqual([]);expect(api).toEqual([]);
- console.log('PASS LIVE HTTPS TFT V1: WASM 200, Pixel-Canvas mit Schrift/Status/UTF-8, Screenshots, gespeicherte Demodaten unverändert, WASM-Offline-Neustart als neues Dokument, keine JS-/HTTP-Fehler oder ESP-Requests');
+ console.log('PASS LIVE HTTPS TFT V2: WASM 200, Pixel-Canvas mit Schrift/Status/UTF-8, Screenshots, gespeicherte Demodaten unverändert, WASM-Offline-Neustart als neues Dokument, keine JS-/HTTP-Fehler oder ESP-Requests');
 }finally{await browser.close();}

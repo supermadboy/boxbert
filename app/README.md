@@ -1,7 +1,20 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v1-10**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v2-11**
+
+### TFT V2 · optionaler animierter Boxbert
+
+V1 ist abgeschlossen. V2 verwendet zwölf vorberechnete 64×64-Geräteframes
+mit 160 ms pro Bild im selben C++-/WASM-Pixelrenderer. Boxbert wippt und
+blinzelt bei Wiedergabe, Pause und Reduced Motion zeigen ein Standbild.
+**Boxbert-Animation** lässt sich abschalten; dann bleibt die unveränderte
+V1-Anzeige. Fehlende oder kaputte Frames melden einen Hinweis und lassen
+V1 weiterlaufen. Derselbe Pixelstand wird mit der PWA offline gespeichert.
+
+[Vertrag/Reproduktion](../docs/tft-v2.md),
+[Prüfbericht](docs/verification-tft-v2.md). Spätere ESP-Gesamtintegration
+bleibt separat; kein neuer Flash und keine Hardware-Lastabnahme.
 
 ### TFT V1 · gemeinsamer Pixelrenderer
 
@@ -10,7 +23,7 @@ native Gerätevorbereitung: RGB565, 240×135, DejaVu Sans Bold 16 px und Regular
 12 px. Im Browser läuft dieser Kern als WebAssembly; Canvas zeigt ausschließlich
 seine fertigen Pixel. Keine CSS-/SVG-/Systemschrift-Nachbildung im Display.
 **V1 ist ohne Maskottchen abgeschlossen** (Nutzerbestätigung 18.10.2026).
-V2 mit vorberechneten Boxbert-Frames ist jetzt beauftragt. Die spätere
+V2 mit vorberechneten Boxbert-Frames ist ebenfalls als Software abgeschlossen. Die spätere
 ESP-Gesamtintegration und deren reale Prüfungen bleiben separat.
 
 Play/Pause, Titelwahl, Zeitleiste und manuelle Titelverschiebung bleiben reine

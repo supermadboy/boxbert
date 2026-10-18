@@ -1,5 +1,7 @@
 /* Device pixels are fixed. Only the outer presentation is enlarged. */
 .tft-preview {min-width:0;}
+.tft-animation-toggle {display:flex;align-items:center;gap:10px;max-width:600px;margin:16px auto;}
+.tft-animation-toggle input {width:22px;height:22px;min-height:22px;margin:0;flex:none;}
 .tft-disclaimer {font-size:13px;font-weight:650;color:var(--demo-text);}
 .tft-figure {margin:28px 0;text-align:center;}
 .tft-bezel {display:inline-block;padding:12px;background:#070b10;border:1px solid #46515e;border-radius:12px;box-shadow:0 8px 24px #0003;}

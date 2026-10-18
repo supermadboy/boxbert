@@ -9,5 +9,9 @@ test('Zwei Builds: Hosted PWA hat Scope/Offline-Assets; SD relative Assets ohne 
  const wasm=await fs.readFile('dist/tft-renderer.wasm');assert.equal(WebAssembly.validate(wasm),true,'echtes WASM muss ausgeliefert werden');
  assert.ok(shell.includes('/boxbert/tft-renderer.wasm'),'Renderer muss offline gecacht sein');
  assert.deepEqual(await fs.readFile('dist-sd/tft-renderer.wasm'),wasm,'Hosted und SD verwenden denselben Renderer');
+ const frames=await fs.readFile('../assets/tft/boxbert/boxbert.rgb565');
+ assert.deepEqual(await fs.readFile('dist/boxbert.rgb565'),frames,'Hosted ships exact device frames');
+ assert.deepEqual(await fs.readFile('dist-sd/boxbert.rgb565'),frames,'SD ships exact device frames');
+ assert.ok(shell.includes('/boxbert/boxbert.rgb565'),'Frames must be cached offline');
  await assert.rejects(fs.access('dist-sd/sw.js'));
 });

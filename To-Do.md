@@ -8,8 +8,11 @@
   240×135-Canvas ohne Sprite. Native-/WASM-Pixeltests, 51 App-Tests sowie
   Browser/HTTPS/Offline bestanden. [V1-Nachweis](app/docs/verification-tft-v1.md),
   [Anzeigevertrag/Build](docs/tft-rendering.md), Release `?stand=tft-v1-10`.
-- [ ] **TFT V2 in Arbeit (18.10.2026 ausdrücklich beauftragt):** optionale,
-  vorberechnete Boxbert-Frames im gemeinsamen Renderer mit V1-Fallback.
+- [x] **TFT V2 Software abgeschlossen (18.10.2026):** optionale,
+  reproduzierbare Blender-/RGB565-Frames im gemeinsamen Renderer mit V1-Fallback.
+  53 App-Tests, sechs Assettests, 240 V2- und 80 unveränderte V1-Pixelvergleiche
+  grün; Browser/HTTPS/Offline und erneuter Assetbuild geprüft.
+  [Nachweis](app/docs/verification-tft-v2.md), Release `?stand=tft-v2-11`.
   V1 ist abgeschlossen; die spätere ESP-Gesamtintegration bleibt separat
   in `docs/endinbetriebnahme.md`, keine Voraussetzung für diesen V2-Auftrag.
   Fahrplan und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).

@@ -16,7 +16,7 @@ const names={fox:'Fuchs · langer Songtitel',moon:'Astronaut · Mondreise',boot:
 const states=['Startet','Keine Figur','Läuft','Pause','Ende','Dateifehler'];
 const time=value=>`${Math.floor(value/60)}:${String(value%60).padStart(2,'0')}`;
 export function TftPreview(){
- const [example,setExample]=useState('fox'),[position,setPosition]=useState(42),[playing,setPlaying]=useState(false),[scrollOffset,setScrollOffset]=useState(-1);
+ const [example,setExample]=useState('fox'),[position,setPosition]=useState(42),[playing,setPlaying]=useState(false),[scrollOffset,setScrollOffset]=useState(-1),[animated,setAnimated]=useState(true),[assetError,setAssetError]=useState('');
  const song=examples[example],canPlay=song.playback===3;
  useEffect(()=>{
   if(!playing)return;
@@ -30,14 +30,16 @@ export function TftPreview(){
  return <section className="card tft-preview"><h2>TFT-Vorschau</h2>
   <p className="tft-disclaimer">Beispieldaten · keine Geräteverbindung</p>
   <figure className="tft-figure"><div className="tft-bezel"><div className="tft-screen">
-   <TftCanvas snapshot={snapshot} label={label} scrollOffset={scrollOffset}/>
-  </div></div><figcaption>V1 ohne Sprite · 240 × 135 logische Pixel · DejaVu Sans</figcaption></figure>
+   <TftCanvas snapshot={snapshot} label={label} scrollOffset={scrollOffset} animated={animated} onAssetError={setAssetError}/>
+  </div></div><figcaption>{animated?'V2 mit optionalen Boxbert-Frames':'V1 ohne Sprite'} · 240 × 135 logische Pixel · DejaVu Sans</figcaption></figure>
+  {animated&&assetError&&<p className="small" role="status">{assetError} · V1 bleibt aktiv.</p>}
+  <label className="tft-animation-toggle"><input type="checkbox" checked={animated} onChange={e=>setAnimated(e.target.checked)}/> Boxbert-Animation</label>
   <div className="tft-controls"><label>Beispieltitel<select value={example} onChange={e=>choose(e.target.value)}>{Object.entries(names).map(([id,name])=><option key={id} value={id}>{name}</option>)}</select></label>
   <button disabled={!canPlay} onClick={()=>{if(song.duration>0&&position>=song.duration)setPosition(0);setPlaying(value=>!value);}}>{playing?'Beispiel pausieren':'Beispiel abspielen'}</button>
   <label>Beispielposition<input type="range" min="0" max={song.duration>0?song.duration:300} value={position} disabled={!canPlay} onChange={e=>setPosition(Number(e.target.value))}/></label></div>
   <div className="tft-scroll-controls" role="group" aria-label="Songtitel manuell verschieben"><button onClick={()=>setScrollOffset(value=>Math.min(2048,Math.max(0,value)+24))}>Titel nach links</button><button onClick={()=>setScrollOffset(value=>Math.max(0,value-24))}>Titel nach rechts</button><button onClick={()=>setScrollOffset(-1)}>Titel zurücksetzen</button></div>
   <details className="tft-text"><summary>Vollständigen Anzeigetext lesen</summary><p>{label}</p></details>
   <div className="tft-sr-only" role="progressbar" aria-label="Beispielfortschritt" aria-valuemin={0} aria-valuemax={song.duration>0?song.duration:undefined} aria-valuenow={song.duration>0?position:undefined} aria-valuetext={song.duration>0?`${time(position)} / ${time(song.duration)}`:'Gesamtdauer unbekannt'}/>
-  <p className="small">Nur die Anzeige wird simuliert, es wird kein Ton abgespielt. Alle Werte sind Beispiele. Titelwahl und Zeitleiste ändern keine gespeicherten Daten. Bei reduzierter Bewegung steht die Laufschrift still; mit den Titel-Knöpfen bleibt sie manuell verschiebbar. Nicht unterstützte Zeichen erscheinen im Pixelbild als „?“.</p>
+  <p className="small">Nur die Anzeige wird simuliert, es wird kein Ton abgespielt. Alle Werte sind Beispiele. Titelwahl und Zeitleiste ändern keine gespeicherten Daten. Boxbert bewegt sich bei Wiedergabe. Bei reduzierter Bewegung stehen Animation und Laufschrift still; mit den Titel-Knöpfen bleibt sie manuell verschiebbar. Nicht unterstützte Zeichen erscheinen im Pixelbild als „?“.</p>
  </section>;
 }

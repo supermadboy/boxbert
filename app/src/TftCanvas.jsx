@@ -1,15 +1,23 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {loadTftRenderer,rgb565ToRgba,writeUtf8} from './tft-client.mjs';
+import {loadTftRenderer,loadTftAsset,rgb565ToRgba,writeUtf8} from './tft-client.mjs';
 
-export function TftCanvas({snapshot,label,scrollOffset}){
+export function TftCanvas({snapshot,label,scrollOffset,animated=true,onAssetError}){
  const canvas=useRef(null),epoch=useRef({title:snapshot.title,time:performance.now()});
- const [renderer,setRenderer]=useState(null),[error,setError]=useState('');
+ const [renderer,setRenderer]=useState(null),[error,setError]=useState(''),[asset,setAsset]=useState({ready:false,error:''});
  const [motion,setMotion]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches&&!document.hidden);
  useEffect(()=>{
   let cancelled=false;
   loadTftRenderer(`${import.meta.env.BASE_URL}tft-renderer.wasm`).then(value=>{if(!cancelled)setRenderer(value);}).catch(reason=>{if(!cancelled)setError(`TFT-Vorschau nicht verfügbar: ${reason.message}`);});
   return()=>{cancelled=true;};
  },[]);
+ useEffect(()=>{
+  if(!renderer)return;
+  let cancelled=false;const controller=new AbortController();
+  loadTftAsset(renderer,`${import.meta.env.BASE_URL}boxbert.rgb565`,controller.signal)
+   .then(()=>{if(!cancelled){setAsset({ready:true,error:''});onAssetError('');}})
+   .catch(reason=>{if(!cancelled){setAsset({ready:false,error:reason.message});onAssetError(reason.message);}});
+  return()=>{cancelled=true;controller.abort();};
+ },[renderer,onAssetError]);
  useEffect(()=>{
   const media=matchMedia('(prefers-reduced-motion: reduce)'),update=()=>setMotion(!media.matches&&!document.hidden);
   media.addEventListener('change',update);document.addEventListener('visibilitychange',update);update();
@@ -24,15 +32,16 @@ export function TftCanvas({snapshot,label,scrollOffset}){
    const timeMs=motion?Math.floor(now-epoch.current.time):0;
    writeUtf8(new Uint8Array(renderer.memory.buffer,renderer.tft_figure_input(),512),snapshot.figure);
    writeUtf8(new Uint8Array(renderer.memory.buffer,renderer.tft_title_input(),2048),snapshot.title);
-   const ptr=renderer.tft_render(snapshot.playback,snapshot.elapsed,snapshot.duration,snapshot.volume,snapshot.battery,snapshot.charging,snapshot.wifi,timeMs,scrollOffset);
+   const ptr=(animated&&asset.ready?renderer.tft_render_v2:renderer.tft_render)(snapshot.playback,snapshot.elapsed,snapshot.duration,snapshot.volume,snapshot.battery,snapshot.charging,snapshot.wifi,timeMs,scrollOffset);
    const rgba=rgb565ToRgba(new Uint8Array(renderer.memory.buffer,ptr,240*135*2));
    context.putImageData(new ImageData(rgba,240,135),0,0);
+   canvas.current.dataset.mode=animated&&asset.ready?'v2':'v1';
    canvas.current.dataset.renderer='ready';canvas.current.dataset.renderTime=String(timeMs);
   }
   function tick(now){if(now-last>=80){draw(now);last=now;}frame=requestAnimationFrame(tick);}
   draw(performance.now());
-  if(motion&&scrollOffset<0)frame=requestAnimationFrame(tick);
+  if(motion&&(scrollOffset<0||(animated&&asset.ready&&snapshot.playback===2)))frame=requestAnimationFrame(tick);
   return()=>cancelAnimationFrame(frame);
- },[renderer,snapshot,motion,scrollOffset]);
+ },[renderer,snapshot,motion,scrollOffset,animated,asset]);
  return <><canvas ref={canvas} width={240} height={135} role="img" aria-label={label} data-renderer="loading"/>{!renderer&&!error&&<span className="tft-loading" role="status">Pixelrenderer wird geladen…</span>}{error&&<span className="tft-load-error" role="alert">{error}</span>}</>;
 }
