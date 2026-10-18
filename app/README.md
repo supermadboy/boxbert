@@ -1,7 +1,7 @@
 # Boxbert-Verwaltung · React-PWA
 
 Live: **https://habibi.supermittel.com/boxbert/**
-Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v2-11**
+Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v2-cachefix-12**
 
 ### TFT V2 · optionaler animierter Boxbert
 

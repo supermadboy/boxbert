@@ -78,7 +78,11 @@ CHROMIUM_PATH=/pfad/zu/chromium node tests/tft-hosted-browser.mjs
 
 Blender/Pillow werden separat gepinnt verwendet, nicht bei jedem App-Build
 neu installiert oder gerendert. App-Build kompiliert den C++-Kern und kopiert
-getrackte Frames nach `public/` und in Hosted-/SD-Build. Der Hosted-SW nimmt
+getrackte Frames und WASM über Vite-URL-Imports in beide Builds auf.
+Die Dateinamen unter `assets/` enthalten den Inhaltshash; stabile alte
+`public/`-Kopien werden nicht mehr ausgeliefert. Das verhindert, dass ein noch
+aktiver V1-Service-Worker dem neuen JavaScript einen alten WASM-ABI-Stand liefert.
+Der Hosted-SW nimmt
 WASM und Framepaket in seinen versionierten Offline-Shell-Cache auf.
 
 Nachweise: [V2-Prüfbericht](../app/docs/verification-tft-v2.md),

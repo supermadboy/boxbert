@@ -12,7 +12,9 @@
   reproduzierbare Blender-/RGB565-Frames im gemeinsamen Renderer mit V1-Fallback.
   53 App-Tests, sechs Assettests, 240 V2- und 80 unveränderte V1-Pixelvergleiche
   grün; Browser/HTTPS/Offline und erneuter Assetbuild geprüft.
-  [Nachweis](app/docs/verification-tft-v2.md), Release `?stand=tft-v2-11`.
+  [Nachweis](app/docs/verification-tft-v2.md), Release `?stand=tft-v2-cachefix-12`.
+  **Updatefehler behoben:** inhaltsabhängige WASM-/Frame-Dateinamen verhindern
+  V1/V2-Mischstände; echter V1-Service-Worker als Upgrade-Regression geprüft.
   V1 ist abgeschlossen; die spätere ESP-Gesamtintegration bleibt separat
   in `docs/endinbetriebnahme.md`, keine Voraussetzung für diesen V2-Auftrag.
   Fahrplan und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).

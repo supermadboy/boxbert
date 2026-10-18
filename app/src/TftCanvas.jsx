@@ -1,4 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
+import rendererUrl from '../../tools/tft/build/tft-renderer.wasm?url';
+import framesUrl from '../../assets/tft/boxbert/boxbert.rgb565?url';
 import {loadTftRenderer,loadTftAsset,rgb565ToRgba,writeUtf8} from './tft-client.mjs';
 
 export function TftCanvas({snapshot,label,scrollOffset,animated=true,onAssetError}){
@@ -7,13 +9,13 @@ export function TftCanvas({snapshot,label,scrollOffset,animated=true,onAssetErro
  const [motion,setMotion]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches&&!document.hidden);
  useEffect(()=>{
   let cancelled=false;
-  loadTftRenderer(`${import.meta.env.BASE_URL}tft-renderer.wasm`).then(value=>{if(!cancelled)setRenderer(value);}).catch(reason=>{if(!cancelled)setError(`TFT-Vorschau nicht verfügbar: ${reason.message}`);});
+  loadTftRenderer(rendererUrl).then(value=>{if(!cancelled)setRenderer(value);}).catch(reason=>{if(!cancelled)setError(`TFT-Vorschau nicht verfügbar: ${reason.message}`);});
   return()=>{cancelled=true;};
  },[]);
  useEffect(()=>{
   if(!renderer)return;
   let cancelled=false;const controller=new AbortController();
-  loadTftAsset(renderer,`${import.meta.env.BASE_URL}boxbert.rgb565`,controller.signal)
+  loadTftAsset(renderer,framesUrl,controller.signal)
    .then(()=>{if(!cancelled){setAsset({ready:true,error:''});onAssetError('');}})
    .catch(reason=>{if(!cancelled){setAsset({ready:false,error:reason.message});onAssetError(reason.message);}});
   return()=>{cancelled=true;controller.abort();};

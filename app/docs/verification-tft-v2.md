@@ -1,6 +1,47 @@
 # TFT V2 · Software-Prüfbericht · 18.10.2026
 
-Release: https://habibi.supermittel.com/boxbert/?stand=tft-v2-11
+Release: https://habibi.supermittel.com/boxbert/?stand=tft-v2-cachefix-12
+
+## Nachtrag: echter Nutzer-Updatefehler behoben
+
+Daddelberts Screenshot zeigte `f.tft_set_asset is not a function · V1 bleibt
+aktiv`, obwohl die Animation angehakt war. Die Ersttests nutzten frische
+Browserkontexte und übersahen den Wechsel aus einer bestehenden V1-PWA.
+
+`tests/tft-update-browser.mjs` reproduziert den Fehler mit den **echten alten
+V1-Deploymentdateien und deren unverändertem Service Worker** aus dem
+ai-habibi-Gitstand `ebaa4ec`. Ein alter Tab bleibt geöffnet und hält den
+V1-Worker aktiv. Danach liefert derselbe Testserver den neuen Build an ein
+neues Dokument mit Release-Query. Vor dem Fix blieb das Display `v1` statt
+`v2`: neues JavaScript traf den im alten Worker gecachten stabilen WASM-Pfad.
+
+Fix: Vite importiert WASM und RGB565 als URL-Assets und versieht beide mit
+Inhaltshashes. Es gibt keine überschriebenen stabilen Binärdateinamen mehr.
+Neue JS- und WASM-Versionen sind dadurch untrennbar über ihre Dateinamen
+zugeordnet, auch wenn ein alter Worker noch aktiv ist. Kein `skipWaiting`,
+keine Cache-/localStorage-/IndexedDB-Löschung und kein automatischer Reload.
+
+```text
+PASS real V1 offline worker + new V2 document: V2 sprite ready, no mixed WASM, browser data preserved
+```
+
+Zusätzlich 53 App-Tests sowie V2-/Lifecycle-Browserprüfungen erneut grün.
+Beide Buildvarianten enthalten identische Binärdateien und der neue Shell-
+Cache umfasst die gehashten Assets. HTTPS-/Offline-Neustart und V2-Browserlauf
+nach Deployment erneut bestanden. Live liefern die gehashten Dateien HTTP
+200, WASM mit `application/wasm`, Frames mit `application/octet-stream`.
+Der native Renderer und die Bildfolge selbst wurden nicht verändert.
+
+Update-Test aus `app/`: `node tests/tft-update-browser.mjs`, mit einem
+`CHROMIUM_PATH` wie unten. Er benötigt die ai-habibi-Githistorie; Standard
+`/srv/ai-habibi`, anderswo per `AI_HABIBI_REPO` setzen. Auf Loopback wird der
+echte alte Worker explizit registriert, da die App automatische PWA-Registrierung
+nur für HTTPS vornimmt. Danach greifen echte Browser-Service-Worker-Caches,
+keine simulierten WASM-Antworten.
+
+Die bisherigen stabilen Binärpfade in den folgenden ursprünglichen
+Deploymentnachweisen sind historisch; aktuell liegt beides unter `assets/`.
+
 
 ## Umfang
 

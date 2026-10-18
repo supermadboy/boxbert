@@ -1,6 +1,6 @@
 import {chromium,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
-const base=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=tft-v2-11';
+const base=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=tft-v2-cachefix-12';
 const out=new URL('../docs/tft-v2-ui/',import.meta.url).pathname;
 await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
@@ -8,7 +8,7 @@ try{
  const context=await browser.newContext({viewport:{width:390,height:844},colorScheme:'dark',reducedMotion:'reduce'});
  const page=await context.newPage(),errors=[],api=[],failed=[],wasm=[];
  page.on('pageerror',e=>errors.push(e.message));
- page.on('response',r=>{if(r.status()>=400)failed.push(r.status()+' '+r.url());if(r.url().endsWith('/tft-renderer.wasm'))wasm.push(r.status());});
+ page.on('response',r=>{if(r.status()>=400)failed.push(r.status()+' '+r.url());if(/\/tft-renderer(?:-[^/?]+)?\.wasm$/.test(new URL(r.url()).pathname))wasm.push(r.status());});
  page.on('request',r=>{if(/\/(files|tags|upload|settings|pixel|buttons)$/.test(new URL(r.url()).pathname))api.push(r.url());});
  const r=await page.goto(base);expect(r.status()).toBe(200);
  const persisted=await page.evaluate(()=>JSON.stringify({...localStorage}));

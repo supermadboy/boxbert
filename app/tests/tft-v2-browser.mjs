@@ -26,15 +26,15 @@ try{
  await page.getByRole('button',{name:'Titel nach links',exact:true}).click();const manual=await sprite();await page.waitForTimeout(360);expect(await sprite()).not.toEqual(manual);
  await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(150);
  if(process.env.TFT_V2_SCREENSHOT)await page.locator('.tft-preview').screenshot({path:process.env.TFT_V2_SCREENSHOT});
- await page.route('**/boxbert.rgb565',r=>r.fulfill({status:503,body:'unavailable'}));await open();
+ await page.route(/\/boxbert(?:-[^/?]+)?\.rgb565$/,r=>r.fulfill({status:503,body:'unavailable'}));await open();
  await expect(page.getByRole('status').filter({hasText:'V1 bleibt aktiv'})).toContainText('HTTP 503');expect(await page.locator('.tft-screen [role="status"]').count()).toBe(0);await expect(canvas).toHaveAttribute('data-mode','v1');
- await page.unroute('**/boxbert.rgb565');await page.route('**/boxbert.rgb565',r=>r.fulfill({status:200,body:'broken'}));await open();
+ await page.unroute(/\/boxbert(?:-[^/?]+)?\.rgb565$/);await page.route(/\/boxbert(?:-[^/?]+)?\.rgb565$/,r=>r.fulfill({status:200,body:'broken'}));await open();
  await expect(page.getByRole('status').filter({hasText:'V1 bleibt aktiv'})).toContainText('Größe');await expect(canvas).toHaveAttribute('data-mode','v1');
- await page.unroute('**/boxbert.rgb565');
+ await page.unroute(/\/boxbert(?:-[^/?]+)?\.rgb565$/);
  let release,requested;const gate=new Promise(r=>release=r),request=new Promise(r=>requested=r);
- await page.route('**/boxbert.rgb565',async r=>{requested();await gate;await r.continue().catch(()=>{});});
+ await page.route(/\/boxbert(?:-[^/?]+)?\.rgb565$/,async r=>{requested();await gate;await r.continue().catch(()=>{});});
  await open();await request;await page.getByRole('tab',{name:'Medienbibliothek',exact:true}).click();release();await page.waitForTimeout(150);
- await page.unroute('**/boxbert.rgb565');await open();await expect(canvas).toHaveAttribute('data-mode','v2');
+ await page.unroute(/\/boxbert(?:-[^/?]+)?\.rgb565$/);await open();await expect(canvas).toHaveAttribute('data-mode','v2');
  expect(errors).toEqual([]);await context.close();
  console.log('PASS V2 browser: shared sprite pixels, animation, Reduced Motion, toggle, HTTP/corrupt fallback, late unmount/reopen');
 }finally{await browser.close();await server.close();}
