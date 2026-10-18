@@ -2,17 +2,16 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [x] **TFT V1 – Phase 0/1 gebaut und geprüft (17.10.2026):** DejaVu Sans
+- [x] **TFT V1 abgeschlossen (Nutzerbestätigung 18.10.2026):** DejaVu Sans
   bestätigt, gemeinsamer C++-/WASM-Pixelrenderer mit identischen RGB565-Pixeln,
   Bitmap-Schrift, Icons und Zeit/Fortschritt. Browser nutzt nur das fertige
   240×135-Canvas ohne Sprite. Native-/WASM-Pixeltests, 51 App-Tests sowie
   Browser/HTTPS/Offline bestanden. [V1-Nachweis](app/docs/verification-tft-v1.md),
   [Anzeigevertrag/Build](docs/tft-rendering.md), Release `?stand=tft-v1-10`.
-- [ ] **TFT V1 – Phase 2 auf echter Hardware:** separaten Integrationssketch
-  vorbereiten, echte Zustände und ST7789-Ausgabe anbinden, tatsächlichen ESP-
-  Build mit Speicherwerten prüfen. Flash nur nach gesonderter Freigabe; keine
-  Referenz-Sketches ändern. Geräte-/Audio-/SPI-Lastprüfung fehlt noch.
-  Danach erst **V2 mit optionalen, vorberechneten Boxbert-Frames**.
+- [ ] **TFT V2 in Arbeit (18.10.2026 ausdrücklich beauftragt):** optionale,
+  vorberechnete Boxbert-Frames im gemeinsamen Renderer mit V1-Fallback.
+  V1 ist abgeschlossen; die spätere ESP-Gesamtintegration bleibt separat
+  in `docs/endinbetriebnahme.md`, keine Voraussetzung für diesen V2-Auftrag.
   Fahrplan und Checkliste: [TFT-Plan](.hermes/plans/2026-10-16_151332-tft-v1-v2.md).
 
 - [x] **Historischer Browser-Designstand vor V1 (16.10.2026):** App-Reiter

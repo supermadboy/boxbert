@@ -160,7 +160,7 @@ Ladefehler sichtbar und verwendet niemals einen heimlichen Ersatzrenderer.
 RAF wird bei Reiterwechsel beendet, bei Hintergrund/Reduced Motion angehalten.
 Manuelle Titelknöpfe bleiben erreichbar, voller Text ist separat zugänglich.
 
-## Noch nicht abgenommen — Phase 2
+## Separat offen — spätere ESP-Gesamtintegration
 
 Kein neuer ESP-Sketch, kein Arduino-Build, kein Flash und kein Hardwarekontakt.
 Bestehende Etappen 4/5/7 bleiben unverändert. Phase 2 benötigt einen separaten
@@ -170,4 +170,7 @@ Byteorder/Farbmuster, SPI-Sharing mit SD, nichtblockierendes Renderbudget,
 Audio/NFC/WLAN-Last sowie Neustart und echte Beobachtungen bleiben zu prüfen.
 USB-Flash erst mit neuer ausdrücklicher Freigabe und Zugriff auf das echte
 Gerät; ein Hetzner-Server hat dadurch keinen USB-Zugriff auf Daddelberts Rechner.
-V2-Sprites bleiben bis nach bestandener V1-Geräteprüfung zurückgestellt.
+V1 ist laut Nutzerbestätigung vom 18.10.2026 abgeschlossen; V2 ist direkt
+beauftragt. Die spätere ESP-Gesamtintegration bleibt ein eigener Arbeitsblock,
+keine V1-Abschlussbedingung oder Sperre für V2. Keine neuen Messnachweise
+aus dieser Statuskorrektur ableiten.

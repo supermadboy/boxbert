@@ -9,8 +9,9 @@ Der TFT-Reiter verwendet jetzt den gleichen Arduino-freien C++-Kern wie die
 native Gerätevorbereitung: RGB565, 240×135, DejaVu Sans Bold 16 px und Regular
 12 px. Im Browser läuft dieser Kern als WebAssembly; Canvas zeigt ausschließlich
 seine fertigen Pixel. Keine CSS-/SVG-/Systemschrift-Nachbildung im Display.
-**V1 ist bewusst ohne Maskottchen**; vorberechnete Boxbert-Frames folgen erst
-nach der separaten V1-Geräteprüfung.
+**V1 ist ohne Maskottchen abgeschlossen** (Nutzerbestätigung 18.10.2026).
+V2 mit vorberechneten Boxbert-Frames ist jetzt beauftragt. Die spätere
+ESP-Gesamtintegration und deren reale Prüfungen bleiben separat.
 
 Play/Pause, Titelwahl, Zeitleiste und manuelle Titelverschiebung bleiben reine
 Beispiele. Zusätzliche Fälle zeigen Start, keine Figur, Dateifehler, unbekannte

@@ -41,11 +41,13 @@ Anzeigevertrag ist in [tft-rendering.md](tft-rendering.md) beschrieben, der
 abgenommene Browserumfang in [TFT-V1-Prüfung](../app/docs/verification-tft-v1.md).
 Das ist ein Integrationsbaustein, **keine ESP-Firmware-/Geräteabnahme**.
 
-Nächster separater TFT-Schritt: neuer Integrationssketch für V1, echte
-Player-/Gauge-/WLAN-Zustände und ST7789-Ausgabe, zunächst tatsächlicher Build
-mit Speicherwerten; danach gesondert freigegebener Flash und reale Audio-/
-SPI-/Display-/Neustartprüfung. Referenz-Sketches bleiben unverändert. V2-Sprites
-bleiben bis nach erfolgreicher V1-Geräteprüfung zurückgestellt.
+**Statuskorrektur 18.10.2026:** Daddelbert bestätigt V1 als abgeschlossen
+und beauftragt direkt V2. Die hier verbleibende ESP-Gesamtintegration ist
+ein separater Arbeitsblock, kein offenes V1-Abschlusstor: Integrationssketch,
+echte Player-/Gauge-/WLAN-Zustände und ST7789-Ausgabe, tatsächlicher Build
+mit Speicherwerten; anschließend gesondert freigegebener Flash und reale
+Audio-/SPI-/Display-/Neustartprüfung. Referenz-Sketches bleiben unverändert.
+Diese Tests wurden durch die Statuskorrektur nicht nachträglich ausgeführt.
 
 ## Vor dem Endaufbau vorzubereiten
 

@@ -115,6 +115,9 @@ npm-Hinweis zum esbuild-Installskript und war erfolgreich.
 Native-/WASM-Gleichheit ist ein Software-Pixelvergleich, keine Messung der
 physischen TFT-Farbwirkung. Es wurde keine ESP-Firmware kompiliert oder geflasht,
 kein USB-Gerät angesprochen und kein echter TFT-/Audio-/SD-/NFC-/WLAN-Lasttest
-behauptet. Unveränderte Referenz-Sketches bleiben erhalten. Phase 2 und alle
-V2-Frames/Sprites bleiben offen. Details: [Anzeigevertrag](../../docs/tft-rendering.md)
+behauptet. Unveränderte Referenz-Sketches bleiben erhalten.
+**Statuskorrektur 18.10.2026:** Daddelbert hat V1 als fertig bestätigt und V2
+beauftragt. V1 ist damit abgeschlossen; die spätere ESP-Gesamtintegration
+bleibt separat dokumentiert, ohne hier nicht ausgeführte Tests als bestanden
+zu markieren. V2 hat einen eigenen Nachweis. Details: [Anzeigevertrag](../../docs/tft-rendering.md)
 und [Fahrplan](../../.hermes/plans/2026-10-16_151332-tft-v1-v2.md).

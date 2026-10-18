@@ -12,9 +12,9 @@ Geräteframes verwenden, nicht eine separate Browseranimation.
 Native-/WASM-Pixelgleichheit, App-/Browserregressionen und echtes HTTPS samt
 neuem Offline-Dokument sind geprüft: [aktueller V1-Nachweis](../../app/docs/verification-tft-v1.md).
 Anzeigevertrag und Reproduktion: [TFT-Rendering](../../docs/tft-rendering.md).
-Weiter offen: eigener ESP-Integrationssketch, realer Build/Flash nach Freigabe,
-Player-/Gauge-/Funkzustände und Audio-/SPI-/Speicher-/TFT-Geräteprüfung.
-V2 beginnt erst nach erfolgreicher V1-Geräteprüfung.
+**V1 abgeschlossen laut Daddelbert (18.10.2026); V2 jetzt beauftragt.**
+ESP-Integration, Build/Flash und reale Geräte-/Lasttests bleiben separat bei
+der Endinbetriebnahme dokumentiert. Daraus folgt kein neuer Hardware-Nachweis.
 
 ## Historische Vorschau-Freigabe · 16.10.2026
 
