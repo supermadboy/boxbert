@@ -1,6 +1,6 @@
 # Aktuelle Entscheidungen — Boxbert
 
-Stand: **04.10.2026**. Diese Datei beschreibt geltende Entscheidungen und
+Stand: **19.10.2026**. Diese Datei beschreibt geltende Entscheidungen und
 Begruendungen, nicht alte Auswahlentwuerfe. Vorhandene Teile/Mengen in
 `hardware/BOM.md`, Pins in `hardware/pinout.md`, Arbeitsstand in `To-Do.md`.
 Urspruengliche Entscheidungen bleiben im Archiv erhalten (siehe unten).
@@ -8,22 +8,22 @@ Urspruengliche Entscheidungen bleiben im Archiv erhalten (siehe unten).
 ## Board und Kommunikation
 
 **Adafruit ESP32-S3 Reverse TFT Feather, ADA5691**, 4 MB Flash / 2 MB PSRAM.
-LiPo-Lader und Display onboard, PSRAM fuer Audio vorhanden. Projektweg zur
-App ist **WLAN**, keine BLE-Abhaengigkeit einplanen. Breadboard-Toolchain:
-Arduino-Core 3.3.12, Board-Defaults/QSPI-PSRAM, Reproduktion in
-`docs/dev-setup.md`. Langfristige Produktfirmware-Frameworkentscheidung
-ist davon getrennt; konkreter naechster Umfang steht in `To-Do.md`.
+LiPo-Lader und Display onboard, PSRAM fuer Audio vorhanden. Breadboard-Referenzen
+bleiben WLAN-only. **Freigabe 19.10.2026: Die neue Gesamtfirmware enthält BLE und
+WLAN**, einschließlich bestehender PWA-Gerätefunktionen und Intro. D0 wechselt
+BLE → aus → WLAN → BLE, Einschalt-/Wake-Startmodus BLE. WLAN versucht mit
+privat vorgegebenen Zugangsdaten zuerst das Heimnetz und öffnet andernfalls
+sein eigenes geschütztes AP. Android Chrome ist das Ziel für die BLE-PWA.
 
-**Künftige Erweiterung, Konzept-/Recherchephase 10.10.2026:** D0 soll zwischen
-Funk aus, WLAN und BLE wählen, Startmodus BLE. WLAN soll zuerst das Heimnetz
-versuchen und sonst ein eigenes AP öffnen. Android-Chrome-PWA über BLE ist
-als Ergänzung vorgesehen. Das ist noch nicht implementiert oder technisch
-abgenommen und hebt die WLAN-only-Basis für die aktuelle Firmware nicht auf.
-[Machbarkeitsrecherche](../ideen/ble-wifi-wechsel/machbarkeit.md) und
-[Folgethema PWA bauen](../ideen/pwa-bauen/README.md) enthalten Details.
-Hardware-BLE ist möglich; ob die Gesamtfirmware passt, bleibt ein Build-/RAM-
-Test. Der dokumentierte Etappe-5-Build passt bereits ohne BLE nicht in den
-1.966.080-Byte-OTA-Slot von `min_spiffs`; Updates und Layout gemeinsam planen.
+Die Integration setzt auf die bereits geprüfte Arduino-Basis: Core 3.3.12,
+Board-Defaults/QSPI-PSRAM, Bibliotheken gepinnt. Der neue Softwarevertrag steht
+in [firmware-api-v1.md](firmware-api-v1.md), Build und Nachweise in
+[gesamtfirmware-build.md](gesamtfirmware-build.md) und `To-Do.md`.
+Der Auftrag umfasst weder OTA noch eine Hardwareabnahme durch Crosscompile.
+Die ältere Konzept-/Machbarkeitsrecherche bleibt als Hintergrund erhalten:
+[BLE/WLAN](../ideen/ble-wifi-wechsel/machbarkeit.md). Ein großer SD-Speicher
+ersetzt keinen Firmwareflash; Flash-/RAM-Grenzen werden am tatsächlichen
+Gesamtbuild geprüft, nicht aus Laufzeitabschaltung von BLE abgeleitet.
 
 ## Audio
 

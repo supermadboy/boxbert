@@ -17,7 +17,14 @@ export async function recordingStore(operation,uid,blob,{signal,durationMs}={}){
  try{return await new Promise((resolve,reject)=>{
   signal?.throwIfAborted();const tx=db.transaction('recordings',operation==='get'?'readonly':'readwrite'),store=tx.objectStore('recordings');
   const abort=()=>{try{tx.abort();}catch{}};signal?.addEventListener('abort',abort,{once:true});
-  const request=operation==='get'?store.get(uid):operation==='put'?store.put({uid,blob,createdAt:Date.now(),...(Number.isFinite(durationMs)&&durationMs>=0?{durationMs}:{})}):operation==='delete'?store.delete(uid):store.clear();
+  let request;
+  if(operation==='get')request=store.get(uid);
+  else if(operation==='put')request=store.put({uid,blob,createdAt:Date.now(),...(Number.isFinite(durationMs)&&durationMs>=0?{durationMs}:{})});
+  else if(operation==='delete')request=store.delete(uid);
+  else if(operation==='clearDemo'){
+   request=store.getAllKeys();
+   request.onsuccess=()=>{for(const key of request.result)if(typeof key==='string'&&!key.startsWith('device:'))store.delete(key);};
+  }else{tx.abort();throw Error('Unbekannte Aufnahmeoperation');}
   tx.oncomplete=()=>{signal?.removeEventListener('abort',abort);resolve(request.result);};
   tx.onabort=tx.onerror=()=>{signal?.removeEventListener('abort',abort);reject(tx.error||new DOMException('Aufnahme abgebrochen','AbortError'));};
  });}finally{db.close();}

@@ -1,5 +1,19 @@
 # Endinbetriebnahme: vorbereiten statt erst dann entwickeln
 
+## Aktueller Integrationsauftrag · 19.10.2026
+
+Die gemeinsame Firmware ist mit **BLE und WLAN** ausdrücklich beauftragt.
+Quellen liegen jetzt unter `firmware/boxbert/` und den echten Geräteadaptern
+in `app/`; Referenzsketche bleiben erhalten. Vertragsstand:
+[Geräte-RPC](firmware-api-v1.md). Build/Handoff:
+[Gesamtfirmware](gesamtfirmware-build.md). Ausgeführte Prüfungen und aktueller
+Abschlussstatus stehen in `To-Do.md`; die
+[Geräteprüfliste](gesamtgeraet-abnahme.md) ist noch **nicht ausgeführt**.
+
+Die folgenden Abschnitte dokumentieren die frühere Ausgangslage und das
+unveränderte Abnahmeziel. Frühere Aussagen wie „keine Geräteadapter“ sind
+historischer Stand, nicht die aktuelle Aufgabenliste.
+
 ## Daddelberts Ziel
 
 Nach dem fertigen, geprüften Aufbau soll ein kurzer Auftrag reichen:

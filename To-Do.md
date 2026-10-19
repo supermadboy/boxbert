@@ -2,6 +2,19 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Gesamtfirmware softwareseitig integriert (19.10.2026):** vollständig mit BLE und WLAN,
+  bestehenden PWA-Funktionen, RFID-Intro, TFT V2, Buttons/Encoder, NeoPixel und
+  Auto-Sleep. Gemeinsame Geräte-RPC in `docs/firmware-api-v1.md`, neuer
+  Integrationsstand `firmware/boxbert/`, private reproduzierbare Buildausgabe
+  über `tools/firmware/build.py`. 68 App-Tests, 15 native Hostprogramme mit
+  ASan/UBSan und fünf zusätzliche Encoder/RPC-Ereignisfolgen bestanden.
+  Browser: Gerätevertrag mit nativem synthetischem Testmikrofon, echtes HTTPS,
+  neue Offline-Dokumente, Mobile/Light/Dark geprüft. **Kein Flash und keine
+  Geräteabnahme**. Neue Ideen wie
+  Spotify, OTA, Soundkatalog und RFID-Spiele sind nicht eingeschlossen.
+  [Build/Handoff](docs/gesamtfirmware-build.md),
+  [noch auszuführende Geräteabnahme](docs/gesamtgeraet-abnahme.md).
+
 - [x] **TFT V1 abgeschlossen (Nutzerbestätigung 18.10.2026):** DejaVu Sans
   bestätigt, gemeinsamer C++-/WASM-Pixelrenderer mit identischen RGB565-Pixeln,
   Bitmap-Schrift, Icons und Zeit/Fortschritt. Browser nutzt nur das fertige

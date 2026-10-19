@@ -17,5 +17,10 @@ test('Zwei Builds: Hosted PWA hat Scope/Offline-Assets; SD relative Assets ohne 
  assert.deepEqual(await fs.readFile('dist-sd/assets/'+frameNames[0]),frames,'SD ships exact device frames');
  for(const name of [wasmNames[0],frameNames[0]])assert.ok(shell.includes('/boxbert/assets/'+name),'fingerprinted binary cached offline');
  for(const name of ['tft-renderer.wasm','boxbert.rgb565'])await assert.rejects(fs.access('dist/'+name),'obsolete stable binary absent');
+ for(const out of ['dist','dist-sd']){
+  const notice=await fs.readFile(out+'/third-party-mp3.txt','utf8');assert.match(notice,/@breezystack\/lamejs 1\.2\.7/);assert.match(notice,/1fb0ef5fa177413107e2e107d054a9b994e3f79c/);assert.match(notice,/GNU LESSER GENERAL PUBLIC LICENSE/);assert.match(notice,/GNU GENERAL PUBLIC LICENSE/);
+ }
+ assert.ok(shell.includes('/boxbert/third-party-mp3.txt'),'license and source notice available offline');
+ const pkg=JSON.parse(await fs.readFile('package.json','utf8')),lock=JSON.parse(await fs.readFile('package-lock.json','utf8'));assert.equal(pkg.dependencies['@breezystack/lamejs'],'1.2.7');assert.equal(lock.packages[''].dependencies['@breezystack/lamejs'],'1.2.7');
  await assert.rejects(fs.access('dist-sd/sw.js'));
 });

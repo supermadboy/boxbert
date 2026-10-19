@@ -1,18 +1,18 @@
 import React,{useState,useEffect} from 'react';
 import {sampleLedFrame,validateLedSettings} from './led-effects.mjs';
 
-export function VolumeBar({data,demo,busy,save}) {
+export function VolumeBar({data,demo,enabled=demo,busy,save}) {
  const [volume,setVolume]=useState(data?.volume??6);
  useEffect(()=>setVolume(data?.volume??6),[data?.volume]);
- return <section className="volume-bar" aria-label="Lautstärke · nur Simulation">
+ return <section className="volume-bar" aria-label="Lautstärke">
   <form onSubmit={e=>{e.preventDefault();save({volume});}}>
-   <fieldset disabled={!demo||busy||!data}>
+   <fieldset disabled={!enabled||busy||!data}>
     <label className="volume-label">Lautstärke <output>{volume} / 21</output>
      <input aria-label="Lautstärke" type="range" min="0" max="21" value={volume} onChange={e=>setVolume(Number(e.target.value))}/>
     </label>
     <button>Lautstärke speichern</button>
    </fieldset>
-   <p className="small">{demo?'Nur Demo · 0–21 ist keine geprüfte Kindersicherheitsgrenze.':'Lautstärke-API fehlt · keine Gerätesteuerung.'}</p>
+   <p className="small">{demo?'Nur Demo · 0–21 ist keine geprüfte Kindersicherheitsgrenze.':'Speichern steuert echte Box · keine geprüfte Kindersicherheitsgrenze.'}</p>
   </form>
  </section>;
 }
@@ -30,7 +30,7 @@ function usePreviewTime(settings) {
  },[settings]);
  return time;
 }
-export function PixelSettings({data,demo,busy,save,board=false}) {
+export function PixelSettings({data,demo,enabled=demo,busy,save,board=false}) {
  const key=board?'boardPixel':'pixel',prefix=board?'Onboard ':'';
  const fallback={color:'#dd5b00',brightness:20,palette:'solid',effect:board?'aus':'statisch'};
  const [pixel,setPixel]=useState(data?.[key]??fallback);
@@ -40,10 +40,10 @@ export function PixelSettings({data,demo,busy,save,board=false}) {
  const frame=valid?sampleLedFrame(pixel,count,time):Array.from({length:count},()=>({color:'#000000',opacity:0}));
  const effects=board?['aus','statisch','atmen','party','farbwechsel','kerze']:['aus','statisch','atmen','links-rechts','rechts-links','mitte-aussen','party'];
  return <section className="card">
-  <div className="section-head"><h2>{board?'ESP Onboard · 1 NeoPixel':'NeoPixel-Stick · 8 Pixel'}</h2><span className="badge">{demo?'Nur Simulation':'API fehlt'}</span></div>
-  <p>{demo?'Vorschau des Entwurfs · erst Speichern übernimmt diesen Kanal in der Demo. Keine Änderung an einer echten Box.':'Etappe 5 hat keine NeoPixel-API. Einstellungen sind nicht verfügbar.'}</p>
+  <div className="section-head"><h2>{board?'ESP Onboard · 1 NeoPixel':'NeoPixel-Stick · 8 Pixel'}</h2><span className="badge">{demo?'Nur Simulation':'Schreibt auf SD'}</span></div>
+  <p>{demo?'Vorschau des Entwurfs · erst Speichern übernimmt diesen Kanal in der Demo. Keine Änderung an einer echten Box.':'Vorschau des Entwurfs; Speichern übernimmt diesen Kanal auf der echten Box.'}</p>
   <form onSubmit={e=>{e.preventDefault();save({[key]:pixel});}}>
-   <fieldset disabled={!demo||busy||!data}>
+   <fieldset disabled={!enabled||busy||!data}>
     <div className="pixel-controls">
      <label>{prefix}Palette<select aria-label={prefix+'Palette'} value={pixel.palette} onChange={e=>setPixel({...pixel,palette:e.target.value})}><option value="solid">Einfarbig</option><option value="rainbow">Regenbogen</option></select></label>
      <label>{prefix}Farbe<input aria-label={prefix+'Farbe'} type="color" disabled={pixel.palette==='rainbow'} value={pixel.color} onChange={e=>setPixel({...pixel,color:e.target.value})}/></label>

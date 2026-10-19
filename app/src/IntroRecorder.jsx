@@ -13,8 +13,9 @@ function RecordingIcon({kind}){
   {kind==='delete'&&<><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></>}
  </svg>;
 }
-export function IntroRecorder({uid,demo,busy,lock}){
+export function IntroRecorder({uid,demo,enabled=demo,busy,lock,sendIntro}){
  const [saved,setSaved]=useState(null),[phase,setPhase]=useState('idle'),[error,setError]=useState(''),[elapsed,setElapsed]=useState(0);
+ const storageUid=demo?uid:'device:'+uid;
  const session=useRef(null),mounted=useRef(false);
  const supported=globalThis.isSecureContext&&!!navigator.mediaDevices?.getUserMedia&&typeof MediaRecorder!=='undefined'&&!!globalThis.indexedDB;
  function cancel(){
@@ -25,7 +26,7 @@ export function IntroRecorder({uid,demo,busy,lock}){
  }
  useEffect(()=>{
   let active=true;mounted.current=true;setSaved(null);
-  if(demo)recordingStore('get',uid).then(async r=>{
+  recordingStore('get',storageUid).then(async r=>{
    if(!active)return;setSaved(r??null);
    if(r){const durationMs=await recordingDuration(r);if(active)setSaved(current=>current===r?{...r,durationMs}:current);}
   }).catch(e=>{if(active)setError('Aufnahmespeicher: '+e.message);});
@@ -45,7 +46,7 @@ export function IntroRecorder({uid,demo,busy,lock}){
     if(!s.save){setError('Aufnahme unerwartet beendet. Nicht gespeichert.');cancel();return;}
     try{
      const blob=new Blob(s.chunks,{type:s.recorder.mimeType});if(!blob.size)throw Error('Aufnahme ist leer. Erneut aufnehmen.');
-     await recordingStore('put',uid,blob,{signal:s.controller.signal,durationMs:s.durationMs});
+     await recordingStore('put',storageUid,blob,{signal:s.controller.signal,durationMs:s.durationMs});
      if(session.current===s&&mounted.current)setSaved({uid,blob,durationMs:s.durationMs});
     }catch(e){if(session.current===s&&mounted.current)setError('Aufnahme nicht gespeichert: '+e.message);}
     finally{if(session.current===s){clearInterval(s.timer);session.current=null;lock(false);if(mounted.current)setPhase('idle');}}
@@ -61,7 +62,7 @@ export function IntroRecorder({uid,demo,busy,lock}){
  async function remove(){
   if(busy||!saved||!confirm('Aufnahme für '+uid+' löschen? Tag und Song bleiben unverändert.'))return;
   lock(true);setError('');
-  try{await recordingStore('delete',uid);if(mounted.current)setSaved(null);}
+  try{await recordingStore('delete',storageUid);if(mounted.current)setSaved(null);}
   catch(e){if(mounted.current)setError('Aufnahme nicht gelöscht: '+e.message);}
   finally{lock(false);}
  }
@@ -76,12 +77,13 @@ export function IntroRecorder({uid,demo,busy,lock}){
     </div>
    </div>
    <div className="recording-actions">
-    {phase==='recording'?<button className="recording-main" aria-label={'Stoppen und speichern für '+uid} onClick={stop}><RecordingIcon kind="stop"/><span>Stoppen & speichern</span></button>:<button className="recording-main" aria-label={'Intro aufnehmen für '+uid} disabled={!demo||!supported||busy||phase!=='idle'} onClick={start}><RecordingIcon kind="mic"/><span>{saved?'Neu aufnehmen':'Aufnehmen'}</span></button>}
+    {phase==='recording'?<button className="recording-main" aria-label={'Stoppen und speichern für '+uid} onClick={stop}><RecordingIcon kind="stop"/><span>Stoppen & speichern</span></button>:<button className="recording-main" aria-label={'Intro aufnehmen für '+uid} disabled={!enabled||!supported||busy||phase!=='idle'} onClick={start}><RecordingIcon kind="mic"/><span>{saved?'Neu aufnehmen':'Aufnehmen'}</span></button>}
     {phase!=='idle'&&<button aria-label={'Aufnahme abbrechen für '+uid} disabled={phase==='saving'} onClick={cancel}><RecordingIcon kind="cancel"/><span>Abbrechen</span></button>}
-    <button className="recording-delete" aria-label={'Aufnahme löschen für '+uid} disabled={!demo||busy||!saved} onClick={remove}><RecordingIcon kind="delete"/><span>Löschen</span></button>
+    <button className="recording-delete" aria-label={'Aufnahme löschen für '+uid} disabled={!enabled||busy||!saved} onClick={remove}><RecordingIcon kind="delete"/><span>Löschen</span></button>
    </div>
   </div>
-  <p className="small">{!demo?'Aufnahme-/Intro-API fehlt in der aktuellen Firmware.':!supported?'Browseraufnahme nicht unterstützt: HTTPS/localhost, Mikrofon, MediaRecorder und IndexedDB erforderlich.':'Echte Mikrofonaufnahme, nur in diesem Browser pro UID gespeichert (IndexedDB). Browserformat, nicht MP3; keine Wiedergabe oder ESP-Übertragung. Neuaufnahme ersetzt erst nach erfolgreichem Speichern. Reiterwechsel bricht ab.'}</p>
+  <p className="small">{!supported?'Browseraufnahme nicht unterstützt: HTTPS/localhost, Mikrofon, MediaRecorder und IndexedDB erforderlich.':'Echte Mikrofonaufnahme, nur in diesem Browser pro UID gespeichert (IndexedDB). Browserformat lokal erhalten; explizites Übertragen konvertiert lokal zu MP3 und schreibt auf SD. Neuaufnahme ersetzt erst nach erfolgreichem Speichern. Reiterwechsel bricht ab.'}</p>
+  {!demo&&<button aria-label={'Intro auf Gerät übertragen für '+uid} disabled={!enabled||busy||!saved||phase!=='idle'} onClick={()=>sendIntro(uid,saved.blob)}>Intro als MP3 auf Gerät übertragen</button>}
   {error&&<p role="alert">{error}</p>}
  </div>;
 }

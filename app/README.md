@@ -1,5 +1,48 @@
 # Boxbert-Verwaltung · React-PWA
 
+## Gesamtfirmware V1 · 19.10.2026
+
+Aktueller Release: **https://habibi.supermittel.com/boxbert/?stand=gesamtfirmware-13**.
+Die Oberfläche besitzt jetzt echte **WLAN- und BLE-Geräteadapter** für
+`firmware/boxbert/`. Demo-Daten bleiben separat im Browser; Verbindungsfehler
+wechseln niemals still in eine Simulation. Keine Hardware-/Flashabnahme daraus.
+
+- **HTTPS-PWA → BLE:** „Box über BLE“, Passwort eingeben und „BLE-Gerät
+  auswählen und verbinden“. Ziel Android Chrome. Browser-Geräteauswahl muss
+  aktiv bestätigt werden. HMAC-Zugriffsschutz ist keine zugesagte
+  Verschlüsselung der BLE-Nutzdaten. Zugangsdaten werden nicht persistiert.
+- **SD-Weboberfläche → HTTP:** relativen `dist-sd/`-Inhalt nach `/www/` auf
+  SD übernehmen und direkt von der Box öffnen. Same Origin, HTTP Basic im
+  vertrauten lokalen WLAN; die externe HTTPS-PWA spricht nicht beliebiges
+  Geräte-HTTP an. Keine Service-Worker-Zusage für ungesichertes Geräte-HTTP.
+- **Gerätefunktionen:** reale Medienliste/Kategorien, Player/Stop/Pause/Resume,
+  Tag-Namen und Liedzuordnungen, zehn Button-Belegungen, Lautstärke und beide
+  NeoPixel-Kanäle. Bestätigung erfolgt über die Firmware, nicht LocalStorage.
+- **Intro:** weiter direkt pro Tag aufnehmen. Explizites „Intro auf Gerät
+  übertragen“ konvertiert die erhaltene Browseraufnahme lokal zu MP3 und
+  ordnet sie erst nach bestätigtem SD-Upload zu. Kein Konvertierungsserver,
+  kein Löschen der Browseraufnahme bei Fehlern; Entfernen der Gerätezuordnung
+  löscht keine Musik. Aufnahme verlangt Secure Context, daher auf Android die
+  HTTPS-/BLE-Oberfläche nutzen. Kein nahtloser Audioübergang versprochen.
+- Fehlende SD-Dateien bleiben als gespeicherte Zuordnungen korrigierbar;
+  beschädigte Gerätekonfiguration wird ausdrücklich angezeigt. Chunk-Offsets,
+  Commit, Abbruch und BLE-Trennung haben eigene Fehlerpfade.
+
+[API](../docs/firmware-api-v1.md),
+[Build und USB-Passworterholung](../docs/gesamtfirmware-build.md),
+[noch auszuführende Geräteabnahme](../docs/gesamtgeraet-abnahme.md),
+[Drittanbieter für MP3](../docs/third-party-mp3.md).
+Aktuelle Tests: `npm test`, `tests/device-browser.mjs` (explizite
+HTTP-Vertragsfixture mit nativem synthetischem Testmikrofon),
+`../tools/firmware/verify-hosted.mjs` (echtes HTTPS/offline, kein Funkversuch).
+Die älteren Etappe-5-HTTP-Browserfälle sind historische Übergabetests;
+`HttpAdapter` bleibt separat als Legacy-Referenz, die neue Geräte-UI verwendet
+`DeviceAdapter` und den V1-RPC-Vertrag.
+
+**Die folgenden datierten Abschnitte dokumentieren frühere Zwischenstände.**
+Damals fehlende Gerätefunktionen sind keine aktuelle Aufgabenliste; laufender
+Abschluss-/Nachweisstand steht in `../To-Do.md`.
+
 Live: **https://habibi.supermittel.com/boxbert/**
 Aktueller Online-Release-Link: **https://habibi.supermittel.com/boxbert/?stand=tft-v2-cachefix-12**
 
