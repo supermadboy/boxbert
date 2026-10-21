@@ -6,10 +6,10 @@ from check_mesh import mesh
 ROOT=Path(__file__).resolve().parent
 if __name__=='__main__':
     tris,lo,hi,vol=mesh(ROOT/'panel_cnc.stl')
-    assert all(abs(a-b)<0.001 for a,b in zip(lo,(-99.6,-149.64,12))),lo
-    assert all(abs(a-b)<0.001 for a,b in zip(hi,(150.4,30.36,24))),hi
+    assert all(abs(a-b)<0.001 for a,b in zip(lo,(-98,-20.46,12))),lo
+    assert all(abs(a-b)<0.001 for a,b in zip(hi,(152,159.54,24))),hi
     print('PASS closed CNC panel 250 x 180 x 12 mm, volume',round(vol,3))
-    for name,expected in [('opening',(-2.2,53,-2.2,12.36)),('rebate',(-4.2,55,-4.2,14.36)),('glass',(-4,54.8,-4,14.16))]:
+    for name,expected in [('opening',(-2.2,56.2,-2.2,12.1)),('rebate',(-4.2,58.2,-4.2,14.1)),('glass',(-4,58,-4,13.9))]:
         lines=(ROOT/f'cnc-{name}.dxf').read_text().splitlines()
         pairs=[(int(a),b.strip()) for a,b in zip(lines[::2],lines[1::2])]
         assert any(k==0 and v=='LINE' for k,v in pairs)
@@ -18,6 +18,13 @@ if __name__=='__main__':
         bounds=(min(xs),max(xs),min(ys),max(ys))
         assert all(abs(a-b)<0.001 for a,b in zip(bounds,expected)),(name,bounds)
         print('PASS nominal DXF mm',name,bounds)
+    geometry=(ROOT/'geometry.scad').read_text()
+    assert 'board_holes=[[13.7,7.7],[39.7,7.7]];' in geometry
+    assert 'board_hole_d=3;' in geometry
+    assert abs((54-12.8-1.5)-39.7)<1e-8
+    assert abs(39.7-13.7-(23+3))<1e-8
+    assert abs(9.9-0.7-1.5-7.7)<1e-8
+    print('PASS measured hole geometry: D3, pitch26, centers (13.7,7.7)/(39.7,7.7)')
     # Direct values extracted from shared geometry, not success strings.
     s=(ROOT/'geometry.scad').read_text(); vals={}
     for key in ['wood_z','wood_h','glass_h','optical_gap','led_h','pcb_t','nut_h','nut_pocket_h','m2_length','tab_h','wood_screw_l']:

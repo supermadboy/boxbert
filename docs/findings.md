@@ -400,6 +400,20 @@ einfügen, Datum dazu.
   `3d-print/mounts/pn532-mount/pn532_mount.scad`, `assembly.scad`,
   `logs/revision-rim-brace-red.log` und `docs/testprotokoll-pn532-mount.md`.
 
+- **NeoPixel-Messabgleich: Lochdurchmesser ändert den Kopf-Spielraum
+  (Nutzermaße und eigener digitaler Test,21.10.2026).** Reales PCB54×9,9,
+  LöcherØ3 statt ReferenzØ2,2, Raster26 statt25,4 mm. Bei beibehaltenem M2
+  reserviert die neue Kopfhülle0,5 statt0,2 mm radial. Sowohl nominale
+  Ø3/Höhe2-Köpfe als auch deren Spielraumhülle schneiden die weiterhin nur
+  referenzbasierten LED-Positionen. Kein Beweis einer realen Kollision,
+  aber ausdrücklich keine aktuelle Kopf-Freigabe aus dem alten PASS ableiten.
+  → Hüllentest als OPEN/BLOCKED ausweisen; reale Bauteil-/Kopfmaße prüfen,
+  nicht die angenommenen LED-Positionen zum Erzielen eines PASS verschieben.
+  Die nachfolgende Kopfregel vom15.10. gilt nur der alten Referenzgeometrie.
+  Quelle: `docs/cad/neopixel-stick/measurement-2026-10-21/`, aktuelles
+  `3d-print/mounts/neopixel-stick-mount/geometry.scad`, `check_fit.py` und
+  `logs/fit-check.log`.
+
 - **PN532: Lasche verlegen heißt auch Kabelweg neu prüfen (eigene digitale
   Solid-Tests, 21.10.2026).** Beim Verlegen der Holzlasche nach links schnitt
   ihr erster Stützsteg die angenommene I2C-Steckerhülle (42,021 mm³).

@@ -4,7 +4,7 @@ eps=0.02;
 show_board=true;
 module grid(){
     linear_extrude(base_h) difference(){
-        profile([-1.4,-1.4,53.6,13.16],1.0);
+        profile([-1.4,-1.4,pcb_w+2.8,pcb_d+2.8],1.0);
         for(i=[0:8],j=[0:1]) translate([0.8+6*i,0.6+6*j]) square([4,4]); // avoid tangent cell/post edges
     }
 }
@@ -39,14 +39,14 @@ module mount(){
         union(){
             grid(); guides();
             for(h=board_holes) translate(h) screw_post();
-            for(x=[8,43]) translate([x,1.1,0]) support_post();
+            for(x=[8,46]) translate([x,1.1,0]) support_post();
             for(w=wood_points){
-                translate([w[0]-3,-1.8,0]) cube([6,3,wood_z]);
+                translate([w[0]-3,pcb_d-1.2,0]) cube([6,3,wood_z]);
                 translate([0,0,wood_z-tab_h]) profile_tab(w[0]);
             }
-            // Small raised tie pad, immediately left of PCB; cable runs LEFT below wood.
-            translate([-1.4,0.5,0]) cube([1,7,8.5]);
-            translate([0,0,6.5]) linear_extrude(2) profile([-8,-2,7.6,12],1);
+            // User correction: tie pad at opposite short end, local +x.
+            translate([pcb_w+0.4,0.5,0]) cube([1,7,8.5]);
+            translate([0,0,6.5]) linear_extrude(2) profile([pcb_w+0.4,-2,7.6,12],1);
         }
         for(h=board_holes) translate(h){
             translate([0,0,-eps]) cylinder(d=m2_clear,h=board_z+2*eps);
@@ -57,24 +57,24 @@ module mount(){
             cylinder(d=wood_d,h=tab_h+2*eps);
             cylinder(d1=head_d+2*eps,d2=wood_d,h=(head_d-wood_d)/2+eps);
         }
-        for(y=[-1,7.5]) translate([-6,y,6.5-eps]) cube([4,1.5,2+2*eps]);
+        for(y=[-1,7.5]) translate([pcb_w+2,y,6.5-eps]) cube([4,1.5,2+2*eps]);
     }
 }
-module profile_tab(x){linear_extrude(tab_h) profile([x-5.5,-16,11,14.5],1.5);}
+module profile_tab(x){linear_extrude(tab_h) profile([x-5.5,pcb_d+1.5,11,14.5],1.5);}
 module pcb(){
     translate([0,0,board_z]) linear_extrude(pcb_t) difference(){
         square([pcb_w,pcb_d]);
-        for(h=board_holes) translate(h) circle(d=2.2);
+        for(h=board_holes) translate(h) circle(d=board_hole_d);
     }
 }
 module leds(){for(p=led_xy) translate([p[0]-2.5,p[1]-2.5,board_z+pcb_t]) cube([5,5,led_h]);}
 module caps(){for(p=cap_xy) translate([p[0]-1.65,p[1]-0.8,board_z+pcb_t]) cube([3.3,1.6,1.2]);}
 module screw_heads(){for(h=board_holes) translate([h[0],h[1],board_z+pcb_t]) cylinder(d=pcb_head_d,h=head_h);}
 module wire_path(y,r=0.95,box=false){
-    // CN2 backside: GND pad4 y1.27, DIN pad3 y3.81, +5V pad2 y6.35.
-    // Short LEFT/down transition inside narrow opening, then directly LEFT.
-    // Not a long vertical loop and no connector pocket. Actual bend must be checked.
-    points=[[1.397,y,board_z-0.85],[-0.9,y,9.5],[-12,y,9.5]];
+    // Mechanical envelope only: user requests opposite short end (+x).
+    // No verified pad/net ordering; check actual DIN and supply labels before soldering.
+    // Short outward/down transition, then under wood; actual bend/lot remain unmeasured.
+    points=[[pcb_w-1.397,y,board_z-0.85],[pcb_w+0.9,y,9.5],[pcb_w+12,y,9.5]];
     for(i=[0:1]) hull(){
         translate(points[i]) if(box) cube([2*r,2*r,2*r],center=true); else sphere(r=r,$fn=24);
         translate(points[i+1]) if(box) cube([2*r,2*r,2*r],center=true); else sphere(r=r,$fn=24);
@@ -95,4 +95,4 @@ module visible_pcb(){
 }
 color([0.96,0.46,0.13]) mount();
 if($preview && show_board) visible_pcb();
-echo("Adafruit basis only; DIN left; M2 not M2.5; nominal PCB bottom",board_z,"LED/glass gap",optical_gap);
+echo("Measured PCB/hole geometry 21.10.2026; component XY and cable envelopes assumed; M2 retained; PCB bottom",board_z,"LED/glass gap",optical_gap);

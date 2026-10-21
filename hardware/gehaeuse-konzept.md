@@ -168,15 +168,22 @@ am realen Stecker prüfen. Glasfixierung, reale Passung, Header-/Tasterhöhen un
 Lastprüfung bleiben offen. Ältere positive Prüfungen der zweiseitigen Variante
 gelten nicht als Freigabe für das neue Ladeport-Layout.
 
-NeoPixel ist inzwischen als Vorschlag gebaut:
-`3d-print/mounts/neopixel-stick-mount/README.md`. DIN links von außen,
-beide Holzlaschen vorne mittig, Rückwand ohne Laschen. Nutzer akzeptiert
-Adafruit 1426 als Entwurfsbasis, Modulabgleich vor Druck noch offen.
-Nutzerkorrektur: kleinerer XY-Rand statt anderer Einbautiefe. CNC nur außen:
-Durchbruch55,2×14,56 / Falz59,2×18,56×3, R2; LED-Luft bleibt nominal 3 mm.
-Links nur kurzer Kabelübergang unter das Holz, keine große Steckertasche.
-Ø2,2-Platinenlöcher erfordern M2-Schrauben/M2-Muttern, keine M2,5-ruthex.
-Digital geprüft, keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
+NeoPixel-Messabgleich21.10.2026 umgesetzt:
+`3d-print/mounts/neopixel-stick-mount/README.md`. PCB54×9,9×1,6,
+PCB+LED3,23, LöcherØ3, Lochmitten(13,7;7,7)/(39,7;7,7), Raster26.
+**Nutzerkorrektur:** beide Holzlaschen im Deckelfoto nach links, zur
+Lochreihe/Deckelmitte (lokal+Y), Punkte(20;19,9)/(34;19,9), nicht zur nahen
+Außenkante. Ältere Vorgabe „beide vorne“ damit ersetzt. CNC nur außen:
+Durchbruch58,4×14,3 / Falz62,4×18,3×3, R2; LED-Luft nominal3 mm.
+Nutzer entscheidet für direkte Lötleitungen statt Dupont: Stiftleiste entfernen,
+**Kabelausgang und Zugentlastung nach neuester Nutzerkorrektur ans andere kurze
+Ende, lokal+x/rechts im Modell**, kurzer Übergang unter das Holz; elektrische
+Pad-/DIN-Belegung real prüfen. Deckelposition nach Nutzerlayout;
+Fotolage ist keine genaue Wand-/Leistenmessung.
+M2-Schrauben/M2-Muttern im Halter beibehalten, keine M2,5-ruthex.
+**Kopffreiheit offen:** Ø3-Kopfhülle kollidiert mit angenommenen LED-XY,
+auch im Spielraumtest. Kein vollständiger Fit-PASS, reale Teile prüfen.
+Keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
 PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Messabgleich21.10.2026.
 Nutzer bestätigt PCB42,7×40,4 und misst Dicke1,15, LöcherØ2,93, nahe
 Kantenabstände bis Lochrand6,26 mm; neues Lochraster27,25×24,95.

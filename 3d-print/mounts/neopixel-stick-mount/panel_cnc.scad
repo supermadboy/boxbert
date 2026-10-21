@@ -9,7 +9,7 @@ module panel(){
     }
 }
 module glass(){translate([0,0,wood_z+wood_h-glass_h]) linear_extrude(glass_h) rebate_profile(0.2);}
-module rear_wall(){translate([panel_rect[0],rear_wall_y,-35]) cube([panel_rect[2],rear_wall_t,wood_z+35]);}
+module rear_wall(){translate([panel_rect[0],rear_wall_y-rear_wall_t,-35]) cube([panel_rect[2],rear_wall_t,wood_z+35]);}
 module local_panel(){intersection(){panel();translate([-24,-32,wood_z])cube([98,69.16,wood_h]);}}
 if(part=="panel") panel();
 if(part=="local") local_panel();

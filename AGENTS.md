@@ -249,9 +249,14 @@ des CNC-Modells. Steckerfreiraum und ungemessene Bauteilhöhen real prüfen.
 Details/Findings zuerst in `docs/mounts-weiterarbeit.md` lesen.
 Hermes nutzt für diesen Ablauf den Skill `boxbert-cad-mounts`.
 Aktueller NeoPixel-Vorschlag: `3d-print/mounts/neopixel-stick-mount/README.md`.
-Nutzer akzeptiert Adafruit 1426 als Basis (Modulabgleich vor Druck offen): DIN
-außen links, beide Holzlaschen vorne mittig, CNC nur außen. Ø2,2-PCB-Löcher
-bedeuten M2-Schrauben/M2-Muttern, keine M2,5-ruthex. Noch keine physische Freigabe.
+Messabgleich21.10.2026: PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3/Raster26;
+Adafruit nur noch historische Referenz. **Beide Holzlaschen laut Nutzer im
+Deckelfoto nach links zur Lochreihe/Deckelmitte**, nicht zur Außenkante.
+CNC nur außen:58,4×14,3 / Falz62,4×18,3×3. Direkte Lötleitungen, Stiftleiste
+entfernen. Kabelausgang samt Zugentlastung auf neueste Nutzerkorrektur am
+anderen kurzen Ende (lokal+x/rechts im Modell); keine elektrische Padfreigabe.
+M2-Schrauben/M2-Muttern beibehalten, keine M2,5-ruthex;
+Schraubenkopf-/Bauteilfreiheit im CAD offen, keine physische Freigabe.
 Die nachfolgenden Step-Up-Regeln gelten weiterhin für flache Boden-Mounts.
 
 Vor einem Mount-Auftrag **`docs/mounts-weiterarbeit.md` und

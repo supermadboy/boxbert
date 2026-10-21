@@ -1,12 +1,12 @@
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
 CGAL Cache insert: group(){group(){hull(){multmatrix([[1,0, (58032 bytes)
 CGAL Cache insert: intersection(){import(file="neopixel_mou (0 bytes)
 CGAL Cache hit: intersection(){import(file="neopixel_mou (0 bytes)
 Geometries in cache: 17
-Geometry cache size in bytes: 436312
+Geometry cache size in bytes: 434872
 CGAL Polyhedrons in cache: 5
 CGAL cache size in bytes: 116256
-Total rendering time: 0:00:00.951
+Total rendering time: 0:00:00.878
 Current top level object is empty.

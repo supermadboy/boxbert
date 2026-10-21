@@ -159,19 +159,26 @@ Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertig
   Druck-/Passungs-/Lasttest, Scheibenfixierung und NFC-Lesen mit fertiger
   Schichtung. Kein reales Gesamtdeckel-/Passungs-/Sicherheitsprüfergebnis.
 
-- [ ] **NeoPixel-Deckelhalter / CNC (15.10.2026) erstellt, physisch offen:**
-  `3d-print/mounts/neopixel-stick-mount/`. Nutzer gibt Adafruit 1426 als Basis
-  frei und gleicht reales Modul vor Druck ab. DIN außen links, hinten im Deckel,
-  beide Holzlaschen vorne mittig. **Rand in X/Y verkleinert, Tiefe unverändert**:
-  Durchbruch55,2×14,56, Falz59,2×18,56×3, R2; nur2,2 mm je PCB-Seite.
-  Kabel kurz links heraus, ohne senkrechte Schleife/JST-Reserve.
-  Scheibe nominal 3 mm, LED-Luft weiterhin 3 mm (nicht diskutierte8,5 mm). M2×16 / M2-Muttern bei Ø2,2-PCB-Löchern,
-  kein M2,5-ruthex; reduzierter Kopf max. Ø3,0 / Höhe 2 mm, noch zu beschaffen.
-  Ø3,8 nach Toleranzprüfung nicht freigegeben. Muttersitztiefe 3 mm.
-  STL/DXF, 12 Solid-Fälle mit Kopfversatz-/Bauteilhüllen, Gegenproben und
-  Vorschauen geprüft. **Offen:** Nutzer-Sichtprüfung, Modulabgleich vor Druck,
-  reale Schrauben/Muttern/Stecker-/Lotmaße, Support-/Passungs-/Lastprobe,
-  sichere Scheibenfixierung, optische Wirkung. Kein Druck-/Fertigungsnachweis.
+- [ ] **NeoPixel-Deckelhalter / CNC: Messabgleich 21.10.2026 umgesetzt:**
+  `3d-print/mounts/neopixel-stick-mount/README.md`. Nutzer misst PCB54×9,9×1,6,
+  PCB+LED3,23, LöcherØ3; Lochrandabstand23, rechts12,8, lange Kante0,7 mm.
+  Daraus Lochmitten(13,7;7,7)/(39,7;7,7), Raster26. Neue CNC-Konturen:
+  Durchbruch58,4×14,3, Falz62,4×18,3×3, R2; alte DXF überholt.
+  Direkte Lötleitungen statt Dupont, Stiftleiste muss entfernt werden.
+  **Neueste Nutzerkorrektur:** Kabelausgang samt Zugentlastung ans andere kurze
+  Ende verlegt (lokal+x/rechts im Modell). Keine elektrische Padfreigabe daraus.
+  PCB-Auflage14,77, LED-/Glasluft weiterhin3 mm. **Nutzerkorrektur:** beide
+  Holzlaschen im Foto nach links zur Lochreihe/Deckelmitte, lokal+Y;
+  Punkte(20;19,9)/(34;19,9), STL64×27,9×16,5. CNC-Konturen unverändert.
+  Referenzwand jetzt gegenüber auf−Y, weiterhin kein gemessener Abstand.
+  **BLOCKER:** M2-KöpfeØ3/Höhe2 kollidieren mit angenommenen LED-XY,
+  auch im0,5-mm-Spielraumtest. Reale Kopf-/Bauteilfreiheit vor endgültiger
+  PCB-Montage klären; kein vollständiger Fit-PASS. LED-/SMD-/Pad-XY nicht
+  gemessen. M2×16/M2-Muttern beibehalten, keine größere Kopfgröße freigegeben.
+  **Offen:** echte Schrauben/Muttern/Lot-/Kabelhüllen, Holz-/Glasstärke,
+  Nutzer-Sicht-/Support-/Passungs-/Last-/Lichtprobe und sichere Scheibenfixierung.
+  Foto/Messquelle in `docs/cad/neopixel-stick/measurement-2026-10-21/`.
+  Kein Druck-/Fräs-/Fertigungsnachweis; endgültiges Deckellayout macht Nutzer.
 
 - [ ] **Gehäuse / Einzel-Mounts neu planen** — Nutzerentscheidungen in
   `hardware/gehaeuse-konzept.md`: Holzbox außen 250 × 180 × 110 mm,

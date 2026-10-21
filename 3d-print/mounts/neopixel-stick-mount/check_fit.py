@@ -35,10 +35,16 @@ def check(case):
                 v=struct.unpack_from('<12fH',raw,84+i*50);a,b,c=v[3:6],v[6:9],v[9:12]
                 vol+=(a[0]*(b[1]*c[2]-b[2]*c[1])+a[1]*(b[2]*c[0]-b[0]*c[2])+a[2]*(b[0]*c[1]-b[1]*c[0]))/6
             vol=abs(vol)
+        if name.startswith('heads-') and vol>0.001:
+            return f'OPEN {name}: intersection {vol:.6f} mm^3; assumed component XY conflicts with head; real clearance REQUIRED'
         assert (vol>0.001)==expect,(name,vol,log)
         return f'PASS {name}: intersection {vol:.6f} mm^3'+(' (deliberate collision)' if expect else '')
 if __name__=='__main__':
     (ROOT/'logs').mkdir(exist_ok=True)
     with ThreadPoolExecutor(max_workers=2) as pool:
-        for line in pool.map(check,CASES):print(line,flush=True)
+        results=list(pool.map(check,CASES))
+    for line in results: print(line,flush=True)
     print('Digital assumed envelopes only; insertion sampled at 1 mm, not physical fit approval.')
+    if any(line.startswith('OPEN') for line in results):
+        print('BLOCKED: PCB screw-head/component clearance unresolved; NOT a full fit PASS.')
+        raise SystemExit(2)

@@ -1,7 +1,8 @@
-PASS closed CNC panel 250 x 180 x 12 mm, volume 529511.768
-PASS nominal DXF mm opening (-2.2, 53.0, -2.2, 12.36)
-PASS nominal DXF mm rebate (-4.2, 55.0, -4.2, 14.36)
-PASS nominal DXF mm glass (-4.0, 54.8, -4.0, 14.16)
+PASS closed CNC panel 250 x 180 x 12 mm, volume 529099.594
+PASS nominal DXF mm opening (-2.2, 56.2, -2.2, 12.1)
+PASS nominal DXF mm rebate (-4.2, 58.2, -4.2, 14.1)
+PASS nominal DXF mm glass (-4.0, 58.0, -4.0, 13.9)
+PASS measured hole geometry: D3, pitch26, centers (13.7,7.7)/(39.7,7.7)
 PASS assumed tolerance budget: minimum M2 thread engagement 1.5 mm
-PASS nominal PCB bottom 14.9 LED/glass gap 3.0 M2x16 tip 0.5 nut bottom 1.4 wood engagement 8.5 mm
+PASS nominal PCB bottom 14.770000000000001 LED/glass gap 2.999999999999999 M2x16 tip 0.370000000000001 nut bottom 1.4 wood engagement 8.5 mm
 CAM compensation, real screw/nut/wood/glass and optical/diffusion tests still required.

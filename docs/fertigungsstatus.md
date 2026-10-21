@@ -1,5 +1,16 @@
 # Fertigungsstatus — Prüfung 16.10.2026
 
+**NeoPixel-Nachtrag21.10.2026:** Reales PCB54×9,9×1,6 / PCB+LED3,23,
+Lochraster26/Ø3 übernommen. Aktuelle STL und CNC-Dateien:
+[`neopixel-stick-mount/README.md`](../3d-print/mounts/neopixel-stick-mount/README.md),
+Fräsübersicht dort in `CNC-MERKBLATT.md`. Beide Holzlaschen Foto-links,
+Kabelausgang/Zugentlastung am anderen kurzen Ende (rechts/+x im Modell).
+Neue Konturen58,4×14,3 / Falz62,4×18,3×3. **Kopffreiheit OPEN/BLOCKED**
+gegen angenommene LED-XY; alte Kopfempfehlung in der historischen Tabelle unten
+ist keine aktuelle Freigabe. Neue Exporte, Mesh-/CNC-/Solid-Logs und Nachweise:
+[`testprotokoll-neopixel-mount-2026-10-21.md`](testprotokoll-neopixel-mount-2026-10-21.md).
+Keine reale Montage-/Druck-/Fräsfreigabe aus diesem Dateistand ableiten.
+
 **Nachtrag: SD-Halter inzwischen auf Nutzerauftrag fertig konstruiert.**
 Aktueller Stand mit STL, Vorschauen und eigenen Prüflogs:
 [`3d-print/mounts/sd-mount/README.md`](../3d-print/mounts/sd-mount/README.md).

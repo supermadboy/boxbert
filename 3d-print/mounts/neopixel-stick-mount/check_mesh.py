@@ -45,8 +45,8 @@ def mesh(path):
 
 if __name__=='__main__':
     tris,lo,hi,vol = mesh(ROOT/'neopixel_mount.stl')
-    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-8,-16,0))),lo
-    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(52.8,12.628,16.5))),hi
+    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-2,-2,0))),lo
+    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(62,25.9,16.5))),hi
     print('PASS mount STL: closed/oriented/connected/nondegenerate',len(tris),'triangles')
     print('Bounds',lo,hi,'Volume mm^3',round(vol,3))
     def inside(point):
@@ -67,21 +67,22 @@ if __name__=='__main__':
         for h in sorted(hits):
             if not unique or abs(h-unique[-1])>1e-5:unique.append(h)
         return bool(len(unique)%2)
-    checks=[('PCB M2 bore',(12.7,8.128,14.8),False),
-            ('Second M2 bore',(38.1,8.128,14.8),False),
-            ('Upper narrow screw post',(14.3,8.128,14.8),True),
-            ('Rear-entry hex pocket',(14.7,8.128,1),False),
-            ('Full nut pocket wall',(16,8.128,1),True),
-            ('Front PCB support',(8,1.1,14.8),True),
-            ('Wood screw bore',(18.4,-10,11),False),
-            ('Wood head opens toward interior',(20.9,-10,8.6),False),
-            ('Wood contact face solid',(20.9,-10,11.9),True),
-            ('Second front wood bore',(32.4,-10,11),False),
-            ('No rear tab',(25.4,22,10),False),
+    checks=[('PCB M2 bore',(13.7,7.7,14.6),False),
+            ('Second M2 bore',(39.7,7.7,14.6),False),
+            ('Upper narrow screw post',(15.3,7.7,14.6),True),
+            ('Rear-entry hex pocket',(15.7,7.7,1),False),
+            ('Full nut pocket wall',(17,7.7,1),True),
+            ('Front PCB support',(8,1.1,14.6),True),
+            ('Wood screw bore',(20,19.9,11),False),
+            ('Wood head opens toward interior',(22.5,19.9,8.6),False),
+            ('Wood contact face solid',(22.5,19.9,11.9),True),
+            ('Second photo-left wood bore',(34,19.9,11),False),
+            ('No photo-right tab',(20,-10,10),False),
             ('Grid cell',(2,2,1),False),
             ('Grid rib',(5.5,3,1),True),
-            ('Cable tie slot',(-4,-0.3,7.5),False),
-            ('Cable tie bridge',(-4,4,7.5),True)]
+            ('Cable tie slot right',(58,-0.3,7.5),False),
+            ('Cable tie bridge right',(58,4,7.5),True),
+            ('No old cable pad left',(-4,4,7.5),False)]
     for label,point,expected in checks:
         assert inside(point)==expected,label
         print('PASS actual mesh probe',label)

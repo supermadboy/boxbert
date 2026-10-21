@@ -1,5 +1,30 @@
 # Übergabe — Einzel-Mounts
 
+## NeoPixel-Messabgleich 21.10.2026 — aktuelle Konturen
+
+Nutzermaße PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3. Freier Lochabstand23,
+rechter Lochrand→PCB-Ende12,8, nahe lange Kante→Lochrand0,7 mm bestätigt.
+Lochmitten(13,7;7,7)/(39,7;7,7), Raster26. Nutzer entscheidet gegen Dupont,
+für direkte Lötleitungen; vorhandene Stiftleiste muss entfernt werden.
+**Neueste Korrektur:** Kabelausgang und Kabelbinderpad ans andere kurze Ende,
+lokal+x/rechts im Modell, Laschen bleiben Foto-links. Alte linke Zugentlastung
+entfernt. Keine Bestätigung der elektrischen Pad-/DIN-Belegung.
+Aktuell `3d-print/mounts/neopixel-stick-mount/README.md`: Durchbruch58,4×14,3,
+Falz62,4×18,3×3, R2, Scheibe62×17,9×3; alte Konturen unten sind historisch.
+PCB-Auflage14,77, LED-/Glasabstand3 mm erhalten. **Anschließende Nutzerkorrektur:**
+beide Holzlaschen im Foto nach links zur Lochreihe/Deckelmitte, lokal+Y,
+Punkte(20;19,9)/(34;19,9); STL64×27,9×16,5. CNC-Konturen unverändert.
+Referenzwand dafür gegenüber auf−Y orientiert, kein gemessener Fotoabstand.
+Ältere Anweisungen „beide vorne“ sind für diesen Halter überholt.
+**Kein vollständiger Fit-PASS:** nominale M2-KopfhülleØ3/Höhe2 sowie vergrößerte
+Hülle für0,5 mm Spiel kollidieren mit nur angenommenen LED-Positionen.
+Reale Kopf-/Bauteilfreiheit vor endgültiger PCB-Montage klären, nicht grünreden.
+Bauteil-/Pad-XY, Kabel/Lot, Holz-/Glasstärke, echte Schrauben/Muttern bleiben
+ungeprüft; Druck-/Fräs-/Passungs-/Last-/Lichttest und Scheibenfixierung offen.
+Neue echte Logs im Mount-Ordner, Messquelle/Foto unter
+`docs/cad/neopixel-stick/measurement-2026-10-21/`. Nutzer macht Deckellayout;
+Referenz-Rückwand ist kein gemessener Wand-/Leistenabstand.
+
 ## PN532-Messabgleich / Finalisierungsauftrag 21.10.2026
 
 Aktueller Halter: `3d-print/mounts/pn532-mount/README.md`. Nutzer bestätigt

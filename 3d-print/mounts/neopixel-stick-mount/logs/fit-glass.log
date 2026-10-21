@@ -1,16 +1,16 @@
-CGAL Cache insert: group(){multmatrix([[1,0,0,0.675],[0,1,0 (90080 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,0.763],[0,1,0 (90080 bytes)
-CGAL Cache insert: group(){multmatrix([[1,0,0,12.7],[0,1,0, (345152 bytes)
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
-CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,1.397] (19408 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,0.875],[0,1,0 (90080 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,0.915],[0,1,0 (90080 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (345152 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
+CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,52.603 (19408 bytes)
 CGAL Cache insert: group(){group(){hull(){multmatrix([[1,0, (58032 bytes)
-CGAL Cache insert: union(){import(file="neopixel_mount.stl" (5322544 bytes)
+CGAL Cache insert: union(){import(file="neopixel_mount.stl" (5369328 bytes)
 CGAL Cache insert: intersection(){multmatrix([[1,0,0,0],[0, (0 bytes)
 CGAL Cache hit: intersection(){multmatrix([[1,0,0,0],[0, (0 bytes)
 Geometries in cache: 51
-Geometry cache size in bytes: 603680
+Geometry cache size in bytes: 602240
 CGAL Polyhedrons in cache: 9
-CGAL cache size in bytes: 5964112
-Total rendering time: 0:00:05.803
+CGAL cache size in bytes: 6010896
+Total rendering time: 0:00:05.062
 Current top level object is empty.

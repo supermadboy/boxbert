@@ -176,6 +176,15 @@ Drehknopf-Freistich und Befestigungsmutter beachten (Achsgewinde M6 üblich
 bei EC11-artigem Aufbau — **am realen Teil nachmessen**).
 
 ### NeoPixel Stick (NEOPS8)
+**Realer Messabgleich21.10.2026 (Nutzer):** PCB54×9,9×1,6 mm,
+PCB-Unterseite→LED oben3,23 mm; daraus LED-Aufbau1,63 mm. Zwei LöcherØ3,
+freier Lochrandabstand23 mm, Lochmittenabstand26 mm. Rechter Lochrand bis
+PCB-Ende12,8 und nahe lange Kante bis Lochrand0,7 mm: Lochmitten lokal
+(13,7;7,7)/(39,7;7,7), Ursprung linke vordere PCB-Ecke. Bestückungs-XY
+nicht gemessen. Quelle/Foto: `docs/cad/neopixel-stick/measurement-2026-10-21/`.
+Diese Nutzermaße ersetzen für den Halter die nachfolgende historische
+Adafruit-Entwurfsbasis; Shopmaße identifizieren nicht das gemessene Exemplar.
+
 **Quellenkorrektur 15.10.2026:** [BerryBase](https://www.berrybase.de/neopixel-stick-mit-8-ws2812-5050-rgb-leds)
 nennt ca. **54 × 10,5 × 3,15 mm** für das Modul und **5 × 5 × 1,50 mm** je LED.
 PCB-Dicke und reale Löt-/Kabelüberstände sind damit nicht einzeln gemessen.

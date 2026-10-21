@@ -1,5 +1,5 @@
-PASS mount STL: closed/oriented/connected/nondegenerate 5848 triangles
-Bounds (-8.0, -16.0, 0.0) (52.79999923706055, 12.628000259399414, 16.5) Volume mm^3 3516.715
+PASS mount STL: closed/oriented/connected/nondegenerate 5828 triangles
+Bounds (-2.000002861022949, -2.000002861022949, 0.0) (61.99999237060547, 25.899999618530273, 16.5) Volume mm^3 3548.411
 PASS actual mesh probe PCB M2 bore
 PASS actual mesh probe Second M2 bore
 PASS actual mesh probe Upper narrow screw post
@@ -9,9 +9,10 @@ PASS actual mesh probe Front PCB support
 PASS actual mesh probe Wood screw bore
 PASS actual mesh probe Wood head opens toward interior
 PASS actual mesh probe Wood contact face solid
-PASS actual mesh probe Second front wood bore
-PASS actual mesh probe No rear tab
+PASS actual mesh probe Second photo-left wood bore
+PASS actual mesh probe No photo-right tab
 PASS actual mesh probe Grid cell
 PASS actual mesh probe Grid rib
-PASS actual mesh probe Cable tie slot
-PASS actual mesh probe Cable tie bridge
+PASS actual mesh probe Cable tie slot right
+PASS actual mesh probe Cable tie bridge right
+PASS actual mesh probe No old cable pad left

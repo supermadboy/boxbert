@@ -1,5 +1,13 @@
 # NEOPS8 — Quellen und offene Maße
 
+**Aktualisierung21.10.2026:** Nutzer hat das reale Modul gemessen und den
+Umbau beauftragt. Aktuelle Messwerte/Foto und Kabelentscheidung stehen in
+[measurement-2026-10-21/README.md](measurement-2026-10-21/README.md).
+PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3, Mittenabstand26 mm ersetzen im Halter
+die Adafruit-Kontur und das alte Lochbild. LED-/SMD-/Pad-XY weiter ungemessen,
+Kopffreiheit aktuell offen. Nachfolgend historische Recherche15.10.2026;
+Aussagen über fehlende Lochmaße und nicht gewünschtes Messen sind überholt.
+
 Recherche 15.10.2026 zum beauftragten Deckel-Mount.
 **Aktueller Entwurf:** `../../../3d-print/mounts/neopixel-stick-mount/README.md`.
 Daddelbert hat nach der Recherche ausdrücklich Adafruit 1426 als Entwurfsbasis
