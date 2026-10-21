@@ -1,5 +1,11 @@
 # PN532 — Deckelhalter mit Plexiglas und Außenfalz
 
+> **Branch `cad/falz-10mm`:** aktueller gerader Falz **67,5×65,2×3 mm**,
+> 10 mm Rand an den geraden Durchbruchkanten, außen rechteckig ohne Rundung; Scheibe **67,1×64,8×3 mm**.
+> Ersetzt alte Falz-/Scheibenmaße unten. Durchbruch/Halter unverändert.
+> Neue Exporte/Prüfung/Layoutwarnungen: [../falz-10mm.md](../falz-10mm.md).
+> Alte Bilder zeigen noch den schmalen Falz; neue Draufsicht dort verlinkt.
+
 Stand **21.10.2026**, auf Nutzerauftrag an reale Messwerte und Deckellayout
 angepasst. Druckdatei finalisiert für die reale Passprobe, **keine physische
 Fertigungs-/Kindersicherheitsfreigabe**. Frische digitale Ergebnisse: `logs/`.

@@ -1,0 +1,8 @@
+PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume 47294.048
+PASS nominal DXF mm opening (-2.4, 45.1, -2.4, 42.8)
+PASS nominal DXF mm rebate (-12.4, 55.1, -12.4, 52.8)
+PASS nominal DXF mm glass (-12.2, 54.9, -12.2, 52.6)
+PASS user measurements: hole spacing 27.25 x 24.95, PCB 1.15, holes 2.93 mm
+PASS corrected I2C side: top (+y); precise housing offset/dimensions still assumed
+PASS assumed stack PCB 24.35 25.5 glass 27.5 M2.5x25 example tip 0.5 minimum thread engagement 1.9
+PASS wood engagement 8.5 mm, rest wood 3.5 mm; NO measured RF/physical fit approval

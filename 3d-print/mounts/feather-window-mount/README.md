@@ -1,5 +1,13 @@
 # Feather-Fenster — aktuelle Außenfräs-Version
 
+> **Branch `cad/falz-10mm`:** aktueller Falz-Hüllrahmen **84,8×59×3 mm**,
+> außen einfach rechteckig ohne Rundung, mindestens10 mm Rand inklusive
+> JST-Kabelkerbe (oberhalb des Hauptdurchbruchs dadurch12,14 mm).
+> Scheiben-Hüllmaß **84,4×58,6×3 mm**,0,2 mm Spiel je Seite.
+> Ersetzt alte Falz-/Scheibenmaße unten. Durchbruch/Halter unverändert.
+> Neue Exporte/Prüfung/Layoutwarnungen: [../falz-10mm.md](../falz-10mm.md).
+> Alte Bilder zeigen noch den schmalen Falz; neue Draufsicht dort verlinkt.
+
 **Stand 15.10.2026, nach Nutzerkorrektur. Diese Version ersetzt den Entwurf mit
 4-mm-Innentasche. Noch keine physische Fertigungs-/Passungsfreigabe.**
 

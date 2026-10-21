@@ -1,5 +1,11 @@
 # NeoPixel-Stick — Deckelhalter / CNC, Messabgleich 21.10.2026
 
+> **Branch `cad/falz-10mm`:** aktueller gerader Falz **78,4×34,3×3 mm**,
+> 10 mm Rand an den geraden Durchbruchkanten, außen rechteckig ohne Rundung; Scheibe **78×33,9×3 mm**.
+> Ersetzt alte Falz-/Scheibenmaße unten. Durchbruch/Halter unverändert.
+> Neue Exporte/Prüfung/Layoutwarnungen: [../falz-10mm.md](../falz-10mm.md).
+> Alte Bilder zeigen noch den schmalen Falz; neue Draufsicht dort verlinkt.
+
 **Aktueller Stand:** Nutzermaße übernommen, STL/DXF neu exportiert.
 **Kein vollständiger Fit-PASS: Schraubenkopf-/Bauteilfreiheit ist offen.**
 Keine reale Druck-, Fräs-, Last- oder Lichtprüfung. Die alten CNC-Konturen

@@ -1,5 +1,15 @@
 # Übergabe — Einzel-Mounts
 
+## Aktuell: gerader 10-mm-Falz im separaten Worktree
+
+Nutzerauftrag: alle drei Fenster ohne Wellen, gleichmäßiger Falzrand10 mm,
+Tiefe weiterhin3 mm. Branch `cad/falz-10mm`, Worktree `../boxbert-falz-10mm`,
+Basis main02671d6; uncommittete Wellenänderungen im ursprünglichen Ordner
+bewusst NICHT übernommen. CNC-/Scheibenprofile und Panel-STL neu exportiert.
+Durchbrüche und Druckhalter unverändert. Aktuelle Maße/Prüfung und offene
+Layoutkonflikte: `3d-print/mounts/falz-10mm.md` (ersetzt hier alte Falzmaße).
+Keine reale Fertigungsfreigabe; NeoPixel-Kopffreiheit weiterhin BLOCKED.
+
 ## NeoPixel-Messabgleich 21.10.2026 — aktuelle Konturen
 
 Nutzermaße PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3. Freier Lochabstand23,

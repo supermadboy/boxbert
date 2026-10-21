@@ -147,6 +147,14 @@ Die Stützpfosten sind keine formschlüssige Verdrehsicherung. Schraubklemmung,
 Lötstellenfreiraum und Druckpassung müssen am realen Aufbau geprüft werden.
 Prüfstand: `docs/testprotokoll-stepup-mount.md`.
 
+## Aktuelle Falzänderung im Branch `cad/falz-10mm`
+
+Alle drei Fenster: gleichmäßiger10-mm-Rand ohne Wellen,3 mm tief.
+Neue Konturen/Scheiben und Layoutwarnungen in `3d-print/mounts/falz-10mm.md`.
+Diese Angaben ersetzen die schmalen Falzmaße unten; Durchbrüche/Halter bleiben.
+Bisherige Referenz-Wandabstände passen nicht zum größeren Außenfalz.
+Keine Fräs-/Passungsfreigabe daraus ableiten.
+
 ## Feather-Fenster — aktuelle Außenfräs-Version 15.10.2026
 
 Nutzerkorrektur: **CNC ausschließlich von außen**, Durchbruch und äußere

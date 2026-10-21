@@ -19,7 +19,8 @@ glass_h=3;           // proposed opal PMMA, verify actual thickness
 optical_gap=3;       // proposed LED/glass gap, no optical test
 board_z=wood_z+wood_h-glass_h-optical_gap-led_h-pcb_t; //14.77
 opening=[-2.2,-2.2,58.4,14.3]; // 2.2 mm per measured PCB edge
-rebate=[-4.2,-4.2,62.4,18.3]; // 2 mm glass-bearing lip
+rebate_width=10;
+rebate=[opening[0]-rebate_width,opening[1]-rebate_width,opening[2]+2*rebate_width,opening[3]+2*rebate_width];
 corner_r=2;
 fit=0.20;           // per side, needs real print/wood calibration
 lead_in=0.4;
@@ -46,16 +47,20 @@ head_h=2;            // maximum allowed head height; verify actual selected scre
 pcb_head_d=3;        // tested envelope ONLY; clashes with assumed component XY, NOT approved
 panel_rect=[-98,-20.46,250,180]; // reference placement only, user owns deck layout
 rear_wall_y=-8.46;  // reference wall INSIDE plane, now opposite tabs (-y)
-// Same nominal 4.26 mm lip-to-wall clearance, NOT a measured photo distance.
+// Reference unchanged: enlarged rebate overlaps this assumed wall by 3.74 mm.
 rear_wall_t=12;
 assert(abs(board_z-14.77)<0.001);
 assert(guide_h<wood_h-glass_h);
 assert((post_d-nut_af/cos(30))/2>1.5);
 assert(tab_h-(head_d-wood_d)/2>=2);
 assert(wood_h-(wood_screw_l-tab_h)>=3);
-assert(rebate[1]-rear_wall_y>=4-0.001);
+// Enlarged rebate requires a new real deck layout; do not assert old wall clearance.
 module profile(r,rad=3,inset=0){
     translate([r[0]+rad,r[1]+rad]) offset(r=rad-inset) square([r[2]-2*rad,r[3]-2*rad]);
 }
 module opening_profile(inset=0){profile(opening,corner_r,inset);}
-module rebate_profile(inset=0){profile(rebate,corner_r,inset);}
+// User: plain rectangular outer edge, no rounding.
+module rebate_profile(inset=0){
+    translate([rebate[0]+inset,rebate[1]+inset])
+        square([rebate[2]-2*inset,rebate[3]-2*inset]);
+}

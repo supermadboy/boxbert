@@ -30,12 +30,12 @@ assert volume > 0
 print(f"PASS CNC STL: {count} triangles, closed/oriented, bounds {lo}…{hi}, {volume:.3f} mm^3")
 for name, expected in [
     ("opening", (-7,57.8,-7,32)),
-    ("rebate", (-11,61.8,-11,36)),
-    ("glass", (-10.8,61.6,-10.8,35.8)),
+    ("rebate", (-17,67.8,-17,42)),
+    ("glass", (-16.8,67.6,-16.8,41.8)),
 ]:
     lines = (ROOT / f"cnc-{name}.dxf").read_text().splitlines()
     pairs = [(int(a), b.strip()) for a,b in zip(lines[::2], lines[1::2])]
-    assert any(k == 0 and v == "LINE" for k,v in pairs), name
+    assert any(k == 0 and v in ("LINE", "LWPOLYLINE") for k,v in pairs), name
     xs = [float(v) for k,v in pairs if k in (10,11)]
     ys = [float(v) for k,v in pairs if k in (20,21)]
     bounds = (min(xs),max(xs),min(ys),max(ys))

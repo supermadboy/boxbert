@@ -1,5 +1,14 @@
 # Boxbert — To-Do
 
+## Separater CAD-Branch `cad/falz-10mm`
+
+- [x] Alle drei Außenfalze ohne Wellen auf10 mm Rand/3 mm Tiefe geändert,
+  Scheiben/CNC-DXF/Panel-STL exportiert; CNC-Prüfungen bestanden.
+- [ ] Neues Layout auf größere Falze abstimmen: alte angenommene Wände bei
+  PN532/NeoPixel überschneiden die Falzfläche; Schraubenzonen prüfen.
+- [ ] Reale Passung/Glasfixierung prüfen; NeoPixel-Kopffreiheit bleibt offen.
+  Maße/Prüfstatus: `3d-print/mounts/falz-10mm.md`.
+
 ## In Arbeit / Nächste Schritte
 
 - [x] **Mount-Schraubenkorrektur auf Nutzerauftrag:** PN532 auf M2,5 mit

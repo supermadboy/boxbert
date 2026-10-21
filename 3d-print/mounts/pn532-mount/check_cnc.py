@@ -9,10 +9,10 @@ if __name__=='__main__':
     assert all(abs(a-b)<0.001 for a,b in zip(lo,(-20,-20,18.5))),lo
     assert all(abs(a-b)<0.001 for a,b in zip(hi,(62.7,60.4,30.5))),hi
     print('PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume',round(vol,3))
-    for name,expected in [('opening',(-2.4,45.1,-2.4,42.8)),('rebate',(-4.4,47.1,-4.4,44.8)),('glass',(-4.2,46.9,-4.2,44.6))]:
+    for name,expected in [('opening',(-2.4,45.1,-2.4,42.8)),('rebate',(-12.4,55.1,-12.4,52.8)),('glass',(-12.2,54.9,-12.2,52.6))]:
         lines=(ROOT/f'cnc-{name}.dxf').read_text().splitlines()
         pairs=[(int(a),b.strip()) for a,b in zip(lines[::2],lines[1::2])]
-        assert any(k==0 and v=='LINE' for k,v in pairs)
+        assert any(k==0 and v in ('LINE','LWPOLYLINE') for k,v in pairs)
         xs=[float(v) for k,v in pairs if k in (10,11)];ys=[float(v) for k,v in pairs if k in (20,21)]
         bounds=(min(xs),max(xs),min(ys),max(ys))
         assert all(abs(a-b)<0.001 for a,b in zip(bounds,expected)),(name,bounds)
