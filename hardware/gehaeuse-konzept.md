@@ -188,6 +188,11 @@ PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Messabgleich21.10.2026.
 Nutzer bestätigt PCB42,7×40,4 und misst Dicke1,15, LöcherØ2,93, nahe
 Kantenabstände bis Lochrand6,26 mm; neues Lochraster27,25×24,95.
 Plexiglas gewählt, Außenfalz3 mm, nominal2 mm PCB-Luft unverändert.
+**Schraubenkorrektur auf Nutzerauftrag:** PN532 jetzt M2,5 mit rückseitigen
+M2,5-Muttern, keine ruthex; NeoPixel bleibt M2. PN532-DurchgängeØ2,8,
+Mutternaufnahmen SW5,2/Tiefe3,5, untere PfostenØ9,2. M2,5×25 nur
+Längenbeispiel. Vorhandene Schrauben laut Nutzer passend, Kopfmaße fehlen;
+reale Passprobe weiterhin offen. CNC und Einbauhöhe unverändert.
 Reader laut aktuellem Foto unten rechts; auf Nutzerauftrag jetzt eine
 Holzlasche nach links zum Button und eine nach oben beim rechten oberen
 PCB-Loch, keine rechts/unten. I2C-Pins laut Nutzer oben, Platinenlöcher links

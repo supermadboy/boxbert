@@ -57,7 +57,7 @@ module mount(){
             translate([0,0,4])linear_extrude(2)profile([10,39.9,10,12.5],1);
         }
         for(h=board_holes)translate(h){
-            translate([0,0,-eps])cylinder(d=m2_clear,h=board_z+2*eps);
+            translate([0,0,-eps])cylinder(d=pcb_screw_clear,h=board_z+2*eps);
             translate([0,0,-eps])cylinder(d=nut_af/cos(30),h=nut_pocket_h+eps,$fn=6);
         }
         for(w=wood_points)translate([w[0],w[1],wood_z-tab_h-eps]){

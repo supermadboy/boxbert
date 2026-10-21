@@ -1,2 +1,2 @@
-PASS PN532 STL: closed/oriented/connected/nondegenerate 5180 triangles
-Bounds (-16.0, -2.200002670288086, 0.0) (44.900001525878906, 56.400001525878906, 24.349998474121094) Volume mm^3 6665.575
+PASS PN532 STL: closed/oriented/connected/nondegenerate 5036 triangles
+Bounds (-16.0, -2.200002670288086, 0.0) (44.900001525878906, 56.400001525878906, 24.349998474121094) Volume mm^3 6945.374

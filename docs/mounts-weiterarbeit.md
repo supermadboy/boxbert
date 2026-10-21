@@ -36,7 +36,14 @@ Auf ausdrücklichen Auftrag Laschen nach links zum Button und nach oben beim
 rechten oberen PCB-Loch verlegt; keine rechts/unten. Auflagen jetzt24,35,
 PCB-Außenfläche25,5 und2-mm-Glasabstand erhalten. CNC-Konturen unverändert.
 Neue Bounds60,9×58,6×24,35; Schraubenpunkte(−10;20,2)/(34,975;50,4).
-M2×25/M2-Muttern bleiben Vorschlag, echte Köpfe/Stecker/Lötfreiheit ungeprüft.
+**Nachfolgender Nutzerauftrag: PN532 auf M2,5 umgestellt; NeoPixel bleibt M2.**
+PN532: DurchgängeØ2,8, rückseitige M2,5-Muttern (angenommen SW5/Höhe2),
+Taschen SW5,2/Tiefe3,5, untere PfostenØ9,2 für mindestens1,5 mm Wand.
+M2,5×25 nur Längenbeispiel, vorhandene Schrauben laut Nutzer passend;
+Kopfmaße nicht dokumentiert. Echte Köpfe/Stecker/Lötfreiheit ungeprüft.
+STL/Bilder neu exportiert; Mesh und digitale Hüllentests bestanden,
+CNC-Konturen/PCB-Lage/Laschen/Glasabstand unverändert. Frühere M2-Angaben
+für PN532 unten sind historisch, keine aktuelle Schraubenvorgabe.
 **Abschließende Orientierungsklärung:** alle Nutzer-Richtungsangaben und
 SCAD-Draufsicht sind foto-relativ. Foto-rechts wird später Gehäuse-oben;
 komplette Anordnung um90° gegen den Uhrzeigersinn drehen. Im fertigen

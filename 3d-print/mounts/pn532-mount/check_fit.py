@@ -6,7 +6,7 @@ import tempfile
 import struct
 from concurrent.futures import ThreadPoolExecutor
 ROOT=Path(__file__).resolve().parent
-CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.6,0,-0.001],True),('shift-y','wood',[0,0.6,-0.001],True),('too-deep','wood',[0,0,0.5],True),('pcb','pcb',[0,0,0],False),('electronics','electronics',[0,0,0],False),('connector-mount','connector_mount',[0,0,0],False),('connector-wood','connector_wood',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('glass','glass',[0,0,0],False),('m2-bores','bores',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
+CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.6,0,-0.001],True),('shift-y','wood',[0,0.6,-0.001],True),('too-deep','wood',[0,0,0.5],True),('pcb','pcb',[0,0,0],False),('electronics','electronics',[0,0,0],False),('connector-mount','connector_mount',[0,0,0],False),('connector-wood','connector_wood',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('glass','glass',[0,0,0],False),('m2.5-bores','bores',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
 def check(case):
     name,scene,shift,expect=case
     if scene=='insertion':

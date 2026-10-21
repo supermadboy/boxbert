@@ -2,6 +2,12 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Mount-Schraubenkorrektur auf Nutzerauftrag:** PN532 auf M2,5 mit
+  rückseitigen M2,5-Muttern umgestellt (Ø2,8-Durchgänge, SW5,2-Taschen,
+  Ø9,2-Pfosten); NeoPixel nach ausdrücklicher Revision unverändert M2.
+  PN532-STL/Vorschauen neu erstellt, digitale Mesh-/Hüllentests bestanden.
+  M2,5×25 nur Längenbeispiel; reale Schrauben-/Kopf-/Mutternpassung offen.
+
 - [x] **Gesamtfirmware softwareseitig integriert (19.10.2026):** vollständig mit BLE und WLAN,
   bestehenden PWA-Funktionen, RFID-Intro, TFT V2, Buttons/Encoder, NeoPixel und
   Auto-Sleep. Gemeinsame Geräte-RPC in `docs/firmware-api-v1.md`, neuer

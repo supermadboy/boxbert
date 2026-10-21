@@ -109,14 +109,20 @@ Schrauben, Kabeln und Nachbarteilen prüfen; keine Metallfolie/Magnete hinzufüg
 
 ## Schrauben und Montage
 
-- Zwei **M2×25** mit rückseitigen M2-Sechskantmuttern, SW4 / Höhe1,6 mm nominal.
+- Auf Nutzerauftrag **M2,5 statt M2**: zwei Schrauben mit rückseitigen
+  M2,5-Sechskantmuttern, angenommen SW5 / Höhe2 mm. **M2,5×25 ist nur das
+  Längenbeispiel**; Nutzer erklärt vorhandene Schrauben für passend, konkrete
+  Kopfmaße/Länge nicht dokumentiert.
+- Durchgänge Ø2,8, Mutternaufnahmen SW5,2; untere Pfosten Ø9,2 statt8 mm,
+  damit radial mindestens1,5 mm Wand um die größere Tasche bleiben.
+  PCB-Lage, Glasabstand, Laschen und CNC-Konturen unverändert.
   Köpfe max. Ø4 / Höhe1,5 mm; konkrete Schrauben noch prüfen, keine Scheiben
   im 2-mm-Spalt. Große PCB-Löcher sind kein Grund, Schrauben größer zu wählen.
-- Muttern von hinten einlegen/halten, Taschen SW4,2 / Tiefe3,5 mm.
-  Keine Clips, keine M2,5-ruthex. Spitzenende nominal z=0,5, Mutter z=1,9…3,5.
+- Muttern von hinten einlegen/halten, Taschen SW5,2 / Tiefe3,5 mm.
+  Keine Clips, keine M2,5-ruthex. Spitzenende nominal z=0,5, Mutter z=1,5…3,5.
   Angenommenes Budget Schraubenlänge ±0,2, PCB-Abweichung +0,15,
   Spitzengewinde 0,3, Sitz −0,2, Mutterhöhe −0,1 mm ergibt mindestens
-  1,5 mm Eingriff. Kein gemessener Festigkeitsnachweis.
+  1,9 mm Eingriff. Kein gemessener Festigkeitsnachweis.
 - Zwei **3×12-mm-Senkkopf-Holzschrauben**: Durchgang Ø3,2, Senkung Ø6,2/90°.
   Nominal 8,5 mm Eingriff und 3,5 mm Restholz bei 12-mm-Holz. Begrenzte
   Vorbohrtiefe, echte Kopfpassung und Halt am Reststück prüfen; von Hand anziehen.
@@ -159,7 +165,7 @@ und zwei neue Fehlvolumen-Prüfungen für Randsteg/gerade Stütze. Neue Iso-/PCB
 nachweislich abgewiesen (`logs/revision-rim-brace-red.log`). Protokoll:
 `../../../docs/testprotokoll-pn532-mount.md`.
 `check_fit.py` prüft Vollkörper-Schnitte mit importierter Druck-STL:
-Holz, PCB, angenommene Elektronik-/Stecker-/Kabelhüllen, Glas, M2-Bohrungen,
+Holz, PCB, angenommene Elektronik-/Stecker-/Kabelhüllen, Glas, M2,5-Bohrungen,
 21 einzelne Einsetzlagen (1-mm-Abtastung, kein lückenloser Bewegungsbeweis),
 absichtliche Kollisions-Gegenproben sowie neue Holzlaschen/Bohrungen und das
 **angenommene** 15-mm-Rand-/12-mm-Wandlayout. Kein Button-/Gesamtdeckelmodell.

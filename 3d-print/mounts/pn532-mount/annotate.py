@@ -24,7 +24,7 @@ def height():
     lines(d,(35,22),'Gerade Seitenansicht · Deckelausschnitt geöffnet',38)
     canvas.paste(Image.open(ROOT/'height-raw.png').convert('RGB'),(0,95))
     lines(d,(1220,110),'Nominale Ebenen z [mm]',30)
-    lines(d,(1220,175),'30,5  Holz / Glas außen\n27,5  Glas unten\n27,0  M2-Kopf oben (max.)\n25,5  PCB außen\n24,35 PCB innen / Auflage\n23,0  Führungsspitze\n19,35 Elektronikhülle unten\n18,5  Holzanschlag\n15,0  Holzlasche unten\n  8,35 Steckerhülle unten\n  2,0  Gitterboden oben\n  0,0  Druckteil-Unterseite',26,step=45)
+    lines(d,(1220,175),'30,5  Holz / Glas außen\n27,5  Glas unten\n27,0  M2,5-Kopfhülle (Annahme)\n25,5  PCB außen\n24,35 PCB innen / Auflage\n23,0  Führungsspitze\n19,35 Elektronikhülle unten\n18,5  Holzanschlag\n15,0  Holzlasche unten\n  8,35 Steckerhülle unten\n  2,0  Gitterboden oben\n  0,0  Druckteil-Unterseite',26,step=45)
     lines(d,(1220,755),'PCB → Glas: 2 mm\nKopf → Glas: 0,5 mm\nBauteil-/Steckerhüllen angenommen.\nRF-Reichweite ungetestet.',26,step=43)
     lines(d,(30,1045),'Orange: Druckteil · Rot: PCB · Dunkel: Elektronik/Stecker · Braun: Holz · Blau: Glas/Kabel',24,fill='#a7b4c6')
     canvas.save(ROOT/'height-side.png')

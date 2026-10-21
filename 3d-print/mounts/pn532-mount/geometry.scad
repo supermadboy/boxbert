@@ -5,7 +5,7 @@
 pcb_w=42.7; pcb_d=40.4;
 board_holes=[[7.725,7.725],[34.975,32.675]];
 pcb_t=1.15; // user caliper measurement
-pcb_hole_d=2.93; // user caliper measurement; keep M2 mounting
+pcb_hole_d=2.93; // user caliper measurement; M2.5 per user request
 wood_z=18.5; wood_h=12; glass_h=3;
 rf_gap=2; // proposed PCB outer surface -> glass, NOT tested NFC range
 board_z=wood_z+wood_h-glass_h-rf_gap-pcb_t; //24.35; keep outer PCB plane and 2 mm RF gap unchanged
@@ -17,9 +17,10 @@ lead_in=0.4; lead_h=0.6;
 wood_points=[[-10,20.2],[34.975,50.4]];
 base_h=2; tab_h=3.5; wood_d=3.2; head_d=6.2;
 wood_screw_l=12;
-post_d=8; neck_d=4.6; post_top=14;
-m2_clear=2.3; nut_af=4.2; nut_pocket_h=3.5; nut_h=1.6;
-m2_length=25; pcb_head_d=4; head_h=1.5; // head max height, check actual hardware
+post_d=9.2; neck_d=4.6; post_top=14; // >1.5 mm wall around M2.5 pocket
+pcb_screw_d=2.5;
+pcb_screw_clear=2.8; nut_af=5.2; nut_pocket_h=3.5; nut_h=2; // assumed AF5 / thickness2
+pcb_screw_length=25; pcb_head_d=4; head_h=1.5; // head max height, check actual hardware
 support_xy=[[3,37.4],[39.7,3]]; // assumed empty PCB edge on component side
 // Large central electronics envelope on INWARD side; no measured component map.
 components_rect=[10,9,23,22]; components_h=5;

@@ -22,7 +22,7 @@ if __name__=='__main__':
         m=re.search(r'\b'+k+r'=([0-9.]+)',text);assert m is not None,k
         return float(m[1])
     top=value('wood_z')+value('wood_h')-value('glass_h')-value('rf_gap')
-    bottom=top-value('pcb_t');tip=top-value('m2_length')
+    bottom=top-value('pcb_t');tip=top-value('pcb_screw_length')
     engagement=min(value('nut_h')-0.1,(value('nut_pocket_h')-0.2)-(tip+0.2+0.15+0.3))
     assert abs(bottom-24.35)<1e-8
     assert abs(value('pcb_t')-1.15)<1e-8
@@ -37,5 +37,5 @@ if __name__=='__main__':
     assert tip-0.2-0.15>=0
     assert engagement>=1.2
     assert abs(value('wood_screw_l')-value('tab_h')-8.5)<1e-8
-    print('PASS assumed stack PCB',bottom,top,'glass',top+value('rf_gap'),'M2x25 tip',tip,'minimum thread engagement',engagement)
+    print('PASS assumed stack PCB',bottom,top,'glass',top+value('rf_gap'),'M2.5x25 example tip',tip,'minimum thread engagement',engagement)
     print('PASS wood engagement 8.5 mm, rest wood 3.5 mm; NO measured RF/physical fit approval')

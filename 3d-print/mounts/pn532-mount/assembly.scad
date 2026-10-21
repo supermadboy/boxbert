@@ -37,7 +37,7 @@ if(scene=="connector_wood")intersection(){panel();connector();}
 if(scene=="cable_mount")intersection(){printed();cables();}
 if(scene=="cable_wood")intersection(){panel();cables();}
 if(scene=="glass")intersection(){glass();assembly_parts();}
-if(scene=="bores")intersection(){printed();for(h=board_holes)translate([h[0],h[1],-1])cylinder(d=2.15,h=board_z+2);}
+if(scene=="bores")intersection(){printed();for(h=board_holes)translate([h[0],h[1],-1])cylinder(d=2.7,h=board_z+2);} // independent M2.5 clearance probe
 if(scene=="insert_pose")intersection(){union(){panel();glass();}translate(shift)assembly_parts();}
 if(scene=="assembly" || scene=="section" || scene=="inside"){
     color([0.7,0.49,0.28])if(scene=="section")cut_panel();else panel();
