@@ -24,7 +24,14 @@ if __name__=='__main__':
     top=value('wood_z')+value('wood_h')-value('glass_h')-value('rf_gap')
     bottom=top-value('pcb_t');tip=top-value('m2_length')
     engagement=min(value('nut_h')-0.1,(value('nut_pocket_h')-0.2)-(tip+0.2+0.15+0.3))
-    assert abs(bottom-23.9)<1e-8
+    assert abs(bottom-24.35)<1e-8
+    assert abs(value('pcb_t')-1.15)<1e-8
+    assert abs(value('pcb_hole_d')-2.93)<1e-8
+    assert 'board_holes=[[7.725,7.725],[34.975,32.675]]' in text
+    assert 'wood_points=[[-10,20.2],[34.975,50.4]]' in text
+    print('PASS user measurements: hole spacing 27.25 x 24.95, PCB 1.15, holes 2.93 mm')
+    assert 'connector_rect=[10,35.9,12,4]' in text
+    print('PASS corrected I2C side: top (+y); precise housing offset/dimensions still assumed')
     assert abs(value('rf_gap')-2)<1e-8
     assert value('rf_gap')-value('head_h')>=0.5
     assert tip-0.2-0.15>=0

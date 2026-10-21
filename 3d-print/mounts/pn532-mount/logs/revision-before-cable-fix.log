@@ -1,0 +1,40 @@
+PASS PN532 STL: closed/oriented/connected/nondegenerate 5232 triangles
+Bounds (-16.0, -2.200002670288086, 0.0) (44.900001525878906, 56.400001525878906, 24.349998474121094) Volume mm^3 6540.495
+PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume 52906.012
+PASS nominal DXF mm opening (-2.4, 45.1, -2.4, 42.8)
+PASS nominal DXF mm rebate (-4.4, 47.1, -4.4, 44.8)
+PASS nominal DXF mm glass (-4.2, 46.9, -4.2, 44.6)
+PASS user measurements: hole spacing 27.25 x 24.95, PCB 1.15, holes 2.93 mm
+PASS assumed stack PCB 24.35 25.5 glass 27.5 M2x25 tip 0.5 minimum thread engagement 1.5
+PASS wood engagement 8.5 mm, rest wood 3.5 mm; NO measured RF/physical fit approval
+PASS seated: intersection 0.000000 mm^3
+PASS shift-x: intersection 9.994070 mm^3 (positive solid control)
+PASS shift-y: intersection 9.994077 mm^3 (positive solid control)
+PASS too-deep: intersection 131.628908 mm^3 (positive solid control)
+PASS pcb: intersection 0.000000 mm^3
+PASS electronics: intersection 0.000000 mm^3
+PASS connector-mount: intersection 0.000000 mm^3
+PASS connector-wood: intersection 0.000000 mm^3
+Traceback (most recent call last):
+  File "/home/markusinho/projects/boxbert/3d-print/mounts/pn532-mount/check_fit.py", line 47, in <module>
+    for line in pool.map(check,CASES):print(line,flush=True)
+                ~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 645, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 312, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 454, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 396, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/markusinho/projects/boxbert/3d-print/mounts/pn532-mount/check_fit.py", line 38, in check
+    assert (vol>0.001)==expect,(name,vol,log)
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('cable-mount', 23.039992675781832, 'CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,0.5],[ (11344 bytes)\nCGAL Cache insert: intersection(){import(file="pn532_mount. (11344 bytes)\nCGAL Cache hit: intersection(){import(file="pn532_mount. (11344 bytes)\nGeometries in cache: 8\nGeometry cache size in bytes: 382240\nCGAL Polyhedrons in cache: 2\nCGAL cache size in bytes: 22688\nTotal rendering time: 0:00:00.681\n   Top level object is a 3D object:\n   Simple:        yes\n   Vertices:        8\n   Halfedges:      24\n   Edges:          12\n   Halffacets:     12\n   Facets:          6\n   Volumes:         2\n')

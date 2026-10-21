@@ -1,161 +1,169 @@
 # PN532 — Deckelhalter mit Plexiglas und Außenfalz
 
-Stand 15.10.2026. **Digitaler Entwurf, keine physische Fertigungsfreigabe.**
-Daddelbert hat Plexiglas und die **Elechouse-V3-Zeichnung als Entwurfsbasis**
-freigegeben; Abgleich mit dem tatsächlich gelieferten PN532-MOD bleibt offen.
-Quellen/Zeichnung: `../../../docs/cad/pn532/README.md`.
+Stand **21.10.2026**, auf Nutzerauftrag an reale Messwerte und Deckellayout
+angepasst. Druckdatei finalisiert für die reale Passprobe, **keine physische
+Fertigungs-/Kindersicherheitsfreigabe**. Frische digitale Ergebnisse: `logs/`.
+Herstellerbasis/Historie: `../../../docs/cad/pn532/README.md`.
+Kurze Fertigungs-Checkliste: **`CNC-DRUCK-MERKBLATT.md`**.
 
-## Form und Anordnung
+## Nutzer-Messabgleich und Layout
 
-Einzelhalter mit 2-mm-Gitterboden (4-mm-Öffnungen, 2-mm-Rippen), zwei diagonal
-angeordneten Schraubpfosten, zwei kleinen Randstützen und vier Eckführungen.
-Keine umlaufende Wanne. Zwei Holzlaschen an gegenüberliegenden Seiten bilden
-Tiefenanschlag und Klemmung. Elektronik und vierpoliger I2C-Stecker zeigen
-**nach innen**, die andere PCB-Seite zum Plexiglas. Keine Firmware-/Pinänderung.
+Nutzerangaben vom 21.10.2026 (Messschieber, Chat):
 
-Lokale Orientierung wie die Elechouse-Zeichnung auf Seite 2: Ursprung unten
-links an der Platine, +x rechts, +y oben / hinten, +z nach außen. I2C-Hülle im
-Modell links. Das BerryBase-Foto ist anders gedreht. **Die genaue Position und
-Drehung im Gesamtdeckel ist noch nicht festgelegt.** Das Holzmodell ist ein
-82,7 × 80,4-mm-Prüfstück, kein gebohrter Gesamtdeckel und kein geprüftes Layout
-mit Buttons, NeoPixel, Rahmen oder Schraubleisten.
+- Platinenaußenmaße **42,7 × 40,4 mm** als passend bestätigt.
+- PCB-Dicke **1,15 mm**, Lochdurchmesser **2,93 mm**.
+- An allen vier nahen Kanten **6,26 mm von Platinenkante bis Lochkante**.
+  Daraus Lochmittenabstand zur Kante 7,725 mm und Raster **27,25 × 24,95 mm**.
+  Lochmitten lokal **(7,725;7,725)** und **(34,975;32,675)**.
+- Foto: `~/Downloads/PXL_20261021_173403066.jpg`; Reader unten rechts,
+  Buttonloch links daneben. Kein maßstäblicher Gesamtdeckel-CAD-Nachweis.
+- PCB rechts/unten ungefähr **15 mm vom Deckelrand**, darunter **12 mm
+  Gehäusewand**. 15 mm ist eine vorläufige Nutzerangabe, kein genauer Messwert.
+
+Auf Wunsch **eine Holzlasche nach links zum benachbarten Buttonloch,
+die andere nach oben beim rechten oberen PCB-Loch**. Keine Holzlasche nach
+rechts/unten. **Alle Richtungsangaben beziehen sich auf das Nutzerfoto**, ebenso
+unsere Draufsicht: +x nach Foto-rechts, +y nach Foto-oben. Laut abschließender
+Nutzerklärung wird **Foto-rechts später Gehäuse-oben** (90° gegen den
+Uhrzeigersinn gegenüber der Fotoansicht). Daher später: I2C links, Holzwände
+oben/rechts; Laschen unten und links; PCB-Löcher unten rechts/oben links.
+Das ist eine Drehung der gesamten Anordnung, keine Änderung einzelner
+Stecker-/Laschenpositionen oder CNC-/Druckmaße.
+**Nutzerkorrektur: I2C-Pins oben (+y), PCB-Löcher links unten/rechts oben,
+Holzwände unten und rechts.** Das frühere linke Steckermodell war falsch.
+Elektronik und vierpoliger I2C-Stecker nach innen; Platinenrückseite zum Glas.
+Das Foto zeigt die Elektronikseite, nicht die spätere glaszugewandte Seite.
+PCB-Auflagen auf freie Bauteil-/Lötbereiche prüfen.
+
+Die Außenfläche der PCB bleibt trotz dünnerer Platine auf z=25,5 mm:
+Auflagen wurden von 23,9 auf **24,35 mm** erhöht. Damit bleiben nominal
+**2 mm PCB→Glas** und die M2×25-Gewinderechnung erhalten.
 
 ## Fertigungsdateien
 
-- `geometry.scad`: gemeinsame Maße von Halter und CNC.
-- `pn532_mount.scad` / `pn532_mount.stl`: **nur das Druckteil**, Hülle
-  x=−12…44,9 / y=−16…56,4 / z=0…23,9 mm.
+- `geometry.scad`: gemeinsame Druck-/CNC-Parameter.
+- **`pn532_mount.stl`**: nur der zu druckende Halter.
+- `pn532_mount.scad`: Halter mit optionaler PCB-Vorschau.
 - `panel_cnc.scad` / `panel_cnc.stl`: lokales Holz-Prüfstück, **nicht drucken**.
 - `cnc-opening.dxf`: Durchbruch **47,5 × 45,2 mm, R2**.
 - `cnc-rebate.dxf`: äußerer Falz **51,5 × 49,2 mm, R2, 3 mm tief**.
-- `cnc-glass.dxf`: Scheibe **51,1 × 48,8 × 3 mm, R1,8** vorgeschlagen.
-- `overview.png`: ohne und mit transparenter PCB; `height-side.png`: gerade
-  Seitenansicht mit Höhen. Weitere echte Ansichten: `top-board.png`,
-  `exploded.png`, `seated-inside.png`, `outside.png`.
+- `cnc-glass.dxf`: Scheibenvorschlag **51,1 × 48,8 × 3 mm, R1,8**.
+- `overview.png`, `iso.png`, `iso-board.png`: Halter ohne/mit transparenter PCB.
+- `height-side.png`, `exploded.png`, `outside.png`, `seated-inside.png`:
+  Schichtung und Einbau. Antennenzeichnung nur schematisch.
 
-Alle DXF sind **Nennkonturen in mm, kein G-Code**, keine kompensierten Fräsbahnen.
-Nur von außen fräsen, zuerst Falz, dann Durchbruch. Kein Wenden, keine Innentasche.
-Wegen R2 maximal Ø4-mm-Fräser. CAM, Zustellungen, Werkstückhaltung und
-Ausbruchstrategie separat festlegen. Innenliegende Pilotlöcher der Holzschrauben
-werden von Hand begrenzt vorgebohrt, nicht als Durchgangslöcher CNC-gefräst.
+**CNC-Konturen unverändert.** Nennkonturen in mm, kein G-Code/keine
+Werkzeugkompensation. Nur von außen: erst Falz, dann Durchbruch. Kein Wenden,
+keine Innentasche; wegen R2 Fräser max. Ø4. CAM, Zustellung, Werkstückhaltung
+und Ausbruchschutz separat festlegen. Holzschrauben innen von Hand begrenzt
+vorbohren, nicht als CNC-Durchgangslöcher ausführen.
 
-Vier Eckführungen greifen 4,5 mm in den Durchbruch, 0,20 mm Spiel **je Seite**,
-0,4-mm-Einführfase über 0,6 mm. Das sind Kalibrierwerte für eine reale Passprobe.
-Holzlaschen tragen am Holz, nicht Platine oder Plexiglas. Führung richtet aus,
-Schrauben klemmen. Die Scheibe liegt auf dem Holzfalz, nicht auf Elektronik.
+## Abmessungen und Wandfreiheit
+
+Druckteil-Bounds **x=−16…44,9 / y=−2,2…56,4 / z=0…24,35 mm**,
+also **60,9 × 58,6 × 24,35 mm**. Gitterboden 2 mm, Raster 4-mm-Zellen/2-mm-Rippen.
+**Formkorrektur:** linke Lasche mit geradem Arm/ausgerichtetem Stützsteg statt
+seitlichem Versatz. Gitterausschnitte auf die Innenfläche begrenzt: umlaufender
+mindestens 2 mm breiter ebener Randsteg, keine offenen Randzähne. Keine Wand.
+Das ist die Umsetzung des Nutzerwunsches „gerade hoch“/fehlender „Strich“
+ohne Markierung; neue Vorschau zur Sichtprüfung. Laschen-/Schraubenorte bleiben.
+Vier Eckführungen: nominal 0,20 mm Spiel je Seite, 4,5 mm Eingriff ins Holz,
+0,4-mm-Einführfase über 0,6 mm. Reale FDM-/Fräspassung kalibrieren.
+
+Holzschraubenmitten **(−10;20,2)** und **(34,975;50,4)**. Laschen 11 mm breit,
+3,5 mm dick; links/oben jeweils **13,6 mm über die Durchbruchkante**,
+Schraubenmitte jeweils **7,6 mm außerhalb des Durchbruchs**.
+
+Bei genau 15 mm PCB-Randabstand und bündig darunter sitzender 12-mm-Wand:
+Durchbruch→Wand innen **0,6 mm**, Druckführung→Wand **0,8 mm** nominal.
+Das ist knapp. Digitale Prüfung nur dieses angenommenen Wandmodells;
+**Randabstände, Wandversatz, Leisten, Buttonmutter/-gehäuse und Schraubzugang
+real prüfen**. Das Buttonloch allein reicht als Kollisionshülle nicht aus.
+Der 3-mm-tiefe äußere Glasfalz darf über die Wandprojektion reichen, liegt
+aber oben im Deckel. Die sicheren Reststärken sind real zu prüfen.
 
 ## Höhen und Schichtung
 
-+z außen, Ursprung Druckteil-Unterseite. Alle nicht aus der Zeichnung
-stammenden Höhen sind **Entwurfsannahmen**, nicht am Nutzerexemplar gemessen.
++z außen, Ursprung Druckteil-Unterseite. Holz 12 mm und Glas 3 mm weiterhin
+Annahmen; PCB-Dicke jetzt Nutzer-Messwert. Komponenten-/Steckerhüllen ungemessen.
 
 | Ebene | z [mm] | relativ zur Holzinnenseite |
 |---|---:|---:|
 | Druckteil-Unterseite | 0 | −18,5 |
 | Gitteroberseite | 2 | −16,5 |
-| Angenommene I2C-Hülle unten | 7,9 | −10,6 |
-| Holzlasche unten / Schraubkopfseite | 15 | −3,5 |
+| Angenommene I2C-Hülle unten | 8,35 | −10,15 |
+| Holzlasche unten | 15 | −3,5 |
 | Holzanschlag / Deckel innen | 18,5 | 0 |
-| Angenommene Elektronikhülle unten | 18,9 | +0,4 |
+| Angenommene Elektronikhülle unten | 19,35 | +0,85 |
 | Führungsspitze | 23 | +4,5 |
-| PCB innen / Auflage | 23,9 | +5,4 |
+| PCB innen / Auflage | 24,35 | +5,85 |
 | PCB außen / Schraubenkopfauflage | 25,5 | +7 |
 | M2-Kopf oben, maximal | 27 | +8,5 |
 | Plexiglas unten | 27,5 | +9 |
 | Plexiglas / Holz außen | 30,5 | +12 |
 
-**PCB→Scheibe nominal 2 mm, Kopf→Scheibe mindestens nominal 0,5 mm** bei max.
-1,5-mm-Kopfhöhe. PCB 1,6 mm, Scheibe 3 mm, Elektronikhülle 5 mm, Steckerhülle
-16 mm sind Annahmen. Tatsächliche Toleranzen und Scheibendurchbiegung prüfen.
+PCB→Scheibe nominal **2 mm**, Kopf→Scheibe nominal **0,5 mm** bei Kopf max.
+1,5 mm hoch. Nicht als Last-/Durchbiegungsfreigabe verstehen. NFC-Kopplung durch
+3-mm-PMMA plus 2-mm-Luft ist nicht getestet. Echte Tags mit fertiger Schichtung,
+Schrauben, Kabeln und Nachbarteilen prüfen; keine Metallfolie/Magnete hinzufügen.
 
-NFC-Kopplung durch 3-mm-PMMA plus 2-mm-Luft ist **nicht getestet**. Diese Werte
-sind ein kompakter Vorschlag, kein garantierter Leseabstand. Beide PCB-Seiten
-sind kein gerichteter optischer Sender; Orientierung allein garantiert keine
-RF-Verbesserung. Reale Tags mit komplett montierter Schichtung prüfen, inklusive
-Schrauben/Muttern, Kabeln und benachbarter Hardware. Keine Metallfolie/-platte,
-Metallrahmen oder Zusatzmagnete ohne neuen RF-Test ergänzen.
+## Schrauben und Montage
 
-**Scheibenfixierung bleibt offen.** Der Falz allein verhindert kein Herausheben.
-Vor Nutzung sicher und kindgerecht fixieren; Material-/Klebstoffverträglichkeit,
-Drucklast und Durchbiegung prüfen. Nicht nur lose einlegen.
+- Zwei **M2×25** mit rückseitigen M2-Sechskantmuttern, SW4 / Höhe1,6 mm nominal.
+  Köpfe max. Ø4 / Höhe1,5 mm; konkrete Schrauben noch prüfen, keine Scheiben
+  im 2-mm-Spalt. Große PCB-Löcher sind kein Grund, Schrauben größer zu wählen.
+- Muttern von hinten einlegen/halten, Taschen SW4,2 / Tiefe3,5 mm.
+  Keine Clips, keine M2,5-ruthex. Spitzenende nominal z=0,5, Mutter z=1,9…3,5.
+  Angenommenes Budget Schraubenlänge ±0,2, PCB-Abweichung +0,15,
+  Spitzengewinde 0,3, Sitz −0,2, Mutterhöhe −0,1 mm ergibt mindestens
+  1,5 mm Eingriff. Kein gemessener Festigkeitsnachweis.
+- Zwei **3×12-mm-Senkkopf-Holzschrauben**: Durchgang Ø3,2, Senkung Ø6,2/90°.
+  Nominal 8,5 mm Eingriff und 3,5 mm Restholz bei 12-mm-Holz. Begrenzte
+  Vorbohrtiefe, echte Kopfpassung und Halt am Reststück prüfen; von Hand anziehen.
+- Platine auf schmalen Ø4,6-Schraubauflagen und zwei kleinen Randstützen.
+  Bauteil-/Lötfreiheit real prüfen, PCB nicht mit Schrauben geradeziehen.
 
-## PCB-Befestigung und Schrauben
+Außerhalb vormontieren: Muttern, PCB, I2C-Stecker. Kabel von der oberen
+Platinenkante nach innen, dann nach oben (+y) unter dem Holz führen und
+zugentlasten. Kabelbinderpad ebenfalls oben, links neben der oberen rechten
+Holzlasche. Reale Steckerhülle/Biegeradien prüfen: angenommene Hülle
+12×4×16 mm oben, lokal x=10…22 / y=35,9…39,9, keine vermessene Dupont-/JST-Hülle.
+Nur die Anschlussseite ist bestätigt, nicht die genaue Lage entlang der Kante.
+Baugruppe von innen einsetzen, bis die Laschen am Holz anliegen, dann
+verschrauben. Glas oder Elektronik sind kein Tiefenanschlag.
 
-Elechouse-Maßzeichnung: 42,7 × 40,4 mm, zwei Lochmitten (7,4;7,6) und
-(35,2;32,8), Versatz 27,8 × 25,2 mm. **Ø2,5 ist nur eine Annahme**, weil der
-Bohrdurchmesser in der Originalzeichnung fehlt. Vor Fertigung prüfen.
+**Scheibe sicher fixieren**, nicht lose einlegen. Nutzeridee mit gebohrten,
+von Hand gesenkten Schraubenlöchern ist keine geprüfte Riss-/Lastfreigabe;
+Schraubenzugang, Glasrandabstände und Metallnähe zur Antenne separat prüfen.
+Keine verschluckbaren losen Teile, keine scharfen Kanten.
 
-- Vorgeschlagen: **zwei M2×25**, Kopfdurchmesser max. 4 mm, Kopfhöhe max.
-  **1,5 mm**, keine zusätzlichen Scheiben im 2-mm-Spalt. Konkretes Fabrikat
-  und reale Kopfgeometrie noch zu prüfen, nicht als vorhanden inventarisiert.
-- Zwei rückseitig eingelegte M2-Sechskantmuttern, nominal SW4 / 1,6 mm Höhe.
-  Taschen SW4,2 / 3,5 mm tief, von hinten zugänglich; **keine selbsthaltenden
-  Clips**. Taschen kalibrieren, Muttern beim Montieren halten.
-- Schraubenspitze nominal z=0,5; Mutter z=1,9…3,5. Volle Mutterhöhe im
-  nominellen Gewindebereich. Eigenes angenommenes Budget: Schraubenlänge
-  ±0,2, PCB-Abweichung +0,15, unvollständiges Spitzengewinde 0,3, Sitz −0,2,
-  Mutterhöhe −0,1 mm. Daraus rechnerisch mindestens 1,5 mm Gewindeeingriff;
-  kein gemessener Toleranz- oder Festigkeitsnachweis.
-- Kein Aufbohren, keine vorhandenen M2,5-ruthex erzwingen. M2 ist hier ein
-  separater Vorschlag zur kleinen PCB-Verschraubung.
-- 8-mm-Pfosten werden zur PCB auf Ø4,6 verjüngt; zwei weitere Ø2,8-Auflagen
-  stützen angenommene freie Randbereiche. Echte Lötstellen-/Bauteilfreiheit
-  einschließlich dieser Stützflächen prüfen, keine PCB-Biegung erzwingen.
+## Drucken und prüfen
 
-Holzlaschen 3,5 mm; Ø3,2-Durchgang und Ø6,2 / 90°-Senkung von innen.
-Zwei **3×12-mm-Senkkopf-Holzschrauben**, Zentren (21,35;−10) und (21,35;50,4).
-Nominal 8,5 mm Eingriff und 3,5 mm Restholz bei 12-mm-Pappel. Reales Kopfmaß,
-Holzstärke, Halt und begrenzte Vorbohrtiefe am Reststück prüfen. Von Hand anziehen.
-
-## Kabel und Montage
-
-Die im CAD angenommene vierpolige I2C-Hülle sitzt links innen, 4×12×16 mm,
-x=0,5…4,5 / y=11…23. Sie ist **kein vermessener Dupont-/JST-Nachweis**.
-Vier Leitungen gehen nach innen und bei z≈8…10 unter dem Holz nach links.
-Kabelbinderpad links neben der Basis, reale Biegeradien und Zugentlastung
-separat prüfen; Kabel/Lötstellen sind keine mechanische Halterung.
-
-1. Druck-/Führungs-/Mutternpassprobe ohne Elektronik, tatsächliches Modul und
-   Schrauben abgleichen. PETG als Ausgangsidee, keine Materialfreigabe.
-2. Muttern von hinten einlegen/halten, PCB und Stecker außerhalb vormontieren.
-   Schraubenköpfe auf der späteren Glasseite, Elektronik/Stecker nach innen.
-3. Kabel vorformen und entlasten. Baugruppe gerade von innen einsetzen, bis
-   die Holzlaschen aufliegen. Eingebaut kein erneuter Steckzugang nötig.
-4. Begrenzt vorbohren, mit Holzschrauben von innen befestigen.
-5. Scheibe sicher fixieren; echte Freigängigkeit, Last und NFC-Lesen prüfen.
-
-Lange Pfosten/Führungen und erhöhte Laschen brauchen eine geeignete
-Druckorientierung bzw. Support, **nicht supportfrei zugesagt**. Festigkeit,
-Schichthaftung, stoßfeste Befestigung und Kindersicherheit sind offen.
-
-## Reproduktion / Prüfgrenzen
-
-Tatsächlicher Lauf: STL mit 5.232 Dreiecken, einer geschlossenen orientierten
-zusammenhängenden Oberfläche und Volumen 6.616,832 mm³ geprüft. Alle 13
-Solid-Testgruppen bestanden, darunter 21 einzelne Einsetzlagen und drei
-absichtliche Kollisions-Gegenproben. Neue PNGs gerendert und visuell geprüft.
-Das bestätigt nur das digitale Modell mit den angegebenen Annahmen.
+PETG als Ausgangsidee, keine Materialfreigabe. Lange Pfosten/Führungen und
+Laschen brauchen geeignete Orientierung/Support; nicht supportfrei zugesagt.
+Vor endgültiger Montage Führungs-/Mutternpassung und Belastbarkeit prüfen.
+Halter reicht **18,5 mm unter die Holzinnenseite** in die Box.
 
 ```bash
 bash 3d-print/mounts/pn532-mount/render.sh
 ```
 
-Gepinnte OpenSCAD-2021.01-/CGAL-/Xvfb-/Mesa-Umgebung wie beim Fenster, kein
-Root, kein Flake-Update. `render.sh` prüft `bash -n` und `shellcheck`.
-`check_mesh.py` prüft die tatsächliche STL (geschlossene orientierte,
-zusammenhängende, nicht degenerierte Oberfläche, positive Volumen und Bounds).
-`check_cnc.py` prüft reale DXF-/Holz-STL-Maße und eine unabhängige Maßkette.
+Gepinnte OpenSCAD-/CGAL-/Xvfb-/Mesa-Umgebung, kein Root/Flake-Update.
+`check_mesh.py` prüft die reale STL auf geschlossene, orientierte, einzelne
+Oberfläche, Volumen, degenerierte Flächen und neue Bounds. `check_cnc.py`
+prüft DXF-/Holz-STL und unabhängige Maßkette inklusive Messwerte.
+Nach Geradstellung/Randabschluss neu exportiert und geprüft: **5.180 Dreiecke,
+6.665,575 mm³, alle 19 Solid-Testgruppen PASS**, darunter 21 einzelne Einsetzlagen
+und zwei neue Fehlvolumen-Prüfungen für Randsteg/gerade Stütze. Neue Iso-/PCB-
+Übersicht tatsächlich angesehen. Beide neuen Tests haben die vorige STL
+nachweislich abgewiesen (`logs/revision-rim-brace-red.log`). Protokoll:
+`../../../docs/testprotokoll-pn532-mount.md`.
+`check_fit.py` prüft Vollkörper-Schnitte mit importierter Druck-STL:
+Holz, PCB, angenommene Elektronik-/Stecker-/Kabelhüllen, Glas, M2-Bohrungen,
+21 einzelne Einsetzlagen (1-mm-Abtastung, kein lückenloser Bewegungsbeweis),
+absichtliche Kollisions-Gegenproben sowie neue Holzlaschen/Bohrungen und das
+**angenommene** 15-mm-Rand-/12-mm-Wandlayout. Kein Button-/Gesamtdeckelmodell.
 
-`check_fit.py` führt Vollkörper-Schnitte gegen die **importierte Druck-STL**
-aus: Holz-Sollposition, Versatz-/Tiefen-Gegenproben, PCB, Elektronikhülle,
-Stecker/Kabel gegen Mount und Holz, Glas und M2-Bohrungen. Zusätzlich 21
-Einsetzlagen z=−20…0, einzeln geschnitten, mit 0,001-mm-Prüfrückzug gegen reine
-Nullstärken-Kontaktflächen. Ein 1-mm-Raster ist **kein lückenloser Bewegungsbeweis**.
-Es prüft nur die expliziten angenommenen Hüllen, kein vollständiges bestücktes
-PCB-Modell und keinen realen Holz-/FDM-Toleranzbereich. Frische Logs: `logs/`.
-Vor erster Implementierung schlug der neue Mesh-Test erwartungsgemäß mit
-`AssertionError: Missing new PN532 print export` fehl.
-
-Offen: Modul-/Lochabgleich, Stecker-/Löt-/Bauteilhöhen, echte M2-Köpfe/Muttern,
-Holz-/Glasstärke, Druck-/Passungs-/Lasttest, Scheibenfixierung, Gesamtdeckel-
-Layout und reale Lesereichweite. Keine elektrische oder physische Abnahme.
+Offen: echte Randabstände/Leisten/Buttonmutter, Stecker-/Löt-/Kopfhöhen,
+Holz-/Glasstärke, Druckpassung, Festigkeit, sichere Scheibenfixierung und
+NFC-Lesen im fertigen Aufbau. Digitale Prüfung ersetzt keine reale Abnahme.

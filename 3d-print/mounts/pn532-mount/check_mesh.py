@@ -45,7 +45,7 @@ def mesh(path):
 
 if __name__=='__main__':
     tris,lo,hi,vol=mesh(ROOT/'pn532_mount.stl')
-    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-12,-16,0))),lo
-    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(44.9,56.4,23.9))),hi
+    assert all(abs(a-b)<1e-4 for a,b in zip(lo,(-16,-2.2,0))),lo
+    assert all(abs(a-b)<1e-4 for a,b in zip(hi,(44.9,56.4,24.35))),hi
     print('PASS PN532 STL: closed/oriented/connected/nondegenerate',len(tris),'triangles')
     print('Bounds',lo,hi,'Volume mm^3',round(vol,3))

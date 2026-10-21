@@ -1,5 +1,42 @@
 # Übergabe — Einzel-Mounts
 
+## PN532-Messabgleich / Finalisierungsauftrag 21.10.2026
+
+Aktueller Halter: `3d-print/mounts/pn532-mount/README.md`. Nutzer bestätigt
+Außenmaße42,7×40,4, misst PCB1,15 mm, BohrungenØ2,93 und an allen vier nahen
+Kanten6,26 mm bis Lochrand. Daraus Lochmitten(7,725;7,725)/(34,975;32,675),
+Raster27,25×24,95 statt früherer Zeichnungskoordinaten. Foto
+`~/Downloads/PXL_20261021_173403066.jpg`: Reader unten rechts, Button links.
+Auf ausdrücklichen Auftrag Laschen nach links zum Button und nach oben beim
+rechten oberen PCB-Loch verlegt; keine rechts/unten. Auflagen jetzt24,35,
+PCB-Außenfläche25,5 und2-mm-Glasabstand erhalten. CNC-Konturen unverändert.
+Neue Bounds60,9×58,6×24,35; Schraubenpunkte(−10;20,2)/(34,975;50,4).
+M2×25/M2-Muttern bleiben Vorschlag, echte Köpfe/Stecker/Lötfreiheit ungeprüft.
+**Abschließende Orientierungsklärung:** alle Nutzer-Richtungsangaben und
+SCAD-Draufsicht sind foto-relativ. Foto-rechts wird später Gehäuse-oben;
+komplette Anordnung um90° gegen den Uhrzeigersinn drehen. Im fertigen
+Gehäuse damit I2C links, Wände oben/rechts, Laschen unten/links. Keine
+Geometrieänderung erforderlich, CNC und Druckteil stets gemeinsam drehen.
+Weitere Nutzerkorrektur (Fotoorientierung): I2C-Pins **oben**, Löcher links unten/rechts oben,
+Wände unten/rechts. Früheres linkes Steckermodell falsch; aktuelle
+Stecker-/Kabelhülle und Kabelbinderpad oben. Nur die Seite bestätigt,
+exakter Offset und Abmessungen weiterhin angenommen.
+**Weitere Formkorrektur:** Nutzer bittet ohne Markierung um „gerade hoch“ und
+fehlenden „Strich“ an der Base. Umgesetzt als gerader linker Laschenarm mit
+passend ausgerichteter Stütze sowie geschlossenem ebenem2-mm-Randsteg statt
+Randzähnen. CNC/Loch-/Laschenorte unverändert, Sichtfreigabe noch offen.
+Neu exportiert/geprüft:5.180 Dreiecke,6.665,575 mm³,19 Solid-Testgruppen PASS.
+Neue unabhängige Rand-/Stützen-Fehlvolumentests wiesen die vorige STL korrekt
+ab. Neue Iso-/PCB-Übersicht angesehen; aktuelle Datei `pn532_mount.stl`.
+
+PCB-Randabstand rechts/unten nur ungefähr15 mm laut Nutzer, Wand12 mm:
+nominal Druckführung→Wand0,8 mm / Durchbruch→Wand0,6 mm. Keine reale Freigabe!
+Genau messen und Buttonmutter/-gehäuse/Leisten prüfen. Digitaler Wandtest nur
+für diese Annahmen; kein vollständiges Deckelmodell. Aktuelle echte Prüfwerte
+in `logs/`; Druck-/Passungs-/Last-/RF-Test, Glasfixierung weiterhin offen.
+Nachfolgender PN532-Abschnitt beschreibt die ursprüngliche Zeichnungsbasis,
+nicht das neue Lochbild oder die neuen Laschenpositionen.
+
 ## Aktuell 16.10.2026: SD-Halter fertig konstruiert
 
 Nutzer beauftragt Fertigstellung. `3d-print/mounts/sd-mount/README.md` ist

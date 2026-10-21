@@ -3,7 +3,12 @@ $fn=48; eps=0.02; show_board=true;
 module grid(){
     linear_extrude(base_h) difference(){
         profile([-2.2,-2.2,47.1,44.8],1.8);
-        for(i=[0:7],j=[0:7]) translate([0.2+6*i,0.2+6*j]) square([4,4]);
+        // Clip cells to the inner area: continuous 2 mm perimeter, no teeth.
+        intersection(){
+            offset(delta=-2)profile([-2.2,-2.2,47.1,44.8],1.8);
+            union()for(i=[0:7],j=[0:7])
+                translate([0.2+6*i,0.2+6*j])square([4,4]);
+        }
     }
 }
 module guides(){
@@ -35,13 +40,21 @@ module mount(){
             for(h=board_holes)translate(h)screw_post();
             for(p=support_xy)translate(p){cylinder(d=6,h=base_h);cylinder(d=2.8,h=board_z);}
             for(w=wood_points){
-                translate([w[0]-3,w[1]<0?-2.2:39.6,0])cube([6,3,wood_z]);
-                translate([w[0]-3,w[1]<0?-10:39.6,wood_z-tab_h])cube([6,12,tab_h]);
-                translate([0,0,wood_z-tab_h])linear_extrude(tab_h)profile([w[0]-5.5,w[1]-6,11,12],1.5);
+                if(w[0]<0){
+                    // Straight brace now possible: the I2C exit is at the top.
+                    translate([-2.2,w[1]-3,0])cube([2.4,6,wood_z]);
+                    translate([w[0],w[1]-3,wood_z-tab_h])cube([10.2,6,tab_h]);
+                } else {
+                    translate([w[0]-3,39.6,0])cube([6,3,wood_z]);
+                    translate([w[0]-3,39.6,wood_z-tab_h])cube([6,12,tab_h]);
+                }
+                translate([0,0,wood_z-tab_h])linear_extrude(tab_h)
+                    if(w[0]<0)profile([w[0]-6,w[1]-5.5,12,11],1.5);
+                    else profile([w[0]-5.5,w[1]-6,11,12],1.5);
             }
             // Inward cable-tie bridge, lower than wood; NOT a connector pocket.
-            translate([-3.2,25,0])cube([3,8,6]);
-            translate([0,0,4])linear_extrude(2)profile([-12,24,12.5,10],1);
+            translate([11,40.6,0])cube([8,3,6]);
+            translate([0,0,4])linear_extrude(2)profile([10,39.9,10,12.5],1);
         }
         for(h=board_holes)translate(h){
             translate([0,0,-eps])cylinder(d=m2_clear,h=board_z+2*eps);
@@ -51,7 +64,7 @@ module mount(){
             cylinder(d=wood_d,h=tab_h+2*eps);
             cylinder(d1=head_d+2*eps,d2=wood_d,h=(head_d-wood_d)/2+eps);
         }
-        for(y=[25,31.5])translate([-10,y,4-eps])cube([6,1.5,2+2*eps]);
+        for(x=[11,17.5])translate([x,44,4-eps])cube([1.5,6,2+2*eps]);
     }
 }
 module pcb(){
@@ -62,9 +75,10 @@ module pcb(){
 module electronics(){translate([components_rect[0],components_rect[1],board_z-components_h])cube([components_rect[2],components_rect[3],components_h]);}
 module connector(){translate([connector_rect[0],connector_rect[1],board_z-connector_h])cube([connector_rect[2],connector_rect[3],connector_h]);}
 module cables(){
-    // Assumed I2C bundle exits inward then left at z8, below wood plane.
-    hull(){translate([0.5,12,7.9])cube([4,10,2]);translate([-9,12,7.9])cube([2,10,2]);}
-    translate([-15,12,7.9])cube([8,10,2]);
+    // Assumed I2C bundle exits inward then TOP (+y), below wood plane.
+    // Kept left of the top-right mounting tab; exact bend radius unmeasured.
+    hull(){translate([11,35.9,7.9])cube([10,4,2]);translate([11,48.4,7.9])cube([10,2,2]);}
+    translate([11,48.4,7.9])cube([10,7,2]);
 }
 module screw_heads(){for(h=board_holes)translate([h[0],h[1],board_z+pcb_t])cylinder(d=pcb_head_d,h=head_h);}
 module antenna_visual(){

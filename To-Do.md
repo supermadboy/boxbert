@@ -139,15 +139,25 @@ Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertig
   PN532-MOD ist separat beauftragt und konstruiert, siehe unten.
   Referenz: `docs/mounts-weiterarbeit.md`.
 
-- [ ] **PN532-Plexiglas-Deckelhalter (15.10.2026), digitaler Vorschlag:**
-  `3d-print/mounts/pn532-mount/`. Nutzer akzeptiert Elechouse V3 als Basis,
-  reales PN532-MOD noch abgleichen. Durchbruch 47,5×45,2 / Außenfalz 51,5×49,2×3,
-  R2 (Fräser max. Ø4), nominal 2 mm PCB→Plexiglas. Zwei M2×25/M2-Muttern,
-  angenommene PCB-Löcher Ø2,5, Kopf max. Höhe 1,5 mm. Eigene STL/DXF,
-  Mesh-/CNC-/Solid-Tests und echte Vorschauen; frische Logs im Mount-Ordner.
-  **Offen:** Nutzer-Sichtprüfung, reales Modul/Lochbild/Stecker-/Löt-/Kopfmaß,
-  Passungs-/Lasttest, sichere Scheibenfixierung und NFC-Test mit fertiger
-  Schichtung. Gesamtdeckelposition/Drehung samt Buttons/Leisten noch planen.
+- [ ] **PN532-Plexiglas-Deckelhalter (Messabgleich 21.10.2026):**
+  `3d-print/mounts/pn532-mount/`. Nutzer bestätigt PCB 42,7×40,4;
+  Messwerte: Dicke1,15, LöcherØ2,93, vier nahe Kantenabstände bis Lochrand6,26.
+  Daraus Raster27,25×24,95. Holzlaschen jetzt links Richtung Button und oben
+  beim rechten oberen PCB-Loch (Fotoorientierung), keine rechts/unten.
+  Nutzerkorrektur: I2C oben, Kabel-/Zugentlastungsmodell ebenfalls oben;
+  Wände unten/rechts. Exakter Stecker-Offset/Hülle bleibt ungemessen.
+  Alle Richtungen foto-relativ; Foto-rechts wird später Gehäuse-oben.
+  Formkorrektur auf Nutzerauftrag: linker Laschenarm gerade, Gitterbase mit
+  geschlossenem flachem2-mm-Randsteg statt offenen Randzähnen; Sichtprüfung offen.
+  Zwei neue STL-Fehlvolumen-Tests ergänzen die Prüfungen (jetzt19 Gruppen).
+  Auflagen auf24,35 erhöht; PCB→Glas bleibt2 mm. CNC unverändert:
+  Durchbruch47,5×45,2 / Falz51,5×49,2×3 / R2, Fräser max.Ø4.
+  Zwei M2×25/M2-Muttern, Kopf max.Ø4/Höhe1,5. Neue Prüfungen/Logs im Mount-Ordner.
+  **Offen:** Vorläufige15-mm-PCB-Randabstände rechts/unten genau messen:
+  bei12-mm-Wand nur0,8 mm nominal Druckteilfreiheit (Durchbruch0,6).
+  Buttonmutter/-gehäuse, Leisten, echte Stecker-/Löt-/Kopfhöhen prüfen;
+  Druck-/Passungs-/Lasttest, Scheibenfixierung und NFC-Lesen mit fertiger
+  Schichtung. Kein reales Gesamtdeckel-/Passungs-/Sicherheitsprüfergebnis.
 
 - [ ] **NeoPixel-Deckelhalter / CNC (15.10.2026) erstellt, physisch offen:**
   `3d-print/mounts/neopixel-stick-mount/`. Nutzer gibt Adafruit 1426 als Basis

@@ -388,6 +388,37 @@ einfügen, Datum dazu.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 
+- **Gitterzellen am Rand begrenzen, sonst fehlt der Abschlusssteg (eigener
+  PN532-STL-Test, 21.10.2026).** Unbegrenzte4-mm-Zellen im6-mm-Raster schnitten
+  die rechte/obere Basiskante auf: sichtbare Randzähne trotz geschlossener,
+  zusammenhängender STL. Zell-Ausschnitte jetzt mit einer um2 mm verkleinerten
+  Außenkontur schneiden, bevor sie vom Boden abgezogen werden. So bleibt ein
+  flacher Randsteg, keine Gehäusewand. Neuer unabhängiger Fehlvolumen-Test
+  fordert vier solide Randstreifen in der tatsächlichen STL; vorige Version
+  fiel mit83,016275 mm³ fehlendem Material korrekt durch. Mesh-Manifoldness
+  allein prüft also nicht den gewünschten Randabschluss. Quelle:
+  `3d-print/mounts/pn532-mount/pn532_mount.scad`, `assembly.scad`,
+  `logs/revision-rim-brace-red.log` und `docs/testprotokoll-pn532-mount.md`.
+
+- **PN532: Lasche verlegen heißt auch Kabelweg neu prüfen (eigene digitale
+  Solid-Tests, 21.10.2026).** Beim Verlegen der Holzlasche nach links schnitt
+  ihr erster Stützsteg die angenommene I2C-Steckerhülle (42,021 mm³).
+  Nach deren Freistellung blieb eine Kollision mit der tiefer liegenden
+  Kabelhülle (23,040 mm³). Im damaligen Zwischenstand Stützsteg bei y=24…30, diagonaler Arm auf
+  Laschenhöhe; Stecker- und Kabelweg im neuen Solid-Test frei.
+  **Spätere Nutzerkorrektur derselben Session:** Die linke Anschlussseite
+  war falsch, echte Pins sitzen oben. Stecker-/Kabel-/Zugentlastungsmodell
+  daraufhin nach oben verlegt und Tests neu ausgeführt. Der frühere PASS
+  bestätigte nur die falsche angenommene Hülle, nicht deren reale Position.
+  Abschließend konnte die linke Anbindung deshalb auf Nutzerwunsch gerade
+  werden (Stützsteg y=17,2…23,2); aktueller Stand im Mount-README.
+  → Nicht nur die Schraublasche verschieben: Stütze und niedrigen Kabelweg
+  separat gegen die reale Druck-STL prüfen. Die Hüllen sind weiterhin
+  Annahmen, kein Nachweis realer Dupont-Freiheit oder Festigkeit.
+  Quellen: `3d-print/mounts/pn532-mount/pn532_mount.scad`, `check_fit.py`,
+  `logs/revision-before-connector-fix.log`, `logs/revision-before-cable-fix.log`
+  und aktuelle `logs/fit-check.log` im selben Ordner.
+
 - **NeoPixel: Schraubenkopf gegen LED-Ecken prüfen, nicht nur PCB-Bohrung
   (eigener digitaler CAD-Test, 15.10.2026).** Beim vom Nutzer akzeptierten
   Adafruit-1426-v2-Referenzboard liegen Ø2,2-Montagelöcher bei y=8,128 und

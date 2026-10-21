@@ -36,7 +36,13 @@ def check(case):
                 vol+=(a[0]*(b[1]*c[2]-b[2]*c[1])+a[1]*(b[2]*c[0]-b[0]*c[2])+a[2]*(b[0]*c[1]-b[1]*c[0]))/6
             vol=abs(vol)
         assert (vol>0.001)==expect,(name,vol,log)
-        return f'PASS {name}: intersection {vol:.6f} mm^3'+(' (deliberate collision)' if expect else '')
+        return f'PASS {name}: solid residual/intersection {vol:.6f} mm^3'+(' (positive solid control)' if expect else '')
+CASES += [('assumed-15mm-layout-walls','walls',[0,0,0],False),
+          ('wood-tab-bores','tab_bores',[0,0,0],False),
+          ('left-tab-material','left_tab',[0,0,0],True),
+          ('top-tab-material','top_tab',[0,0,0],True),
+          ('continuous-base-rim','missing_rim',[0,0,0],False),
+          ('straight-left-brace','missing_straight_brace',[0,0,0],False)]
 if __name__=='__main__':
     (ROOT/'logs').mkdir(exist_ok=True)
     with ThreadPoolExecutor(max_workers=2) as pool:

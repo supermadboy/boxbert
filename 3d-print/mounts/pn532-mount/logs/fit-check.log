@@ -1,14 +1,20 @@
-PASS seated: intersection 0.000000 mm^3
-PASS shift-x: intersection 9.994070 mm^3 (deliberate collision)
-PASS shift-y: intersection 9.994077 mm^3 (deliberate collision)
-PASS too-deep: intersection 131.628893 mm^3 (deliberate collision)
-PASS pcb: intersection 0.000000 mm^3
-PASS electronics: intersection 0.000000 mm^3
-PASS connector-mount: intersection 0.000000 mm^3
-PASS connector-wood: intersection 0.000000 mm^3
-PASS cable-mount: intersection 0.000000 mm^3
-PASS cable-wood: intersection 0.000000 mm^3
-PASS glass: intersection 0.000000 mm^3
-PASS m2-bores: intersection 0.000000 mm^3
+PASS seated: solid residual/intersection 0.000000 mm^3
+PASS shift-x: solid residual/intersection 9.994070 mm^3 (positive solid control)
+PASS shift-y: solid residual/intersection 9.994077 mm^3 (positive solid control)
+PASS too-deep: solid residual/intersection 131.628908 mm^3 (positive solid control)
+PASS pcb: solid residual/intersection 0.000000 mm^3
+PASS electronics: solid residual/intersection 0.000000 mm^3
+PASS connector-mount: solid residual/intersection 0.000000 mm^3
+PASS connector-wood: solid residual/intersection 0.000000 mm^3
+PASS cable-mount: solid residual/intersection 0.000000 mm^3
+PASS cable-wood: solid residual/intersection 0.000000 mm^3
+PASS glass: solid residual/intersection 0.000000 mm^3
+PASS m2-bores: solid residual/intersection 0.000000 mm^3
 PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty
+PASS assumed-15mm-layout-walls: solid residual/intersection 0.000000 mm^3
+PASS wood-tab-bores: solid residual/intersection 0.000000 mm^3
+PASS left-tab-material: solid residual/intersection 0.783157 mm^3 (positive solid control)
+PASS top-tab-material: solid residual/intersection 0.783157 mm^3 (positive solid control)
+PASS continuous-base-rim: solid residual/intersection 0.000000 mm^3
+PASS straight-left-brace: solid residual/intersection 0.000000 mm^3
 Digital assumed envelopes only; insertion sampled at 1 mm, not physical fit approval.

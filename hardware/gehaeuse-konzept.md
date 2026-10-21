@@ -177,11 +177,20 @@ Durchbruch55,2×14,56 / Falz59,2×18,56×3, R2; LED-Luft bleibt nominal 3 mm.
 Links nur kurzer Kabelübergang unter das Holz, keine große Steckertasche.
 Ø2,2-Platinenlöcher erfordern M2-Schrauben/M2-Muttern, keine M2,5-ruthex.
 Digital geprüft, keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
-PN532-MOD ist inzwischen beauftragt und als digitaler Vorschlag konstruiert:
-`3d-print/mounts/pn532-mount/README.md`. Nutzer wählt Plexiglas und akzeptiert
-Elechouse V3 als Basis; reales Modul noch abgleichen. Außenfalz3 mm, PCB-Luft
-nominal2 mm, zwei Holzlaschen vorne/hinten. Nur lokales Prüfstück, genaue
-Position/Drehung auf dem Deckel und echte Lesereichweite bleiben offen.
+PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Messabgleich21.10.2026.
+Nutzer bestätigt PCB42,7×40,4 und misst Dicke1,15, LöcherØ2,93, nahe
+Kantenabstände bis Lochrand6,26 mm; neues Lochraster27,25×24,95.
+Plexiglas gewählt, Außenfalz3 mm, nominal2 mm PCB-Luft unverändert.
+Reader laut aktuellem Foto unten rechts; auf Nutzerauftrag jetzt eine
+Holzlasche nach links zum Button und eine nach oben beim rechten oberen
+PCB-Loch, keine rechts/unten. I2C-Pins laut Nutzer oben, Platinenlöcher links
+unten/rechts oben, Wände unten/rechts; Anschluss-/Kabelmodell entsprechend
+korrigiert, exakte Hülle ungemessen. Alle Richtungen foto-relativ; Foto-rechts
+wird Gehäuse-oben, ganze Anordnung gemeinsam drehen. Linke Lasche zuletzt gerade
+angebunden, Base mit geschlossenem flachem Randsteg. Randabstände von PCB rechts/unten nur ungefähr
+15 mm bei12-mm-Seitenwand: genaue Messung und reale Button-/Wandfreiheit
+noch offen. Nur lokales CAD-Prüfstück, keine vollständige Deckelprüfung;
+Druck-/Passungs-/Last-/Lesereichweitenprüfung und Glasfixierung offen.
 Übergabe in `docs/mounts-weiterarbeit.md`.
 
 ## Weitere offene mechanische Fragen

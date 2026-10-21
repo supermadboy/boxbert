@@ -156,12 +156,15 @@ Neuer Mount-Entwurf und offene mechanische Prüfungen:
 
 ### PN532-Modul (PN532-MOD)
 **40 × 60 mm ist nur die BerryBase-Shopangabe**, keine verifizierte PCB-Kontur.
-Produktfoto annähernd quadratisch, zwei diagonale Löcher. Nutzer akzeptiert
-am 15.10.2026 die **Elechouse-V3-Zeichnung als CAD-Basis**, nicht als Modulnachweis:
-42,7 × 40,4 mm, Lochmitten in Originalorientierung unten links (7,4; 7,6) und
-oben rechts (35,2; 32,8), Versatz 27,8 × 25,2 mm. Bohrdurchmesser nicht bemaßt;
-Ø2,5 im CAD nur angenommen. PCB-Dicke 1,6 mm und Bauteil-/Steckerhüllen ebenfalls
-Annahmen. DIP-Schalter 2-fach laut Produktfoto; Header gerade + gewinkelt im
+Produktfoto annähernd quadratisch, zwei diagonale Löcher. **Nutzerabgleich
+21.10.2026:** Außenmaß42,7×40,4 als passend bestätigt; gemessen PCB-Dicke1,15 mm,
+Lochdurchmesser2,93 mm, alle vier nahen Kantenabstände bis Lochrand6,26 mm.
+Daraus Lochmitten lokal(7,725;7,725)/(34,975;32,675), Raster27,25×24,95 mm.
+Quelle: Chat-Messwerte des Nutzers; keine eigenständige Agentenmessung.
+Die am15.10. akzeptierte Elechouse-V3-Zeichnung war die erste CAD-Basis,
+kein Identitätsnachweis: dort Raster27,8×25,2 und unbemaßter Bohrdurchmesser.
+Frühere CAD-Annahmen Ø2,5 / PCB1,6 gelten für das aktuelle Modell nicht mehr.
+Bauteil-/Steckerhüllen weiterhin Annahmen. DIP-Schalter 2-fach laut Produktfoto; Header gerade + gewinkelt im
 Lieferumfang. Quellen/Originalzeichnung: `docs/cad/pn532/README.md`.
 Plexiglas-Deckelhalter: `3d-print/mounts/pn532-mount/README.md`; reale
 Passung und NFC-Lesereichweite durch fertige Schichtung bleiben offen.

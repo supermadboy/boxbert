@@ -1,0 +1,16 @@
+CGAL Cache insert: union(){multmatrix([[1,0,0,-2],[0,1,0,0] (45088 bytes)
+CGAL Cache insert: difference(){union(){multmatrix([[1,0,0, (157072 bytes)
+CGAL Cache hit: difference(){union(){multmatrix([[1,0,0, (157072 bytes)
+Geometries in cache: 7
+Geometry cache size in bytes: 376040
+CGAL Polyhedrons in cache: 2
+CGAL cache size in bytes: 202160
+Total rendering time: 0:00:00.725
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:      112
+   Halfedges:     336
+   Edges:         168
+   Halffacets:    164
+   Facets:         82
+   Volumes:        14
