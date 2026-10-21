@@ -1,0 +1,41 @@
+ECHO: "Measured PCB/hole geometry 21.10.2026; component XY and cable envelopes assumed; M2 retained; PCB bottom", 14.77, "LED/glass gap", 3
+CGAL Cache insert: union(){linear_extrude(height=15.9,cente (354736 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-2.2],[0,1,0, (22592 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,53.8],[0,1,0, (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (537648 bytes)
+CGAL Cache insert: group(){group(){multmatrix([[1,0,0,-2.2] (45088 bytes)
+CGAL Cache insert: intersection(){difference(){union(){line (592768 bytes)
+CGAL Cache insert: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (621392 bytes)
+CGAL Cache hit: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (621392 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,13.7],[0,1,0,7.7],[0, (621392 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,7.7],[0, (621392 bytes)
+CGAL Cache insert: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache hit: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,8],[0,1,0,1.1],[0,0,1 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,46],[0,1,0,1.1],[0,0, (344912 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (1242688 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,8],[0,1,0,1.1 (689728 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,17],[0,1,0,8. (398912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,13.7],[0,1,0,7.7],[0, (189008 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,7.7],[0, (189008 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,20],[0,1,0,19.9],[0,0 (336976 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,34],[0,1,0,19.9],[0,0 (336976 bytes)
+CGAL Cache insert: union(){linear_extrude(height=2,center=f (3050400 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (377920 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,20],[0,1,0,19 (673856 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,56],[0,1,0,-1 (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (4242080 bytes)
+CGAL Cache insert: color([0.96,0.46,0.13,1]){difference(){u (4242080 bytes)
+Geometries in cache: 79
+Geometry cache size in bytes: 474360
+CGAL Polyhedrons in cache: 25
+CGAL cache size in bytes: 20466560
+Total rendering time: 0:00:12.611
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:     2868
+   Halfedges:    9546
+   Edges:        4773
+   Halffacets:   3810
+   Facets:       1905
+   Volumes:         2

@@ -2,6 +2,9 @@
 """Independent dimensions of actual exported CNC/STL/DXF and assumed stack."""
 from pathlib import Path
 import re
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'common'))
+from check_wave import check_contours
 from check_mesh import mesh
 ROOT=Path(__file__).resolve().parent
 if __name__=='__main__':
@@ -9,14 +12,11 @@ if __name__=='__main__':
     assert all(abs(a-b)<0.001 for a,b in zip(lo,(-20,-20,18.5))),lo
     assert all(abs(a-b)<0.001 for a,b in zip(hi,(62.7,60.4,30.5))),hi
     print('PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume',round(vol,3))
-    for name,expected in [('opening',(-2.4,45.1,-2.4,42.8)),('rebate',(-4.4,47.1,-4.4,44.8)),('glass',(-4.2,46.9,-4.2,44.6))]:
-        lines=(ROOT/f'cnc-{name}.dxf').read_text().splitlines()
-        pairs=[(int(a),b.strip()) for a,b in zip(lines[::2],lines[1::2])]
-        assert any(k==0 and v=='LINE' for k,v in pairs)
-        xs=[float(v) for k,v in pairs if k in (10,11)];ys=[float(v) for k,v in pairs if k in (20,21)]
-        bounds=(min(xs),max(xs),min(ys),max(ys))
-        assert all(abs(a-b)<0.001 for a,b in zip(bounds,expected)),(name,bounds)
-        print('PASS nominal DXF mm',name,bounds)
+    opening, rebate, glass = check_contours(ROOT)
+    expected_volume=82.7*80.4*12-opening.area*9-rebate.area*3
+    assert abs(vol-expected_volume)<0.05, (vol,expected_volume)
+    assert all(abs(a-b)<0.001 for a,b in zip(opening.bounds,(-2.4,-2.4,45.1,42.8)))
+    print('PASS CNC STL volume agrees with actual DXF/depths')
     text=(ROOT/'geometry.scad').read_text()
     def value(k):
         m=re.search(r'\b'+k+r'=([0-9.]+)',text);assert m is not None,k
@@ -38,4 +38,4 @@ if __name__=='__main__':
     assert engagement>=1.2
     assert abs(value('wood_screw_l')-value('tab_h')-8.5)<1e-8
     print('PASS assumed stack PCB',bottom,top,'glass',top+value('rf_gap'),'M2.5x25 example tip',tip,'minimum thread engagement',engagement)
-    print('PASS wood engagement 8.5 mm, rest wood 3.5 mm; NO measured RF/physical fit approval')
+    print('Nominal wood engagement 8.5 mm; remaining top wood 3.5 mm ONLY outside rabbet, 0.5 mm where rabbet overlaps. NO physical retention approval.')

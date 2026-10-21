@@ -15,7 +15,7 @@ def overview():
     for x,name,label in [(0,'iso-board.png','Mit transparenter Platine'),(800,'iso.png','Nur Druckteil')]:
         im=Image.open(ROOT/name).convert('RGB').resize((800,633),Image.Resampling.LANCZOS)
         canvas.paste(im,(x,95));lines(d,(x+25,750),label,29)
-    lines(d,(35,815),'Plexiglas: 3 mm · PCB zur Scheibe: nominal 2 mm\nDurchbruch: 47,5 × 45,2 mm · äußerer Falz: 51,5 × 49,2 mm',31,step=48)
+    lines(d,(35,815),'Plexiglas: 3 mm · PCB zur Scheibe: nominal 2 mm\nDurchbruch: 47,5 × 45,2 mm · Wellenfalz: 67,5 × 65,2 mm (Hülle)',31,step=48)
     lines(d,(35,935),'I2C oben (+y), Kabel nach oben/innen · Wände unten/rechts · Antenne nur schematisch.\nPCB 1,15 mm · Löcher Ø2,93 · Lochraster 27,25 × 24,95 mm laut Nutzer. Steckerhülle ungemessen.\nDigital geprüft ist keine Druck-, Passungs- oder Lesereichweitenfreigabe.',24,step=38,fill='#a7b4c6')
     canvas.save(ROOT/'overview.png')
 

@@ -3,6 +3,9 @@
 from collections import Counter
 from pathlib import Path
 import struct
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'common'))
+from check_wave import check_contours
 
 ROOT = Path(__file__).resolve().parent
 raw = (ROOT / "front_cnc.stl").read_bytes()
@@ -28,17 +31,9 @@ assert all(abs(a-b) < 0.0001 for a,b in zip(lo, (-24,-43.57,22)))
 assert all(abs(a-b) < 0.0001 for a,b in zip(hi, (226,66.43,34)))
 assert volume > 0
 print(f"PASS CNC STL: {count} triangles, closed/oriented, bounds {lo}…{hi}, {volume:.3f} mm^3")
-for name, expected in [
-    ("opening", (-7,57.8,-7,32)),
-    ("rebate", (-11,61.8,-11,36)),
-    ("glass", (-10.8,61.6,-10.8,35.8)),
-]:
-    lines = (ROOT / f"cnc-{name}.dxf").read_text().splitlines()
-    pairs = [(int(a), b.strip()) for a,b in zip(lines[::2], lines[1::2])]
-    assert any(k == 0 and v == "LINE" for k,v in pairs), name
-    xs = [float(v) for k,v in pairs if k in (10,11)]
-    ys = [float(v) for k,v in pairs if k in (20,21)]
-    bounds = (min(xs),max(xs),min(ys),max(ys))
-    assert all(abs(a-b) < 0.001 for a,b in zip(bounds,expected)), (name,bounds)
-    print(f"PASS DXF {name}: nominal mm bounds {bounds}")
+opening, rebate, glass = check_contours(ROOT)
+expected_volume=250*110*12-opening.area*9-rebate.area*3
+assert abs(volume-expected_volume)<0.05, (volume,expected_volume)
+assert all(abs(a-b)<0.001 for a,b in zip(opening.bounds,(-7,-7,57.8,32)))
+print('PASS CNC STL volume agrees with actual DXF/depths including JST notch')
 print("CAM compensation, setup and real material thickness remain user checks.")

@@ -1,0 +1,15 @@
+PASS closed CNC panel 250 x 180 x 12 mm, volume 526476.167
+PASS closed/simple DXF opening, bounds (-2.2, -2.2, 56.2, 12.1), area 831.666 mm²
+PASS closed/simple DXF rebate, bounds (-11.2745, -12.2, 65.2745, 22.1), area 2012.941 mm²
+PASS closed/simple DXF glass, bounds (-11.0744, -12.0, 65.0744, 21.9), area 1971.551 mm²
+PASS actual wave width 4.0000..10.0014 mm; glass clearance 0.1999..0.2001 mm
+OPEN wood screw at (34, 19.9): rabbet overlaps screw projection; nominal tip-to-pocket-floor only 0.5 mm where overlapping (12 - 3 - 8.5). Real wood/retention test required.
+CAM diagnostic Ø4: pocket area not reached by ideal round cutter = 0.04598 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø3: pocket area not reached by ideal round cutter = 0.02145 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø2: pocket area not reached by ideal round cutter = 0.00620 mm²; inspect CAM, not a cutter approval
+OPEN layout: larger rabbet requires renewed wall/button/edge checks; no physical approval.
+PASS CNC STL volume agrees with actual DXF/depths
+PASS measured hole geometry: D3, pitch26, centers (13.7,7.7)/(39.7,7.7)
+PASS assumed tolerance budget: minimum M2 thread engagement 1.5 mm
+PASS nominal PCB bottom 14.770000000000001 LED/glass gap 2.999999999999999 M2x16 tip 0.370000000000001 nut bottom 1.4 wood engagement 8.5 mm
+CAM compensation, real screw/nut/wood/glass and optical/diffusion tests still required.

@@ -5,6 +5,17 @@
 Keine reale Druck-, Fräs-, Last- oder Lichtprüfung. Die alten CNC-Konturen
 55,2 × 14,56 / 59,2 × 18,56 sind überholt und nicht mehr zu verwenden.
 
+## Wellenfalz — aktuelle CNC-Konturen nach Formbestätigung
+
+Sechs umlaufende Wellen, **4–10 mm zum Durchbruchrand**,3 mm tief.
+Scheibe passend gewellt,0,2 mm Konturspiel. Durchbruch und Druck-STL
+unverändert (SHA-256 geprüft). `wave-top.png` / `wave-iso.png` und
+`../wellenfalz-uebersicht.png` zeigen die neue Form. Reproduktion:
+`bash ../common/render_waves.sh`; Prüfdetails `../common/README.md`.
+**Neue offene Holzbefestigung:** Falz reicht über die Schraubenprojektion
+bei(34;19,9). Bei3×12 dort nominal nur0,5 mm Spitze→Falzboden statt3,5 mm
+Restholz. Schraubenlänge/Holzhalt klären; keine Fertigungsfreigabe.
+
 ## Gemessene Grundlage
 
 Nutzerangaben, bestätigt im Chat, und gesichertes Foto:
@@ -46,8 +57,8 @@ Alle Dateien liegen in diesem Ordner. DXF in **mm**, Nennkonturen,
 | Datei | Inhalt / Nennmaß |
 |---|---|
 | `cnc-opening.dxf` | Durchbruch **58,4 × 14,3 mm**, R2 |
-| `cnc-rebate.dxf` | Äußerer Falz **62,4 × 18,3 mm**, R2, **3 mm tief** |
-| `cnc-glass.dxf` | Scheibenvorschlag **62 × 17,9 × 3 mm**, R1,8 |
+| `cnc-rebate.dxf` | Wellenfalz, tatsächliches Hüllmaß **76,549 × 34,3 mm**, **3 mm tief** |
+| `cnc-glass.dxf` | Gewellte Scheibe, Hüllmaß **76,149 × 33,9 × 3 mm** |
 | `neopixel_mount.stl` | Nur Druckhalter, Bounds **64 × 27,9 × 16,5 mm** |
 | `panel_cnc.stl` | Referenzdeckel, **nicht drucken** |
 | `geometry.scad` | Gemeinsame Maße für CNC und Halter |
@@ -67,9 +78,10 @@ linken unteren Rand nullen.
 Voraussetzung der Höhenplanung: **12-mm-Holz und 3-mm-Scheibe**. Iststärken
 prüfen; die Holzdicke wurde in dieser Session nicht gemessen. Die endgültige
 Deckelposition übernimmt der Nutzer. Das lokale Wandmodell liegt jetzt gegenüber den Laschen auf −y, passend
-zur Nutzerkorrektur. Abstand4,26 mm zur Falz weiterhin nur Referenzannahme,
-keine reale Leisten-/Wandfreigabe. Der Referenzdeckel wurde dazu neu orientiert;
-die lokalen DXF-Konturen und ihr Ursprung bleiben unverändert.
+zur Nutzerkorrektur. Die frühere4,26-mm-Falzfreiheit ist durch die größere
+Wellenkontur überholt: Falz reicht in XY über die Wandprojektion, liegt aber
+oben im Deckel. Reststärken/Leisten/Wandlage neu prüfen; keine Layoutfreigabe.
+Der gemeinsame DXF-Ursprung bleibt unverändert.
 
 Keine Holzschrauben-Durchgangslöcher in den CNC-Dateien. Die beiden begrenzten
 Pilotbohrungen werden von innen von Hand gesetzt.
@@ -91,8 +103,8 @@ Pilotbohrungen werden von innen von Hand gesetzt.
 | Holz / Scheibe außen | 24 |
 
 Nominal **3 mm LED → Scheibe**; 2,2 mm Rand pro PCB-Seite bis Durchbruch,
-2 mm zusätzlicher Falzrand. Scheibe mit 0,2 mm Spiel je Seite: Auflage nominal
-1,8 mm. Optik/Blendung/Homogenität nicht geprüft.
+4–10 mm zusätzlicher Wellenfalz. Scheibe mit0,2 mm Konturspiel: Auflage
+mindestens nominal3,8 mm. Optik/Blendung/Homogenität nicht geprüft.
 Vier Eckführungen: 0,20 mm Spiel je Seite, 4,5 mm Einstecktiefe,
 0,4-mm-Einführfase über 0,6 mm. Holzlaschen sind der Anschlag, nicht LEDs/Glas.
 
@@ -124,7 +136,8 @@ Gewindespitzen-/Muttersitztoleranzen im Prüfer sind Annahmen, keine Messungen.
 
 Holzbefestigung: zwei 3 × 12-mm-Senkkopf-Holzschrauben bei (20;19,9)/(34;19,9),
 Laschen3,5 mm, DurchgangØ3,2, SenkungØ6,2/90°. Nominal8,5 mm Holzeingriff,
-3,5 mm Restholz bei12 mm. Echte Kopfpassung, Bohrtiefe und Halt am Reststück
+3,5 mm Restholz nur außerhalb der Falz; bei Überdeckung nominal0,5 mm
+Spitzenreserve. Holzschraubenlänge neu klären. Echte Kopfpassung, Bohrtiefe und Halt am Reststück
 prüfen; von Hand anziehen. Keine Schraube nach außen durchstehen lassen.
 
 ## Kabel / Druck / Montage

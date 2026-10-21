@@ -17,7 +17,7 @@ if [[ -z ${BOXBERT_PYTHON:-} ]]; then
   python_env=$(nix build --impure --no-link --print-out-paths --expr '
     let flake = builtins.getFlake "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5";
         p = flake.legacyPackages.${builtins.currentSystem};
-    in p.python3.withPackages (ps: [ps.pillow])')
+    in p.python3.withPackages (ps: [ps.pillow ps.shapely])')
   export BOXBERT_PYTHON="$python_env/bin/python3"
 fi
 export LIBGL_DRIVERS_PATH="$BOXBERT_MESA/lib/dri"

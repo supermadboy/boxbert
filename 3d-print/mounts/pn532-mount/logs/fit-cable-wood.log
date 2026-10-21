@@ -1,10 +1,10 @@
-CGAL Cache insert: difference(){multmatrix([[1,0,0,-20],[0, (377296 bytes)
+CGAL Cache insert: difference(){multmatrix([[1,0,0,-20],[0, (4452304 bytes)
 CGAL Cache insert: group(){hull(){multmatrix([[1,0,0,11],[0 (11344 bytes)
 CGAL Cache insert: intersection(){difference(){multmatrix([ (0 bytes)
 CGAL Cache hit: intersection(){difference(){multmatrix([ (0 bytes)
-Geometries in cache: 19
-Geometry cache size in bytes: 89592
+Geometries in cache: 17
+Geometry cache size in bytes: 985752
 CGAL Polyhedrons in cache: 3
-CGAL cache size in bytes: 388640
-Total rendering time: 0:00:00.184
+CGAL cache size in bytes: 4463648
+Total rendering time: 0:00:02.699
 Current top level object is empty.

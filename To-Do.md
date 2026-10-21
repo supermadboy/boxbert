@@ -2,6 +2,29 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Wellenfalz-USB-Export21.10.2026:** aktuelle CNC-Sätze für PN532,
+  NeoPixel und TFT samt Scheibenkonturen, Bildern, Warnhinweisen und Nachweisen
+  nach `/mnt/usb/Boxbert-CNC` kopiert.44 Nutzdateien per SHA-256 geprüft,
+  plus Manifest; `sync -f` erfolgreich. Vorheriger Ordner gesichert als
+  `ALT-Boxbert-CNC-vor-Wellenfalz-20261021-212759`. Andere Stickordner unverändert.
+  **Aushängen braucht noch Nutzer-sudo:** `sudo umount /mnt/usb`; normaler
+  umount-Versuch mangels Rechten abgewiesen, daher noch nicht als ausgehängt melden.
+
+- [x] **Wellenfalz für alle drei Fenster nach Nutzer-OK umgesetzt:** PN532,
+  NeoPixel und TFT mit10-mm-Wellenbergen/4-mm-Tälern,3 mm tief; passende
+  gewellte Scheiben mit0,2 mm Konturspiel. Aktive CNC-DXF/Holzmodelle neu
+  exportiert, Durchbruch-DXF und Druck-STL bytegleich unverändert.
+  Geschlossene Konturen, Breiten/Glasoffset und STL-Volumina digital geprüft;
+  vier Prüf-/Negativkontrolltests bestanden. Übersicht:
+  `3d-print/mounts/wellenfalz-uebersicht.png`, Reproduktion/Restpunkte:
+  `3d-print/mounts/common/README.md`. Kein physischer Fertigungsnachweis.
+- [ ] **Wellenfalz — neue Befestigungsreserve vor Fertigung klären:** PN532
+  linke Holzschraube und NeoPixel(34;19,9) liegen unter der Falzprojektion.
+  Bei3×12 nur0,5 mm Spitze→Falzboden statt3,5 mm Restholz! Kürzere Schrauben
+  oder angepasste Befestigung abstimmen/real prüfen; keine stillschweigende
+  Schraubenänderung. Größere Falz gegen Nutzerlayout/Wände/Buttons prüfen.
+  Bestehende NeoPixel-Kopffreiheit und manuelle TFT-USB-Aussparung bleiben offen.
+
 - [x] **Mount-Schraubenkorrektur auf Nutzerauftrag:** PN532 auf M2,5 mit
   rückseitigen M2,5-Muttern umgestellt (Ø2,8-Durchgänge, SW5,2-Taschen,
   Ø9,2-Pfosten); NeoPixel nach ausdrücklicher Revision unverändert M2.

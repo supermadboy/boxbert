@@ -1,0 +1,7 @@
+VISUAL PROPOSAL ONLY — not machining approval
+Source opening: 47.5 x 45.2 mm, R2.0
+Samples: 1600; waves: 8
+Analytical distance to original rounded opening: 4.000000 .. 10.000000 mm
+Wave envelope: 67.500 x 65.200 mm
+Rebate depth: 3 mm (unchanged)
+No full-layout, cutter, hold-down or physical fit approval.

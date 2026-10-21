@@ -1,8 +1,8 @@
 # ESP / Feather — festgehaltener Druck- und CNC-Dateistand
 
-Die vorhandenen Exporte werden hier für die Fertigungsübergabe eindeutig
-benannt. In dieser Übergabe wurden weder Geometrie noch Exporte verändert
-oder Prüfprogramme erneut ausgeführt. Maßgeblich für Konstruktion und offene
+Aktueller Dateistand nach bestätigtem Wellenfalz: Falz und Scheibe neu
+exportiert, Durchbruch und Druck-STL unverändert. CNC-/Mesh-Prüfungen erneut
+ausgeführt, Ergebnisse `logs/wave-cnc-check.log`. Maßgeblich für Konstruktion und offene
 Prüfungen bleibt `README.md`. Keine physische Passungs-/Sicherheitsfreigabe.
 
 ## Zu verwendende Dateien (alle im selben Ordner)
@@ -22,8 +22,10 @@ Die alte `archive/two-sided-superseded/cnc-pocket.dxf` nicht verwenden.
 - Feather-Platine: 50,8 × 22,86 mm, ohne Stecker/Kabel.
 - Druckhalter gesamt: 64,4 × 70,86 × 26,5 mm, inklusive Holzlaschen.
 - Grunddurchbruch: 64,8 × 36,86 mm, R3, plus JST-Kabelausbuchtung.
-- Äußerer Glasfalz: 72,8 × 47 mm, R3, 3 mm tief in 12-mm-Holz.
-- Plexiglas-Vorschlag: 72,4 × 46,6 × 3 mm, R2,8.
+- Äußerer Glasfalz: Wellenkontur,Hülle84,8 × 58,995 mm,3 mm tief in12-mm-Holz.
+- Plexiglas-Vorschlag: gewellt,Hülle84,4 × 58,595 × 3 mm,0,2 mm Konturspiel.
+- Wellenberge10 mm / Täler4 mm zum tatsächlichen Durchbruch inklusive JST-Auslass.
+- Neue Ansichten `wave-top.png`, `wave-iso.png`; alte Rechteckfalz ist überholt.
 - CNC nur von außen, keine Innentasche/kein Wenden. Maximal Ø4-mm-Fräser
   wegen R2 am Kabelauslass. Sinnvoll erst Falz, dann Durchbruch.
 - DXF sind Nennkonturen in mm, kein G-Code: CAM, Werkzeugkorrektur,
@@ -60,6 +62,6 @@ Halters drehen sich diese Abstände mit.
 ```text
 987df103b78a0035658ee3f6b1629a73509cdc52ff826f91b510185bc117985c  feather_window_mount.stl
 b77075b2b208d0b27f71809e3f5d6b54ba9fa2dd1e1bb24c3a7c89b2d29f3615  cnc-opening.dxf
-92f1d79c54d2d10c1edf5b0b4b210c05a764cf612b0f4230d6bbf5dcd55616ff  cnc-rebate.dxf
-a3188c69d7a7160a70219687d9a86089ed60e0b70395e6e7cf4247e5446d9925  cnc-glass.dxf
+501a333c322e3a70a8ca75807a7dfb99c56647f89b2b94b7cf08eda6d12911c7  cnc-rebate.dxf
+4337a35a1c86fb753c82bdf03e51d068093592719fe7c1620d2d8bce09c00e08  cnc-glass.dxf
 ```

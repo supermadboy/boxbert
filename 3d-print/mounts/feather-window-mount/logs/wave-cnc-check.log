@@ -1,0 +1,11 @@
+PASS CNC STL: 6756 triangles, closed/oriented, bounds (-24.0, -43.56999969482422, 22.0)…(226.0, 66.43000030517578, 34.0), 296155.656 mm^3
+PASS closed/simple DXF opening, bounds (-7.0, -7.0, 57.8, 32.0), area 2404.710 mm²
+PASS closed/simple DXF rebate, bounds (-17.0, -17.0, 67.8, 41.9952), area 4067.321 mm²
+PASS closed/simple DXF glass, bounds (-16.7999, -16.7999, 67.5999, 41.7952), area 4008.691 mm²
+PASS actual wave width 4.0001..10.0008 mm; glass clearance 0.1999..0.2001 mm
+CAM diagnostic Ø4: pocket area not reached by ideal round cutter = 0.11660 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø3: pocket area not reached by ideal round cutter = 0.05642 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø2: pocket area not reached by ideal round cutter = 0.02329 mm²; inspect CAM, not a cutter approval
+OPEN layout: larger rabbet requires renewed wall/button/edge checks; no physical approval.
+PASS CNC STL volume agrees with actual DXF/depths including JST notch
+CAM compensation, setup and real material thickness remain user checks.

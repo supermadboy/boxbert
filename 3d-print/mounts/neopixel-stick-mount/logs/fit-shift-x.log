@@ -1,11 +1,11 @@
-CGAL Cache insert: difference(){multmatrix([[1,0,0,-98],[0, (377296 bytes)
+CGAL Cache insert: difference(){multmatrix([[1,0,0,-98],[0, (4417360 bytes)
 CGAL Cache insert: intersection(){difference(){multmatrix([ (247856 bytes)
 CGAL Cache hit: intersection(){difference(){multmatrix([ (247856 bytes)
-Geometries in cache: 14
-Geometry cache size in bytes: 923744
+Geometries in cache: 12
+Geometry cache size in bytes: 1812208
 CGAL Polyhedrons in cache: 2
-CGAL cache size in bytes: 625152
-Total rendering time: 0:00:01.106
+CGAL cache size in bytes: 4665216
+Total rendering time: 0:00:06.759
    Top level object is a 3D object:
    Simple:        yes
    Vertices:      166

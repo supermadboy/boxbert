@@ -16,7 +16,7 @@ if [[ -z ${BOXBERT_PYTHON:-} ]]; then
   python_env=$(nix build --impure --no-link --print-out-paths --expr '
     let flake = builtins.getFlake "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5";
         p = flake.legacyPackages.${builtins.currentSystem};
-    in p.python3.withPackages (ps: [ps.pillow])')
+    in p.python3.withPackages (ps: [ps.pillow ps.shapely])')
   export BOXBERT_PYTHON="$python_env/bin/python3"
 fi
 export LIBGL_DRIVERS_PATH="$BOXBERT_MESA/lib/dri"
@@ -40,10 +40,10 @@ openscad --hardwarnings --export-format binstl -o panel_cnc.stl panel_cnc.scad >
 for part in opening rebate glass; do
   openscad --hardwarnings -D "part=\"$part\"" -o "cnc-$part.dxf" panel_cnc.scad >"logs/cnc-$part.log" 2>&1
 done
-python3 check_mesh.py | tee logs/mesh-check.log
-python3 check_cnc.py | tee logs/cnc-check.log
+"$BOXBERT_PYTHON" check_mesh.py | tee logs/mesh-check.log
+"$BOXBERT_PYTHON" check_cnc.py | tee logs/cnc-check.log
 fit_status=0
-python3 check_fit.py | tee logs/fit-check.log || fit_status=$?
+"$BOXBERT_PYTHON" check_fit.py | tee logs/fit-check.log || fit_status=$?
 # Status 2 means explicitly reported open head clearance, NOT a fit approval.
 if (( fit_status != 0 && fit_status != 2 )); then exit "$fit_status"; fi
 common=(--hardwarnings --preview '--imgsize=1200,950' --colorscheme=Tomorrow --projection=o)

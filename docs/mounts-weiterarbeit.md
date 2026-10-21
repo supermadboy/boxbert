@@ -1,5 +1,27 @@
 # Übergabe — Einzel-Mounts
 
+## Wellenfalz — nach Nutzer-OK auf alle drei Fenster übertragen
+
+Nutzer bestätigt PN532-Vorschau und beauftragt Übernahme: Außenfalz jetzt
+überall gewellt,10-mm-Wellenberge/4-mm-Täler zum tatsächlichen Durchbruch,
+3 mm tief. PN532 acht, NeoPixel sechs, TFT zehn Wellen; TFT berücksichtigt
+JST-Auslass bei der Abstandsbemessung. Scheiben passend,0,2 mm Konturspiel.
+Aktive Falz-/Scheiben-DXF und Holz-STL neu exportiert, Durchbruch-DXF und
+Druck-STL bytegleich unverändert (SHA-256 geprüft). Gemeinsame Geometrie und
+Reproduktion `3d-print/mounts/common/`, Übersicht
+`3d-print/mounts/wellenfalz-uebersicht.png`. Echte DXF geschlossen/einfach,
+Breite4..10 mm, Scheibenoffset und CNC-STL-Volumen unabhängig digital geprüft.
+Nachweise `logs/wave-*`; vier Prüf-/Negativkontrolltests bestanden.
+Die schmalen Falzmaße in nachfolgenden älteren Abschnitten sind überholt!
+
+**Neue offene Holzschraubenreserve:** Wellenfalz überdeckt PN532-Schraube
+(−10;20,2) und NeoPixel(34;19,9). Bei3×12 verbleiben dort nominal nur0,5 mm
+Spitze→Falzboden, statt3,5 mm Restholz. Nicht als gefertigtauglich freigeben:
+Schraubenlänge/Befestigung abstimmen und real prüfen. Größere Falze im
+Nutzerlayout gegen Ränder/Wände/Buttons abgleichen; bestehende schmale
+Falzfreigängigkeit gilt nicht automatisch. NeoPixel-Kopffreiheit weiterhin
+offen, TFT-Seiten-USB weiterhin Handarbeit. Keine reale Fertigungsfreigabe.
+
 ## NeoPixel-Messabgleich 21.10.2026 — aktuelle Konturen
 
 Nutzermaße PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3. Freier Lochabstand23,

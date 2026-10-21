@@ -1,0 +1,15 @@
+PASS closed local wood coupon 82.7 x 80.4 x 12 mm, volume 49346.964
+PASS closed/simple DXF opening, bounds (-2.4, -2.4, 45.1, 42.8), area 2143.546 mm²
+PASS closed/simple DXF rebate, bounds (-12.4, -12.4, 55.1, 52.8), area 3716.695 mm²
+PASS closed/simple DXF glass, bounds (-12.2, -12.2, 54.9, 52.6), area 3662.651 mm²
+PASS actual wave width 4.0001..10.0003 mm; glass clearance 0.1999..0.2001 mm
+OPEN wood screw at (-10, 20.2): rabbet overlaps screw projection; nominal tip-to-pocket-floor only 0.5 mm where overlapping (12 - 3 - 8.5). Real wood/retention test required.
+CAM diagnostic Ø4: pocket area not reached by ideal round cutter = 0.07792 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø3: pocket area not reached by ideal round cutter = 0.03412 mm²; inspect CAM, not a cutter approval
+CAM diagnostic Ø2: pocket area not reached by ideal round cutter = 0.01427 mm²; inspect CAM, not a cutter approval
+OPEN layout: larger rabbet requires renewed wall/button/edge checks; no physical approval.
+PASS CNC STL volume agrees with actual DXF/depths
+PASS user measurements: hole spacing 27.25 x 24.95, PCB 1.15, holes 2.93 mm
+PASS corrected I2C side: top (+y); precise housing offset/dimensions still assumed
+PASS assumed stack PCB 24.35 25.5 glass 27.5 M2.5x25 example tip 0.5 minimum thread engagement 1.9
+Nominal wood engagement 8.5 mm; remaining top wood 3.5 mm ONLY outside rabbet, 0.5 mm where rabbet overlaps. NO physical retention approval.

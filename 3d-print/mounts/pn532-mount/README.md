@@ -6,6 +6,18 @@ Fertigungs-/Kindersicherheitsfreigabe**. Frische digitale Ergebnisse: `logs/`.
 Herstellerbasis/Historie: `../../../docs/cad/pn532/README.md`.
 Kurze Fertigungs-Checkliste: **`CNC-DRUCK-MERKBLATT.md`**.
 
+## Wellenfalz — aktuelle CNC-Konturen nach Formbestätigung
+
+Gewellter Außenfalz übernommen: acht Wellen, **4–10 mm Abstand zum
+Durchbruchrand**, Tiefe3 mm. Scheibe passend gewellt,0,2 mm Konturspiel.
+Durchbruch und Druck-STL unverändert (SHA-256 gegengeprüft).
+Neue Ansichten: `wave-top.png`, `wave-iso.png`; gemeinsame Übersicht
+`../wellenfalz-uebersicht.png`. Reproduktion `bash ../common/render_waves.sh`;
+Prüfdetails/Restpunkte `../common/README.md` und `logs/wave-cnc-check.log`.
+**Wichtig:** Der neue Falz überdeckt die linke Holzschraubenprojektion.
+Bei3×12 bleiben dort nominal nur0,5 mm von der Spitze bis zum Falzboden,
+nicht3,5 mm! Schraubenlänge/Holzhalt vor Fertigung klären; keine Freigabe.
+
 ## Nutzer-Messabgleich und Layout
 
 Nutzerangaben vom 21.10.2026 (Messschieber, Chat):
@@ -46,13 +58,13 @@ Auflagen wurden von 23,9 auf **24,35 mm** erhöht. Damit bleiben nominal
 - `pn532_mount.scad`: Halter mit optionaler PCB-Vorschau.
 - `panel_cnc.scad` / `panel_cnc.stl`: lokales Holz-Prüfstück, **nicht drucken**.
 - `cnc-opening.dxf`: Durchbruch **47,5 × 45,2 mm, R2**.
-- `cnc-rebate.dxf`: äußerer Falz **51,5 × 49,2 mm, R2, 3 mm tief**.
-- `cnc-glass.dxf`: Scheibenvorschlag **51,1 × 48,8 × 3 mm, R1,8**.
+- `cnc-rebate.dxf`: Wellenfalz, Hüllmaß **67,5 × 65,2 mm, 3 mm tief**.
+- `cnc-glass.dxf`: gewellte Scheibe, Hüllmaß **67,1 × 64,8 × 3 mm**.
 - `overview.png`, `iso.png`, `iso-board.png`: Halter ohne/mit transparenter PCB.
 - `height-side.png`, `exploded.png`, `outside.png`, `seated-inside.png`:
   Schichtung und Einbau. Antennenzeichnung nur schematisch.
 
-**CNC-Konturen unverändert.** Nennkonturen in mm, kein G-Code/keine
+**Durchbruch unverändert, Falz und Scheibe jetzt gewellt.** Nennkonturen in mm, kein G-Code/keine
 Werkzeugkompensation. Nur von außen: erst Falz, dann Durchbruch. Kein Wenden,
 keine Innentasche; wegen R2 Fräser max. Ø4. CAM, Zustellung, Werkstückhaltung
 und Ausbruchschutz separat festlegen. Holzschrauben innen von Hand begrenzt
@@ -124,7 +136,8 @@ Schrauben, Kabeln und Nachbarteilen prüfen; keine Metallfolie/Magnete hinzufüg
   Spitzengewinde 0,3, Sitz −0,2, Mutterhöhe −0,1 mm ergibt mindestens
   1,9 mm Eingriff. Kein gemessener Festigkeitsnachweis.
 - Zwei **3×12-mm-Senkkopf-Holzschrauben**: Durchgang Ø3,2, Senkung Ø6,2/90°.
-  Nominal 8,5 mm Eingriff und 3,5 mm Restholz bei 12-mm-Holz. Begrenzte
+  Nominal8,5 mm Eingriff; außerhalb der Falz3,5 mm Restholz, bei
+  Falzüberdeckung nur0,5 mm Spitzenreserve. Holzschraubenlänge/Halt neu prüfen. Begrenzte
   Vorbohrtiefe, echte Kopfpassung und Halt am Reststück prüfen; von Hand anziehen.
 - Platine auf schmalen Ø4,6-Schraubauflagen und zwei kleinen Randstützen.
   Bauteil-/Lötfreiheit real prüfen, PCB nicht mit Schrauben geradeziehen.

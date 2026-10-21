@@ -1,0 +1,14 @@
+PASS seated: intersection 0.000000 mm^3
+PASS shift-x: intersection 4.477166 mm^3 (deliberate collision)
+PASS shift-y: intersection 4.477174 mm^3 (deliberate collision)
+PASS too-deep: intersection 142.677910 mm^3 (deliberate collision)
+OPEN heads-tolerance: intersection 2.068275 mm^3; assumed component XY conflicts with head; real clearance REQUIRED
+OPEN heads-components: intersection 0.053533 mm^3; assumed component XY conflicts with head; real clearance REQUIRED
+PASS pcb: intersection 0.000000 mm^3
+PASS cable-mount: intersection 0.000000 mm^3
+PASS cable-wood: intersection 0.000000 mm^3
+PASS rear-wall: intersection 0.000000 mm^3
+PASS glass: intersection 0.000000 mm^3
+PASS insertion: 21 separate full-solid poses, z=-20..0 mm, all empty
+Digital assumed envelopes only; insertion sampled at 1 mm, not physical fit approval.
+BLOCKED: PCB screw-head/component clearance unresolved; NOT a full fit PASS.

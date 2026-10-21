@@ -19,7 +19,8 @@ glass_h=3;           // proposed opal PMMA, verify actual thickness
 optical_gap=3;       // proposed LED/glass gap, no optical test
 board_z=wood_z+wood_h-glass_h-optical_gap-led_h-pcb_t; //14.77
 opening=[-2.2,-2.2,58.4,14.3]; // 2.2 mm per measured PCB edge
-rebate=[-4.2,-4.2,62.4,18.3]; // 2 mm glass-bearing lip
+include <../common/wave.scad>
+rebate=[-12.2,-12.2,78.4,34.3]; // conservative envelope; actual contour is wavy
 corner_r=2;
 fit=0.20;           // per side, needs real print/wood calibration
 lead_in=0.4;
@@ -53,9 +54,10 @@ assert(guide_h<wood_h-glass_h);
 assert((post_d-nut_af/cos(30))/2>1.5);
 assert(tab_h-(head_d-wood_d)/2>=2);
 assert(wood_h-(wood_screw_l-tab_h)>=3);
-assert(rebate[1]-rear_wall_y>=4-0.001);
+// Wavy lip overlaps the old reference wall in XY. No measured layout clearance.
+// Wall ends at wood underside; check reduced top wood and user's actual layout.
 module profile(r,rad=3,inset=0){
     translate([r[0]+rad,r[1]+rad]) offset(r=rad-inset) square([r[2]-2*rad,r[3]-2*rad]);
 }
 module opening_profile(inset=0){profile(opening,corner_r,inset);}
-module rebate_profile(inset=0){profile(rebate,corner_r,inset);}
+module rebate_profile(inset=0){wave_profile(opening,corner_r,6,inset);}

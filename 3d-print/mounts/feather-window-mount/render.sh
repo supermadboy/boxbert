@@ -11,6 +11,14 @@ if [[ -z ${BOXBERT_MESA:-} ]]; then
   export BOXBERT_MESA
   BOXBERT_MESA=$(nix build --no-link --print-out-paths github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5#mesa.drivers)
 fi
+if [[ -z ${BOXBERT_PYTHON:-} ]]; then
+  # shellcheck disable=SC2016
+  python_env=$(nix build --impure --no-link --print-out-paths --expr '
+    let flake = builtins.getFlake "github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5";
+        p = flake.legacyPackages.${builtins.currentSystem};
+    in p.python3.withPackages (ps: [ps.pillow ps.shapely])')
+  export BOXBERT_PYTHON="$python_env/bin/python3"
+fi
 export LIBGL_DRIVERS_PATH="$BOXBERT_MESA/lib/dri"
 export LD_LIBRARY_PATH="$BOXBERT_MESA/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export LIBGL_ALWAYS_SOFTWARE=1
@@ -49,6 +57,6 @@ preview front-inner front_cnc.scad 25.4,11.43,28,45,0,35,300 -D 'part="inner-vie
 preview front-outer front_cnc.scad 25.4,11.43,28,45,0,35,300 -D 'part="local"'
 preview height-side assembly.scad 25.4,11.43,23,90,0,0,230 -D 'scene="section"'
 preview front-full assembly.scad 101,11.43,28,0,0,0,650 -D 'scene="outside"'
-python3 check_mesh.py | tee logs/mesh-check.log
-python3 check_cnc.py | tee logs/cnc-check.log
-python3 check_fit.py | tee logs/fit-check.log
+"$BOXBERT_PYTHON" check_mesh.py | tee logs/mesh-check.log
+"$BOXBERT_PYTHON" check_cnc.py | tee logs/cnc-check.log
+"$BOXBERT_PYTHON" check_fit.py | tee logs/fit-check.log

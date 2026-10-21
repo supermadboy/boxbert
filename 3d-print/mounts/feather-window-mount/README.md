@@ -3,6 +3,15 @@
 **Stand 15.10.2026, nach Nutzerkorrektur. Diese Version ersetzt den Entwurf mit
 4-mm-Innentasche. Noch keine physische Fertigungs-/Passungsfreigabe.**
 
+## Wellenfalz — aktuelle CNC-Konturen nach Formbestätigung
+
+Zehn Wellen, **4–10 mm Abstand zum tatsächlichen Durchbruch einschließlich
+JST-Auslass**, weiterhin3 mm tief. Passende gewellte Scheibe mit0,2 mm
+Konturspiel. Druck-STL und Durchbruch unverändert (SHA-256 geprüft).
+Ansichten `wave-top.png`, `wave-iso.png`, `../wellenfalz-uebersicht.png`.
+Reproduktion `bash ../common/render_waves.sh`; unabhängige DXF-/Volumenprüfung
+in `logs/wave-cnc-check.log`, Restpunkte in `../common/README.md`.
+
 ## Verbindliche Vorgaben
 
 - CNC **ausschließlich von außen**: Durchbruch und anschließend äußere Glasfalz.
@@ -26,8 +35,8 @@
 |---|---|
 | Führungsrechteck / Grunddurchbruch | 64,8×36,86 mm, R3 |
 | Zusatz am Durchbruch | JST-Kabelausbuchtung x=4,8…16,8 / y=27…32, R2 |
-| Äußere Glasfalz | 72,8×47 mm, R3, 3 mm tief |
-| Plexiglas-Vorschlag | 72,4×46,6×3 mm, R2,8 |
+| Äußere Glasfalz | Wellenkontur, Hüllmaß84,8×58,995 mm,3 mm tief |
+| Plexiglas-Vorschlag | Gewellt, Hüllmaß84,4×58,595×3 mm |
 | Passspiel | 0,20 mm je Seite, real kalibrieren |
 | Eingriff der vier Eckführungen | 4,5 mm ab Holzinnenseite |
 

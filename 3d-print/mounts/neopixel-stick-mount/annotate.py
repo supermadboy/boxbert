@@ -41,8 +41,8 @@ def comparison():
     lines(d,(170,620),'Überholt: 55,2 × 14,56 mm',30)
     lines(d,(860,620),'Neu: 58,4 × 14,3 mm',30)
     lines(d,(35,700),'Grün: gemessene PCB 54 × 9,9 mm in beiden Ansichten · Blau: Falz',27)
-    lines(d,(35,752),'Neu nur 2,2 mm Rand je PCB-Seite + 2 mm Falzrand.',29)
-    lines(d,(35,804),'Falz neu: 62,4 × 18,3 mm · Tiefe weiterhin 3 mm · gleiche Skalierung',27)
+    lines(d,(35,752),'Neu: 2,2 mm PCB-Rand + 4–10 mm Wellenfalz.',29)
+    lines(d,(35,804),'Wellenfalz: 76,55 × 34,3 mm Hülle · 3 mm tief · gleicher Maßstab',27)
     canvas.save(ROOT/'cnc-compare.png')
 
 if __name__=='__main__':overview();height();comparison()

@@ -388,6 +388,18 @@ einfügen, Datum dazu.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 
+- **Größerer Außenfalz kann die Schraubenspitzenreserve reduzieren, obwohl
+  Druckteil und Durchbruch gleich bleiben (eigene digitale Prüfung,21.10.2026).**
+  Bestätigter Wellenfalz4–10 mm überdeckt die PN532-Holzschraube(−10;20,2)
+  und NeoPixel(34;19,9) in XY. Bei12-mm-Holz,3-mm-Falztiefe und nominal8,5 mm
+  Holzeingriff der3×12-Schrauben bleiben dort nur0,5 mm bis zum Falzboden,
+  nicht die bisherigen3,5 mm bis zur unvertieften Außenfläche. Reale
+  Schrauben-/Senkungs-/Holztoleranzen sind nicht enthalten. Deshalb neue
+  Schraubenlänge/Befestigung abstimmen und Halt am Reststück prüfen, nicht
+  aus „STL unverändert“ eine Befestigungsfreigabe ableiten. Quelle:
+  `3d-print/mounts/common/check_wave.py`, je Modul `logs/wave-cnc-check.log`
+  und `3d-print/mounts/common/README.md`. Keine physische Messung/Freigabe.
+
 - **Gitterzellen am Rand begrenzen, sonst fehlt der Abschlusssteg (eigener
   PN532-STL-Test, 21.10.2026).** Unbegrenzte4-mm-Zellen im6-mm-Raster schnitten
   die rechte/obere Basiskante auf: sichtbare Randzähne trotz geschlossener,

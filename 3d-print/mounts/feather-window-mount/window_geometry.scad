@@ -12,8 +12,9 @@ lead_in = 0.4;
 lead_height = 0.6;
 guide_outline = [-7,-7,64.8,36.86];
 guide_r = 3;
-// Larger outer glass covers the opening and the small JST cable notch.
-glass_rebate = [-11,-11,72.8,47];
+include <../common/wave.scad>
+// Conservative envelope; profile follows opening INCLUDING the JST notch.
+glass_rebate = [-17,-17,84.8,59];
 glass_r = 3;
 glass_clearance = 0.2;
 panel_origin = [-24,-43.57];
@@ -33,4 +34,6 @@ module opening_profile() {
         window_profile([4.8,27,12,5],2); // full-depth JST cable notch
     }
 }
-module glass_profile(inset=0) { window_profile(glass_rebate,glass_r,inset); }
+module glass_profile(inset=0) {
+    wave_profile(guide_outline,guide_r,10,inset,[[4.8,27,12,5,2]]);
+}

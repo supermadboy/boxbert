@@ -205,6 +205,22 @@ noch offen. Nur lokales CAD-Prüfstück, keine vollständige Deckelprüfung;
 Druck-/Passungs-/Last-/Lesereichweitenprüfung und Glasfixierung offen.
 Übergabe in `docs/mounts-weiterarbeit.md`.
 
+## Wellenfalz — bestätigte Form, CNC-Dateien aktualisiert
+
+Nutzer hat PN532-Vorschau bestätigt und Übernahme auf alle drei Fenster
+(PN532, NeoPixel, TFT) beauftragt. Jetzt10-mm-Wellenberge/4-mm-Täler vom
+Durchbruchrand,3 mm tief; Scheiben passend gewellt mit0,2 mm Konturspiel.
+Obige ältere schmale Falz-/Scheibenmaße sind dadurch überholt. Aktuelle
+Hüllmaße: PN53267,5×65,2, NeoPixel76,549×34,3, TFT84,8×58,995 mm.
+Durchbrüche und Druckhalter unverändert, aktive Falz-/Scheiben-DXF und
+Holzmodelle neu exportiert/digital geprüft. Übersicht
+`3d-print/mounts/wellenfalz-uebersicht.png`, Details `3d-print/mounts/common/`.
+**Keine Fertigungsfreigabe:** PN532 linke Holzschraube und NeoPixel(34;19,9)
+liegen unter der Falzprojektion; mit3×12 nominal nur0,5 mm Spitzenreserve
+zum Falzboden. Schraubenlänge/Holzhalt abstimmen und real prüfen, nicht
+ungeprüft weiterverwenden. Größeren Platzbedarf im Nutzerlayout prüfen;
+Glasfixierung/Passprobe und die übrigen realen Freigaben weiterhin offen.
+
 ## Weitere offene mechanische Fragen
 
 - Akku: sichere, austauschbare Befestigung ohne Quetschung des LiPo-Pouchs.

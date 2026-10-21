@@ -10,7 +10,9 @@ wood_z=18.5; wood_h=12; glass_h=3;
 rf_gap=2; // proposed PCB outer surface -> glass, NOT tested NFC range
 board_z=wood_z+wood_h-glass_h-rf_gap-pcb_t; //24.35; keep outer PCB plane and 2 mm RF gap unchanged
 opening=[-2.4,-2.4,47.5,45.2];
-rebate=[-4.4,-4.4,51.5,49.2];
+include <../common/wave.scad>
+// Envelope only; actual contour is the common wavy profile (4..10 mm lip).
+rebate=[-12.4,-12.4,67.5,65.2];
 corner_r=2; fit=0.2; guide_wall=1.5; guide_h=4.5;
 lead_in=0.4; lead_h=0.6;
 // Left towards adjacent button, top near upper-right PCB screw; no bottom/right tab.
@@ -36,4 +38,4 @@ module profile(r,rad=2,inset=0){
     translate([r[0]+rad,r[1]+rad]) offset(r=rad-inset) square([r[2]-2*rad,r[3]-2*rad]);
 }
 module opening_profile(inset=0){profile(opening,corner_r,inset);}
-module rebate_profile(inset=0){profile(rebate,corner_r,inset);}
+module rebate_profile(inset=0){wave_profile(opening,corner_r,8,inset);}

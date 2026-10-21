@@ -4,10 +4,11 @@
 
 - Druckteil: **`pn532_mount.stl`**, nur Halter, Skalierung100 %.
 - Durchbruch: **`cnc-opening.dxf`**,47,5×45,2 mm.
-- Glasfalz: **`cnc-rebate.dxf`**,51,5×49,2 mm,3 mm tief.
-- Scheibenvorschlag: **`cnc-glass.dxf`**,51,1×48,8×3 mm.
-- CNC-Konturen unverändert gegenüber dem ursprünglichen PN532-Entwurf.
-- Ecken R2, Fräser max.Ø4 mm. DXF in mm, Nennkonturen ohne
+- Glasfalz: **`cnc-rebate.dxf`**, Wellenkontur,Hülle67,5×65,2 mm,3 mm tief.
+- Scheibenvorschlag: **`cnc-glass.dxf`**, gewellt,Hülle67,1×64,8×3 mm.
+- Wellenberge10 mm / Täler4 mm vom Durchbruchrand;0,2 mm Scheibenspiel.
+- Durchbruch und Halter unverändert; Falz/Scheibe ersetzen alte Rechteckkonturen.
+- Durchbruch R2 → Fräser höchstensØ4 mm; Wellen im CAM gesondert prüfen. DXF in mm, Nennkonturen ohne
   Werkzeugkompensation; **kein G-Code**. Nur von außen: Falz, dann Durchbruch.
 - `panel_cnc.stl` ist ein lokales Holz-Prüfstück, **nicht das Druckteil**.
 
@@ -28,7 +29,7 @@ um90° gegen den Uhrzeigersinn gegenüber der Fotoansicht drehen.
 - I2C-/Kabelmodell und Kabelbinderpad an die obere Seite korrigiert;
   genaue Steckerhüllen-/Bauteilhöhen und Offset weiterhin Annahmen.
 - PCB-Auflagen auf24,35 mm erhöht, nominal2-mm-Glasabstand beibehalten.
-- M2×25/M2-Muttern vorgeschlagen, Kopf max.Ø4/Höhe1,5 mm.
+- M2,5×25/M2,5-Muttern als Längenbeispiel, Kopf max.Ø4/Höhe1,5 mm angenommen.
   Holzbefestigung zwei3×12-mm-Senkkopf-Holzschrauben, nicht M3.
 
 ## Vor endgültigem Deckel prüfen
@@ -40,11 +41,16 @@ um90° gegen den Uhrzeigersinn gegenüber der Fotoansicht drehen.
 - [ ] Linke Lasche gegen echten Button samt Mutter/Gehäuse und Leisten prüfen.
 - [ ] Holz12 mm und Plexiglas3 mm sind noch durch Ist-Maße zu bestätigen.
 - [ ] Zuerst Reststück fräsen, Führung/Glasfalz mit Druckteil einpassen.
+- [ ] **Neue Falz überdeckt linke Holzschraube:** mit3×12 nominal nur0,5 mm
+      Spitzenreserve zum Falzboden. Kürzere Schraube oder andere Befestigung
+      erst abstimmen/real prüfen; nicht mit alter3,5-mm-Restholzannahme fertigen.
 - [ ] Holzschrauben begrenzt vorbohren, von Hand anziehen, keine Außendurchtritte.
 - [ ] Scheibe sicher fixieren; Last-/Durchbiegung und NFC mit echten Tags im
       fertigen Aufbau inklusive Schrauben/Metallnähe prüfen.
 
-**Digital geprüft:** reale STL geschlossen/orientiert/zusammenhängend/
+**Wellenfalz-Nachweis:** `logs/wave-cnc-check.log`, neue Bilder `wave-top.png`
+und `wave-iso.png`; gemeinsame Übersicht `../wellenfalz-uebersicht.png`.
+**Druckteil-Nachweis (unverändert):** reale STL geschlossen/orientiert/zusammenhängend/
 nicht degeneriert;19 Solid-Testgruppen PASS, darunter21 einzelne Einsetzlagen
 und neue Fehlvolumentests für Randabschluss/gerade Stütze. Keine reale
 Druck-/CNC-/Passungs-/Last-/RF-/Kindersicherheitsfreigabe.
