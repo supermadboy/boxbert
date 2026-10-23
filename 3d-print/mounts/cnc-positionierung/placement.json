@@ -1,0 +1,71 @@
+{
+  "pn532": {
+    "stock_mm": [
+      250,
+      180
+    ],
+    "rotation_deg_ccw": 90,
+    "translation_mm": [
+      232.6,
+      119.9
+    ],
+    "rebate_bounds_mm": [
+      179.8,
+      107.5,
+      245.0,
+      175.0
+    ],
+    "opening_bounds_mm": [
+      189.8,
+      117.5,
+      235.0,
+      165.0
+    ]
+  },
+  "neopixel": {
+    "stock_mm": [
+      250,
+      180
+    ],
+    "rotation_deg_ccw": 0,
+    "translation_mm": [
+      98.0,
+      152.9
+    ],
+    "rebate_bounds_mm": [
+      86.7255,
+      140.70000000000002,
+      163.2745,
+      175.0
+    ],
+    "opening_bounds_mm": [
+      95.8,
+      150.70000000000002,
+      154.2,
+      165.0
+    ]
+  },
+  "esp32": {
+    "stock_mm": [
+      250,
+      110
+    ],
+    "rotation_deg_ccw": 0,
+    "translation_mm": [
+      177.2,
+      27.0
+    ],
+    "rebate_bounds_mm": [
+      160.2,
+      10.0,
+      245.0,
+      68.9952
+    ],
+    "opening_bounds_mm": [
+      170.2,
+      20.0,
+      235.0,
+      59.0
+    ]
+  }
+}

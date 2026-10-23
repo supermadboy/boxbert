@@ -1,5 +1,18 @@
 # Übergabe — Einzel-Mounts
 
+## Bemaßte Fensterpositionierung — Nutzerauftrag
+
+Übergabeblatt für den CNC-Betrieb:
+`3d-print/mounts/cnc-positionierung/boxbert-cnc-positionierung.png` (auch PDF).
+Deckel250×180: NeoPixel waagerecht, mittig, Falz5 mm von hinten;
+PN532 oben/rechts je5 mm, gegenüber lokalem DXF gemeinsam mit Halter90° CCW.
+Front: ESP-Falz rechts5 mm, unten10 mm wegen Inlay; Frontformat250×110 aus
+bestehendem CAD, realen Zuschnitt prüfen. Abstände stets bis zum äußersten
+Wellenberg. Tatsächliche DXF ausgewertet; Randabstände/Mitte/Plattenlage und
+Nichtüberschneidung der Deckelfalze geprüft. Konturen/STL unverändert.
+Keine Gesamtfertigungsfreigabe: die unten genannten Befestigungs-/Passungsfragen
+bleiben offen. Reproduktion und CAM-Transformation im zugehörigen README.
+
 ## Wellenfalz — nach Nutzer-OK auf alle drei Fenster übertragen
 
 Nutzer bestätigt PN532-Vorschau und beauftragt Übernahme: Außenfalz jetzt
