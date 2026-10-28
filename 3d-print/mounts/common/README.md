@@ -24,6 +24,23 @@ Scheiben vorgeschlagen3 mm dick, umlaufend0,2 mm Konturspiel; keine Skalierung
 um den Mittelpunkt. Hüllmaße sind keine Rechteck-Zuschnittkonturen!
 Die Scheiben müssen entlang der gewellten DXF-Kontur gefertigt werden.
 
+### Plexiglas als SVG
+
+In den Mount-Ordnern liegen zusätzlich `feather-window-glass.svg`,
+`neopixel-stick-glass.svg` und `pn532-glass.svg`. Je Datei genau eine
+ungefüllte, geschlossene Schnittkontur, explizite Millimetermaße und passende
+`viewBox`; keine Beschriftungen oder zusätzlichen Schnittlinien. Im
+Schneidprogramm **1:1 importieren**, nicht an die Seite anpassen. Außenmaße
+nach Import kontrollieren. Die Strichbreite ist nur Anzeige, kein Schnittspalt.
+
+Reproduktion mit Python 3 + Shapely:
+`python3 3d-print/mounts/common/export_glass_svg.py`. Der Export übernimmt die
+aktiven Glas-DXF ohne Glättung; SVG-Y wird für die CAD-Draufsicht umgekehrt.
+Der Rücklesetest prüft Maßeinheiten, einen geschlossenen Pfad und die
+Konturgleichheit zur DXF (Hausdorff-Abstand < 1e-8 mm und symmetrische
+Differenzfläche < 1e-8 mm²). Keine Schnittspalt-/Werkzeugkompensation enthalten;
+physische Passprobe und sichere Scheibenfixierung bleiben offen.
+
 `wave.scad` parametrisiert alle drei Profile gemeinsam: Sinusbreite entlang
 der abgerundeten Öffnung und Verschiebung in Außennormalenrichtung,1.600
 Stützpunkte. Beim TFT wird die Distanz zur tatsächlichen Vereinigungsöffnung
