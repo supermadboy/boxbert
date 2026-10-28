@@ -42,9 +42,16 @@ fehlenden Halter. Keine Neukonstruktion daraus ableiten.
 | Rückseite | Lautsprecher |
 | Vorderseite | ESP32-S3 Reverse TFT Feather |
 
-Deckel und Unterteil werden über ein **Flachbandkabel** verbunden. Typ,
-Stecker, Aderzahl, Länge, Belegung, Strombelastbarkeit und Zugentlastung
-sind noch festzulegen. Die Anordnung legt keine elektrischen Rails oder
+Deckel und Unterteil werden über ein **Flachbandkabel** verbunden.
+**Entscheidung 28.10.2026:** AW9523 und zwölf externe 10-kΩ-Pull-ups unten;
+acht Arcade-Buttons, drei kleine Taster und zweiter Kippschalter am AW.
+Zwei Wake-Buttons und Encoder direkt am Feather mit internen Pull-ups,
+Hauptschalter an EN/GND. **24 Adern funktionales Minimum**, inklusive 3V3,
+Boost-5V und gemeinsamer Masse, ohne PN532-IRQ. Zusätzliche GND-Adern und
+Reserve vorsehen. Details in `hardware/verkabelung-endaufbau.md`, Abschnitt
+„Verbindliche Änderung: Deckel-Eingänge und Kabel (28.10.2026)“.
+Typ, Stecker, tatsächliche Aderzahl, Länge, Pinreihenfolge, Strombelastbarkeit
+und Zugentlastung sind noch festzulegen. Die Anordnung legt keine elektrischen Rails oder
 Pins neu fest: dafür gelten `hardware/pinout.md`,
 `hardware/verkabelung-endaufbau.md` und `docs/power-plan.md`.
 

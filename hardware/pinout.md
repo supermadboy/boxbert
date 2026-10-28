@@ -1,6 +1,12 @@
 # Pinbelegung — Adafruit ESP32-S3 Reverse TFT Feather (ADA5691)
 
-Stand: **04.10.2026, Etappe 4 als Breadboard-Meilenstein abgeschlossen.**
+Stand Anschlussplanung: **28.10.2026**. Breadboard-Nachweise separat.
+Nutzerentscheidung: Normale Buttons und zweiter Kippschalter am AW9523;
+zwei Wake-Buttons und Encoder bleiben direkt am Feather. IO38/IO39 frei,
+IO13 frei mit Onboard-LED. Encoder A/B/Taster verwenden interne Pull-ups.
+Zwölf externe 10-kΩ-Pull-ups am AW; 24 funktionale Adern zum Deckel.
+Verteilung und Aderbudget: `hardware/verkabelung-endaufbau.md`, Abschnitt
+„Verbindliche Änderung: Deckel-Eingänge und Kabel (28.10.2026)“.
 Verbindliche Quelle fuer Pin-Vorschlaege in Doku, Firmware und Chats.
 Getestete Verbindungen und noch nicht aufgebaute Erweiterungen sind unten
 getrennt. Endgueltige Firmware-Belegung spaeter in `firmware/Config.h`.

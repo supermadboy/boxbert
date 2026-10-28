@@ -1,5 +1,55 @@
 # Verkabelungsplan Endaufbau — Boxbert
 
+## Verbindliche Änderung: Deckel-Eingänge und Kabel (28.10.2026)
+
+Nutzerentscheidung: Normale Buttons und zweiter Kippschalter werden am
+AW9523 im Unterteil gebündelt. Die folgenden Angaben ersetzen die ältere
+Verteilung auf IO38/IO39/IO13 und die externe Encoder-Pull-up-Empfehlung
+weiter unten. Anschlussplanung, noch nicht aufgebaut/getestet; Firmware
+vor Inbetriebnahme auf Portzuordnung und interne Pull-ups abgleichen.
+
+- AW9523: acht Arcade-Buttons (zwei 44 mm, zwei 30 mm, vier 24 mm), drei
+  kleine Taster und zweiter Kippschalter. Zwölf Eingänge belegt, vier frei.
+- Bisherige AW-Zuordnung P00–P07/P10 bleibt. Neu: P11 = 24-mm-Button 1
+  (bisher IO39), P12 = 24-mm-Button 2 (bisher IO13), P13 = Kippschalter 2
+  (bisher IO38). P14–P17 frei.
+- Zwei 30-mm-Wake-Buttons bleiben direkt an IO5/IO6, Encoder A/B/Taster
+  an IO15/IO14/IO12. Diese verwenden interne Feather-Pull-ups.
+- Hauptschalter bleibt zwischen Feather EN und GND, kein Zusatz-Pull-up.
+- IO38 und IO39 sind frei; IO13 ist frei, aber mit Onboard-LED verbunden.
+  IO11 bleibt für die spätere PN532-IRQ-Erweiterung reserviert.
+- Genau **zwölf externe 10-kΩ-Pull-ups**, je belegtem AW-Eingang einer nach
+  3V3. Alle sitzen unten beim Expander. Keine externen Encoder-Pull-ups.
+- Arcade-Button-LEDs bleiben unbeschaltet.
+
+### Deckel–Unterteil: funktionales Aderbudget
+
+| Zweck | Adern |
+|---|---:|
+| Acht Arcade-Buttons, drei kleine Taster, zweiter Kippschalter → AW | 12 |
+| Zwei Wake-Buttons → Feather IO5/IO6 | 2 |
+| Encoder A/B/Taster → Feather IO15/IO14/IO12 | 3 |
+| Hauptschalter → Feather EN | 1 |
+| PN532 SDA/SCL → I2C IO3/IO4 | 2 |
+| NeoPixel DIN → IO8, 330 Ω am Pixelende | 1 |
+| Versorgung: 3V3, Boost-5V-Rail, gemeinsamer GND | 3 |
+| **Funktionales Minimum** | **24** |
+
+Gemeinsame Masse für die Schaltkontakte vorausgesetzt. 3V3 muss wegen des
+PN532 nach oben; nur 5 V reichen nicht. Eine etwaige Encoder-Modulversorgung
+nur nach Prüfung des realen Moduls an 3V3, niemals an 5 V.
+PN532-IRQ ist **nicht enthalten**; bei späterer Nutzung eine weitere
+Signalader vorsehen. Zusätzliche GND-Adern und Reserve einplanen.
+Kabeltyp, Querschnitt, Stecker, Länge, Pinreihenfolge, Strombelastbarkeit
+(insbesondere NeoPixel) und Zugentlastung sind noch offen.
+**24 Adern sind das funktionale Minimum, keine Freigabe eines konkreten
+24-poligen Kabels.** Versorgung und Signalqualität im Endaufbau prüfen.
+
+## Älterer Detailplan (07.10.2026)
+
+Bei Eingangsverteilung, freien Ports, Pull-ups und Aderbudget gilt die
+Änderung vom 28.10.2026 oben, nicht der ältere Stand unten.
+
 Stand: **07.10.2026**. Grundlage: `hardware/pinout.md` (Pin-Wahrheit),
 `docs/kernwerte.md` (Bauteilwerte), `docs/power-plan.md` (Rails,
 Entscheidungen), `hardware/BOM.md` (Bestand). Pins nie aus dem Gedächtnis
