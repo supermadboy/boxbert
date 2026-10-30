@@ -44,7 +44,10 @@ abgenommen am 04.10.2026. Konkretes Modul neu mit UID-/Wechseltests und
 SD-/Audio-Player reproduziert, optimierter Nutzer-Hoertest erfolgreich.
 
 - PN532 I2C 100 kHz, DIP 1 ON / 2 OFF, Adresse 0x24, VCC 3V3.
-- SD bleibt SPI mit CS IO10, im Player 4 MHz; kein gemeinsamer SD-/NFC-
+- SD bleibt SPI, im Player 4 MHz. Anschlussplanung ab 30.10.2026:
+  CS IO8 (A5), NeoPixel DIN IO10 für kurze SD-Leitungen; Gesamtfirmware
+  angepasst, Gerätetest offen. Breadboard-Referenzsketche bleiben bei CS IO10.
+  Kein gemeinsamer SD-/NFC-
   MISO. Onboard-TFT ist ein separates SPI-Geraet, im Player nicht bedient.
 - Timeout-0-Lesen darf ohne Tag warten: nur in eigener NFC-Task, Queue
   zum Audio-Hauptloop, Erfolgs-Pause 200 ms. Weitere Wire-Clients spaeter

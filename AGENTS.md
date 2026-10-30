@@ -137,7 +137,7 @@ gegen die Board-Definition prüfen (`pins_arduino.h` der Variante
 pinout.md). Der erste Breadboard-Plan hatte sechs falsche Pins, weil sie
 aus allgemeinem ESP32-Wissen geraten waren.
 
-Kurzregeln: **PN532 auf I2C IO3/IO4, SD auf SPI IO36/35/37, CS IO10.**
+Kurzregeln: **PN532 auf I2C IO3/IO4, SD auf SPI IO36/35/37, CS IO8 (A5). NeoPixel-Stick DIN auf IO10 (Tausch 30.10.2026, Gerätetest offen).**
 IO9/IO38 sind fuer NFC nicht mehr belegt. Weitere SPI-Geraete brauchen
 eigenen CS (Onboard-TFT hat IO42); alte SPI-/HSU-Plaene sind archiviert.
 **IO7 nicht anfassen**

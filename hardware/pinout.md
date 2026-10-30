@@ -11,6 +11,15 @@ Verbindliche Quelle fuer Pin-Vorschlaege in Doku, Firmware und Chats.
 Getestete Verbindungen und noch nicht aufgebaute Erweiterungen sind unten
 getrennt. Endgueltige Firmware-Belegung spaeter in `firmware/Config.h`.
 
+## Verbindlicher Pin-Tausch (30.10.2026)
+
+Für direkte SD-Kabelführung neben SCK/MO/MI: **SD CS → A5/IO8**,
+**NeoPixel DIN → 10/IO10 über 330 Ω am Stickende**. Nutzerfreigabe liegt vor;
+`firmware/Config.h` angepasst. Noch nicht geflasht oder am Gerät getestet.
+Diese Zuordnung ersetzt ältere Anschlussplanungen unten. Die Breadboard-Tabelle
+bleibt historischer Nachweis mit SD-CS IO10; unveränderte Referenzsketche
+benötigen weiterhin die alte Verkabelung.
+
 ## Warum es diese Datei gibt
 
 Der erste Breadboard-Plan (27.09.2026) hatte sechs falsche Pins: I2C auf
@@ -93,7 +102,7 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 | Wake-Buttons | IO5, IO6 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet. **IO11 reserviert** für spätere PN532-IRQ-Erweiterung (Wake per Tag, Nutzerentscheidung „Hybrid" 07.10.2026) — nicht als Wake-Button belegen |
 | Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
 | Encoder-Taster | IO12 | |
-| NeoPixel-Stick DIN | IO8 (A5) | 330 Ohm in Reihe |
+| NeoPixel-Stick DIN | IO10 (10) | 330 Ohm in Reihe; neuer Pin noch ungeprüft |
 | Boost EN (TPS61023) | IO9 | **Decision 07.10.2026: IO9 statt IO39** — RTC-faehig, `rtc_gpio_hold_en` im Sleep; IO39 ist kein RTC-GPIO (`docs/power-plan.md` B1). |
 | frei | IO38, IO39 (TX); IO13 mit LED | weitere Buttons ueber AW9523 |
 

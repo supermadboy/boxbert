@@ -2,6 +2,15 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **SD-Kabelführung vereinfacht (30.10.2026, Nutzerfreigabe):** SD-CS
+  von IO10 auf A5/IO8, NeoPixel-DIN von IO8 auf IO10 getauscht. Pinplan,
+  Anschlussplan und Gesamtfirmware angepasst; Referenzsketche unverändert.
+  Pin-/Kollisionsprüfung und vollständiger Core-3.3.12-Build bestanden
+  (2.559.075 Byte Flash, 172.948 Byte RAM; Compiler-Makro-Whitespace-Warnungen).
+  Build: `~/.cache/boxbert-build-l1h1uwrr/manifest.json` (lokal, vergänglich).
+  **Noch nicht geflasht oder am Gerät geprüft.** Alte Firmware erwartet die
+  alten Pins; SD und NeoPixel nach gemeinsamem Umverdrahten/Flash prüfen.
+
 - [x] **Wellenfalz-USB-Export21.10.2026:** aktuelle CNC-Sätze für PN532,
   NeoPixel und TFT samt Scheibenkonturen, Bildern, Warnhinweisen und Nachweisen
   nach `/mnt/usb/Boxbert-CNC` kopiert.44 Nutzdateien per SHA-256 geprüft,

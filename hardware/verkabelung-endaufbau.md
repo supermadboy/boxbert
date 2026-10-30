@@ -1,5 +1,13 @@
 # Verkabelungsplan Endaufbau — Boxbert
 
+## Verbindlicher Pin-Tausch (30.10.2026)
+
+Nutzerfreigabe für kurze SD-Kabelführung: **SD CS → A5/IO8**,
+**NeoPixel DIN → 10/IO10 über 330 Ω am Stickende**. Gesamtfirmware
+(`firmware/Config.h`) angepasst; noch nicht geflasht oder am Gerät getestet.
+Diese Zuordnung ersetzt alle alten SD-CS-/NeoPixel-Pins weiter unten.
+Referenzsketche bleiben unverändert und brauchen die alte Verkabelung.
+
 ## Verbindliche Änderung: Deckel-Eingänge und Kabel (28.10.2026)
 
 Nutzerentscheidung: Normale Buttons und zweiter Kippschalter werden am
@@ -31,7 +39,7 @@ vor Inbetriebnahme auf Portzuordnung und interne Pull-ups abgleichen.
 | Encoder A/B/Taster → Feather IO15/IO14/IO12 | 3 |
 | Hauptschalter → Feather EN | 1 |
 | PN532 SDA/SCL → I2C IO3/IO4 | 2 |
-| NeoPixel DIN → IO8, 330 Ω am Pixelende | 1 |
+| NeoPixel DIN → IO10, 330 Ω am Pixelende | 1 |
 | Versorgung: 3V3, Boost-5V-Rail, gemeinsamer GND | 3 |
 | **Funktionales Minimum** | **24** |
 
@@ -120,7 +128,7 @@ Direkt am Feather (ohne AW9523):
 | IO16 (A2) | I2S-Daten | MAX98357A **DIN** | [bestätigt] Klon-Pinorder prüfen: VIN,GND,SD,GAIN,DIN,BCLK,LRC |
 | IO17 (A1) | I2S-Takt | MAX98357A BCLK | [bestätigt] |
 | IO18 (A0) | I2S-LR-Clock | MAX98357A LRC | [bestätigt] |
-| IO10 | SD-Chip-Select | SD CS | [bestätigt] 4 MHz |
+| IO8 (A5) | SD-Chip-Select | SD CS | [geplant] neuer Pin; früher IO10 getestet |
 | IO36 (SCK) | SPI-Takt | SD SCK | [bestätigt] |
 | IO35 (MO) | SPI-MOSI | SD MOSI | [bestätigt] |
 | IO37 (MI) | SPI-MISO | SD MISO | [bestätigt] |
@@ -130,7 +138,7 @@ Direkt am Feather (ohne AW9523):
 | IO15 (A3) | Encoder A | Encoder A | [geplant] |
 | IO12 | Encoder-Taster | Encoder SW | [geplant] |
 | IO9 | Boost-EN | TPS61023 EN | [geplant] (Decision B1) |
-| IO8 (A5) | NeoPixel-Daten | Stick DIN über **330 Ω** | [bestätigt] Minimal-Rot (Etappe 6) |
+| IO10 (10) | NeoPixel-Daten | Stick DIN über **330 Ω** | [geplant] neuer Pin; früher IO8 getestet |
 | IO38 | Kippschalter 2 (10014) | Schalter A → IO38, B → GND, INPUT_PULLUP | [geplant] |
 | IO39 (TX) | 24-mm-Button 1 | Schalter A → IO39, B → GND | [geplant] |
 | IO13 | 24-mm-Button 2 (optional) | Schalter A → IO13, B → GND. **Quirk:** Onboard-LED leuchtet mit dem Schalterzustand — wer das stört: Button nicht anschließen (mechanisch lassen) | [geplant] |
@@ -200,8 +208,8 @@ reichen dort), Button-Schalter der AB30L5 #1/#2 an IO5/IO6 (Wake).
 ## 5. NeoPixel-Stick [bestätigt Verlötung, Rest geplant]
 
 - Stick 5 V/GND → **Boost-Ausgang** (Rail), GND gemeinsam mit Feather.
-- **1000 µF Elko** direkt am Stick (+/−), **DIN über 330 Ω** von IO8
-  (Lötstand: DIN→IO8 fertig, Elko einbauen).
+- **1000 µF Elko** direkt am Stick (+/−), **DIN über 330 Ω** von IO10
+  (alter Lötstand DIN→IO8: auf IO10 umlegen; Elko einbauen).
 - DOUT offen (kein Folgestick).
 - Pegel 3,3 V-Daten auf 5-V-Pixel: im Etappe-6-Test gelaufen — beim
   Endaufbau mit neuer Kabellänge erneut gegenprüfen (Kabellänge kurz

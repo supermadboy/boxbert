@@ -285,4 +285,4 @@ keine aus Eagle ermittelten oder am Nutzerboard gemessenen Höhen.
 | MAX17048 | I2C (onboard Feather) | 0x36 | spaetere Wire-Zugriffe mit NFC synchronisieren |
 | ST7789 (TFT onboard) | SPI | — | 240×135, Backlight per PWM |
 | WS2812 ×8 | Single-Wire | — | RMT-Treiber, exaktes Timing |
-| microSD | SPI (Player 4 MHz) | CS IO10 | bis 32 GB (SDHC) |
+| microSD | SPI (Player 4 MHz) | CS IO8/A5 geplant; Breadboard IO10 | bis 32 GB (SDHC) |

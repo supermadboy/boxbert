@@ -3,9 +3,9 @@
 // Core 3.3.12 pins_arduino.h and hardware/verkabelung-endaufbau.md §§2–4.
 // Header tables labelled 'planned' remain physically unverified.
 namespace boxbert::pins {
-constexpr uint8_t Sda=3,Scl=4,SdCs=10,SdSck=36,SdMosi=35,SdMiso=37;
+constexpr uint8_t Sda=3,Scl=4,SdCs=8,SdSck=36,SdMosi=35,SdMiso=37;
 constexpr uint8_t AudioData=16,AudioBclk=17,AudioLrc=18;
-constexpr uint8_t BoostEn=9,Stick=8,BoardPixel=33,BoardPixelPower=21;
+constexpr uint8_t BoostEn=9,Stick=10,BoardPixel=33,BoardPixelPower=21;
 constexpr uint8_t EncoderA=15,EncoderB=14,EncoderSwitch=12,RadioButton=0;
 constexpr uint8_t WakeOne=5,WakeTwo=6,ReservedNfcIrq=11,ToggleTwo=38;
 // UI IDs: 1–4 = 30mm, 5–8 = 24mm, 9–10 = 44mm; 255 means not on that bus.
