@@ -2,6 +2,18 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **RFID-/PN532-Halter unbedingt überarbeiten (Nutzerauftrag, Fotos folgen):**
+  Die aktuelle Ausrichtung passt im realen Aufbau nicht. Leser/Haltersystem
+  drehen und voraussichtlich eine Stütze nach links versetzen; genaue Drehung,
+  betroffene Stütze und Versatz anhand der noch ausstehenden Nutzerfotos klären.
+  Gewindeeinsätze laut Nutzer von oben statt von unten einsetzen: oben ist
+  ausreichend Auflagefläche vorhanden. Befestigung für die reichlich vorhandenen
+  kurzen Schrauben statt der extra langen anpassen; konkrete Schraubenmaße und
+  Gewindeeingriff bei der Überarbeitung prüfen. Aktueller dokumentierter
+  PN532-Stand verwendet noch M2,5-Muttern; gewünschte Einsatz-Lösung dann
+  ausdrücklich damit abgleichen. **Jetzt nur vorgemerkt, keine CAD-Änderung;
+  Umsetzung nach den Fotos.**
+
 - [x] **SD-Kabelführung vereinfacht (30.10.2026, Nutzerfreigabe):** SD-CS
   von IO10 auf A5/IO8, NeoPixel-DIN von IO8 auf IO10 getauscht. Pinplan,
   Anschlussplan und Gesamtfirmware angepasst; Referenzsketche unverändert.
