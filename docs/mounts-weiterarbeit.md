@@ -1,5 +1,37 @@
 # Übergabe — Einzel-Mounts
 
+## PN532-Fotokorrektur 06.11.2026 — aktueller Stand vor den älteren Abschnitten
+
+`3d-print/mounts/pn532-mount/README.md` ersetzt die untenstehenden PN532-
+Orientierungs-/Schichtungs-/Schraubenangaben. Innenansicht: Bauteile sichtbar,
+vier I2C-Pins links, acht Pins oben, blauer Button unten; beide Holzlaschen
+nach Foto-links zur freien Deckelmitte, Schraubenpunkte(−10;7,725)/(−10;32,675).
+PCB42,7×40,4×1,15, LöcherØ2,93 bei(7,725;32,675)/(34,975;7,725).
+Neue lokale Druckkoordinaten +z innen: Gitter0…2 **glaswärts hinter PCB**,
+Auflagen10, Holzanschlag8,5. Montage ins alte CNC-System ausschließlich über
+(X,Y,Z)=(42,7−x,y,27−z). Holz-/Glasdateien und CNC-Quelle bytegleich; keine
+Fräsänderung und keine weitere Layoutdrehung aus älteren Fotos ableiten.
+
+Zwei ruthex RX-M2,5×5,7 bündig von der Innen-/Bauteilseite bei entfernter PCB,
+Ø4/6,7-mm-Sacklöcher, PfostenØ8,2. Kurze M2,5×6 nur als Längenbeispiel ohne
+Scheibe, nicht vorhandenes Fabrikat; Step-Up legt keine feste Länge fest.
+Der alte2-mm-PCB-Glasabstand ist konstruktiv **nicht erhalten**: jetzt10,5 mm
+inklusive2-mm-Gitter. Diese notwendige Schichtung ist kommuniziert, aber
+**keine RF-Freigabe**; Lesereichweite mit echten Tags/Metall/Glas prüfen.
+
+Frische Exporte, JSON und rohe CGAL-Schnitt-/Gegenproben in `logs/revision/`;
+Bilder mit sichtbarer Bauteilseite und Gitter dahinter neu gerendert. Alle
+älteren Nicht-Revisionslogs/-bilder sind historisch, kein aktueller Nachweis.
+Digitale Abnahme siehe README und
+`logs/revision/results.json`: **47 PASS,0 FAIL,1 OPEN**,4 Node-Tests bestanden,
+STL4.232 Dreiecke/5.116,214130 mm³, eine geschlossene zusammenhängende Oberfläche.
+Kopf-/SMD-Toleranz0,514514 mm³ bleibt ausdrücklich OPEN.
+Realer Button/Leisten/Rand, Heat-Set/FDM/Festigkeit, Kupfer-/Bauteilhüllen,
+Scheibenfixierung und Holzschrauben offen; 3×12 nicht pauschal übernehmen
+(bei Falzüberdeckung nominal nur0,5 mm Spitzenreserve). Keine Dienste geändert.
+Druck-STL und Vorschauen sind für die reale Passprobe vorbereitet; keine
+Produktfreigabe aus der digitalen Prüfung ableiten.
+
 ## Bemaßte Fensterpositionierung — Nutzerauftrag
 
 Übergabeblatt für den CNC-Betrieb:

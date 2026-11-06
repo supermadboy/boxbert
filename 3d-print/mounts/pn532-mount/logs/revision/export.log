@@ -1,0 +1,30 @@
+CGAL Cache insert: group(){multmatrix([[1,0,0,-2.4],[0,1,0, (22592 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,41.6],[0,1,0, (22592 bytes)
+CGAL Cache insert: group(){group(){multmatrix([[1,0,0,-2.4] (45088 bytes)
+CGAL Cache insert: intersection(){linear_extrude(height=8.5 (324640 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,3],[0,1,0,3],[0,0,1,0 (258896 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,37.4],[0 (258896 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,7.725],[0,1,0 (259136 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,3],[0,1,0,3], (517696 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-2.2],[0,1,0, (312896 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,-10],[0,1,0,7.725],[0 (252880 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,-10],[0,1,0,32.675],[ (252880 bytes)
+CGAL Cache insert: union(){linear_extrude(height=2,center=f (1894352 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,7.725],[0,1,0 (259136 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-10],[0,1,0,7 (505664 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-10],[0,1,0,1 (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (2769360 bytes)
+CGAL Cache insert: color([0.4,0.25,0.8,1]){difference(){uni (2769360 bytes)
+Geometries in cache: 115
+Geometry cache size in bytes: 322408
+CGAL Polyhedrons in cache: 17
+CGAL cache size in bytes: 10748656
+Total rendering time: 0:00:05.879
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:     1996
+   Halfedges:    6180
+   Edges:        3090
+   Halffacets:   2192
+   Facets:       1096
+   Volumes:         2

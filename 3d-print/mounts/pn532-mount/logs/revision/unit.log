@@ -1,0 +1,12 @@
+✔ Bauteilseiten-Lochbild oben links/unten rechts, rechteckiges Raster (1.44181ms)
+✔ Gefertigte CNC/Glas-Dateien und Quelle bleiben bytegleich (2.699527ms)
+✔ Druckschichtung: Gitter hinter PCB, Einsätze von innen, unveränderte CNC-Ebenen (1.005734ms)
+✔ Foto-links, freie Bauteilseite und gemeinsam vereinigte Prüfhüllen (0.61946ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.112819
