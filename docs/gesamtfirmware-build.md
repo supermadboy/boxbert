@@ -50,6 +50,7 @@ keine Firmware-Sicherheitsfreigabe für unverschlüsselte fremde Netzwerke.
 ## Hostprüfungen
 
 ```sh
+node --test tools/firmware/pins.test.mjs
 # Vorhandener C++17-Compiler; z.B. clang++ aus dem gepinnten Nixpkgs:
 nix shell github:NixOS/nixpkgs/0954f7ee2f6bb3dc7d4e3d0d8bcb8fd4bde4cfc5#clang \
   --command python3 tools/firmware/test-host.py

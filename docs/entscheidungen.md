@@ -114,9 +114,11 @@ dem Breadboard testet nur der Button-Pfad.
 **Wake-Quellen (Nutzerentscheidung „Hybrid", 07.10.2026):** Im Deep
 Sleep weckt ein Tag den ESP32 NICHT (I2C-Geraete koennen nicht wecken).
 Jetzt: Wake per Wake-Button (IO5/IO6), Tag-Erkennung erst nach dem
-Aufwachen. Später: PN532-IRQ-Pin auf **IO11** (RTC-GPIO, reserviert)
+Aufwachen. Später: PN532-IRQ-Pin auf **IO12** (RTC-GPIO, reserviert;
+Nutzerfreigabe zum Tausch mit dem Encoder-Taster am 06.11.2026)
 legen + Low-Power-Card-Detection-Modus — dann weckt das Tag direkt.
-IO11 ist dafür nicht als Wake-Button zu belegen (`hardware/pinout.md`).
+IO12 ist dafür nicht als Wake-Button zu belegen; der Encoder-Taster liegt
+jetzt auf IO11 (`hardware/pinout.md`). Firmware angepasst, Gerätetest offen.
 
 ## Gehäuse / Einzel-Mounts — Nutzerentscheidung 09.10.2026
 

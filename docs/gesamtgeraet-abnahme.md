@@ -10,7 +10,8 @@ bauen, dessen Manifest sichern und genau diese Artefakte flashen, niemals ein
 
 - Endaufbau gegen `hardware/verkabelung-endaufbau.md` und `firmware/Config.h`
   prüfen. Rails, I2C-Pegel, JST-Polung und gemeinsame Masse messen; SD und
-  Stick am Boost, keine Button-LEDs. PN532 bleibt an 3V3, IO11 reserviert.
+  Stick am Boost, keine Button-LEDs. PN532 bleibt an 3V3, IO12 für IRQ
+  reserviert; Encoder-Taster an IO11 (Tausch 06.11.2026).
 - USB und Akku vor jeder Verdrahtungsänderung trennen. Versorgungstests gemäß
   Endaufbauplan ausführen, Akku erst zuletzt. Nur vorhandene geprüfte Rails.
 - SD-Inhalt und bestehende Konfiguration vorher extern sichern. Testdateien

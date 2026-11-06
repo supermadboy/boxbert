@@ -1,6 +1,6 @@
 # Pinbelegung — Adafruit ESP32-S3 Reverse TFT Feather (ADA5691)
 
-Stand Anschlussplanung: **28.10.2026**. Breadboard-Nachweise separat.
+Stand Anschlussplanung: **06.11.2026**. Breadboard-Nachweise separat.
 Nutzerentscheidung: Normale Buttons und zweiter Kippschalter am AW9523;
 zwei Wake-Buttons und Encoder bleiben direkt am Feather. IO38/IO39 frei,
 IO13 frei mit Onboard-LED. Encoder A/B/Taster verwenden interne Pull-ups.
@@ -10,6 +10,12 @@ Verteilung und Aderbudget: `hardware/verkabelung-endaufbau.md`, Abschnitt
 Verbindliche Quelle fuer Pin-Vorschlaege in Doku, Firmware und Chats.
 Getestete Verbindungen und noch nicht aufgebaute Erweiterungen sind unten
 getrennt. Endgueltige Firmware-Belegung spaeter in `firmware/Config.h`.
+
+## Verbindlicher Encoder-/IRQ-Tausch (06.11.2026)
+
+Nutzerfreigabe: **Encoder-Taster → IO11**, **PN532-IRQ reserviert → IO12**.
+`firmware/Config.h` angepasst; noch nicht geflasht oder am Gerät getestet.
+Encoder A/B bleiben IO15/IO14, Boost-EN bleibt IO9 (nicht frei).
 
 ## Verbindlicher Pin-Tausch (30.10.2026)
 
@@ -99,9 +105,9 @@ Messwerte/Abnahmeumfang: `docs/testprotokoll-etappe4.md`.
 | Funktion | Pin | Hinweis |
 |---|---|---|
 | AW9523 SDA / SCL | IO3 / IO4 | Adresse 0x58; VIN 3V3, kein +5 V auf VIN; Wire-Zugriffe synchronisieren |
-| Wake-Buttons | IO5, IO6 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet. **IO11 reserviert** für spätere PN532-IRQ-Erweiterung (Wake per Tag, Nutzerentscheidung „Hybrid" 07.10.2026) — nicht als Wake-Button belegen |
+| Wake-Buttons | IO5, IO6 | INPUT_PULLUP, andere Seite GND; nur IO5 bisher getestet. **IO12 reserviert** für spätere PN532-IRQ-Erweiterung (Wake per Tag, „Hybrid" 07.10.2026; Pin-Tausch 06.11.2026) — nicht als Wake-Button belegen |
 | Encoder A / B | IO15 (A3), IO14 (A4) | kein NFC-SPI-Konflikt mehr |
-| Encoder-Taster | IO12 | |
+| Encoder-Taster | IO11 | INPUT_PULLUP; Pin-Tausch 06.11.2026, Gerätetest offen |
 | NeoPixel-Stick DIN | IO10 (10) | 330 Ohm in Reihe; neuer Pin noch ungeprüft |
 | Boost EN (TPS61023) | IO9 | **Decision 07.10.2026: IO9 statt IO39** — RTC-faehig, `rtc_gpio_hold_en` im Sleep; IO39 ist kein RTC-GPIO (`docs/power-plan.md` B1). |
 | frei | IO38, IO39 (TX); IO13 mit LED | weitere Buttons ueber AW9523 |

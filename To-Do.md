@@ -2,6 +2,14 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Encoder-Taster und NFC-IRQ getauscht (06.11.2026, Nutzerfreigabe):**
+  Encoder-Taster von IO12 auf IO11; IO12 jetzt für späteren PN532-IRQ
+  reserviert. Pinplan und Gesamtfirmware angepasst, IO9 bleibt Boost-EN.
+  Node-Pinregression und nativer C++-Pinvertrag mit Address-/UndefinedBehavior-
+  Sanitizer bestanden. Der C++-Pinvertrag berücksichtigt jetzt auch den
+  bereits freigegebenen SD-/NeoPixel-Tausch vom 30.10.2026.
+  **Kein neuer ESP32-Crossbuild, kein Flash und kein Gerätetest.**
+
 - [ ] **RFID-/PN532-Halter unbedingt überarbeiten (Nutzerauftrag, Fotos folgen):**
   Die aktuelle Ausrichtung passt im realen Aufbau nicht. Leser/Haltersystem
   drehen und voraussichtlich eine Stütze nach links versetzen; genaue Drehung,
@@ -281,7 +289,7 @@ Prüfgrenzen, Teileliste und Nachweise: [`docs/fertigungsstatus.md`](docs/fertig
   Entscheidungen abgeschlossen)** — Boost-Eingang an Akku-JST-Buchse,
   Ausgang an SD-Rail, EN → IO9 (`rtc_gpio_hold_en`), 0-V-Nachweis am
   Boost-Ausgang im Sleep. Auto-Sleep: 5 min ohne Lied UND ohne
-  Button/Encoder-Interaktion. Wake per Button (IO5/IO6); IO11 reserviert
+  Button/Encoder-Interaktion. Wake per Button (IO5/IO6); IO12 reserviert
   für spätere PN532-IRQ-Wake-Erweiterung („Hybrid"-Entscheidung). PN532
   bleibt an 3V3 (verworfene Option A: 10–13 mA Standby, Hauptschalter
   als Null-Strom-Weg). Gesamtsystem-Sleep-Strom messen (µA-Bereich).

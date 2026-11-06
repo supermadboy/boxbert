@@ -1,5 +1,12 @@
 # Verkabelungsplan Endaufbau — Boxbert
 
+## Verbindlicher Encoder-/IRQ-Tausch (06.11.2026)
+
+Nutzerfreigabe: **Encoder-Taster → IO11**, **PN532-IRQ reserviert → IO12**.
+Gesamtfirmware (`firmware/Config.h`) angepasst; noch nicht geflasht oder am
+Gerät getestet. Encoder A/B bleiben IO15/IO14. **IO9 bleibt Boost-EN.**
+Diese Änderung ersetzt die alte IO12-/IO11-Zuordnung im historischen Plan.
+
 ## Verbindlicher Pin-Tausch (30.10.2026)
 
 Nutzerfreigabe für kurze SD-Kabelführung: **SD CS → A5/IO8**,
@@ -22,10 +29,10 @@ vor Inbetriebnahme auf Portzuordnung und interne Pull-ups abgleichen.
   (bisher IO39), P12 = 24-mm-Button 2 (bisher IO13), P13 = Kippschalter 2
   (bisher IO38). P14–P17 frei.
 - Zwei 30-mm-Wake-Buttons bleiben direkt an IO5/IO6, Encoder A/B/Taster
-  an IO15/IO14/IO12. Diese verwenden interne Feather-Pull-ups.
+  an IO15/IO14/IO11 (Taster getauscht am 06.11.2026). Diese verwenden interne Feather-Pull-ups.
 - Hauptschalter bleibt zwischen Feather EN und GND, kein Zusatz-Pull-up.
 - IO38 und IO39 sind frei; IO13 ist frei, aber mit Onboard-LED verbunden.
-  IO11 bleibt für die spätere PN532-IRQ-Erweiterung reserviert.
+  IO12 bleibt für die spätere PN532-IRQ-Erweiterung reserviert.
 - Genau **zwölf externe 10-kΩ-Pull-ups**, je belegtem AW-Eingang einer nach
   3V3. Alle sitzen unten beim Expander. Keine externen Encoder-Pull-ups.
 - Arcade-Button-LEDs bleiben unbeschaltet.
@@ -36,7 +43,7 @@ vor Inbetriebnahme auf Portzuordnung und interne Pull-ups abgleichen.
 |---|---:|
 | Acht Arcade-Buttons, drei kleine Taster, zweiter Kippschalter → AW | 12 |
 | Zwei Wake-Buttons → Feather IO5/IO6 | 2 |
-| Encoder A/B/Taster → Feather IO15/IO14/IO12 | 3 |
+| Encoder A/B/Taster → Feather IO15/IO14/IO11 | 3 |
 | Hauptschalter → Feather EN | 1 |
 | PN532 SDA/SCL → I2C IO3/IO4 | 2 |
 | NeoPixel DIN → IO10, 330 Ω am Pixelende | 1 |
