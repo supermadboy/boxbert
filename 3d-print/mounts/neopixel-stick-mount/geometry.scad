@@ -36,22 +36,24 @@ head_d=6.2;
 wood_screw_l=12;
 base_h=2;
 post_d=8;
-post_top=7;
-neck_d=3.8;
-m2_clear=2.3;
-nut_af=4.2;          // assumed M2 nut AF4 + 0.2 calibration allowance
-nut_pocket_h=3;      // deeper rear entry seats nut nearer PCB for thread reserve
-nut_h=1.6;
-m2_length=16;        // head to tip, not a countersunk screw
-head_h=2;            // maximum allowed head height; verify actual selected screw
-pcb_head_d=3;        // tested envelope ONLY; clashes with assumed component XY, NOT approved
+insert_d=4.0;       // ruthex installation bore, NOT external knurl diameter
+insert_max_d=4.6;
+insert_l=5.7;
+insert_depth=6.7;   // top entry at board_z, L+1 per manufacturer
+screw_clear=2.8;    // continuous to bottom; no closed floor below insert
+screw_length=12;    // M2.5 x 12 confirmed by user, head bearing face to tip
+// No invented screw-head envelope: user's real small-head PCB pass test accepted.
+// Exact head diameter/height are undocumented; omit heads from previews/tests.
 panel_rect=[-98,-20.46,250,180]; // reference placement only, user owns deck layout
 rear_wall_y=-8.46;  // reference wall INSIDE plane, now opposite tabs (-y)
 // Same nominal 4.26 mm lip-to-wall clearance, NOT a measured photo distance.
 rear_wall_t=12;
 assert(abs(board_z-14.77)<0.001);
 assert(guide_h<wood_h-glass_h);
-assert((post_d-nut_af/cos(30))/2>1.5);
+assert((post_d-insert_max_d)/2>=1.6);
+assert(insert_depth>=insert_l+1);
+assert(board_z>insert_depth);
+assert(screw_clear<insert_d);
 assert(tab_h-(head_d-wood_d)/2>=2);
 assert(wood_h-(wood_screw_l-tab_h)>=3);
 // Wavy lip overlaps the old reference wall in XY. No measured layout clearance.

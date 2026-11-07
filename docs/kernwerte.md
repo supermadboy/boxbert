@@ -182,6 +182,11 @@ freier Lochrandabstand23 mm, Lochmittenabstand26 mm. Rechter Lochrand bis
 PCB-Ende12,8 und nahe lange Kante bis Lochrand0,7 mm: Lochmitten lokal
 (13,7;7,7)/(39,7;7,7), Ursprung linke vordere PCB-Ecke. Bestückungs-XY
 nicht gemessen. Quelle/Foto: `docs/cad/neopixel-stick/measurement-2026-10-21/`.
+**Bestätigung07.11.2026:** vorhandene RX-M2,5×5,7 und M2,5×12 für diesen
+Halter; kleine Köpfe laut realer Nutzerprobe von oben am PCB passend.
+Genaue Kopfmaße nicht dokumentiert, keine erfundene CAD-Hülle. Inserts von
+oben an unveränderter PCB-Unterseitenauflage z14,77; Druck-/Heat-Set-/
+Lastprobe weiterhin offen. Konstruktionsmaße im Mount-README.
 Diese Nutzermaße ersetzen für den Halter die nachfolgende historische
 Adafruit-Entwurfsbasis; Shopmaße identifizieren nicht das gemessene Exemplar.
 

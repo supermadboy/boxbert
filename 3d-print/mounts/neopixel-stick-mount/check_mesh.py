@@ -67,11 +67,11 @@ if __name__=='__main__':
         for h in sorted(hits):
             if not unique or abs(h-unique[-1])>1e-5:unique.append(h)
         return bool(len(unique)%2)
-    checks=[('PCB M2 bore',(13.7,7.7,14.6),False),
-            ('Second M2 bore',(39.7,7.7,14.6),False),
-            ('Upper narrow screw post',(15.3,7.7,14.6),True),
-            ('Rear-entry hex pocket',(15.7,7.7,1),False),
-            ('Full nut pocket wall',(17,7.7,1),True),
+    checks=[('PCB insert bore',(13.7,7.7,14.6),False),
+            ('Second insert bore',(39.7,7.7,14.6),False),
+            ('Upper full-wall insert post',(16.8,7.7,14.6),True),
+            ('Former hex pocket now solid',(15.7,7.7,1),True),
+            ('Lower screw-post wall',(17,7.7,1),True),
             ('Front PCB support',(8,1.1,14.6),True),
             ('Wood screw bore',(20,19.9,11),False),
             ('Wood head opens toward interior',(22.5,19.9,8.6),False),

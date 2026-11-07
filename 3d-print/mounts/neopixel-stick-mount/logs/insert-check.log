@@ -1,0 +1,33 @@
+PASS insert pocket 0: 0.000000 mm³
+PASS insert pocket 1: 0.000000 mm³
+PASS through 0: 0.000000 mm³; plugged control 2.424048 mm³
+PASS through 1: 0.000000 mm³; plugged control 2.424048 mm³
+PASS access 0: Ø8 above z14.77, 0.000000 mm³
+PASS access 1: Ø8 above z14.77, 0.000000 mm³
+PASS wall 0: missing 0.000000 mm³; control 71.262333 mm³
+PASS wall 1: missing 0.000000 mm³; control 71.262337 mm³
+PASS unchanged outside two screw-post cylinders: added 0.000000 mm³
+PASS unchanged outside two screw-post cylinders: removed 0.000000 mm³
+PASS predecessor rejected: blocked cavity 48.890847 mm³
+PASS CNC byte-identical cnc-opening.dxf: SHA256 56dc4b70d9de622606c84708af1393580d873762b733037e6f906d94946a7fe9
+PASS CNC byte-identical cnc-rebate.dxf: SHA256 d0f51d480db5df9ff09c7626e03f8179b1446e9a073f676e1241666e1ba644f9
+PASS CNC byte-identical cnc-glass.dxf: SHA256 f4dddf5b5ef6e2eeecf556f451511f706028414668211097fe980151d2c55cbf
+PASS CNC byte-identical panel_cnc.stl: SHA256 77034994d361894a2bd90923d3c6008e1b9ae78ac5958037ffefc3d8bec1852a
+PASS fresh CNC solid difference added: 0.000000 mm³
+PASS fresh CNC solid difference removed: 0.000000 mm³
+PASS stack: PCB underside 14.77, top 16.37, insert 9.07..14.77, cavity bottom 8.07, screw tip 4.37 mm; full nominal 5.7-mm insert reached
+USER CONFIRMED small-head PCB pass test; exact head envelope NOT measured/modelled. Heat-set/load/print tests NOT performed.
+✔ Beide Inserts: volle Ø4-Aufnahme 6,7 mm tief ab unveränderter PCB-Auflage (1899.891017ms)
+✔ Durchgang Ø2,8 durch ganzen Halter, Gegenprobe mit künstlichem Boden (5058.793928ms)
+✔ Insert-/Werkzeugzugang von oben ohne PCB: Ø8-Prüfhülle (1777.412811ms)
+✔ Volle mindestens 1,6-mm-Wand um maximal Ø4,6-Einsatz (3923.009869ms)
+✔ Form/Mittelbereich/Loch/Laschen/Kabelausgang und CNC unverändert (40346.272538ms)
+✔ Maßkette RX-M2,5×5,7/M2,5×12 bei erhaltener PCB-Ebene (2.221912ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53108.327326

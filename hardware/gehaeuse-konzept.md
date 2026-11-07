@@ -187,16 +187,19 @@ Nutzer entscheidet für direkte Lötleitungen statt Dupont: Stiftleiste entferne
 Ende, lokal+x/rechts im Modell**, kurzer Übergang unter das Holz; elektrische
 Pad-/DIN-Belegung real prüfen. Deckelposition nach Nutzerlayout;
 Fotolage ist keine genaue Wand-/Leistenmessung.
-M2-Schrauben/M2-Muttern im Halter beibehalten, keine M2,5-ruthex.
-**Kopffreiheit offen:** Ø3-Kopfhülle kollidiert mit angenommenen LED-XY,
-auch im Spielraumtest. Kein vollständiger Fit-PASS, reale Teile prüfen.
+**Korrektur07.11.2026:** NeoPixel zwei vorhandene ruthex RX-M2,5×5,7
+von oben an unveränderter PCB-Auflage z14,77, M2,5×12 bestätigt. Kleine Köpfe
+laut realer Nutzerprobe von oben am PCB passend; genaue Kopfhülle fehlt und
+wird nicht erfunden. Ø4-Aufnahme6,7 tief, lokale Ø8-Pfosten bis PCB,
+Ø2,8-Kanäle vollständig nach unten offen. Lochmitten, mittlerer Bereich/Loch,
+übrige Form, Laschen/Kabel und CNC unverändert; Heat-Set-/Lastprobe offen.
 Keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
 PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Messabgleich21.10.2026.
 Nutzer bestätigt PCB42,7×40,4 und misst Dicke1,15, LöcherØ2,93, nahe
 Kantenabstände bis Lochrand6,26 mm; neues Lochraster27,25×24,95.
 Plexiglas gewählt, Außenfalz3 mm, nominal2 mm PCB-Luft unverändert.
 **Schraubenkorrektur auf Nutzerauftrag:** PN532 jetzt M2,5 mit rückseitigen
-M2,5-Muttern, keine ruthex; NeoPixel bleibt M2. PN532-DurchgängeØ2,8,
+M2,5-Muttern, keine ruthex. NeoPixel inzwischen mit Inserts, siehe oben. PN532-DurchgängeØ2,8,
 Mutternaufnahmen SW5,2/Tiefe3,5, untere PfostenØ9,2. M2,5×25 nur
 Längenbeispiel. Vorhandene Schrauben laut Nutzer passend, Kopfmaße fehlen;
 reale Passprobe weiterhin offen. CNC und Einbauhöhe unverändert.

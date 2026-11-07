@@ -32,6 +32,24 @@ Scheibenfixierung und Holzschrauben offen; 3×12 nicht pauschal übernehmen
 Druck-STL und Vorschauen sind für die reale Passprobe vorbereitet; keine
 Produktfreigabe aus der digitalen Prüfung ableiten.
 
+## NeoPixel07.11.2026 — Inserts von oben, neue Druck-STL
+
+Aktuell `3d-print/mounts/neopixel-stick-mount/README.md`: zwei vorhandene
+ruthex RX-M2,5×5,7 von **oben ohne PCB** bündig an z14,77 einschmelzen,
+M2,5×12 bestätigt. Kleine Köpfe laut realer Nutzerprobe von oben am PCB
+passend; genaue Kopfhöhe/-kontur fehlen, keine erfundene CAD-Kopfhülle.
+Zwei Ø4-Aufnahmen6,7 tief bis z8,07, Einsätze bis z9,07; Ø8-Pfosten bis zur
+PCB-Auflage, nominal1,7 mm Wand um max.Ø4,6. Ø2,8-Kanäle vollständig nach
+unten offen, kein Boden/keine Muttertaschen. Schraubenspitze z4,37, volle
+nominale Insertlänge erreicht. PCB-/Loch-/mittlerer Bereich/Loch, sonstige Form,
+Laschen/Kabel und CNC unverändert; lokale Differenzkörper und bytegleiche
+CNC-Dateien werden geprüft. Neuer JS-Prüfer `check_inserts.mjs`, tatsächliche
+Mesh-/Solid-/Einsetztests und frische PNGs mit Höhenschnitt im Mount-Ordner.
+Vorige M2-/Muttern-/Kopf-OPEN-Vorgaben in den älteren Abschnitten sind historisch.
+Reale Heat-Set-/Druck-/Last-/Lichtprobe und Glasfixierung bleiben offen; bekannte
+Holzschrauben-/Wellenfalzfrage unverändert und nicht Teil dieser Korrektur.
+
+
 ## Bemaßte Fensterpositionierung — Nutzerauftrag
 
 Übergabeblatt für den CNC-Betrieb:
@@ -103,7 +121,7 @@ Auf ausdrücklichen Auftrag Laschen nach links zum Button und nach oben beim
 rechten oberen PCB-Loch verlegt; keine rechts/unten. Auflagen jetzt24,35,
 PCB-Außenfläche25,5 und2-mm-Glasabstand erhalten. CNC-Konturen unverändert.
 Neue Bounds60,9×58,6×24,35; Schraubenpunkte(−10;20,2)/(34,975;50,4).
-**Nachfolgender Nutzerauftrag: PN532 auf M2,5 umgestellt; NeoPixel bleibt M2.**
+**Damals PN532 auf M2,5 umgestellt; NeoPixel aktuell mit Inserts, siehe oben.**
 PN532: DurchgängeØ2,8, rückseitige M2,5-Muttern (angenommen SW5/Höhe2),
 Taschen SW5,2/Tiefe3,5, untere PfostenØ9,2 für mindestens1,5 mm Wand.
 M2,5×25 nur Längenbeispiel, vorhandene Schrauben laut Nutzer passend;

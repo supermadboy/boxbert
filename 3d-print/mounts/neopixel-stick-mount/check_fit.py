@@ -6,7 +6,7 @@ import tempfile
 import struct
 from concurrent.futures import ThreadPoolExecutor
 ROOT=Path(__file__).resolve().parent
-CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.5,0,-0.001],True),('shift-y','wood',[0,0.5,-0.001],True),('too-deep','wood',[0,0,0.5],True),('heads-tolerance','heads_tolerance',[0,0,0],False),('heads-components','heads_components',[0,0,0],False),('pcb','pcb',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('rear-wall','rear',[0,0,0],False),('glass','glass',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
+CASES=[('seated','wood',[0,0,-0.001],False),('shift-x','wood',[0.5,0,-0.001],True),('shift-y','wood',[0,0.5,-0.001],True),('too-deep','wood',[0,0,0.5],True),('pcb','pcb',[0,0,0],False),('cable-mount','cable_mount',[0,0,0],False),('cable-wood','cable_wood',[0,0,0],False),('rear-wall','rear',[0,0,0],False),('glass','glass',[0,0,0],False),('insertion','insertion',[0,0,0],False)]
 def check(case):
     name,scene,shift,expect=case
     if scene=='insertion':
@@ -35,8 +35,6 @@ def check(case):
                 v=struct.unpack_from('<12fH',raw,84+i*50);a,b,c=v[3:6],v[6:9],v[9:12]
                 vol+=(a[0]*(b[1]*c[2]-b[2]*c[1])+a[1]*(b[2]*c[0]-b[0]*c[2])+a[2]*(b[0]*c[1]-b[1]*c[0]))/6
             vol=abs(vol)
-        if name.startswith('heads-') and vol>0.001:
-            return f'OPEN {name}: intersection {vol:.6f} mm^3; assumed component XY conflicts with head; real clearance REQUIRED'
         assert (vol>0.001)==expect,(name,vol,log)
         return f'PASS {name}: intersection {vol:.6f} mm^3'+(' (deliberate collision)' if expect else '')
 if __name__=='__main__':
@@ -45,6 +43,4 @@ if __name__=='__main__':
         results=list(pool.map(check,CASES))
     for line in results: print(line,flush=True)
     print('Digital assumed envelopes only; insertion sampled at 1 mm, not physical fit approval.')
-    if any(line.startswith('OPEN') for line in results):
-        print('BLOCKED: PCB screw-head/component clearance unresolved; NOT a full fit PASS.')
-        raise SystemExit(2)
+    print('USER CONFIRMED small-head PCB pass test; exact head geometry unmeasured, no fabricated CAD head test.')

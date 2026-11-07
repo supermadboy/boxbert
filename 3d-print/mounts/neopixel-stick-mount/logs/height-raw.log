@@ -1,7 +1,41 @@
+CGAL Cache insert: union(){linear_extrude(height=15.9,cente (354736 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-2.2],[0,1,0, (22592 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,53.8],[0,1,0, (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (537648 bytes)
+CGAL Cache insert: group(){group(){multmatrix([[1,0,0,-2.2] (45088 bytes)
+CGAL Cache insert: intersection(){difference(){union(){line (592768 bytes)
+CGAL Cache insert: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache hit: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,13.7],[0,1,0,7.7],[0, (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,7.7],[0, (344912 bytes)
+CGAL Cache insert: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache hit: group(){cylinder($fn=64,$fa=12,$fs=2,h=2 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,8],[0,1,0,1.1],[0,0,1 (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,46],[0,1,0,1.1],[0,0, (344912 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (689728 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,8],[0,1,0,1.1 (689728 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,17],[0,1,0,8. (398912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,13.7],[0,1,0,7.7],[0, (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,7.7],[0, (344912 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,20],[0,1,0,19.9],[0,0 (336976 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,34],[0,1,0,19.9],[0,0 (336976 bytes)
+CGAL Cache insert: union(){linear_extrude(height=2,center=f (2497968 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (689728 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,20],[0,1,0,19 (673856 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,56],[0,1,0,-1 (22592 bytes)
+CGAL Cache insert: difference(){union(){linear_extrude(heig (4001456 bytes)
+CGAL Cache insert: intersection(){difference(){union(){line (2375936 bytes)
+CGAL Cache insert: difference(){cylinder($fn=64,$fa=12,$fs= (344784 bytes)
+CGAL Cache insert: color([0.85,0.65,0.2,1]){difference(){cy (344784 bytes)
+CGAL Cache hit: color([0.85,0.65,0.2,1]){difference(){cy (344784 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,13.7],[0,1,0,7.7],[0, (344784 bytes)
+CGAL Cache insert: multmatrix([[1,0,0,39.7],[0,1,0,7.7],[0, (344784 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,13.7],[0,1,0, (689472 bytes)
+CGAL Cache insert: intersection(){group(){multmatrix([[1,0, (377408 bytes)
 Compiling design (CSG Products normalization)...
-Normalized CSG tree has 98 elements
-Geometries in cache: 102
-Geometry cache size in bytes: 1156568
-CGAL Polyhedrons in cache: 0
-CGAL cache size in bytes: 0
-Total rendering time: 0:00:00.206
+Normalized CSG tree has 25 elements
+Geometries in cache: 118
+Geometry cache size in bytes: 2514416
+CGAL Polyhedrons in cache: 31
+CGAL cache size in bytes: 19494592
+Total rendering time: 0:00:10.584

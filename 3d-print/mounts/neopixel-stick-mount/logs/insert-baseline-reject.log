@@ -1,0 +1,14 @@
+CGAL Cache insert: intersection(){import(file="../../../../ (745968 bytes)
+Geometries in cache: 3
+Geometry cache size in bytes: 438504
+CGAL Polyhedrons in cache: 1
+CGAL cache size in bytes: 745968
+Total rendering time: 0:00:00.873
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:      512
+   Halfedges:    1676
+   Edges:         838
+   Halffacets:    656
+   Facets:        328
+   Volumes:         2

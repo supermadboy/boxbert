@@ -1,0 +1,16 @@
+CGAL Cache insert: difference(){import(file="neopixel_mount (1613632 bytes)
+CGAL Cache insert: union(){multmatrix([[1,0,0,13.7],[0,1,0, (345152 bytes)
+CGAL Cache insert: difference(){difference(){import(file="n (8656 bytes)
+Geometries in cache: 5
+Geometry cache size in bytes: 863608
+CGAL Polyhedrons in cache: 3
+CGAL cache size in bytes: 1967440
+Total rendering time: 0:00:08.877
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:        6
+   Halfedges:      18
+   Edges:           9
+   Halffacets:     10
+   Facets:          5
+   Volumes:         2

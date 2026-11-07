@@ -27,6 +27,13 @@ Bestell-Artikelnummer ist nicht automatisch die Identifikation eines Klons.
 | 1 | 10020 | Miniatur-Kippschalter, 3-Pin EIN-EIN |
 | 1 | 10014 | Subminiatur-Kippschalter, 3-Pin EIN-EIN |
 
+## Befestigung — Nutzerbestätigung07.11.2026
+
+Für den NeoPixel-Halter sind ruthex **RX-M2,5×5,7** und **M2,5×12** laut Nutzer
+vorhanden/bestätigt; der Halter verwendet je zwei, Gesamtbestand nicht gezählt.
+Kleine Köpfe passen laut seiner realen PCB-Probe von oben. Das bestätigt
+keine Druck-/Heat-Set-/Lastprobe des Halters; genaue Kopfmaße fehlen.
+
 ## Nicht als bestellt/vorhanden voraussetzen
 
 - Kein MT3608, MCP23017, Lautsprecher-Vergleichspaar oder 20-LED-Strip.

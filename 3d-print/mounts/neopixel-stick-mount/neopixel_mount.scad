@@ -26,9 +26,8 @@ module guides(){
 }
 module screw_post(){
     cylinder(d=9,h=base_h);
-    cylinder(d=post_d,h=post_top);
-    translate([0,0,post_top]) cylinder(d1=post_d,d2=neck_d,h=2);
-    cylinder(d=neck_d,h=board_z);
+    // Full wall up to unchanged PCB underside, required for top-installed inserts.
+    cylinder(d=post_d,h=board_z);
 }
 module support_post(){
     cylinder(d=6,h=base_h);
@@ -49,9 +48,9 @@ module mount(){
             translate([0,0,6.5]) linear_extrude(2) profile([pcb_w+0.4,-2,7.6,12],1);
         }
         for(h=board_holes) translate(h){
-            translate([0,0,-eps]) cylinder(d=m2_clear,h=board_z+2*eps);
-            // Open from back; seated nut ceiling z=3.0. No M2.5 insert forced in PCB.
-            translate([0,0,-eps]) cylinder(d=nut_af/cos(30),h=nut_pocket_h+eps,$fn=6);
+            translate([0,0,-eps]) cylinder(d=screw_clear,h=board_z+2*eps);
+            // Insert from +z BEFORE PCB mounting, flush at PCB underside.
+            translate([0,0,board_z-insert_depth]) cylinder(d=insert_d,h=insert_depth+eps);
         }
         for(w=wood_points) translate([w[0],w[1],wood_z-tab_h-eps]){
             cylinder(d=wood_d,h=tab_h+2*eps);
@@ -69,7 +68,16 @@ module pcb(){
 }
 module leds(){for(p=led_xy) translate([p[0]-2.5,p[1]-2.5,board_z+pcb_t]) cube([5,5,led_h]);}
 module caps(){for(p=cap_xy) translate([p[0]-1.65,p[1]-0.8,board_z+pcb_t]) cube([3.3,1.6,1.2]);}
-module screw_heads(){for(h=board_holes) translate([h[0],h[1],board_z+pcb_t]) cylinder(d=pcb_head_d,h=head_h);}
+// Head dimensions unmeasured; real user pass test accepted, no fictitious heads.
+module screw_heads(){}
+module insert_visual(){
+    for(h=board_holes) translate([h[0],h[1],board_z-insert_l])
+        color([0.85,0.65,0.2]) difference(){
+            // Installed knurl envelope: heat displaces plastic, not a cold-fit solid test.
+            cylinder(d=insert_max_d,h=insert_l);
+            translate([0,0,-eps]) cylinder(d=2.5,h=insert_l+2*eps);
+        }
+}
 module wire_path(y,r=0.95,box=false){
     // Mechanical envelope only: user requests opposite short end (+x).
     // No verified pad/net ordering; check actual DIN and supply labels before soldering.
@@ -90,9 +98,9 @@ module visible_pcb(){
     color([0.1,0.5,0.3,0.45]) translate([0,0,0.03]) pcb();
     color([1,1,0.75]) leds();
     color([0.55,0.35,0.12]) caps();
-    color([0.75,0.78,0.82]) screw_heads();
+    insert_visual();
     cable_visual();
 }
 color([0.96,0.46,0.13]) mount();
 if($preview && show_board) visible_pcb();
-echo("Measured PCB/hole geometry 21.10.2026; component XY and cable envelopes assumed; M2 retained; PCB bottom",board_z,"LED/glass gap",optical_gap);
+echo("Measured PCB/hole geometry 21.10.2026; component XY and cable envelopes assumed; top-entry RX-M2.5x5.7, M2.5x12; PCB bottom",board_z,"LED/glass gap",optical_gap);

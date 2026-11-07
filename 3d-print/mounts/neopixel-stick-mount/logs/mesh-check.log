@@ -1,10 +1,10 @@
-PASS mount STL: closed/oriented/connected/nondegenerate 5828 triangles
-Bounds (-2.000002861022949, -2.000002861022949, 0.0) (61.99999237060547, 25.899999618530273, 16.5) Volume mm^3 3548.411
-PASS actual mesh probe PCB M2 bore
-PASS actual mesh probe Second M2 bore
-PASS actual mesh probe Upper narrow screw post
-PASS actual mesh probe Rear-entry hex pocket
-PASS actual mesh probe Full nut pocket wall
+PASS mount STL: closed/oriented/connected/nondegenerate 5772 triangles
+Bounds (-2.000002861022949, -2.000002861022949, 0.0) (61.99999237060547, 25.899999618530273, 16.5) Volume mm^3 3997.343
+PASS actual mesh probe PCB insert bore
+PASS actual mesh probe Second insert bore
+PASS actual mesh probe Upper full-wall insert post
+PASS actual mesh probe Former hex pocket now solid
+PASS actual mesh probe Lower screw-post wall
 PASS actual mesh probe Front PCB support
 PASS actual mesh probe Wood screw bore
 PASS actual mesh probe Wood head opens toward interior

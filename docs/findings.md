@@ -388,6 +388,18 @@ einfügen, Datum dazu.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 
+- **NeoPixel: neue reale Kopfprobe ersetzt keine erfundenen Maße (07.11.2026).**
+  Nutzer bestätigt kleine M2,5×12-Köpfe von oben am realen PCB; alte Konflikte
+  nominaler M2-Hüllen gegen angenommene LED-XY sind für diese Auswahl überholt.
+  Keine Kopfkontur erfinden oder Bauteile zum PASS verschieben. Aktueller
+  Halter mit RX-M2,5×5,7 von oben bei unveränderter PCB-Ebene14,77: lokale
+  Ø8-Pfosten und Ø4-Aufnahmen6,7 tief, vollständig offene Ø2,8-Kanäle.
+  Gegenprobe mit künstlichem Kanalboden und Vorgänger-STL verlangt echte
+  Kollision; Differenzkörper prüfen unveränderte Form außerhalb zweier Pfosten.
+  Quelle: Nutzerbestätigung, Mount-README und `logs/insert-check.log`.
+  Kein eigener physischer Test, keine neue numerische Kopf-/Glasfreigabe.
+
+
 - **Größerer Außenfalz kann die Schraubenspitzenreserve reduzieren, obwohl
   Druckteil und Durchbruch gleich bleiben (eigene digitale Prüfung,21.10.2026).**
   Bestätigter Wellenfalz4–10 mm überdeckt die PN532-Holzschraube(−10;20,2)
