@@ -1,0 +1,13 @@
+✔ Außenfoto: rechteckige PCB, Anschlusskanten und Lochdiagonale (1.910601ms)
+✔ Gefertigte CNC/Glas-Dateien und Quelle bleiben bytegleich (3.733227ms)
+✔ Eine Lasche links oben, zweite unten am rechten CAD-Limit mit Guideabstand (0.592541ms)
+✔ Prüfhüllen umschließen auch die dargestellten langen Pins (0.329919ms)
+✔ Außenschichtung: Glas vor Bauteilen, Gitter hinter PCB, rückwärtige Steckhüllen (1.441692ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.473116

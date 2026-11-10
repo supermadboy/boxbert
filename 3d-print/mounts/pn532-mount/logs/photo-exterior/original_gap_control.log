@@ -1,0 +1,15 @@
+CGAL Cache insert: intersection(){multmatrix([[1,0,0,10],[0 (11344 bytes)
+CGAL Cache hit: intersection(){multmatrix([[1,0,0,10],[0 (11344 bytes)
+Geometries in cache: 4
+Geometry cache size in bytes: 2912
+CGAL Polyhedrons in cache: 1
+CGAL cache size in bytes: 11344
+Total rendering time: 0:00:00.010
+   Top level object is a 3D object:
+   Simple:        yes
+   Vertices:        8
+   Halfedges:      24
+   Edges:          12
+   Halffacets:     12
+   Facets:          6
+   Volumes:         2

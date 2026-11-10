@@ -1,0 +1,10 @@
+CGAL Cache insert: union(){import(file="pn532_mount.stl",la (3131216 bytes)
+CGAL Cache insert: group(){multmatrix([[1,0,0,-10],[0,1,0,3 (259136 bytes)
+CGAL Cache insert: intersection(){union(){import(file="pn53 (0 bytes)
+CGAL Cache hit: intersection(){union(){import(file="pn53 (0 bytes)
+Geometries in cache: 20
+Geometry cache size in bytes: 390384
+CGAL Polyhedrons in cache: 3
+CGAL cache size in bytes: 3390352
+Total rendering time: 0:00:02.258
+Current top level object is empty.

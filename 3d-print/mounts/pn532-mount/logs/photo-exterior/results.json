@@ -1,0 +1,371 @@
+{
+  "generated_at": "2026-11-10T16:48:29.502Z",
+  "sources": {
+    "geometry.scad": "8ef00f5cf6925a3cf2ad57602d268c7e8fcbbd32412d203b429741fdfda0d261",
+    "pn532_mount.scad": "f09fd10ea0bbbdccab3dbba61ce1d0c59979b71bddde7c121f4d4403e8c28434",
+    "assembly.scad": "3cd29190e661e75c02ed4a87561e03cf40ae43fd53af32fb745cd0cb459253c7",
+    "pn532_mount.stl": "63fd6247b089118607ad447edc879dcef1f8d336cfdaff2741507589d29de20b",
+    "revision.test.mjs": "2f13ecb85663b0135105e66cb41742a6fd608216b85b6599a02745f81e4f8d36",
+    "render.sh": "ec411d9b40f375356fbc0a589ecfb00dffdcb966a93ba87e03dde3d359bc13e0",
+    "check_revision.mjs": "d4c60bfc7dce957ff8e1dfa80a29bf940ca28fe1d581333bae06f0fd613daa0b",
+    "audit_revision.mjs": "1139a1fd9310de80a701a64b0f45344f01cdd86d9db81ec7f9e0cf4304601370"
+  },
+  "mesh": {
+    "triangles": 4148,
+    "volume": 4817.521204275269,
+    "areaMin": 0.0000017166203178931028,
+    "badEdges": 0,
+    "components": 1,
+    "bounds": [
+      [
+        -16,
+        -15.5,
+        0
+      ],
+      [
+        44.899993896484375,
+        42.59999084472656,
+        12.149999618530273
+      ]
+    ]
+  },
+  "threshold_mm3": 0.00001,
+  "tests": [
+    {
+      "scene": "wood",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "glass",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "pcb",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "connector",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "cables",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "connector_wood",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "bores",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insert_bottom_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insert_walls_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "tools",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "tab_bores",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "heads_components",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "metal_components",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "metal_back",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "bottom_sector",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "tab_material_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "wood_tools",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "tab_contact_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "bottom_tab_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "rear_slot_missing",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "electronics",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "front_occlusion",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "front_pin_hulls",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "bottom_control",
+      "volume": 4.9622049452791535,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "wall_control",
+      "volume": 20.458128372057722,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "shift_control",
+      "volume": 22.646581652675415,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "depth_control",
+      "volume": 265.9916589997324,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "electronics_control",
+      "volume": 134.0648085580739,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "connector_wood_control",
+      "volume": 112.75205363846182,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "heads_components_control",
+      "volume": 4.698945656208693,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "original_gap_control",
+      "volume": 1518,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "front_occlusion_control",
+      "volume": 506.9600828444213,
+      "expect": "positive",
+      "pass": true
+    },
+    {
+      "scene": "insertion-0",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-1",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-2",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-3",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-4",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-5",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-6",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-7",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-8",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-9",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-10",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-11",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-12",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-13",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-14",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-15",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-16",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-17",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-18",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-19",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "insertion-20",
+      "volume": 0,
+      "expect": "empty",
+      "pass": true
+    },
+    {
+      "scene": "heads_tolerance",
+      "volume": 0.5145140123345278,
+      "expect": "OPEN assumed component/head collision",
+      "pass": null
+    }
+  ],
+  "screw_length": {
+    "nominal_min": 5.65,
+    "nominal_max": 7.2,
+    "example6_min_engagement": 4.1000000000000005,
+    "example6_min_floor_clearance": 1.5
+  },
+  "summary": {
+    "passed": 53,
+    "failed": 0,
+    "open": 1,
+    "release": false
+  }
+}

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 process.chdir(fileURLToPath(new URL('.',import.meta.url)));
-fs.mkdirSync('logs/revision',{recursive:true});
+fs.mkdirSync('logs/photo-exterior',{recursive:true});
 export function mesh(path){
  const b=fs.readFileSync(path), n=b.readUInt32LE(80);
  assert.equal(b.length,84+n*50,'binary STL size');
@@ -28,32 +28,34 @@ export function mesh(path){
 }
 const m=mesh('pn532_mount.stl');
 assert.ok(m.volume>0);assert.equal(m.badEdges,0);assert.equal(m.components,1);assert.ok(m.areaMin>1e-9);
-for(let j=0;j<3;j++){assert.ok(Math.abs(m.bounds[0][j]-[-16,-2.2,0][j])<0.001);assert.ok(Math.abs(m.bounds[1][j]-[44.9,42.6,14][j])<0.001);}
+for(let j=0;j<3;j++){assert.ok(Math.abs(m.bounds[0][j]-[-16,-15.5,0][j])<0.001);assert.ok(Math.abs(m.bounds[1][j]-[44.9,42.6,12.15][j])<0.001);}
 console.log('MESH',JSON.stringify(m));
 // Export the exact two union solids once; every insertion sample is still cut.
 // This avoids repeating an identical expensive CGAL union in all 21 processes.
 for(const scene of ['collision_panel','collision_assembly']){
- const path=`logs/revision/${scene}.stl`;fs.rmSync(path,{force:true});
+ const path=`logs/photo-exterior/${scene}.stl`;fs.rmSync(path,{force:true});
  const r=spawnSync('openscad',['--hardwarnings','--export-format','binstl','-D',`scene="${scene}"`,'-o',path,'assembly.scad'],{encoding:'utf8',timeout:240000});
- fs.writeFileSync(`logs/revision/${scene}.log`,`${r.stdout??''}${r.stderr??''}`);
+ fs.writeFileSync(`logs/photo-exterior/${scene}.log`,`${r.stdout??''}${r.stderr??''}`);
  assert.equal(r.status,0,`${scene}: ${r.stderr}`);
  const fixture=mesh(path);assert.equal(fixture.badEdges,0);assert.ok(fixture.areaMin>1e-9);assert.ok(fixture.volume>0);
  console.log('FIXTURE',scene,JSON.stringify(fixture));
 }
-const empty=['wood','glass','pcb','connector','cables','connector_wood','bores','insert_bottom_missing','insert_walls_missing','tools','tab_bores','heads_components','metal_components','metal_back','bottom_sector','tab_material_missing','wood_tools','solder_back'];
-empty.push('electronics');
+const empty=['wood','glass','pcb','connector','cables','connector_wood','bores','insert_bottom_missing','insert_walls_missing','tools','tab_bores','heads_components','metal_components','metal_back','bottom_sector','tab_material_missing','wood_tools','tab_contact_missing','bottom_tab_missing','rear_slot_missing'];
+empty.push('electronics','front_occlusion','front_pin_hulls');
 const open=['heads_tolerance'];
-const positive=['bottom_control','wall_control','shift_control','depth_control','electronics_control','connector_wood_control','heads_components_control'];
+const positive=['bottom_control','wall_control','shift_control','depth_control','electronics_control','connector_wood_control','heads_components_control','original_gap_control','front_occlusion_control'];
 const insertion=Array.from({length:21},(_,i)=>`insertion-${i}`);
-let failures=0;const results={generated_at:new Date().toISOString(),sources:Object.fromEntries(['geometry.scad','pn532_mount.scad','assembly.scad','pn532_mount.stl'].map(p=>[p,createHash('sha256').update(fs.readFileSync(p)).digest('hex')])),mesh:m,threshold_mm3:0.00001,tests:[]};
+let failures=0;const results={generated_at:new Date().toISOString(),sources:Object.fromEntries(['geometry.scad','pn532_mount.scad','assembly.scad','pn532_mount.stl','revision.test.mjs','render.sh','check_revision.mjs','audit_revision.mjs'].map(p=>[p,createHash('sha256').update(fs.readFileSync(p)).digest('hex')])),mesh:m,threshold_mm3:0.00001,tests:[]};
 for(const scene of [...empty,...positive,...insertion,...open]){
- const path=`logs/revision/${scene}.stl`;fs.rmSync(path,{force:true});
- const definitions=insertion.includes(scene)?['-D','scene="insertion"','-D',`shift=[0,0,${scene.split('-')[1]}]`]:['-D',`scene="${scene}"`];
+ const path=`logs/photo-exterior/${scene}.stl`;fs.rmSync(path,{force:true});
+ const definitions=insertion.includes(scene)?['-D','scene="insertion"','-D',`shift=[0,0,-${scene.split('-')[1]}]`]:['-D',`scene="${scene}"`];
  const r=spawnSync('openscad',['--hardwarnings','--export-format','binstl',...definitions,'-o',path,'assembly.scad'],{encoding:'utf8',timeout:240000});
- fs.writeFileSync(`logs/revision/${scene}.log`,`${r.stdout??''}${r.stderr??''}`);
+ fs.writeFileSync(`logs/photo-exterior/${scene}.log`,`${r.stdout??''}${r.stderr??''}`);
  const isEmpty=r.status===1&&r.stderr?.includes('Current top level object is empty.');
  if(r.status!==0&&!isEmpty)throw Error(`${scene}: ${r.error||r.stderr}`);
- const volume=isEmpty?0:Math.abs(mesh(path).volume);
+ const solid=isEmpty?null:mesh(path);
+ if(solid){assert.equal(solid.badEdges,0,`${scene}: nonmanifold result`);assert.ok(solid.areaMin>1e-9,`${scene}: degenerate result`);}
+ const volume=solid?Math.abs(solid.volume):0;
  const expect=positive.includes(scene)?'positive':open.includes(scene)?'OPEN assumed component/head collision':'empty';
  const pass=expect.startsWith('OPEN')?null:expect==='positive'?volume>0.01:volume<=results.threshold_mm3;
  console.log(`${expect.startsWith('OPEN')?'OPEN':pass?'PASS':'FAIL'} ${scene}: ${volume.toFixed(9)} mm³ (${expect})`);
@@ -66,5 +68,5 @@ const range={nominal_min:minLength,nominal_max:maxLength,example6_min_engagement
 console.log('SCREW_LENGTH_BUDGET',JSON.stringify(range));results.screw_length=range;
 results.summary={passed:results.tests.filter(t=>t.pass===true).length,failed:failures,open:results.tests.filter(t=>t.pass===null).length,release:false};
 console.log('SUMMARY',JSON.stringify(results.summary));
-fs.writeFileSync('logs/revision/results.json',JSON.stringify(results,null,2)+'\n');
+fs.writeFileSync('logs/photo-exterior/results.json',JSON.stringify(results,null,2)+'\n');
 assert.equal(failures,0,`${failures} solid checks failed; no release`);

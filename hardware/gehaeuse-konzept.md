@@ -194,26 +194,23 @@ wird nicht erfunden. Ø4-Aufnahme6,7 tief, lokale Ø8-Pfosten bis PCB,
 Ø2,8-Kanäle vollständig nach unten offen. Lochmitten, mittlerer Bereich/Loch,
 übrige Form, Laschen/Kabel und CNC unverändert; Heat-Set-/Lastprobe offen.
 Keine Druck-/Last-/Optikfreigabe; Scheibenfixierung offen.
-PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Messabgleich21.10.2026.
-Nutzer bestätigt PCB42,7×40,4 und misst Dicke1,15, LöcherØ2,93, nahe
-Kantenabstände bis Lochrand6,26 mm; neues Lochraster27,25×24,95.
-Plexiglas gewählt, Außenfalz3 mm, nominal2 mm PCB-Luft unverändert.
-**Schraubenkorrektur auf Nutzerauftrag:** PN532 jetzt M2,5 mit rückseitigen
-M2,5-Muttern, keine ruthex. NeoPixel inzwischen mit Inserts, siehe oben. PN532-DurchgängeØ2,8,
-Mutternaufnahmen SW5,2/Tiefe3,5, untere PfostenØ9,2. M2,5×25 nur
-Längenbeispiel. Vorhandene Schrauben laut Nutzer passend, Kopfmaße fehlen;
-reale Passprobe weiterhin offen. CNC und Einbauhöhe unverändert.
-Reader laut aktuellem Foto unten rechts; auf Nutzerauftrag jetzt eine
-Holzlasche nach links zum Button und eine nach oben beim rechten oberen
-PCB-Loch, keine rechts/unten. I2C-Pins laut Nutzer oben, Platinenlöcher links
-unten/rechts oben, Wände unten/rechts; Anschluss-/Kabelmodell entsprechend
-korrigiert, exakte Hülle ungemessen. Alle Richtungen foto-relativ; Foto-rechts
-wird Gehäuse-oben, ganze Anordnung gemeinsam drehen. Linke Lasche zuletzt gerade
-angebunden, Base mit geschlossenem flachem Randsteg. Randabstände von PCB rechts/unten nur ungefähr
-15 mm bei12-mm-Seitenwand: genaue Messung und reale Button-/Wandfreiheit
-noch offen. Nur lokales CAD-Prüfstück, keine vollständige Deckelprüfung;
-Druck-/Passungs-/Last-/Lesereichweitenprüfung und Glasfixierung offen.
-Übergabe in `docs/mounts-weiterarbeit.md`.
+PN532-MOD: `3d-print/mounts/pn532-mount/README.md`, Außenfoto-Korrektur10.11.2026.
+Messabgleich21.10.: PCB42,7×40,4×1,15, LöcherØ2,93, nahe Kante→Lochrand6,26;
+Raster27,25×24,95. Aktuelles **Außenfoto**: Bauteile zum Plexiglas,4 I2C-Lötenden
+links/8 oben, Löcher obenlinks/untenrechts. Lange Pins und Gitter **hinter PCB
+nach innen**. Eine Holzlasche links oben, zweite unten weit rechts entlang
+Unterkante, nicht beide links. Zwei RX-M2,5×5,7 oben an PCB-Auflage **ohne PCB**
+einsetzen; kurze M2,5×6 nur Beispiel, keine langen Schrauben/Muttern mehr.
+Gefertigte CNC-/Holz-/Glasdateien bytegleich; Druckgeometrie neu. 2-mm-Glasziel
+zuerst geprüft, mit ungemessener5-mm-SMD-Hülle nicht frei: vorläufig5,5 mm aus
+5-mm-Annahme+0,5-mm-Nennreserve, **kein real gemessener Bedarf**. Nach Messung
+gegebenenfalls reduzieren; hintere Stecker erzwingen diesen Abstand nicht.
+Aktuelle STL/PNGs und digitale Nachweise ausschließlich `logs/photo-exterior/`;
+06.11.-Innenblick und ältere Laschen-/Höhenangaben überholt. Reale Button-/Rand-/
+Leisten-/Werkzeugpassung, Kopf-/SMD-Toleranz, Heat-Set/FDM/Support/Festigkeit,
+Glasfixierung, Holzschraubenlänge/Halt unter Wellenfalz und NFC bleiben offen.
+Keine Fertigungs-/Montage-/Kindersicherheitsabnahme aus digitalem PASS ableiten.
+Übergabe `docs/mounts-weiterarbeit.md`.
 
 ## Wellenfalz — bestätigte Form, CNC-Dateien aktualisiert
 

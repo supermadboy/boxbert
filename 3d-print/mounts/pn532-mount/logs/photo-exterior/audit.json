@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-11-10T16:54:04.620Z",
+  "summary": {
+    "passed": 53,
+    "failed": 0,
+    "open": 1,
+    "release": false
+  },
+  "sourceHashesVerified": true,
+  "logsScanned": 76,
+  "rawLogProblems": [],
+  "images": {
+    "iso.png": "8ecf78368097a2733353bfacefe3c2741cdca5da5e0ac2542e356e88caba4387",
+    "iso-board.png": "f8fe7edfd49ec42c98d523653f904c4f0e641a8ae3af1ce17974cf2164816191",
+    "top-board.png": "3a52a021f5600cc00c010f44c9ef8ce4d38e8722219666a1235c65a5119b6253",
+    "side-board.png": "74c345a550eb44371ed79f7093965ad059e259171459789f638bd7afbd153552",
+    "seated-outside.png": "c3d3868d43cf8a4df52b97f244df5ded37f5e7db596f61e87adb390950b0ff78",
+    "height-side.png": "ae92527013a113b765b8d3eb9d43ad9d954f954764c999cb01cb738a2b925c31",
+    "exploded.png": "4d380b523c04045595661b8eaddfa21c44142b82c3b584093db57053b948e55d"
+  }
+}

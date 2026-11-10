@@ -17,29 +17,29 @@ export LIBGL_ALWAYS_SOFTWARE=1 QT_QPA_PLATFORM=xcb __GLX_VENDOR_LIBRARY_NAME=mes
 if [[ ${BOXBERT_XVFB:-0} != 1 ]]; then
   exec xvfb-run -a -s '-screen 0 1280x1024x24 +extension GLX' env BOXBERT_XVFB=1 bash "$script" "$@"
 fi
-mkdir -p logs/revision
+mkdir -p logs/photo-exterior
 bash -n render.sh
 shellcheck render.sh
-openscad --version >logs/revision/tool-version.log 2>&1
-node --test revision.test.mjs >logs/revision/unit.log 2>&1
-openscad --hardwarnings --export-format binstl -o pn532_mount.stl pn532_mount.scad >logs/revision/export.log 2>&1
+openscad --version >logs/photo-exterior/tool-version.log 2>&1
+node --test revision.test.mjs >logs/photo-exterior/unit.log 2>&1
+openscad --hardwarnings --export-format binstl -o pn532_mount.stl pn532_mount.scad >logs/photo-exterior/export.log 2>&1
 for part in opening rebate glass; do
- openscad --hardwarnings -D "part=\"$part\"" -o "logs/revision/cnc-$part.dxf" panel_cnc.scad >"logs/revision/cnc-$part.log" 2>&1
- cmp "cnc-$part.dxf" "logs/revision/cnc-$part.dxf"
+ openscad --hardwarnings -D "part=\"$part\"" -o "logs/photo-exterior/cnc-$part.dxf" panel_cnc.scad >"logs/photo-exterior/cnc-$part.log" 2>&1
+ cmp "cnc-$part.dxf" "logs/photo-exterior/cnc-$part.dxf"
 done
-sha256sum cnc-opening.dxf cnc-rebate.dxf cnc-glass.dxf panel_cnc.stl pn532-glass.svg >logs/revision/cnc-unchanged.sha256
+sha256sum cnc-opening.dxf cnc-rebate.dxf cnc-glass.dxf panel_cnc.stl pn532-glass.svg >logs/photo-exterior/cnc-unchanged.sha256
 if [[ ${1:-} == --export-only ]]; then exit 0; fi
-node check_revision.mjs | tee logs/revision/check.log
+node check_revision.mjs | tee logs/photo-exterior/check.log
 common=(--hardwarnings --preview '--imgsize=1200,950' --colorscheme=Tomorrow --projection=o)
 preview(){
  local name=$1 source=$2 camera=$3; shift 3
- openscad "${common[@]}" --camera="$camera" "$@" -o "$name.png" "$source" >"logs/revision/$name.log" 2>&1
+ openscad "${common[@]}" --camera="$camera" "$@" -o "$name.png" "$source" >"logs/photo-exterior/$name.log" 2>&1
 }
 preview iso pn532_mount.scad 25,20,10,55,0,35,185 -D 'show_board=false'
 preview iso-board assembly.scad 15,20,15,55,0,35,185 -D 'scene="photo"'
 preview top-board assembly.scad 15,20,15,0,0,0,185 -D 'scene="photo_inspection"'
 preview side-board pn532_mount.scad 25,20,13,90,0,0,190
-preview seated-inside assembly.scad 20,20,15,35,0,0,250 -D 'scene="inside"'
+preview seated-outside assembly.scad 20,20,15,35,0,0,250 -D 'scene="outside"'
 preview height-side assembly.scad 20,20,18,90,0,0,285 -D 'scene="section"'
 preview exploded assembly.scad 20,20,20,55,0,25,310 -D 'scene="exploded"'
-node audit_revision.mjs | tee logs/revision/audit.log
+node audit_revision.mjs | tee logs/photo-exterior/audit.log

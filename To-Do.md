@@ -10,17 +10,20 @@
   bereits freigegebenen SD-/NeoPixel-Tausch vom 30.10.2026.
   **Kein neuer ESP32-Crossbuild, kein Flash und kein Gerätetest.**
 
-- [ ] **RFID-/PN532-Halter unbedingt überarbeiten (Nutzerauftrag, Fotos folgen):**
-  Die aktuelle Ausrichtung passt im realen Aufbau nicht. Leser/Haltersystem
-  drehen und voraussichtlich eine Stütze nach links versetzen; genaue Drehung,
-  betroffene Stütze und Versatz anhand der noch ausstehenden Nutzerfotos klären.
-  Gewindeeinsätze laut Nutzer von oben statt von unten einsetzen: oben ist
-  ausreichend Auflagefläche vorhanden. Befestigung für die reichlich vorhandenen
-  kurzen Schrauben statt der extra langen anpassen; konkrete Schraubenmaße und
-  Gewindeeingriff bei der Überarbeitung prüfen. Aktueller dokumentierter
-  PN532-Stand verwendet noch M2,5-Muttern; gewünschte Einsatz-Lösung dann
-  ausdrücklich damit abgleichen. **Jetzt nur vorgemerkt, keine CAD-Änderung;
-  Umsetzung nach den Fotos.**
+- [x] **RFID-/PN532-CAD nach bestätigtem Außenfoto korrigiert10.11.2026:**
+  Bauteile zum Plexiglas, Gitter/Stecker hinten ins Gehäuse; Lochbild und
+  4-links/8-oben-Orientierung erhalten. Eine Holzlasche links oben, zweite
+  unten weit rechts(38,4;−10), nicht beide links. Zwei RX-M2,5×5,7 von oben
+  an PCB-Auflage **ohne PCB**; kurze M2,5×6 nur Rechenbeispiel. Echte neue STL/
+  PNGs, Test-first und digitale Mesh-/CGAL-Prüfungen; gefertigte CNC/Glas-
+  Dateien bytegleich. Details `3d-print/mounts/pn532-mount/README.md`,
+  aktuelle Nachweise `logs/photo-exterior/`;06.11.-Inneninterpretation überholt.
+- [ ] **PN532 reale Passprobe/Freigabe:** SMD-/Lot-/Kopf-/Steckermaße ermitteln;
+  2-mm-Ziel mit realen Höhen prüfen (CAD vorläufig5,5 mm aus angenommener5-mm-
+  SMD-Hülle+0,5-mm-Reserve, nicht von hinteren Pins erzwungen). Kopf-/SMD-
+  Toleranz-OPEN, Button/Leisten/Rand/Werkzeug, FDM/Heat-Set/Support/Festigkeit,
+  Holzschraubenlänge/Halt wegen Wellenfalz, Glasfixierung und NFC prüfen.
+  Digitale Prüfungen sind keine reale Montage-/Last-/Kindersicherheitsabnahme.
 
 - [x] **SD-Kabelführung vereinfacht (30.10.2026, Nutzerfreigabe):** SD-CS
   von IO10 auf A5/IO8, NeoPixel-DIN von IO8 auf IO10 getauscht. Pinplan,

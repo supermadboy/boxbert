@@ -1,0 +1,106 @@
+✔ Außenfoto: rechteckige PCB, Anschlusskanten und Lochdiagonale (1.352145ms)
+✔ Gefertigte CNC/Glas-Dateien und Quelle bleiben bytegleich (2.51774ms)
+✔ Eine Lasche links oben, zweite unten am rechten CAD-Limit mit Guideabstand (0.352941ms)
+✖ Prüfhüllen umschließen auch die dargestellten langen Pins (1.26452ms)
+✔ Außenschichtung: Glas vor Bauteilen, Gitter hinter PCB, rückwärtige Steckhüllen (0.936175ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.33459
+
+✖ failing tests:
+
+test at revision.test.mjs:33:1
+✖ Prüfhüllen umschließen auch die dargestellten langen Pins (1.26452ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /board_z-connector_h\]\)cylinder\(d=0\.7,h=connector_h\)/. Input:
+  
+  'include <geometry.scad>\n' +
+    '$fn=48; eps=0.02; show_board=true;\n' +
+    'module grid(){\n' +
+    ' linear_extrude(base_h)difference(){\n' +
+    '  profile([-2.2,-2.2,47.1,44.8],1.8);\n' +
+    '  intersection(){offset(delta=-2)profile([-2.2,-2.2,47.1,44.8],1.8);\n' +
+    '   union()for(i=[0:7],j=[0:7])translate([0.2+6*i,0.2+6*j])square([4,4]);}\n' +
+    ' }\n' +
+    '}\n' +
+    'module guides(){\n' +
+    ' intersection(){\n' +
+    '  linear_extrude(guide_tip_z)difference(){opening_profile(fit);opening_profile(fit+guide_wall);}\n' +
+    '  for(x=[opening[0],opening[0]+opening[2]-3.5])for(y=[opening[1],opening[1]+opening[3]-3.5])\n' +
+    '   translate([x,y,0])cube([3.5,3.5,guide_tip_z]);\n' +
+    ' }\n' +
+    '}\n' +
+    '// Clearance slots through rear grid for the INWARD connector envelopes.\n' +
+    'module rear_clearance(){\n' +
+    ' for(r=[connector_rect,unused_rect])translate([r[0]-0.5,r[1]-0.5,-eps])cube([r[2]+1,r[3]+1,board_z+eps]);\n' +
+    '}\n' +
+    'module wood_tabs(){\n' +
+    ' // Left upper arm; both wood contact surfaces are at stop_z.\n' +
+    ' translate([-2.2,29.675,0])cube([2,6,stop_z]);\n' +
+    ' translate([-10,29.675,stop_z-tab_h])cube([9.9,6,tab_h]);\n' +
+    ' // Bottom arm points DOWN in photo XY; never relocated to the right edge.\n' +
+    ' translate([bottom_tab_x-3,-2.2,0])cube([6,2.1,stop_z]);\n' +
+    ' translate([bottom_tab_x-3,-10,stop_z-tab_h])cube([6,9.9,tab_h]);\n' +
+    ' for(w=wood_points)translate([0,0,stop_z-tab_h])linear_extrude(tab_h)profile([w[0]-6,w[1]-5.5,12,11],1.5);\n' +
+    '}\n' +
+    'module mount(){\n' +
+    ' difference(){\n' +
+    '  union(){\n' +
+    '   grid();guides();\n' +
+    '   for(h=board_holes)translate(h)cylinder(d=post_d,h=board_z);\n' +
+    '   for(p=support_xy)translate(p){cylinder(d=6,h=base_h);cylinder(d=2.8,h=board_z);}\n' +
+    '   wood_tabs();\n' +
+    '   translate([-12,16,0])cube([11.9,8,2]);\n' +
+    '  }\n' +
+    '  for(h=board_holes)translate([h[0],h[1],board_z-insert_depth])cylinder(d=insert_d,h=insert_depth+eps);\n' +
+    '  rear_clearance();\n' +
+    '  for(w=wood_points)translate([w[0],w[1],stop_z-tab_h-eps]){\n' +
+    '   cylinder(d=wood_d,h=tab_h+2*eps);\n' +
+    '   cylinder(d1=head_d+2*eps,d2=wood_d,h=(head_d-wood_d)/2+2*eps);\n' +
+    '  }\n' +
+    '  for(y=[17,21.5])translate([-10,y,-eps])cube([6,1.5,2+2*eps]);\n' +
+    ' }\n' +
+    '}\n' +
+    'module pcb(){translate([0,0,board_z])linear_extrude(pcb_t)difference(){square([pcb_w,pcb_d]);for(h=board_holes)translate(h)circle(d=pcb_hole_d);}}\n' +
+    'module electronics(){translate([components_rect[0],components_rect[1],board_z+pcb_t])cube([components_rect[2],components_rect[3],components_h]);}\n' +
+    'module connector(){translate([connector_rect[0],connector_rect[1],board_z-connector_h])cube([connector_rect[2],connector_rect[3],connector_h]);}\n' +
+    'module unused_pins(){translate([unused_rect[0],unused_rect[1],board_z-unused_h])cube([unused_rect[2],unused_rect[3],unused_h]);}\n' +
+    'module solder_front(){translate([0,0,board_z+pcb_t])linear_extrude(1.5){\n' +
+    ' for(i=[0:3])translate([2.5,16.39+2.54*i])circle(d=1.3);\n' +
+    ' for(i=[0:7])translate([13.11+2.54*i,37.9])circle(d=1.3);\n' +
+    '}}\n' +
+    'module cables(){translate([-16,14.2,-8])cube([20.5,12,2]);}\n' +
+    'module screw_heads(extra=0){for(h=board_holes)translate([h[0],h[1],board_z+pcb_t])cylinder(d=pcb_head_d+2*extra,h=head_h);}\n' +
+    'module inserts(){for(h=board_holes)translate([h[0],h[1],board_z-insert_l])cylinder(d=insert_max_d,h=insert_l);}\n' +
+    'module visible_pcb(){\n' +
+    ' color([0.75,0.08,0.1,0.5])pcb();\n' +
+    ' color([0.15,0.17,0.2])electronics();color([0.08,0.09,0.12]){connector();unused_pins();}\n' +
+    ' color([0.85,0.65,0.2]){\n' +
+    '  for(i=[0:3])translate([2.5,16.39+2.54*i,board_z-17])cylinder(d=0.7,h=17);\n' +
+    '  for(i=[0:7])translate([13.11+2.54*i,37.9,board_z-9])cylinder(d=0.7,h=9);\n' +
+    '  solder_front();inserts();\n' +
+    ' }\n' +
+    ' color([0.2,0.65,0.95,0.5])cables();\n' +
+    ' color([0.8,0.8,0.83])screw_heads();\n' +
+    '}\n' +
+    'color([0.4,0.25,0.8])mount();\n' +
+    'if($preview && show_board)visible_pcb();\n'
+  
+      at TestContext.<anonymous> (file:///home/habibi/projects/boxbert-rfid-photo-20261110/3d-print/mounts/pn532-mount/revision.test.mjs:34:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'include <geometry.scad>\n$fn=48; eps=0.02; show_board=true;\nmodule grid(){\n linear_extrude(base_h)difference(){\n  profile([-2.2,-2.2,47.1,44.8],1.8);\n  intersection(){offset(delta=-2)profile([-2.2,-2.2,47.1,44.8],1.8);\n   union()for(i=[0:7],j=[0:7])translate([0.2+6*i,0.2+6*j])square([4,4]);}\n }\n}\nmodule guides(){\n intersection(){\n  linear_extrude(guide_tip_z)difference(){opening_profile(fit);opening_profile(fit+guide_wall);}\n  for(x=[opening[0],opening[0]+opening[2]-3.5])for(y=[opening[1],opening[1]+opening[3]-3.5])\n   translate([x,y,0])cube([3.5,3.5,guide_tip_z]);\n }\n}\n// Clearance slots through rear grid for the INWARD connector envelopes.\nmodule rear_clearance(){\n for(r=[connector_rect,unused_rect])translate([r[0]-0.5,r[1]-0.5,-eps])cube([r[2]+1,r[3]+1,board_z+eps]);\n}\nmodule wood_tabs(){\n // Left upper arm; both wood contact surfaces are at stop_z.\n translate([-2.2,29.675,0])cube([2,6,stop_z]);\n translate([-10,29.675,stop_z-tab_h])cube([9.9,6,tab_h]);\n // Bottom arm points DOWN in photo XY; never relocated to the right edge.\n translate([bottom_tab_x-3,-2.2,0])cube([6,2.1,stop_z]);\n translate([bottom_tab_x-3,-10,stop_z-tab_h])cube([6,9.9,tab_h]);\n for(w=wood_points)translate([0,0,stop_z-tab_h])linear_extrude(tab_h)profile([w[0]-6,w[1]-5.5,12,11],1.5);\n}\nmodule mount(){\n difference(){\n  union(){\n   grid();guides();\n   for(h=board_holes)translate(h)cylinder(d=post_d,h=board_z);\n   for(p=support_xy)translate(p){cylinder(d=6,h=base_h);cylinder(d=2.8,h=board_z);}\n   wood_tabs();\n   translate([-12,16,0])cube([11.9,8,2]);\n  }\n  for(h=board_holes)translate([h[0],h[1],board_z-insert_depth])cylinder(d=insert_d,h=insert_depth+eps);\n  rear_clearance();\n  for(w=wood_points)translate([w[0],w[1],stop_z-tab_h-eps]){\n   cylinder(d=wood_d,h=tab_h+2*eps);\n   cylinder(d1=head_d+2*eps,d2=wood_d,h=(head_d-wood_d)/2+2*eps);\n  }\n  for(y=[17,21.5])translate([-10,y,-eps])cube([6,1.5,2+2*eps]);\n }\n}\nmodule pcb(){translate([0,0,board_z])linear_extrude(pcb_t)difference(){square([pcb_w,pcb_d]);for(h=board_holes)translate(h)circle(d=pcb_hole_d);}}\nmodule electronics(){translate([components_rect[0],components_rect[1],board_z+pcb_t])cube([components_rect[2],components_rect[3],components_h]);}\nmodule connector(){translate([connector_rect[0],connector_rect[1],board_z-connector_h])cube([connector_rect[2],connector_rect[3],connector_h]);}\nmodule unused_pins(){translate([unused_rect[0],unused_rect[1],board_z-unused_h])cube([unused_rect[2],unused_rect[3],unused_h]);}\nmodule solder_front(){translate([0,0,board_z+pcb_t])linear_extrude(1.5){\n for(i=[0:3])translate([2.5,16.39+2.54*i])circle(d=1.3);\n for(i=[0:7])translate([13.11+2.54*i,37.9])circle(d=1.3);\n}}\nmodule cables(){translate([-16,14.2,-8])cube([20.5,12,2]);}\nmodule screw_heads(extra=0){for(h=board_holes)translate([h[0],h[1],board_z+pcb_t])cylinder(d=pcb_head_d+2*extra,h=head_h);}\nmodule inserts(){for(h=board_holes)translate([h[0],h[1],board_z-insert_l])cylinder(d=insert_max_d,h=insert_l);}\nmodule visible_pcb(){\n color([0.75,0.08,0.1,0.5])pcb();\n color([0.15,0.17,0.2])electronics();color([0.08,0.09,0.12]){connector();unused_pins();}\n color([0.85,0.65,0.2]){\n  for(i=[0:3])translate([2.5,16.39+2.54*i,board_z-17])cylinder(d=0.7,h=17);\n  for(i=[0:7])translate([13.11+2.54*i,37.9,board_z-9])cylinder(d=0.7,h=9);\n  solder_front();inserts();\n }\n color([0.2,0.65,0.95,0.5])cables();\n color([0.8,0.8,0.83])screw_heads();\n}\ncolor([0.4,0.25,0.8])mount();\nif($preview && show_board)visible_pcb();\n',
+    expected: /board_z-connector_h\]\)cylinder\(d=0\.7,h=connector_h\)/,
+    operator: 'match',
+    diff: 'simple'
+  }
