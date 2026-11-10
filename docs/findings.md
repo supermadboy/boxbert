@@ -388,6 +388,25 @@ einfügen, Datum dazu.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 
+- **PN532: Außenfoto, sichtbare PCB-Seite und axiale Schichtung gemeinsam prüfen
+  (Nutzerfotos und eigene digitale Prüfung, 10.11.2026).** Der Entwurf vom
+  06.11. deutete die Deckel-Außenseite mit sichtbaren Buttonkappen als innen.
+  Passende Anschlusskanten allein genügten nicht: Das Gitter lag zwischen
+  Glas und Elektronik. Bestätigter Sollstand: Bauteile zum Glas, vier Anschlüsse
+  links, acht oben, Löcher obenlinks/untenrechts; Gitter und lange Stifte nach
+  innen. Die Vorder-/Rückseitenfotos unterscheiden Lötenden von langen Steckern.
+  Die untere Holzlasche bleibt unten und wandert nach rechts; sie wird nicht
+  an die rechte Kante oder zusammen mit der anderen nach links verlegt.
+  Eine Außenreferenz verlangt auch eine passende CNC-Transformation, ohne
+  die asymmetrische Wellenkontur zu spiegeln. Quellen: dauerhaft gesicherte
+  [Ist-/Sollfotos](cad/pn532/photo-correction-2026-11-10/README.md),
+  `3d-print/mounts/pn532-mount/README.md` und echte Rohprüfungen unter
+  `3d-print/mounts/pn532-mount/logs/photo-exterior/`.
+  Fünf Node-Tests und 53 Solid-Prüfungen bestanden; Kopf-/SMD-Toleranz bleibt
+  OPEN. Die vorläufigen 5,5 mm Glasabstand beruhen auf einer ungemessenen
+  5-mm-SMD-Hülle plus 0,5 mm Nennreserve, nicht auf den rückwärtigen Steckern
+  und nicht auf einer realen Höhenmessung. Keine Druck-/Passungs-/RF-Abnahme.
+
 - **NeoPixel: neue reale Kopfprobe ersetzt keine erfundenen Maße (07.11.2026).**
   Nutzer bestätigt kleine M2,5×12-Köpfe von oben am realen PCB; alte Konflikte
   nominaler M2-Hüllen gegen angenommene LED-XY sind für diese Auswahl überholt.

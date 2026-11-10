@@ -14,6 +14,9 @@ blauer Button unten, Gehäuserand rechts. Gegenfoto `img_3b57961b9cd2.jpg`
 zeigt die unbestückte Rückseite mit langen Stiften: **Stecker/Pins hinten ins
 Gehäuse**, nicht glaswärts. Die Seitenzuordnung ist aus beiden Fotos abgeleitet;
 Stecker-, Lot- und Bauteilhöhen sind weiterhin ungemessene CAD-Hüllen.
+Die drei Nutzerfotos mit eindeutiger Ist-/Sollzuordnung sind dauerhaft unter
+[`docs/cad/pn532/photo-correction-2026-11-10/`](../../../docs/cad/pn532/photo-correction-2026-11-10/README.md)
+gesichert; die Cache-Dateinamen oben dienen nur der ursprünglichen Zuordnung.
 
 Lokales Foto-/Drucksystem: x rechts, y oben, **+z außen/glaswärts**, −z innen.
 Bestätigte PCB42,7×40,4×1,15 mm, LöcherØ2,93, nahe Kante→Lochrand6,26 mm.
