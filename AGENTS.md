@@ -248,6 +248,15 @@ USB-Aussparung fertigt Daddelbert ausdrücklich von Hand, sie ist nicht Teil
 des CNC-Modells. Steckerfreiraum und ungemessene Bauteilhöhen real prüfen.
 Details/Findings zuerst in `docs/mounts-weiterarbeit.md` lesen.
 Hermes nutzt für diesen Ablauf den Skill `boxbert-cad-mounts`.
+PN532 aktuell nach Außenfoto-Korrektur vom **10.11.2026**:
+`3d-print/mounts/pn532-mount/README.md`. Bauteile zum Plexiglas, Gitter dahinter;
+vier Anschlüsse links/acht oben, Löcher obenlinks/untenrechts. Eine Holzlasche
+links oben, zweite an der Unterkante weit rechts. RX-M2,5×5,7 von der
+PCB-Auflageseite ohne PCB einsetzen. Glasabstand vorläufig5,5 mm nach
+angenommener Bauteilhülle; keine reale Höhen-/Passungs-/RF-Abnahme. CNC/Glas
+unverändert, aktuelle Nachweise `logs/photo-exterior/`. Ältere Innenansichts-
+und Schichtungsangaben sind überholt. Fotoquellen und Findings in
+`docs/cad/pn532/photo-correction-2026-11-10/` und `docs/findings.md`.
 Aktueller NeoPixel-Vorschlag: `3d-print/mounts/neopixel-stick-mount/README.md`.
 Messabgleich21.10.2026: PCB54×9,9×1,6, PCB+LED3,23, LöcherØ3/Raster26;
 Adafruit nur noch historische Referenz. **Beide Holzlaschen laut Nutzer im
@@ -255,8 +264,12 @@ Deckelfoto nach links zur Lochreihe/Deckelmitte**, nicht zur Außenkante.
 CNC nur außen:58,4×14,3 / Falz62,4×18,3×3. Direkte Lötleitungen, Stiftleiste
 entfernen. Kabelausgang samt Zugentlastung auf neueste Nutzerkorrektur am
 anderen kurzen Ende (lokal+x/rechts im Modell); keine elektrische Padfreigabe.
-M2-Schrauben/M2-Muttern beibehalten, keine M2,5-ruthex;
-Schraubenkopf-/Bauteilfreiheit im CAD offen, keine physische Freigabe.
+**Aktuell seit07.11.2026:** RX-M2,5×5,7 von oben ohne PCB; M2,5×12 mit laut
+Nutzer real passendem kleinem Kopf, vollständig offene Schraubenkanäle.
+Alte M2-/Mutternvorgaben und Kopfkonflikte angenommener M2-Hüllen sind überholt.
+Maße/Kopfkontur nicht erfinden; reale Druck-/Heat-Set-/Last-/Lichtprobe offen.
+Die genannten schmalen Falzmaße sind historisch; aktive Wellenfalz-/Glaskonturen
+und Fertigungsdateien stehen im jeweiligen Mount-README.
 Die nachfolgenden Step-Up-Regeln gelten weiterhin für flache Boden-Mounts.
 
 Vor einem Mount-Auftrag **`docs/mounts-weiterarbeit.md` und

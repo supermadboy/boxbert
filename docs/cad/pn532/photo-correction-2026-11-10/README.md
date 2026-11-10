@@ -34,7 +34,6 @@ Der Glasabstand von vorläufig5,5 mm beruht auf einer angenommenen Bauteilhöhe,
 nicht einer realen Messung. Reale Montage-, Höhen-, Festigkeits- und RF-Prüfung
 bleiben offen.
 
-Die allgemeine `AGENTS.md` enthält noch ältere CAD-Angaben. Ihre Anpassung
-wurde vom Schutz für Agenten-Instruktionsdateien nicht freigegeben; die aktuellen
-modulspezifischen READMEs und `docs/mounts-weiterarbeit.md` dokumentieren die
-maßgeblichen Revisionen für PN532 (10.11.) und NeoPixel (07.11.).
+Die aktuelle Referenz ist auch in `AGENTS.md` verankert. Die modulspezifischen
+READMEs und `docs/mounts-weiterarbeit.md` dokumentieren die maßgeblichen
+Revisionen für PN532 (10.11.) und NeoPixel (07.11.).
