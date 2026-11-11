@@ -2,6 +2,67 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
+  Aktuell `boxbert-v1-commissioning-20261111`, Diagnosebuild
+  `~/.cache/boxbert-build-auvtr3vh/manifest.json`, 2545151 Byte Flash /
+  173380 Byte globale Variablen, Core3.3.12/QSPI, **NimBLE2.3.8**.
+  Bootvolume1, Maximum6/21; NFC/Stick/aktive Booststeuerung/Auto-Sleep aus;
+  Akku+USB laut Nutzer. Gemessene Eingänge übernommen, Encoder per Interrupt,
+  gelber Mini deaktiviert. SD/PSRAM/AW/Gauge/config=1.
+  **Nutzer meldete „Dateifehler“: nicht als behoben behandeln.** Beide Pfade
+  vorhanden; simulierte echte Button-Handler9/10 starten und decodieren MP3
+  erfolgreich, auch im gemeldeten WLAN-Modus. Diagnose stoppt diese Tests
+  nach20 s beiVolume1. Physische Buttons haben weiterhin keinen20-s-Stopp.
+  Ein früher `radio-off`-Versuch startete neu; mit Schrittausgaben und10-ms-
+  Diagnosepausen mehrere Funkwechsel bis einschließlich laufendem Decoder
+  erfolgreich. Ursache offen, Timing beeinflusst; kein gesicherter Fix.
+  Heap nach WLAN→BLE nur ca.24 kB idle/18,6 kB beim Decoder: Lastreserve offen.
+  **Nächste Session: [vollständige Übergabe](docs/uebergabe-endaufbau-2026-11-11.md)
+  lesen**, realen blauen Button mit Log testen, Nutzer-Sicht-/Hör-/Encoder-
+  Prüfung, dann echte BLE/PWA-/HTTP-Verbindung und Persistenz. Kein `/www`
+  auf SD festgestellt; SD-Weboberfläche nicht installiert. Kein Produktnachweis.
+ 17 native Programme,4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
+  Ereignisfolgen bestanden; USB-Diagnoseparser/20-s-Timer zusätzlich geprüft.
+  Private Lesesicherung vor Gesamtflash vorhanden; Musik unverändert.
+  Protokoll: `docs/testprotokoll-gesamtfirmware-2026-11-11.md`.
+
+- [ ] **Endaufbau-Einzeldiagnosen dokumentiert; gelber Mini offen (11.11.2026):** Nutzeraufbau mit
+  Akku + USB, ohne PN532/externen NeoPixel. Separaten Sketch
+  `firmware/tests/endaufbau_inputs/` erfolgreich gebaut/geflasht, laufender
+  `INPUT-DIAG v1`-Status bestätigt; TFT bewusst dunkel. AW 0x58 liest
+  0xF7FF (P13 LOW), erste zwei Statuszeilen ohne I2C-Lesefehler.
+  **Zehn Arcade-Buttons, zwei Minis, Encoder und Zusatzkippschalter real
+  zugeordnet**, Ergebnisse in `hardware/pinout.md`; gelber Mini links ohne
+  erkanntes Signal offen. Encoder-Taster real IO5, Zusatzkippschalter IO11,
+  großer blauer Button IO6; zahlreiche AW-Ports weichen von Planung ab.
+  Noch keine Gesamtgeräteabnahme. Config/Implementierung/Pinvertrag inzwischen
+  angeglichen; SD/Audio wie nachfolgend geprüft, Booststeuerung weiterhin offen.
+  SD-VCC laut Nutzer5 V. Anschließender separater SD-Lesetest mit geplanten
+  Pins CS8/SCK36/MOSI35/MISO37 bei4 MHz erfolgreich geflasht, aber
+  **mounted=0**; richtige/eingesetzte Karte vom Nutzer bestätigt. Einzelner
+  Taktvergleich mit400 kHz zunächst ebenfalls mounted=0. Nach Nutzerbitte
+  „probier jetzt mal“ unveränderter400-kHz-Test **erfolgreich**: mounted/root=1,
+  29818 MiB, acht Datei-Anfänge gelesen, keine Lesefehler. Ursache laut Nutzer:
+  vier SD-Signalkabel am Modul falsch herum gesteckt, inzwischen korrigiert.
+  **Erneuter4-MHz-Lesetest ebenfalls erfolgreich**;Volldateien/Streaming offen.
+  Audio-I2S-Pins vom Nutzer bestätigt; separater Audio-Test geflasht:
+  SD/PSRAM/I2S=1, MP3 läuft laut Decoder beiVolume1/21,20-s-Stop greift.
+  **Hörtest beiVolume1/21 vom Nutzer bestätigt** („yes hab gehoert“).
+  Danach separaten **AUDIO-TFT-DIAG v1** erfolgreich geflasht (inzwischen
+  durch Gesamtfirmware ersetzt):240×135-Diagnoseanzeige, Bildzähler und MP3-Decoderzeit
+  bei gemeinsamem SPI-Bus beobachtet. **Sicht-/Hörtest parallel vom Nutzer
+  bestätigt** („ja sieht super aus und musik auch“), kein Dauertest.
+  Anschließend Nutzerpriorität Lautstärke: **VOLUME-DIAG v1** erfolgreich
+  geflasht (danach Gesamtfirmware, siehe oben), Encoder-Interrupts IO15/IO14, IO5
+  Start/Stop mit Release-vor-Start, temporäre Testgrenze0..6/21, Start1,
+ 20-s-Limit. Native Quadratur-/Grenztests bestanden; Status bereit.
+  **Geräte-Dreh-/Hörprüfung bestätigt** („passt danke“): rechts lauter,
+  links leiser,0 stumm bei laufendem Decoder, Anzeige passend; Log zeigt
+  requested=actual0..6,Start/Stop/20-s-Limit. Noch Diagnose, keine Persistenz.
+  Bewährte Interrupt-Erfassung inzwischen in Gesamtfirmware übernommen;
+  Geräteprüfung mit tatsächlicher Funk-/TFT-Last bleibt gesondert offen.
+  Nachweise/Build: `docs/testprotokoll-endaufbau-inputs.md`.
+
 - [x] **Encoder-Taster und NFC-IRQ getauscht (06.11.2026, Nutzerfreigabe):**
   Encoder-Taster von IO12 auf IO11; IO12 jetzt für späteren PN532-IRQ
   reserviert. Pinplan und Gesamtfirmware angepasst, IO9 bleibt Boost-EN.

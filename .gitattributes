@@ -1,0 +1,2 @@
+# Preserve raw serial captures, including mixed LF/CRLF from device printf/println.
+docs/serial/*.log -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

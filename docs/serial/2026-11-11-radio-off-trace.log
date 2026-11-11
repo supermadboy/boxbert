@@ -1,0 +1,12 @@
+
+# USB capture 2026-11-11T20:59:47.782819; no DTR/RTS ioctl
+# Sent once: radio-off
+RADIO step=begin mode=0 heap=42640
+RADIO step=wifi-stop mode=0 heap=42640
+RADIO step=drop-peer mode=0 heap=42640
+RADIO step=advertising-stop mode=0 heap=42640
+RADIO step=nimble-deinit mode=0 heap=42640
+RADIO step=deinit-ok mode=0 heap=106788
+DIAG radio off
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=0 config=1 heap=106788
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=0 config=1 heap=106788

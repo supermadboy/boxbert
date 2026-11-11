@@ -1,0 +1,64 @@
+
+# USB capture 2026-11-11T21:02:36.698320; no DTR/RTS ioctl
+# Sent once: radio-ble
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=0 config=1 heap=59260
+BOXBERT commissioning SD=1 PSRAM=RADIO step=begin mode=2 heap=59260
+RADIO step=wifi-stop mode=2 heap=59392
+DIAG radio BLE
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=24308
+
+# USB capture 2026-11-11T21:02:40.859750; no DTR/RTS ioctl
+# Sent once: test9
+BUTTON id=9
+TAG index=0
+START requested song='/arcade-music-loop.mp3' intro='' I2S=1 SD=1 heap=24260 psram=838820
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+
+# USB capture 2026-11-11T21:02:45.007613; no DTR/RTS ioctl
+# Sent once: radio-off
+RADIO step=begin mode=0 heap=18620
+RADIO step=wifi-stop mode=0 heap=18620
+RADIO step=drop-peer mode=0 heap=18620
+RADIO step=advertising-stop mode=0 heap=18620
+RADIO step=nimble-deinit mode=0 heap=18620
+RADIO step=deinit-ok mode=0 heap=82792
+DIAG radio off
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=1 config=1 heap=82792
+
+# USB capture 2026-11-11T21:02:49.168756; no DTR/RTS ioctl
+# Sent once: radio-wifi
+RADIO step=begin mode=1 heap=82792
+RADIO step=wifi-stop mode=1 heap=82792
+DIAG radio WiFi
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=1 config=1 heap=53528
+
+# USB capture 2026-11-11T21:02:53.310545; no DTR/RTS ioctl
+# Sent once: radio-ble
+RADIO step=begin mode=2 heap=53528
+RADIO step=wifi-stop mode=2 heap=53660
+DIAG radio BLE
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=18628
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=18628
+DIAG 20-second test STOP
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+
+# USB capture 2026-11-11T21:03:02.505780; no DTR/RTS ioctl
+# Sent once: test-stop
+DIAG STOP
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=24316

@@ -11,6 +11,71 @@ Verbindliche Quelle fuer Pin-Vorschlaege in Doku, Firmware und Chats.
 Getestete Verbindungen und noch nicht aufgebaute Erweiterungen sind unten
 getrennt. Endgueltige Firmware-Belegung spaeter in `firmware/Config.h`.
 
+## Gemessener Endaufbau — Eingänge (11.11.2026)
+
+**Für die folgenden Kontakte ersetzt die reale Zuordnung die älteren
+Anschlussplanungen.** Diagnose einzeln betätigt und mit Nutzerpositionen
+abgeglichen; keine endgültige Funktions-/UI-ID-Zuweisung. Gesamtfirmware
+`firmware/Config.h` und Gesamtfirmware inzwischen daran angepasst;
+Gerätenachweis für Gesamtfirmware separat, nicht aus Diagnose ableiten.
+Nachweis: `docs/testprotokoll-endaufbau-inputs.md`, Rohlog dort verlinkt.
+Positionen wie vom Nutzer beim Test bezeichnet.
+
+| Kontakt | Tatsächlicher Eingang |
+|---|---|
+| 30 mm Rot unten links | AW P07 |
+| 30 mm Gelb über Rot | AW P14 |
+| 30 mm Weiß rechts neben Rot | AW P10 |
+| 30 mm Grün über Weiß | AW P06 |
+| 24 mm Rot unten links | AW P12 |
+| 24 mm Blau über Rot | AW P05 |
+| 24 mm Gelb rechts neben Rot | AW P00 |
+| 24 mm Grün über Gelb | AW P11 |
+| 44 mm Rot unten rechts | AW P13 |
+| 44 mm Blau über Rot | Feather IO6 |
+| Mini Grün rechts neben Mini Gelb | AW P17 |
+| Mini Rot rechts neben Mini Grün | AW P15 |
+| Mini Gelb ganz links | offen, kein Wechsel erkannt |
+| Encoder-Taster | Feather IO5 |
+| Encoder-Drehleitungen | Feather IO15/IO14, gegenläufige Phasenfolgen beobachtet |
+| Zusätzlicher Kippschalter | Feather IO11 |
+
+### Logische Button-IDs der Gesamtfirmware
+
+Die IDs folgen der vorhandenen schematischen App-Ansicht: bei30/24 mm
+oben links/rechts, dann unten links/rechts; bei44 mm oben, dann unten.
+Keine Änderung gespeicherter Medienbelegungen anhand von Farben.
+
+| ID | Physischer Kontakt | Eingang |
+|---|---|---|
+| 1 | 30 mm Gelb oben links | AW P14 |
+| 2 | 30 mm Grün oben rechts | AW P06 |
+| 3 | 30 mm Rot unten links | AW P07 |
+| 4 | 30 mm Weiß unten rechts | AW P10 |
+| 5 | 24 mm Blau oben links | AW P05 |
+| 6 | 24 mm Grün oben rechts | AW P11 |
+| 7 | 24 mm Rot unten links | AW P12 |
+| 8 | 24 mm Gelb unten rechts | AW P00 |
+| 9 | 44 mm Blau oben | IO6 |
+| 10 | 44 mm Rot unten | AW P13 |
+
+AW-Adresse 0x58. IO11 im aktuellen Schalterzustand LOW. IO5/IO6 bleiben
+RTC-fähige Kontakte, sind real aber Encoder-Taster/großer blauer Button,
+nicht zwei 30-mm-Buttons. Boost-EN, SD und Audio hier **nicht** verifiziert;
+deren geplante Pins unten bleiben nur Anschlussplanung. Gelben Mini-Taster
+nicht stillschweigend einem verbleibenden Anschluss zuweisen.
+
+### SD-Gerätenachweis 11.11.2026
+
+SD-Lesetest mit **CS IO8, SCK IO36, MOSI IO35, MISO IO37 bei400 kHz**
+erfolgreich: Karte29818 MiB, Root lesbar, acht Datei-Anfänge ohne Lesefehler.
+SD-VCC laut Nutzer5 V. Vorherige Versuche mit4 MHz/400 kHz scheiterten;
+Nutzer bestätigt anschließend vier am SD-Modul falsch herum gesteckte
+Signalkabel und deren Korrektur. **Anschließender4-MHz-Vergleich ebenfalls
+erfolgreich**, gleiche Kapazität/acht Datei-Anfänge ohne Lesefehler.
+Kein Vollkarten-/Schreib-/Dauer- oder Railführungsnachweis.
+Details: `docs/testprotokoll-endaufbau-inputs.md`.
+
 ## Verbindlicher Encoder-/IRQ-Tausch (06.11.2026)
 
 Nutzerfreigabe: **Encoder-Taster → IO11**, **PN532-IRQ reserviert → IO12**.

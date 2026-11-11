@@ -1,0 +1,169 @@
+
+# Passive capture 2026-11-11T19:39:24.988681; no DTR/RTS ioctl or writes
+[STATUS 10007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=0 volume=1 file=/arcade-music-loop.mp3
+TFT frames=30 size=240x135
+Manual START connect=1 volume=1 file=/arcade-music-loop.mp3
+[audio] info: inputBufferSize: 655349 bytes
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] id3data: Encoded by: Logic Pro X
+[audio] id3data: Publication date: 2014-10-09
+[audio] id3data: UserDefinedText: coding_history
+[audio] id3data: UserDefinedText: time_reference
+[audio] id3data: UserDefinedText: umid
+[audio] id3data: SettingsForEncoding: Lavf63.1.102
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+[audio] bitrate (b/s): 129321
+[STATUS 15007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=3 volume=1 file=/arcade-music-loop.mp3
+TFT frames=48 size=240x135
+[STATUS 20007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=8 volume=1 file=/arcade-music-loop.mp3
+TFT frames=68 size=240x135
+[STATUS 25007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=13 volume=1 file=/arcade-music-loop.mp3
+TFT frames=88 size=240x135
+[STATUS 30007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=108 size=240x135
+20-second limit: STOP
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[STATUS 35007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=128 size=240x135
+[STATUS 40007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=148 size=240x135
+[STATUS 45007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=168 size=240x135
+[STATUS 50007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=188 size=240x135
+[STATUS 55007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=208 size=240x135
+[STATUS 60007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=228 size=240x135
+[STATUS 65007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=248 size=240x135
+[STATUS 70007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=268 size=240x135
+[STATUS 75007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=288 size=240x135
+[STATUS 80007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=308 size=240x135
+[STATUS 85007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=328 size=240x135
+[STATUS 90007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=348 size=240x135
+[STATUS 95007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=368 size=240x135
+[STATUS 100007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=388 size=240x135
+[STATUS 105007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=408 size=240x135
+[STATUS 110007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=428 size=240x135
+[STATUS 115007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=448 size=240x135
+[STATUS 120007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=468 size=240x135
+[STATUS 125007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=488 size=240x135
+[STATUS 130007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=508 size=240x135
+[STATUS 135007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=528 size=240x135
+[STATUS 140007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=548 size=240x135
+[STATUS 145007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=568 size=240x135
+[STATUS 150007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=588 size=240x135
+[STATUS 155007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=608 size=240x135
+[STATUS 160007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=628 size=240x135
+[STATUS 165007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=648 size=240x135
+[STATUS 170007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=668 size=240x135
+[STATUS 175007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=688 size=240x135
+[STATUS 180007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=708 size=240x135
+[STATUS 185007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=728 size=240x135
+[STATUS 190007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=748 size=240x135
+[STATUS 195007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=768 size=240x135
+[STATUS 200007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=788 size=240x135
+[STATUS 205007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=808 size=240x135
+[STATUS 210007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=828 size=240x135
+[STATUS 215007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=848 size=240x135
+[STATUS 220007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=868 size=240x135
+[STATUS 225007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=888 size=240x135
+[STATUS 230007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=908 size=240x135
+[STATUS 235007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=928 size=240x135
+[STATUS 240007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=948 size=240x135
+[STATUS 245007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=968 size=240x135
+[STATUS 250007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=988 size=240x135
+[STATUS 255007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1008 size=240x135
+[STATUS 260007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1028 size=240x135
+[STATUS 265007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1048 size=240x135
+[STATUS 270007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1068 size=240x135
+[STATUS 275007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1088 size=240x135
+[STATUS 280007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1108 size=240x135
+[STATUS 285007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1128 size=240x135
+[STATUS 290007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1148 size=240x135
+[STATUS 295007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1168 size=240x135
+[STATUS 300007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1188 size=240x135
+[STATUS 305007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1208 size=240x135
+[STATUS 310007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1228 size=240x135
+[STATUS 315007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1248 size=240x135
+[STATUS 320007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1268 size=240x135
+[STATUS 325007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1288 size=240x135
+[STATUS 330007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1308 size=240x135
+[STATUS 335007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1328 size=240x135
+[STATUS 340007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1348 size=240x135
+[STATUS 345007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1368 size=240x135
+[STATUS 350007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1388 size=240x135
+[STATUS 355007] AUDIO-TFT-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+TFT frames=1408 size=240x135

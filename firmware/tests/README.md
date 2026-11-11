@@ -1,7 +1,11 @@
 # Aktive Breadboard-Referenzen
 
-Stand: **04.10.2026, Etappen 0–5 als Breadboard-Meilensteine bestanden.** Kein Produktfirmware-
-Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
+Historische Breadboard-Referenzen: **04.10.2026, Etappen0–5 bestanden.**
+Kein Produktfirmware-Sammelsketch: jede Referenz hat begrenzten Testumfang.
+**Aktueller Flash11.11.2026: `firmware/boxbert/` im Diagnose-/Inbetriebnahmeprofil.**
+Weiterarbeit: `docs/uebergabe-endaufbau-2026-11-11.md`, aktuelle Pins ausschließlich
+`hardware/pinout.md`. Alte Sketche haben teilweise andere Pins und dürfen nicht
+ungeprüft auf den Endaufbau geflasht werden.
 
 | Sketch | Zweck / Status |
 |---|---|
@@ -15,9 +19,33 @@ Sammelsketch: jede Referenz hat einen begrenzten Testumfang.
 | etappe4_tag_player | Etappe-4-Referenz, optimierter Hoertest bestaetigt; seit Etappe-5-Flash nicht mehr auf Board |
 | etappe5_web_upload | Breadboard-Abnahme bestanden: WLAN-Station, Handy-Webseite, Dateiliste, Upload, NVS-Zuordnung der zwei bekannten Tags samt RESET-Test; Haertung offen, siehe `docs/testprotokoll-etappe5.md` |
 | akku_fuel_gauge | liest onboard MAX17048 (Spannung/SoC/Laderate) am Serial-Monitor; kein NFC/SD/Audio. Werte nicht gesichert, nur Nutzerbestätigung — `docs/testprotokoll-akku.md` |
-| etappe7_gesamtmonitor | **aktuell geflasht (07.10.2026)**: NFC-Player + TFT-Statusanzeige (Akku/Ladestatus/Lied/Volume/WLAN) + MAX17048-Eigen-Task mit Wire-Mutex, NFC-Timeout 250 ms (Abweichung zur Referenz, siehe Protokoll); kein Web-Upload. Nutzer: „funktioniert alles“ — `docs/testprotokoll-etappe7.md` |
+| etappe7_gesamtmonitor | **damals geflasht (07.10.2026), inzwischen ersetzt**: NFC-Player + TFT-Statusanzeige (Akku/Ladestatus/Lied/Volume/WLAN) + MAX17048-Eigen-Task mit Wire-Mutex, NFC-Timeout 250 ms (Abweichung zur Referenz, siehe Protokoll); kein Web-Upload. Nutzer: „funktioniert alles“ — `docs/testprotokoll-etappe7.md` |
 
-## Etappe 4 — gueltiger Stand
+## Endaufbau-Diagnosen11.11.2026
+
+Alle gehören zum tatsächlichen Endaufbau, nicht zur alten Breadboard-Belegung.
+Nutzer testet mit Akku+USB; vor Umverdrahten beide Versorgungen abtrennen.
+PN532 und externer Stick fehlen. Umfang und echte Nutzerbestätigungen stehen in
+`docs/testprotokoll-endaufbau-inputs.md` und im Gesamtfirmware-Protokoll.
+
+| Sketch | Begrenzter Zweck |
+|---|---|
+| endaufbau_inputs | Unbekannte Signale passiv erfassen; erst Inputs, dann AW9523 auf0x58 identifiziert; keine unbekannten GPIOs treiben |
+| endaufbau_sd | Root/acht Dateianfänge lesen, CS8/SCK36/MOSI35/MISO37; historische400-kHz-/4-MHz-Sketchvarianten, aktuell4MHz |
+| endaufbau_audio | Leiser MP3-Decoder-/Hörtest beiVolume1, Stopp nach20s |
+| endaufbau_audio_tft | SD+Audio+TFT gemeinsam, Nutzer bestätigt Bild und Ton |
+| endaufbau_volume | ISR-Encoder15/14, Taste5, Volume0..6,0 stumm,20-s-Limit; vom Nutzer bestätigt |
+| endaufbau_backup | Konfigslots/Legacy-Zuordnung nur lesen; Hostbackup privat außerhalb des Repos |
+| endaufbau_ble_init | USB `b` initialisiert/advertisiert, `d` deinitialisiert; Init2.3.6 vs2.3.8 verglichen; aktueller Sketch enthält zusätzlich Scan-Response und Deinit-/Reinit-Test |
+
+`endaufbau_volume/Quadrature.h` bleibt die getestete Diagnosekopie; produktive
+ISR verwendet `firmware/runtime/Quadrature.h`. Erfolgslogs gehören immer zur
+angegebenen Sketch-/Library-/Buildvariante, nicht automatisch zum jüngsten Quellstand.
+
+## Etappe4 — historisch gültiger Breadboard-Stand
+
+**Nicht aktuelle Endaufbau-Verdrahtung:** damals SD-CS10, heute CS8.
+Die historischen Referenzsketche bleiben unverändert.
 
 PN532 I2C IO3/IO4, VCC 3V3, DIP 1 ON / 2 OFF, 100 kHz; SD SPI
 IO36/35/37, CS IO10, VCC USB-5V, im Player 4 MHz; MAX98357A I2S

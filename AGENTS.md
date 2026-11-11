@@ -23,7 +23,24 @@ wie erklärt wird, nicht was gilt.
 Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
 Etappe 5: Handy-Webseite, MP3-Upload, Tag-Zuordnung und Wiedergabe laut
 Nutzer erfolgreich, Zuordnung **und Wiedergabe nach RESET** bestaetigt.
-Aktuell geflasht: `firmware/tests/etappe5_web_upload/` (Arduino-Core 3.3.12,
+**Aktueller Geräteflash 11.11.2026:** `firmware/boxbert/`, Kennung
+`boxbert-v1-commissioning-20261111`,Core3.3.12/QSPI,NimBLE2.3.8.
+Gemessene Eingänge in `hardware/pinout.md`, Einzeltests inkl. leiser
+Encoder-Lautstärkeregelung bestätigt. Gesamtstand bootet mit SD/PSRAM/AW/
+Gauge/config=1,BLE-Modus; dessen Sicht-/Hör-/Funkabnahme noch offen.
+Temporär Bootvolume1/max6,NFC/Stick/aktiveBoost-Steuerung/Auto-Sleep aus.
+Akku+USB laut Nutzer, PN532/Stick fehlen. Aktueller Diagnosebuild:
+`~/.cache/boxbert-build-auvtr3vh/manifest.json`. Nutzer meldete „Dateifehler“;
+per USB simulierte Button-Handler starten beide MP3, Fehler nicht reproduziert
+und **nicht als behoben abgenommen**. Ein früher Funk-Aus-Versuch startete neu;
+mit zeitverändernden Diagnosetraces spätere Wechsel erfolgreich, Ursache offen.
+Nach WLAN→BLE beim Decoder nur ca.18,6 kB Heap; reale Funk-/PWA-Last offen.
+Vollständige Weiterarbeit: `docs/uebergabe-endaufbau-2026-11-11.md`,
+`docs/testprotokoll-gesamtfirmware-2026-11-11.md`, `To-Do.md`.
+NimBLE2.3.6 verursachte mit Core3.3.12 einen Init-Panic; isoliert reproduziert,
+2.3.8 behebt ihn. Keine alten Binaries mit2.3.6 als Gesamtstand flashen.
+
+Historischer Flashstand04.10.: `firmware/tests/etappe5_web_upload/` (Arduino-Core 3.3.12,
 SD 4 MHz, NFC-Pause 200 ms, Volume 6/21, USB-only; privates `Secrets.h`
 git-ignored). Etappe-4-Player bleibt unveraenderte Referenz im Repo.
 Aktueller Arbeitsstand/nächste Schritte in `To-Do.md`; Flash-Inhalt vor

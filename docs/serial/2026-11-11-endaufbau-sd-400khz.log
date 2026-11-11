@@ -1,0 +1,5 @@
+
+# Passive capture 2026-11-11T19:24:02.520051; no DTR/RTS ioctl or writes
+[STATUS 10008] SD-DIAG v2 mounted=0 root=0 entries=0 readOK=0 readFAIL=0 capacityMiB=0 IO9(passive)=1
+[STATUS 15008] SD-DIAG v2 mounted=0 root=0 entries=0 readOK=0 readFAIL=0 capacityMiB=0 IO9(passive)=1
+[STATUS 20008] SD-DIAG v2 mounted=0 root=0 entries=0 readOK=0 readFAIL=0 capacityMiB=0 IO9(passive)=1

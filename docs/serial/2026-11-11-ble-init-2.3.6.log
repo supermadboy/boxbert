@@ -1,0 +1,13 @@
+
+# Capture 2026-11-11T20:15:53.371822
+# Sent b once
+BLE-INIT before NimBLEDevice::init
+
+# Capture 2026-11-11T20:15:54.534012
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=4 heap=272812

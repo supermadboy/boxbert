@@ -11,7 +11,7 @@ HOME = Path.home() / '.local/share/boxbert-toolchain'
 LIBRARIES = ['Adafruit PN532@1.3.4', 'Adafruit BusIO@1.17.4',
              'Adafruit GFX Library@1.12.6', 'Adafruit ST7735 and ST7789 Library@1.11.0',
              'Adafruit MAX1704X@1.0.3', 'Adafruit NeoPixel@1.15.1',
-             'ArduinoJson@7.4.2', 'NimBLE-Arduino@2.3.6']
+             'ArduinoJson@7.4.2', 'NimBLE-Arduino@2.3.8']
 
 
 def download(url, target, digest):
@@ -52,6 +52,9 @@ def main():
         cli('lib', 'install', '--zip-path', str(audio))
     finally:
         cli('config', 'set', 'library.enable_unsafe_install', 'false')
+    # Dependency resolution can upgrade earlier explicit pins (e.g. GFX via
+    # ST7789). Reapply the pinned top-level set without another dependency pass.
+    cli('lib', 'install', '--no-deps', *LIBRARIES)
     cli('lib', 'list')
     print('No board has been flashed. Toolchain:', HOME)
 

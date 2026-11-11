@@ -1,0 +1,30 @@
+
+# USB capture 2026-11-11T21:01:35.387255; no DTR/RTS ioctl
+# Sent once: test9
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=0 config=1 heap=59308
+BUTTON id=9
+TAG index=0
+START requested song='/arcade-music-loop.mp3' intro='' I2S=1 SD=1 heap=59260 psram=821692
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=1 config=1 heap=53572
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=1 config=1 heap=53572
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=1 config=1 heap=53572
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=1 volume=1 running=1 config=1 heap=53572
+DIAG 20-second test STOP
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed

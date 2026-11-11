@@ -1,5 +1,22 @@
 # Boxbert-Gesamtfirmware bauen
 
+## Erstinbetriebnahmeprofil 11.11.2026
+
+**Der aktuelle Quellstand baut ausdrücklich ein temporäres Inbetriebnahmeprofil**
+(`firmware/Config.h`, Namespace `commissioning`), keine volle Produktfreigabe:
+NFC/externer Stick/aktive Boost-EN-Steuerung/Auto-Sleep deaktiviert, da Leser
+und Stick fehlen und Power-/Sleep-Verdrahtung noch nicht bestätigt ist.
+Onboard-Pixel, TFT, SD/Audio und BLE/WLAN bleiben enthalten. Bootvolume immer1,
+Encoder/RPC temporär0..6 von21; RPC lehnt höhere Werte ausdrücklich ab.
+Gespeicherte Lautstärke wird beim Boot nur im RAM durch1 ersetzt, nicht
+ungefragt ein alter hoher Wert abgespielt. Folgende Konfigurationsmutationen
+persistieren den aktuellen RAM-Stand; dauerhafte Bootvolumen-Persistenz erst
+nach Aufhebung des Profils prüfen. Pins entsprechen dem real gemessenen
+Endaufbau, gelber Mini-Taster deaktiviert. Encoder zählt Flanken per Interrupt
+statt per TFT-/Funk-abhängigem Loop-Polling. Die vorher getesteten Diagnosen
+bleiben unter `firmware/tests/endaufbau_*` als Rückfall.
+
+
 Der neue Integrationsstand liegt unter `firmware/boxbert/`; die bisherigen
 Etappen bleiben unverändert. Der API-Vertrag ist
 [`firmware-api-v1.md`](firmware-api-v1.md), die **noch nicht ausgeführte**
@@ -30,6 +47,53 @@ und SHA256-Manifest. Pins, Renderer und optionale V2-Frames werden aus ihren
 versionierten Quellen ins Staging übernommen. Das Skript flasht **nie**.
 Ein fehlgeschlagener Compile erzeugt kein Erfolgsmanifest. Erfolgreicher
 Crosscompile ist kein Hardware-/Funk-/Audio-/Stromnachweis.
+
+### BLE-Library-Korrektur 11.11.2026
+
+NimBLE-Arduino ist jetzt auf **2.3.8** gepinnt (statt2.3.6). Der isolierte
+Gerätetest mit Core3.3.12 reproduzierte einen Panic-Reset bei init mit2.3.6;
+identischer Sketch mit2.3.8 initialisiert/advertisiert erfolgreich.
+Hersteller-Changelog2.3.8 nennt explizit den Init-Crash mit Core3.3.7+:
+https://github.com/h2zero/NimBLE-Arduino/blob/2.3.8/CHANGELOG.md .
+Quellen und Gerätenachweise: `testprotokoll-gesamtfirmware-2026-11-11.md`.
+Installer setzt nach der Abhängigkeitsauflösung alle expliziten Versionen
+nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
+
+## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
+
+Aktuell geflasht: `~/.cache/boxbert-build-auvtr3vh/manifest.json`,2545151 Byte
+Flash/173380 Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
+beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
+[`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).
+
+`commissioning::UsbDiagnostics=true` erlaubt ausschließlich ganze LF-/CRLF-
+Zeilen: `diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`,
+`radio-wifi`. Kein allgemeiner Kommando-/Dateischreibzugang.
+
+```sh
+python3 tools/firmware/usb-diagnostics.py --command diag --seconds 8 \
+  --log docs/serial/NEUER-diagnoseausschnitt.log
+# Kann hörbaren Ton starten: niedriges Volume1, automatischer20-s-Stopp.
+python3 tools/firmware/usb-diagnostics.py --command test9 --seconds 24 \
+  --log docs/serial/NEUER-button9-test.log
+```
+
+Linux-stdlib,115200, stabiler Feather-by-id-Pfad als Default. Keine DTR/RTS-
+Ioctls, keine1200-Baud-Berührung, keine wiederholten Kommandos nach CDC-
+Neuanmeldung; nur ein Leser gleichzeitig. `--seconds` höchstens120, ohne
+`--command` nur lesend. Log appendend mit Zeit-/Sende-/Verbindungsmarkern.
+Exit0 heißt **nur Senden**, nicht erfolgreiches Gerätetestresultat. Logs auf
+Antwort, Reset/Portwechsel und vollständigen Teststopp prüfen. Das Werkzeug
+akzeptiert absichtlich **kein `credentials`**. Niemals Passwortausgaben in
+Nachweislogs schreiben.
+
+`test9`/`test10` verwenden echte Zuordnungshandler9/10, setzen RAM-Volume1
+und stoppen spätestens nach20s. Physische Buttons haben **kein** solches
+Testlimit; spätere Starts während des Diagnosefensters können ebenfalls vom
+Teststopp beendet werden. `test-stop` beendet die Wiedergabe/Testfrist explizit.
+USB-Testvolumen ist keine Persistenzprüfung. Funktraces haben `Serial.flush()`
+und10-ms-Schrittpausen: hilfreich zur Diagnose, keine zeitneutrale Beobachtung.
+Vor produktiver Freigabe Diagnosezugang/Timing prüfen bzw. deaktivieren.
 
 ## Private WLAN-Zugangsdaten
 

@@ -16,6 +16,23 @@ einfügen, Datum dazu.
 
 ## I2S-Audio / MAX98357A
 
+- **TFT „Dateifehler“ ist noch keine Diagnose der SD-Karte (eigener Test,
+  11.11.2026).** Nach Nutzerfehlermeldung im Gesamtstand beide gespeicherten
+  Pfade vorhanden; USB-Aufruf der echten Buttonhandler9/10 öffnet/decodiert
+  `/arcade-music-loop.mp3` und `/fart.mp3`, auch im gemeldeten WLAN-Modus.
+  Der physische Kontaktpfad und die ursprüngliche Situation sind damit nicht
+  reproduziert. Ein früher kurzer Sound startete nach EOF mehrfach neu; im
+  späteren Tracebuild nicht wieder beobachtet. Kein gesicherter Fix/Hoertest.
+  Ein früher Funk-Aus-Aufruf startete neu, spätere Funkzyklen einschließlich
+  laufendem Decoder erfolgreich — allerdings mit Flush/10-ms-Schrittpausen,
+  also verändertem Timing. Nach WLAN→BLE nur ca.18,6 kB Heap im Decoderbetrieb.
+  → Exakte Pfade, Caller-/Button-/Encoderereignisse, Decoderfehler und tatsächlichen
+  Modus aufzeichnen; keine vorschnelle Neuverdrahtung oder Librarywechsel.
+  Speicherreserve und Resetursache bleiben offene Härtungspunkte, ohne einen
+  Speicherleck-/Hardwaredefekt zu behaupten. Quelle: eigene Rohlogs
+  `docs/serial/2026-11-11-{dateifehler-*,radio-*,player-*}.log`,
+  `docs/testprotokoll-gesamtfirmware-2026-11-11.md`.
+
 - **SD-Takt dominiert gemessene MP3-Startstrecke (eigener Vergleich,
   04.10.2026).** Nutzer meldet beim neuen Zwei-Tag-Player ca. 5 s
   Wechselzeit. Danach Zeitstempel: Happy Tune UID→stream-ready **5499 ms**
@@ -385,6 +402,33 @@ einfügen, Datum dazu.
   SPIFFS-Never-Used-Szenarien vermeiden wir, indem wir für Konfigdaten
   (falls überhaupt nötig) von Anfang an LittleFS nutzen, nicht SPIFFS.
   Quelle: [Offizielle Migrations-Guide 2.x→3.0](https://docs.espressif.com/projects/arduino-esp32/en/latest/migration_guides/2.x_to_3.0.html), [Random Nerd Tutorials dazu](https://randomnerdtutorials.com/esp32-migrating-version-2-to-3-arduino/)
+
+## BLE / NimBLE — Gerätebefund 11.11.2026
+
+- **NimBLE2.3.6 + Arduino-Core3.3.12: Init-Panic;2.3.8 behebt ihn auf
+  unserem Gerät.** Erster Gesamtflash erreichte SD/Audio/Gauge/AW=1,
+  dann Neustartschleife beim Funkstart. Separater Minimaltest ohne SD/Audio
+  startet NimBLE nur auf USB-Befehl: mit2.3.6 Abbruch nach „before init“,
+  nach Neustart `esp_reset_reason()=4` (Panic); mit identischem Sketch und
+  nur Bibliothekswechsel auf2.3.8 init=1/advertising=1 und wiederholte
+  Heartbeats. Anschließend Gesamtfirmware mit2.3.8 startet bis in die
+  Hauptschleife, BLE-Modus und Konfiguration gesund gemeldet.
+  Hersteller bestätigt Init-Crash mit Core3.3.7+ im
+  [2.3.8-Changelog](https://github.com/h2zero/NimBLE-Arduino/blob/2.3.8/CHANGELOG.md),
+  [Fix1090](https://github.com/h2zero/NimBLE-Arduino/pull/1090),
+  [ESP32-S3-Fehlerbericht12375](https://github.com/espressif/arduino-esp32/issues/12375).
+  Eigene Rohlogs/Builds: `docs/testprotokoll-gesamtfirmware-2026-11-11.md`.
+  Init/Advertising-Status ist noch keine erfolgreiche GATT-/PWA-Verbindung.
+- **Xtensa-IRAM-ISR als Klassen-Inlinefunktion kann beim Linken scheitern.**
+  Eigener Gesamtbuild meldete l32r „literal placed after use“ für Encoder-
+  Callback. Deklaration in Klasse, IRAM-Definition außerhalb im einzelnen
+  Sketch-TU behebt den Buildfehler; Interrupt-Algorithmus unverändert.
+  Nicht blind IRAM entfernen, nur weil der Linker dann eventuell grün wird.
+- **Arduino-CLI-Abhängigkeiten können zuvor explizit gepinnte Libraries
+  anheben.** Isolierter Installer setzte GFX1.12.6, nach Installation der
+  übrigen Dependencies stand1.13.0 in der Liste. Abschließende erneute
+  Installation aller expliziten Pins mit `--no-deps` korrigiert den Stand;
+  `build.py` prüft exakte Versionen weiter vor dem Build.
 
 ## 3D-Druck / Einzel-Mounts / OpenSCAD
 

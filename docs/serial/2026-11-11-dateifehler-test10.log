@@ -1,0 +1,68 @@
+
+# USB capture 2026-11-11T20:44:48.711791; no DTR/RTS ioctl
+# Sent once: test10
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=42500
+BOXBERT commissioning SD=1 PSRAM=BUTTON id=10
+START requested song='/fart.mp3' intro='' I2S=1 SD=1 heap=41280 psram=838980
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] info: Reading file: "/fart.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 23461
+[audio] info: ID3 framesSize: 57
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 1
+[audio] info: Bitrate (b/s): 187232
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 57
+[audio] info: Audio-Length: 23404
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+[audio] info: Closing audio file "fart.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] eof: fart.mp3
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=41828
+START requested song='/fart.mp3' intro='' I2S=1 SD=1 heap=41828 psram=839156
+[audio] info: Reading file: "/fart.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 23461
+[audio] info: ID3 framesSize: 57
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 1
+[audio] info: Bitrate (b/s): 187232
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 57
+[audio] info: Audio-Length: 23404
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+[audio] info: Closing audio file "fart.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] eof: fart.mp3
+START requested song='/fart.mp3' intro='' I2S=1 SD=1 heap=41828 psram=839156
+[audio] info: Reading file: "/fart.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 23461
+[audio] info: ID3 framesSize: 57
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 1
+[audio] info: Bitrate (b/s): 187232
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 57
+[audio] info: Audio-Length: 23404
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=36152
+[audio] info: Closing audio file "fart.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] eof: fart.mp3
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=41828

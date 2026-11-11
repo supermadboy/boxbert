@@ -30,6 +30,7 @@ class Transport {
  QueueHandle_t bleEvents=nullptr;std::atomic<bool> bleOverflow{false};uint16_t peer=BLE_HS_CONN_HANDLE_NONE;
  bool subscribed=false,authenticated=false;String nonce,bleTx;size_t bleOffset=0;uint32_t nonceAt=0,bleAt=0,notifyAt=0;
  LineParser parser;StationFallback stationFallback;CredentialCommand usbCommand;
+ DiagnosticCommand diagnosticCommand;bool diagnosticPlaying=false;uint32_t diagnosticAt=0;
  static constexpr const char* Service="6f786265-7274-4000-8000-000000000001";
  class ServerCallbacks:public NimBLEServerCallbacks {
   Transport& t;public:ServerCallbacks(Transport& owner):t(owner){}
@@ -139,13 +140,43 @@ class Transport {
   tx=svc->createCharacteristic("6f786265-7274-4000-8000-000000000003",NIMBLE_PROPERTY::READ|NIMBLE_PROPERTY::NOTIFY,20);tx->setCallbacks(&txCallbacks);tx->setValue("");svc->start();
   auto ad=NimBLEDevice::getAdvertising();ad->setName("Boxbert");ad->addServiceUUID(Service);ad->enableScanResponse(true);
  }
+ void diagnostic(DiagnosticCommand::Command command){
+  using D=DiagnosticCommand;
+  if(command==D::None)return;
+  if(command==D::Inspect){
+   Serial.printf("DIAG SD=%d I2S=%d playback=%d volume=%u heap=%u maxAlloc=%u psram=%u config=%d revision=%lu\n",rpc.hw.sd,rpc.hw.audioReady,rpc.hw.playback,rpc.hw.audio.getVolume(),ESP.getFreeHeap(),ESP.getMaxAllocHeap(),ESP.getFreePsram(),rpc.store.ready&&!rpc.store.damaged,(unsigned long)rpc.store.revision);
+   for(int i=0;i<2;i++){String song=rpc.store.data["tags"][i]["path"].as<String>(),intro=rpc.store.data["tags"][i]["introPath"].as<String>();Serial.printf("DIAG tag%d song='%s' exists=%d intro='%s'\n",i,song.c_str(),rpc.hw.exists(song.c_str()),intro.c_str());}
+   if(rpc.hw.sd){File root=SD.open("/");for(File f=root.openNextFile();f;f=root.openNextFile()){Serial.printf("DIAG entry '%s' bytes=%llu dir=%d\n",f.name(),(unsigned long long)f.size(),f.isDirectory());f.close();}root.close();}
+   Serial.printf("DIAG GPIO5=%d GPIO6=%d GPIO11=%d\n",digitalRead(5),digitalRead(6),digitalRead(11));
+   Serial.println("DIAG END");return;
+  }
+  if(command==D::Stop){rpc.hw.stop();diagnosticPlaying=false;Serial.println("DIAG STOP");return;}
+  if(command==D::RadioOff){off();Serial.println("DIAG radio off");return;}
+  if(command==D::RadioBle){setRadio(runtime::Radio::Ble);Serial.println("DIAG radio BLE");return;}
+  if(command==D::RadioWifi){setRadio(runtime::Radio::Wifi);Serial.println("DIAG radio WiFi");return;}
+  if(rpc.progress.active||!commissioningButton){Serial.println("DIAG player test busy/unavailable");return;}
+  rpc.store.data["volume"]=1;rpc.hw.audio.setVolume(1);++rpc.volumeRevision;
+  commissioningButton(command==D::ButtonNine?9:10);
+  diagnosticPlaying=true;diagnosticAt=millis();
+  Serial.println("DIAG test issued at volume 1, maximum 20 seconds");
+ }
  public:
+ void (*commissioningButton)(int)=nullptr;
  Transport(Rpc& r):rpc(r){}
  void begin(){bleEvents=xQueueCreate(64,sizeof(BleEvent));if(!bleEvents||!provision()){Serial.println("RADIO LOCKED: password / NVS / queue unavailable");rpc.radio=runtime::Radio::Off;return;}
   String credential=String("boxbert:")+password;uint8_t encoded[160];size_t n=0;mbedtls_base64_encode(encoded,sizeof(encoded),&n,(const uint8_t*)credential.c_str(),credential.length());expectedAuth=String("Basic ")+String((char*)encoded,n);Serial.println("USB recovery: send credentials followed by newline to show device / AP access");setRadio(runtime::Radio::Ble);
  }
  void setRadio(runtime::Radio mode){
-  stationFallback.cancel();resetHttp();server.end();WiFi.disconnect(true);WiFi.mode(WIFI_OFF);if(bleServer){dropPeer();NimBLEDevice::getAdvertising()->stop();NimBLEDevice::deinit(true);bleServer=nullptr;tx=nullptr;}if(bleEvents)xQueueReset(bleEvents);rpc.abort();
+  auto trace=[&](const char* step){if(commissioning::UsbDiagnostics){Serial.printf("RADIO step=%s mode=%u heap=%u\n",step,unsigned(mode),ESP.getFreeHeap());Serial.flush();delay(10);}};
+  trace("begin");stationFallback.cancel();resetHttp();server.end();
+  trace("wifi-stop");WiFi.disconnect(true);WiFi.mode(WIFI_OFF);
+  if(bleServer){
+   trace("drop-peer");dropPeer();
+   trace("advertising-stop");NimBLEDevice::getAdvertising()->stop();
+   trace("nimble-deinit");bool ok=NimBLEDevice::deinit(true);trace(ok?"deinit-ok":"deinit-failed");
+   bleServer=nullptr;tx=nullptr;
+  }
+  if(bleEvents)xQueueReset(bleEvents);rpc.abort();
   rpc.radio=mode;if(password.isEmpty()){rpc.radio=runtime::Radio::Off;return;}
   if(mode==runtime::Radio::Wifi){if(strlen(BOXBERT_WIFI_SSID)){WiFi.mode(WIFI_STA);WiFi.setHostname("boxbert");WiFi.begin(BOXBERT_WIFI_SSID,BOXBERT_WIFI_PASSWORD);stationFallback.start(millis());}else{WiFi.mode(WIFI_AP);if(!WiFi.softAP("Boxbert",password.c_str()))Serial.println("AP startup failed");}server.begin();}
   else if(mode==runtime::Radio::Ble){initBle();NimBLEDevice::startAdvertising();}
@@ -154,7 +185,10 @@ class Transport {
   for(int budget=32;budget--&&Serial.available();){int c=Serial.read();if(c<0)break;if(usbCommand.feed(char(c))){
    if(password.isEmpty())Serial.println("Credentials unavailable: provisioning failed");
    else Serial.printf("Boxbert AP: Boxbert\nUser: boxbert\nDevice / AP password: %s\n",password.c_str());
-  }}
+  }
+   if(commissioning::UsbDiagnostics)diagnostic(diagnosticCommand.feed(char(c)));
+  }
+  if(diagnosticPlaying&&diagnosticTestExpired(now,diagnosticAt)){rpc.hw.stop();diagnosticPlaying=false;Serial.println("DIAG 20-second test STOP");}
   if(rpc.radio==runtime::Radio::Wifi){
    if(stationFallback.due(now,WiFi.status()==WL_CONNECTED)){resetHttp();server.end();WiFi.disconnect(true);WiFi.mode(WIFI_AP);if(!WiFi.softAP("Boxbert",password.c_str()))Serial.println("AP fallback failed");server.begin();}
    httpTick(now);

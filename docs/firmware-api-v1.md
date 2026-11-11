@@ -5,6 +5,25 @@ BLE und WLAN, bestehende PWA-Funktionen einschließlich Intro, TFT V2,
 Taster/Encoder, NeoPixel und Auto-Sleep. Kein Spotify, OTA, Soundkatalog
 oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 
+## Temporäre Geräte-Erstinbetriebnahme 11.11.2026
+
+Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
+`status.firmware=boxbert-v1-commissioning-20261111`, Bootlautstärke1,
+zulässige `settings.volume`-Werte **0..6** statt0..21. Höhere Werte erzeugen
+`invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC und
+externer Stick sind nicht angeschlossen/deaktiviert, Boost-EN-Ausgang und
+Auto-Sleep bis zur Power-Prüfung ebenfalls aus. Schema und übrige RPC bleiben
+V1; die PWA kann weiterhin0..21 anbieten und zeigt außerhalb des Testlimits
+einen Gerätefehler. Details: `gesamtfirmware-build.md`.
+
+Zusätzlich temporäre **lokale USB-Diagnose**, kein neuer HTTP-/BLE-RPC:
+`diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`, `radio-wifi`.
+`test9/10` simulieren echte Buttonhandler mitVolume1 und20-s-Stopp; physische
+Buttons bleiben ohne Testtimer. Parser verwirft fremde/überlange Steuerzeilen.
+Passwörter werden dabei nicht ausgegeben; separates `credentials` niemals in
+Logs aufnehmen. Erfolgreiche USB-Decoderläufe sind keine Hör-/Funkabnahme.
+Aktueller Geräte-/Fehlerstand: `uebergabe-endaufbau-2026-11-11.md`.
+
 ## Gemeinsame RPC
 
 HTTP: authentifiziertes `POST /api/rpc`, JSON-Request `{id,op,args}`,

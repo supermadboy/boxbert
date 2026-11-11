@@ -1,0 +1,7 @@
+
+# USB capture 2026-11-11T20:45:38.490808; no DTR/RTS ioctl
+# Sent once: test-stop
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=41828
+DIAG 20-second test STOP
+BOXBERTDIAG STOP
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=41828

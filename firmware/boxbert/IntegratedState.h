@@ -35,6 +35,33 @@ class CredentialCommand {
   line[used++]=c;return false;
  }
 };
+inline bool diagnosticTestExpired(uint32_t now,uint32_t started){
+ const uint32_t elapsed=now-started;return elapsed>=20000&&elapsed<0x80000000u;
+}
+// Explicit local USB diagnostics only; no credential output and no unbounded lines.
+class DiagnosticCommand {
+ char line[16]{};size_t used=0;bool bad=false,cr=false;
+ public:
+ enum Command {None,Inspect,ButtonNine,ButtonTen,Stop,RadioOff,RadioBle,RadioWifi};
+ Command feed(char c){
+  if(c=='\n'){
+   Command result=None;
+   if(!bad){line[used]=0;
+    if(!std::strcmp(line,"diag"))result=Inspect;
+    else if(!std::strcmp(line,"test9"))result=ButtonNine;
+    else if(!std::strcmp(line,"test10"))result=ButtonTen;
+    else if(!std::strcmp(line,"test-stop"))result=Stop;
+    else if(!std::strcmp(line,"radio-off"))result=RadioOff;
+    else if(!std::strcmp(line,"radio-ble"))result=RadioBle;
+    else if(!std::strcmp(line,"radio-wifi"))result=RadioWifi;
+   }
+   used=0;bad=cr=false;return result;
+  }
+  if(c=='\r'){if(cr)bad=true;cr=true;return None;}
+  if(c=='\0'||cr||used>=sizeof(line)-1){bad=true;return None;}
+  line[used++]=c;return None;
+ }
+};
 class LineParser {
  char buffer[4097]{};size_t used=0;bool overflow=false,bad=false;
  public:

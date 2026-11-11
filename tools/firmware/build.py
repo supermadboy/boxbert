@@ -37,7 +37,7 @@ def main():
         parser.error('Requires esp32:esp32@3.3.12; run tools/firmware/setup.py')
     libs = json.loads(subprocess.check_output(base + ['--json', 'lib', 'list'], text=True))
     versions = {p['library']['name']: p['library']['version'] for p in libs.get('installed_libraries', [])}
-    required = {'ESP32-audioI2S-master': '4.0.0', 'NimBLE-Arduino': '2.3.6',
+    required = {'ESP32-audioI2S-master': '4.0.0', 'NimBLE-Arduino': '2.3.8',
                 'ArduinoJson': '7.4.2', 'Adafruit PN532': '1.3.4',
                 'Adafruit BusIO': '1.17.4', 'Adafruit GFX Library': '1.12.6',
                 'Adafruit ST7735 and ST7789 Library': '1.11.0',

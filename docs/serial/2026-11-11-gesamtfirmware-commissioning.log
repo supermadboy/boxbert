@@ -1,0 +1,5 @@
+
+# Passive capture 2026-11-11T20:09:06.253991; no DTR/RTS ioctl or writes
+PN532 disabled for commissioning
+SD=1 Audio/PSRAM=1 Gauge=1 AW9523=1
+USB recovery: send credentials followed by newline to show device / AP access

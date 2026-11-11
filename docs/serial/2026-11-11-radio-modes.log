@@ -1,0 +1,8 @@
+
+# USB capture 2026-11-11T20:47:50.609444; no DTR/RTS ioctl
+# Sent once: radio-off
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=41828
+BOXBERT commissioning SD=1 PSRAM=PN532 disabled for commissioning
+SD=1 Audio/PSRAM=1 Gauge=1 AW9523=1
+USB recovery: send credentials followed by newline to show device / AP access
+BOXBERT integrated commissioning v1 ready; volume 1..6 (0=mute), NFC/stick/boost-control/sleep disabled

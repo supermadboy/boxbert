@@ -1,5 +1,18 @@
 # Verkabelungsplan Endaufbau — Boxbert
 
+## Gemessene Eingänge / SD / Audio (11.11.2026)
+
+**Die reale Eingangsbelegung weicht vom älteren Plan unten ab.** Maßgeblich
+für jetzt zugeordnete Kontakte ist der neue Messabschnitt in
+`hardware/pinout.md`: zehn Arcade-Buttons, zwei Minis, Encoder und
+Zusatzkippschalter einzeln geprüft; gelber Mini-Taster ungeklärt.
+Insbesondere Encoder-Taster **IO5**, Zusatzkippschalter **IO11**, großer
+blauer44-mm-Button **IO6**. SD nach Korrektur der vier am Modul falsch herum
+gesteckten Signalkabel bei4 MHz lesbar; Audio und TFT im Parallelbetrieb
+vom Nutzer bestätigt. Nachweise: `docs/testprotokoll-endaufbau-inputs.md`.
+Dies bestätigt keine bislang ungeprüfte Boost-/Sleep-Railführung.
+
+
 ## Verbindlicher Encoder-/IRQ-Tausch (06.11.2026)
 
 Nutzerfreigabe: **Encoder-Taster → IO11**, **PN532-IRQ reserviert → IO12**.

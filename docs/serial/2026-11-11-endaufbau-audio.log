@@ -1,0 +1,83 @@
+
+# Passive capture 2026-11-11T19:34:29.411746; no DTR/RTS ioctl or writes
+[STATUS 15001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=10 volume=1 file=/arcade-music-loop.mp3
+[STATUS 20001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=15 volume=1 file=/arcade-music-loop.mp3
+20-second limit: STOP
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[STATUS 25001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 30001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 35001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 40001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 45001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 50001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 55001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 60001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 65001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 70001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 75001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 80001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 85001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 90001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 95001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 100001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 105001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 110001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 115001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 120001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 125001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 130001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 135001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 140001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 145001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 150001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 155001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 160001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 165001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 170001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 175001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 180001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 185001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 190001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 195001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 200001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 205001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 210001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 215001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 220001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 225001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 230001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 235001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 240001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+Manual START connect=1 volume=1 file=/arcade-music-loop.mp3
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] id3data: Encoded by: Logic Pro X
+[audio] id3data: Publication date: 2014-10-09
+[audio] id3data: UserDefinedText: coding_history
+[audio] id3data: UserDefinedText: time_reference
+[audio] id3data: UserDefinedText: umid
+[audio] id3data: SettingsForEncoding: Lavf63.1.102
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+[audio] bitrate (b/s): 129321
+[STATUS 245001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=2 volume=1 file=/arcade-music-loop.mp3
+[STATUS 250001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=7 volume=1 file=/arcade-music-loop.mp3
+[STATUS 255001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=12 volume=1 file=/arcade-music-loop.mp3
+[STATUS 260001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=1 running=1 time=17 volume=1 file=/arcade-music-loop.mp3
+20-second limit: STOP
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[STATUS 265001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3
+[STATUS 270001] AUDIO-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=18 volume=1 file=/arcade-music-loop.mp3

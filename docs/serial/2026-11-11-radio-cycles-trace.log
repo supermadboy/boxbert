@@ -1,0 +1,53 @@
+
+# USB capture 2026-11-11T21:00:29.726889; no DTR/RTS ioctl
+# Sent once: radio-ble
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=0 config=1 heap=106788
+BOXBERT commissioning SD=1 PSRAMRADIO step=begin mode=2 heap=106788
+RADIO step=wifi-stop mode=2 heap=106788
+DIAG radio BLE
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=42648
+
+# USB capture 2026-11-11T21:00:32.878171; no DTR/RTS ioctl
+# Sent once: radio-off
+RADIO step=begin mode=0 heap=42648
+RADIO step=wifi-stop mode=0 heap=42648
+RADIO step=drop-peer mode=0 heap=42648
+RADIO step=advertising-stop mode=0 heap=42648
+RADIO step=nimble-deinit mode=0 heap=42648
+RADIO step=deinit-ok mode=0 heap=106788
+DIAG radio off
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=0 config=1 heap=106788
+
+# USB capture 2026-11-11T21:00:36.037286; no DTR/RTS ioctl
+# Sent once: radio-ble
+RADIO step=begin mode=2 heap=106788
+RADIO step=wifi-stop mode=2 heap=106788
+DIAG radio BLE
+
+# USB capture 2026-11-11T21:00:39.177431; no DTR/RTS ioctl
+# Sent once: radio-off
+RADIO step=begin mode=0 heap=42648
+RADIO step=wifi-stop mode=0 heap=42648
+RADIO step=drop-peer mode=0 heap=42648
+RADIO step=advertising-stop mode=0 heap=42648
+RADIO step=nimble-deinit mode=0 heap=42648
+RADIO step=deinit-ok mode=0 heap=106788
+DIAG radio off
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=0 volume=1 running=0 config=1 heap=106788
+
+# USB capture 2026-11-11T21:00:42.330846; no DTR/RTS ioctl
+# Sent once: radio-ble
+RADIO step=begin mode=2 heap=106788
+RADIO step=wifi-stop mode=2 heap=106788
+DIAG radio BLE
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=42648
+
+# USB capture 2026-11-11T21:00:45.468000; no DTR/RTS ioctl
+# Sent once: radio-off
+RADIO step=begin mode=0 heap=42648
+RADIO step=wifi-stop mode=0 heap=42648
+RADIO step=drop-peer mode=0 heap=42648
+RADIO step=advertising-stop mode=0 heap=42648
+RADIO step=nimble-deinit mode=0 heap=42648
+RADIO step=deinit-ok mode=0 heap=106788
+DIAG radio off

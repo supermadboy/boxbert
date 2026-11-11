@@ -1,0 +1,6 @@
+
+# Passive capture 2026-11-11T20:12:23.540536; no DTR/RTS ioctl or writes
+[STATUS 35008] VOLUME-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=0 volume=1 file=/arcade-music-loop.mp3
+TFT frames=130 size=240x135
+[STATUS 40008] VOLUME-DIAG v1 SD=1 PSRAM=1 I2S=1 active=0 running=0 time=0 volume=1 file=/arcade-music-loop.mp3
+TFT frames=150 size=240x135

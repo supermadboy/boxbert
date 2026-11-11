@@ -24,13 +24,17 @@ test('review17 encoder/RPC event sequences use actual production C++ paths',asyn
 #include <cstdint>
 #include <cstring>
 #include <cstdio>
+#include "${new URL('firmware/Config.h',root).pathname}"
+#include "${new URL('firmware/runtime/Quadrature.h',root).pathname}"
+namespace commissioning=boxbert::commissioning;
+namespace runtime=boxbert::runtime;
 uint32_t clockNow=0;
 uint32_t millis(){return clockNow;}
 int constrain(int n,int lo,int hi){return std::clamp(n,lo,hi);}
-struct {void println(const char*){}} Serial;
+struct {void println(const char*){} template<class... T> void printf(const char*,T...) {}} Serial;
 struct Hardware {
  bool sd=true; uint32_t activity=0;
- struct {int actual=6;void setVolume(int v){actual=v;}} audio;
+ struct {int actual=3;void setVolume(int v){actual=v;} unsigned getVolume(){return actual;}} audio;
  void tickAudio(){} void i2cTick(uint32_t){}
  template<class... T> void inputs(T...){}
 } hardware;
@@ -59,23 +63,23 @@ ${globalsAndEncoder}
 void buttonPressed(int){}void encoderPressed(){}
 void tick(){const uint32_t now=millis();${afterTransport}\n${debounce}}
 int main(int argc,char** argv){
- assert(argc==2);config.data["volume"]=6;
- clockNow=100;changeVolume(1);assert(hardware.audio.actual==7);
+ assert(argc==2);config.data["volume"]=3;requestedVolume=3;
+ clockNow=100;changeVolume(1);assert(hardware.audio.actual==4);
  clockNow=200;
  if(!strcmp(argv[1],"rename")||!strcmp(argv[1],"led")||!strcmp(argv[1],"failed")){
   const bool failed=!strcmp(argv[1],"failed");
   config.writable=!failed;
   rpc.saveMutation(!strcmp(argv[1],"rename")?"renameTag":"settings",failed?2:-1);
   config.writable=true;
-  assert(hardware.audio.actual==7 && "rename must not reapply stale saved volume 6");
-  tick();assert(hardware.audio.actual==7);
+  assert(hardware.audio.actual==4 && "rename must not reapply stale saved volume 3");
+  tick();assert(hardware.audio.actual==4);
   clockNow=850;tick();
-  assert(config.data["volume"].as<int>()==7);assert(hardware.audio.actual==7);assert(!volumePending);
+  assert(config.data["volume"].as<int>()==4);assert(hardware.audio.actual==4);assert(!volumePending);
  }else{
-  const int committed=!strcmp(argv[1],"sameSaved")?6:2;
+  const int committed=!strcmp(argv[1],"sameSaved")?3:2;
   rpc.saveMutation("settings",committed);assert(config.data["volume"].as<int>()==committed);assert(hardware.audio.actual==committed);
   tick();clockNow=850;tick();
-  assert(config.data["volume"].as<int>()==committed && "confirmed RPC volume must supersede pending encoder 7");
+  assert(config.data["volume"].as<int>()==committed && "confirmed RPC volume must supersede pending encoder 4");
   assert(hardware.audio.actual==committed);assert(!volumePending);
   clockNow=900;changeVolume(1);assert(hardware.audio.actual==committed+1);
   clockNow=1650;tick();assert(config.data["volume"].as<int>()==committed+1);

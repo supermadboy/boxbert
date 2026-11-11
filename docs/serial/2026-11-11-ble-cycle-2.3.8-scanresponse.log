@@ -1,0 +1,29 @@
+
+# Capture 2026-11-11T20:53:42.386957
+# Sent b once
+BLE-INIT before NimBLEDevice::init
+BLE-INIT returned=1
+BLE advertising=1
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+
+# Capture 2026-11-11T20:53:50.544307
+# Sent d once
+BLE-DEINIT before
+BLE-DEINIT returned=1
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=11 heap=270872
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=11 heap=270872
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=11 heap=270872
+BLE-DIAG attempted=0 initialized=0 advertising=0 resetReason=11 heap=270872
+
+# Capture 2026-11-11T20:53:58.755647
+# Sent b once
+BLE-INIT before NimBLEDevice::init
+BLE-INIT returned=1
+BLE advertising=1
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
+BLE-DIAG attempted=1 initialized=1 advertising=1 resetReason=11 heap=207384
