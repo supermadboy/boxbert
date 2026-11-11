@@ -2,6 +2,22 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **PN532 jetzt am Endaufbau angeschlossen (Fortsetzung11.11.2026):**
+  Nutzer bestätigt I2C3/4,3V3/GND,DIP1ON/2OFF und IRQ12. Isolierte Initprobe
+  `firmware/tests/endaufbau_nfc_probe/` erfolgreich: PN532/Firmware1.6,
+  Wire/begin/SAM=1. **Tag1 E3:2F:F6:33 gelesen, IRQ12 zeigt2LOW/2HIGH-Flanken**
+  in gezielter UIDprobev2. Karte laut Nutzer durchgehend aufgelegt: kein
+  Neuauflage-/Wechsel-/Wake-Nachweis. HIGH nach Libraryaufruf war kein Defekt-
+  beweis; I2C-RDY wird schon intern gepollt. Danach Gesamtbuild
+  `boxbert-build-auvtr3vh` wiederhergestellt, NFC-Laufzeit weiter aus;
+  SD/I2S/PSRAM/AW/Gauge/config=1,Volume1,BLE/idle,Konfigrevision26.
+  **Nächster NFC-Schritt: busverträgliche Integration + Wechsel/Audio/Taster.**
+  Tag2-Mapping vor Änderung klären: historische ReferenzHappyTune, SD aktuell
+  `/fart.mp3`; nichts automatisch ersetzen. Vorhandenes250-ms-Tagwarten hält Wire-
+  Mutex; Timeout0 würde AW/Gauge ohne Tag unbeschränkt blockieren. Auch die
+  „startPassive“-Library-API wartet auf Zielantwort, nicht blind als vollständig
+  nonblocking einsetzen. Nachweise und aktueller Flash in der Übergabedatei.
+
 - [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
   Aktuell `boxbert-v1-commissioning-20261111`, Diagnosebuild
   `~/.cache/boxbert-build-auvtr3vh/manifest.json`, 2545151 Byte Flash /
@@ -21,7 +37,7 @@
   lesen**, realen blauen Button mit Log testen, Nutzer-Sicht-/Hör-/Encoder-
   Prüfung, dann echte BLE/PWA-/HTTP-Verbindung und Persistenz. Kein `/www`
   auf SD festgestellt; SD-Weboberfläche nicht installiert. Kein Produktnachweis.
- 17 native Programme,4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
+ 18 native Programme (inkl.PN532-Frameparser),4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
   Ereignisfolgen bestanden; USB-Diagnoseparser/20-s-Timer zusätzlich geprüft.
   Private Lesesicherung vor Gesamtflash vorhanden; Musik unverändert.
   Protokoll: `docs/testprotokoll-gesamtfirmware-2026-11-11.md`.

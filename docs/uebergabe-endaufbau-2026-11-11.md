@@ -1,5 +1,84 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
+## Fortsetzung nach Abschluss-Commit58208da
+
+Nutzer setzt dieselbe Session fort und bestätigt **PN532 jetzt angeschlossen**:
+VCC3V3/GND, SDA3/SCL4, DIP1ON/2OFF, **IRQ anIO12**. Resetleitung nicht zusätzlich
+bestätigt; Probe verwendet keinen Reset-GPIO. Dies ersetzt „Leser fehlt“ für den weiteren Verlauf; die
+untenstehenden ersten Tests fanden noch ohne Leser statt. Externer Stick
+weiterhin zuletzt nicht angeschlossen.
+
+**Isolierte Initialisierungsprobe erfolgreich:** neuer Sketch
+`firmware/tests/endaufbau_nfc_probe/`, Build
+`~/.cache/boxbert-nfc-probe-yE5RKbtz`,404400Byte Flash/56160Byte globale Variablen,
+Core3.3.12/QSPI, AdafruitPN5321.3.4. Rohlog
+`docs/serial/2026-11-11-nfc-init-probe.log`: Wire/begin/SAM=1,
+Version0x32010607 = PN532/Firmware1.6, IRQ12=HIGH im Ruhezustand.
+Das ist eine Boot-Chipabfrage, **keine UID-/IRQ-Ereignis-/RF-Abnahme**; keine
+Suchbefehle gesendet. TFT während separater Probe absichtlich dunkel/kein Ton.
+Erster Compile scheiterte an Arduino-Autoprototypen bei einzeiligem Loop,
+kein Upload dieses Fehlbuilds (`boxbert-nfc-probe-4N11ksGA`). Korrigierter
+Build erfolgreich. Application-Upload meldete CDC-I/O-Fehler, danach Bootloader
+identifiziert und exakt erfolgreich gebaute Probe hochgeladen.
+
+**Danach Gesamtfirmware aus `boxbert-build-auvtr3vh` wiederhergestellt**, Quellen
+und SHA256 erneut verifiziert. Auch hier CDC→Bootloader-Übergang, Upload über
+Espressif-by-id erfolgreich; Logs im Buildverzeichnis
+`upload-after-nfc-probe*.log`. Zwischenstand nach Initprobe also wieder Gesamtstand, **NFC-
+Laufzeit weiterhin softwareseitig deaktiviert**, nicht die Probe! Neues Log
+`2026-11-11-nfc-connected-integrated-restored.log`: SD/I2S/PSRAM/AW/Gauge/config=1,
+Volume1,radio2,running0,Heap42632,Konfigrevision16,GPIO5/6HIGH,GPIO11LOW.
+Revision/Schalterzustand unterscheiden sich vom früheren Abschluss; keine
+Ursache ohne Nutzerbeobachtung erfinden. Tagpfade vorhanden/unverändert.
+
+### UID/IRQ nachgewiesen; Karte war durchgehend aufgelegt
+
+Nutzer bestätigt ausdrücklich: **Karte lag während der ganzen Untersuchung
+auf dem Leser**. Keine spätere Auflage/Entfernung/Wechsel-/Reichweitenprüfung.
+
+- `endaufbau_nfc_uid` v1, Build `~/.cache/boxbert-nfc-uid-bdobYBZU`,405136Byte
+  Flash/56200Byte globale Variablen: eine Suche, readyReturn=1, GPIO12 danach
+  HIGH. V1 wartete fälschlich zusätzlich auf LOW und las deshalb nicht aus.
+  Kein Beleg für defekte/falsch angeschlossene IRQ-Leitung!
+- Bestehende Antwort ohne neuen PN532-Befehl gelesen: separater
+  `endaufbau_nfc_pending`, Build `~/.cache/boxbert-nfc-pending-qAne7Q3Y`,
+  387036Byte Flash/56096Byte globale Variablen. PN532 blieb beim Feather-
+  Reset/Flash versorgt. Ein Rohread64Byte ergibt checksum-validierte
+  4-Byte-UID **E3:2F:F6:33**, Tag1. Log `2026-11-11-nfc-pending-response.log`.
+  Parser `firmware/runtime/Pn532UidFrame.h`, Bounds/Checksummen/4+7Bytes host-
+  getestet; alle18nativen ASan/UBSan-Programme grün. Kein Rohframe-Hexdump im
+  erfassten Ausschnitt, nur gespeicherte Auswertung; nichts rekonstruieren.
+- UIDprobe **v2** berücksichtigt readyReturn auch ohne nachträgliches LOW und
+  beobachtet GPIO12-CHANGE-Flanken **nach** Init/während Suche+Auslesen.
+  Build `~/.cache/boxbert-nfc-uid-edges-lSrT0Jgz`,407672Byte Flash/56792Byte
+  globale Variablen, alle erfolgreichen Uploads hashverifiziert. Log
+  `2026-11-11-nfc-uid-irq-edges.log`: UID E3:2F:F6:33 gelesen,
+  **LOW=2/HIGH=2**, Leitung nachher HIGH. IRQ-Aktivität damit nachgewiesen.
+  API pollt vorher I2C-RDY; HIGH erst nach API-Rückkehr beweist keinen Fehler.
+  Keine Zuordnung jeder Flanke zu ACK/Tag, kein Wake-/Entfernungstest behaupten.
+- Danach wieder **derselbe Gesamtbuild auvtr3vh**, NFC-Laufzeit weiter AUS.
+  `upload-after-nfc-edges*.log` im Buildverzeichnis; aktuelle Bestätigung
+  `2026-11-11-nfc-edges-integrated-restored.log`: SD/I2S/PSRAM/AW/Gauge/config=1,
+  playback1/running0,Volume1,radio2,Heap42640,Konfigrevision26,GPIO5/6HIGH,
+  GPIO11LOW. Kein serieller Hintergrundleser, Musik aus. Zwischenrestore nach
+  Rohread ist separat als `nfc-uid-integrated-restored.log` aufgezeichnet.
+
+**Nächster NFC-Schritt:** busverträgliche Laufzeitintegration und Tagwechsel/
+Audio/Taster gemeinsam prüfen, ohne weitere Verdrahtungsänderung aufgrund des
+HIGH-Snapshots. Tag1 soll wie bisher Arcade; vor Tag2-Wiedergabe beachten:
+`hardware/nfc-tags.md` nennt historisch Happy Tune, tatsächliche migrierte SD-
+Konfig zeigt `/fart.mp3`. Nicht stillschweigend überschreiben, Nutzerklärung.
+Nicht einfach `Nfc=true` setzen: vorhandene Task
+hält den gemeinsamen Wire-Mutex über `readPassiveTargetID(...,250)`; bekannte
+Timeout-/überlappende-Suchbefehls-Problematik beachten. Timeout0 unter diesem
+Mutex würde AW/Gauge ohne Tag unbeschränkt aussperren. Adafruit1.3.4-IRQ-Beispiel
+und Implementierung gelesen: auch `startPassiveTargetIDDetection()` ruft
+`sendCommandCheckAck()` auf, das zusätzlich auf die **Zielantwort** wartet
+(Default1000ms); ist daher nicht vollständig busmutex-freundlich/nonblocking.
+Bloßes Umbenennen der API löst das nicht. In der Gesamtfirmware IRQ12 bislang
+passiv; CHANGE-ISR nur in der isolierten UIDprobev2. Kein Wake-Nachweis und
+keine endgültige NFC-Aktivierung zugesagt.
+
 ## Auftrag und nächster Einstieg
 
 Daddelbert hat die Box zusammengebaut. Verdeckte Signalverkabelung wurde durch
@@ -235,7 +314,7 @@ kein passives Monitoring. Exakt gebautes Artefakt prüfen, Port identifizieren,
 
 ## 7. Hostnachweise / Daten erhalten
 
-- Pin-Node4Tests; native ASan/UBSan17Programme inklusive Quadratur und neuem
+- Pin-Node4Tests; native ASan/UBSan18Programme inklusive PN532-Frameparser, Quadratur und
   USB-Parser/Timer (auch Millis-Wraparound/kein sofortiges Timeout).
 - App68Tests; echte Encoder/RPC-Codeabschnitte in5Szenarien,6Node-Tests inkl.
   Parent: Limits/Mute/Drehrichtung, entprellte Persistenz, SD-/Uploadfehler.

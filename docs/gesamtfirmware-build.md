@@ -4,8 +4,10 @@
 
 **Der aktuelle Quellstand baut ausdrücklich ein temporäres Inbetriebnahmeprofil**
 (`firmware/Config.h`, Namespace `commissioning`), keine volle Produktfreigabe:
-NFC/externer Stick/aktive Boost-EN-Steuerung/Auto-Sleep deaktiviert, da Leser
-und Stick fehlen und Power-/Sleep-Verdrahtung noch nicht bestätigt ist.
+NFC/externer Stick/aktive Boost-EN-Steuerung/Auto-Sleep deaktiviert. Der Leser
+ist seit der Fortsetzung11.11. angeschlossen und initialisierbar, seine
+busverträgliche Laufzeitintegration aber noch offen. Stick fehlt, Power-/Sleep-
+Verdrahtung noch nicht bestätigt.
 Onboard-Pixel, TFT, SD/Audio und BLE/WLAN bleiben enthalten. Bootvolume immer1,
 Encoder/RPC temporär0..6 von21; RPC lehnt höhere Werte ausdrücklich ab.
 Gespeicherte Lautstärke wird beim Boot nur im RAM durch1 ersetzt, nicht

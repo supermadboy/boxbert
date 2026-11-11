@@ -4,7 +4,23 @@ Stand: **04.10.2026, Etappe 4 als Breadboard-Meilenstein abgenommen.**
 Quelle: neue Serial-Beobachtungen und Nutzer-Hoertests in
 `docs/testprotokoll-etappe4.md`, nicht alte Agentenannahmen.
 
-## Verbindliches Mapping
+## Endaufbau11.11.2026 — aktueller Nachweis / Mappinggrenze
+
+Nutzerkarte lag beim UID-Test **durchgehend** auf. Gelesen: Tag1
+**E3:2F:F6:33**,4Bytes. IRQ12 während Suche/Auslesen mit GPIO-CHANGE-Observer:
+2LOW-/2HIGH-Flanken, danach HIGH. Quelle:
+`docs/serial/2026-11-11-nfc-uid-irq-edges.log` und Gesamtprotokoll.
+Keine Neuauflage-/Entfernungs-/Wechsel-/Wake-Abnahme, kein neuer Chiptypnachweis.
+Danach Gesamtfirmware wiederhergestellt; NFC-Laufzeit weiterhin deaktiviert.
+
+**Konfigurationsunterschied nicht automatisch überschreiben:** Die tatsächlich
+migrierte SD-Konfig zeigt Tag0/Tag1 nach Nullindex mit Arcade und`/fart.mp3`
+(`2026-11-11-nfc-edges-integrated-restored.log`). Unten nennt die historische
+Breadboard-Freigabe für den zweiten Tag HappyTune. Vor Änderung/Abnahme der
+zweiten NFC-Wiedergabe Zuordnung mit Nutzer klären; kein stiller Reset der
+bestehenden SD-Konfiguration. Erster Tag bleibt Arcade.
+
+## Verbindliches Breadboard-Mapping — Freigabe04.10.2026
 
 | Tag | UID (exakte Bytes) | Laenge | Exakter SD-Pfad | Dateigroesse |
 |---|---|---:|---|---:|
@@ -46,7 +62,7 @@ Entfernen/EOF nicht separat beobachtet, unbekanntes Tag nur host-getestet.
 20 kontrollierte Wechsel/Minutenlast und Player-Kaltstart ohne Tag sind
 **spaetere Haertung**, keine behaupteten Erfolge der Breadboard-Abnahme.
 
-## Aktueller Flash-Inhalt
+## Historischer Flash-Inhalt04.10.2026 — kein aktueller Endaufbauflash
 
 `firmware/tests/etappe4_tag_player/` v1-timing: PN532 I2C 100 kHz,
 SD **4 MHz**, NFC-Erfolgspause **200 ms**, Timeout 0 in eigener Task,

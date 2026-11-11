@@ -76,7 +76,27 @@ erfolgreich**, gleiche Kapazität/acht Datei-Anfänge ohne Lesefehler.
 Kein Vollkarten-/Schreib-/Dauer- oder Railführungsnachweis.
 Details: `docs/testprotokoll-endaufbau-inputs.md`.
 
-## Verbindlicher Encoder-/IRQ-Tausch (06.11.2026)
+## PN532 am Endaufbau — Anschluss/Init11.11.2026
+
+Nutzer bestätigt nun: **VCC3V3/GND, SDAIO3/SCLIO4, DIP1ON/2OFF,
+IRQ anIO12**. Isolierte Initialisierungsprobe mit AdafruitPN5321.3.4:
+Wire/begin/SAM erfolgreich, Version0x32010607 (PN532/Firmware1.6),
+IRQ12HIGH im Ruhezustand. Anschließend UID **E3:2F:F6:33** gelesen und
+GPIO12-Observer während Suche/Auslesen: **2LOW-/2HIGH-Flanken**. Karte war laut
+Nutzer die ganze Zeit aufgelegt; kein Neuauflage-/Wechsel-/Wake-Nachweis.
+Ein HIGH-Snapshot nach der intern I2C-pollenden API ist kein IRQ-Defektbeweis.
+UID-/Flankenlog: `docs/serial/2026-11-11-nfc-uid-irq-edges.log`.
+Resetleitung nicht zusätzlich bestätigt; Probe verwendet keinen Reset-GPIO.
+Log: `docs/serial/2026-11-11-nfc-init-probe.log`.
+Danach Gesamtfirmware wiederhergestellt, NFC-Laufzeit dort weiterhin aus.
+Gemeinsamer I2C-Bus mit AW9523/Gauge verlangt kurze synchronisierte Transfers;
+kein Timeout0-Tagwarten unter dem gemeinsamen Wire-Mutex.
+Details: `docs/uebergabe-endaufbau-2026-11-11.md`.
+
+## Historischer Encoder-/IRQ-Tausch (06.11.2026)
+
+Die Encoderplanung IO11 unten wurde durch die Messung11.11. überholt:
+**real Encoder-Taster IO5, zusätzlicher Kippschalter IO11; IRQ12 jetzt angeschlossen.**
 
 Nutzerfreigabe: **Encoder-Taster → IO11**, **PN532-IRQ reserviert → IO12**.
 `firmware/Config.h` angepasst; noch nicht geflasht oder am Gerät getestet.

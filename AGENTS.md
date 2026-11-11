@@ -29,7 +29,13 @@ Gemessene Eingänge in `hardware/pinout.md`, Einzeltests inkl. leiser
 Encoder-Lautstärkeregelung bestätigt. Gesamtstand bootet mit SD/PSRAM/AW/
 Gauge/config=1,BLE-Modus; dessen Sicht-/Hör-/Funkabnahme noch offen.
 Temporär Bootvolume1/max6,NFC/Stick/aktiveBoost-Steuerung/Auto-Sleep aus.
-Akku+USB laut Nutzer, PN532/Stick fehlen. Aktueller Diagnosebuild:
+Akku+USB laut Nutzer. **PN532 inzwischen angeschlossen/bestätigt:** I2C3/4,
+3V3, DIP1ON/2OFF, IRQ12. Initprobe findet PN532/Firmware1.6/SAM=1;
+UIDprobe liest Tag1 E3:2F:F6:33, IRQ12 zeigt2LOW/2HIGH-Flanken. Karte lag laut
+Nutzer durchgehend auf: Wechsel/Neuauflage/Wake noch offen. HIGH nach der
+I2C-pollenden Library allein war kein Defektbeweis. Gesamtstand wiederhergestellt, NFC dort
+weiter aus; vor Aktivierung Wire-Mutex/Tagwartepfad korrigieren. Stick fehlt.
+Aktueller Diagnosebuild:
 `~/.cache/boxbert-build-auvtr3vh/manifest.json`. Nutzer meldete „Dateifehler“;
 per USB simulierte Button-Handler starten beide MP3, Fehler nicht reproduziert
 und **nicht als behoben abgenommen**. Ein früher Funk-Aus-Versuch startete neu;

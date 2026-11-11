@@ -151,6 +151,23 @@ einfügen, Datum dazu.
 
 ## PN532 (NFC)
 
+- **IRQ erst nach der I2C-pollenden API ablesen ist kein Leitungsnachweis
+  (eigener Endaufbauvergleich11.11.2026).** Karte lag laut Nutzer durchgehend
+  auf. `startPassiveTargetIDDetection()` liefert ready=1, danach GPIO12HIGH.
+  Erste Probe wartete deshalb fälschlich weiter auf LOW. Ausstehende Antwort
+  ohne neuen PN532-Befehl checksum-geprüft gelesen: UID E3:2F:F6:33. Korrigierte
+  Probe akzeptiert fertige Antwort und beobachtet GPIO12-CHANGE bereits während
+  Suche/Auslesen:2LOW-/2HIGH-Flanken, UID erfolgreich, danach HIGH. Leitung also
+  aktiv, kein Defekt/Umverdrahtungsbedarf aus dem früheren HIGH-Snapshot ableiten.
+  Ursache des genauen Deassert-Zeitpunkts nicht unabhängig gemessen; API liest
+  bereits RDY/ACK. Kein Nachweis für spätere Neuauflage, jede einzelne IRQ-Ursache
+  oder Wake. → Im gemeinsamen I2C-Bus kurze Transfers sperren, nicht Tagwarten
+  unter dem Wire-Mutex; die „startPassive“-API wartet in1.3.4 trotzdem via
+  sendCommandCheckAck auf Zielantwort. Quellen: installierte Adafruit1.3.4-
+  Implementierung/IRQ-Beispiel, eigene Logs `2026-11-11-nfc-uid-once.log`,
+  `nfc-pending-response.log`, `nfc-uid-irq-edges.log` unter`docs/serial/`
+  (jeweils Datumspräfix11.11.), Gesamtprotokoll und Übergabe.
+
 - **Host-Timeout 0 besteht grundlegenden I2C-Wechsel-/Starttest
   (04.10.2026, ca. 20:34–20:42).** Separater `etappe4_nfc_switch`,
   Referenz-Init und Erfolgs-Pause beibehalten, Host-Timeout 500→0:

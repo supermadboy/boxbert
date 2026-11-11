@@ -25,7 +25,8 @@ ungeprüft auf den Endaufbau geflasht werden.
 
 Alle gehören zum tatsächlichen Endaufbau, nicht zur alten Breadboard-Belegung.
 Nutzer testet mit Akku+USB; vor Umverdrahten beide Versorgungen abtrennen.
-PN532 und externer Stick fehlen. Umfang und echte Nutzerbestätigungen stehen in
+PN532 fehlte bei den ersten Tests, ist inzwischen angeschlossen/Init geprüft;
+externer Stick fehlt weiterhin. Umfang und echte Nutzerbestätigungen stehen in
 `docs/testprotokoll-endaufbau-inputs.md` und im Gesamtfirmware-Protokoll.
 
 | Sketch | Begrenzter Zweck |
@@ -36,6 +37,9 @@ PN532 und externer Stick fehlen. Umfang und echte Nutzerbestätigungen stehen in
 | endaufbau_audio_tft | SD+Audio+TFT gemeinsam, Nutzer bestätigt Bild und Ton |
 | endaufbau_volume | ISR-Encoder15/14, Taste5, Volume0..6,0 stumm,20-s-Limit; vom Nutzer bestätigt |
 | endaufbau_backup | Konfigslots/Legacy-Zuordnung nur lesen; Hostbackup privat außerhalb des Repos |
+| endaufbau_nfc_probe | PN532 init-only mit IRQ12 als Eingang, kein Tag-Suchbefehl; PN532/Firmware1.6/SAM geprüft |
+| endaufbau_nfc_uid | Eine Suche, v2 akzeptiert fertige Libraryantwort auch ohne nachträgliches IRQ-LOW; CHANGE-Observer zählt während Suche/Auslesen2LOW/2HIGH, UID Tag1 bestätigt; Karte durchgehend aufgelegt |
+| endaufbau_nfc_pending | Liest genau eine bereits ausstehende Antwort ohne PN532-Init-/Suchbefehl, checksum-/bounds-geprüfter Parser; setzt erhaltenen Chipzustand voraus, kein allgemeiner UID-Starttest |
 | endaufbau_ble_init | USB `b` initialisiert/advertisiert, `d` deinitialisiert; Init2.3.6 vs2.3.8 verglichen; aktueller Sketch enthält zusätzlich Scan-Response und Deinit-/Reinit-Test |
 
 `endaufbau_volume/Quadrature.h` bleibt die getestete Diagnosekopie; produktive

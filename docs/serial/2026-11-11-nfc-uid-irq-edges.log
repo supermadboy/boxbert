@@ -1,0 +1,10 @@
+
+# USB capture 2026-11-11T21:50:27.668522; no DTR/RTS ioctl
+NFC-UID once initialized=1 issued=1 readyReturn=1 consumed=1 uidOk=1 UID='E3:2F:F6:33' IRQ12=1 before=1 ready=1 after=1 (cached result)
+NFC-UID IRQ edges during search/read: LOW=2 HIGH=2
+NFC-UID once initialized=1 issued=1 readyReturn=1 consumed=1 uidOk=1 UID='E3:2F:F6:33' IRQ12=1 before=1 ready=1 after=1 (cached result)
+NFC-UID IRQ edges during search/read: LOW=2 HIGH=2
+NFC-UID once initialized=1 issued=1 readyReturn=1 consumed=1 uidOk=1 UID='E3:2F:F6:33' IRQ12=1 before=1 ready=1 after=1 (cached result)
+NFC-UID IRQ edges during search/read: LOW=2 HIGH=2
+NFC-UID once initialized=1 issued=1 readyReturn=1 consumed=1 uidOk=1 UID='E3:2F:F6:33' IRQ12=1 before=1 ready=1 after=1 (cached result)
+NFC-UID IRQ edges during search/read: LOW=2 HIGH=2

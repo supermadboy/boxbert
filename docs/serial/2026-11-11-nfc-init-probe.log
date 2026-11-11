@@ -1,0 +1,8 @@
+
+# USB capture 2026-11-11T21:30:23.625739; no DTR/RTS ioctl
+Boxbert NFC-PROBE v1: init only, no tag search; IRQ12 input
+NFC-PROBE init-only wire=1 begin=1 version=0x32010607 SAM=1 IRQ12=1 heap=303640 (boot query; no tag search)
+NFC-PROBE init-only wire=1 begin=1 version=0x32010607 SAM=1 IRQ12=1 heap=303640 (boot query; no tag search)
+NFC-PROBE init-only wire=1 begin=1 version=0x32010607 SAM=1 IRQ12=1 heap=303640 (boot query; no tag search)
+NFC-PROBE init-only wire=1 begin=1 version=0x32010607 SAM=1 IRQ12=1 heap=303640 (boot query; no tag search)
+NFC-PROBE init-only wire=1 begin=1 version=0x32010607 SAM=1 IRQ12=1 heap=303640 (boot query; no tag search)

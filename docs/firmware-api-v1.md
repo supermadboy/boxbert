@@ -10,8 +10,9 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
 `status.firmware=boxbert-v1-commissioning-20261111`, Bootlautstärke1,
 zulässige `settings.volume`-Werte **0..6** statt0..21. Höhere Werte erzeugen
-`invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC und
-externer Stick sind nicht angeschlossen/deaktiviert, Boost-EN-Ausgang und
+`invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC bleibt
+softwareseitig deaktiviert (Leser inzwischen angeschlossen/Init geprüft,
+Laufzeitintegration offen); externer Stick fehlt. Boost-EN-Ausgang und
 Auto-Sleep bis zur Power-Prüfung ebenfalls aus. Schema und übrige RPC bleiben
 V1; die PWA kann weiterhin0..21 anbieten und zeigt außerhalb des Testlimits
 einen Gerätefehler. Details: `gesamtfirmware-build.md`.
