@@ -1,5 +1,15 @@
 # Versorgung, LED-Ansteuerung und Abschaltung — Planungsgrenzen
 
+## Aktueller Endaufbau / Ausschalter (11.11.2026)
+
+Amp laut Nutzer am Step-Up-Ausgang, nicht an BAT. Feather-EN allein ist
+kein Ausschalter für die Boost-Rail. Der untersuchte Vorschlag und der
+notwendige gemeinsame Hardware-/Firmwaretest stehen unter
+[Step-Up-Abschaltung](stepup-abschaltung.md). Noch nichts umgebaut oder
+geflasht; BoostControl und AutoSleep im aktuellen Geräteprofil deaktiviert.
+Die nachfolgenden Breadboard- und frühen Railangaben sind historisch und
+keine Beschreibung des heutigen Amp-Anschlusses.
+
 Stand: **04.10.2026**. Aktueller USB-Breadboard-Aufbau ist bestaetigt;
 Etappe-6-Erweiterungen sind **noch keine freigegebene Steckanleitung**.
 Pins ausschliesslich aus `hardware/pinout.md`. Akku bleibt getrennt,

@@ -1,5 +1,16 @@
 # Verkabelungsplan Endaufbau — Boxbert
 
+## Hauptschalter und Amp-Versorgung (11.11.2026)
+
+Aktuelle Nutzerbestätigung: **Amp-VIN hängt am Step-Up-Ausgang, nicht an BAT.**
+Der dreipolige Hauptkippschalter bleibt zwischen Feather-EN und GND.
+Das allein schaltet den Step-Up nicht zuverlässig ab. Recherche und noch
+nicht umgesetzter Vorschlag: [3,3-kΩ-Pull-down am Step-Up-EN](../docs/stepup-abschaltung.md).
+**Nicht ohne passenden Firmwarestand einbauen:** Im aktuellen Geräteprofil
+sind BoostControl und AutoSleep deaktiviert; IO9 bleibt Eingang.
+Reale Abschalt-/Sleep-Ströme und Rückspeisung sind noch nicht geprüft.
+Diese Angaben ersetzen die ältere Amp-an-BAT-Planung unten.
+
 ## Gemessene Eingänge / SD / Audio (11.11.2026)
 
 **Die reale Eingangsbelegung weicht vom älteren Plan unten ab.** Maßgeblich

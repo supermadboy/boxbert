@@ -81,13 +81,14 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
   Crosscompile/Browserprüfung sind keine Flash-/Funk-/Geräteabnahme. OTA,
   Soundkatalog und neue RFID-Spielideen sind nicht Teil dieses Auftrags.
 - **Audio:** MAX98357A (ADA3006, I2S) — im Breadboard an USB-5 V, im finalen
-  Aufbau an Akkuspannung oder Boost (Entscheidung nach Hörtest). Lautsprecher:
+  Aufbau laut Nutzerbestätigung11.11.2026 am Step-Up-Ausgang. Lautsprecher:
   ADA3351-Gehäuselautsprecher 4 Ω / 3 W (kein 40/50-mm-Vergleichspaar, nur
   einer bestellt).
 - **Boost:** TPS61023 MiniBoost (ADA4654, nominal 5,2 V / 1 A, Enable-Pin).
   EN Low = True Disconnect **nur für Verbraucher hinter seinem Ausgang**.
-  Aktueller Amp/PN532 hängen nicht dort; fertige Akku-/Sleep-Rails noch
-  offen (`docs/power-plan.md`). MAX98357A max. 5,5 V; vor Anschluss
+  Amp hängt laut Nutzer dort, PN532 an3V3. Hardware-Ausschaltung noch offen;
+  untersuchter, nicht eingebauter Pull-down-Vorschlag und Firmware-Vorbehalt
+  unter `docs/stepup-abschaltung.md`. MAX98357A max. 5,5 V; vor Anschluss
   Boost-Ausgang prüfen, 5,2 V nominal ist keine eigene Modulmessung.
 - **NFC:** PN532 aktuell **I2C**: SDA IO3, SCL IO4, VCC 3V3, DIP 1 ON /
   2 OFF, Adresse 0x24, 100 kHz. UID-Lesen und NFC+SD+Audio neu geprueft,
@@ -125,7 +126,8 @@ mechanische Kernwerte aller Bauteile gebündelt: `docs/kernwerte.md`. Kurz:
   abschalten. Dafür separate PN532-3,3-V-Abschaltung planen; Boost-EN,
   Feather-EN und TFT/STEMMA-Power sind verschiedene Funktionen.
 - **Kippschalter als Hauptschalter:** zwischen EN und GND — schaltet das Board
-  ab, Laden über USB geht trotzdem weiter.
+  ab, nicht automatisch den Step-Up. Drei Anschlüsse laut Nutzer; Vorschlag
+  für Step-Up-Default-Aus noch nicht umgesetzt. Laden über USB bleibt möglich.
 
 ## Quellenzuständigkeit — Widersprüche nicht weginterpretieren
 
@@ -361,8 +363,8 @@ erste Gesamtprüfung sind keine zugesagte oder nachgewiesene Zeit.
   nach Verhaltenstest an 5 V entscheiden. **ENTSCHIEDEN 07.10.2026:**
   keine Button-LEDs, NeoPixel übernimmt alle visuellen Signale
   (`hardware/verkabelung-endaufbau.md`).
-- Boost-Ausgang an MAX98357A: ja/nein, je nach Hörtest (lauter, aber mehr
-  Strom und Verzerrungsrisiko an der 5,2-V-Grenze).
+- Boost-Versorgung am MAX98357A laut Nutzer angeschlossen; reale Abschalt-
+  und Sleep-Stromprüfung sowie sichere Ausgangsspannung unter Last offen.
 - Arduino-Framework vs. ESP-IDF für die Firmware (Sprint-4-Entscheidung;
   für Breadboard-Etappen 0–4 nicht relevant).
 - Gehäuse: Bohrbild/Lautsprecher-Einbau erst nach Hörtest planen.
