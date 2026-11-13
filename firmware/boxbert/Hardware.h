@@ -15,17 +15,20 @@
 #include "Storage.h"
 #include "src/runtime/LedFrame.h"
 #include "src/runtime/Quadrature.h"
+#include "src/runtime/Pn532Scan.h"
 #include "src/ui/TftRenderer.h"
 #include "TftAsset.h"
 namespace boxbert::integrated {
 class Hardware {
  public:
- Audio audio;Adafruit_PN532 nfc{255,254,&Wire};Adafruit_MAX17048 gauge;
+ Audio audio;Adafruit_PN532 nfc{pins::ReservedNfcIrq,255,&Wire};Adafruit_MAX17048 gauge;
  Adafruit_ST7789 tft{&SPI,TFT_CS,TFT_DC,TFT_RST};
  Adafruit_NeoPixel stick{8,pins::Stick,NEO_GRB+NEO_KHZ800},board{1,pins::BoardPixel,NEO_GRB+NEO_KHZ800};
  SemaphoreHandle_t wireMutex=nullptr;QueueHandle_t tags=nullptr;TaskHandle_t nfcHandle=nullptr;
  struct TagEvent {char uid[24];};
  bool sd=false,audioReady=false,gaugePresent=false,awPresent=false,held=false;
+ // 0 disabled,1 scanning,2 fault (no automatic resend),3 cleanly parked.
+ std::atomic<int> nfcState{0};std::atomic<bool> nfcPauseRequested{false};
  float percent=NAN,voltage=NAN,rate=NAN;uint32_t gaugeAt=0,activity=0;
  int playback=1;String path,tagUid;bool paused=false;IntroChain chain;std::atomic<bool> eof{false};
  runtime::Debouncer buttons[10],minis[3],encoderSwitch,radioSwitch,toggle;
@@ -37,12 +40,29 @@ class Hardware {
  bool readAw(uint16_t& v){Wire.beginTransmission(0x58);Wire.write(0);if(Wire.endTransmission(false))return false;if(Wire.requestFrom(uint8_t(0x58),uint8_t(2))!=2)return false;v=Wire.read();v|=Wire.read()<<8;return true;}
  // V1 semantics (docs/entscheidungen.md): removal does not clear the last UID;
  // the same UID requires an intervening different UID, never an automatic EOF loop.
- static void nfcTask(void* arg){auto& h=*(Hardware*)arg;char last[24]="";
-  for(;;){uint8_t uid[7],length=0;bool ok=false;
-   if(xSemaphoreTake(h.wireMutex,pdMS_TO_TICKS(500))==pdTRUE){ok=h.nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A,uid,&length,250);xSemaphoreGive(h.wireMutex);}
-   if(ok&&length>0&&length<=7){TagEvent event{};for(int i=0;i<length;i++)sprintf(event.uid+i*3,i==length-1?"%02X":"%02X:",uid[i]);
-    if(strcmp(last,event.uid)){strcpy(last,event.uid);xQueueOverwrite(h.tags,&event);}}
-   vTaskDelay(pdMS_TO_TICKS(ok?200:10));
+ struct NfcBus {
+  bool write(const uint8_t* p,size_t n){Wire.beginTransmission(0x24);bool copied=Wire.write(p,n)==n;uint8_t error=Wire.endTransmission();return copied&&error==0;}
+  bool read(uint8_t* p,size_t n){
+   if(size_t(Wire.requestFrom(uint8_t(0x24),uint8_t(n)))!=n){while(Wire.available())Wire.read();return false;}
+   for(size_t i=0;i<n;i++){int c=Wire.read();if(c<0)return false;p[i]=uint8_t(c);}return true;
+  }
+ };
+ static void nfcTask(void* arg){auto& h=*static_cast<Hardware*>(arg);char last[24]="";runtime::Pn532Scan scan;NfcBus bus;
+  for(;;){
+   if(h.nfcPauseRequested.load()&&scan.idle()){
+    if(h.nfcState.exchange(3)!=3)Serial.println("NFC parked: no pending command; safe for planned board reset");
+    vTaskDelay(pdMS_TO_TICKS(10));continue;
+   }
+   if(h.nfcState.load()==3){h.nfcState.store(1);Serial.println("NFC resumed");}
+   uint32_t now=millis();uint8_t uid[7],length=0;bool ok=false;
+   if(scan.needsBus(now)&&xSemaphoreTake(h.wireMutex,pdMS_TO_TICKS(25))==pdTRUE){
+    ok=scan.tick(bus,now,uid,length);xSemaphoreGive(h.wireMutex);
+   }
+   if(scan.error()!=runtime::Pn532Scan::Error::None&&h.nfcState.exchange(2)!=2)
+    Serial.printf("NFC fault=%u; no automatic command retry; inspect/power-cycle deliberately\n",unsigned(scan.error()));
+   if(ok){TagEvent event{};for(int i=0;i<length;i++)sprintf(event.uid+i*3,i==length-1?"%02X":"%02X:",uid[i]);
+    if(strcmp(last,event.uid)){strcpy(last,event.uid);Serial.printf("NFC UID=%s\n",event.uid);xQueueOverwrite(h.tags,&event);}}
+   vTaskDelay(pdMS_TO_TICKS(10));
   }
  }
  void begin(){
@@ -63,19 +83,24 @@ class Hardware {
    if(m.e==Audio::evt_eof)eof.store(true);
    if(commissioning::UsbDiagnostics&&(m.e==Audio::evt_info||m.e==Audio::evt_log||m.e==Audio::evt_eof))Serial.printf("[audio] %s: %s\n",m.s?m.s:"?",m.msg?m.msg:"");
   };audio.setVolume(commissioning::BootVolume);
-  for(auto pin:pins::ButtonGpio)if(pin!=255)pinMode(pin,INPUT_PULLUP); // IO13 intentionally input, onboard LED follows contact.
+  for(auto pin:pins::ButtonGpio)if(pin!=255)pinMode(pin,INPUT_PULLUP);
   for(auto pin:{pins::EncoderA,pins::EncoderB,pins::EncoderSwitch,pins::RadioButton,pins::ToggleTwo})pinMode(pin,INPUT_PULLUP);
   encoderState=(digitalRead(pins::EncoderA)<<1)|digitalRead(pins::EncoderB);
   attachInterruptArg(digitalPinToInterrupt(pins::EncoderA),encoderEdge,this,CHANGE);
   attachInterruptArg(digitalPinToInterrupt(pins::EncoderB),encoderEdge,this,CHANGE);
   wireMutex=xSemaphoreCreateMutex();tags=xQueueCreate(1,sizeof(TagEvent));
+  if(commissioning::Nfc)nfcState.store(2);
   if(wireMutex&&tags&&Wire.begin(pins::Sda,pins::Scl)){
    Wire.setClock(100000);Wire.setTimeOut(300);
    xSemaphoreTake(wireMutex,portMAX_DELAY);
    gaugePresent=gauge.begin();awPresent=writeAw(0x04,0xff)&&writeAw(0x05,0xff)&&writeAw(0x12,0xff)&&writeAw(0x13,0xff); // all GPIO inputs, external pullups
-   bool nfcOk=commissioning::Nfc&&nfc.begin()&&nfc.getFirmwareVersion()&&nfc.SAMConfig();xSemaphoreGive(wireMutex);
-   if(nfcOk&&xTaskCreate(nfcTask,"BoxbertNFC",4096,this,1,&nfcHandle)!=pdPASS)Serial.println("NFC task failed");
-   if(!nfcOk)Serial.println(commissioning::Nfc?"PN532 unavailable":"PN532 disabled for commissioning");
+   uint32_t nfcVersion=0;
+   bool nfcOk=commissioning::Nfc&&nfc.begin()&&(nfcVersion=nfc.getFirmwareVersion())&&nfc.SAMConfig();xSemaphoreGive(wireMutex);
+   if(commissioning::Nfc){
+    nfcState.store(nfcOk?1:2);
+    Serial.printf("PN532 init=%d firmware=0x%08lX IRQ12=%d; split I2C scanner\n",nfcOk,(unsigned long)nfcVersion,digitalRead(pins::ReservedNfcIrq));
+    if(nfcOk&&xTaskCreate(nfcTask,"BoxbertNFC",4096,this,1,&nfcHandle)!=pdPASS){nfcState.store(2);Serial.println("NFC task failed");}
+   }else Serial.println("PN532 disabled for commissioning");
   }
   Serial.printf("SD=%d Audio/PSRAM=%d Gauge=%d AW9523=%d\n",sd,audioReady,gaugePresent,awPresent);
  }

@@ -42,7 +42,7 @@ inline bool diagnosticTestExpired(uint32_t now,uint32_t started){
 class DiagnosticCommand {
  char line[16]{};size_t used=0;bool bad=false,cr=false;
  public:
- enum Command {None,Inspect,ButtonNine,ButtonTen,Stop,RadioOff,RadioBle,RadioWifi};
+ enum Command {None,Inspect,ButtonNine,ButtonTen,Stop,RadioOff,RadioBle,RadioWifi,NfcPause,NfcResume};
  Command feed(char c){
   if(c=='\n'){
    Command result=None;
@@ -54,6 +54,8 @@ class DiagnosticCommand {
     else if(!std::strcmp(line,"radio-off"))result=RadioOff;
     else if(!std::strcmp(line,"radio-ble"))result=RadioBle;
     else if(!std::strcmp(line,"radio-wifi"))result=RadioWifi;
+    else if(!std::strcmp(line,"nfc-pause"))result=NfcPause;
+    else if(!std::strcmp(line,"nfc-resume"))result=NfcResume;
    }
    used=0;bad=cr=false;return result;
   }

@@ -57,7 +57,7 @@ void setup(){
  // Explicit temporary first-device profile: boot quietly, never adopt an old loud setting.
  config.data["volume"]=commissioning::BootVolume;
  requestedVolume=config.data["volume"];hardware.audio.setVolume(requestedVolume);transport.commissioningButton=buttonPressed;transport.begin();
- Serial.println("BOXBERT integrated commissioning v1 ready; volume 1..6 (0=mute), NFC/stick/boost-control/sleep disabled");
+ Serial.println("BOXBERT integrated commissioning v1 NFC ready; volume 1..6 (0=mute), stick/boost-control/sleep disabled");
 }
 void loop(){
  const uint32_t now=millis();hardware.tickAudio();rpc.tick(now);
@@ -76,7 +76,7 @@ void loop(){
  if(uint32_t(now-ledAt)>=40){ledAt=now;hardware.pixels(config.data,now);}
  if(uint32_t(now-drawAt)>=200){drawAt=now;int wifi=rpc.radio!=boxbert::runtime::Radio::Wifi?0:WiFi.getMode()==WIFI_AP||WiFi.status()==WL_CONNECTED?2:1;hardware.draw(config.data,rpc.radio,wifi,now);}
  static uint32_t statusAt=0;
- if(uint32_t(now-statusAt)>=5000){statusAt=now;Serial.printf("BOXBERT commissioning SD=%d PSRAM=%d AW=%d Gauge=%d radio=%u volume=%u running=%d config=%d heap=%u\n",hardware.sd,psramFound(),hardware.awPresent,hardware.gaugePresent,unsigned(rpc.radio),hardware.audio.getVolume(),hardware.audio.isRunning(),config.ready&&!config.damaged,ESP.getFreeHeap());}
+ if(uint32_t(now-statusAt)>=5000){statusAt=now;Serial.printf("BOXBERT commissioning SD=%d PSRAM=%d AW=%d Gauge=%d radio=%u volume=%u running=%d config=%d heap=%u NFC=%d\n",hardware.sd,psramFound(),hardware.awPresent,hardware.gaugePresent,unsigned(rpc.radio),hardware.audio.getVolume(),hardware.audio.isRunning(),config.ready&&!config.damaged,ESP.getFreeHeap(),hardware.nfcState.load());}
  if(commissioning::AutoSleep&&boxbert::runtime::shouldSleep(millis(),hardware.activity,hardware.playback==2,rpc.progress.active,hardware.held)&&!volumePending){
   const auto previousRadio=rpc.radio;transport.off();
   if(!hardware.sleep()){transport.setRadio(previousRadio);hardware.activity=millis();}

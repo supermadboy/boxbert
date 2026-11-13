@@ -4,10 +4,11 @@
 
 **Der aktuelle Quellstand baut ausdrücklich ein temporäres Inbetriebnahmeprofil**
 (`firmware/Config.h`, Namespace `commissioning`), keine volle Produktfreigabe:
-NFC/externer Stick/aktive Boost-EN-Steuerung/Auto-Sleep deaktiviert. Der Leser
-ist seit der Fortsetzung11.11. angeschlossen und initialisierbar, seine
-busverträgliche Laufzeitintegration aber noch offen. Stick fehlt, Power-/Sleep-
-Verdrahtung noch nicht bestätigt.
+**Seit13.11. NFC aktiviert** mit kurzer I2C-Zustandsmaschine ohne Tagwarten
+unter Wire-Mutex. Physischer Tag1 startet laut Log Arcade bis EOF, Nutzer-
+Hör-/Sichtabnahme offen. Stick/aktive Boost-EN-Steuerung/Auto-Sleep bleiben aus.
+Stick fehlt, Power-/Sleep-Verdrahtung noch nicht freigegeben. Aktuelle Nachweise:
+`testprotokoll-nfc-integration-2026-11-13.md`.
 Onboard-Pixel, TFT, SD/Audio und BLE/WLAN bleiben enthalten. Bootvolume immer1,
 Encoder/RPC temporär0..6 von21; RPC lehnt höhere Werte ausdrücklich ab.
 Gespeicherte Lautstärke wird beim Boot nur im RAM durch1 ersetzt, nicht
@@ -63,14 +64,14 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 
 ## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
 
-Aktuell geflasht: `~/.cache/boxbert-build-auvtr3vh/manifest.json`,2545151 Byte
-Flash/173380 Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
+Aktuell geflasht: `~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte
+Flash/173468Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
 beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
 [`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).
 
 `commissioning::UsbDiagnostics=true` erlaubt ausschließlich ganze LF-/CRLF-
 Zeilen: `diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`,
-`radio-wifi`. Kein allgemeiner Kommando-/Dateischreibzugang.
+`radio-wifi`, `nfc-pause`, `nfc-resume`. Kein allgemeiner Kommando-/Dateischreibzugang.
 
 ```sh
 python3 tools/firmware/usb-diagnostics.py --command diag --seconds 8 \
@@ -96,6 +97,13 @@ Teststopp beendet werden. `test-stop` beendet die Wiedergabe/Testfrist explizit.
 USB-Testvolumen ist keine Persistenzprüfung. Funktraces haben `Serial.flush()`
 und10-ms-Schrittpausen: hilfreich zur Diagnose, keine zeitneutrale Beobachtung.
 Vor produktiver Freigabe Diagnosezugang/Timing prüfen bzw. deaktivieren.
+
+**Vor neuem Flash mit NFC:** `nfc-pause` anfordern und **NFC=3/parked** im
+Gerätelog abwarten. Eine ausstehende Suche braucht ggf. einen aufgelegten Tag,
+bevor die Task ohne offenen Befehl parken darf; Kommando allein ist kein
+Parknachweis. BeiNFC=2Fault nicht automatisch neu initialisieren. `nfc-resume`
+hebt die Parkanforderung auf, behebt keinenFault. Die kurze Geräteprobe zeigte
+nur pending→zurückgenommen, sauberes Parken noch nicht abgenommen.
 
 ## Private WLAN-Zugangsdaten
 

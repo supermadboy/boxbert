@@ -11,7 +11,9 @@ Nutzerkarte lag beim UID-Test **durchgehend** auf. Gelesen: Tag1
 2LOW-/2HIGH-Flanken, danach HIGH. Quelle:
 `docs/serial/2026-11-11-nfc-uid-irq-edges.log` und Gesamtprotokoll.
 Keine Neuauflage-/Entfernungs-/Wechsel-/Wake-Abnahme, kein neuer Chiptypnachweis.
-Danach Gesamtfirmware wiederhergestellt; NFC-Laufzeit weiterhin deaktiviert.
+Damals Gesamtfirmware mit NFC aus wiederhergestellt. **Seit13.11. NFC im
+Gesamtstand aktiv:** Tag1→Arcade-Decoder→natürlichesEOF geloggt, Hör-/Sicht-
+abnahme offen. Quelle: `docs/testprotokoll-nfc-integration-2026-11-13.md`.
 
 **Konfigurationsunterschied nicht automatisch überschreiben:** Die tatsächlich
 migrierte SD-Konfig zeigt Tag0/Tag1 nach Nullindex mit Arcade und`/fart.mp3`

@@ -1,5 +1,30 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
+## Neuester Stand13.11.2026 — NFC im Gesamtplayer aktiv
+
+**Maßgeblich für den aktuellen Flash:**
+`boxbert-v1-commissioning-20261111-nfc`, Build
+`~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte Flash/173468Byte
+Globale. NFC aktiviert mit neuer kurzer I2C-Zustandsmaschine, kein Tagwarten
+unter Wire-Mutex. Stick/BoostControl/AutoSleep bleiben AUS. Amp laut parallel
+übernommener Nutzerbestätigung am Boost; Pull-down-Vorschlag nicht umgesetzt.
+
+Gerätenachweis13.11.: NFC UID E3:2F:F6:33 → Arcade-Decoder läuft → natürliches
+EOF, Encoder requested=actual2..6, kein erneuter Start im Ausschnitt. **Hör-/
+Sichtbestätigung des Nutzers noch offen.**19native Programme/4Pin-Tests und
+5Encoder/RPC-Szenarien grün. Letzter Zustand: Volume6,radio2,NFC1,playback4/
+running0,Heap36516,Konfigrevision39. Die angeforderte NFC-Pause blieb bei
+laufender Suche pending, danach wieder zurückgenommen; **Parken nicht abgenommen**.
+Vor neuem Flash `nfc-pause`, Tag ggf. auflegen, **NFC=3/parked abwarten**;
+`nfc-resume` hebt Anforderung auf. Fault2 nicht automatisch neu initialisieren.
+
+Ausführliches aktuelles Protokoll und noch offene Geräteprüfungen:
+[`testprotokoll-nfc-integration-2026-11-13.md`](testprotokoll-nfc-integration-2026-11-13.md).
+Zuerst Nutzer nach Ton/TFT fragen, dann reale AW-Taster während taglosem Warten,
+Tagwechsel/Parken und übrige Abnahme. Tag2-Mapping weiterhin vor Änderung klären.
+**Die folgenden Fortsetzungsabschnitte sind Chronologie älterer Probe-/Restore-
+Stände; dortiges „NFC aus/auvtr3vh“ beschreibt nicht mehr den aktuellen Flash.**
+
 ## Fortsetzung nach Abschluss-Commit58208da
 
 Nutzer setzt dieselbe Session fort und bestätigt **PN532 jetzt angeschlossen**:
@@ -100,7 +125,8 @@ ist bislang nicht erneut reproduziert und **nicht nachweislich behoben**.
 - Akku bleibt laut ausdrücklichem Nutzerwunsch während Flash/Funktionstests
   angeschlossen, zusätzlich USB. Versorgung/Polung laut Nutzer richtig, SD-VCC
   mit5V gemessen. Keine eigene elektrische Gesamtprüfung behaupten.
-- **PN532 und externer NeoPixel-Stick fehlen.** Keine NFC-/Sticktests erwarten.
+- **PN532 inzwischen angeschlossen/UID+IRQ geprüft und NFC integriert.**
+  Externer NeoPixel-Stick fehlt weiterhin; keine Sticktests erwarten.
 - Vor Umstecken/Durchgangsprüfung **USB UND Akku abtrennen**. Keine unbekannten
   GPIOs als Outputs suchen. Kein Löten/Powerumbau ohne separaten Auftrag.
 - Booststeuerung, finale Sleep-Rails und tatsächliche Abschaltung nicht geprüft.
@@ -157,19 +183,19 @@ das ist keine Zuordnung des unbekannten gelben Minis.
 
 ## 3. Aktueller Flash — nicht mit älteren Diagnosen verwechseln
 
-- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261111`.
-- **Exaktes geflashtes Artefakt:**
-  `~/.cache/boxbert-build-auvtr3vh/manifest.json`, Dateien unter `artifacts/`.
+- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261111-nfc`.
+- **Exaktes aktuell geflashtes Artefakt:**
+  `~/.cache/boxbert-build-c0n11gac/manifest.json`, Dateien unter `artifacts/`.
   Compile-/Uploadlog im selben Verzeichnis. Quellen-/Artefakt-SHA256 vor Upload
   geprüft, Hashprüfung beim Schreiben erfolgreich.
--2545151Byte Flash (88% von2883584),173380Byte globale Variablen (52%).
+-2559211Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
 - Isolierte CLI1.5.1, Core3.3.12, NimBLE2.3.8, QSPI-PSRAM/Boarddefaults.
   Keine OPI-Option. Keine privaten Heim-WLAN-Daten eingebaut.
-- `commissioning`: Bootvolume1,max6, NFC=false, Stick=false,
+- `commissioning`: Bootvolume1,max6, NFC=true, Stick=false,
   BoostControl=false, AutoSleep=false, UsbDiagnostics=true.
 - SD/PSRAM/AW/Gauge/config=1; BLE-Modus2 und Hauptloop beobachtet.
  1=WiFi,0=Off. Diese Zahlen beweisen **keine Clientverbindung**.
-- **Abschlusszustand:** identisches Artefakt nochmals verifiziert, Uploader-
+- **Historischer Abschlusszustand11.11. vor NFC-Integration:** damaliges Artefakt nochmals verifiziert, Uploader-
   Reset (`upload-final.log`), danach `abschluss-idle.log`: playback1/idle,
   running0,Volume1,radio2,Heap42640/größter Block31732,PSRAM1576536Byte,
   Konfig gültig/Revision9, GPIO5/6/11 alle HIGH. Keine Musik läuft, kein
@@ -185,7 +211,8 @@ das ist keine Zuordnung des unbekannten gelben Minis.
   Radiotrace nutzt `Serial.flush()` und10-ms-Schrittpausen: verändert Timing,
   ist weder ein zeitneutraler Test noch ein gezielter bewiesener Race-Fix.
 
-Ältere Gesamtbuilds `boxbert-build-3qvvzmm_` und `boxbert-build-6ad58nq1` wurden
+Ältere Gesamtbuilds `boxbert-build-3qvvzmm_`, `boxbert-build-6ad58nq1` und
+`boxbert-build-auvtr3vh` (NFC aus) wurden
 abgelöst. Getesteter Rückfall **nur absichtlich**:
 `~/.cache/boxbert-volume-IHv8dqX0` (isolierte Volume-Diagnose,20-s-Limit).
 Binaries mit NimBLE2.3.6 nicht wieder als Gesamtstand verwenden.
@@ -314,7 +341,7 @@ kein passives Monitoring. Exakt gebautes Artefakt prüfen, Port identifizieren,
 
 ## 7. Hostnachweise / Daten erhalten
 
-- Pin-Node4Tests; native ASan/UBSan18Programme inklusive PN532-Frameparser, Quadratur und
+- Pin-Node4Tests; native ASan/UBSan19Programme inklusive PN532-Frameparser/Scan-Zuständen, Quadratur und
   USB-Parser/Timer (auch Millis-Wraparound/kein sofortiges Timeout).
 - App68Tests; echte Encoder/RPC-Codeabschnitte in5Szenarien,6Node-Tests inkl.
   Parent: Limits/Mute/Drehrichtung, entprellte Persistenz, SD-/Uploadfehler.

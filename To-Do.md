@@ -2,27 +2,24 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **PN532 jetzt am Endaufbau angeschlossen (Fortsetzung11.11.2026):**
-  Nutzer bestätigt I2C3/4,3V3/GND,DIP1ON/2OFF und IRQ12. Isolierte Initprobe
-  `firmware/tests/endaufbau_nfc_probe/` erfolgreich: PN532/Firmware1.6,
-  Wire/begin/SAM=1. **Tag1 E3:2F:F6:33 gelesen, IRQ12 zeigt2LOW/2HIGH-Flanken**
-  in gezielter UIDprobev2. Karte laut Nutzer durchgehend aufgelegt: kein
-  Neuauflage-/Wechsel-/Wake-Nachweis. HIGH nach Libraryaufruf war kein Defekt-
-  beweis; I2C-RDY wird schon intern gepollt. Danach Gesamtbuild
-  `boxbert-build-auvtr3vh` wiederhergestellt, NFC-Laufzeit weiter aus;
-  SD/I2S/PSRAM/AW/Gauge/config=1,Volume1,BLE/idle,Konfigrevision26.
-  **Nächster NFC-Schritt: busverträgliche Integration + Wechsel/Audio/Taster.**
-  Tag2-Mapping vor Änderung klären: historische ReferenzHappyTune, SD aktuell
-  `/fart.mp3`; nichts automatisch ersetzen. Vorhandenes250-ms-Tagwarten hält Wire-
-  Mutex; Timeout0 würde AW/Gauge ohne Tag unbeschränkt blockieren. Auch die
-  „startPassive“-Library-API wartet auf Zielantwort, nicht blind als vollständig
-  nonblocking einsetzen. Nachweise und aktueller Flash in der Übergabedatei.
+- [ ] **NFC im Gesamtplayer aktiv (13.11.2026), Nutzerabnahme offen:**
+  I2C3/4,3V3,GND,DIP1ON/2OFF,IRQ12 bestätigt; frühere Probe UIDTag1 und2LOW/
+  2HIGH-Flanken. Neue Zustandsmaschine gibt Wire-Mutex nach kurzen Transfers
+  frei; kein Tagwarten/kein wiederholter Suchbefehl bei ausstehender Antwort.
+  Physischer Tagpfad jetzt geloggt: E3:2F:F6:33→Arcade-Stream→natürlichesEOF,
+  requested=actual2..6. **Ton/TFT/Mute/Pause/Resume vom Nutzer bestätigen lassen**,
+  AW-Taster/Gauge während taglosem Warten, Tagwechsel und Parken prüfen.
+  `nfc-pause` blieb in kurzer Probe pending und wurde zurückgenommen; erst
+  NFC=3/parked gilt als bereit für geplanten Reset, bei wartender Suche Tag nötig.
+  Tag2-Mapping vor Änderung/Wiedergabe klären: historischHappyTune, SD Fart.
+  Neuester Nachweis: `docs/testprotokoll-nfc-integration-2026-11-13.md`.
+  Keine Wake-/Sleep-/Produktfreigabe.
 
 - [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
-  Aktuell `boxbert-v1-commissioning-20261111`, Diagnosebuild
-  `~/.cache/boxbert-build-auvtr3vh/manifest.json`, 2545151 Byte Flash /
-  173380 Byte globale Variablen, Core3.3.12/QSPI, **NimBLE2.3.8**.
-  Bootvolume1, Maximum6/21; NFC/Stick/aktive Booststeuerung/Auto-Sleep aus;
+  Aktuell seit13.11. `boxbert-v1-commissioning-20261111-nfc`, Build
+  `~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte Flash/
+  173468Byte globale Variablen,Core3.3.12/QSPI,**NimBLE2.3.8**.
+  Bootvolume1,Maximum6/21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
   Akku+USB laut Nutzer. Gemessene Eingänge übernommen, Encoder per Interrupt,
   gelber Mini deaktiviert. SD/PSRAM/AW/Gauge/config=1.
   **Nutzer meldete „Dateifehler“: nicht als behoben behandeln.** Beide Pfade
@@ -32,12 +29,13 @@
   Ein früher `radio-off`-Versuch startete neu; mit Schrittausgaben und10-ms-
   Diagnosepausen mehrere Funkwechsel bis einschließlich laufendem Decoder
   erfolgreich. Ursache offen, Timing beeinflusst; kein gesicherter Fix.
-  Heap nach WLAN→BLE nur ca.24 kB idle/18,6 kB beim Decoder: Lastreserve offen.
+  Vor NFC nach WLAN→BLE nur ca.24kB idle/18,6kB beim Decoder: Lastreserve
+  mit zusätzlicher NFC-Task erst recht nicht nachgewiesen.
   **Nächste Session: [vollständige Übergabe](docs/uebergabe-endaufbau-2026-11-11.md)
   lesen**, realen blauen Button mit Log testen, Nutzer-Sicht-/Hör-/Encoder-
   Prüfung, dann echte BLE/PWA-/HTTP-Verbindung und Persistenz. Kein `/www`
   auf SD festgestellt; SD-Weboberfläche nicht installiert. Kein Produktnachweis.
- 18 native Programme (inkl.PN532-Frameparser),4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
+ 19 native Programme (inkl.PN532-Frameparser/Scan),4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
   Ereignisfolgen bestanden; USB-Diagnoseparser/20-s-Timer zusätzlich geprüft.
   Private Lesesicherung vor Gesamtflash vorhanden; Musik unverändert.
   Protokoll: `docs/testprotokoll-gesamtfirmware-2026-11-11.md`.

@@ -1,0 +1,62 @@
+
+# USB capture 2026-11-13T14:13:16.777027; no DTR/RTS ioctl
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=37352 NFC=1
+NFC UID=E3:2F:F6:33
+TAG index=0
+START requested song='/arcade-music-loop.mp3' intro='' I2S=1 SD=1 heap=37304 psram=1576456
+[audio] info: inputBufferSize: 655349 bytes
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+VOLUME requested=2 actual=2 commissioningMax=6
+VOLUME requested=3 actual=3 commissioningMax=6
+VOLUME requested=4 actual=4 commissioningMax=6
+VOLUME requested=5 actual=5 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+VOLUME requested=6 actual=6 commissioningMax=6
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=1 config=1 heap=30828 NFC=1
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] eof: arcade-music-loop.mp3
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=6 running=0 config=1 heap=36516 NFC=1

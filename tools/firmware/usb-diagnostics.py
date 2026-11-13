@@ -15,7 +15,7 @@ import termios
 import time
 
 DEFAULT_PORT = '/dev/serial/by-id/usb-Adafruit_Feather_ESP32-S3_Reverse_TFT_d0:cf:13:0b:fb:c8-if00'
-COMMANDS = ('diag', 'test9', 'test10', 'test-stop', 'radio-off', 'radio-ble', 'radio-wifi')
+COMMANDS = ('diag', 'test9', 'test10', 'test-stop', 'radio-off', 'radio-ble', 'radio-wifi', 'nfc-pause', 'nfc-resume')
 
 
 def main():

@@ -147,9 +147,11 @@ class Transport {
    Serial.printf("DIAG SD=%d I2S=%d playback=%d volume=%u heap=%u maxAlloc=%u psram=%u config=%d revision=%lu\n",rpc.hw.sd,rpc.hw.audioReady,rpc.hw.playback,rpc.hw.audio.getVolume(),ESP.getFreeHeap(),ESP.getMaxAllocHeap(),ESP.getFreePsram(),rpc.store.ready&&!rpc.store.damaged,(unsigned long)rpc.store.revision);
    for(int i=0;i<2;i++){String song=rpc.store.data["tags"][i]["path"].as<String>(),intro=rpc.store.data["tags"][i]["introPath"].as<String>();Serial.printf("DIAG tag%d song='%s' exists=%d intro='%s'\n",i,song.c_str(),rpc.hw.exists(song.c_str()),intro.c_str());}
    if(rpc.hw.sd){File root=SD.open("/");for(File f=root.openNextFile();f;f=root.openNextFile()){Serial.printf("DIAG entry '%s' bytes=%llu dir=%d\n",f.name(),(unsigned long long)f.size(),f.isDirectory());f.close();}root.close();}
-   Serial.printf("DIAG GPIO5=%d GPIO6=%d GPIO11=%d\n",digitalRead(5),digitalRead(6),digitalRead(11));
+   Serial.printf("DIAG GPIO5=%d GPIO6=%d GPIO11=%d NFC=%d IRQ12=%d pauseRequested=%d\n",digitalRead(5),digitalRead(6),digitalRead(11),rpc.hw.nfcState.load(),digitalRead(pins::ReservedNfcIrq),rpc.hw.nfcPauseRequested.load());
    Serial.println("DIAG END");return;
   }
+  if(command==D::NfcPause){rpc.hw.nfcPauseRequested.store(true);Serial.println("DIAG NFC pause requested; wait for NFC=3; pending search needs a tag to complete");return;}
+  if(command==D::NfcResume){rpc.hw.nfcPauseRequested.store(false);Serial.println("DIAG NFC resume requested; NFC=2 faults require inspection, not automatic retry");return;}
   if(command==D::Stop){rpc.hw.stop();diagnosticPlaying=false;Serial.println("DIAG STOP");return;}
   if(command==D::RadioOff){off();Serial.println("DIAG radio off");return;}
   if(command==D::RadioBle){setRadio(runtime::Radio::Ble);Serial.println("DIAG radio BLE");return;}

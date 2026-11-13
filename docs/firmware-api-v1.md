@@ -8,17 +8,21 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 ## Temporäre Geräte-Erstinbetriebnahme 11.11.2026
 
 Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
-`status.firmware=boxbert-v1-commissioning-20261111`, Bootlautstärke1,
+`status.firmware=boxbert-v1-commissioning-20261111-nfc` seit13.11., Bootlautstärke1,
 zulässige `settings.volume`-Werte **0..6** statt0..21. Höhere Werte erzeugen
-`invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC bleibt
-softwareseitig deaktiviert (Leser inzwischen angeschlossen/Init geprüft,
-Laufzeitintegration offen); externer Stick fehlt. Boost-EN-Ausgang und
+`invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC seit
+13.11. mit kurzem I2C-Scanner aktiviert; physischer Tag1→Decoder→EOF geloggt,
+Hör-/Sichtabnahme offen. Externer Stick fehlt. Boost-EN-Ausgang und
 Auto-Sleep bis zur Power-Prüfung ebenfalls aus. Schema und übrige RPC bleiben
 V1; die PWA kann weiterhin0..21 anbieten und zeigt außerhalb des Testlimits
 einen Gerätefehler. Details: `gesamtfirmware-build.md`.
 
 Zusätzlich temporäre **lokale USB-Diagnose**, kein neuer HTTP-/BLE-RPC:
-`diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`, `radio-wifi`.
+`diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`, `radio-wifi`,
+`nfc-pause`, `nfc-resume`. NFC-Status nur im USB-Log:0aus,1Scanner,2Fault,3geparkt.
+Vor Reset bei aktivem Leser Parken anfordern und **3bestätigen**; wartet die
+Suche auf einen Tag, bleibt die Anforderung zunächst pending. Resume behebt
+keinenFault. Keine neue HTTP-/BLE-Operation.
 `test9/10` simulieren echte Buttonhandler mitVolume1 und20-s-Stopp; physische
 Buttons bleiben ohne Testtimer. Parser verwirft fremde/überlange Steuerzeilen.
 Passwörter werden dabei nicht ausgegeben; separates `credentials` niemals in

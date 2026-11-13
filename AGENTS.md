@@ -24,23 +24,27 @@ Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
 Etappe 5: Handy-Webseite, MP3-Upload, Tag-Zuordnung und Wiedergabe laut
 Nutzer erfolgreich, Zuordnung **und Wiedergabe nach RESET** bestaetigt.
 **Aktueller Geräteflash 11.11.2026:** `firmware/boxbert/`, Kennung
-`boxbert-v1-commissioning-20261111`,Core3.3.12/QSPI,NimBLE2.3.8.
+`boxbert-v1-commissioning-20261111-nfc` seit13.11.,Core3.3.12/QSPI,NimBLE2.3.8.
 Gemessene Eingänge in `hardware/pinout.md`, Einzeltests inkl. leiser
 Encoder-Lautstärkeregelung bestätigt. Gesamtstand bootet mit SD/PSRAM/AW/
 Gauge/config=1,BLE-Modus; dessen Sicht-/Hör-/Funkabnahme noch offen.
-Temporär Bootvolume1/max6,NFC/Stick/aktiveBoost-Steuerung/Auto-Sleep aus.
+Temporär Bootvolume1/max6,Stick/aktiveBoost-Steuerung/Auto-Sleep aus; NFC aktiv.
 Akku+USB laut Nutzer. **PN532 inzwischen angeschlossen/bestätigt:** I2C3/4,
 3V3, DIP1ON/2OFF, IRQ12. Initprobe findet PN532/Firmware1.6/SAM=1;
 UIDprobe liest Tag1 E3:2F:F6:33, IRQ12 zeigt2LOW/2HIGH-Flanken. Karte lag laut
 Nutzer durchgehend auf: Wechsel/Neuauflage/Wake noch offen. HIGH nach der
-I2C-pollenden Library allein war kein Defektbeweis. Gesamtstand wiederhergestellt, NFC dort
-weiter aus; vor Aktivierung Wire-Mutex/Tagwartepfad korrigieren. Stick fehlt.
-Aktueller Diagnosebuild:
-`~/.cache/boxbert-build-auvtr3vh/manifest.json`. Nutzer meldete „Dateifehler“;
+I2C-pollenden Library allein war kein Defektbeweis. Seit13.11. neuer NFC-Scanner
+mit kurzen I2C-Transfers statt Tagwarten unter Wire-Mutex. Physisch Tag1→Arcade-
+Decoder→EOF geloggt; Hör-/Sichtabnahme offen. Vor neuem Flash `nfc-pause` und
+NFC=3/parked abwarten, ggf.Tag für ausstehende Suche auflegen. Parktest offen.
+Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fehlt.
+Aktueller Build:
+`~/.cache/boxbert-build-c0n11gac/manifest.json`. Nutzer meldete früher „Dateifehler“;
 per USB simulierte Button-Handler starten beide MP3, Fehler nicht reproduziert
 und **nicht als behoben abgenommen**. Ein früher Funk-Aus-Versuch startete neu;
 mit zeitverändernden Diagnosetraces spätere Wechsel erfolgreich, Ursache offen.
-Nach WLAN→BLE beim Decoder nur ca.18,6 kB Heap; reale Funk-/PWA-Last offen.
+Vor NFC nach WLAN→BLE beim Decoder nur ca.18,6kB Heap; reale Funk-/PWA-Last
+mit zusätzlicher NFC-Task erst recht offen.
 Vollständige Weiterarbeit: `docs/uebergabe-endaufbau-2026-11-11.md`,
 `docs/testprotokoll-gesamtfirmware-2026-11-11.md`, `To-Do.md`.
 NimBLE2.3.6 verursachte mit Core3.3.12 einen Init-Panic; isoliert reproduziert,

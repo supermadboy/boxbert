@@ -151,6 +151,18 @@ einfügen, Datum dazu.
 
 ## PN532 (NFC)
 
+- **Tagwarten ohne gemeinsamen Wire-Mutex (eigener Code-/Gerätetest13.11.2026).**
+  Adafruit1.3.4-`sendCommandCheckAck` wartet nach ACK zusätzlich auf Zielantwort;
+  „startPassive“-Name alleine garantiert keine kurze Mutexbelegung. Neuer
+  Gesamtstand trennt TX/ACK/RDY/UID in kurze Transfers, sendet bei ausstehendem
+  Target keinen neuen Suchbefehl und geht bei Fehler ohne Auto-Retry inFault.
+  Tag1→Arcade-Decoder→natürlichesEOF und Encoderrequested=actual2..6 geloggt,
+ 19native Sanitizertests inkl.State-Mock grün. Echte AW-Bedienung während langer
+  Tagpause und Hör-/Sichtabnahme offen. Parkanforderung erst bei leerer Pending-
+  Strecke ausführen; kurze Geräteprobe blieb pending und wurde zurückgenommen,
+  deshalb kein bestandener Parktest. Quelle: eigener Runtimecode und
+  `docs/testprotokoll-nfc-integration-2026-11-13.md`, dort verlinkte Rohlogs.
+
 - **IRQ erst nach der I2C-pollenden API ablesen ist kein Leitungsnachweis
   (eigener Endaufbauvergleich11.11.2026).** Karte lag laut Nutzer durchgehend
   auf. `startPassiveTargetIDDetection()` liefert ready=1, danach GPIO12HIGH.

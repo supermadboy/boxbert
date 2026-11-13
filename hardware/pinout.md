@@ -88,7 +88,10 @@ Ein HIGH-Snapshot nach der intern I2C-pollenden API ist kein IRQ-Defektbeweis.
 UID-/Flankenlog: `docs/serial/2026-11-11-nfc-uid-irq-edges.log`.
 Resetleitung nicht zusätzlich bestätigt; Probe verwendet keinen Reset-GPIO.
 Log: `docs/serial/2026-11-11-nfc-init-probe.log`.
-Danach Gesamtfirmware wiederhergestellt, NFC-Laufzeit dort weiterhin aus.
+Damals Gesamtfirmware mit NFC aus wiederhergestellt. **Seit13.11. neue NFC-
+Laufzeit aktiv**, kurze Transfers ohne Tagwarten unter Mutex; Tag1→Arcade-
+Decoder→EOF im Gesamtstand geloggt, Hör-/Sichtabnahme offen. Neuester Nachweis:
+`docs/testprotokoll-nfc-integration-2026-11-13.md`.
 Gemeinsamer I2C-Bus mit AW9523/Gauge verlangt kurze synchronisierte Transfers;
 kein Timeout0-Tagwarten unter dem gemeinsamen Wire-Mutex.
 Details: `docs/uebergabe-endaufbau-2026-11-11.md`.
