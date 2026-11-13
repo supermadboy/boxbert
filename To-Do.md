@@ -11,8 +11,13 @@
   **81 App-Tests**, simulierte HTTP-Geräte-/Demo-Browserfälle, echtes HTTPS/offline
   und beide Webbuilds grün. Browser-Wake-Lock gemockt, echte Android-Abnahme offen.
   Kandidat `app/dist/assets/index-7Ehl6x5w.js`, SD `index-CWCh9PvO.js`.
-  **Noch nicht auf Website aktiviert**, Hostingrepo unverändert. Für Live-Versuch
-  erst Aktivierung klären, danach neuen Bildschirm-/Intro-Vergleich aufzeichnen.
+  **Website-Aktivierung jetzt vom Nutzer freigegeben**, aber noch nicht erfolgt:
+  SSH als `habibi` abgelehnt (`Permission denied (publickey)`); lokale SSH-Konfig
+  bietet nur Root-Zugang. Diesen nicht benutzt, keine Host-/Zugangsänderung.
+  Für Aktivierung über Root-Launcher mit ausschließlich unprivilegiertem Webbuild
+  separate administrative Freigabe erfragen. Hostingrepo unverändert; live perHTTPS
+  noch `index-DzBpNY4D.js`, nicht neuer Kandidat. Nach Aktivierung Bildschirm-/
+  Intro-Vergleich aufzeichnen.
 
 - [ ] **Intro-Live-Upload abgebrochen, Display ging aus (13.11.,17:05ff):**
   Nutzerclip ca.4s; zunächst alle2,6s bestätigte573–575Byte-Anfragen, passend zu
