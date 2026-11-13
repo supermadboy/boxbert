@@ -1,0 +1,1 @@
+PASS SIMULATED HTTP V1 browser: real native synthetic recording -> local MP3 frames -> >30s virtual chunk upload -> assign; player, status, settings, buttons, names, detach/failure preserves recording; no password persistence.

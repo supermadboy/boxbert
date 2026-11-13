@@ -1,0 +1,11 @@
+# PC Bluetooth capability check; read-only; 2026-11-13
+# btmgmt --index 0 info
+hci0:	Primary controller
+	addr 01:3F:D5:DC:91:19 version 3 manufacturer 10 class 0x6c0104
+	supported settings: powered connectable fast-connectable discoverable bondable link-security br/edr debug-keys phy-configuration 
+	current settings: powered connectable bondable br/edr 
+	name marchi
+	short name 
+
+# BlueZ Adapter1.Roles
+as 0

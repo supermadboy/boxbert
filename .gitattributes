@@ -1,2 +1,4 @@
 # Preserve raw serial captures, including mixed LF/CRLF from device printf/println.
 docs/serial/*.log -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# btmgmt prints trailing spaces; retain this raw capability report byte-for-byte.
+docs/serial/2026-11-13-pc-bluetooth-capabilities.log whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

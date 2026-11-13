@@ -2,6 +2,29 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Aktuell Handyfunktionen: Button-Zuordnung und Upload (13.11.):**
+  Nutzer bestätigt echte Dateiverbindung/Lautstärke/Start-Stopp perHandy erfolgreich.
+  Belegen/Upload wirken aber nicht: Pups aufUI1, physischer grüner30mm stopptnur.
+  Nutzerziel: UI1 sollgrüner30mm sein. Aktuell laut verbindlicherID-Tabelle/Flash
+  grün=ID2(AWP06), unassignedDefaultSTOP; UI1=gelb(AWP14,Bit12). Das erklärt
+  Symptome alsZuordnungsunterschied, ist keinBeweis für gespeicherteBelegung.
+  Vor Änderung vollständigeBeziehung1/2 klären (Vorschlag1grün/2gelb), gespeicherte
+  Dateien nicht blind migrieren. Noch keine Mapping-/Firmware-/UI-Änderung.
+  Intro-/MP3-Upload schlägt fehl, Nutzer erinnertungefähr„abgebrochen nachZeit“,
+  keinexakterFehlertext. **Eigene30s-Gesamtlimit-Hypothese widerlegt:** Intro hat
+  bereits`{upload:true}`/1h-Gesamtbudget. NeuerQuellvertrag und simulierterHTTP-
+  Browserablauf mit>30svirtuellerUploaddauer bestehen ohneProduktcodeänderung.
+ 69App-Tests grün, Browser-Simulation nichtalsBLE-/SD-Nachweis werten. Playback
+  muss lautAPI wirklichgestoppt sein; Ursache desLive-Timeouts weiterhinunbekannt.
+  PC-Vergleich vomNutzergewünscht, aber **Adapterhci0 hatkeinLE**:
+  `btmgmt --index0 info` unterstütztBR/EDR,nichtLE; Adapter1.Roles leer.
+  KeinPC-GATT/Scan/Pairing/Paketinstall oder Verbindungswechsel durchgeführt.
+  Weiter echterHandy-Upload mitUSB-Trace, keineblindvergrößertenTimeouts.
+  `2026-11-13-app-button-upload-status.log`: gesund,Revision131,Volume12/playback1,
+  Peer1/sub1/auth1,SD/I2S/AW/Gauge/config1,NFC1/pause0,8bestehendeMP3,keineIntros.
+  AktuellerFlash bleibtprnsjyfe/blefix1. Neue Nutzerbestätigung ersetzt offene
+  Sicht-/Dateilistenfrage unten; weitereUpload-/Persistenz-/Sicherheitsabnahmeoffen.
+
 - [x] **Android-BLE-Sofortabbruch lokalisiert und gezielt korrigiert (13.11.):**
   Trace zeigt zweimalhello→Antwortbereit→lokalen drop-timeout innerhalb1ms,
   noch vorAuth. Loop-Eintritt`now` älter als in`bleResponse` frisch gesetztes
@@ -14,7 +37,7 @@
  20native Sanitizerprogramme/4Pin-/3Trace-Tests +6Encoder/RPC-Szenarien grün.
   EchterAndroidversuch:hello/auth1/read1268Bytes vollständig übertragen; weitere
   auth/read-Strecke beiAudio/Volume16 ebenfalls. Kein Soforttimeout dabei.
-  **Nutzersicht/APIerreichbar/Dateiliste noch bestätigen**, weitereanonymisierte
+  **Nutzersicht/Lautstärke/Start-Stopp inzwischen bestätigt**, weitereanonymisierte
   Anfrage einmalabgelehnt, späterweitereok; konkreteAktion noch klären.
  120-s-CapturePID24820 beendet, keinHintergrundreadermehr;
   `docs/serial/2026-11-13-blefix1-phone-attempt.log`. SpätererDiagRevision123,
@@ -26,11 +49,11 @@
   Protokoll/weitereAbnahme:`docs/testprotokoll-ble-verbindung-2026-11-13.md`.
   KeinpauschalerFix allerfrüherenFunk-/SD-/Dateifehler, keinProduktnachweis.
 
-- [ ] **Als Nächstes: echte Handy-Weboberfläche mit der Box verbinden.**
+- [ ] **Handy-Weboberfläche: Grundverbindung bestätigt, Schreiben/Upload weiter prüfen.**
   Android mit BLE und Chrome vom Nutzer bestätigt; vorhandenen BLE-Modus nutzen,
   kein WLAN-Wechsel/Flash nötig. Passwort per USB nur in private lokale Datei
   `~/.cache/boxbert-ble-passwort.txt` (0600) gesichert, nicht ins Repo/Chat.
-  Zunächst Verbindung und echten Gerätestatus
+  Verbindung/Lautstärke/Start-Stopp Nutzer-bestätigt. Nun Buttonzuordnung/Upload
   prüfen, danach Tag2 auf gewünschten HappyTune-Pfad zuordnen und Speicherung
   prüfen. Soll seit Nutzerbestätigung13.11.: `/happy-tune.mp3`; letzter echter
   Diag zeigt weiterhin `/fart.mp3` (Revision123). Noch keine Änderung durchgeführt.

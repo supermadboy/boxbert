@@ -1,6 +1,21 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell: BLE-Soforttimeout korrigiert, echter Handshake/read durchgelaufen
+## Neueste Nutzerprüfung: Appbedienung klappt, Button-ID/Upload noch offen
+
+Nutzer bestätigt Handy-Lautstärke undStart/Stopp. UI1mitPups belegt, grüner30mm
+stopptjedoch nur: aktuellGrün=ID2 mitDefaultSTOP, UI1=Gelb. NutzerzielUI1Grün;
+Tausch1/2vorgeschlagen, noch nichtdurchgeführt/keinegespeichertenBelegungen verändert.
+Upload/Introfehlgeschlagen, Meldung nurungefähr„abgebrochen nachZeit“.
+EigeneVermutung30sGesamtlimit **widerlegt**: Intro verwendetbereitsUploadbudget1h.
+NeuerQuellvertrag plusnativeBrowser-Simulation mit>30svirtuellemUpload bestehen,
+69App-Tests grün, keinerleiProduktcodefix daraus. EchterBLE-Timeoutgrundnochunbekannt.
+
+PC-Vergleich ausdrücklichgewünscht, aber`btmgmt`meldetnurBR/EDR, keinLE,
+BlueZ-Rolesleer. VorhandenerAdapter **nichtBLE-fähig**, keinPC-GATT/Pairing/Scan
+oderVerbindungswechsel. KeinFlash/Deploy währendNutzerabwesenheit vorgenommen.
+Details:`testprotokoll-app-funktionen-2026-11-13.md`; aktuellerFlash weiterhinprnsjyfe.
+
+## BLE-Soforttimeout korrigiert, echter Handshake/read durchgelaufen
 
 **Geräteflash prnsjyfe**, Kennung`boxbert-v1-commissioning-20261113-v21-blefix1`,
 2560235Byte Flash/173468Byte Globals. Nach bestätigtem Park3 exakt Quellen/Runtime/
