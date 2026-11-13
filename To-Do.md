@@ -2,6 +2,31 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [x] **Upload-Wachhalten und globaler Fortschritt lokal vorbereitet (13.11.):**
+  Auf Nutzerauftrag echte Uploads mit best-effort Screen Wake Lock; Prozentanzeige
+  und Abbrechen jetzt auch bei Intro im Zuordnungsreiter. Warnung bei fehlender
+  API/Ablehnung/Freigabe/Hintergrund; neue Sperre bei Rückkehr, keine automatische
+  Wiederholung eines Uploads. Freigabe bei Erfolg, Fehler, Abbruch und Unmount;
+  späte Grants ebenfalls freigegeben. Keine Firmware-/Timeout-/Button-ID-Änderung.
+  **81 App-Tests**, simulierte HTTP-Geräte-/Demo-Browserfälle, echtes HTTPS/offline
+  und beide Webbuilds grün. Browser-Wake-Lock gemockt, echte Android-Abnahme offen.
+  Kandidat `app/dist/assets/index-7Ehl6x5w.js`, SD `index-CWCh9PvO.js`.
+  **Noch nicht auf Website aktiviert**, Hostingrepo unverändert. Für Live-Versuch
+  erst Aktivierung klären, danach neuen Bildschirm-/Intro-Vergleich aufzeichnen.
+
+- [ ] **Intro-Live-Upload abgebrochen, Display ging aus (13.11.,17:05ff):**
+  Nutzerclip ca.4s; zunächst alle2,6s bestätigte573–575Byte-Anfragen, passend zu
+  384Byte-UploadChunks. Dann letzte vollständige Antwort t=3120345, unvollständige
+  nächste Anfrage mit480ByteRX; t=3132481 lokales `drop-timeout detail=0`, danach
+  Disconnect534. Kein Sofort-Unterlauf wie zuvor. Nutzer bestätigt Display aus;
+  Android-Hintergrundpause plausible Ursache, noch kein kontrollierter Beweis.
+  Danach Diag: SD/config1,Revision135,Volume21/playback4, achtMP3-Namen/Größen
+  weiterhin gelistet, beide Tag-Intros leer. Kein Commit/Introzuordnung bestanden.
+  Logs `2026-11-13-intro-upload-{phone-attempt,phone-followup,after-disconnect}.log`.
+  Captures enthalten gekennzeichnete Lücken/angeschnittene Zeilen beim Leserwechsel.
+  Alle Leser beendet; kein Flash/Deploy und keine Lautstärkeänderung vorgenommen.
+  Vor neuem Hörtest auf leise Stufe reduzieren. BLE-Tempo separat verbessern.
+
 - [ ] **Aktuell Handyfunktionen: Button-Zuordnung und Upload (13.11.):**
   Nutzer bestätigt echte Dateiverbindung/Lautstärke/Start-Stopp perHandy erfolgreich.
   Belegen/Upload wirken aber nicht: Pups aufUI1, physischer grüner30mm stopptnur.
@@ -9,12 +34,12 @@
   grün=ID2(AWP06), unassignedDefaultSTOP; UI1=gelb(AWP14,Bit12). Das erklärt
   Symptome alsZuordnungsunterschied, ist keinBeweis für gespeicherteBelegung.
   Vor Änderung vollständigeBeziehung1/2 klären (Vorschlag1grün/2gelb), gespeicherte
-  Dateien nicht blind migrieren. Noch keine Mapping-/Firmware-/UI-Änderung.
+  Dateien nicht blind migrieren. Noch keine Button-ID-/Firmwareänderung; Upload-UI-Kandidat siehe oben.
   Intro-/MP3-Upload schlägt fehl, Nutzer erinnertungefähr„abgebrochen nachZeit“,
   keinexakterFehlertext. **Eigene30s-Gesamtlimit-Hypothese widerlegt:** Intro hat
   bereits`{upload:true}`/1h-Gesamtbudget. NeuerQuellvertrag und simulierterHTTP-
   Browserablauf mit>30svirtuellerUploaddauer bestehen ohneProduktcodeänderung.
- 69App-Tests grün, Browser-Simulation nichtalsBLE-/SD-Nachweis werten. Playback
+ Damals69App-Tests grün, jetzt81; Browser-Simulation nichtalsBLE-/SD-Nachweis werten. Playback
   muss lautAPI wirklichgestoppt sein; Ursache desLive-Timeouts weiterhinunbekannt.
   PC-Vergleich vomNutzergewünscht, aber **Adapterhci0 hatkeinLE**:
   `btmgmt --index0 info` unterstütztBR/EDR,nichtLE; Adapter1.Roles leer.

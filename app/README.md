@@ -1,5 +1,25 @@
 # Boxbert-Verwaltung · React-PWA
 
+## Lokal vorbereitete Upload-Verbesserung · 13.11.2026
+
+Noch nicht auf der Website aktiviert: Prozentfortschritt und Abbrechen sind jetzt
+auch beim Intro sichtbar. Echte Uploads fragen zusätzlich einen Screen Wake Lock
+an, damit das Display nicht automatisch ausgeht. Nicht in der Demo oder bei
+normalen Lese-/Steuerbefehlen. Freigabe bei Abschluss, Fehler, Abbruch und Verlassen
+der App; erneute Anfrage bei Rückkehr zur sichtbaren Seite.
+
+Das ist **best effort**, keine Hintergrund-BLE-Garantie: Browser/Energiesparmodus
+können ablehnen oder die Sperre freigeben. Dann erscheint ein Hinweis. Chrome
+weiter im Vordergrund lassen, nicht manuell sperren; gegebenenfalls Bildschirm-
+Timeout verlängern. Unverschlüsseltes Geräte-HTTP hat normalerweise keine
+Screen-Wake-Lock-API, der Upload bleibt mit manuellem Hinweis nutzbar. Keine
+Upload-Wiederholung und keine verlängerten Firmware-/RPC-Timeouts eingebaut.
+
+81 App-Tests, HTTP-Gerätefixture mit gemocktem Wake Lock, Demo- und HTTPS/offline-
+Browserfälle sowie beide Builds bestanden. Echter Android-Display-/Uploadtest
+bleibt offen. Details: [Protokoll](../docs/testprotokoll-app-funktionen-2026-11-13.md).
+API-Grundlage: [MDN Screen Wake Lock](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API).
+
 ## Gesamtfirmware V1 · 19.10.2026
 
 Aktueller Release: **https://habibi.supermittel.com/boxbert/?stand=gesamtfirmware-13**.

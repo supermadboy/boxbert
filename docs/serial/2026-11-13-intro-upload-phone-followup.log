@@ -1,0 +1,225 @@
+
+# USB capture 2026-11-13T17:09:40.789483; no DTR/RTS ioctl
+BLE t=2791233 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2791243 event=responsBLE t=2920501 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31216 maxAlloc=18420
+BLE t=2923131 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2923141 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2923154 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+
+# USB capture 2026-11-13T17:09:57.489694; no DTR/RTS ioctl
+BLE t=2925784 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2925791 event=responsBLE t=2938339 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2938346 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2938359 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=2940994 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2941001 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2941014 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2943672 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2943682 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2943695 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31216 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2946304 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2946314 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2946326 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2948914 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2948921 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2948934 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2951615 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2951622 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2951635 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2954224 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2954244 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2954277 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31216 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=2956924 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2956938 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2956951 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2959624 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2959631 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2959644 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=2962234 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2962242 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2962276 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2964889 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2964899 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2964911 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2967634 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2967644 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2967678 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31104 maxAlloc=18420
+BLE t=2970334 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2970342 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2970354 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2972990 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2972998 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2973010 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=2975644 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2975654 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2975688 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31104 maxAlloc=18420
+BLE t=2978299 event=request-other detail=0 peer=1 sub=1 auth=1 rx=574 tx=0 heap=29368 maxAlloc=18420
+BLE t=2978312 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=574 tx=46 heap=29368 maxAlloc=18420
+BLE t=2978324 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2980954 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2980961 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2980974 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2983610 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2983617 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2983630 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2986220 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2986230 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2986242 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2988888 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2988898 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2988911 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=2991574 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2991582 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2991594 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=2994230 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2994237 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2994250 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=2996840 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2996850 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2996888 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31216 maxAlloc=18420
+BLE t=2999584 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=2999597 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=2999609 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3002194 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3002201 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3002214 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3004804 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3004811 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3004824 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3007504 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3007514 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3007526 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3010204 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3010214 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3010226 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3012904 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3012912 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3012924 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3015560 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3015567 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3015580 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3018214 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3018224 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3018237 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3020824 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3020837 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3020849 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3023489 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3023496 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3023513 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3026089 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3026097 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3026110 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3028699 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3028709 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3028722 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=3031309 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3031319 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3031332 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3033919 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3033926 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3033940 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=3036619 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3036626 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3036640 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3039229 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3039239 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3039252 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3041929 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3041941 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3041955 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3044539 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3044546 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3044560 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3047194 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3047202 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3047214 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3049804 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3049814 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3049827 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=3052414 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3052424 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3052437 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3055159 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3055167 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3055180 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+
+# USB capture 2026-11-13T17:12:37.558032; no DTR/RTS ioctl
+BLE t=3057814 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3057821 event=responsBLE t=3099260 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3099270 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3099303 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3101870 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3101880 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3101913 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3104480 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3104487 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3104521 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=3107090 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3107097 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3107139 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31216 maxAlloc=18420
+BLE t=3109745 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3109755 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3109767 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3112400 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3112412 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3112425 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3115010 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3115017 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3115030 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BLE t=3117665 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3117673 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3117685 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BLE t=3120322 event=request-other detail=0 peer=1 sub=1 auth=1 rx=575 tx=0 heap=29368 maxAlloc=18420
+BLE t=3120332 event=response-ready detail=1 peer=1 sub=1 auth=1 rx=575 tx=47 heap=29368 maxAlloc=18420
+BLE t=3120345 event=response-sent detail=0 peer=1 sub=1 auth=1 rx=0 tx=0 heap=31080 maxAlloc=18420
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31228 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=31252 NFC=1
+BLE t=3132481 event=drop-timeout detail=0 peer=1 sub=1 auth=1 rx=480 tx=0 heap=31252 maxAlloc=18420
+BLE t=3132530 event=disconnect detail=534 peer=65535 sub=0 auth=0 rx=0 tx=0 heap=35920 maxAlloc=26612
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=21 running=0 config=1 heap=35920 NFC=1

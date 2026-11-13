@@ -1,5 +1,25 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
+## Aktuell: Intro-Abbruch nach Display aus; App-Wachhalten lokal fertig
+
+13.11., ca.17:05–17:13: Clip laut Nutzer4s. Erst passende Upload-Anfragen alle2,6s
+bestätigt, dann nächste Anfrage bei480ByteRX unvollständig; t=3132481 echter
+`drop-timeout detail=0`, danachDisconnect534. Nutzer bestätigt Display aus.
+Plausible Android-Hintergrundpause, kein endgültiger Beweis; kein alter Sofort-
+Unterlauf. Nachdiag SD/config1,Revision135,Volume21/playback4, achtMP3-Namen/Größen
+weiterhin gelistet, beide Tag-Intros leer. Keine vollständige Daten-/SD-Integritäts-
+prüfung und kein erfolgreicher Intro-Commit. Vor nächstem Hörtest leise drehen.
+
+Auf ausdrücklichen Nutzerauftrag Screen Wake Lock und globalen Prozentfortschritt
+inkl. Abbrechen eingebaut. Best effort mit Warnung/Visibility-Reacquire und sauberer
+Freigabe bei Ende/Abort/Unmount/späterGrant. 81App-Tests, simulierter HTTP-/Demo-
+Browser, echtes HTTPS/offline und beide Builds grün. WakeLock im Browser gemockt;
+physischer Android-Test offen. Kandidat `app/dist/assets/index-7Ehl6x5w.js`.
+**Nicht deployed, Hostingrepo unverändert, kein Flash.** Erst Aktivierung klären,
+danach kontrollierter Live-Vergleich. Alle USB-Leser beendet. Logs/Details siehe
+`testprotokoll-app-funktionen-2026-11-13.md`; BLE-Tempo und Button-ID-Tausch bleiben
+separate offene Punkte. Nachfolgende Abschnitte dokumentieren vorherige Zwischenstände.
+
 ## Neueste Nutzerprüfung: Appbedienung klappt, Button-ID/Upload noch offen
 
 Nutzer bestätigt Handy-Lautstärke undStart/Stopp. UI1mitPups belegt, grüner30mm
@@ -33,7 +53,7 @@ RPC-Szenarien bestanden. KeinepauschaleErklärung allerälterenFunkauffälligkei
 auth1bestätigt undread1268Bytes vollständig übertragen; weitereauth/read-Strecke
 beiDecoder/Volume16ebenfalls. Weitereanonymisierte Anfrage einmalabgelehnt,
 späterandereok; genaueBedienaktion nicht ausNutzdaten rekonstruieren.
-**Nutzersicht/APIerreichbar/Dateiliste noch bestätigen**, danachHappyTune-Zuordnung,
+**Nutzersicht/Dateizugriff/Lautstärke/Start-Stopp inzwischen bestätigt**, HappyTune-Zuordnung nochoffen,
 Upload/Persistenz.120-s-LeserPID24820 beendet, keinHintergrundlesermehr;
 spätererDiagRevision123/Volume16/playback4/NFC1/pause0/keinPeer. Verbindungsende
 außerhalbCapture, keineUrsache dafürbelegt. KeinparallelerPC-GATT. Ausführlich:`testprotokoll-ble-verbindung-2026-11-13.md`.

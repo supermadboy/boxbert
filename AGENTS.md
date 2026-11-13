@@ -54,10 +54,13 @@ Trace zeigte zweimal lokalen drop-timeout1ms nachhello-Antwortvorbereitung:
 unsignednow−frischesbleAt unterlief. Fix mit Halbintervallprüfung,20native Tests
 inkl.RED→GREEN-Regression; geschützterBuildprnsjyfe (`v21-blefix1`) jetzt geflasht.
 Danach echtehello/auth1/read-Antwort übertragen; Nutzer bestätigt Handy-Lautstärke
-undStart/Stopp. Aktuell Button-ID-Ziel1Grün (Flash noch1Gelb/2Grün) und Upload-
-Zeitlimit unklar. PC-Adapter geprüft: BR/EDR ohneLE, keinPC-GATT-Test möglich.
-Intro verwendet bereits1h-Uploadbudget; gegenteiligeVermutung widerlegt.
-69App-Tests undsimulierterHTTP-Introablauf>30sgrün, keinLive-Uploadnachweis.
+undStart/Stopp. Button-ID-Ziel1Grün (Flash noch1Gelb/2Grün) weiteroffen.
+Intro-Upload zunächstlangsam, dann RX480Bytes/echter10sTimeout; Nutzer bestätigt
+Displaygingaus, Hintergrundpause plausibleUrsache, Vergleichnoch offen. SD/config1,
+8MP3gelistet, beideIntrosleer; Volume21/playback4, vor Hörtest leisedrehen.
+App-Wachhalten+globalerFortschritt aufNutzerauftrag lokalvorbereitet,81Tests und
+HTTP-/Demo-/HTTPS-Browserfälle grün, nochNICHTdeployed/aufAndroidabgenommen.
+PC-Adapter nurBR/EDR ohneLE. Intro hatbereits1h-Gesamtbudget, keineTimeoutanhebung.
 Details`docs/testprotokoll-app-funktionen-2026-11-13.md`.
 120-s-Captures beendet, keinUSB-Hintergrundleser mehr; keinPC-GATT-Test.
 SpätererDiagRevision123,Volume16/EOF,NFC1,keinPeer; Ende der Handyverbindung

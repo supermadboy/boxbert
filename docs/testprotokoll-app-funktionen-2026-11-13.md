@@ -43,10 +43,73 @@ BlueZ`Adapter1.Roles`: leeresArray. VorhandenerController somit nicht für
 BLE-GATT-Reproduktion geeignet. KeinPC-Scan/Pairing/Connect, keineInstallation
 einesBLE-Clients und keineTrennung derHandyverbindung durchgeführt.
 
-## Nächster kontrollierter Versuch
+## Echter Intro-Versuch ca.17:05–17:13: RX-Timeout nach Display aus
 
-Bei Rückkehr einmal kleinen normalenMP3-Upload oder kurzesIntro bei wirklich
-gestoppterWiedergabe mit begrenztemUSB-Trace beobachten. Vorher keine weiteren
-Versuche blind wiederholen. Zeitlimit/Phase sowie App-Fehler möglichst exakt
-festhalten. KeinePasswörter/Nonce/Proof/Payloads protokollieren. Button-ID-Tausch
-separat bestätigen/testen; keine stillen Belegungs-/Musikänderungen.
+Nutzer nahm laut eigener Angabe ca.4s auf, klickte nach gestarteter Aufzeichnung
+Übertragen und meldete unveränderten Text „Übertragung zum Gerät / bestätigte
+Bytes“. `phone-attempt` und `phone-followup` zeigen regelmäßig573–575Byte lange
+Anfragen, `response-ready detail=1` und `response-sent` etwa alle2,6s. Passt zu
+384Byte-Nutzdatenchunks, also Größenordnung145Byte/s; kein Opcode-/Payload-Dump.
+Agent bestätigte währenddessen tatsächlich laufende Pakete, nicht einen Commit.
+Fortschritt war im damaligen Produktcode nur im Medienreiter, nicht beim Intro.
+
+Letzte vollständige Antwort t=3120345. Folgende Anfrage blieb bei480ByteRX
+unvollständig, t=3132481 `drop-timeout detail=0`, t=3132530 Disconnect534.
+Anders als der ältere Zeitstempel-Unterlauf verging hier echte Zeit ohne
+vollständige neue Anfrage. Nutzer meldete „Getrennt: BLE-Verbindung verloren;
+Gerätestand bei Schreibfehler unklar; neu laden“ und bestätigte anschließend,
+dass das Display ausgegangen war. Android-Hintergrundpause ist damit eine
+plausible Erklärung, aber ohne kontrollierten Vergleich kein Kausalitätsbeweis.
+Kein Beweis für SD-Schaden und kein Grund, die Timeouts pauschal zu verlängern.
+
+Nach beendetem Reader `diag`: SD/I2S/config1,Revision135,Volume21/playback4,
+acht bekannte MP3 mit bisherigen Namen/Größen gelistet, beide Intros weiterhin
+leer. Kein erfolgreicher Intro-Commit/Zuordnung und keine vollständige SD-
+Integritätsprüfung. Lautstärke nicht verändert; vor Hörtest wieder leise einstellen.
+
+Logs unter`docs/serial/2026-11-13-intro-upload-`:
+- `phone-attempt.log`, `phone-followup.log`: passive begrenzte Captures, keine
+  DTR/RTS-ioctls; Lücken und angeschnittene/verklebte Zeilen beim Leserwechsel
+  erhalten, keine durchgängige Vollerfassung behaupten. Nicht parallele Reader.
+- `after-disconnect.log`: frischer bounded USB-Diag, keine Funkumschaltung.
+
+## Nutzerauftrag: Upload-Wachhalten und Fortschritt lokal umgesetzt
+
+Nach Rückmeldung Display aus bat Nutzer ausdrücklich um die vorgeschlagenen
+Verbesserungen. Neue `upload-wake-lock.mjs` fragt best-effort `request('screen')`
+an, ohne die Dateiübertragung auf einen eventuell hängenden Grant warten zu
+lassen. API fehlt/Request abgelehnt/Systemfreigabe/Hintergrund werden erklärt.
+Bei Sichtbarkeit zurück neue Sperre, ohne automatische Upload-Wiederholung.
+Freigabe bei Erfolg/Fehler/Abort/Unmount; späte Grants nach Ende ebenfalls
+freigegeben. Abbruchsignal löst Sperre sofort, selbst wenn RPC-Abbruchcleanup
+noch läuft. Pending-/Release-Rennen und wiederholtes Cleanup sind getestet.
+Quelle: https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API
+(abgerufen13.11.2026). Keine Garantie gegen manuelles Sperren, Energiesparen
+oder Hintergrundthrottling. Lokales ungesichertes HTTP erhält Warnung statt
+hartem Uploadfehler; Browser/Plattform können die API verweigern.
+
+Prozentanzeige und eine Abbrechen-Schaltfläche stehen nun global außerhalb
+des Medienreiters, daher auch bei Intro und BLE-Chooser sichtbar. Nur bestätigte
+Chunk-Prozente,100% erst nach Datei-Commit; finale Zuordnung/Readback separat mit
+Abschlussmeldung. Lokale Konvertierung kann zunächst0% zeigen, explizit erklärt.
+Kein Firmware-/RPC-/Gesamtzeitlimit, keine Button-ID, kein Passwort geändert.
+
+Nachweise lokal:
+- `npm test`: **81grün**, einschließlich11Wake-Lock-Lifecyclefällen und UI-Vertrag.
+- `tests/device-browser.mjs`: native synthetische Aufnahme/lokale echte MP3,
+  **gemockter** WakeLock gehalten, globaler Fortschritt/Abbrechen im Zuordnungs-
+  reiter sichtbar, Prozent nach erstem Chunk>0, >30s virtuellerHTTP-Upload,
+  Commit/Zuordnung; Sperre nach Erfolg und simuliertem SD-Fehler freigegeben.
+- `tests/browser.mjs`: Demo, Mobile/Desktop, Abbruch, Persistence/Layout bestanden.
+- `tests/hosted-browser.mjs`: echtes lokalesHTTPS/ServiceWorker/offline bestanden,
+  keine öffentliche Veröffentlichung und kein physischer Android-Wake-Lock-Test.
+- `npm run build`: HTTPS `index-7Ehl6x5w.js`, SD `index-CWCh9PvO.js` gebaut.
+  Tests über gepinnten Chromium aus `tools/firmware/browser-env.py`.
+- Logs `2026-11-13-upload-wake-{tests,browser-build,https}.log` unter`docs/serial/`.
+
+**Noch nicht deployed**, Hostingrepo unverändert, kein Flash. Alle USB-Leser
+beendet. Firmware auf Gerät bleibt `prnsjyfe`. Neuer Kandidat ersetzt nicht die
+separat bestätigte alte Live-PWA. Für Aktivierung zuerst Zustimmung/Hostingablauf
+klären; danach Android-Displaybleibtan und vollständigenIntro-Commit kontrolliert
+prüfen. BLE-Durchsatz und Button-ID-Tausch separat offen. Keine weiteren blinden
+Mehrminutenversuche, keine vorhandenen Musik-/Belegungsdaten verändert.

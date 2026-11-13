@@ -1,0 +1,28 @@
+PASS SIMULATED HTTP V1 browser: real native synthetic recording -> local MP3 frames -> visible mapping-tab progress + screen wake lock -> >30s virtual chunk upload -> assign + lock cleanup on success/failure; player, status, settings, buttons, names, detach/failure preserves recording; no password persistence.
+PASS Browser Demo: 10 grafische Buttons, Auswahl/Leer/Reset/Persistence, v1-Migration, Regenbogen/Farbe/Helligkeit, Layout 320/390/1280 ohne Überlappung, Upload, RFID, Einstellungen, Persistence, Abbruch, SD-Fehler, Reset, Hosting-Grenze, Mobile/Console
+
+> boxbert-app@1.0.0 build
+> node build.mjs
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 42 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                           0.65 kB │ gzip:   0.41 kB
+dist/assets/tft-renderer-Lw24ApAO.wasm   48.47 kB │ gzip:   8.37 kB
+dist/assets/boxbert-DvWGM3qe.rgb565      98.33 kB
+dist/assets/index-CqzUdaz3.css           13.62 kB │ gzip:   3.66 kB
+dist/assets/index-7Ehl6x5w.js           428.12 kB │ gzip: 141.08 kB
+✓ built in 1.73s
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 42 modules transformed.
+rendering chunks...
+computing gzip size...
+dist-sd/index.html                           0.58 kB │ gzip:   0.39 kB
+dist-sd/assets/tft-renderer-Lw24ApAO.wasm   48.47 kB │ gzip:   8.37 kB
+dist-sd/assets/boxbert-DvWGM3qe.rgb565      98.33 kB
+dist-sd/assets/index-CqzUdaz3.css           13.62 kB │ gzip:   3.66 kB
+dist-sd/assets/index-CWCh9PvO.js           427.80 kB │ gzip: 140.96 kB
+✓ built in 1.31s
