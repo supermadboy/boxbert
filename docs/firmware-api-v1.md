@@ -7,12 +7,16 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 
 ## Temporäre Geräte-Erstinbetriebnahme 11.11.2026
 
+**Aktuell geflasht:** auf Nutzerwunsch Maximum12 statt6, Build
+`boxbert-build-n1_lldq4`, Kennung `boxbert-v1-commissioning-20261113-nfc-v12`.
+Vor Upload NFC-Park3 bestätigt, danach Scanner1/Bootvolume1/Decoder läuft.
+
 Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
-`status.firmware=boxbert-v1-commissioning-20261111-nfc` seit13.11., Bootlautstärke1,
-zulässige `settings.volume`-Werte **0..6** statt0..21. Höhere Werte erzeugen
+`status.firmware=boxbert-v1-commissioning-20261113-nfc-v12`, Bootlautstärke1,
+zulässige `settings.volume`-Werte **0..12** statt0..21. Höhere Werte erzeugen
 `invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC seit
 13.11. mit kurzem I2C-Scanner aktiviert; physischer Tag1→Decoder→EOF geloggt,
-Hör-/Sichtabnahme offen. Externer Stick fehlt. Boost-EN-Ausgang und
+Ton/TFT dieses Starts vom Nutzer bestätigt; keine Vollabnahme. Externer Stick fehlt. Boost-EN-Ausgang und
 Auto-Sleep bis zur Power-Prüfung ebenfalls aus. Schema und übrige RPC bleiben
 V1; die PWA kann weiterhin0..21 anbieten und zeigt außerhalb des Testlimits
 einen Gerätefehler. Details: `gesamtfirmware-build.md`.

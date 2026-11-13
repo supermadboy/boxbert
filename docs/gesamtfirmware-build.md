@@ -2,15 +2,21 @@
 
 ## Erstinbetriebnahmeprofil 11.11.2026
 
+**Fortsetzung13.11.: Maximum12/21 auf Nutzerwunsch geflasht**, Boot bleibt1.
+Build `boxbert-build-n1_lldq4`, nach bestätigtem NFC-Park3 Quellen/SHA256 geprüft
+und hochgeladen. Danach NFC1,Volume1/Decoder läuft,Konfigrevision81. Höhere
+Stufen schrittweise testen, keine akustische Sicherheits-/Normabnahme.
+
 **Der aktuelle Quellstand baut ausdrücklich ein temporäres Inbetriebnahmeprofil**
 (`firmware/Config.h`, Namespace `commissioning`), keine volle Produktfreigabe:
 **Seit13.11. NFC aktiviert** mit kurzer I2C-Zustandsmaschine ohne Tagwarten
 unter Wire-Mutex. Physischer Tag1 startet laut Log Arcade bis EOF, Nutzer-
-Hör-/Sichtabnahme offen. Stick/aktive Boost-EN-Steuerung/Auto-Sleep bleiben aus.
+Ton/TFT dieses Starts vom Nutzer bestätigt. Weitere Bedienungs-/Dauerabnahme
+offen. Stick/aktive Boost-EN-Steuerung/Auto-Sleep bleiben aus.
 Stick fehlt, Power-/Sleep-Verdrahtung noch nicht freigegeben. Aktuelle Nachweise:
 `testprotokoll-nfc-integration-2026-11-13.md`.
 Onboard-Pixel, TFT, SD/Audio und BLE/WLAN bleiben enthalten. Bootvolume immer1,
-Encoder/RPC temporär0..6 von21; RPC lehnt höhere Werte ausdrücklich ab.
+Encoder/RPC temporär0..12 von21; RPC lehnt höhere Werte ausdrücklich ab.
 Gespeicherte Lautstärke wird beim Boot nur im RAM durch1 ersetzt, nicht
 ungefragt ein alter hoher Wert abgespielt. Folgende Konfigurationsmutationen
 persistieren den aktuellen RAM-Stand; dauerhafte Bootvolumen-Persistenz erst
@@ -64,7 +70,7 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 
 ## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
 
-Aktuell geflasht: `~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte
+Aktuell geflasht: `~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte
 Flash/173468Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
 beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
 [`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).
@@ -102,8 +108,9 @@ Vor produktiver Freigabe Diagnosezugang/Timing prüfen bzw. deaktivieren.
 Gerätelog abwarten. Eine ausstehende Suche braucht ggf. einen aufgelegten Tag,
 bevor die Task ohne offenen Befehl parken darf; Kommando allein ist kein
 Parknachweis. BeiNFC=2Fault nicht automatisch neu initialisieren. `nfc-resume`
-hebt die Parkanforderung auf, behebt keinenFault. Die kurze Geräteprobe zeigte
-nur pending→zurückgenommen, sauberes Parken noch nicht abgenommen.
+hebt die Parkanforderung auf, behebt keinenFault. Die erste kurze Geräteprobe zeigte
+nur pending→zurückgenommen; vor dem Volume12-Flash nach Nutzerkartenaktion
+**NFC=3bestätigt**, danach erneuter Start mit aktivem Scanner.
 
 ## Private WLAN-Zugangsdaten
 

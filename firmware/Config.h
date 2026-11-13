@@ -18,5 +18,5 @@ constexpr uint8_t MiniAw[3]={255,15,13};
 namespace boxbert::commissioning {
 // Temporary first integrated-device profile. No claims of production readiness.
 constexpr bool Nfc=true,Stick=false,BoostControl=false,AutoSleep=false,UsbDiagnostics=true;
-constexpr int BootVolume=1,MaxVolume=6;
+constexpr int BootVolume=1,MaxVolume=12;
 }

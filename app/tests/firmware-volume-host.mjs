@@ -64,6 +64,12 @@ void buttonPressed(int){}void encoderPressed(){}
 void tick(){const uint32_t now=millis();${afterTransport}\n${debounce}}
 int main(int argc,char** argv){
  assert(argc==2);config.data["volume"]=3;requestedVolume=3;
+ if(!strcmp(argv[1],"limits")){
+  changeVolume(1000);assert(hardware.audio.actual==commissioning::MaxVolume);
+  changeVolume(-1000);assert(hardware.audio.actual==0);
+  changeVolume(commissioning::MaxVolume);assert(hardware.audio.actual==commissioning::MaxVolume);
+  puts("volume limits PASS");return 0;
+ }
  clockNow=100;changeVolume(1);assert(hardware.audio.actual==4);
  clockNow=200;
  if(!strcmp(argv[1],"rename")||!strcmp(argv[1],"led")||!strcmp(argv[1],"failed")){
@@ -92,7 +98,7 @@ int main(int argc,char** argv){
  const compiler=process.env.CXX||'clang++';
  const build=spawnSync(compiler,['-std=c++17','-Wall','-Wextra','-Werror','-fsanitize=address,undefined','-fno-omit-frame-pointer','-I',include,join(dir,'volume.cpp'),'-o',join(dir,'volume')],{encoding:'utf8'});
  assert.equal(build.status,0,build.error?.message||build.stderr);
- for(const sequence of ['rename','volume','led','failed','sameSaved'])await t.test(sequence,()=>{
+ for(const sequence of ['rename','volume','led','failed','sameSaved','limits'])await t.test(sequence,()=>{
   const run=spawnSync(join(dir,'volume'),[sequence],{encoding:'utf8'});
   assert.equal(run.status,0,run.stderr||run.error?.message);assert.match(run.stdout,/PASS/);
  });

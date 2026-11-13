@@ -157,10 +157,11 @@ einfügen, Datum dazu.
   Gesamtstand trennt TX/ACK/RDY/UID in kurze Transfers, sendet bei ausstehendem
   Target keinen neuen Suchbefehl und geht bei Fehler ohne Auto-Retry inFault.
   Tag1→Arcade-Decoder→natürlichesEOF und Encoderrequested=actual2..6 geloggt,
- 19native Sanitizertests inkl.State-Mock grün. Echte AW-Bedienung während langer
-  Tagpause und Hör-/Sichtabnahme offen. Parkanforderung erst bei leerer Pending-
-  Strecke ausführen; kurze Geräteprobe blieb pending und wurde zurückgenommen,
-  deshalb kein bestandener Parktest. Quelle: eigener Runtimecode und
+ 19native Sanitizertests inkl.State-Mock grün. Nutzer bestätigt danach Ton/TFT
+  für diesen Tag1-Start. Echte AW-Bedienung während langer Tagpause bleibt offen. Parkanforderung erst bei leerer Pending-
+  Strecke ausführen; erste kurze Probe blieb pending und wurde zurückgenommen.
+  Später vor Volume12-Flash nach Nutzerkartenaktion Park3 bestätigt, danach
+  Scanner/Decoder wieder gestartet; kein allgemeiner Power-Cycle-/Dauernachweis. Quelle: eigener Runtimecode und
   `docs/testprotokoll-nfc-integration-2026-11-13.md`, dort verlinkte Rohlogs.
 
 - **IRQ erst nach der I2C-pollenden API ablesen ist kein Leitungsnachweis

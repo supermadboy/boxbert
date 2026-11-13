@@ -2,12 +2,22 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Lautstärkegrenze12 geflasht (13.11.), neue Hörstufen offen:**
+  Nutzerwunsch höhere Grenze: jetzt0..12/21, Boot bleibt1. Build
+  `boxbert-build-n1_lldq4`,Kennung`boxbert-v1-commissioning-20261113-nfc-v12`.
+  Nach Nutzer „liegt“ NFC-Park3 bestätigt; Quellen/SHA256 geprüft, exakt Build
+  erfolgreich geflasht. Danach NFC1,Volume1/running1,Konfigrevision81.
+ 19native Programme +6Encoder/RPC-Szenarien (7Node inkl.Parent) grün.
+  Nutzer soll langsam steigern; höhere Stufen sind keine akustische Sicherheits-
+  oder Normabnahme. Logs/Details im13.11.-Protokoll.
+
 - [ ] **NFC im Gesamtplayer aktiv (13.11.2026), Nutzerabnahme offen:**
   I2C3/4,3V3,GND,DIP1ON/2OFF,IRQ12 bestätigt; frühere Probe UIDTag1 und2LOW/
   2HIGH-Flanken. Neue Zustandsmaschine gibt Wire-Mutex nach kurzen Transfers
   frei; kein Tagwarten/kein wiederholter Suchbefehl bei ausstehender Antwort.
   Physischer Tagpfad jetzt geloggt: E3:2F:F6:33→Arcade-Stream→natürlichesEOF,
-  requested=actual2..6. **Ton/TFT/Mute/Pause/Resume vom Nutzer bestätigen lassen**,
+  requested=actual2..6. **Ton/TFT vom Nutzer bestätigt** („ja safe hat gut geklappt
+  alles danke“). Mute/Pause/Resume weiterhin gesondert prüfen,
   AW-Taster/Gauge während taglosem Warten, Tagwechsel und Parken prüfen.
   `nfc-pause` blieb in kurzer Probe pending und wurde zurückgenommen; erst
   NFC=3/parked gilt als bereit für geplanten Reset, bei wartender Suche Tag nötig.
@@ -16,10 +26,10 @@
   Keine Wake-/Sleep-/Produktfreigabe.
 
 - [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
-  Aktuell seit13.11. `boxbert-v1-commissioning-20261111-nfc`, Build
-  `~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte Flash/
+  Aktuell `boxbert-v1-commissioning-20261113-nfc-v12`, Build
+  `~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte Flash/
   173468Byte globale Variablen,Core3.3.12/QSPI,**NimBLE2.3.8**.
-  Bootvolume1,Maximum6/21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
+  Bootvolume1,Maximum12/21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
   Akku+USB laut Nutzer. Gemessene Eingänge übernommen, Encoder per Interrupt,
   gelber Mini deaktiviert. SD/PSRAM/AW/Gauge/config=1.
   **Nutzer meldete „Dateifehler“: nicht als behoben behandeln.** Beide Pfade
@@ -32,8 +42,8 @@
   Vor NFC nach WLAN→BLE nur ca.24kB idle/18,6kB beim Decoder: Lastreserve
   mit zusätzlicher NFC-Task erst recht nicht nachgewiesen.
   **Nächste Session: [vollständige Übergabe](docs/uebergabe-endaufbau-2026-11-11.md)
-  lesen**, realen blauen Button mit Log testen, Nutzer-Sicht-/Hör-/Encoder-
-  Prüfung, dann echte BLE/PWA-/HTTP-Verbindung und Persistenz. Kein `/www`
+  lesen**, realen blauen Button mit Log testen, weitere Encoder-/Mute-/Pause-
+  Prüfung (Ton/TFT Tag1 bestätigt), dann echte BLE/PWA-/HTTP-Verbindung und Persistenz. Kein `/www`
   auf SD festgestellt; SD-Weboberfläche nicht installiert. Kein Produktnachweis.
  19 native Programme (inkl.PN532-Frameparser/Scan),4 Pinregressionen,68 App-Tests und fünf Encoder/RPC-
   Ereignisfolgen bestanden; USB-Diagnoseparser/20-s-Timer zusätzlich geprüft.

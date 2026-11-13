@@ -1,0 +1,5 @@
+
+# USB capture 2026-11-13T14:54:23.316648; no DTR/RTS ioctl
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=31060 NFC=1
+BOXBERT commissioning SD=1 BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36748 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36748 NFC=1

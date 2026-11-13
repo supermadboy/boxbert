@@ -15,6 +15,7 @@ int main(){
  edges=9;assert(takeEncoderSteps(edges)==2&&edges==1);
  edges=-9;assert(takeEncoderSteps(edges)==-2&&edges==-1);
  for(int a=0;a<4;a++)for(int b=0;b<4;b++)assert(quadratureTransition(a,b)==-quadratureTransition(b,a));
- for(int v=-20;v<50;v++){int clamped=clampVolume(v,6);assert(clamped>=0&&clamped<=6);}
+ const int maxima[]={6,12,21};
+ for(int maximum:maxima)for(int v=-20;v<50;v++){int clamped=clampVolume(v,maximum);assert(clamped>=0&&clamped<=maximum);if(v<=maximum&&v>=0)assert(clamped==v);}
  std::cout<<"encoder direction, bounce, backlog, remainder and volume cap: PASS\n";
 }

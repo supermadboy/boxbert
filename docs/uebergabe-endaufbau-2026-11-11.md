@@ -1,8 +1,27 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Neuester Stand13.11.2026 — NFC im Gesamtplayer aktiv
+## Jüngste Fortsetzung: Nutzer bestätigt Ton/TFT; Volume12 geflasht
 
-**Maßgeblich für den aktuellen Flash:**
+Auf Frage zu Musik/TFT im gerade getesteten NFC-Gesamtstand bestätigt Nutzer:
+**„ja safe hat gut geklappt alles danke“**. Das nimmt Tag1-Musik/TFT ab, nicht
+ungeprüfte Mute/Pause/Tagwechsel-/Power-/Transportfälle.
+
+Danach Auftrag, höher drehen zu können. **Jetzt Maximum12 statt6 geflasht,
+Boot bleibt1:** `boxbert-v1-commissioning-20261113-nfc-v12`,
+`~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte Flash/173468Byte
+Globale.19native Programme +6Encoder/RPC-Szenarien (7Node inkl.Parent) grün.
+Nach Nutzer „liegt“ **NFC3/pauseRequested1 bestätigt**, Quellen/Runtimeheader/
+SHA256 verifiziert, exakt neuen Build erfolgreich hochgeladen. Danach NFC1/
+pauseRequested0,Volume1/playback2/running1,SD/PSRAM/AW/Gauge/config1,Revision81.
+Musik startet wieder leise; späterer7-s-Passivlog zeigt Volume1/running0,
+NFC1,Heap36748. Höhere Stufen vom Nutzer erst schrittweise prüfen,
+keine akustische Norm-/Sicherheitsfreigabe. Keine weitere Firmwareänderung.
+Details/Logs: `testprotokoll-nfc-integration-2026-11-13.md`,
+`docs/serial/2026-11-13-volume12-{nfc-park,after-flash,passive}.log`.
+
+## Vorheriger Geräteflash13.11.2026 — NFC aktiviert, noch Grenze6
+
+**Historischer Zwischenstand vor Volume12:**
 `boxbert-v1-commissioning-20261111-nfc`, Build
 `~/.cache/boxbert-build-c0n11gac/manifest.json`,2559211Byte Flash/173468Byte
 Globale. NFC aktiviert mit neuer kurzer I2C-Zustandsmaschine, kein Tagwarten
@@ -11,7 +30,7 @@ unter Wire-Mutex. Stick/BoostControl/AutoSleep bleiben AUS. Amp laut parallel
 
 Gerätenachweis13.11.: NFC UID E3:2F:F6:33 → Arcade-Decoder läuft → natürliches
 EOF, Encoder requested=actual2..6, kein erneuter Start im Ausschnitt. **Hör-/
-Sichtbestätigung des Nutzers noch offen.**19native Programme/4Pin-Tests und
+Sichtbestätigung des Nutzers inzwischen vorhanden, siehe oben.**19native Programme/4Pin-Tests und
 5Encoder/RPC-Szenarien grün. Letzter Zustand: Volume6,radio2,NFC1,playback4/
 running0,Heap36516,Konfigrevision39. Die angeforderte NFC-Pause blieb bei
 laufender Suche pending, danach wieder zurückgenommen; **Parken nicht abgenommen**.
@@ -20,7 +39,7 @@ Vor neuem Flash `nfc-pause`, Tag ggf. auflegen, **NFC=3/parked abwarten**;
 
 Ausführliches aktuelles Protokoll und noch offene Geräteprüfungen:
 [`testprotokoll-nfc-integration-2026-11-13.md`](testprotokoll-nfc-integration-2026-11-13.md).
-Zuerst Nutzer nach Ton/TFT fragen, dann reale AW-Taster während taglosem Warten,
+Ton/TFT für Tag1 bestätigt; noch reale AW-Taster während taglosem Warten,
 Tagwechsel/Parken und übrige Abnahme. Tag2-Mapping weiterhin vor Änderung klären.
 **Die folgenden Fortsetzungsabschnitte sind Chronologie älterer Probe-/Restore-
 Stände; dortiges „NFC aus/auvtr3vh“ beschreibt nicht mehr den aktuellen Flash.**
@@ -183,15 +202,15 @@ das ist keine Zuordnung des unbekannten gelben Minis.
 
 ## 3. Aktueller Flash — nicht mit älteren Diagnosen verwechseln
 
-- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261111-nfc`.
+- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261113-nfc-v12`.
 - **Exaktes aktuell geflashtes Artefakt:**
-  `~/.cache/boxbert-build-c0n11gac/manifest.json`, Dateien unter `artifacts/`.
+  `~/.cache/boxbert-build-n1_lldq4/manifest.json`, Dateien unter `artifacts/`.
   Compile-/Uploadlog im selben Verzeichnis. Quellen-/Artefakt-SHA256 vor Upload
   geprüft, Hashprüfung beim Schreiben erfolgreich.
--2559211Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
+-2559227Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
 - Isolierte CLI1.5.1, Core3.3.12, NimBLE2.3.8, QSPI-PSRAM/Boarddefaults.
   Keine OPI-Option. Keine privaten Heim-WLAN-Daten eingebaut.
-- `commissioning`: Bootvolume1,max6, NFC=true, Stick=false,
+- `commissioning`: Bootvolume1,max12, NFC=true, Stick=false,
   BoostControl=false, AutoSleep=false, UsbDiagnostics=true.
 - SD/PSRAM/AW/Gauge/config=1; BLE-Modus2 und Hauptloop beobachtet.
  1=WiFi,0=Off. Diese Zahlen beweisen **keine Clientverbindung**.

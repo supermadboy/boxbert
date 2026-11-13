@@ -70,8 +70,10 @@ weiter nicht Teil dieses Auftrags/Tests. Keine Strom-/Sleep-Freigabe.
    unabhängig gemessen.90-s-Capture `2026-11-13-nfc-tag-physical.log`:
    **NFC UID=E3:2F:F6:33 → TAG index0 → Arcade geöffnet → Stream bereit**,
    Stereo44,1kHz/16Bit, gemeldete34s. Laufender Decoder, danach natürliches EOF.
-   Kein20-s-Teststopp, kein erneuter Start im restlichen Ausschnitt. **Noch keine
-   ausdrückliche Nutzer-Hör-/Sichtbestätigung dieses Gesamtstands.**
+   Kein20-s-Teststopp, kein erneuter Start im restlichen Ausschnitt.
+   **Nutzer bestätigt anschließend auf Nachfrage zu Musik/TFT:**
+   „ja safe hat gut geklappt alles danke“. Hör-/Sichttest dieses Tag1-Starts
+   damit bestätigt, nicht pauschal Mute/Pause/Tagwechsel oder Gesamtprodukt.
 3. Im selben Log Encoderereignisse requested=actual2→6, anschließend mehrfach
    auf6begrenzt. Keine Quelle für Handbewegung/akustischen Eindruck erfinden;
    Log beweist Werte/Limit, nicht wahrgenommene Lautstärke. Während Decoder
@@ -85,14 +87,15 @@ weiter nicht Teil dieses Auftrags/Tests. Keine Strom-/Sleep-Freigabe.
 
 ## Aktueller Stand / noch offen
 
-**Aktuell geflasht:** `boxbert-v1-commissioning-20261111-nfc` ausc0n11gac,
+**Zwischenstand vor der folgenden Volume12-Erhöhung:** `boxbert-v1-commissioning-20261111-nfc` ausc0n11gac,
 NFC aktiv, zuletzt natürlicher EOF/keine laufende Musik,Volume6,Scanner1,
 Parkanforderung zurückgenommen. Kein serieller Hintergrundleser mehr aus diesen
 begrenzten Captures. Vor erneutem Flash kontrolliert parken und bestätigen;
 bei Fault/unklarem Pendingzustand nicht blind weiterflashen, nötigenfalls
 gezielten echten Peripherie-Power-Cycle mit Nutzer abstimmen.
 
-- Nutzer bestätigt Ton/TFT; Encoder Mute/Pause/Resume im aktuellen Gesamtstand.
+- Ton/TFT für Tag1-Start vom Nutzer bestätigt. Encoder Mute/Pause/Resume
+  im aktuellen Gesamtstand weiterhin gesondert offen.
 - AW-Taster/Gauge tatsächlich während taglosem Warten bedienen/messen, nicht nur
   Initflags als Nachweis verwenden. Tagwechsel und langes tagloses Warten.
 - Tag2-Zuordnung vor Änderung/Wiedergabe klären: historischHappyTune, tatsächlich
@@ -101,5 +104,39 @@ gezielten echten Peripherie-Power-Cycle mit Nutzer abstimmen.
 - Frühere Dateifehler/Neustartauffälligkeiten nicht als allgemein behoben markieren.
 - BLE-HMAC/PWA/AP/HTTP/Uploads/Persistenz und Heapreserve unter kombinierter Last.
 - Power-/Boost-Pull-down-/Sleep-/Wake-/akustische Sicherheit bleiben separat offen.
+
+## Folgeauftrag: Lautstärkegrenze erhöhen — nach Parkbestätigung geflasht
+
+Vorbereitung: Nutzer bittet, höher drehen zu können. Als nächste Teststufe6→12/21 vereinbart/
+angekündigt, Boot bleibt1; keine akustische Sicherheits-/Maximalpegel-Abnahme.
+Vorbereitete Kennung `boxbert-v1-commissioning-20261113-nfc-v12`, Build
+`~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte Flash/173468Byte
+globale Variablen.19native Sanitizerprogramme und jetzt6Encoder/RPC-Szenarien
+(7Node-Tests inkl.Parent) grün, zusätzlich reale Encoder-Codegrenzen0/Max getestet.
+RPC-Grenze/Fehlertext und Bootmeldung auf12angepasst. **Kein Upload**, solange
+Leser nicht bestätigt geparkt ist.
+
+`2026-11-13-volume12-nfc-park.log`: erneute Pauseanforderung, weiterhin NFC1/
+pauseRequested1, nicht3; Konfigrevision49,Volume6,playback4,Musik aus. Danach
+begrenzter120-s-Capture ohne Parkbestätigung. Nutzer aufgefordert, getestete Karte
+abzuheben/neu aufzulegen, damit ausstehende Suche beendet werden kann. Aktuell
+vor der Parkbestätigung also alter Flash c0n11gac/Maximum6, Quellstand und neuer Build schon Maximum12.
+Zu diesem Zeitpunkt blieb Parkanforderung gesetzt; damals noch kein Upload.
+
+**Anschließend Nutzer „liegt“:** neuer Diag im selben Parklog bestätigt
+**NFC3/pauseRequested1**,Volume6/playback4,Konfigrevision81. Erst danach
+Stagingquellen inkl.Runtimeheader und Artefakt-SHA256 gegen Manifest geprüft,
+exakt `boxbert-build-n1_lldq4/artifacts` erfolgreich hochgeladen/Hashes verifiziert.
+Uploadlogs im Buildverzeichnis. `2026-11-13-volume12-after-flash.log`:
+SD/I2S/PSRAM/AW/Gauge/config1,NFC1/pauseRequested0,Volume1/playback2/running1,
+Revision81,Heap31512 beiDiag/31060 im laufenden Decoder. Musik startet wieder
+leise. **Aktueller Flash jetzt `boxbert-v1-commissioning-20261113-nfc-v12`,
+Maximum12, Boot1**; höhere Stufen noch keine akustische Sicherheitsabnahme.
+Nutzer gebeten, langsam zu steigern und bei Verzerrungen zurückzugehen.
+Nachfolgender7-s-Passivlog `2026-11-13-volume12-passive.log`: Volume1,
+running1→0,NFC1,Heap36748 nach Ende; keine höheren Encoderwerte in diesem
+Ausschnitt beobachtet, also noch keine Geräte-/Hörbestätigung von12.
+Erster bestätigter Park→Boardreset/Flash→Scanner-/Decoder-Neustart, kein echter
+Peripherie-Power-Cycle und keine allgemeine Reset-/Dauerfreigabe.
 
 Weiterarbeit: `uebergabe-endaufbau-2026-11-11.md`, `To-Do.md`.

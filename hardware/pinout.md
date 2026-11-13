@@ -90,7 +90,8 @@ Resetleitung nicht zusätzlich bestätigt; Probe verwendet keinen Reset-GPIO.
 Log: `docs/serial/2026-11-11-nfc-init-probe.log`.
 Damals Gesamtfirmware mit NFC aus wiederhergestellt. **Seit13.11. neue NFC-
 Laufzeit aktiv**, kurze Transfers ohne Tagwarten unter Mutex; Tag1→Arcade-
-Decoder→EOF im Gesamtstand geloggt, Hör-/Sichtabnahme offen. Neuester Nachweis:
+Decoder→EOF im Gesamtstand geloggt; Nutzer bestätigt Ton/TFT dieses Starts.
+Weitere Bedienungs-/Dauerprüfung offen. Neuester Nachweis:
 `docs/testprotokoll-nfc-integration-2026-11-13.md`.
 Gemeinsamer I2C-Bus mit AW9523/Gauge verlangt kurze synchronisierte Transfers;
 kein Timeout0-Tagwarten unter dem gemeinsamen Wire-Mutex.
