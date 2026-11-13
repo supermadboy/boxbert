@@ -1,15 +1,44 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell: Android-BLE-Verbindungsabbruch, Passwortschutz bleibt
+## Aktuell: BLE-Soforttimeout korrigiert, echter Handshake/read durchgelaufen
+
+**Geräteflash prnsjyfe**, Kennung`boxbert-v1-commissioning-20261113-v21-blefix1`,
+2560235Byte Flash/173468Byte Globals. Nach bestätigtem Park3 exakt Quellen/Runtime/
+SHA256 geprüft und hochgeladen. Danach Volume1/Decoder/NFC1,SD/I2S/AW/Gauge/config1,
+Revision113. Passwortschutz, Boot1/Max21 und übrige Flags unverändert.
+
+Tracebuilddepm3fts zeigte zweimalhello→105BytesAntwortbereit→lokalen drop-timeout
+innerhalb1ms, vorAuth. `now` vomLoop-Eintritt älter als neues`bleAt=millis()`:
+unsignedSubtraktion unterläuft. EchterTimeout nichtverstrichen. Produktionshelper
+mitHalbintervallprüfung korrigiert,10sRX/30sTX-Grenzen unverändert; nativerTest
+zuerstRED,danachGREEN.20native Sanitizerprogramme/4Pin-/3Trace-Tests und6Encoder/
+RPC-Szenarien bestanden. KeinepauschaleErklärung allerälterenFunkauffälligkeiten.
+
+`docs/serial/2026-11-13-blefix1-phone-attempt.log`: danachhelloAntwortsent,
+auth1bestätigt undread1268Bytes vollständig übertragen; weitereauth/read-Strecke
+beiDecoder/Volume16ebenfalls. Weitereanonymisierte Anfrage einmalabgelehnt,
+späterandereok; genaueBedienaktion nicht ausNutzdaten rekonstruieren.
+**Nutzersicht/APIerreichbar/Dateiliste noch bestätigen**, danachHappyTune-Zuordnung,
+Upload/Persistenz.120-s-LeserPID24820 beendet, keinHintergrundlesermehr;
+spätererDiagRevision123/Volume16/playback4/NFC1/pause0/keinPeer. Verbindungsende
+außerhalbCapture, keineUrsache dafürbelegt. KeinparallelerPC-GATT. Ausführlich:`testprotokoll-ble-verbindung-2026-11-13.md`.
+AlteFrames/Builds infolgendenAbschnitten sindChronologie, nicht aktuellerFlash.
+
+## Chronologie: BLE-Abbruch und erster Tracebuild vor dem Fix
 
 Nutzer hat das vorhandene Passwort verwendet. Appfehler: „Getrennt: BLE-Verbindung
 verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Welche Aktion und
 Phase: laut Nutzer **direkt nach Geräteauswahl, noch vor Dateiliste**;
 GATT/hello/auth/erster Read sind innerhalb des Aufbaus noch nicht unterschieden.
-**Diagnosebuild vorbereitet, NICHT geflasht:** `boxbert-build-depm3fts`, Kennung
+**Diagnosebuild jetzt geflasht:** `boxbert-build-depm3fts`, Kennung
 `boxbert-v1-commissioning-20261113-v21-bletrace`,2560263Byte Flash/173468Byte Globals.
-NFC-Pause weiterpending1, vor Upload Karte/Park3 nötig. Geschützterv21 bleibt auf
-Gerät; Traces erfassen nur feste Phasen/Dropgründe und Zahlen, keine Geheimnisse.
+Nach Nutzer „liegt“ Park3 bestätigt, Quellen/Runtime/Artefakt-SHA256 geprüft und
+exaktdepm3fts hochgeladen. Danach NFC1/pauseRequested0,Volume1/Decoderläuft,
+SD/I2S/AW/Gauge/config1,Revision113,Heap30796/maxAlloc21492; keine Geheimnislogs.
+120-s-Handyleser PID22048 gestartet,`docs/serial/2026-11-13-bletrace-phone-attempt.log`;
+vor weiterem USB-Reader Prozess/Laufzeit prüfen. Nutzer zum einmaligen Connect
+aufgefordert, kein paralleler PC-GATT-Client. PC-BlueZ-Adapter aktiv/unblockiert,
+Bleak im System-Python nicht installiert; PC-GATT noch nicht getestet.
 Neues detailliertes Protokoll: `testprotokoll-ble-verbindung-2026-11-13.md`. Der pauschale
 Zusatz stammt aus`app/src/main.jsx:run` und wird auch bei lesendem Connect gesetzt;
 kein Nachweis für SD-Schreibfehler oder erfolgreichen HMAC-Login. Keine unklaren
@@ -27,7 +56,8 @@ Keine Veröffentlichung, kein Dienst-/Branchwechsel im Hostingrepo.
 
 **Offenen BLE-Versuch verworfen, nie geflasht. Alle Codeänderungen zurückgesetzt.**
 Insecure Cache`boxbert-build-a0ukgnbl` NICHT verwenden. Aktuell bleibt darunter
-beschriebener geschützterv21/b9h_54sn. Vor erneutem Flash wie bisher Park3 nötig.
+beschriebener geschützter BLE-Diagnosestanddepm3fts, b9h_54sn ist Rückfall.
+Vor erneutem Flash wie bisher Park3 nötig.
 Nächster Schritt: Fehleraktion klären, lesenden Verbindungsversuch beobachten;
 bei Bedarf gezielte Traces für Connect/Disconnectgrund/Parser-Drop/Auth/Read,
 keine spekulativen Bibliotheks- oder Timeoutänderungen.
@@ -46,7 +76,7 @@ vorhandenes BLE2 nutzen. Passwort nur über USB in lokale private Datei
 HTTPS-App-HTML abrufbar, noch kein Beleg für reale Handy-/BLE-Verbindung.
 Verbindung/Status, dann HappyTune-Zuordnung und Persistenz prüfen. Weitere Funk-/Last-/Power-/Sicherheitsprüfungen bleiben offen.
 
-## Neuester Gerätestand: Regelbereich0..21 erfolgreich geflasht
+## Vorheriger Gerätestand ohne BLE-Traces: Regelbereich0..21 geflasht
 
 Nutzer möchte bis21drehen. Aktueller Quell-/Geräte-/Buildstand:
 `boxbert-v1-commissioning-20261113-nfc-v21`,
@@ -267,12 +297,12 @@ das ist keine Zuordnung des unbekannten gelben Minis.
 
 ## 3. Aktueller Flash — nicht mit älteren Diagnosen verwechseln
 
-- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261113-nfc-v21`.
+- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261113-v21-blefix1`.
 - **Exaktes aktuell geflashtes Artefakt:**
-  `~/.cache/boxbert-build-b9h_54sn/manifest.json`, Dateien unter `artifacts/`.
+  `~/.cache/boxbert-build-prnsjyfe/manifest.json`, Dateien unter `artifacts/`.
   Compile-/Uploadlog im selben Verzeichnis. Quellen-/Artefakt-SHA256 vor Upload
   geprüft, Hashprüfung beim Schreiben erfolgreich.
--2559211Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
+-2560235Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
 - Isolierte CLI1.5.1, Core3.3.12, NimBLE2.3.8, QSPI-PSRAM/Boarddefaults.
   Keine OPI-Option. Keine privaten Heim-WLAN-Daten eingebaut.
 - `commissioning`: Bootvolume1,max21, NFC=true, Stick=false,

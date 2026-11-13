@@ -1,0 +1,1 @@
+boxbert-ble-timeout-red: firmware/host-tests/ble_timeout_test.cpp:11: int main(): Assertion `!bleSessionExpired(entry,response,false,true)' failed.

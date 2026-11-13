@@ -1,0 +1,36 @@
+BLE timeout / future activity / millis wrap: PASS
+Etappe 5: feste UIDs, Index, unbekannte UID OK
+integrated charging: PASS
+integrated essential controls: PASS
+integrated explicit USB credentials: PASS
+bounded explicit USB commissioning diagnostics: PASS
+integrated station fallback: PASS
+integrated strict JSON: PASS
+integrated NFC tag names: PASS
+integrated migration: PASS
+integrated state: PASS
+integrated config validation: PASS
+LED frame parity: PASS
+measured endaufbau pin contract: PASS
+PN532 split search: pending/no resend, deadlines, wrap, cooldown, faults PASS
+PN532 normal I2C UID frame: checksums/bounds/4+7-byte UIDs PASS
+encoder direction, bounce, backlog, remainder and volume cap: PASS
+device read model: PASS
+runtime policy: PASS
+TagMap: beide Zuordnungen, unbekannte UID, Laengen und null OK
+▶ review17 encoder/RPC event sequences use actual production C++ paths
+  ✔ rename (11.11046ms)
+  ✔ volume (10.938414ms)
+  ✔ led (10.420129ms)
+  ✔ failed (10.350881ms)
+  ✔ sameSaved (11.118429ms)
+  ✔ limits (9.92589ms)
+✔ review17 encoder/RPC event sequences use actual production C++ paths (1663.233635ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1668.317722

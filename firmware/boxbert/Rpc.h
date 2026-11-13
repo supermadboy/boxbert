@@ -22,7 +22,7 @@ class Rpc {
   if(isfinite(hw.voltage))out["batteryVoltage"]=hw.voltage;else out["batteryVoltage"]=nullptr;
   out["radio"]=radio==runtime::Radio::Wifi?"wifi":radio==runtime::Radio::Ble?"ble":"off";out["wifiConnected"]=WiFi.status()==WL_CONNECTED;
   out["ip"]=radio!=runtime::Radio::Wifi?"":WiFi.getMode()==WIFI_AP?WiFi.softAPIP().toString():WiFi.status()==WL_CONNECTED?WiFi.localIP().toString():"";
-  out["firmware"]="boxbert-v1-commissioning-20261113-v21-bletrace";out["configHealthy"]=store.ready&&!store.damaged;return true;
+  out["firmware"]="boxbert-v1-commissioning-20261113-v21-blefix1";out["configHealthy"]=store.ready&&!store.damaged;return true;
  }
  void execute(JsonVariantConst req,JsonDocument& out,bool ble){
   out.clear();out["id"]=req["id"].is<uint32_t>()?req["id"].as<uint32_t>():0;out["ok"]=true;

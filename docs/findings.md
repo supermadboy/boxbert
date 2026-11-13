@@ -435,6 +435,23 @@ einfügen, Datum dazu.
 
 ## BLE / NimBLE — Gerätebefund 11.11.2026
 
+- **13.11.2026, BLE-Soforttimeout durch neueren Aktivitätsstempel:** Auf echtem
+  Android/Chrome meldet sich GATT an, hello wird gelesen,105ByteAntwort erzeugt,
+  aber Gerät trennt per eigenem drop-timeout1ms später. Zweimal im Trace:
+ 104090→104091ms und128435→128436ms. Loop-Eintritt`now` war älter als in
+  `bleResponse` frisch gesetztes`bleAt=millis()`; unsignedSubtraktion lief über.
+  Gleiche Zeitdomänen-Falle wie vorhandener Sleep-Schutz. Produktionshelper
+  `bleSessionExpired` prüft Halbintervall, erhält strikte10sRX/30sTX-Grenzen und
+  echten millisWrap. Neuer nativerTest zuerstRED auf alterLogik, danachGREEN;
+  vollständige20native Programme grün. Nach exaktgeprüftem Fixflashprnsjyfe echte
+  hello/auth1/read-Antwort1268Bytes übertragen, späterbeiDecoderlauf erneut.
+  KeinegeändertenAuthregeln/Bibliotheken undkeinePasswort-/Proofdaten imTrace.
+  KeinpauschalerFix allerälterenRadio-/Dateifehler. Quellen:
+  `docs/testprotokoll-ble-verbindung-2026-11-13.md`,
+  `docs/serial/2026-11-13-bletrace-phone-attempt.log`,
+  `docs/serial/2026-11-13-blefix1-phone-attempt.log`,
+  `firmware/host-tests/ble_timeout_test.cpp`.
+
 - **NimBLE2.3.6 + Arduino-Core3.3.12: Init-Panic;2.3.8 behebt ihn auf
   unserem Gerät.** Erster Gesamtflash erreichte SD/Audio/Gauge/AW=1,
   dann Neustartschleife beim Funkstart. Separater Minimaltest ohne SD/Audio

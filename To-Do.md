@@ -2,26 +2,29 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Aktuell: echten Android-BLE-Abbruch eingrenzen (13.11.):**
-  Nutzer hat vorhandenes Passwort verwendet; App meldet „Getrennt: BLE-Verbindung
-  verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Aktion/Zeitpunkt
-  **inzwischen geklärt: direkt nach Geräteauswahl, noch vor Dateiliste.**
-  Diagnosebuild`boxbert-build-depm3fts`,Kennung`boxbert-v1-commissioning-20261113-v21-bletrace`
-  vorbereitet, **noch NICHT geflasht**, NFC1/pauseRequested1 wartet auf Karte/Park3.
-  Trace erfasst Callback-Disconnectgrund und feste Mainloop-Phasen/Dropgründe,
-  keine Passwörter/Payloads, keine Timeout-/Bibliotheksänderung. Passwort bleibt an.
- 19native/4Pin-/3Trace-Tests +6Encoder/RPC-Szenarien grün.
-  Ablauf/weiter: `docs/testprotokoll-ble-verbindung-2026-11-13.md`. Pauschaler Schreibfehlerzusatz kommt
-  auch bei lesendem Verbindungsaufbau; kein Beweis für SD-Schaden oder Auth-Erfolg.
-  Diag danach gesund: SD/I2S/AW/Gauge/config1,Radio2,NFC1,Revision113,Volume17,
-  playback4,Heap36260. Log`2026-11-13-ble-first-disconnect.log`.
-  Hostingrepo`/home/markusinho/projects/ai-habibi` nur lesend geprüft; tatsächliche
-  Quellen bleiben`boxbert/app`. Live-JS`index-DzBpNY4D.js` stimmt bytegleich mit
-  `ai-habibi/sites/boxbert` und lokalem`app/dist` überein. Kein Deploy durchgeführt.
-  **Passwortlosen Versuch verworfen, nie geflasht; Code vollständig zurückgesetzt.**
-  Geschützterv21/b9h_54sn bleibt aktuell, alten Cachea0ukgnbl NICHT flashen.
-  Bei Wiederholung zunächst nur verbinden/lesen, keine unklaren Schreibvorgänge
-  wiederholen. Falls nötig gezielte BLE-Traceursachen ergänzen, nicht blind upgraden.
+- [x] **Android-BLE-Sofortabbruch lokalisiert und gezielt korrigiert (13.11.):**
+  Trace zeigt zweimalhello→Antwortbereit→lokalen drop-timeout innerhalb1ms,
+  noch vorAuth. Loop-Eintritt`now` älter als in`bleResponse` frisch gesetztes
+  `bleAt`: unsignedSubtraktion unterläuft. Native Produktionsregression erstRED,
+  mitHalbintervallprüfungGREEN; echte10s-/30s-Grenzen/millisWrap bleiben erhalten.
+  **Aktueller Flash**`boxbert-build-prnsjyfe`,Kennung
+  `boxbert-v1-commissioning-20261113-v21-blefix1`,2560235ByteFlash/173468ByteGlobals.
+  Nach Park3 Quellen/Runtime/SHA256 geprüft, exakt hochgeladen; danach Volume1,
+  Decoder/NFC1/SD/I2S/AW/Gauge/config1,Revision113. Passwortschutz unverändert.
+ 20native Sanitizerprogramme/4Pin-/3Trace-Tests +6Encoder/RPC-Szenarien grün.
+  EchterAndroidversuch:hello/auth1/read1268Bytes vollständig übertragen; weitere
+  auth/read-Strecke beiAudio/Volume16 ebenfalls. Kein Soforttimeout dabei.
+  **Nutzersicht/APIerreichbar/Dateiliste noch bestätigen**, weitereanonymisierte
+  Anfrage einmalabgelehnt, späterweitereok; konkreteAktion noch klären.
+ 120-s-CapturePID24820 beendet, keinHintergrundreadermehr;
+  `docs/serial/2026-11-13-blefix1-phone-attempt.log`. SpätererDiagRevision123,
+  Volume16/playback4,NFC1/pause0,keinPeer; Verbindung endete außerhalbCapture,
+  Ursache nichtbelegt. Kein parallelerPC-GATT-Client.
+  PC-BlueZ aktiv/unblockiert, noch keinPC-GATT-Test. HostingJS live bytegleich mit
+  `ai-habibi/sites/boxbert` und`app/dist`, keinDeploy. A0-Offenversuch verworfen,
+  niegeflasht, Authänderungen zurückgesetzt; **Cachea0ukgnbl NICHT flashen**.
+  Protokoll/weitereAbnahme:`docs/testprotokoll-ble-verbindung-2026-11-13.md`.
+  KeinpauschalerFix allerfrüherenFunk-/SD-/Dateifehler, keinProduktnachweis.
 
 - [ ] **Als Nächstes: echte Handy-Weboberfläche mit der Box verbinden.**
   Android mit BLE und Chrome vom Nutzer bestätigt; vorhandenen BLE-Modus nutzen,
@@ -30,7 +33,7 @@
   Zunächst Verbindung und echten Gerätestatus
   prüfen, danach Tag2 auf gewünschten HappyTune-Pfad zuordnen und Speicherung
   prüfen. Soll seit Nutzerbestätigung13.11.: `/happy-tune.mp3`; letzter echter
-  Diag zeigt weiterhin `/fart.mp3` (Revision100). Noch keine Änderung durchgeführt.
+  Diag zeigt weiterhin `/fart.mp3` (Revision123). Noch keine Änderung durchgeführt.
 
 - [x] **Bedienung und NFC-Wechsel vom Nutzer bestätigt (13.11.):**
   Auf den vorgeschlagenen Test mit Karte weg, großem blauen Startbutton,
@@ -75,8 +78,8 @@
   Keine Wake-/Sleep-/Produktfreigabe.
 
 - [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
-  Aktuell `boxbert-v1-commissioning-20261113-nfc-v21`, Build
-  `~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte Flash/
+  Aktuell `boxbert-v1-commissioning-20261113-v21-blefix1`, Build
+  `~/.cache/boxbert-build-prnsjyfe/manifest.json`,2560235Byte Flash/
   173468Byte globale Variablen,Core3.3.12/QSPI,**NimBLE2.3.8**.
   Bootvolume1,Regelbereich0..21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
   Akku+USB laut Nutzer. Gemessene Eingänge übernommen, Encoder per Interrupt,

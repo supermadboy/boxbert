@@ -16,6 +16,13 @@ struct UploadProgress {
  bool complete()const{return active&&size==offset;}
  void abort(){active=false;size=offset=0;}
 };
+// Shared with production transport; strict 10s RX / 30s TX inactivity deadlines.
+inline bool bleSessionExpired(uint32_t now,uint32_t activity,bool receiving,bool sending){
+ // Activity may be updated with millis() after the caller captured loop-entry now.
+ // Reject a newer timestamp (unsigned underflow), but retain real millis wrap.
+ const uint32_t elapsed=now-activity;
+ return elapsed<0x80000000u&&((receiving&&elapsed>10000)||(sending&&elapsed>30000));
+}
 enum class Radio:uint8_t {Off,Wifi,Ble};
 inline Radio nextRadio(Radio r){return r==Radio::Ble?Radio::Off:r==Radio::Off?Radio::Wifi:Radio::Ble;}
 // Half-range comparison also rejects an activity update newer than the caller's

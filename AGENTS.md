@@ -24,7 +24,7 @@ Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
 Etappe 5: Handy-Webseite, MP3-Upload, Tag-Zuordnung und Wiedergabe laut
 Nutzer erfolgreich, Zuordnung **und Wiedergabe nach RESET** bestaetigt.
 **Aktueller Geräteflash 13.11.2026:** `firmware/boxbert/`, Kennung
-`boxbert-v1-commissioning-20261113-nfc-v21`,Core3.3.12/QSPI,NimBLE2.3.8.
+`boxbert-v1-commissioning-20261113-v21-blefix1`,Core3.3.12/QSPI,NimBLE2.3.8.
 Gemessene Eingänge in `hardware/pinout.md`, Einzeltests inkl. leiser
 Encoder-Lautstärkeregelung bestätigt. Gesamtstand bootet mit SD/PSRAM/AW/
 Gauge/config=1,BLE-Modus; Ton/TFT beim Tag1-Start inzwischen vom Nutzer
@@ -42,16 +42,21 @@ NFC=3/parked abwarten, ggf.Tag für ausstehende Suche auflegen. Vor Volume12-
 Flash Park3 erstmals bestätigt, danach neuer Build erfolgreich gestartet.
 Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fehlt.
 Aktueller Build:
-`~/.cache/boxbert-build-b9h_54sn/manifest.json`, nach erneut bestätigtem NFC-Park3
-geflasht, Quellen/SHA256/Upload geprüft. VollerRegelbereich0..21 auf Nutzerwunsch,
+`~/.cache/boxbert-build-prnsjyfe/manifest.json`, nach erneut bestätigtem NFC-Park3
+geflasht, Quellen/Runtime/SHA256/Upload geprüft; danach Volume1/Decoderläuft,NFC1. VollerRegelbereich0..21 auf Nutzerwunsch,
 Boot1 im Code; erster Mitschnitt bereitsVolume5, dann Encoder requested=actual
 bis21 bei laufendem Decoder, NFC1/Radio2. Keine automatische Maximalansteuerung.
 Keine akustische Sicherheitsfreigabe, hohe Stufen nur im Erwachsenentest ohne
 Kind im Raum. Volume12/n1_lldq4 ist überholter Zwischenstand.
 **Aktuell BLE-Fehlersuche:** Nutzer hat vorhandenes Passwort verwendet, App meldet
 „Getrennt: BLE-Verbindung verloren“ direkt nach Geräteauswahl, vor Dateiliste.
-Diagnosebuild`boxbert-build-depm3fts` (`20261113-v21-bletrace`) vorbereitet,
-noch NICHT geflasht, wartet auf NFC-Park3 (aktuellpending1). Passwortschutz bleibt.
+Trace zeigte zweimal lokalen drop-timeout1ms nachhello-Antwortvorbereitung:
+unsignednow−frischesbleAt unterlief. Fix mit Halbintervallprüfung,20native Tests
+inkl.RED→GREEN-Regression; geschützterBuildprnsjyfe (`v21-blefix1`) jetzt geflasht.
+Danach echtehello/auth1/read-Antwort übertragen, Nutzersicht noch bestätigen.
+120-s-Captures beendet, keinUSB-Hintergrundleser mehr; keinPC-GATT-Test.
+SpätererDiagRevision123,Volume16/EOF,NFC1,keinPeer; Ende der Handyverbindung
+außerhalb Capture, Ursache nichtbelegt. Keine Nonce/Proof/Payload-Logs.
 Details`docs/testprotokoll-ble-verbindung-2026-11-13.md`. Gerätediag gesund,
 Revision113. Offenen BLE-Versuch **verworfen, nie geflasht**, Code zurückgesetzt;
 Cachea0ukgnbl NICHT verwenden. Live-JS stimmt mit Hostingrepo ai-habibi und lokalem

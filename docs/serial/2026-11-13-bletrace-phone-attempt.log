@@ -1,0 +1,39 @@
+
+# USB capture 2026-11-13T16:12:20.970825; no DTR/RTS ioctl
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=30796 NFC=1
+BOXBERT commissioning SD=1 BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36484 NFC=1
+BLE t=103399 event=connect detail=0 peer=1 sub=0 auth=0 rx=0 tx=0 heap=36436 maxAlloc=21492
+BLE t=103969 event=subscribe detail=1 peer=1 sub=1 auth=0 rx=0 tx=0 heap=36456 maxAlloc=21492
+BLE t=104089 event=request-hello detail=0 peer=1 sub=1 auth=0 rx=31 tx=0 heap=35236 maxAlloc=21492
+BLE t=104090 event=response-ready detail=1 peer=1 sub=1 auth=0 rx=31 tx=105 heap=34920 maxAlloc=21492
+BLE t=104091 event=drop-timeout detail=0 peer=1 sub=1 auth=0 rx=0 tx=105 heap=36232 maxAlloc=21492
+BLE t=104136 event=disconnect detail=534 peer=65535 sub=0 auth=0 rx=0 tx=0 heap=36260 maxAlloc=21492
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BLE t=127700 event=connect detail=0 peer=1 sub=0 auth=0 rx=0 tx=0 heap=36212 maxAlloc=21492
+BLE t=128284 event=subscribe detail=1 peer=1 sub=1 auth=0 rx=0 tx=0 heap=36232 maxAlloc=21492
+BLE t=128434 event=request-hello detail=0 peer=1 sub=1 auth=0 rx=31 tx=0 heap=35012 maxAlloc=21492
+BLE t=128435 event=response-ready detail=1 peer=1 sub=1 auth=0 rx=31 tx=105 heap=34920 maxAlloc=21492
+BLE t=128436 event=drop-timeout detail=0 peer=1 sub=1 auth=0 rx=0 tx=105 heap=36232 maxAlloc=21492
+BLE t=128480 event=disconnect detail=534 peer=65535 sub=0 auth=0 rx=0 tx=0 heap=36260 maxAlloc=21492
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36260 NFC=1

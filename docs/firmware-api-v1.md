@@ -11,15 +11,18 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 geflasht und darf nicht verwendet werden. Änderungen vollständig zurückgesetzt;
 Nutzer verwendet vorhandenes Passwort. Kein optionales`authRequired`-Feld und
 kein Passwort-Bypass im aktuellen Quell-/Gerätevertrag. BLE-Abbruch wird separat
-untersucht; normaler geschützterv21-Stand bleibt aktuell.
+untersucht; aktuell geschützterv21-BLE-Diagnosestand mit zusätzlicher USB-Telemetrie.
 
 **Aktuell geflasht:** auf Nutzerwunsch vollerBereich0..21, Boot1 im Code.
-`boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
-Vor Upload NFC-Park3 bestätigt, danach Scanner1/Decoderläuft und Encoderwerte
-bis21 geloggt. Keine automatische Maximalansteuerung/akustische Freigabe.
+`boxbert-build-prnsjyfe`,Kennung`boxbert-v1-commissioning-20261113-v21-blefix1`.
+Vor Upload NFC-Park3 bestätigt, danach Scanner1/Decoderläuft beiVolume1.
+Zusätzliche feste USB-BLE-Phasen/Dropgründe, keine Nonce/Proof/Nutzdaten; keine
+geänderten Auth-Regeln/Timeoutgrenzen. Halbintervallprüfung verhindert falschen
+Timeout bei neuerem Aktivitätsstempel als Loop-Eintritt. Echtehello/auth/read-
+Antwort danach übertragen, noch keine vollständige Funk-/PWA-Abnahme. Keine automatische Maximalansteuerung/akustische Freigabe.
 
 Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
-`status.firmware=boxbert-v1-commissioning-20261113-nfc-v21`, Bootlautstärke1,
+`status.firmware=boxbert-v1-commissioning-20261113-v21-blefix1`, Bootlautstärke1,
 zulässige `settings.volume`-Werte **0..21**. Höhere Werte erzeugen
 `invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC seit
 13.11. mit kurzem I2C-Scanner aktiviert; physischer Tag1→Decoder→EOF geloggt,

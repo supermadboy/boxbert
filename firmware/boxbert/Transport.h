@@ -132,7 +132,7 @@ class Transport {
     }
    }
   }
-  if(peer!=BLE_HS_CONN_HANDLE_NONE&&((parser.size()&&uint32_t(now-bleAt)>10000)||(!bleTx.isEmpty()&&uint32_t(now-bleAt)>30000))){dropPeer("drop-timeout");return;}
+  if(peer!=BLE_HS_CONN_HANDLE_NONE&&runtime::bleSessionExpired(now,bleAt,parser.size()!=0,!bleTx.isEmpty())){dropPeer("drop-timeout");return;}
   if(!bleTx.isEmpty()&&peer!=BLE_HS_CONN_HANDLE_NONE&&subscribed&&uint32_t(now-notifyAt)>=10){
    notifyAt=now;size_t n=std::min(size_t(20),bleTx.length()-bleOffset);tx->setValue((const uint8_t*)bleTx.c_str()+bleOffset,n);
    if(tx->notify(peer)){bleOffset+=n;bleAt=now;if(bleOffset==bleTx.length()){bleTx="";bleOffset=0;traceBle("response-sent");}}

@@ -4,14 +4,17 @@
 
 **Passwortloser Versuch verworfen, nie geflasht:** Cache`boxbert-build-a0ukgnbl`
 NICHT verwenden. Nutzer hat vorhandenes Passwort genutzt und meldet BLE-Abbruch;
-Quelländerung vollständig zurückgesetzt, geschützterv21-Stand bleibt aktuell.
+Auth-Quelländerung vollständig zurückgesetzt, geschützterv21-Diagnosestand aktuell.
 Fehlerphase/Ursache noch offen, Details im aktuellen13.11.-Protokoll.
 
 **Aktuell Bereich0..21 geflasht, Boot bleibt1 im Code:** Nutzerwunsch,
-Build`boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
+Build`boxbert-build-prnsjyfe`,Kennung`boxbert-v1-commissioning-20261113-v21-blefix1`.
 Nach bestätigtem NFC-Park3 Artefakte/Quellen geprüft und erfolgreich hochgeladen.
-Encoder requested=actual bis21 bei laufendem Decoder geloggt; erster Mitschnitt
-bereits5. Kein automatisches Maximalabspielen/keine akustische Sicherheitsfreigabe.
+USB-BLE-Traces ohne Nutzdaten; Halbintervallprüfung korrigiert falschen Timeout
+bei neuerem Aktivitätsstempel. Keine anderen Auth-/Timeoutgrenzen-/Bibliotheksänderungen.
+20native Tests inkl.RED→GREEN-Regression, danach echtehello/auth1/read-Antwort
+übertragen; keine komplette PWA-Abnahme. Details im BLE-Protokoll13.11.
+Danach NFC1/Volume1/Decoderläuft. Bereich bis21 schon im vorherigenv21beobachtet. Kein automatisches Maximalabspielen/keine akustische Sicherheitsfreigabe.
 
 **Historischer Zwischenstand13.11.: Maximum12/21 geflasht, inzwischen durch21ersetzt**, Boot bleibt1.
 Build `boxbert-build-n1_lldq4`, nach bestätigtem NFC-Park3 Quellen/SHA256 geprüft
@@ -81,7 +84,7 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 
 ## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
 
-Aktuell geflasht: `~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte
+Aktuell geflasht: `~/.cache/boxbert-build-prnsjyfe/manifest.json`,2560235Byte
 Flash/173468Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
 beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
 [`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).
