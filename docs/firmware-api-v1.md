@@ -7,6 +7,12 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 
 ## Temporäre Geräte-Erstinbetriebnahme 11.11.2026
 
+**Verworfener Versuch:** offener BLE-Cache`boxbert-build-a0ukgnbl` wurde nie
+geflasht und darf nicht verwendet werden. Änderungen vollständig zurückgesetzt;
+Nutzer verwendet vorhandenes Passwort. Kein optionales`authRequired`-Feld und
+kein Passwort-Bypass im aktuellen Quell-/Gerätevertrag. BLE-Abbruch wird separat
+untersucht; normaler geschützterv21-Stand bleibt aktuell.
+
 **Aktuell geflasht:** auf Nutzerwunsch vollerBereich0..21, Boot1 im Code.
 `boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
 Vor Upload NFC-Park3 bestätigt, danach Scanner1/Decoderläuft und Encoderwerte

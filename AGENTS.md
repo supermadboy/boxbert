@@ -48,6 +48,11 @@ Boot1 im Code; erster Mitschnitt bereitsVolume5, dann Encoder requested=actual
 bis21 bei laufendem Decoder, NFC1/Radio2. Keine automatische Maximalansteuerung.
 Keine akustische Sicherheitsfreigabe, hohe Stufen nur im Erwachsenentest ohne
 Kind im Raum. Volume12/n1_lldq4 ist überholter Zwischenstand.
+**Aktuell BLE-Fehlersuche:** Nutzer hat vorhandenes Passwort verwendet, App meldet
+„Getrennt: BLE-Verbindung verloren“; Verbindungsphase noch unklar. Gerätediag gesund,
+Revision113. Offenen BLE-Versuch **verworfen, nie geflasht**, Code zurückgesetzt;
+Cachea0ukgnbl NICHT verwenden. Live-JS stimmt mit Hostingrepo ai-habibi und lokalem
+App-Build überein. Quellen bleiben hier unter`app/`, Hostingrepo nur lesend geprüft.
 Nutzer meldete früher „Dateifehler“;
 per USB simulierte Button-Handler starten beide MP3, Fehler nicht reproduziert
 und **nicht als behoben abgenommen**. Ein früher Funk-Aus-Versuch startete neu;

@@ -1,6 +1,46 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Neuester Stand: Regelbereich0..21 erfolgreich geflasht
+## Aktuell: Android-BLE-Verbindungsabbruch, Passwortschutz bleibt
+
+Nutzer hat das vorhandene Passwort verwendet. Appfehler: „Getrennt: BLE-Verbindung
+verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Welche Aktion und
+welche Phase (Anmeldung/erster Read/späterer Befehl) ist noch offen. Der pauschale
+Zusatz stammt aus`app/src/main.jsx:run` und wird auch bei lesendem Connect gesetzt;
+kein Nachweis für SD-Schreibfehler oder erfolgreichen HMAC-Login. Keine unklaren
+Speicher-/Uploadaktionen blind wiederholen.
+
+`docs/serial/2026-11-13-ble-first-disconnect.log`: SD/I2S/AW/Gauge/config1,
+Radio2,NFC1,Revision113,Volume17,playback4,Heap36260. Noch kein Gerätemitschnitt
+des eigentlichen Verbindungsabbruchs, Ursache offen.
+
+Vom Nutzer genanntes Hostingrepo`/home/markusinho/projects/ai-habibi` nur lesend
+geprüft: `apps/boxbert` ist Buildbrücke, Quellen ausschließlich`boxbert/app`.
+Live-JS`index-DzBpNY4D.js` ist bytegleich mit dortigem`sites/boxbert` und lokalem
+`app/dist`,SHA256`36aeff09fd679202221a8ff99d97b4d18993ecb722f18e21acd126dce0e34ed8`.
+Keine Veröffentlichung, kein Dienst-/Branchwechsel im Hostingrepo.
+
+**Offenen BLE-Versuch verworfen, nie geflasht. Alle Codeänderungen zurückgesetzt.**
+Insecure Cache`boxbert-build-a0ukgnbl` NICHT verwenden. Aktuell bleibt darunter
+beschriebener geschützterv21/b9h_54sn. Vor erneutem Flash wie bisher Park3 nötig.
+Nächster Schritt: Fehleraktion klären, lesenden Verbindungsversuch beobachten;
+bei Bedarf gezielte Traces für Connect/Disconnectgrund/Parser-Drop/Auth/Read,
+keine spekulativen Bibliotheks- oder Timeoutänderungen.
+
+## Neueste Nutzerabnahme / nächstes To-Do
+
+Nutzer bestätigt vorgeschlagenen Test: Karte weg, blauer Startbutton,
+Encoder-Pause/Weiter, Volume0 stumm und zurück2..3 — alles klappt. Zweite Karte/
+Kartenwechsel ebenfalls bereits erfolgreich getestet. Nutzerbeobachtung, keine
+neuen vollständigen seriellen Ablaufbelege oder Abnahme aller AW-Eingänge.
+Tag2 soll **HappyTune** bekommen; letzter Diag Revision100 zeigt weiterhinFart.
+Soll und Ist nicht vermischen; noch nichts geändert.
+**Als Nächstes Handy-Weboberfläche:** Nutzer bestätigt Android/BLE/Chrome,
+vorhandenes BLE2 nutzen. Passwort nur über USB in lokale private Datei
+`~/.cache/boxbert-ble-passwort.txt` (0600) gesichert, nicht in Chat/Git ausgegeben.
+HTTPS-App-HTML abrufbar, noch kein Beleg für reale Handy-/BLE-Verbindung.
+Verbindung/Status, dann HappyTune-Zuordnung und Persistenz prüfen. Weitere Funk-/Last-/Power-/Sicherheitsprüfungen bleiben offen.
+
+## Neuester Gerätestand: Regelbereich0..21 erfolgreich geflasht
 
 Nutzer möchte bis21drehen. Aktueller Quell-/Geräte-/Buildstand:
 `boxbert-v1-commissioning-20261113-nfc-v21`,

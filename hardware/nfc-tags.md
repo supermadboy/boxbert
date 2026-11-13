@@ -13,14 +13,17 @@ Nutzerkarte lag beim UID-Test **durchgehend** auf. Gelesen: Tag1
 Keine Neuauflage-/Entfernungs-/Wechsel-/Wake-Abnahme, kein neuer Chiptypnachweis.
 Damals Gesamtfirmware mit NFC aus wiederhergestellt. **Seit13.11. NFC im
 Gesamtstand aktiv:** Tag1→Arcade-Decoder→natürlichesEOF geloggt, Ton/TFT
-anschließend vom Nutzer bestätigt. Weitere Wechsel-/Bedienungsabnahme offen. Quelle: `docs/testprotokoll-nfc-integration-2026-11-13.md`.
+anschließend vom Nutzer bestätigt. Später Bedienung bei taglosem Warten und
+zweite Karte/Kartenwechsel ebenfalls vom Nutzer bestätigt; keine Dauerprüfung. Quelle: `docs/testprotokoll-nfc-integration-2026-11-13.md`.
 
 **Konfigurationsunterschied nicht automatisch überschreiben:** Die tatsächlich
 migrierte SD-Konfig zeigt Tag0/Tag1 nach Nullindex mit Arcade und`/fart.mp3`
 (`2026-11-11-nfc-edges-integrated-restored.log`). Unten nennt die historische
 Breadboard-Freigabe für den zweiten Tag HappyTune. Vor Änderung/Abnahme der
 zweiten NFC-Wiedergabe Zuordnung mit Nutzer klären; kein stiller Reset der
-bestehenden SD-Konfiguration. Erster Tag bleibt Arcade.
+bestehenden SD-Konfiguration. **Am13.11. Soll vom Nutzer geklärt: HappyTune.**
+Letzter Diag Revision100 zeigt nochFart; noch keine Änderung ausgeführt.
+Soll/Ist nicht als bereits identisch behaupten. Erster Tag bleibt Arcade.
 
 ## Verbindliches Breadboard-Mapping — Freigabe04.10.2026
 

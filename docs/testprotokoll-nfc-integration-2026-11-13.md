@@ -171,4 +171,64 @@ Regelbereich0..21**. Höhere Stufen sind keine akustische Kindersicherheits- ode
 Normabnahme; Nutzer zu Erwachsenen-Test ohne Kind im Raum und Zurückdrehen bei
 Verzerrung angehalten. Stick/BoostControl/AutoSleep weiterhin aus.
 
+## Nachfolgende Nutzerabnahme13.11. — Bedienung und Kartenwechsel
+
+Zum vorgeschlagenen Test mit Karte entfernen, blauem Startbutton, Encoder-
+Pause/Weiter, Volume0→2..3: „das hab ich alles getestet und das hat alles
+geklappt“. Zweite Karte/Kartenwechsel ebenfalls als bereits erfolgreich getestet
+bestätigt. Kein neuer vollständiger Serial-Ablaufnachweis für diese Handlungen;
+keine pauschale Abnahme aller AW-Taster/Gauge, Langzeit- oder akustischer Sicherheit.
+
+Soll Tag2 laut Nutzer **HappyTune**. `2026-11-13-before-web-status.log` zeigt
+UID01:8C:F1:6E und Konfigrevision100 mit weiterhin `/fart.mp3`. Gewünschten
+HappyTune-Pfad nicht als bereits gespeichert/gehört behaupten. Noch keine Änderung.
+Nächstes To-Do: Handy-Betriebssystem klären, echte BLE- oder WLAN-Webverbindung
+und Status prüfen, dann gewünschte Zuordnung mit Persistenztest.
+
+## Kurzversuch BLE ohne Passwort — verworfen, nie geflasht
+
+Nutzer hat Android/Chrome/BLE. Gerätepasswort zunächst über USB nur lokal in
+0600-Datei `~/.cache/boxbert-ble-passwort.txt` gesichert, niemals in Chat/Git
+exportiert. Nutzer verlangt anschließend ausdrücklich keinen Passwortschutz fürs
+lokale Testen. Kein neues kurzes Passwort erzeugt/gesetzt; bestehendes AP-/HTTP-
+Passwort bleibt unverändert.
+
+Nur im zwischenzeitlichen Quellstand `commissioning::BleWithoutPassword=true`: Policy ließ
+unauthentisierten Zugriff ausschließlich im BLE-Testkanal zu; HTTP verwendet
+weiterhin tatsächlichen Credentialvergleich. Hello ergänzt`authRequired=false`,
+auth akzeptiert im Testmodus beliebigen Proof für alte Clients. Online-PWA nicht
+verändert/veröffentlicht, dort wegen Pflichtfeld Platzhalter1 eingeben. Benachbarte
+BLE-Geräte können dann steuern/schreiben, nach Test Schutz wiederherstellen.
+
+Build`~/.cache/boxbert-build-a0ukgnbl/manifest.json`,Kennung
+`boxbert-v1-commissioning-20261113-openble`,2559255Byte Flash/173468Byte Globals.
+19native Sanitizerprogramme inklusive BLE/HTTP/Off-Policy-Matrix grün,4Pin-Tests,
+6Encoder/RPC-Szenarien (7Node inkl.Parent). Keine echte BLE-/HTTP-Abnahme daraus.
+`2026-11-13-openble-nfc-park.log`: Pause angefordert, weiterhin1/pauseRequested1,
+keinPark3,Revision113,Volume17/playback4. **Kein Upload des offenen Builds**,
+Gerät weiterhin geschützterv21/b9h_54sn. **Anschließend verworfen**, siehe unten:
+diesen Cache niemals hochladen. Sonstige Profileflags unverändert, Boot1/Max21.
+
+## Tatsächlicher Appversuch mit Passwort — BLE-Abbruch, Ursache offen
+
+Nutzer hat vorhandenes Passwort inzwischen verwendet und meldet „Getrennt:
+BLE-Verbindung verloren. Gerätestand bei Schreibfehler unklar; neu laden“.
+Verbindungsphase/Aktion noch erfragen. Pauschaler Zusatz in`app/src/main.jsx:run`
+gilt auch für lesendes Connect; keine SD-Schreibfehlerdiagnose/kein HMAC-Nachweis.
+`2026-11-13-ble-first-disconnect.log`: gesundes Gerät mit SD/I2S/AW/Gauge/config1,
+Radio2,NFC1,Revision113,Volume17/playback4,Heap36260. Kein zeitgleicher Mitschnitt
+des eigentlichen Abbruchs. Abgebrochene Pauseanforderung per`nfc-resume` aufgehoben,
+Scanner weiterhin1. Nicht ohne Befund Bibliothek oder Timeout ändern.
+
+**Passwortloser Quellversuch vollständig zurückgesetzt**, kein Firmwareflash.
+`git diff --exit-code` für alle betroffenen Firmwaredateien bestätigt Identität
+mit geschütztemHEADv21. Cachea0ukgnbl nicht verwenden; normales Passwort weiter nutzen.
+
+Hostingrepo `/home/markusinho/projects/ai-habibi` auf Nutzerhinweis nur gelesen:
+Buildbrücke/öffentliche Artefakte dort, tatsächliche Quellen hierunter`app`.
+Live-JS`index-DzBpNY4D.js` entspricht bytegleich`ai-habibi/sites/boxbert` und
+lokalem`app/dist`; SHA256`36aeff09fd679202221a8ff99d97b4d18993ecb722f18e21acd126dce0e34ed8`.
+Keine Website-/Diensteaktivierung oder Änderung am Hostingrepo. Erst Phase des
+Abbruchs klären/lesend beobachten; danach ggf.gezielte BLE-Diagnose ergänzen.
+
 Weiterarbeit: `uebergabe-endaufbau-2026-11-11.md`, `To-Do.md`.

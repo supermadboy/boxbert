@@ -2,6 +2,11 @@
 
 ## Erstinbetriebnahmeprofil 11.11.2026
 
+**Passwortloser Versuch verworfen, nie geflasht:** Cache`boxbert-build-a0ukgnbl`
+NICHT verwenden. Nutzer hat vorhandenes Passwort genutzt und meldet BLE-Abbruch;
+Quelländerung vollständig zurückgesetzt, geschützterv21-Stand bleibt aktuell.
+Fehlerphase/Ursache noch offen, Details im aktuellen13.11.-Protokoll.
+
 **Aktuell Bereich0..21 geflasht, Boot bleibt1 im Code:** Nutzerwunsch,
 Build`boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
 Nach bestätigtem NFC-Park3 Artefakte/Quellen geprüft und erfolgreich hochgeladen.

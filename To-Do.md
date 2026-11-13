@@ -2,6 +2,39 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Aktuell: echten Android-BLE-Abbruch eingrenzen (13.11.):**
+  Nutzer hat vorhandenes Passwort verwendet; App meldet „Getrennt: BLE-Verbindung
+  verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Aktion/Zeitpunkt
+  (Verbinden vs.späterer Befehl) noch klären. Pauschaler Schreibfehlerzusatz kommt
+  auch bei lesendem Verbindungsaufbau; kein Beweis für SD-Schaden oder Auth-Erfolg.
+  Diag danach gesund: SD/I2S/AW/Gauge/config1,Radio2,NFC1,Revision113,Volume17,
+  playback4,Heap36260. Log`2026-11-13-ble-first-disconnect.log`.
+  Hostingrepo`/home/markusinho/projects/ai-habibi` nur lesend geprüft; tatsächliche
+  Quellen bleiben`boxbert/app`. Live-JS`index-DzBpNY4D.js` stimmt bytegleich mit
+  `ai-habibi/sites/boxbert` und lokalem`app/dist` überein. Kein Deploy durchgeführt.
+  **Passwortlosen Versuch verworfen, nie geflasht; Code vollständig zurückgesetzt.**
+  Geschützterv21/b9h_54sn bleibt aktuell, alten Cachea0ukgnbl NICHT flashen.
+  Bei Wiederholung zunächst nur verbinden/lesen, keine unklaren Schreibvorgänge
+  wiederholen. Falls nötig gezielte BLE-Traceursachen ergänzen, nicht blind upgraden.
+
+- [ ] **Als Nächstes: echte Handy-Weboberfläche mit der Box verbinden.**
+  Android mit BLE und Chrome vom Nutzer bestätigt; vorhandenen BLE-Modus nutzen,
+  kein WLAN-Wechsel/Flash nötig. Passwort per USB nur in private lokale Datei
+  `~/.cache/boxbert-ble-passwort.txt` (0600) gesichert, nicht ins Repo/Chat.
+  Zunächst Verbindung und echten Gerätestatus
+  prüfen, danach Tag2 auf gewünschten HappyTune-Pfad zuordnen und Speicherung
+  prüfen. Soll seit Nutzerbestätigung13.11.: `/happy-tune.mp3`; letzter echter
+  Diag zeigt weiterhin `/fart.mp3` (Revision100). Noch keine Änderung durchgeführt.
+
+- [x] **Bedienung und NFC-Wechsel vom Nutzer bestätigt (13.11.):**
+  Auf den vorgeschlagenen Test mit Karte weg, großem blauen Startbutton,
+  Encoder-Pause/Weiter und Volume0→2..3: „das hab ich alles getestet und das hat
+  alles geklappt“. Anschließend zweite Karte/Kartenwechsel ebenfalls als bereits
+  erfolgreich bestätigt. Dies sind Nutzerbeobachtungen, keine neuen vollständigen
+  seriellen Ablauflogs. Kein Nachweis aller AW-Taster/Gauge oder Langzeitbetrieb.
+  HappyTune als gewünschte Zuordnung bestätigt, nicht als bereits gespeicherter
+  Iststand behaupten.
+
 - [x] **Regelbereich0..21 geflasht (13.11.):** Nutzerwunsch umgesetzt, Boot1
   bleibt im Code. Build`boxbert-build-b9h_54sn`,Kennung
   `boxbert-v1-commissioning-20261113-nfc-v21`. Vor Upload erneut NFC3bestätigt,
@@ -26,8 +59,9 @@
   frei; kein Tagwarten/kein wiederholter Suchbefehl bei ausstehender Antwort.
   Physischer Tagpfad jetzt geloggt: E3:2F:F6:33→Arcade-Stream→natürlichesEOF,
   requested=actual2..6. **Ton/TFT vom Nutzer bestätigt** („ja safe hat gut geklappt
-  alles danke“). Mute/Pause/Resume weiterhin gesondert prüfen,
-  AW-Taster/Gauge während taglosem Warten, Tagwechsel und Parken prüfen.
+  alles danke“). Mute/Pause/Resume und Start bei taglosem Warten anschließend
+  ebenfalls vom Nutzer bestätigt, ebenso zweite Karte/Kartenwechsel.
+  AW-Taster/Gauge während taglosem Warten und weitere Parkvarianten noch prüfen.
   `nfc-pause` blieb in kurzer Probe pending und wurde zurückgenommen; erst
   NFC=3/parked gilt als bereit für geplanten Reset, bei wartender Suche Tag nötig.
   Tag2-Mapping vor Änderung/Wiedergabe klären: historischHappyTune, SD Fart.
