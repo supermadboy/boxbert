@@ -5,7 +5,13 @@
 - [ ] **Aktuell: echten Android-BLE-Abbruch eingrenzen (13.11.):**
   Nutzer hat vorhandenes Passwort verwendet; App meldet „Getrennt: BLE-Verbindung
   verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Aktion/Zeitpunkt
-  (Verbinden vs.späterer Befehl) noch klären. Pauschaler Schreibfehlerzusatz kommt
+  **inzwischen geklärt: direkt nach Geräteauswahl, noch vor Dateiliste.**
+  Diagnosebuild`boxbert-build-depm3fts`,Kennung`boxbert-v1-commissioning-20261113-v21-bletrace`
+  vorbereitet, **noch NICHT geflasht**, NFC1/pauseRequested1 wartet auf Karte/Park3.
+  Trace erfasst Callback-Disconnectgrund und feste Mainloop-Phasen/Dropgründe,
+  keine Passwörter/Payloads, keine Timeout-/Bibliotheksänderung. Passwort bleibt an.
+ 19native/4Pin-/3Trace-Tests +6Encoder/RPC-Szenarien grün.
+  Ablauf/weiter: `docs/testprotokoll-ble-verbindung-2026-11-13.md`. Pauschaler Schreibfehlerzusatz kommt
   auch bei lesendem Verbindungsaufbau; kein Beweis für SD-Schaden oder Auth-Erfolg.
   Diag danach gesund: SD/I2S/AW/Gauge/config1,Radio2,NFC1,Revision113,Volume17,
   playback4,Heap36260. Log`2026-11-13-ble-first-disconnect.log`.

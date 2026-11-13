@@ -26,7 +26,7 @@ class Transport {
  String httpHeader,httpBody,httpTx;size_t httpOffset=0,httpLength=0;bool headerDone=false,httpWriting=false;
  File staticFile;uint32_t httpAt=0;bool originOk=false;
  NimBLEServer* bleServer=nullptr;NimBLECharacteristic* tx=nullptr;
- struct BleEvent {uint8_t type=0,length=0;uint16_t handle=0;uint8_t data[20]{};};
+ struct BleEvent {uint8_t type=0,length=0;uint16_t handle=0;int reason=0;uint8_t data[20]{};};
  QueueHandle_t bleEvents=nullptr;std::atomic<bool> bleOverflow{false};uint16_t peer=BLE_HS_CONN_HANDLE_NONE;
  bool subscribed=false,authenticated=false;String nonce,bleTx;size_t bleOffset=0;uint32_t nonceAt=0,bleAt=0,notifyAt=0;
  LineParser parser;StationFallback stationFallback;CredentialCommand usbCommand;
@@ -35,11 +35,11 @@ class Transport {
  class ServerCallbacks:public NimBLEServerCallbacks {
   Transport& t;public:ServerCallbacks(Transport& owner):t(owner){}
   void onConnect(NimBLEServer*,NimBLEConnInfo& c)override{BleEvent e;e.type=1;e.handle=c.getConnHandle();t.enqueue(e);}
-  void onDisconnect(NimBLEServer*,NimBLEConnInfo& c,int)override{BleEvent e;e.type=2;e.handle=c.getConnHandle();t.enqueue(e);}
+  void onDisconnect(NimBLEServer*,NimBLEConnInfo& c,int reason)override{BleEvent e;e.type=2;e.handle=c.getConnHandle();e.reason=reason;t.enqueue(e);}
  } serverCallbacks{*this};
  class RxCallbacks:public NimBLECharacteristicCallbacks {
   Transport& t;public:RxCallbacks(Transport& owner):t(owner){}
-  void onWrite(NimBLECharacteristic* c,NimBLEConnInfo& conn)override{auto v=c->getValue();BleEvent e;e.type=3;e.handle=conn.getConnHandle();if(v.size()>20||v.size()==0){e.type=5;}else{e.length=v.size();memcpy(e.data,v.data(),e.length);}t.enqueue(e);}
+  void onWrite(NimBLECharacteristic* c,NimBLEConnInfo& conn)override{auto v=c->getValue();BleEvent e;e.type=3;e.handle=conn.getConnHandle();if(v.size()>20||v.size()==0){e.type=5;e.reason=int(v.size());}else{e.length=v.size();memcpy(e.data,v.data(),e.length);}t.enqueue(e);}
  } rxCallbacks{*this};
  class TxCallbacks:public NimBLECharacteristicCallbacks {
   Transport& t;public:TxCallbacks(Transport& owner):t(owner){}
@@ -98,12 +98,16 @@ class Transport {
   }
  }
  void resetBle(){parser.reset();authenticated=false;nonce="";bleTx="";bleOffset=0;subscribed=false;rpc.disconnect();}
- void dropPeer(){if(peer!=BLE_HS_CONN_HANDLE_NONE&&bleServer)bleServer->disconnect(peer);peer=BLE_HS_CONN_HANDLE_NONE;resetBle();}
- void bleResponse(JsonDocument& out){bleTx="";serializeJson(out,bleTx);if(bleTx.length()>24576){out.clear();out["id"]=0;Rpc::error(out,"busy","Response exceeds limit");bleTx="";serializeJson(out,bleTx);}bleTx+='\n';bleOffset=0;bleAt=millis();}
+ // Main-loop diagnostics only: never print request bytes, nonce, proof or credentials.
+ // No flush/delay is added, but any serial instrumentation may still alter timing.
+ void traceBle(const char* event,int detail=0){if(commissioning::UsbDiagnostics)Serial.printf("BLE t=%lu event=%s detail=%d peer=%u sub=%d auth=%d rx=%u tx=%u heap=%u maxAlloc=%u\n",(unsigned long)millis(),event,detail,unsigned(peer),subscribed,authenticated,unsigned(parser.size()),unsigned(bleTx.length()-bleOffset),ESP.getFreeHeap(),ESP.getMaxAllocHeap());}
+ void dropPeer(const char* reason="radio-switch"){traceBle(reason);if(peer!=BLE_HS_CONN_HANDLE_NONE&&bleServer)bleServer->disconnect(peer);peer=BLE_HS_CONN_HANDLE_NONE;resetBle();}
+ void bleResponse(JsonDocument& out){bleTx="";serializeJson(out,bleTx);if(bleTx.length()>24576){out.clear();out["id"]=0;Rpc::error(out,"busy","Response exceeds limit");bleTx="";serializeJson(out,bleTx);}bleTx+='\n';bleOffset=0;bleAt=millis();traceBle("response-ready",out.as<JsonObjectConst>()["ok"]==true);}
  void bleRequest(){
   JsonDocument req,out;bool valid=parseStrictJson(req,parser.data());out["id"]=req["id"].is<uint32_t>()?req["id"].as<uint32_t>():0;
   if(!valid||!req.is<JsonObject>()||req.size()!=3||!req["id"].is<uint32_t>()||!req["id"].as<uint32_t>()||!stringValue(req["op"])||!req["args"].is<JsonObject>()){Rpc::error(out,"invalid","Malformed RPC envelope");bleResponse(out);return;}
   String op=req["op"].as<String>();JsonObjectConst args=req["args"];
+  traceBle(op=="hello"?"request-hello":op=="auth"?"request-auth":op=="read"?"request-read":"request-other");
   if(op=="hello"){
    if(args.size())Rpc::error(out,"invalid","hello takes no arguments");else{rpc.disconnect();authenticated=false;nonce=randomHex(32);nonceAt=millis();out["ok"]=true;out["result"]["nonce"]=nonce;}
   }else if(op=="auth"){
@@ -115,23 +119,23 @@ class Transport {
   bleResponse(out);
  }
  void bleTick(uint32_t now){
-  if(bleOverflow.exchange(false)){dropPeer();xQueueReset(bleEvents);return;}
+  if(bleOverflow.exchange(false)){dropPeer("drop-event-overflow");xQueueReset(bleEvents);return;}
   BleEvent e;for(int n=0;n<16&&xQueueReceive(bleEvents,&e,0)==pdTRUE;n++){
-   if(e.type==1){if(peer!=BLE_HS_CONN_HANDLE_NONE){bleServer->disconnect(e.handle);continue;}resetBle();peer=e.handle;bleAt=now;}
-   else if(e.type==2){if(e.handle==peer){peer=BLE_HS_CONN_HANDLE_NONE;resetBle();}if(rpc.radio==runtime::Radio::Ble)NimBLEDevice::startAdvertising();}
-   else if(e.handle==peer){if(e.type==4){subscribed=e.length!=0;continue;}if(e.type==5||!subscribed||!bleTx.isEmpty()){dropPeer();break;}
+   if(e.type==1){if(peer!=BLE_HS_CONN_HANDLE_NONE){traceBle("reject-extra-peer",e.handle);bleServer->disconnect(e.handle);continue;}resetBle();peer=e.handle;bleAt=now;traceBle("connect");}
+   else if(e.type==2){traceBle("disconnect",e.reason);if(e.handle==peer){peer=BLE_HS_CONN_HANDLE_NONE;resetBle();}if(rpc.radio==runtime::Radio::Ble)NimBLEDevice::startAdvertising();}
+   else if(e.handle==peer){if(e.type==4){subscribed=e.length!=0;traceBle("subscribe",e.length);continue;}if(e.type==5||!subscribed||!bleTx.isEmpty()){traceBle("rejected-write",e.type==5?e.reason:e.length);dropPeer(e.type==5?"drop-write-size":!subscribed?"drop-not-subscribed":"drop-response-pending");break;}
     bleAt=now;for(int i=0;i<e.length;i++){
-     auto state=parser.feed(e.data[i]);if(state==LineParser::Invalid&&e.data[i]!='\n'){dropPeer();break;}if(e.data[i]=='\n'){
+     auto state=parser.feed(e.data[i]);if(state==LineParser::Invalid&&e.data[i]!='\n'){dropPeer("drop-parser");break;}if(e.data[i]=='\n'){
       if(state==LineParser::Ready)bleRequest();else{JsonDocument out;out["id"]=0;Rpc::error(out,"invalid","Invalid or oversized NDJSON line");bleResponse(out);}parser.reset();
-      if(i!=e.length-1){dropPeer();}break;
+      if(i!=e.length-1){dropPeer("drop-trailing-data");}break;
      }
     }
    }
   }
-  if(peer!=BLE_HS_CONN_HANDLE_NONE&&((parser.size()&&uint32_t(now-bleAt)>10000)||(!bleTx.isEmpty()&&uint32_t(now-bleAt)>30000))){dropPeer();return;}
+  if(peer!=BLE_HS_CONN_HANDLE_NONE&&((parser.size()&&uint32_t(now-bleAt)>10000)||(!bleTx.isEmpty()&&uint32_t(now-bleAt)>30000))){dropPeer("drop-timeout");return;}
   if(!bleTx.isEmpty()&&peer!=BLE_HS_CONN_HANDLE_NONE&&subscribed&&uint32_t(now-notifyAt)>=10){
    notifyAt=now;size_t n=std::min(size_t(20),bleTx.length()-bleOffset);tx->setValue((const uint8_t*)bleTx.c_str()+bleOffset,n);
-   if(tx->notify(peer)){bleOffset+=n;bleAt=now;if(bleOffset==bleTx.length()){bleTx="";bleOffset=0;}}
+   if(tx->notify(peer)){bleOffset+=n;bleAt=now;if(bleOffset==bleTx.length()){bleTx="";bleOffset=0;traceBle("response-sent");}}
   }
  }
  void initBle(){
@@ -148,7 +152,7 @@ class Transport {
    for(int i=0;i<2;i++){String song=rpc.store.data["tags"][i]["path"].as<String>(),intro=rpc.store.data["tags"][i]["introPath"].as<String>();Serial.printf("DIAG tag%d song='%s' exists=%d intro='%s'\n",i,song.c_str(),rpc.hw.exists(song.c_str()),intro.c_str());}
    if(rpc.hw.sd){File root=SD.open("/");for(File f=root.openNextFile();f;f=root.openNextFile()){Serial.printf("DIAG entry '%s' bytes=%llu dir=%d\n",f.name(),(unsigned long long)f.size(),f.isDirectory());f.close();}root.close();}
    Serial.printf("DIAG GPIO5=%d GPIO6=%d GPIO11=%d NFC=%d IRQ12=%d pauseRequested=%d\n",digitalRead(5),digitalRead(6),digitalRead(11),rpc.hw.nfcState.load(),digitalRead(pins::ReservedNfcIrq),rpc.hw.nfcPauseRequested.load());
-   Serial.println("DIAG END");return;
+   traceBle("inspect");Serial.println("DIAG END");return;
   }
   if(command==D::NfcPause){rpc.hw.nfcPauseRequested.store(true);Serial.println("DIAG NFC pause requested; wait for NFC=3; pending search needs a tag to complete");return;}
   if(command==D::NfcResume){rpc.hw.nfcPauseRequested.store(false);Serial.println("DIAG NFC resume requested; NFC=2 faults require inspection, not automatic retry");return;}

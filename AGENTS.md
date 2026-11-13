@@ -49,7 +49,10 @@ bis21 bei laufendem Decoder, NFC1/Radio2. Keine automatische Maximalansteuerung.
 Keine akustische Sicherheitsfreigabe, hohe Stufen nur im Erwachsenentest ohne
 Kind im Raum. Volume12/n1_lldq4 ist überholter Zwischenstand.
 **Aktuell BLE-Fehlersuche:** Nutzer hat vorhandenes Passwort verwendet, App meldet
-„Getrennt: BLE-Verbindung verloren“; Verbindungsphase noch unklar. Gerätediag gesund,
+„Getrennt: BLE-Verbindung verloren“ direkt nach Geräteauswahl, vor Dateiliste.
+Diagnosebuild`boxbert-build-depm3fts` (`20261113-v21-bletrace`) vorbereitet,
+noch NICHT geflasht, wartet auf NFC-Park3 (aktuellpending1). Passwortschutz bleibt.
+Details`docs/testprotokoll-ble-verbindung-2026-11-13.md`. Gerätediag gesund,
 Revision113. Offenen BLE-Versuch **verworfen, nie geflasht**, Code zurückgesetzt;
 Cachea0ukgnbl NICHT verwenden. Live-JS stimmt mit Hostingrepo ai-habibi und lokalem
 App-Build überein. Quellen bleiben hier unter`app/`, Hostingrepo nur lesend geprüft.

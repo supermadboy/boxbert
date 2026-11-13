@@ -1,0 +1,24 @@
+
+# USB capture 2026-11-13T16:01:18.611156; no DTR/RTS ioctl
+# Sent once: nfc-pause
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=17 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1DIAG NFC pause requested; wait for NFC=3; pending search needs a tag to complete
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=17 running=0 config=1 heap=36260 NFC=1
+
+# USB capture 2026-11-13T16:05:14.573002; no DTR/RTS ioctl
+# Sent once: diag
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=17 running=0 config=1 heap=36260 NFC=1
+BOXBERT commissioning SD=1DIAG SD=1 I2S=1 playback=4 volume=17 heap=36260 maxAlloc=17396 psram=839076 config=1 revision=113
+DIAG tag0 song='/arcade-music-loop.mp3' exists=1 intro=''
+DIAG tag1 song='/fart.mp3' exists=1 intro=''
+DIAG entry 'arcade-music-loop.mp3' bytes=549988 dir=0
+DIAG entry 'pups01.mp3' bytes=10702 dir=0
+DIAG entry 'test440.mp3' bytes=13209 dir=0
+DIAG entry 'test880.mp3' bytes=13209 dir=0
+DIAG entry 'subbasesoft.mp3' bytes=48180 dir=0
+DIAG entry 'happy-tune.mp3' bytes=642028 dir=0
+DIAG entry 'fart.mp3' bytes=23461 dir=0
+DIAG entry '.boxbert' bytes=0 dir=1
+DIAG entry 'AUD-20231208-WA0004.mp3' bytes=2950790 dir=0
+DIAG GPIO5=1 GPIO6=1 GPIO11=1 NFC=1 IRQ12=1 pauseRequested=1
+DIAG END

@@ -4,7 +4,13 @@
 
 Nutzer hat das vorhandene Passwort verwendet. Appfehler: „Getrennt: BLE-Verbindung
 verloren. Gerätestand bei Schreibfehler unklar; neu laden“. Welche Aktion und
-welche Phase (Anmeldung/erster Read/späterer Befehl) ist noch offen. Der pauschale
+Phase: laut Nutzer **direkt nach Geräteauswahl, noch vor Dateiliste**;
+GATT/hello/auth/erster Read sind innerhalb des Aufbaus noch nicht unterschieden.
+**Diagnosebuild vorbereitet, NICHT geflasht:** `boxbert-build-depm3fts`, Kennung
+`boxbert-v1-commissioning-20261113-v21-bletrace`,2560263Byte Flash/173468Byte Globals.
+NFC-Pause weiterpending1, vor Upload Karte/Park3 nötig. Geschützterv21 bleibt auf
+Gerät; Traces erfassen nur feste Phasen/Dropgründe und Zahlen, keine Geheimnisse.
+Neues detailliertes Protokoll: `testprotokoll-ble-verbindung-2026-11-13.md`. Der pauschale
 Zusatz stammt aus`app/src/main.jsx:run` und wird auch bei lesendem Connect gesetzt;
 kein Nachweis für SD-Schreibfehler oder erfolgreichen HMAC-Login. Keine unklaren
 Speicher-/Uploadaktionen blind wiederholen.
