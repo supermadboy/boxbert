@@ -22,7 +22,7 @@ class Rpc {
   if(isfinite(hw.voltage))out["batteryVoltage"]=hw.voltage;else out["batteryVoltage"]=nullptr;
   out["radio"]=radio==runtime::Radio::Wifi?"wifi":radio==runtime::Radio::Ble?"ble":"off";out["wifiConnected"]=WiFi.status()==WL_CONNECTED;
   out["ip"]=radio!=runtime::Radio::Wifi?"":WiFi.getMode()==WIFI_AP?WiFi.softAPIP().toString():WiFi.status()==WL_CONNECTED?WiFi.localIP().toString():"";
-  out["firmware"]="boxbert-v1-commissioning-20261113-nfc-v12";out["configHealthy"]=store.ready&&!store.damaged;return true;
+  out["firmware"]="boxbert-v1-commissioning-20261113-nfc-v21";out["configHealthy"]=store.ready&&!store.damaged;return true;
  }
  void execute(JsonVariantConst req,JsonDocument& out,bool ble){
   out.clear();out["id"]=req["id"].is<uint32_t>()?req["id"].as<uint32_t>():0;out["ok"]=true;
@@ -96,7 +96,7 @@ class Rpc {
    if(!fields(a,{"path","category"})||!media(a["path"])||!category(a["category"])){fail("invalid","Invalid category assignment");return;}next["categories"][a["path"].as<const char*>()]=a["category"];
   }else if(!strcmp(op,"settings")){
    if(!a.size()){fail("invalid","No settings supplied");return;}
-   for(JsonPairConst pair:a){const char* key=pair.key().c_str();if(!strcmp(key,"volume")){if(!pair.value().is<int>()||pair.value().as<int>()<0||pair.value().as<int>()>commissioning::MaxVolume){fail("invalid","Commissioning volume must be 0..12");return;}}
+   for(JsonPairConst pair:a){const char* key=pair.key().c_str();if(!strcmp(key,"volume")){if(!pair.value().is<int>()||pair.value().as<int>()<0||pair.value().as<int>()>commissioning::MaxVolume){fail("invalid","Volume must be 0..21");return;}}
     else if(!strcmp(key,"pixel")||!strcmp(key,"boardPixel")){if(!validLed(pair.value(),!strcmp(key,"boardPixel"))){fail("invalid","Invalid LED settings");return;}}
     else{fail("invalid","Unknown setting");return;}next[key]=pair.value();}
   }else{fail("unknown","Unknown operation");return;}

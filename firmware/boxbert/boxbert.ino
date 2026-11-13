@@ -57,7 +57,7 @@ void setup(){
  // Explicit temporary first-device profile: boot quietly, never adopt an old loud setting.
  config.data["volume"]=commissioning::BootVolume;
  requestedVolume=config.data["volume"];hardware.audio.setVolume(requestedVolume);transport.commissioningButton=buttonPressed;transport.begin();
- Serial.println("BOXBERT integrated commissioning v1 NFC ready; volume 1..12 (0=mute), stick/boost-control/sleep disabled");
+ Serial.println("BOXBERT integrated commissioning v1 NFC ready; volume 1..21 (0=mute), stick/boost-control/sleep disabled");
 }
 void loop(){
  const uint32_t now=millis();hardware.tickAudio();rpc.tick(now);

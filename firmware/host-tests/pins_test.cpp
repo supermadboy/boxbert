@@ -18,6 +18,6 @@ int main(){
  }
  for(auto pin:MiniAw)if(pin!=255){assert(pin<16&&!usedAw[pin]);usedAw[pin]=true;}
  using namespace boxbert::commissioning;
- static_assert(Nfc&&!boxbert::commissioning::Stick&&!BoostControl&&!AutoSleep&&BootVolume==1&&MaxVolume==12);
+ static_assert(Nfc&&!boxbert::commissioning::Stick&&!BoostControl&&!AutoSleep&&BootVolume==1&&MaxVolume==21);
  std::cout<<"measured endaufbau pin contract: PASS\n";
 }

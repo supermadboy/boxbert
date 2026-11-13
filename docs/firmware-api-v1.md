@@ -7,19 +7,19 @@ oder RFID-Spiel. Kein Flash/Hardware-Nachweis durch Softwaretests.
 
 ## Temporäre Geräte-Erstinbetriebnahme 11.11.2026
 
-**Aktuell geflasht:** auf Nutzerwunsch Maximum12 statt6, Build
-`boxbert-build-n1_lldq4`, Kennung `boxbert-v1-commissioning-20261113-nfc-v12`.
-Vor Upload NFC-Park3 bestätigt, danach Scanner1/Bootvolume1/Decoder läuft.
+**Aktuell geflasht:** auf Nutzerwunsch vollerBereich0..21, Boot1 im Code.
+`boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
+Vor Upload NFC-Park3 bestätigt, danach Scanner1/Decoderläuft und Encoderwerte
+bis21 geloggt. Keine automatische Maximalansteuerung/akustische Freigabe.
 
 Aktueller Gesamtfirmware-Build ist ein gekennzeichnetes Inbetriebnahmeprofil:
-`status.firmware=boxbert-v1-commissioning-20261113-nfc-v12`, Bootlautstärke1,
-zulässige `settings.volume`-Werte **0..12** statt0..21. Höhere Werte erzeugen
+`status.firmware=boxbert-v1-commissioning-20261113-nfc-v21`, Bootlautstärke1,
+zulässige `settings.volume`-Werte **0..21**. Höhere Werte erzeugen
 `invalid`, niemals stilles Begrenzen bei gemeldetem Speichererfolg. NFC seit
 13.11. mit kurzem I2C-Scanner aktiviert; physischer Tag1→Decoder→EOF geloggt,
 Ton/TFT dieses Starts vom Nutzer bestätigt; keine Vollabnahme. Externer Stick fehlt. Boost-EN-Ausgang und
 Auto-Sleep bis zur Power-Prüfung ebenfalls aus. Schema und übrige RPC bleiben
-V1; die PWA kann weiterhin0..21 anbieten und zeigt außerhalb des Testlimits
-einen Gerätefehler. Details: `gesamtfirmware-build.md`.
+V1; der vollständige PWA-Lautstärkebereich0..21 ist jetzt auch am Gerät freigegeben. Details: `gesamtfirmware-build.md`.
 
 Zusätzlich temporäre **lokale USB-Diagnose**, kein neuer HTTP-/BLE-RPC:
 `diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`, `radio-wifi`,

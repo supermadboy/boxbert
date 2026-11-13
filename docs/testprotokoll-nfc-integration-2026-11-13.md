@@ -139,4 +139,36 @@ Ausschnitt beobachtet, also noch keine Geräte-/Hörbestätigung von12.
 Erster bestätigter Park→Boardreset/Flash→Scanner-/Decoder-Neustart, kein echter
 Peripherie-Power-Cycle und keine allgemeine Reset-/Dauerfreigabe.
 
+## Folgeauftrag: Regelbereich0..21 — nach Parkbestätigung geflasht
+
+Nutzer bittet „jetzt voll aufdrehen bis21“. Freigabe des **Regelbereichs**, kein
+automatisches Hochdrehen: Boot bleibt1, hohe Stufen nur langsam und ohne Kind
+im Raum, bei Verzerrungen zurück. Keine neue akustische Sicherheitsabnahme.
+Vorbereitung: Quelle MaxVolume21, RPC0..21/Fehlertext, Bootmeldung und Kennung angepasst.
+Build `~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte Flash/173468Byte
+Globale, Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.19native Programme,
+4Pin-Tests,6Encoder/RPC-Szenarien (7Node inkl.Parent) grün.
+
+`2026-11-13-volume21-nfc-park.log`: Pause angefordert, aber erneut nochNFC1/
+pauseRequested1 statt3. Volume12/playback4,Revision89,Heap36532.120-s-Capture
+und erneuter Diag ebenfalls ohne Parkbestätigung. Nutzer gebeten, Karte komplett
+zu entfernen/aufzulegen. **Kein Uploadv21**, aktuell weiterhin n1_lldq4/v12 mit
+Maximum12; Quellen/Build bereits21. Dies war der Zustand vor der nächsten Bestätigung.
+
+**Nach Nutzer „ok super mach danke“:** neuer Diag im selben Parklog bestätigt
+NFC3/pauseRequested1,Volume12,Revision89. Danach alle Stagingquellen/Runtime-
+Header und Artefakt-SHA256 verifiziert, exakt neuen Build hochgeladen; Uploadlogs
+im Buildverzeichnis. `2026-11-13-volume21-after-flash.log`: SD/I2S/PSRAM/AW/
+Gauge/config1,NFC1/pauseRequested0,Radio2,playback2/running1,Revision91 beimDiag,
+Heap30824. **Erster beobachteter Wert bereitsVolume5**, danach Encoderereignisse
+requested=actual6,7,8,9,10,12,13,15,16,17,18,19,20,21,erneut21begrenzt.
+Kein automatisches Hochdrehen durch Diagnosekommando oder Agenten. Boot1 bleibt
+im Code, im neuen Mitschnitt nicht beobachtet. Keine genaue manuelle Bewegung
+oder Schalldruckwerte rekonstruieren. Letzter Snapshot Volume21/Decoderläuft.
+
+**Aktueller Flash `boxbert-v1-commissioning-20261113-nfc-v21`, b9h_54sn,
+Regelbereich0..21**. Höhere Stufen sind keine akustische Kindersicherheits- oder
+Normabnahme; Nutzer zu Erwachsenen-Test ohne Kind im Raum und Zurückdrehen bei
+Verzerrung angehalten. Stick/BoostControl/AutoSleep weiterhin aus.
+
 Weiterarbeit: `uebergabe-endaufbau-2026-11-11.md`, `To-Do.md`.

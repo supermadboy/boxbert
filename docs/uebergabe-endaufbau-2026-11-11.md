@@ -1,6 +1,25 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Jüngste Fortsetzung: Nutzer bestätigt Ton/TFT; Volume12 geflasht
+## Neuester Stand: Regelbereich0..21 erfolgreich geflasht
+
+Nutzer möchte bis21drehen. Aktueller Quell-/Geräte-/Buildstand:
+`boxbert-v1-commissioning-20261113-nfc-v21`,
+`~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte Flash/173468Byte
+Globale, MaxVolume21/Boot1.19native Programme,4Pin-Tests und6Encoder/RPC-
+Szenarien (7Node inkl.Parent) grün. Keine automatische Erhöhung auf21, keine
+Maximal-/Kindersicherheitsabnahme; nur Erwachsene ohne Kind im Raum langsam testen.
+
+Nach Nutzer „ok super mach danke“ **NFC3/pauseRequested1 bestätigt**, dann
+Quellen inkl.Runtimeheader und Artefakt-SHA256 geprüft, exaktv21geflasht.
+`docs/serial/2026-11-13-volume21-{nfc-park,after-flash}.log`.
+Nach Flash: NFC1/pauseRequested0,SD/I2S/PSRAM/AW/Gauge/config1,Radio2,Decoderläuft,
+Revision91 beimDiag. Erster Mitschnitt bereitsVolume5, danach Encoderereignisse
+requested=actual6..21 und erneut auf21begrenzt. Letzter SnapshotVolume21/
+running1,Heap30824; keine automatische Hochregelung durch Agenten. **Boot1 ist
+Codekonfiguration, nicht in diesem Mitschnitt beobachtet.** Keine akustische
+Sicherheitsabnahme hoher Stufen. v12/n1_lldq4 jetzt historischer Zwischenstand.
+
+## Vorheriger Schritt: Nutzer bestätigt Ton/TFT; Volume12 geflasht
 
 Auf Frage zu Musik/TFT im gerade getesteten NFC-Gesamtstand bestätigt Nutzer:
 **„ja safe hat gut geklappt alles danke“**. Das nimmt Tag1-Musik/TFT ab, nicht
@@ -202,15 +221,15 @@ das ist keine Zuordnung des unbekannten gelben Minis.
 
 ## 3. Aktueller Flash — nicht mit älteren Diagnosen verwechseln
 
-- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261113-nfc-v12`.
+- Quellen `firmware/boxbert/`, Kennung `boxbert-v1-commissioning-20261113-nfc-v21`.
 - **Exaktes aktuell geflashtes Artefakt:**
-  `~/.cache/boxbert-build-n1_lldq4/manifest.json`, Dateien unter `artifacts/`.
+  `~/.cache/boxbert-build-b9h_54sn/manifest.json`, Dateien unter `artifacts/`.
   Compile-/Uploadlog im selben Verzeichnis. Quellen-/Artefakt-SHA256 vor Upload
   geprüft, Hashprüfung beim Schreiben erfolgreich.
--2559227Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
+-2559211Byte Flash (88% von2883584),173468Byte globale Variablen (52%).
 - Isolierte CLI1.5.1, Core3.3.12, NimBLE2.3.8, QSPI-PSRAM/Boarddefaults.
   Keine OPI-Option. Keine privaten Heim-WLAN-Daten eingebaut.
-- `commissioning`: Bootvolume1,max12, NFC=true, Stick=false,
+- `commissioning`: Bootvolume1,max21, NFC=true, Stick=false,
   BoostControl=false, AutoSleep=false, UsbDiagnostics=true.
 - SD/PSRAM/AW/Gauge/config=1; BLE-Modus2 und Hauptloop beobachtet.
  1=WiFi,0=Off. Diese Zahlen beweisen **keine Clientverbindung**.
@@ -362,7 +381,7 @@ kein passives Monitoring. Exakt gebautes Artefakt prüfen, Port identifizieren,
 
 - Pin-Node4Tests; native ASan/UBSan19Programme inklusive PN532-Frameparser/Scan-Zuständen, Quadratur und
   USB-Parser/Timer (auch Millis-Wraparound/kein sofortiges Timeout).
-- App68Tests; echte Encoder/RPC-Codeabschnitte in5Szenarien,6Node-Tests inkl.
+- App68Tests; echte Encoder/RPC-Codeabschnitte in6Szenarien,7Node-Tests inkl.
   Parent: Limits/Mute/Drehrichtung, entprellte Persistenz, SD-/Uploadfehler.
 - `g++ -Werror` scheitert an bestehender Formatwarnung in`TagLabel.h`; geprüfter
   Weg ist gepinntes Clang21.1.8, kein ungetestetes GCC-Erfolgsversprechen.

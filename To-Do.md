@@ -2,7 +2,16 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Lautstärkegrenze12 geflasht (13.11.), neue Hörstufen offen:**
+- [x] **Regelbereich0..21 geflasht (13.11.):** Nutzerwunsch umgesetzt, Boot1
+  bleibt im Code. Build`boxbert-build-b9h_54sn`,Kennung
+  `boxbert-v1-commissioning-20261113-nfc-v21`. Vor Upload erneut NFC3bestätigt,
+  Quellen/SHA256 geprüft und exakt hochgeladen. Danach NFC1,Radio2,Decoderläuft;
+  Encoder requested=actual bis21 und Begrenzung21 beobachtet. Kein automatisches
+  Hochdrehen, erste Aufnahme bereits5.19native/4Pin-Tests +6Encoder/RPC-Szenarien
+  grün. **Akustische Sicherheit/Hörabnahme hoher Stufen bleibt offen**;
+  hohe Stufen nur ohne Kind im Raum, keine Normfreigabe.
+
+- [x] **Historischer Zwischenstand Grenze12 (13.11.), durch21ersetzt:**
   Nutzerwunsch höhere Grenze: jetzt0..12/21, Boot bleibt1. Build
   `boxbert-build-n1_lldq4`,Kennung`boxbert-v1-commissioning-20261113-nfc-v12`.
   Nach Nutzer „liegt“ NFC-Park3 bestätigt; Quellen/SHA256 geprüft, exakt Build
@@ -26,10 +35,10 @@
   Keine Wake-/Sleep-/Produktfreigabe.
 
 - [ ] **Gesamtfirmware / Dateifehler weiter eingrenzen (11.11.2026):**
-  Aktuell `boxbert-v1-commissioning-20261113-nfc-v12`, Build
-  `~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte Flash/
+  Aktuell `boxbert-v1-commissioning-20261113-nfc-v21`, Build
+  `~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte Flash/
   173468Byte globale Variablen,Core3.3.12/QSPI,**NimBLE2.3.8**.
-  Bootvolume1,Maximum12/21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
+  Bootvolume1,Regelbereich0..21,NFC an; Stick/aktive Booststeuerung/Auto-Sleep aus;
   Akku+USB laut Nutzer. Gemessene Eingänge übernommen, Encoder per Interrupt,
   gelber Mini deaktiviert. SD/PSRAM/AW/Gauge/config=1.
   **Nutzer meldete „Dateifehler“: nicht als behoben behandeln.** Beide Pfade

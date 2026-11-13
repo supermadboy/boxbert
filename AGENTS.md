@@ -23,13 +23,13 @@ wie erklärt wird, nicht was gilt.
 Etappe 4: zwei NFC-Tags wechseln SD-Musik, optimierter Hoertest bestaetigt.
 Etappe 5: Handy-Webseite, MP3-Upload, Tag-Zuordnung und Wiedergabe laut
 Nutzer erfolgreich, Zuordnung **und Wiedergabe nach RESET** bestaetigt.
-**Aktueller Geräteflash 11.11.2026:** `firmware/boxbert/`, Kennung
-`boxbert-v1-commissioning-20261113-nfc-v12`,Core3.3.12/QSPI,NimBLE2.3.8.
+**Aktueller Geräteflash 13.11.2026:** `firmware/boxbert/`, Kennung
+`boxbert-v1-commissioning-20261113-nfc-v21`,Core3.3.12/QSPI,NimBLE2.3.8.
 Gemessene Eingänge in `hardware/pinout.md`, Einzeltests inkl. leiser
 Encoder-Lautstärkeregelung bestätigt. Gesamtstand bootet mit SD/PSRAM/AW/
 Gauge/config=1,BLE-Modus; Ton/TFT beim Tag1-Start inzwischen vom Nutzer
 bestätigt. Weitere Bedienungs-/Funk-/Dauerabnahme offen.
-Temporär Bootvolume1/max12,Stick/aktiveBoost-Steuerung/Auto-Sleep aus; NFC aktiv.
+Bootvolume1/Regelbereich0..21,Stick/aktiveBoost-Steuerung/Auto-Sleep aus; NFC aktiv.
 Akku+USB laut Nutzer. **PN532 inzwischen angeschlossen/bestätigt:** I2C3/4,
 3V3, DIP1ON/2OFF, IRQ12. Initprobe findet PN532/Firmware1.6/SAM=1;
 UIDprobe liest Tag1 E3:2F:F6:33, IRQ12 zeigt2LOW/2HIGH-Flanken. Karte lag laut
@@ -42,9 +42,12 @@ NFC=3/parked abwarten, ggf.Tag für ausstehende Suche auflegen. Vor Volume12-
 Flash Park3 erstmals bestätigt, danach neuer Build erfolgreich gestartet.
 Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fehlt.
 Aktueller Build:
-`~/.cache/boxbert-build-n1_lldq4/manifest.json`, nach bestätigtem NFC-Park3
-geflasht, Quellen/SHA256/Upload geprüft. Maximum12, Boot1; danach NFC1,
-Volume1/running1,Konfigrevision81. Höhere Stufen noch keine akustische Abnahme.
+`~/.cache/boxbert-build-b9h_54sn/manifest.json`, nach erneut bestätigtem NFC-Park3
+geflasht, Quellen/SHA256/Upload geprüft. VollerRegelbereich0..21 auf Nutzerwunsch,
+Boot1 im Code; erster Mitschnitt bereitsVolume5, dann Encoder requested=actual
+bis21 bei laufendem Decoder, NFC1/Radio2. Keine automatische Maximalansteuerung.
+Keine akustische Sicherheitsfreigabe, hohe Stufen nur im Erwachsenentest ohne
+Kind im Raum. Volume12/n1_lldq4 ist überholter Zwischenstand.
 Nutzer meldete früher „Dateifehler“;
 per USB simulierte Button-Handler starten beide MP3, Fehler nicht reproduziert
 und **nicht als behoben abgenommen**. Ein früher Funk-Aus-Versuch startete neu;

@@ -2,7 +2,13 @@
 
 ## Erstinbetriebnahmeprofil 11.11.2026
 
-**Fortsetzung13.11.: Maximum12/21 auf Nutzerwunsch geflasht**, Boot bleibt1.
+**Aktuell Bereich0..21 geflasht, Boot bleibt1 im Code:** Nutzerwunsch,
+Build`boxbert-build-b9h_54sn`,Kennung`boxbert-v1-commissioning-20261113-nfc-v21`.
+Nach bestätigtem NFC-Park3 Artefakte/Quellen geprüft und erfolgreich hochgeladen.
+Encoder requested=actual bis21 bei laufendem Decoder geloggt; erster Mitschnitt
+bereits5. Kein automatisches Maximalabspielen/keine akustische Sicherheitsfreigabe.
+
+**Historischer Zwischenstand13.11.: Maximum12/21 geflasht, inzwischen durch21ersetzt**, Boot bleibt1.
 Build `boxbert-build-n1_lldq4`, nach bestätigtem NFC-Park3 Quellen/SHA256 geprüft
 und hochgeladen. Danach NFC1,Volume1/Decoder läuft,Konfigrevision81. Höhere
 Stufen schrittweise testen, keine akustische Sicherheits-/Normabnahme.
@@ -16,7 +22,7 @@ offen. Stick/aktive Boost-EN-Steuerung/Auto-Sleep bleiben aus.
 Stick fehlt, Power-/Sleep-Verdrahtung noch nicht freigegeben. Aktuelle Nachweise:
 `testprotokoll-nfc-integration-2026-11-13.md`.
 Onboard-Pixel, TFT, SD/Audio und BLE/WLAN bleiben enthalten. Bootvolume immer1,
-Encoder/RPC temporär0..12 von21; RPC lehnt höhere Werte ausdrücklich ab.
+Encoder/RPC jetzt0..21; RPC lehnt Werte außerhalb dieses Bereichs ausdrücklich ab.
 Gespeicherte Lautstärke wird beim Boot nur im RAM durch1 ersetzt, nicht
 ungefragt ein alter hoher Wert abgespielt. Folgende Konfigurationsmutationen
 persistieren den aktuellen RAM-Stand; dauerhafte Bootvolumen-Persistenz erst
@@ -70,7 +76,7 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 
 ## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
 
-Aktuell geflasht: `~/.cache/boxbert-build-n1_lldq4/manifest.json`,2559227Byte
+Aktuell geflasht: `~/.cache/boxbert-build-b9h_54sn/manifest.json`,2559211Byte
 Flash/173468Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
 beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
 [`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).
