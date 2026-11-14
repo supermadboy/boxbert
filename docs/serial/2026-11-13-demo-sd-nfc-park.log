@@ -1,0 +1,25 @@
+
+# USB capture 2026-11-14T08:13:30.154084; no DTR/RTS ioctl
+# Sent once: nfc-pause
+DIAG NFC pause requested; wait for NFC=3; pending search needs a tag to complete
+BOXBERT commissioning SD=0 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=0 heap=38480 NFC=1
+
+# USB capture 2026-11-14T08:13:33.304013; no DTR/RTS ioctl
+# Sent once: diag
+DIAG SD=0 I2S=1 playback=5 volume=1 heap=38480 maxAlloc=29684 psram=1606240 config=0 revision=0
+DIAG tag0 song='' exists=0 intro=''
+DIAG tag1 song='' exists=0 intro=''
+DIAG GPIO5=1 GPIO6=1 GPIO11=1 NFC=1 IRQ12=1 pauseRequested=1
+BLE t=1152683 event=inspect detail=0 peer=65535 sub=0 auth=0 rx=0 tx=0 heap=38480 maxAlloc=29684
+DIAG END
+BOXBERT commissioning SD=0 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=0 heap=38480 NFC=1
+
+# USB capture 2026-11-14T08:15:32.262270; no DTR/RTS ioctl
+# Sent once: diag
+BOXBERT commissioning SD=0 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=0 heap=38480 NFC=1
+BOXBERT commissioning SD=0 DIAG SD=0 I2S=1 playback=5 volume=1 heap=38480 maxAlloc=29684 psram=1606240 config=0 revision=0
+DIAG tag0 song='' exists=0 intro=''
+DIAG tag1 song='' exists=0 intro=''
+DIAG GPIO5=1 GPIO6=1 GPIO11=1 NFC=3 IRQ12=1 pauseRequested=1
+BLE t=1271639 event=inspect detail=0 peer=65535 sub=0 auth=0 rx=0 tx=0 heap=38480 maxAlloc=29684
+DIAG END

@@ -1,0 +1,27 @@
+{
+  "fqbn": "esp32:esp32:adafruit_feather_esp32s3_reversetft",
+  "core": "3.3.12",
+  "libraries": {
+    "ESP32-audioI2S-master": "4.0.0",
+    "NimBLE-Arduino": "2.3.8",
+    "ArduinoJson": "7.4.2",
+    "Adafruit PN532": "1.3.4",
+    "Adafruit BusIO": "1.17.4",
+    "Adafruit GFX Library": "1.12.6",
+    "Adafruit ST7735 and ST7789 Library": "1.11.0",
+    "Adafruit MAX1704X": "1.0.3",
+    "Adafruit NeoPixel": "1.15.1"
+  },
+  "privateBuild": false,
+  "files": {
+    "boxbert.ino.bin": "336c5ab5990fb84d5f253a3a0abb68fc1dee29d62d396f708771f372c0ab1627",
+    "boxbert.ino.bootloader.bin": "a8a91861af19d3ff9aeb4339aabf5058ae76529cb86a678ba1805920e00a9414",
+    "boxbert.ino.elf": "4664c915ce7c6babbe142f7324ac5baed2712f8fca498654540634bf1aaad7f3",
+    "boxbert.ino.map": "05e3f201f93ad8d614b9f3045f3be6604d74056c3b68ce87efea26fdd7b5ac57",
+    "boxbert.ino.merged.bin": "059f9fdd88f7b8985db2ff797f5fdf3bed40a698bd17bcbc785d4da7585176d8",
+    "boxbert.ino.partitions.bin": "baf23c42e5003dd951195ac2590ed3b37bb8bc619afb53ea1739ad26337c465e"
+  },
+  "buildResumedAfterHarnessTimeout": true,
+  "sourceHeadersChecked": 24,
+  "firmware": "boxbert-v1-commissioning-20261114-demo1"
+}

@@ -1,0 +1,51 @@
+BLE timeout / future activity / millis wrap: PASS
+Etappe 5: feste UIDs, Index, unbekannte UID OK
+integrated charging: PASS
+integrated essential controls: PASS
+integrated explicit USB credentials: PASS
+bounded explicit USB commissioning diagnostics: PASS
+integrated station fallback: PASS
+integrated strict JSON: PASS
+integrated NFC tag names: PASS
+integrated migration: PASS
+integrated state: PASS
+integrated config validation: PASS
+LED frame parity: PASS
+measured endaufbau pin contract: PASS
+PN532 split search: pending/no resend, deadlines, wrap, cooldown, faults PASS
+PN532 normal I2C UID frame: checksums/bounds/4+7-byte UIDs PASS
+encoder direction, bounce, backlog, remainder and volume cap: PASS
+device read model: PASS
+runtime policy: PASS
+TagMap: beide Zuordnungen, unbekannte UID, Laengen und null OK
+▶ review17 encoder/RPC event sequences use actual production C++ paths
+  ✔ rename (11.540678ms)
+  ✔ volume (11.693519ms)
+  ✔ led (11.040661ms)
+  ✔ failed (12.250093ms)
+  ✔ sameSaved (12.328275ms)
+  ✔ limits (10.726419ms)
+✔ review17 encoder/RPC event sequences use actual production C++ paths (1782.552136ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1788.290086
+✔ BLE callback diagnostics only enqueue; disconnect reason reaches main loop (1.247197ms)
+✔ BLE trace emits only event and numeric state, without payloads or blocking flush (0.50184ms)
+✔ diagnostic drops have fixed reasons and existing authentication remains required (1.632338ms)
+✔ Measured encoder switch IO5, toggle IO11, NFC IRQ reserved IO12 (1.460577ms)
+✔ Measured SD/audio and planned boost/stick pins remain distinct (0.700486ms)
+✔ All ten measured arcade inputs, schematic top row then bottom row (1.117894ms)
+✔ Unknown yellow mini disabled; green P17 and red P15 (0.472533ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102.159212

@@ -154,6 +154,19 @@ class Transport {
    Serial.printf("DIAG GPIO5=%d GPIO6=%d GPIO11=%d NFC=%d IRQ12=%d pauseRequested=%d\n",digitalRead(5),digitalRead(6),digitalRead(11),rpc.hw.nfcState.load(),digitalRead(pins::ReservedNfcIrq),rpc.hw.nfcPauseRequested.load());
    traceBle("inspect");Serial.println("DIAG END");return;
   }
+  if(command==D::DemoSongs){
+   // Explicit physical-USB setup for the requested demonstration; never on boot.
+   if(!rpc.hw.sd||!rpc.store.ready||rpc.store.damaged||rpc.progress.active){Serial.println("DEMO rejected: SD/config unavailable or upload active");return;}
+   if(!rpc.hw.exists("/arcade-music-loop.mp3")||!rpc.hw.exists("/happy-tune.mp3")){Serial.println("DEMO rejected: required songs missing");return;}
+   rpc.hw.stop();diagnosticPlaying=false;
+   JsonDocument next;next.set(rpc.store.data);
+   next["tags"][0]["path"]="/arcade-music-loop.mp3";
+   next["tags"][1]["path"]="/happy-tune.mp3";
+   next["volume"]=1;
+   if(!rpc.store.save(next)){Serial.println("DEMO save failed; previous configuration retained");return;}
+   rpc.hw.audio.setVolume(1);++rpc.volumeRevision;
+   Serial.printf("DEMO saved revision=%lu tag1=Arcade tag2=HappyTune volume=1; other assignments preserved\n",(unsigned long)rpc.store.revision);return;
+  }
   if(command==D::NfcPause){rpc.hw.nfcPauseRequested.store(true);Serial.println("DIAG NFC pause requested; wait for NFC=3; pending search needs a tag to complete");return;}
   if(command==D::NfcResume){rpc.hw.nfcPauseRequested.store(false);Serial.println("DIAG NFC resume requested; NFC=2 faults require inspection, not automatic retry");return;}
   if(command==D::Stop){rpc.hw.stop();diagnosticPlaying=false;Serial.println("DIAG STOP");return;}

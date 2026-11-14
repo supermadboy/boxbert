@@ -1,0 +1,17 @@
+✔ BLE callback diagnostics only enqueue; disconnect reason reaches main loop (1.204946ms)
+✔ BLE trace emits only event and numeric state, without payloads or blocking flush (0.535132ms)
+✔ diagnostic drops have fixed reasons and existing authentication remains required (1.639709ms)
+✔ explicit USB demonstration setup fails closed and changes only two paths and quiet volume (6.188357ms)
+✔ demonstration setup is an explicit local command, never an automatic boot migration (2.633523ms)
+✔ Measured encoder switch IO5, toggle IO11, NFC IRQ reserved IO12 (1.391463ms)
+✔ Measured SD/audio and planned boost/stick pins remain distinct (0.806142ms)
+✔ All ten measured arcade inputs, schematic top row then bottom row (1.134852ms)
+✔ Unknown yellow mini disabled; green P17 and red P15 (0.415253ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.887058

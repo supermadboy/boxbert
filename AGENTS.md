@@ -41,7 +41,13 @@ Vor neuem Flash `nfc-pause` und
 NFC=3/parked abwarten, ggf.Tag für ausstehende Suche auflegen. Vor Volume12-
 Flash Park3 erstmals bestätigt, danach neuer Build erfolgreich gestartet.
 Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fehlt.
-Aktueller Build:
+**Unterbrechung14.11. für Vorführung:** SD0 nach NutzerRESET wiederSD/config1.
+Tag1Arcade/Tag2nochFart; gewünschtesHappyTune2 NICHTumgesetzt. NeuerBuilduluu6evy
+mit exaktemUSB-Setup`demo-songs` gebaut/getestet, NICHTgeflasht, weilNFCvorFlash
+nur1/nichtPark3 undNutzerweg. `nfc-resume` wiederhergestellt, finalSD/config1,
+Rev150,Volume1/playback1,NFC1/pause0,keinPeer/Reader. KeineFlashaufgabegeplant.
+Details`docs/testprotokoll-vorfuehrung-2026-11-14.md`; nichtalsfertigbehaupten.
+Letzter tatsächlich geflashter Build:
 `~/.cache/boxbert-build-prnsjyfe/manifest.json`, nach erneut bestätigtem NFC-Park3
 geflasht, Quellen/Runtime/SHA256/Upload geprüft; danach Volume1/Decoderläuft,NFC1. VollerRegelbereich0..21 auf Nutzerwunsch,
 Boot1 im Code; erster Mitschnitt bereitsVolume5, dann Encoder requested=actual

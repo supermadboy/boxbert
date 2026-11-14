@@ -1,6 +1,19 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Jetzt unterbrochen für Vorführung: SD derzeit nicht erkannt
+## Aktuell14.11.: SD wieder da, Vorführbuild vorbereitet aber NICHT geflasht
+
+Nach NutzerRESET SD/config1, Karte/Dateien wiederda. Ursache frühererSD0 offen.
+SollTag1Arcade/Tag2HappyTune; tatsächlich bleibtTag2Fart. NeuerGesamtbuilduluu6evy
+mit exaktem USB-Setupbefehl`demo-songs` gebaut/Quellen+Hashes geprüft,
+20native/6RPC-/9Quellverträge grün. KeineBootmigration/sonstigeZuordnungsänderung.
+**Nichtgeflasht:** bei zweitemParkversuch NFC1 statt3; Nutzer istinzwischenweg.
+Keine Sicherheitsregelumgehung. Pause wiederaufgehoben; finalSD/config1,Rev150,
+Volume1/playback1,NFC1/pause0,keinPeer. AlleLeserbeendet, keinegeplanteFlashaufgabe.
+Tag2HappyTune NICHTalsfertigmelden. Weiter Karte→Park3→exakterFlash→explizites
+`demo-songs`→Readback/Persistenz/leiserTagtest. Details
+`testprotokoll-vorfuehrung-2026-11-14.md`. Danach Web-/Introprüfung fortsetzen.
+
+## Historischer Zwischenstand vor NutzerRESET: SD nicht erkannt
 
 Nutzer bittet den Web-Arbeitspunkt zu merken und für Besuch zwei RFID-Songs zu
 flashen. Soll Tag1Arcade/Tag2HappyTune, übrige Daten erhalten, leiserBoot.

@@ -32,7 +32,11 @@ V1; der vollständige PWA-Lautstärkebereich0..21 ist jetzt auch am Gerät freig
 
 Zusätzlich temporäre **lokale USB-Diagnose**, kein neuer HTTP-/BLE-RPC:
 `diag`, `test9`, `test10`, `test-stop`, `radio-off`, `radio-ble`, `radio-wifi`,
-`nfc-pause`, `nfc-resume`. NFC-Status nur im USB-Log:0aus,1Scanner,2Fault,3geparkt.
+`nfc-pause`, `nfc-resume`. Im lokal vorbereiteten, **noch nicht geflashten** Build
+`20261114-demo1` zusätzlich explizit`demo-songs`: SD/config gesund, beide Songs
+vorhanden und kein Upload; persistiert zwei Tagpfade Arcade/HappyTune undVolume1,
+sonstige Konfiguration bleibt erhalten. Kein Bootoverride/kein neuer RPC.
+NFC-Status nur im USB-Log:0aus,1Scanner,2Fault,3geparkt.
 Vor Reset bei aktivem Leser Parken anfordern und **3bestätigen**; wartet die
 Suche auf einen Tag, bleibt die Anforderung zunächst pending. Resume behebt
 keinenFault. Keine neue HTTP-/BLE-Operation.

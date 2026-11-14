@@ -19,6 +19,9 @@ int main(){
  assert(parse(p,"radio-wifi\n")==DiagnosticCommand::RadioWifi);
  assert(parse(p,"nfc-pause\n")==DiagnosticCommand::NfcPause);
  assert(parse(p,"nfc-resume\r\n")==DiagnosticCommand::NfcResume);
+ assert(parse(p,"demo-songs\n")==DiagnosticCommand::DemoSongs);
+ assert(parse(p,"demo-songs\r\n")==DiagnosticCommand::DemoSongs);
+ for(auto s:{"demo-songsX\n"," demo-songs\n","demo-songs \n","DEMO-SONGS\n","demo-songs\rX\n"})assert(parse(p,s)==DiagnosticCommand::None);
  for(auto s:{"credentials\n","diagX\n","Xdiag\n","DIAG\n"," diag\n","diag \n","di\rag\n","diag\rX\n","diag\0"})assert(parse(p,s)==DiagnosticCommand::None);
  // Unterminated junk cannot authorize the next line; parser recovers after LF.
  assert(parse(p,"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")==DiagnosticCommand::None);

@@ -2,15 +2,21 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Vorführung hat jetzt Vorrang; Nutzer bittet um Flash für zwei RFID-Songs.**
-  Gewünschtes bekanntes Mapping: Tag1 E3:2F:F6:33 → Arcade, Tag2 01:8C:F1:6E →
-  Happy Tune. Keine übrigen Musik-/Buttonzuordnungen löschen, leiser Boot beibehalten.
-  **Vorabdiag überraschend SD=0/config=0**,Revision0,Volume1/playback5, beidePfadfelder
-  leer/exists0,NFC1; Quelle `docs/serial/2026-11-13-demo-before.log`.
-  Das sind bei fehlendemSD keine belegten Löschungen der gespeichertenKonfiguration.
-  Noch kein Demo-Flash und keine Mappingänderung. Nutzer gefragt, ob Karte gerade
-  entnommen wurde; nicht blind flashen/SD überschreiben. Vor geplantem Flash weiter
-  NFC-Park3 bestätigen und exakte Artefakte/Quellen/Hashes verifizieren.
+- [ ] **Vorführung: SD nach NutzerRESET wieder da; neuer Build NICHT geflasht.**
+  Nutzer bestätigt Karte drin/keineVerkabelungsänderung. FrischerDiag nachRESET
+  SD/config1; gespeicherte Zuordnung weiterTag1Arcade/Tag2Fart, HappyTune vorhanden.
+  Gewünscht bleibt Tag1Arcade/Tag2HappyTune. Minimaler USB-Setupbefehl`demo-songs`
+  lokal gebaut/getestet: kopiertKonfiguration, ändertnur zweiTagpfade+Volume1,
+  keinBootoverride/keineButton-/Intro-/LED-Löschung. Kandidatuluu6evy,2561323Bytes,
+  Kennung20261114-demo1,24stagedSourcechecks/20native/6RPC-/9Quellverträge grün.
+  **Blocker: vorFlash NFC1 trotzPause, keinPark3; Nutzer inzwischen weg.**
+  Keine Umgehung durchblindenReset, keine Flash-/Setupaktion eingeplant.
+  `nfc-resume` ausgeführt: abschließend SD/config1,Revision150,Volume1/playback1,
+  NFC1/pauseRequested0,keinPeer. BestehenderFlash bleibtprnsjyfe/blefix1,
+  **Tag2nochFart, HappyTune-Änderung NICHT erledigt.** AlleUSB-Leser beendet.
+  Vor Fortsetzung Karteauflegen →Pause/Park3 →exakteQuellen/Hashes →Flash →
+  `demo-songs` →Diag/Persistenz/realerleiserTagtest. Vollständig:
+  `docs/testprotokoll-vorfuehrung-2026-11-14.md`. SD-Startfehler weiterunbekannt.
   **Unterbrochener Web-Arbeitspunkt:** Wachhalten+globaler Introfortschritt online
   unter`?stand=upload-wach-14`; öffentlicherHTTPS/offline-Test und11Hashes grün.
   Als nächstes wäre neuerAndroid-Display-/Intro-Commitvergleich mitUSB-Mitschnitt
