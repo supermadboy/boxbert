@@ -2,6 +2,21 @@
 
 ## In Arbeit / Nächste Schritte
 
+- [ ] **Vorführung hat jetzt Vorrang; Nutzer bittet um Flash für zwei RFID-Songs.**
+  Gewünschtes bekanntes Mapping: Tag1 E3:2F:F6:33 → Arcade, Tag2 01:8C:F1:6E →
+  Happy Tune. Keine übrigen Musik-/Buttonzuordnungen löschen, leiser Boot beibehalten.
+  **Vorabdiag überraschend SD=0/config=0**,Revision0,Volume1/playback5, beidePfadfelder
+  leer/exists0,NFC1; Quelle `docs/serial/2026-11-13-demo-before.log`.
+  Das sind bei fehlendemSD keine belegten Löschungen der gespeichertenKonfiguration.
+  Noch kein Demo-Flash und keine Mappingänderung. Nutzer gefragt, ob Karte gerade
+  entnommen wurde; nicht blind flashen/SD überschreiben. Vor geplantem Flash weiter
+  NFC-Park3 bestätigen und exakte Artefakte/Quellen/Hashes verifizieren.
+  **Unterbrochener Web-Arbeitspunkt:** Wachhalten+globaler Introfortschritt online
+  unter`?stand=upload-wach-14`; öffentlicherHTTPS/offline-Test und11Hashes grün.
+  Als nächstes wäre neuerAndroid-Display-/Intro-Commitvergleich mitUSB-Mitschnitt
+  nach Neuladen/Verbinden dran. Noch nicht durchgeführt. BLE-Tempo und Button-ID-
+  Ziel1Grün bleiben offen. Nach Vorführung genau hier fortsetzen.
+
 - [x] **Upload-Wachhalten und globaler Fortschritt online aktiviert (13.11.):**
   Auf Nutzerauftrag echte Uploads mit best-effort Screen Wake Lock; Prozentanzeige
   und Abbrechen jetzt auch bei Intro im Zuordnungsreiter. Warnung bei fehlender

@@ -1,6 +1,20 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell: Web-Wachhalten online, echter Android-Vergleich noch offen
+## Jetzt unterbrochen für Vorführung: SD derzeit nicht erkannt
+
+Nutzer bittet den Web-Arbeitspunkt zu merken und für Besuch zwei RFID-Songs zu
+flashen. Soll Tag1Arcade/Tag2HappyTune, übrige Daten erhalten, leiserBoot.
+Vorab-USB-Diag (`2026-11-13-demo-before.log`) meldet aber SD0/config0,Revision0,
+Volume1/playback5, Tagpfade leer/exists0, NFC1. Nicht als gelöschte SD-Konfiguration
+interpretieren; bei fehlendemSD sind das RAM-Defaults. Noch kein neuer Flash/
+Mappingänderung. Nutzer gefragt, ob microSD entnommen wurde; Klärung ausstehend.
+Kein blinder Flash. Vor Flash NFC-Park3 und genaue Build-/Hashprüfung weiterhin.
+
+Nach Vorführung beim **ersten echten Android-Wachhalte-/Introabschlussversuch**
+weiter; neue Website bereits online, aber Nutzer hat neuen Versuch noch nicht
+gemacht. BLE-Durchsatz und Button-ID-Ziel1Grün weiterhin offen. Details To-Do.
+
+## Web-Wachhalten online, echter Android-Vergleich noch offen
 
 Nutzer hat Website-Aktivierung und danach den Root-SSH-Launcher ausdrücklich
 freigegeben. Nur als `habibi`/UID1001 statische Boxbert-Dateien aktualisiert,
