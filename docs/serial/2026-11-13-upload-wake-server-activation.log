@@ -1,0 +1,19 @@
+Activation user: habibi
+Hosting checkout HEAD: 7329e39
+Boxbert device-source checkout HEAD unchanged: 6e14e5e
+Hosting status (foreign changes left untouched):
+ M hermes/memories/MEMORY.md
+ M hermes/skills/devops/hermes-server-operations/SKILL.md
+ M hermes/skills/devops/hermes-server-operations/references/repository-layout-and-helper-moves.md
+ M hermes/skills/software-development/boxbert-cad-mounts/SKILL.md
+ M hermes/skills/software-development/browser-media-testing/SKILL.md
+ M hermes/skills/software-development/firmware-wiring-changes/SKILL.md
+ M sites/boxbert/index.html
+ M sites/boxbert/sw.js
+?? hermes/skills/software-development/browser-media-testing/references/browser-audio-export.md
+?? sites/boxbert/assets/index-7Ehl6x5w.js
+?? sites/snippets/no-stefan-no-review-01be0efd.mp3
+Live bundle owner/hash:
+habibi habibi 644 /srv/ai-habibi/sites/boxbert/assets/index-7Ehl6x5w.js
+e2a2ae0a0475ce6666a3d075faae70ee0130dd0a072afdd1ad949b390a651fda  /srv/ai-habibi/sites/boxbert/assets/index-7Ehl6x5w.js
+Rollback snapshot exists: yes

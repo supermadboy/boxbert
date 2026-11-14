@@ -2,7 +2,7 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [x] **Upload-Wachhalten und globaler Fortschritt lokal vorbereitet (13.11.):**
+- [x] **Upload-Wachhalten und globaler Fortschritt online aktiviert (13.11.):**
   Auf Nutzerauftrag echte Uploads mit best-effort Screen Wake Lock; Prozentanzeige
   und Abbrechen jetzt auch bei Intro im Zuordnungsreiter. Warnung bei fehlender
   API/Ablehnung/Freigabe/Hintergrund; neue Sperre bei Rückkehr, keine automatische
@@ -11,13 +11,18 @@
   **81 App-Tests**, simulierte HTTP-Geräte-/Demo-Browserfälle, echtes HTTPS/offline
   und beide Webbuilds grün. Browser-Wake-Lock gemockt, echte Android-Abnahme offen.
   Kandidat `app/dist/assets/index-7Ehl6x5w.js`, SD `index-CWCh9PvO.js`.
-  **Website-Aktivierung jetzt vom Nutzer freigegeben**, aber noch nicht erfolgt:
-  SSH als `habibi` abgelehnt (`Permission denied (publickey)`); lokale SSH-Konfig
-  bietet nur Root-Zugang. Diesen nicht benutzt, keine Host-/Zugangsänderung.
-  Für Aktivierung über Root-Launcher mit ausschließlich unprivilegiertem Webbuild
-  separate administrative Freigabe erfragen. Hostingrepo unverändert; live perHTTPS
-  noch `index-DzBpNY4D.js`, nicht neuer Kandidat. Nach Aktivierung Bildschirm-/
-  Intro-Vergleich aufzeichnen.
+  **Nach separater Root-Launcher-Freigabe aktiviert.** Hostingbrücke in isoliertem
+  lokalen Worktree gebaut; Artefaktcommit ai-habibi `83edc20` gepusht. Aktivierung
+  via SSH-Launcher ausschließlich `runuser -u habibi`,11Dateien nachSHA256 geprüft;
+  Webroot-Inode erhalten (direkter nginx-Bind-Mount), Abhängigkeiten vor index/sw,
+  alte Hashassets behalten. Keine Host-/Dienst-/Zugangsänderung oder Neustarts.
+  Backup `/home/habibi/.cache/boxbert-web-activation.zIljGc/previous`.
+  Laufender Hostingcheckout bleibt7329e39 mit absichtlichen sites/boxbert-Änderungen;
+  fremde Änderungen nicht angerührt, Boxbert-Servercheckout6e14e5e unverändert.
+  Public alle11Hashes/HTTP200 und echterHTTPS-/Offline-Browsertest grün.
+  Neuer Link: **https://habibi.supermittel.com/boxbert/?stand=upload-wach-14**.
+  Nochoffen: echterAndroid-Wake-Lock und vollständigerIntro-Commit. Alte Box-Tabs
+  schließen, neuenLink öffnen, keineBrowserdaten löschen (lokaleAufnahme erhalten).
 
 - [ ] **Intro-Live-Upload abgebrochen, Display ging aus (13.11.,17:05ff):**
   Nutzerclip ca.4s; zunächst alle2,6s bestätigte573–575Byte-Anfragen, passend zu

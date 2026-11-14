@@ -107,9 +107,45 @@ Nachweise lokal:
   Tests über gepinnten Chromium aus `tools/firmware/browser-env.py`.
 - Logs `2026-11-13-upload-wake-{tests,browser-build,https}.log` unter`docs/serial/`.
 
-**Noch nicht deployed**, Hostingrepo unverändert, kein Flash. Alle USB-Leser
-beendet. Firmware auf Gerät bleibt `prnsjyfe`. Neuer Kandidat ersetzt nicht die
-separat bestätigte alte Live-PWA. Für Aktivierung zuerst Zustimmung/Hostingablauf
-klären; danach Android-Displaybleibtan und vollständigenIntro-Commit kontrolliert
-prüfen. BLE-Durchsatz und Button-ID-Tausch separat offen. Keine weiteren blinden
-Mehrminutenversuche, keine vorhandenen Musik-/Belegungsdaten verändert.
+Zu diesem Vorbereitungszeitpunkt noch nicht deployed, Firmware auf Gerät weiter
+`prnsjyfe`. Aktivierung inzwischen wie nachfolgend erfolgt. BLE-Durchsatz und
+Button-ID-Tausch separat offen, Musik-/Belegungsdaten unverändert.
+
+## Aktivierung nach ausdrücklicher Website- und Root-Launcher-Freigabe
+
+SSH als `habibi` wurde abgelehnt. Erst nach zusätzlicher ausdrücklicher Nutzer-
+freigabe Root-SSH als Launcher genutzt, alle eigentlichen Serveroperationen mit
+`runuser -u habibi`, Aktivierungsskript prüftUID1001. Keine Root-Skripte aus Repo,
+keine Host-/Zugangs-/Konfigänderung, kein Restart und kein Root-Docker verwendet.
+Read-only Rootless-Docker-Mountprüfung ergab direkten Bind von
+`/srv/ai-habibi/sites/boxbert`; deshalb dessen Verzeichnis/Inode erhalten.
+
+Hostingbuild lokal über bestehende Brücke in separatem Worktree
+`~/.cache/boxbert-hosting-wake-20261113`, `BOXBERT_APP` zeigt ausschließlich auf
+Boxbert-App. Erneuter Build erzeugt unveränderten getesteten JS-SHA256:
+`e2a2ae0a0475ce6666a3d075faae70ee0130dd0a072afdd1ad949b390a651fda`.
+Hosting-Artefaktcommit **83edc20** aufmain gepusht, keine Projektquellen kopiert.
+
+Alle elf Builddateien perManifest geprüft, vor Aktivierung bisherige Site gesichert:
+`/home/habibi/.cache/boxbert-web-activation.zIljGc/previous`.
+Abhängigkeiten zuerst, danach index undsw, einzeln über temporäreDatei+Rename
+atomar veröffentlicht; alteHashassets nicht gelöscht. Root-Inode undUID geprüft.
+LiveHostingHEAD bleibt7329e39, absichtlich sites/boxbert-Artefakte im Arbeitsbaum
+aktualisiert; vorhandene fremde Änderungen unberührt, kein Checkoutwechsel.
+Boxbert-Serverquellcheckout bleibt6e14e5e; Geräteflash bleibtprnsjyfe.
+
+Öffentliche Prüfung:
+- **https://habibi.supermittel.com/boxbert/?stand=upload-wach-14**: HTTP200,
+  referenziert`index-7Ehl6x5w.js`. Alle elf Dateien haben erwartete SHA256.
+- Permissions-Policy-Header nicht gesetzt, damit keine explizite serverseitige
+  Wake-Lock-Sperre festgestellt; daraus keine Android-Funktionsgarantie ableiten.
+- Vorhandener`tools/firmware/verify-hosted.mjs` gegen öffentlichenneuenLink grün:
+  echtesHTTPS, BLE-UI ohneFunkversuch, Offline-Neudokument/TFT/Buttons,
+  keineConsole-/HTTP-Fehler und keineGeräte-API-Anfragen.
+- Logs`2026-11-13-upload-wake-public-{artifacts,browser}.log` und
+  `2026-11-13-upload-wake-server-activation.log`.
+
+Noch offen: alteBoxbert-Tabs schließen, neuenLink ohneBrowserdatenlöschung laden
+(lokaleAufnahme erhalten), neuverbinden und echtenAndroid-Display-/Introabschluss
+kontrolliert prüfen. Vor Wiedergabetest leiseLautstärke einstellen; zuletzt21.
+KeineweiterenblindenMehrminutenversuche, zuerst sichtbaresWachhalten/Prozent prüfen.

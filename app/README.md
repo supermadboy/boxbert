@@ -1,8 +1,14 @@
 # Boxbert-Verwaltung · React-PWA
 
-## Lokal vorbereitete Upload-Verbesserung · 13.11.2026
+## Online: Upload-Verbesserung · 13.11.2026
 
-Noch nicht auf der Website aktiviert: Prozentfortschritt und Abbrechen sind jetzt
+Aktueller Link: **https://habibi.supermittel.com/boxbert/?stand=upload-wach-14**.
+Nach expliziter Aktivierungsfreigabe veröffentlicht, öffentliche Artefakthashes
+und HTTPS-/Offline-Browser geprüft. Echter Android-Wachhalte-/Introabschluss
+noch offen. Alte Boxbert-Tabs schließen und neuen Link öffnen; keine Browserdaten
+löschen, damit lokale Aufnahmen erhalten bleiben.
+
+Prozentfortschritt und Abbrechen sind jetzt
 auch beim Intro sichtbar. Echte Uploads fragen zusätzlich einen Screen Wake Lock
 an, damit das Display nicht automatisch ausgeht. Nicht in der Demo oder bei
 normalen Lese-/Steuerbefehlen. Freigabe bei Abschluss, Fehler, Abbruch und Verlassen
@@ -22,7 +28,7 @@ API-Grundlage: [MDN Screen Wake Lock](https://developer.mozilla.org/en-US/docs/W
 
 ## Gesamtfirmware V1 · 19.10.2026
 
-Aktueller Release: **https://habibi.supermittel.com/boxbert/?stand=gesamtfirmware-13**.
+Historischer Release vor Wachhalte-Ergänzung: **https://habibi.supermittel.com/boxbert/?stand=gesamtfirmware-13**.
 Die Oberfläche besitzt jetzt echte **WLAN- und BLE-Geräteadapter** für
 `firmware/boxbert/`. Demo-Daten bleiben separat im Browser; Verbindungsfehler
 wechseln niemals still in eine Simulation. Keine Hardware-/Flashabnahme daraus.

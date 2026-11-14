@@ -1,6 +1,24 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell: Intro-Abbruch nach Display aus; App-Wachhalten lokal fertig
+## Aktuell: Web-Wachhalten online, echter Android-Vergleich noch offen
+
+Nutzer hat Website-Aktivierung und danach den Root-SSH-Launcher ausdrücklich
+freigegeben. Nur als `habibi`/UID1001 statische Boxbert-Dateien aktualisiert,
+keine Host-/Zugangs-/Dienständerung und kein Restart/Flash. Hostingartefakt83edc20
+in isoliertem lokalen Worktree über Buildbrücke erstellt und gepusht. Alle elf
+öffentlichen Dateien haben erwartete SHA256; HTTPS-/Offline-Browsertest grün.
+Neuer Link: **https://habibi.supermittel.com/boxbert/?stand=upload-wach-14**.
+Alte Boxbert-Tabs schließen, neuen Link öffnen, keine Browserdaten löschen:
+lokale Aufnahme soll erhalten bleiben. Android-Display-/Intro-Commitprüfung offen.
+
+Direkter nginx-Bind-Mount: Webroot-Verzeichnis nicht ausgetauscht, neue Dateien
+atomar proDatei, index/sw zuletzt; alte Hashassets bleiben. Backup außerhalb
+Webroot `/home/habibi/.cache/boxbert-web-activation.zIljGc/previous`.
+Live-Hostingcheckout bleibt7329e39, nur sites/boxbert absichtlich geändert,
+vorhandene fremde Änderungen erhalten; Boxbert-Servercheckout bleibt6e14e5e.
+Details/Logs im App-Protokoll. Nachfolgend historische Vorbereitung.
+
+## Intro-Abbruch nach Display aus; App-Wachhalten lokal fertig (vor Aktivierung)
 
 13.11., ca.17:05–17:13: Clip laut Nutzer4s. Erst passende Upload-Anfragen alle2,6s
 bestätigt, dann nächste Anfrage bei480ByteRX unvollständig; t=3132481 echter

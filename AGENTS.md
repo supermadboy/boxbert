@@ -58,8 +58,10 @@ undStart/Stopp. Button-ID-Ziel1Grün (Flash noch1Gelb/2Grün) weiteroffen.
 Intro-Upload zunächstlangsam, dann RX480Bytes/echter10sTimeout; Nutzer bestätigt
 Displaygingaus, Hintergrundpause plausibleUrsache, Vergleichnoch offen. SD/config1,
 8MP3gelistet, beideIntrosleer; Volume21/playback4, vor Hörtest leisedrehen.
-App-Wachhalten+globalerFortschritt aufNutzerauftrag lokalvorbereitet,81Tests und
-HTTP-/Demo-/HTTPS-Browserfälle grün, nochNICHTdeployed/aufAndroidabgenommen.
+App-Wachhalten+globalerFortschritt jetzt nach Website-/Root-Launcher-Freigabe
+online: `?stand=upload-wach-14`,JS`index-7Ehl6x5w.js`,Hostingcommit83edc20.
+NuralsUID1001habibi aktiviert,11öffentlicheSHA256/HTTPS-/Offline-Browser grün;
+81App-Tests. NochkeineechteAndroid-Wake-Lock-/Introabschlussabnahme. KeinFlash.
 PC-Adapter nurBR/EDR ohneLE. Intro hatbereits1h-Gesamtbudget, keineTimeoutanhebung.
 Details`docs/testprotokoll-app-funktionen-2026-11-13.md`.
 120-s-Captures beendet, keinUSB-Hintergrundleser mehr; keinPC-GATT-Test.

@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 const require=createRequire(new URL('../../app/package.json',import.meta.url));
 const {chromium,expect}=require('@playwright/test');
-const url=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=gesamtfirmware-13';
+const url=process.env.BOXBERT_URL||'https://habibi.supermittel.com/boxbert/?stand=upload-wach-14';
 const base=new URL('./',url).href;
 const out=path.join(os.homedir(),'.cache/boxbert-verification');await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH,headless:true,args:['--no-sandbox']});
