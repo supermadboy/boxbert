@@ -2,21 +2,21 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [ ] **Vorführung: SD nach NutzerRESET wieder da; neuer Build NICHT geflasht.**
-  Nutzer bestätigt Karte drin/keineVerkabelungsänderung. FrischerDiag nachRESET
-  SD/config1; gespeicherte Zuordnung weiterTag1Arcade/Tag2Fart, HappyTune vorhanden.
-  Gewünscht bleibt Tag1Arcade/Tag2HappyTune. Minimaler USB-Setupbefehl`demo-songs`
-  lokal gebaut/getestet: kopiertKonfiguration, ändertnur zweiTagpfade+Volume1,
-  keinBootoverride/keineButton-/Intro-/LED-Löschung. Kandidatuluu6evy,2561323Bytes,
-  Kennung20261114-demo1,24stagedSourcechecks/20native/6RPC-/9Quellverträge grün.
-  **Blocker: vorFlash NFC1 trotzPause, keinPark3; Nutzer inzwischen weg.**
-  Keine Umgehung durchblindenReset, keine Flash-/Setupaktion eingeplant.
-  `nfc-resume` ausgeführt: abschließend SD/config1,Revision150,Volume1/playback1,
-  NFC1/pauseRequested0,keinPeer. BestehenderFlash bleibtprnsjyfe/blefix1,
-  **Tag2nochFart, HappyTune-Änderung NICHT erledigt.** AlleUSB-Leser beendet.
-  Vor Fortsetzung Karteauflegen →Pause/Park3 →exakteQuellen/Hashes →Flash →
-  `demo-songs` →Diag/Persistenz/realerleiserTagtest. Vollständig:
-  `docs/testprotokoll-vorfuehrung-2026-11-14.md`. SD-Startfehler weiterunbekannt.
+- [x] **Vorführstand am14.11. geflasht: RFID1Arcade / RFID2Pups.**
+  Nutzer hat nach expliziter Ansage dieser beiden Titel erneutbestätigt. Frühere
+  HappyTune-Anfrage ist nicht die zuletzt bestätigte Vorführzuordnung; deshalb
+  **`demo-songs` NICHT ausgeführt** (würdeTag2aufHappyTuneändern).
+  NFC nach erneuterAuflage sauberPark3 geloggt,24Quell-/Runtime-/Configchecks und
+  alleArtefakthashes geprüft. **AktuellerFlash uluu6evy/20261114-demo1**,
+  2561323ByteSketch/173468Globals,Core3.3.12/QSPI/NimBLE2.3.8,Boot1/max21.
+  App-Port scheitert beiReenumeration; exaktgleicheArtefakte amBootloader-Port
+  erfolgreichhochgeladen,Hashprüfungen/HardReset bestätigt. Danach SD/I2S/config1,
+  Revision150 unverändert,beideIntrofelderleer,NFC1/pause0,Volume1.
+  USBTest9→Arcade549988Bytes/Decoderbereit;Test10→Fart23461Bytes/Decoderbereit/EOF,
+  danachStop. Kein neuer physischerTag2-/Hörtest ausUSBtestsbehaupten.
+  AlleMusik-/Button-/Tagdaten erhalten,keine neueMapping-/SD-Konfigschreibaktion.
+  AlleLeserbeendet; keineautomatischeFlashaufgabe. SD-Startfehler bleibtungeklärt.
+  Vollständig:`docs/testprotokoll-vorfuehrung-2026-11-14.md`.
   **Unterbrochener Web-Arbeitspunkt:** Wachhalten+globaler Introfortschritt online
   unter`?stand=upload-wach-14`; öffentlicherHTTPS/offline-Test und11Hashes grün.
   Als nächstes wäre neuerAndroid-Display-/Intro-Commitvergleich mitUSB-Mitschnitt

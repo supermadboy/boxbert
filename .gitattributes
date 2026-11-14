@@ -2,3 +2,5 @@
 docs/serial/*.log -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # btmgmt prints trailing spaces; retain this raw capability report byte-for-byte.
 docs/serial/2026-11-13-pc-bluetooth-capabilities.log whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# esptool progress contains trailing spaces and terminal controls; preserve raw upload proof.
+docs/serial/2026-11-14-demo1-upload-bootloader.log whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

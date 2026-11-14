@@ -41,20 +41,23 @@ Vor neuem Flash `nfc-pause` und
 NFC=3/parked abwarten, ggf.Tag für ausstehende Suche auflegen. Vor Volume12-
 Flash Park3 erstmals bestätigt, danach neuer Build erfolgreich gestartet.
 Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fehlt.
-**Unterbrechung14.11. für Vorführung:** SD0 nach NutzerRESET wiederSD/config1.
-Tag1Arcade/Tag2nochFart; gewünschtesHappyTune2 NICHTumgesetzt. NeuerBuilduluu6evy
-mit exaktemUSB-Setup`demo-songs` gebaut/getestet, NICHTgeflasht, weilNFCvorFlash
-nur1/nichtPark3 undNutzerweg. `nfc-resume` wiederhergestellt, finalSD/config1,
-Rev150,Volume1/playback1,NFC1/pause0,keinPeer/Reader. KeineFlashaufgabegeplant.
-Details`docs/testprotokoll-vorfuehrung-2026-11-14.md`; nichtalsfertigbehaupten.
-Letzter tatsächlich geflashter Build:
+**AktuellerGeräteflash14.11. fürVorführung:** uluu6evy, Kennung
+`boxbert-v1-commissioning-20261114-demo1`,2561323ByteSketch/173468Globals,
+Core3.3.12/QSPI/NimBLE2.3.8,Boot1/max21,NFCaktiv. Nach echtemPark3/24Sourcechecks/
+Artefakthashes amBootloader-Port erfolgreichhochgeladen. Danach SD/I2S/config1,
+Rev150,Volume1,NFC1/pause0. **Zuletzt explizit bestätigt: Tag1Arcade/Tag2Pups**,
+Zuordnungen erhalten; `demo-songs` NICHTausgeführt, würdeHappyTune2setzen.
+USB9/10 öffnen/decodierenbeideDateien, FartEOF; danachgestoppt. Keine neuephysische
+Tag-/Hörabnahme. KeinegeplanteFlashaufgabe/Reader. SD0 nach vorherigemRESET wieder
+SD1, Ursacheweiteroffen. Details`docs/testprotokoll-vorfuehrung-2026-11-14.md`.
+Vorheriger bestätigter Build (Rollback):
 `~/.cache/boxbert-build-prnsjyfe/manifest.json`, nach erneut bestätigtem NFC-Park3
 geflasht, Quellen/Runtime/SHA256/Upload geprüft; danach Volume1/Decoderläuft,NFC1. VollerRegelbereich0..21 auf Nutzerwunsch,
 Boot1 im Code; erster Mitschnitt bereitsVolume5, dann Encoder requested=actual
 bis21 bei laufendem Decoder, NFC1/Radio2. Keine automatische Maximalansteuerung.
 Keine akustische Sicherheitsfreigabe, hohe Stufen nur im Erwachsenentest ohne
 Kind im Raum. Volume12/n1_lldq4 ist überholter Zwischenstand.
-**Aktuell BLE-Fehlersuche:** Nutzer hat vorhandenes Passwort verwendet, App meldet
+**Historische BLE-Fehlersuche vor dem Vorführflash:** Nutzer hat vorhandenes Passwort verwendet, App meldet
 „Getrennt: BLE-Verbindung verloren“ direkt nach Geräteauswahl, vor Dateiliste.
 Trace zeigte zweimal lokalen drop-timeout1ms nachhello-Antwortvorbereitung:
 unsignednow−frischesbleAt unterlief. Fix mit Halbintervallprüfung,20native Tests

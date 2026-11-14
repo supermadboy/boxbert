@@ -84,7 +84,15 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 
 ## Lokale USB-Diagnose im aktuellen Inbetriebnahmeprofil
 
-Aktuell geflasht: `~/.cache/boxbert-build-prnsjyfe/manifest.json`,2560235Byte
+**Aktuell14.11. geflasht:** `~/.cache/boxbert-build-uluu6evy/manifest.json`,
+Kennung`boxbert-v1-commissioning-20261114-demo1`,2561323ByteSketch/173468Globals,
+Core3.3.12/QSPI/NimBLE2.3.8. NachPark3/24Source-/Hashchecks regulär hochgeladen,
+SD/config1,Rev150,Volume1,NFC1/pause0. ZuletztbestätigtArcade/Pups erhalten,
+`demo-songs` nichtausgeführt. USB9/10 öffnen/decodierenbeideDateien; danachStop.
+Details`testprotokoll-vorfuehrung-2026-11-14.md`. ZusätzlicherexakterUSB-Setupbefehl
+`demo-songs` würdeArcade/HappyTune+Volume1setzen; **nichtungefragtanwenden**.
+
+VorherigerFlash/Rollback: `~/.cache/boxbert-build-prnsjyfe/manifest.json`,2560235Byte
 Flash/173468Byte globale Variablen, Core3.3.12/QSPI/NimBLE2.3.8. Das allein
 beweist keine Geräteabnahme. Aktuelle Befunde/Restpunkte:
 [`uebergabe-endaufbau-2026-11-11.md`](uebergabe-endaufbau-2026-11-11.md).

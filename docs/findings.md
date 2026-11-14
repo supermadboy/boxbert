@@ -113,6 +113,19 @@ einfügen, Datum dazu.
 
 ## SD-Karte
 
+**Eigener Endaufbautest14.11.2026 — fehlgeschlagener Mount ist nicht gleich
+fehlende/gelöschte Karte:** Laufender Gesamtstand meldete SD0/config0 und leere
+RAM-Pfade. Nutzer bestätigt Karte steckt, Verkabelung unverändert. Nach gezieltem
+NutzerRESET wiederSD/config1 und gespeicherte Zuordnungen/achtMP3 gelistet;
+späterer Vorführflash startet ebenfallsmitSD/config1. Ursache nicht lokalisiert,
+keine Kontakt-/Power-/Timinghypothese als belegt behandeln. **Heißt für Boxbert:**
+BeiSD0 zuerst aktuellenBoot/Mount und gespeicherteDaten unterscheiden, keine
+Defaultkonfiguration darüber speichern und nicht reflexartig umverdrahten.
+Keine Kartenintegritäts-/Dauerprüfung daraus ableiten. Belege:
+`docs/testprotokoll-vorfuehrung-2026-11-14.md`,
+`docs/serial/2026-11-14-demo-after-user-reset.log`,
+`docs/serial/2026-11-14-demo1-after-flash.log`.
+
 - **FAT32, max. 32 GB, sonst geht gar nichts.** exFAT unterstützt die
   Standard-Library nicht — Karte wird einfach nicht erkannt.
   → Heißt für Boxbert: Unsere Verbatim 32 GB ist exakt richtig; am PC

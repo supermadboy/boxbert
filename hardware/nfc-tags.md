@@ -4,7 +4,25 @@ Stand: **04.10.2026, Etappe 4 als Breadboard-Meilenstein abgenommen.**
 Quelle: neue Serial-Beobachtungen und Nutzer-Hoertests in
 `docs/testprotokoll-etappe4.md`, nicht alte Agentenannahmen.
 
-## Endaufbau11.11.2026 — aktueller Nachweis / Mappinggrenze
+## Aktuelle Vorführzuordnung14.11.2026 — Arcade / Pups
+
+Nach ausdrücklicher Ansage „RFID1Arcade,RFID2Pups“ bestätigte Nutzer denFlash
+mit„ok“. Gesamtbuilduluu6evy/20261114-demo1 nachPark3 und Quellen-/Hashprüfung
+geflasht. **BestehendeSD-Zuordnung erhalten**, kein automatischerReset/Migration.
+
+| Tag | UID | Aktueller SD-Pfad | Größe |
+|---|---|---|---:|
+| 1 | `E3:2F:F6:33` | `/arcade-music-loop.mp3` | 549988Bytes |
+| 2 | `01:8C:F1:6E` | `/fart.mp3` (Pups) | 23461Bytes |
+
+NachFlash SD/config1,Revision150 unverändert,BootVolume1,NFC1/pause0.
+BeideTaghandler perUSBtest geöffnet/Decoderbereit,FartEOF; frischerphysischer
+Tagwechsel/Hörtest nichtausUSBableiten. Protokoll
+`docs/testprotokoll-vorfuehrung-2026-11-14.md`. FrühereHappyTune-Anfrage ist
+**nicht** die zuletzt bestätigteVorführzuordnung. LokalenSetupbefehl`demo-songs`
+nichtungefragtanwenden: er würdeTag2HappyTunesetzen. Unten historischesMapping.
+
+## Endaufbau11.11.2026 — damaliger Nachweis / Mappinggrenze
 
 Nutzerkarte lag beim UID-Test **durchgehend** auf. Gelesen: Tag1
 **E3:2F:F6:33**,4Bytes. IRQ12 während Suche/Auslesen mit GPIO-CHANGE-Observer:

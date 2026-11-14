@@ -1,0 +1,56 @@
+
+# USB capture 2026-11-14T11:15:16.131556; no DTR/RTS ioctl
+# Sent once: test9
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=30744 NFC=1
+BOXBERT commissioning SD=1 BUTTON id=9
+TAG index=0
+START requested song='/arcade-music-loop.mp3' intro='' I2S=1 SD=1 heap=36384 psram=839084
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Reading file: "/arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 549988
+[audio] info: ID3 framesSize: 373
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 34
+[audio] info: Bitrate (b/s): 129321
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 373
+[audio] info: Audio-Length: 549615
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+
+# USB capture 2026-11-14T11:15:20.281450; no DTR/RTS ioctl
+# Sent once: test10
+BUTTON id=10
+TAG index=1
+START requested song='/fart.mp3' intro='' I2S=1 SD=1 heap=36432 psram=838908
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Closing audio file "arcade-music-loop.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] info: Reading file: "/fart.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 23461
+[audio] info: ID3 framesSize: 57
+[audio] info: ID3 version: 2.4
+[audio] info: Duration (s): 1
+[audio] info: Bitrate (b/s): 187232
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 57
+[audio] info: Audio-Length: 23404
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=30756 NFC=1
+[audio] info: Closing audio file "fart.mp3"
+[audio] info: MP3Decoder has been destroyed
+[audio] eof: fart.mp3
+
+# USB capture 2026-11-14T11:15:24.457440; no DTR/RTS ioctl
+# Sent once: test-stop
+DIAG STOP
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36432 NFC=1

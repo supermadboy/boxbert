@@ -1,6 +1,21 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell14.11.: SD wieder da, Vorführbuild vorbereitet aber NICHT geflasht
+## Aktuell14.11.: Vorführstand erfolgreich geflasht, Arcade und Pups erhalten
+
+Nach erneuter expliziter Ansage RFID1Arcade/RFID2Pups bestätigte Nutzer und legte
+Karte auf. **NFC3/keinoffenesKommando** geloggt,24Source-/Runtime-/Configdateien und
+alleArtefakthashes geprüft. **AktuellerFlash uluu6evy/20261114-demo1**,
+2561323ByteSketch/173468Globals,Core3.3.12/QSPI/NimBLE2.3.8,Boot1/max21.
+App-Port-Reenumerationsfehler, danach exaktgleicherBuild amBootloader-Port mit
+Hashprüfungen erfolgreich. SD/I2S/config1,Rev150unverändert,NFC1/pause0,Volume1.
+Tag1Arcade549988Bytes/Tag2Fart23461Bytes,Introsleer,sonstigeBelegungenunverändert.
+`demo-songs` NICHTausgeführt: würde ältereHappyTune-Anfrage anwenden, nicht die
+zuletzt bestätigtenbeidenTitel. USBTest9/10: Dateienoffen/Decoderbereit,FartEOF,
+danachStop. PhysischerTagwechsel/Hörtest imneuenFlash noch nichtgesondertbestätigt.
+AlleReaderbeendet. SD-Init-Ausfall zuvor bleibtungeklärt, keinDauerprüfnachweis.
+Details`testprotokoll-vorfuehrung-2026-11-14.md`. NachBesuch Web-/Introtest fortsetzen.
+
+## Historischer Zwischenstand14.11.: SD wieder da, Flash noch blockiert
 
 Nach NutzerRESET SD/config1, Karte/Dateien wiederda. Ursache frühererSD0 offen.
 SollTag1Arcade/Tag2HappyTune; tatsächlich bleibtTag2Fart. NeuerGesamtbuilduluu6evy

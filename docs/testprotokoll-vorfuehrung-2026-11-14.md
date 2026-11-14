@@ -1,6 +1,45 @@
 # Vorführung vorbereiten — 14.11.2026
 
-## Auftrag und Ergebnisgrenze
+## Abschließender Anlauf: geflasht, zuletzt bestätigte Zuordnung Arcade/Pups
+
+Nach obigem Arbeitsstillstand bat Nutzer erneut um Flash „diese beiden“.
+Agent benannte zweimal ausdrücklich RFID1Arcade/RFID2Pups, Nutzer bestätigte
+mit „ok“. Deshalb bestehende Zuordnung erhalten, **kein `demo-songs`** und keine
+ungefragte HappyTune-Migration. Neue Abnahme ersetzt das frühere Soll für diese
+Vorführung; kein allgemeiner Wunsch nach HappyTune als erledigt behaupten.
+
+Karte aufgelegt: `NFC parked: no pending command; safe for planned board reset`,
+NFC3 im`2026-11-14-demo1-final-park.log`. Leser43592 vorUpload beendet.
+Erneut24Source-/Runtime-/UI-/Configdateien gegenStaging und sämtlicheManifest-
+Artefakthashes geprüft. Code/Flags unverändert wie unten beschrieben.
+
+Upload exakt`uluu6evy/artifacts` mitCLI1.5.1/FQBNReverseTFT: Anwendungsport
+Fehler5/Input-output währendReenumeration, danach bekannterUSB-JTAG-Bootloader
+verfügbar. GleicheArtefakte dort erfolgreichhochgeladen,geschriebeneDatenHashes
+verifiziert,HardReset bestätigt. **Jetzt tatsächlicherFlash**
+`boxbert-v1-commissioning-20261114-demo1`. 2561323ByteSketch lautCompiler,
+AppBIN2561472Bytes lautUpload,173468Globals; keine verwechslungsfreie Gleichsetzung
+vonCompiler-Sketchgröße und tatsächlicherBIN-Länge. Core3.3.12/QSPI/NimBLE2.3.8,
+Boot1/max21,NFCtrue,Stick/BoostControl/AutoSleepfalse,Authentifizierung erhalten.
+KeineNeuformatierung/keinNVS-/SD-Erase, nur reguläreFirmwarepartitionen geflasht.
+
+DanachDiag: **SD/I2S/config1,Revision150,Volume1,NFC1/pauseRequested0**, beide
+Introfelderleer, achtbestehendeMP3mitbisherigenNamen/Größen gelistet. Tag0Arcade,
+Tag1Fart; gewünschte letzteZuordnung hatFlash/Reset überstanden. Keine neue
+Konfigurationsschreiboperation, keine Änderung andererButtons/Kategorien/Namen.
+
+USBTest9→TAGindex0→Arcade549988Bytes/MP3Decoderbereit/Streamready.
+USBTest10→TAGindex1→Fart23461Bytes/MP3Decoderbereit/Streamready/natürlichesEOF.
+Danachexplizit`test-stop`,Volume1/NFC1/SD1/config1. Das prüft echteHandler und
+Datei-/Decoderpfade, **kein neuerphysischerTag2-/Hörnachweis**, keinDauertest.
+AlleLeserbeendet, keineverzögerteFlashaufgabe. SD-Startproblem weiterungeklärt.
+
+Logs: `2026-11-14-demo1-{upload-app,upload-bootloader,after-flash,two-song-check}.log`.
+NachVorführung wiegemerkt Android-Wake-Lock/Introabschluss zuerst; nichts an
+Website oder Buttons währenddiesesFlashs geändert. FolgendeAbschnitte sind
+historischeVorbereitung und anfänglicheBlockade, nichtaktuellerFlashstatus.
+
+## Historischer Erstversuch: Auftrag und damalige Ergebnisgrenze
 
 Nutzer möchte für Besuch Tag1Arcade/Tag2HappyTune, Web-/Introarbeit später fortsetzen.
 **Nicht als erledigt melden:** Noch kein neuer Flash und keine Zuordnungsänderung.
