@@ -36,8 +36,9 @@ Zusätzlich temporäre **lokale USB-Diagnose**, kein neuer HTTP-/BLE-RPC:
 `20261114-demo1` zusätzlich explizit`demo-songs`: SD/config gesund, beide Songs
 vorhanden und kein Upload; persistiert zwei Tagpfade Arcade/HappyTune undVolume1,
 sonstige Konfiguration bleibt erhalten. Kein Bootoverride/kein neuer RPC.
-Für aktuellbestätigteVorführung **nichtbenutzt**: RFID1Arcade/RFID2Pups erhalten,
-nichtungefragt`demo-songs`ausführen undaufHappyTuneändern.
+Nach ausdrücklicherNutzerkorrektur „HappyTuneauf2“ am14.11. **gezielteingesetzt**:
+Save/ReadbackRev151,RFID1Arcade/RFID2HappyTune. Kein weitererFlash nötig;
+nicht automatisch/ungefragt erneut ausführen, setzt auchVolume1.
 NFC-Status nur im USB-Log:0aus,1Scanner,2Fault,3geparkt.
 Vor Reset bei aktivem Leser Parken anfordern und **3bestätigen**; wartet die
 Suche auf einen Tag, bleibt die Anforderung zunächst pending. Resume behebt

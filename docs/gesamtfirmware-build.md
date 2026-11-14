@@ -87,8 +87,9 @@ nochmals mit `--no-deps`, damit z.B.GFX nicht unbemerkt angehoben bleibt.
 **Aktuell14.11. geflasht:** `~/.cache/boxbert-build-uluu6evy/manifest.json`,
 Kennung`boxbert-v1-commissioning-20261114-demo1`,2561323ByteSketch/173468Globals,
 Core3.3.12/QSPI/NimBLE2.3.8. NachPark3/24Source-/Hashchecks regulär hochgeladen,
-SD/config1,Rev150,Volume1,NFC1/pause0. ZuletztbestätigtArcade/Pups erhalten,
-`demo-songs` nichtausgeführt. USB9/10 öffnen/decodierenbeideDateien; danachStop.
+SD/config1,Rev150,Volume1,NFC1/pause0. BeimFlashArcade/Pups erhalten;
+**danach ausdrücklicheNutzerkorrektur**: `demo-songs` ausgeführt,Save/Readback151,
+jetztRFID1Arcade/RFID2HappyTune. Kein weitererFlash, Firmware unverändert. USB9/10 öffnen/decodierenbeideDateien; danachStop.
 Details`testprotokoll-vorfuehrung-2026-11-14.md`. ZusätzlicherexakterUSB-Setupbefehl
 `demo-songs` würdeArcade/HappyTune+Volume1setzen; **nichtungefragtanwenden**.
 

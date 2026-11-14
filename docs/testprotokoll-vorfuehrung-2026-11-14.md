@@ -1,6 +1,29 @@
 # Vorführung vorbereiten — 14.11.2026
 
-## Abschließender Anlauf: geflasht, zuletzt bestätigte Zuordnung Arcade/Pups
+## Letzte Korrektur: Nutzer will ausdrücklich Happy Tune auf RFID2
+
+Nach Flash/Arcade-Pups-Bericht stellte Nutzer klar: **„ich will happy tune auf2“**.
+Daher jetzt gezielt lokalenUSB-`demo-songs`-Befehl ausgeführt, keine neueFirmware.
+SD-Save meldetRevision151; anschließenderDiag bestätigt **Tag1Arcade549988Bytes,
+Tag2HappyTune642028Bytes**, beideexists1/Introsempty,SD/config1,NFC1/pause0.
+ConfigStore.save hat den geschriebenenSlot mitRevision/Checksum/validConfig
+verifiziert; zusätzlicherDiag liest aktuellenStand. Kein erneuterRESET zur
+separatenKaltstartprüfung, gespeicherteZuordnung nicht bloß RAM-Override.
+SonstigeKonfiguration durchCopy erhalten,Setup setztVolume1. KeineMedienlöschung.
+
+USBTest10 nutzt echtenButton-/TaghandlerIndex1: HappyTuneöffnet,MP3Decoderund
+Streambereit,40sDateidauer berichtet. Nach4s expliziterTeststop; kein40s-Ende-Test.
+DanachLive-Encoderbewegungen2..8, nicht vomAgenten ausgelöst; finalDiag
+**Rev161,Volume7/playback2,SD/config1,NFC1/pause0,korrekteTagpfade**.
+KeineweitereAudio-/Lautstärkeänderung durchAgent nachdiesenNutzereingaben.
+NeuephysischeTag-/Hörabnahme nicht ausUSBtestsbehaupten.
+
+Belege:`2026-11-14-demo-happytune-{mapping,player,final}.log`.
+InstallierterFlash bleibtuluu6evy/demo1,Boot1/max21,keineReaderaktiv. Vorherige
+Arcade/Pups-Angaben gelten nurhistorisch. NachVorführung Web-/Introcheckpoint
+fortsetzen, wieinTo-Do. SD-Init-Ausfall weiterhinnichtalsbehobenbehaupten.
+
+## Vorheriger Flashanlauf: geflasht, zunächst Zuordnung Arcade/Pups
 
 Nach obigem Arbeitsstillstand bat Nutzer erneut um Flash „diese beiden“.
 Agent benannte zweimal ausdrücklich RFID1Arcade/RFID2Pups, Nutzer bestätigte

@@ -4,23 +4,24 @@ Stand: **04.10.2026, Etappe 4 als Breadboard-Meilenstein abgenommen.**
 Quelle: neue Serial-Beobachtungen und Nutzer-Hoertests in
 `docs/testprotokoll-etappe4.md`, nicht alte Agentenannahmen.
 
-## Aktuelle Vorführzuordnung14.11.2026 — Arcade / Pups
+## Aktuelle Vorführzuordnung14.11.2026 — Arcade / Happy Tune
 
-Nach ausdrücklicher Ansage „RFID1Arcade,RFID2Pups“ bestätigte Nutzer denFlash
-mit„ok“. Gesamtbuilduluu6evy/20261114-demo1 nachPark3 und Quellen-/Hashprüfung
-geflasht. **BestehendeSD-Zuordnung erhalten**, kein automatischerReset/Migration.
+Nach zunächst unverändertemArcade/Pups-Flash stellte Nutzer ausdrücklichklar:
+**„ich will happy tune auf2“**. Mit lokalemUSB-Setup`demo-songs` gezieltpersistiert,
+Save/ReadbackRevision151 bestätigt. Kein weitererFlash und keineBootmigration;
+übrigeBelegungen/Intros/Kategorien erhalten. Installiertuluu6evy/20261114-demo1.
 
 | Tag | UID | Aktueller SD-Pfad | Größe |
 |---|---|---|---:|
 | 1 | `E3:2F:F6:33` | `/arcade-music-loop.mp3` | 549988Bytes |
-| 2 | `01:8C:F1:6E` | `/fart.mp3` (Pups) | 23461Bytes |
+| 2 | `01:8C:F1:6E` | `/happy-tune.mp3` | 642028Bytes |
 
-NachFlash SD/config1,Revision150 unverändert,BootVolume1,NFC1/pause0.
-BeideTaghandler perUSBtest geöffnet/Decoderbereit,FartEOF; frischerphysischer
-Tagwechsel/Hörtest nichtausUSBableiten. Protokoll
-`docs/testprotokoll-vorfuehrung-2026-11-14.md`. FrühereHappyTune-Anfrage ist
-**nicht** die zuletzt bestätigteVorführzuordnung. LokalenSetupbefehl`demo-songs`
-nichtungefragtanwenden: er würdeTag2HappyTunesetzen. Unten historischesMapping.
+USBTest10→TAGindex1 öffnetHappyTune/MP3Decoderbereit/Streamready,danachStop.
+Anschließend Nutzer-Encoderbewegungen; finalDiagRev161,Volume7/playback2,
+SD/config1,NFC1/pause0,beidekorrektenPfade. Boot bleibtleise1. Neuephysische
+Tag-/Hörabnahme nicht allein ausUSBtestsableiten. Protokoll
+`docs/testprotokoll-vorfuehrung-2026-11-14.md`, Logs
+`2026-11-14-demo-happytune-{mapping,player,final}.log`. Unten historischeZwischenstände.
 
 ## Endaufbau11.11.2026 — damaliger Nachweis / Mappinggrenze
 

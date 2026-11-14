@@ -2,7 +2,16 @@
 
 ## In Arbeit / Nächste Schritte
 
-- [x] **Vorführstand am14.11. geflasht: RFID1Arcade / RFID2Pups.**
+- [x] **Aktuell14.11.: RFID1Arcade / RFID2HappyTune gespeichert.**
+  Nutzer hat ausdrücklich korrigiert: „ich will happy tune auf2“. Daraufhin
+  `demo-songs` gezielt ausgeführt, Erfolg/SD-Readback Revision151, beideDateien
+  vorhanden,Introsleer. USBTest10 startetHappyTune642028Bytes/Decoderbereit,
+  danachTeststop. Nutzer drehtanschließendEncoder; finalDiagRev161,Volume7,
+  playback2,SD/config1,NFC1/pause0,beidekorrektenPfade. Keine Lautstärkeerhöhung
+  durchAgenten; Boot bleibt1. Kein neuerFlash für diese Zuordnung nötig.
+  Logs`2026-11-14-demo-happytune-{mapping,player,final}.log`.
+  Nachfolgend historischer Flashschritt davor (Arcade/Pups), durch diese explizite
+  HappyTune-Korrektur überholt:
   Nutzer hat nach expliziter Ansage dieser beiden Titel erneutbestätigt. Frühere
   HappyTune-Anfrage ist nicht die zuletzt bestätigte Vorführzuordnung; deshalb
   **`demo-songs` NICHT ausgeführt** (würdeTag2aufHappyTuneändern).

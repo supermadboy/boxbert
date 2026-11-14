@@ -1,6 +1,18 @@
 # Übergabe: Endaufbau, Gesamtfirmware und „Dateifehler“ — 11.11.2026
 
-## Aktuell14.11.: Vorführstand erfolgreich geflasht, Arcade und Pups erhalten
+## Aktuell14.11.: Happy Tune auf RFID2 korrigiert und gespeichert
+
+Nutzer stellte ausdrücklich klar „ich will happy tune auf2“. Jetztgezielt
+`demo-songs` ausgeführt, SD-Save undReadbackRev151: Tag1Arcade/Tag2HappyTune,
+Introsleer,Dateienvorhanden. USBTest10öffnetHappyTune642028Bytes/Decoderbereit,
+danachStop. AnschließendeNutzereingaben amEncoder; finalDiagRev161,Volume7/
+playback2,SD/config1,NFC1/pause0,beidekorrektenPfade. Keine Lautstärkeerhöhung
+durchAgent und kein neuerFlash, installierterBuild weiteruluu6evy/demo1.
+Boot1/max21 unverändert. NeueLogs`2026-11-14-demo-happytune-{mapping,player,final}.log`.
+KeineUSB-Lesermehr. Web-/Introcheckpoint weiterhin wieunten; neuerphysischer
+Tag-/Hörnachweis nicht allein ausUSBtests behaupten.
+
+## Vorheriger Flashschritt14.11.: Arcade und Pups zunächst erhalten
 
 Nach erneuter expliziter Ansage RFID1Arcade/RFID2Pups bestätigte Nutzer und legte
 Karte auf. **NFC3/keinoffenesKommando** geloggt,24Source-/Runtime-/Configdateien und

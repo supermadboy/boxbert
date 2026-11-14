@@ -1,0 +1,36 @@
+
+# USB capture 2026-11-14T11:33:50.587101; no DTR/RTS ioctl
+# Sent once: test10
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=0 config=1 heap=36276 NFC=1
+BOXBERT commissioning SD=1 BUTTON id=10
+TAG index=1
+START requested song='/happy-tune.mp3' intro='' I2S=1 SD=1 heap=36240 psram=839084
+DIAG test issued at volume 1, maximum 20 seconds
+[audio] info: Reading file: "/happy-tune.mp3"
+[audio] info: MP3Decoder has been initialized
+[audio] info: File-Size: 642028
+[audio] info: ID3 framesSize: 44
+[audio] info: ID3 version: 2.4
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=1 running=1 config=1 heap=30596 NFC=1
+[audio] info: Duration (s): 40
+[audio] info: Bitrate (b/s): 128396
+[audio] info: stream ready
+[audio] info: syncword found at pos 0
+[audio] info: MPEG-1 Layer III
+[audio] info: Audio-Data-Start: 44
+[audio] info: Audio-Length: 641984
+[audio] info: Channels: 2
+[audio] info: SampleRate (Hz): 44100
+[audio] info: BitsPerSample: 16
+
+# USB capture 2026-11-14T11:33:54.746339; no DTR/RTS ioctl
+# Sent once: test-stop
+DIAG STOP
+[audio] info: Closing audio file "happy-tune.mp3"
+[audio] info: MP3Decoder has been destroyed
+VOLUME requested=2 actual=2 commissioningMax=21
+VOLUME requested=3 actual=3 commissioningMax=21
+VOLUME requested=4 actual=4 commissioningMax=21
+BOXBERT commissioning SD=1 PSRAM=1 AW=1 Gauge=1 radio=2 volume=4 running=0 config=1 heap=36280 NFC=1
+VOLUME requested=5 actual=5 commissioningMax=21
+VOLUME requested=6 actual=6 commissioningMax=21

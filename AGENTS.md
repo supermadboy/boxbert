@@ -45,8 +45,11 @@ Neuestes Protokoll: `docs/testprotokoll-nfc-integration-2026-11-13.md`. Stick fe
 `boxbert-v1-commissioning-20261114-demo1`,2561323ByteSketch/173468Globals,
 Core3.3.12/QSPI/NimBLE2.3.8,Boot1/max21,NFCaktiv. Nach echtemPark3/24Sourcechecks/
 Artefakthashes amBootloader-Port erfolgreichhochgeladen. Danach SD/I2S/config1,
-Rev150,Volume1,NFC1/pause0. **Zuletzt explizit bestätigt: Tag1Arcade/Tag2Pups**,
-Zuordnungen erhalten; `demo-songs` NICHTausgeführt, würdeHappyTune2setzen.
+Rev150,Volume1,NFC1/pause0 nachFlash. **Danach explizitkorrigiert: Tag2HappyTune.**
+`demo-songs` jetztgezieltausgeführt/gespeichert,ReadbackRev151: Tag1Arcade,
+Tag2HappyTune. USB10HappyTune642028Bytes/Decoderbereit,danachStop. Nutzer dreht
+Encoder; finalDiagRev161,Volume7/playback2,SD/config1,NFC1/pause0,korrektePfade.
+Kein erneuterFlash, keine automatischeLautstärkeerhöhung durchAgenten.
 USB9/10 öffnen/decodierenbeideDateien, FartEOF; danachgestoppt. Keine neuephysische
 Tag-/Hörabnahme. KeinegeplanteFlashaufgabe/Reader. SD0 nach vorherigemRESET wieder
 SD1, Ursacheweiteroffen. Details`docs/testprotokoll-vorfuehrung-2026-11-14.md`.
